@@ -47,3 +47,13 @@
 .floating-whatsapp svg{height:28px;width:28px}.floating-whatsapp:hover{transform:translateY(-3px);box-shadow:0 11px 27px rgba(34,40,60,.3)}
 .floating-whatsapp:focus-visible{outline:3px solid #9bb8ce;outline-offset:4px}
 @media(prefers-reduced-motion:reduce){.floating-whatsapp{transition:none!important}.floating-whatsapp:hover{transform:none}}
+
+
+/* Lockup aprovado: versão clara em fundos grafite, também nas páginas internas. */
+.header .brand{display:inline-flex;align-items:center;min-width:0}
+.header .brand-lockup{width:clamp(182px,19vw,235px);height:auto;max-width:100%;object-fit:contain;display:block}
+.footer-identity{display:flex;flex-direction:column;gap:4px}
+.footer-identity .brand-lockup{width:clamp(210px,26vw,278px);height:auto;max-width:100%;display:block}
+.footer-identity small{font-size:11px;letter-spacing:.02em;color:#bdcad8}
+@media(max-width:1000px){.header .brand-lockup{width:clamp(190px,46vw,234px)}}
+@media(max-width:560px){.header .brand-lockup{width:min(60vw,220px)}.footer-identity .brand-lockup{width:min(75vw,268px)}}
