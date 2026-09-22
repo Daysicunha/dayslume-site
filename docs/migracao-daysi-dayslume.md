@@ -40,3 +40,13 @@ A branch `main` da DAYSLUME e o site pessoal publicado não foram alterados nest
 6. Selecionar capturas reais e autorizações de divulgação; evitar representação de um produto não concluído como entrega comercial pronta.
 7. Fazer plano individualizado de redirecionamentos 301 das páginas antigas para as correspondentes quando o conteúdo comercial definitivo estiver publicado. Não redirecionar a página do case autoral nem todo o blog automaticamente.
 8. Confirmar se a branch está ligada a um projeto de prévia da Vercel; não supor publicação automática.
+
+
+## Complemento da migração: blog e imagens reais
+- Foi criada a seção de conteúdos na home e as páginas `blog.html`, `blog/presenca-digital-estrategica.html` e `blog/depender-apenas-do-instagram-riscos.html`.
+- Os dois artigos publicados originalmente no site Daysi Cunha foram adaptados ao posicionamento tecnológico da DAYSLUME, preservando autoria, data original e link para cada texto autoral.
+- Os textos originais no site Daysi Cunha **continuam preservados**. Não duplicar páginas indexáveis simultaneamente: o blog DAYSLUME permanece com `noindex,nofollow` durante a etapa de revisão; antes da publicação pública, decidir a estratégia canônica e os redirecionamentos dos artigos comerciais.
+- Foram copiados em formato binário, sem regeneração, os arquivos originais `assets/images/tornearia-barbosa-case.webp` e `assets/images/tornearia-barbosa-og.jpg`. A captura real está integrada à home e às páginas de portfólio e case.
+- Os arquivos fotográficos pessoais de Daysi Cunha, seu favicon e seu material de marca **não** foram transferidos para a DAYSLUME. A marca empresarial preserva seu símbolo e suas cores.
+- Não há capturas reais de New Rocket Play e ENGRENI Agenda no repositório original analisado; esses cards seguem como espaços reservados até recebermos capturas autorizadas desses projetos.
+- O briefing VITRINI pós-compra permanece sem migração funcional, porque sua integração de dados e pagamento ainda requer configuração segura.
