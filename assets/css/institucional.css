@@ -4,3 +4,9 @@
 @media(max-width:800px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.detail{grid-template-columns:1fr}.header-inner{align-items:flex-start;flex-direction:column;justify-content:center;padding:17px 0;gap:14px}.header nav{margin-left:0;gap:13px 19px}.band-inner{align-items:flex-start;flex-direction:column}}
 @media(max-width:560px){.container{width:calc(100% - 34px)}.header nav{gap:12px 15px}.header nav a{font-size:12px}.nav-cta{padding:7px 10px}.hero{padding:50px 0 65px}.grid,.grid.two{grid-template-columns:1fr}.section{padding:55px 0}.btn{max-width:100%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Blog editorial e portfólio: continuação da migração */
+.article-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,290px);gap:clamp(24px,5vw,74px);align-items:start}
+.article-body{max-width:760px;min-width:0}.article-body h2{font-size:clamp(24px,3vw,33px);margin:38px 0 12px}.article-body p{margin:0 0 18px;color:#444c5b;line-height:1.85}.article-body .note{font-size:12px;color:#656d7a;margin-bottom:26px}.article-body a{text-underline-offset:4px}.article-body .callout{margin:36px 0}.article-side{position:sticky;top:25px}
+.case-media{margin:0 0 32px;background:#e3e7ea;border:1px solid var(--line);border-radius:6px;overflow:hidden;max-width:750px}.case-media img{max-width:100%;width:auto;max-height:520px;object-fit:contain;margin:0 auto}.case-media figcaption{font-size:12px;color:#515a69;padding:12px 16px;background:var(--white)}
+@media(max-width:800px){.article-layout{grid-template-columns:1fr}.article-side{position:static}}
