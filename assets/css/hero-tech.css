@@ -1,53 +1,18 @@
-/* DAYSLUME — Síntese Autoral 2.0 / apresentação C: flor em interface translúcida.
-   Refinamento da prévia, sem alterar a identidade ou o conteúdo comercial aprovado.
-   Os códigos de cor seguem a paleta de trabalho do site; confirmar no vetor-mestre. */
-.hero{--days-blue-rgb:155,184,206;--days-rose-rgb:216,182,165;isolation:isolate}
-.hero-tech-grid{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.22;background-image:linear-gradient(to right,rgba(var(--days-blue-rgb),.08) 1px,transparent 1px),linear-gradient(to bottom,rgba(var(--days-blue-rgb),.08) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 60% 78% at 79% 49%,#000 10%,transparent 90%);-webkit-mask-image:radial-gradient(ellipse 60% 78% at 79% 49%,#000 10%,transparent 90%)}
-.hero-art-editorial{width:100%;max-width:480px;justify-self:end;position:relative;isolation:isolate}
-.hero-art-editorial .hero-interface{position:relative;z-index:1;display:grid;grid-template-rows:auto minmax(0,1fr) auto;min-height:425px;height:clamp(425px,35vw,508px);overflow:hidden;isolation:isolate;border:1px solid rgba(var(--days-blue-rgb),.27);border-radius:22px;background:linear-gradient(150deg,rgba(255,255,255,.053),rgba(var(--days-blue-rgb),.027) 48%,rgba(255,255,255,.014));box-shadow:0 23px 66px rgba(9,16,30,.2),inset 0 1px 0 rgba(255,255,255,.07);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);animation:days-interface-enter 1.05s .24s both cubic-bezier(.22,1,.36,1)}
-.hero-art-editorial .hero-interface::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 54% 52%,rgba(91,146,211,.12) 0%,rgba(91,146,211,.045) 38%,transparent 72%)}
-.hero-interface-header,.hero-interface-footer{position:relative;z-index:2;display:flex;align-items:center;min-height:54px;padding:0 22px}
-.hero-interface-header{justify-content:space-between;border-bottom:1px solid rgba(var(--days-blue-rgb),.15)}
-.hero-interface-index{color:#c2d2df;font-size:10px;letter-spacing:.17em;font-weight:600}
-.hero-interface-index span,.hero-interface-footer>span:nth-child(2)>span{color:#d8b6a5;padding-inline:3px}
-.hero-interface-controls{display:flex;align-items:center;gap:5px}
-.hero-interface-controls i{display:block;width:4px;height:4px;border-radius:50%;border:1px solid rgba(var(--days-blue-rgb),.64)}
-.hero-interface-body{position:relative;min-height:0;display:grid;place-items:center;padding:12px 28px 5px;overflow:hidden}
-.hero-interface-body::before{content:"";position:absolute;inset:7% 10%;pointer-events:none;background:radial-gradient(circle,rgba(91,146,211,.09),transparent 65%);filter:blur(27px)}
-.hero-interface-geometry{position:absolute;z-index:0;width:min(80%,330px);aspect-ratio:1;border:1px solid rgba(var(--days-blue-rgb),.20);border-radius:50%;pointer-events:none}
-.hero-interface-geometry::before{content:"";position:absolute;inset:14%;border:1px dashed rgba(var(--days-blue-rgb),.10);border-radius:50%}
-.hero-interface-geometry::after{content:"";position:absolute;left:50%;top:-4px;width:7px;height:7px;transform:translateX(-50%);border-radius:50%;background:#9bb8ce;box-shadow:0 0 0 4px rgba(var(--days-blue-rgb),.06)}
-.hero-art-editorial .hero-interface-body .hero-flower-motion{position:relative;z-index:1;display:block;width:auto;height:86%;max-width:84%;max-height:340px;object-fit:contain;mix-blend-mode:normal;filter:drop-shadow(0 18px 25px rgba(7,15,34,.12));transform-origin:center;animation:days-flower-float 15s ease-in-out infinite alternate}
-.hero-interface-footer{gap:10px;border-top:1px solid rgba(var(--days-blue-rgb),.15);color:#d9e5ef;font-size:9px;letter-spacing:.12em;white-space:nowrap;font-weight:500}
-.hero-interface-signal{display:block;width:6px;height:6px;border-radius:50%;flex:none;background:#9bb8ce;box-shadow:0 0 0 4px rgba(var(--days-blue-rgb),.07)}
-.hero-interface-arrow{margin-left:auto;color:#d8b6a5;font-size:17px}
-@keyframes days-interface-enter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-@keyframes days-flower-float{from{transform:translateY(2px)}to{transform:translateY(-5px)}}
-.motion-paused .hero-art-editorial .hero-interface,.motion-paused .hero-art-editorial .hero-flower-motion{animation-play-state:paused!important}
-@media(max-width:1180px){.hero-art-editorial{max-width:425px}.hero-art-editorial .hero-interface{height:clamp(365px,42vw,465px);min-height:365px}.hero-interface-header,.hero-interface-footer{padding-inline:17px}.hero-art-editorial .hero-interface-body .hero-flower-motion{max-height:300px}}
-@media(max-width:800px){.hero-tech-grid{opacity:.16;background-size:42px 42px}.hero-art-editorial{justify-self:center;width:100%;max-width:490px;margin:0 auto}.hero-art-editorial .hero-interface{height:clamp(290px,85vw,410px);min-height:290px;border-radius:19px}.hero-interface-header,.hero-interface-footer{min-height:43px;padding-inline:16px}.hero-art-editorial .hero-interface-body .hero-flower-motion{height:88%;max-height:275px;max-width:75%}.hero-interface-geometry{width:min(64%,265px)}.hero-interface-body{padding:8px 20px 4px}}
-@media(max-width:380px){.hero-art-editorial .hero-interface{height:295px;min-height:295px}.hero-interface-header,.hero-interface-footer{padding-inline:12px}.hero-interface-footer{gap:8px;font-size:8px;letter-spacing:.06em}.hero-interface-index{font-size:9px}.hero-art-editorial .hero-interface-body .hero-flower-motion{max-width:78%}}
-@media(prefers-reduced-motion:reduce){.hero-art-editorial .hero-interface,.hero-art-editorial .hero-flower-motion{animation:none!important;transform:none!important}.hero-art-editorial[data-days-parallax]{transform:none!important;transition:none!important}}
-
-/* Síntese Autoral 2.0 — refinamento após conferir a captura desktop (22/09).
-   Aumenta a presença da flor sem modificar o SVG ou a copy institucional. */
-.hero .hero-tech-grid{opacity:.30;background-image:linear-gradient(to right,rgba(var(--days-blue-rgb),.10) 1px,transparent 1px),linear-gradient(to bottom,rgba(var(--days-blue-rgb),.10) 1px,transparent 1px)}
-.hero .hero-content h1{line-height:1.055;margin-bottom:29px}
-.hero-art-editorial .hero-interface-body .hero-flower-motion{height:99%;max-width:94%;max-height:388px}
-.hero-art-editorial .hero-interface-geometry{border-color:rgba(var(--days-blue-rgb),.115)}
-.hero-art-editorial .hero-interface-geometry::before{border-color:rgba(var(--days-blue-rgb),.065)}
-.hero-art-editorial .hero-interface-geometry::after{box-shadow:0 0 0 3px rgba(var(--days-blue-rgb),.045)}
-.hero-art-editorial .hero-interface-body{padding:8px 19px 3px}
-@media(min-width:1181px){.hero-art-editorial{margin-inline-end:clamp(36px,4.1vw,60px);width:calc(100% - clamp(36px,4.1vw,60px))}}
-@media(min-width:801px) and (max-width:1180px){.hero-art-editorial{margin-inline-end:26px;width:calc(100% - 26px)}}
-@media(max-width:800px){
- .hero .hero-tech-grid{opacity:.18}
- .hero-art-editorial{margin-inline:auto;width:100%}
- .hero-art-editorial .hero-interface-body .hero-flower-motion{height:96%;max-width:85%;max-height:300px}
- .hero-art-editorial .hero-interface-body{padding:8px 16px 4px}
-}
-@media(max-width:380px){.hero-art-editorial .hero-interface-body .hero-flower-motion{max-width:83%;max-height:245px}}
-/* Durante a visualização da moldura, o contato já está disponível no header e nos CTAs.
-   Evita que o atalho flutuante cubra a apresentação da flor. */
-.floating-whatsapp.days-overlaps-hero{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(10px)}
-@media(prefers-reduced-motion:reduce){.floating-whatsapp.days-overlaps-hero{transform:none}}
+/* DAYSLUME — Síntese Autoral / flor livre. Only final hero-stage rules live here.
+   The original floral SVG and the approved commercial copy remain unchanged. */
+.hero{--days-blue-rgb:155,184,206;isolation:isolate}
+.hero::before,.hero::after{display:none}
+.hero-tech-grid{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.2;background-image:linear-gradient(to right,rgba(var(--days-blue-rgb),.09) 1px,transparent 1px),linear-gradient(to bottom,rgba(var(--days-blue-rgb),.09) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 47% 65% at 78% 50%,#000 9%,transparent 88%);-webkit-mask-image:radial-gradient(ellipse 47% 65% at 78% 50%,#000 9%,transparent 88%)}
+.hero-grid{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(32px,4vw,72px)}
+.hero-content{min-width:0}
+.hero-content h1{line-height:1.055;margin-bottom:29px}
+.hero-art-editorial{position:relative;isolation:isolate;max-width:540px;width:100%;min-width:0;justify-self:end}
+.hero-flower-stage{position:relative;isolation:isolate;width:100%;aspect-ratio:854/928;display:grid;place-items:center;animation:days-intro .85s .18s cubic-bezier(.22,1,.36,1) both}
+.hero-flower-stage::before{content:"";position:absolute;inset:9% 3%;z-index:-1;pointer-events:none;border-radius:50%;background:radial-gradient(ellipse at center,rgba(107,167,226,.27) 0%,rgba(94,153,208,.13) 37%,rgba(94,153,208,0) 70%);filter:blur(23px);animation:days-glow-breathe 22s ease-in-out infinite alternate}
+.hero-art-editorial .hero-flower-stage .hero-flower{position:relative;z-index:1;display:block;width:100%;height:100%;max-width:100%;max-height:none;object-fit:contain;mix-blend-mode:normal;filter:none;transform-origin:center;animation:flower-drift 18s ease-in-out infinite alternate}
+@keyframes days-glow-breathe{from{opacity:.66;transform:scale(.96)}to{opacity:.85;transform:scale(1.025)}}
+.floating-whatsapp.days-overlaps-hero{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(8px)}
+@media(max-width:1180px){.hero-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(22px,3vw,45px)}.hero-art-editorial{max-width:450px}}
+@media(max-width:800px){.hero-tech-grid{opacity:.13;background-size:42px 42px;mask-image:radial-gradient(ellipse 75% 42% at 50% 85%,#000 10%,transparent 90%);-webkit-mask-image:radial-gradient(ellipse 75% 42% at 50% 85%,#000 10%,transparent 90%)}.hero-grid{grid-template-columns:minmax(0,1fr);gap:clamp(26px,5vw,40px)}.hero-art-editorial{width:100%;max-width:410px;justify-self:center;margin-inline:auto}.hero-flower-stage{width:min(100%,370px);margin-inline:auto}.hero-flower-stage::before{inset:10% 0;filter:blur(18px)}}
+@media(max-width:380px){.hero-flower-stage{width:min(100%,320px)}}
+@media(prefers-reduced-motion:reduce){.hero-flower-stage,.hero-flower-stage::before,.hero-art-editorial .hero-flower-stage .hero-flower{animation:none!important;transform:none!important}.floating-whatsapp.days-overlaps-hero{transform:none!important}}
