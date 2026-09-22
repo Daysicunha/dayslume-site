@@ -40,3 +40,10 @@
 }
 @media(max-width:560px){.header .header-inner{gap:10px}.header nav{gap:4px 14px}.header-actions{justify-content:space-between}.box:hover{transform:none}}
 @media(prefers-reduced-motion:reduce){.header .nav-cta,.btn,.box{transition:none!important}.header .nav-cta:hover,.btn:hover,.box:hover{transform:none!important}}
+
+
+/* Botão de WhatsApp sempre acessível, sem cobrir a navegação móvel. */
+.floating-whatsapp{position:fixed;z-index:100;right:clamp(16px,2.6vw,34px);bottom:clamp(16px,2.6vw,32px);width:56px;height:56px;display:grid;place-items:center;border-radius:50%;border:2px solid rgba(255,255,255,.75);background:#1fbd65;color:#fff;box-shadow:0 8px 24px rgba(34,40,60,.27);transition:transform .2s ease,box-shadow .2s ease}
+.floating-whatsapp svg{height:28px;width:28px}.floating-whatsapp:hover{transform:translateY(-3px);box-shadow:0 11px 27px rgba(34,40,60,.3)}
+.floating-whatsapp:focus-visible{outline:3px solid #9bb8ce;outline-offset:4px}
+@media(prefers-reduced-motion:reduce){.floating-whatsapp{transition:none!important}.floating-whatsapp:hover{transform:none}}
