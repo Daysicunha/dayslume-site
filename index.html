@@ -113,6 +113,29 @@
   .btn:hover,.nav-cta:hover,.service-card:hover,.solution-card:hover,.project-card:hover,.migrated-blog-grid article:hover,.project-card:hover .project-image img{transform:none!important}
 }
 
+
+/* DAYSLUME · movimentos editoriais: copy, marca, imagens e links originais preservados. */
+.hero{isolation:isolate}
+.hero::before,.hero::after{content:"";position:absolute;pointer-events:none;z-index:0;border-radius:50%;will-change:transform}
+.hero::before{width:min(80vw,850px);aspect-ratio:1;left:-32%;top:-75%;background:radial-gradient(circle,rgba(216,182,165,.21) 0%,rgba(151,159,179,.12) 38%,transparent 69%);animation:dayslume-ambient-one 18s ease-in-out infinite alternate}
+.hero::after{width:min(70vw,790px);aspect-ratio:1;right:-27%;bottom:-75%;background:radial-gradient(circle,rgba(135,162,190,.18) 0%,rgba(182,145,129,.10) 40%,transparent 70%);animation:dayslume-ambient-two 23s ease-in-out infinite alternate}
+.hero-orbit-one{animation:dayslume-orbit-one 35s ease-in-out infinite alternate}
+.hero-orbit-two{animation:dayslume-orbit-two 43s ease-in-out infinite alternate}
+@keyframes dayslume-ambient-one{from{transform:translate3d(-8%,0,0) scale(.93)}to{transform:translate3d(38%,23%,0) scale(1.24)}}
+@keyframes dayslume-ambient-two{from{transform:translate3d(5%,6%,0) scale(1)}to{transform:translate3d(-29%,-19%,0) scale(1.22)}}
+@keyframes dayslume-orbit-one{from{transform:rotate(-25deg) translate3d(0,0,0)}to{transform:rotate(8deg) translate3d(-27px,32px,0)}}
+@keyframes dayslume-orbit-two{from{transform:rotate(-25deg) translate3d(0,0,0)}to{transform:rotate(-42deg) translate3d(35px,-22px,0)}}
+.hero #hero-title em{display:inline-block;transform-origin:50% 80%;animation:dayslume-highlight 5.4s ease-in-out infinite}
+@keyframes dayslume-highlight{0%,10%,78%,100%{opacity:1;transform:translateY(0)}5%{opacity:.52;transform:translateY(7px)}}
+.marquee{overflow:hidden}
+.marquee-track{display:flex;width:max-content;min-width:100%;animation:dayslume-marquee 30s linear infinite;will-change:transform}
+.marquee .marquee-sequence{flex:none;width:max-content;white-space:nowrap;font-size:10px;letter-spacing:.25em;word-spacing:7px;text-align:center;padding:20px clamp(24px,4vw,54px);font-weight:700}
+.marquee .marquee-sequence span{color:#8da6be;margin:0 25px}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes dayslume-marquee{to{transform:translate3d(-50%,0,0)}}
+@media(max-width:700px){.hero::before{width:115vw;left:-74%;top:-27%;opacity:.7}.hero::after{width:110vw;right:-73%;bottom:-20%;opacity:.7}.marquee .marquee-sequence{padding:16px 28px;letter-spacing:.17em}.marquee .marquee-sequence span{margin:0 13px}}
+@media(prefers-reduced-motion:reduce){.hero::before,.hero::after,.hero-orbit-one,.hero-orbit-two,.hero #hero-title em,.marquee-track{animation:none!important}.marquee-track{width:100%;min-width:0;justify-content:center;flex-wrap:wrap;transform:none!important}.marquee .marquee-sequence{white-space:normal;line-height:2}.marquee .marquee-sequence[aria-hidden="true"]{display:none}}
+
 </style>
   
 </head>
@@ -154,7 +177,7 @@
       </div>
     </div>
   </section>
-  <div class="marquee" aria-hidden="true"><div>ESTRATÉGIA <span>✳</span> DESENVOLVIMENTO <span>✳</span> EXPERIÊNCIAS DIGITAIS <span>✳</span> SOLUÇÕES TECNOLÓGICAS <span>✳</span></div></div>
+  <div class="marquee" aria-hidden="true"><div class="marquee-track"><div class="marquee-sequence">ESTRATÉGIA <span>✳</span> DESENVOLVIMENTO <span>✳</span> EXPERIÊNCIAS DIGITAIS <span>✳</span> SOLUÇÕES TECNOLÓGICAS <span>✳</span></div><div class="marquee-sequence" aria-hidden="true">ESTRATÉGIA <span>✳</span> DESENVOLVIMENTO <span>✳</span> EXPERIÊNCIAS DIGITAIS <span>✳</span> SOLUÇÕES TECNOLÓGICAS <span>✳</span></div></div></div>
   <section class="section intro-section" id="servicos" aria-labelledby="servicos-title">
     <div class="container"><div class="section-heading"><p class="eyebrow">01 / O QUE FAZEMOS</p><h2 id="servicos-title">Tecnologia pensada para <span class="underlined">necessidades reais.</span></h2><p>Da presença digital à organização de processos, desenvolvemos experiências e ferramentas com escopo definido para o contexto de cada projeto.</p></div>
       <div class="services-grid">
