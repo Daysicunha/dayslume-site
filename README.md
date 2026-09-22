@@ -1,3 +1,21 @@
+# DAYSLUME — finalização premium (prévia)
+
+Branch `feat/finalizacao-premium-dayslume`: continuação do projeto HTML/CSS/JavaScript existente.
+
+- [Auditoria, consolidação e pendências](docs/auditoria-finalizacao-premium.md)
+- [Roteiro de conferência da home](docs/validar-home.md)
+- [Histórico da migração comercial](docs/migracao-daysi-dayslume.md)
+
+A home tem o refinamento premium e preparação de solicitação por WhatsApp. As páginas internas e os dois artigos foram preservados; recebem o novo acabamento somente após aprovação da home. Produção e site pessoal permanecem intactos.
+
+Prévia local: `python -m http.server 8000`. Validação de sintaxe: `node --check assets/js/home-premium.js`. Não há etapa de build nem dependências adicionais.
+
+---
+
+## Registro histórico da primeira versão
+
+O conteúdo abaixo descreve a prévia original; o estado atual é o relatório de auditoria acima.
+
 # DAYSLUME — site institucional (prévia v1)
 
 Site responsivo em HTML, CSS e JS, pronto para visualização local (abra `index.html`) ou publicação como site estático.
