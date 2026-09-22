@@ -55,4 +55,6 @@ As pendências de mídia e confirmação não foram preenchidas com depoimentos,
 
 - PR em rascunho: https://github.com/Daysicunha/dayslume-site/pull/2
 - Prévia da branch: https://dayslume-site-git-feat-finalizacao-premium-dayslume-daysi-cunha.vercel.app
-- A integração GitHub/Vercel deve gerar um novo deploy ao atualizar esta branch. Conferir o status do commit antes de considerar a prévia atualizada.
+- Commit de implementação: `82739d308bfb7a0d8ec31a20f5d68444abd7fdbf`. GitHub/Vercel confirmou **Ready** em 22/09/2026, 18:18 UTC.
+- Deploy confirmado: https://vercel.com/daysi-cunha/dayslume-site/JBTYSDGb7LQhhi6ibxZo9Yw8S7C6
+- O deploy foi concluído; isso não substitui a conferência visual que segue pendente por autenticação.
