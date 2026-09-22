@@ -28,3 +28,26 @@
 @media(max-width:800px){.hero-tech-grid{opacity:.16;background-size:42px 42px}.hero-art-editorial{justify-self:center;width:100%;max-width:490px;margin:0 auto}.hero-art-editorial .hero-interface{height:clamp(290px,85vw,410px);min-height:290px;border-radius:19px}.hero-interface-header,.hero-interface-footer{min-height:43px;padding-inline:16px}.hero-art-editorial .hero-interface-body .hero-flower-motion{height:88%;max-height:275px;max-width:75%}.hero-interface-geometry{width:min(64%,265px)}.hero-interface-body{padding:8px 20px 4px}}
 @media(max-width:380px){.hero-art-editorial .hero-interface{height:295px;min-height:295px}.hero-interface-header,.hero-interface-footer{padding-inline:12px}.hero-interface-footer{gap:8px;font-size:8px;letter-spacing:.06em}.hero-interface-index{font-size:9px}.hero-art-editorial .hero-interface-body .hero-flower-motion{max-width:78%}}
 @media(prefers-reduced-motion:reduce){.hero-art-editorial .hero-interface,.hero-art-editorial .hero-flower-motion{animation:none!important;transform:none!important}.hero-art-editorial[data-days-parallax]{transform:none!important;transition:none!important}}
+
+/* Síntese Autoral 2.0 — refinamento após conferir a captura desktop (22/09).
+   Aumenta a presença da flor sem modificar o SVG ou a copy institucional. */
+.hero .hero-tech-grid{opacity:.30;background-image:linear-gradient(to right,rgba(var(--days-blue-rgb),.10) 1px,transparent 1px),linear-gradient(to bottom,rgba(var(--days-blue-rgb),.10) 1px,transparent 1px)}
+.hero .hero-content h1{line-height:1.055;margin-bottom:29px}
+.hero-art-editorial .hero-interface-body .hero-flower-motion{height:99%;max-width:94%;max-height:388px}
+.hero-art-editorial .hero-interface-geometry{border-color:rgba(var(--days-blue-rgb),.115)}
+.hero-art-editorial .hero-interface-geometry::before{border-color:rgba(var(--days-blue-rgb),.065)}
+.hero-art-editorial .hero-interface-geometry::after{box-shadow:0 0 0 3px rgba(var(--days-blue-rgb),.045)}
+.hero-art-editorial .hero-interface-body{padding:8px 19px 3px}
+@media(min-width:1181px){.hero-art-editorial{margin-inline-end:clamp(36px,4.1vw,60px);width:calc(100% - clamp(36px,4.1vw,60px))}}
+@media(min-width:801px) and (max-width:1180px){.hero-art-editorial{margin-inline-end:26px;width:calc(100% - 26px)}}
+@media(max-width:800px){
+ .hero .hero-tech-grid{opacity:.18}
+ .hero-art-editorial{margin-inline:auto;width:100%}
+ .hero-art-editorial .hero-interface-body .hero-flower-motion{height:96%;max-width:85%;max-height:300px}
+ .hero-art-editorial .hero-interface-body{padding:8px 16px 4px}
+}
+@media(max-width:380px){.hero-art-editorial .hero-interface-body .hero-flower-motion{max-width:83%;max-height:245px}}
+/* Durante a visualização da moldura, o contato já está disponível no header e nos CTAs.
+   Evita que o atalho flutuante cubra a apresentação da flor. */
+.floating-whatsapp.days-overlaps-hero{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(10px)}
+@media(prefers-reduced-motion:reduce){.floating-whatsapp.days-overlaps-hero{transform:none}}
