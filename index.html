@@ -113,6 +113,13 @@
   .btn:hover,.nav-cta:hover,.service-card:hover,.solution-card:hover,.project-card:hover,.migrated-blog-grid article:hover,.project-card:hover .project-image img{transform:none!important}
 }
 
+
+/* Atendimento direto: botão flutuante acessível, sem formulário falso. */
+.floating-whatsapp{position:fixed;right:clamp(16px,2.6vw,34px);bottom:clamp(16px,2.6vw,32px);z-index:100;display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:#1fbd65;color:#fff;box-shadow:0 8px 24px rgba(20,36,58,.27);border:2px solid rgba(255,255,255,.65);transition:transform .2s ease,box-shadow .2s ease}
+.floating-whatsapp svg{width:28px;height:28px}.floating-whatsapp:hover{transform:translateY(-3px);box-shadow:0 11px 27px rgba(20,36,58,.32)}
+.floating-whatsapp:focus-visible{outline:3px solid var(--peach);outline-offset:4px}
+@media(prefers-reduced-motion:reduce){.floating-whatsapp{transition:none!important}.floating-whatsapp:hover{transform:none}}
+
 </style>
   
 </head>
@@ -195,4 +202,5 @@ if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-moti
 }
 
 </script>
+<a class="floating-whatsapp" href="https://wa.me/5531994492474?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20DAYSLUME%20e%20gostaria%20de%20falar%20sobre%20um%20projeto." target="_blank" rel="noopener noreferrer" aria-label="Falar com a DAYSLUME pelo WhatsApp" title="Fale com a DAYSLUME pelo WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 11.6a8.4 8.4 0 0 1-12.4 7.3L3.4 20l1.2-4.4a8.4 8.4 0 1 1 15.8-4z"/><path d="M8.4 8.5c.2-.4.5-.4.8-.4l.5.1c.1 0 .3.2.4.5l.5 1.3c.1.3.1.5-.1.8l-.5.6c.7 1.4 1.7 2.4 3.1 3.1l.6-.6c.2-.2.5-.2.8-.1l1.3.5c.3.1.5.3.5.5.1.7-.2 1.2-.8 1.5-1.5.6-3.4-.3-5.1-2s-2.7-3.7-2-5.1z"/></svg></a>
 </body></html>
