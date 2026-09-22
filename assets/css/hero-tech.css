@@ -1,0 +1,24 @@
+/* DAYSLUME / direção A — tecnologia editorial suave. A arte de contorno é o vetor já derivado do anexo. */
+.hero{--tech-blue:155,184,206;isolation:isolate}
+.hero-tech-grid{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.34;background-image:linear-gradient(to right,rgba(var(--tech-blue),.095) 1px,transparent 1px),linear-gradient(to bottom,rgba(var(--tech-blue),.095) 1px,transparent 1px);background-size:52px 52px;mask-image:radial-gradient(ellipse 69% 81% at 78% 48%,#000 6%,transparent 85%);-webkit-mask-image:radial-gradient(ellipse 69% 81% at 78% 48%,#000 6%,transparent 85%)}
+.hero-art-tech{position:relative;isolation:isolate;overflow:visible}
+.hero-art-tech .art-meta{position:relative;z-index:3}
+.hero-art-tech .art-frame{position:relative;z-index:1;isolation:isolate;overflow:visible}
+.hero-art-tech .art-frame::before{content:"";display:block;position:absolute;inset:8%;z-index:0;pointer-events:none;border:1px solid rgba(var(--tech-blue),.105);border-radius:50%;transform:rotate(-19deg)}
+.hero-art-tech .art-frame::after{content:"";position:absolute;inset:14%;z-index:-1;pointer-events:none;border-radius:50%;background:radial-gradient(circle,rgba(84,137,202,.17),rgba(84,137,202,.09) 35%,transparent 70%);filter:blur(29px)}
+.hero-art-tech .hero-flower-motion{position:relative;z-index:1;filter:drop-shadow(0 16px 25px rgba(5,13,29,.14));animation:flower-drift 16s ease-in-out infinite alternate}
+.hero-tech-glow{position:absolute;pointer-events:none;z-index:-1;top:16%;right:4%;width:80%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(92,151,216,.13),rgba(92,151,216,.055) 43%,transparent 72%);filter:blur(30px);animation:days-tech-glow 17s ease-in-out infinite alternate}
+.hero-tech-card{position:absolute;z-index:4;display:flex;align-items:center;gap:10px;max-width:205px;padding:11px 13px;background:rgba(28,40,60,.76);border:1px solid rgba(var(--tech-blue),.28);border-radius:12px;box-shadow:0 12px 32px rgba(8,16,30,.14);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);pointer-events:none;animation:days-tech-card 9s ease-in-out infinite alternate}
+.hero-tech-card-top{top:15%;left:-3%}.hero-tech-card-bottom{bottom:7%;right:-1%;animation-delay:-4s}
+.hero-tech-card-copy{display:flex;flex-direction:column;gap:3px;line-height:1.4}
+.hero-tech-card-copy small{font-size:8px;letter-spacing:.13em;color:#afc7dd;white-space:nowrap;font-weight:600}
+.hero-tech-card-copy strong{font-size:11px;letter-spacing:.005em;color:#f1f3f6;font-weight:500}
+.hero-tech-status{width:6px;height:6px;border-radius:50%;background:var(--blue);flex:none;box-shadow:0 0 0 4px rgba(var(--tech-blue),.09)}
+.hero-tech-chevron{font-size:18px;line-height:1;color:#d8b6a5;align-self:flex-start}
+@keyframes days-tech-glow{from{opacity:.6;transform:scale(.97) translateY(0)}to{opacity:.98;transform:scale(1.06) translateY(-8px)}}
+@keyframes days-tech-card{from{transform:translateY(0)}to{transform:translateY(-5px)}}
+.motion-paused .hero-tech-glow,.motion-paused .hero-tech-card{animation-play-state:paused!important}
+@media(max-width:1180px){.hero-tech-card-top{left:0}.hero-tech-card-bottom{right:0}}
+@media(max-width:800px){.hero-art-tech{max-width:520px;margin-inline:auto}.hero-tech-grid{background-size:42px 42px;opacity:.22}.hero-art-tech .art-frame{overflow:visible;max-height:none;aspect-ratio:1.35}.hero-art-tech .hero-flower-motion{max-height:330px}.hero-tech-glow{top:5%;right:10%;width:76%}.hero-tech-card{max-width:170px;padding:8px 10px;gap:8px;border-radius:10px}.hero-tech-card-copy small{font-size:7px}.hero-tech-card-copy strong{font-size:10px}.hero-tech-card-top{top:17%;left:0}.hero-tech-card-bottom{right:0;bottom:7%}}
+@media(max-width:480px){.hero-tech-grid{opacity:.16}.hero-art-tech{padding-bottom:40px}.hero-art-tech .art-meta{font-size:8px}.hero-tech-card-top{top:auto;left:3%;bottom:3px;max-width:215px}.hero-tech-card-bottom{display:none}.hero-art-tech .art-frame::before{inset:7%}}
+@media(prefers-reduced-motion:reduce){.hero-tech-glow,.hero-tech-card,.hero-art-tech .hero-flower-motion{animation:none!important}.hero-art-tech .hero-flower-motion{transform:none!important}}
