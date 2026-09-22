@@ -1,24 +1,30 @@
-/* DAYSLUME / direção A — tecnologia editorial suave. A arte de contorno é o vetor já derivado do anexo. */
-.hero{--tech-blue:155,184,206;isolation:isolate}
-.hero-tech-grid{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.34;background-image:linear-gradient(to right,rgba(var(--tech-blue),.095) 1px,transparent 1px),linear-gradient(to bottom,rgba(var(--tech-blue),.095) 1px,transparent 1px);background-size:52px 52px;mask-image:radial-gradient(ellipse 69% 81% at 78% 48%,#000 6%,transparent 85%);-webkit-mask-image:radial-gradient(ellipse 69% 81% at 78% 48%,#000 6%,transparent 85%)}
-.hero-art-tech{position:relative;isolation:isolate;overflow:visible}
-.hero-art-tech .art-meta{position:relative;z-index:3}
-.hero-art-tech .art-frame{position:relative;z-index:1;isolation:isolate;overflow:visible}
-.hero-art-tech .art-frame::before{content:"";display:block;position:absolute;inset:8%;z-index:0;pointer-events:none;border:1px solid rgba(var(--tech-blue),.105);border-radius:50%;transform:rotate(-19deg)}
-.hero-art-tech .art-frame::after{content:"";position:absolute;inset:14%;z-index:-1;pointer-events:none;border-radius:50%;background:radial-gradient(circle,rgba(84,137,202,.17),rgba(84,137,202,.09) 35%,transparent 70%);filter:blur(29px)}
-.hero-art-tech .hero-flower-motion{position:relative;z-index:1;filter:drop-shadow(0 16px 25px rgba(5,13,29,.14));animation:flower-drift 16s ease-in-out infinite alternate}
-.hero-tech-glow{position:absolute;pointer-events:none;z-index:-1;top:16%;right:4%;width:80%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(92,151,216,.13),rgba(92,151,216,.055) 43%,transparent 72%);filter:blur(30px);animation:days-tech-glow 17s ease-in-out infinite alternate}
-.hero-tech-card{position:absolute;z-index:4;display:flex;align-items:center;gap:10px;max-width:205px;padding:11px 13px;background:rgba(28,40,60,.76);border:1px solid rgba(var(--tech-blue),.28);border-radius:12px;box-shadow:0 12px 32px rgba(8,16,30,.14);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);pointer-events:none;animation:days-tech-card 9s ease-in-out infinite alternate}
-.hero-tech-card-top{top:15%;left:-3%}.hero-tech-card-bottom{bottom:7%;right:-1%;animation-delay:-4s}
-.hero-tech-card-copy{display:flex;flex-direction:column;gap:3px;line-height:1.4}
-.hero-tech-card-copy small{font-size:8px;letter-spacing:.13em;color:#afc7dd;white-space:nowrap;font-weight:600}
-.hero-tech-card-copy strong{font-size:11px;letter-spacing:.005em;color:#f1f3f6;font-weight:500}
-.hero-tech-status{width:6px;height:6px;border-radius:50%;background:var(--blue);flex:none;box-shadow:0 0 0 4px rgba(var(--tech-blue),.09)}
-.hero-tech-chevron{font-size:18px;line-height:1;color:#d8b6a5;align-self:flex-start}
-@keyframes days-tech-glow{from{opacity:.6;transform:scale(.97) translateY(0)}to{opacity:.98;transform:scale(1.06) translateY(-8px)}}
-@keyframes days-tech-card{from{transform:translateY(0)}to{transform:translateY(-5px)}}
-.motion-paused .hero-tech-glow,.motion-paused .hero-tech-card{animation-play-state:paused!important}
-@media(max-width:1180px){.hero-tech-card-top{left:0}.hero-tech-card-bottom{right:0}}
-@media(max-width:800px){.hero-art-tech{max-width:520px;margin-inline:auto}.hero-tech-grid{background-size:42px 42px;opacity:.22}.hero-art-tech .art-frame{overflow:visible;max-height:none;aspect-ratio:1.35}.hero-art-tech .hero-flower-motion{max-height:330px}.hero-tech-glow{top:5%;right:10%;width:76%}.hero-tech-card{max-width:170px;padding:8px 10px;gap:8px;border-radius:10px}.hero-tech-card-copy small{font-size:7px}.hero-tech-card-copy strong{font-size:10px}.hero-tech-card-top{top:17%;left:0}.hero-tech-card-bottom{right:0;bottom:7%}}
-@media(max-width:480px){.hero-tech-grid{opacity:.16}.hero-art-tech{padding-bottom:40px}.hero-art-tech .art-meta{font-size:8px}.hero-tech-card-top{top:auto;left:3%;bottom:3px;max-width:215px}.hero-tech-card-bottom{display:none}.hero-art-tech .art-frame::before{inset:7%}}
-@media(prefers-reduced-motion:reduce){.hero-tech-glow,.hero-tech-card,.hero-art-tech .hero-flower-motion{animation:none!important}.hero-art-tech .hero-flower-motion{transform:none!important}}
+/* DAYSLUME — Síntese Autoral 2.0 / apresentação C: flor em interface translúcida.
+   Refinamento da prévia, sem alterar a identidade ou o conteúdo comercial aprovado.
+   Os códigos de cor seguem a paleta de trabalho do site; confirmar no vetor-mestre. */
+.hero{--days-blue-rgb:155,184,206;--days-rose-rgb:216,182,165;isolation:isolate}
+.hero-tech-grid{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.22;background-image:linear-gradient(to right,rgba(var(--days-blue-rgb),.08) 1px,transparent 1px),linear-gradient(to bottom,rgba(var(--days-blue-rgb),.08) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 60% 78% at 79% 49%,#000 10%,transparent 90%);-webkit-mask-image:radial-gradient(ellipse 60% 78% at 79% 49%,#000 10%,transparent 90%)}
+.hero-art-editorial{width:100%;max-width:480px;justify-self:end;position:relative;isolation:isolate}
+.hero-art-editorial .hero-interface{position:relative;z-index:1;display:grid;grid-template-rows:auto minmax(0,1fr) auto;min-height:425px;height:clamp(425px,35vw,508px);overflow:hidden;isolation:isolate;border:1px solid rgba(var(--days-blue-rgb),.27);border-radius:22px;background:linear-gradient(150deg,rgba(255,255,255,.053),rgba(var(--days-blue-rgb),.027) 48%,rgba(255,255,255,.014));box-shadow:0 23px 66px rgba(9,16,30,.2),inset 0 1px 0 rgba(255,255,255,.07);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);animation:days-interface-enter 1.05s .24s both cubic-bezier(.22,1,.36,1)}
+.hero-art-editorial .hero-interface::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 54% 52%,rgba(91,146,211,.12) 0%,rgba(91,146,211,.045) 38%,transparent 72%)}
+.hero-interface-header,.hero-interface-footer{position:relative;z-index:2;display:flex;align-items:center;min-height:54px;padding:0 22px}
+.hero-interface-header{justify-content:space-between;border-bottom:1px solid rgba(var(--days-blue-rgb),.15)}
+.hero-interface-index{color:#c2d2df;font-size:10px;letter-spacing:.17em;font-weight:600}
+.hero-interface-index span,.hero-interface-footer>span:nth-child(2)>span{color:#d8b6a5;padding-inline:3px}
+.hero-interface-controls{display:flex;align-items:center;gap:5px}
+.hero-interface-controls i{display:block;width:4px;height:4px;border-radius:50%;border:1px solid rgba(var(--days-blue-rgb),.64)}
+.hero-interface-body{position:relative;min-height:0;display:grid;place-items:center;padding:12px 28px 5px;overflow:hidden}
+.hero-interface-body::before{content:"";position:absolute;inset:7% 10%;pointer-events:none;background:radial-gradient(circle,rgba(91,146,211,.09),transparent 65%);filter:blur(27px)}
+.hero-interface-geometry{position:absolute;z-index:0;width:min(80%,330px);aspect-ratio:1;border:1px solid rgba(var(--days-blue-rgb),.20);border-radius:50%;pointer-events:none}
+.hero-interface-geometry::before{content:"";position:absolute;inset:14%;border:1px dashed rgba(var(--days-blue-rgb),.10);border-radius:50%}
+.hero-interface-geometry::after{content:"";position:absolute;left:50%;top:-4px;width:7px;height:7px;transform:translateX(-50%);border-radius:50%;background:#9bb8ce;box-shadow:0 0 0 4px rgba(var(--days-blue-rgb),.06)}
+.hero-art-editorial .hero-interface-body .hero-flower-motion{position:relative;z-index:1;display:block;width:auto;height:86%;max-width:84%;max-height:340px;object-fit:contain;mix-blend-mode:normal;filter:drop-shadow(0 18px 25px rgba(7,15,34,.12));transform-origin:center;animation:days-flower-float 15s ease-in-out infinite alternate}
+.hero-interface-footer{gap:10px;border-top:1px solid rgba(var(--days-blue-rgb),.15);color:#d9e5ef;font-size:9px;letter-spacing:.12em;white-space:nowrap;font-weight:500}
+.hero-interface-signal{display:block;width:6px;height:6px;border-radius:50%;flex:none;background:#9bb8ce;box-shadow:0 0 0 4px rgba(var(--days-blue-rgb),.07)}
+.hero-interface-arrow{margin-left:auto;color:#d8b6a5;font-size:17px}
+@keyframes days-interface-enter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes days-flower-float{from{transform:translateY(2px)}to{transform:translateY(-5px)}}
+.motion-paused .hero-art-editorial .hero-interface,.motion-paused .hero-art-editorial .hero-flower-motion{animation-play-state:paused!important}
+@media(max-width:1180px){.hero-art-editorial{max-width:425px}.hero-art-editorial .hero-interface{height:clamp(365px,42vw,465px);min-height:365px}.hero-interface-header,.hero-interface-footer{padding-inline:17px}.hero-art-editorial .hero-interface-body .hero-flower-motion{max-height:300px}}
+@media(max-width:800px){.hero-tech-grid{opacity:.16;background-size:42px 42px}.hero-art-editorial{justify-self:center;width:100%;max-width:490px;margin:0 auto}.hero-art-editorial .hero-interface{height:clamp(290px,85vw,410px);min-height:290px;border-radius:19px}.hero-interface-header,.hero-interface-footer{min-height:43px;padding-inline:16px}.hero-art-editorial .hero-interface-body .hero-flower-motion{height:88%;max-height:275px;max-width:75%}.hero-interface-geometry{width:min(64%,265px)}.hero-interface-body{padding:8px 20px 4px}}
+@media(max-width:380px){.hero-art-editorial .hero-interface{height:295px;min-height:295px}.hero-interface-header,.hero-interface-footer{padding-inline:12px}.hero-interface-footer{gap:8px;font-size:8px;letter-spacing:.06em}.hero-interface-index{font-size:9px}.hero-art-editorial .hero-interface-body .hero-flower-motion{max-width:78%}}
+@media(prefers-reduced-motion:reduce){.hero-art-editorial .hero-interface,.hero-art-editorial .hero-flower-motion{animation:none!important;transform:none!important}.hero-art-editorial[data-days-parallax]{transform:none!important;transition:none!important}}
