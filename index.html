@@ -67,6 +67,52 @@
 
 .migration-link{display:inline-block;color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:4px;font-size:13px;margin:8px 12px 3px 0}.migration-link:focus-visible{outline:3px solid #9bb8ce;outline-offset:4px}
 .migrated-case-photo{background:#e1e4e4;display:block}.migrated-case-photo img{width:100%;height:100%;object-fit:contain;position:absolute;inset:0}.migrated-blog{background:#f2f0eb}.migrated-blog-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.migrated-blog-grid article{border-top:1px solid #acb5bb;padding:25px 5px}.migrated-blog-grid h3{font-size:clamp(19px,2.5vw,29px);margin:12px 0}.migrated-blog-grid p:not(.eyebrow){font-size:14px;max-width:36ch;color:#565d6c}.migrated-blog-grid a{color:#22283c}@media(max-width:700px){.migrated-blog-grid{grid-template-columns:1fr}.migrated-case-photo img{max-width:100%;}}
+
+/* Refinamento editorial: centralização do menu, botões, cards e movimento acessível. */
+@media(min-width:1101px){
+  .site-header .header-inner{display:grid;grid-template-columns:minmax(220px,1fr) auto minmax(230px,1fr);gap:clamp(14px,1.5vw,28px);}
+  .site-header .menu{justify-self:center;gap:clamp(12px,1.5vw,24px);white-space:nowrap;}
+  .site-header .header-actions{justify-self:end;}
+}
+.header-actions,.header-socials{display:flex;align-items:center;gap:10px}
+.header-actions{gap:15px;white-space:nowrap}
+.header-socials{gap:5px}
+.social-icon{width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(242,240,235,.25);border-radius:7px;color:#d7e2ec;flex:none}
+.social-icon svg{width:17px;height:17px}
+.social-pending{opacity:.67;cursor:default}
+.mobile-header-actions{display:none}
+.site-header .nav-cta{display:inline-flex;align-items:center;justify-content:center;gap:4px;min-height:43px;border-color:rgba(155,184,206,.58);transition:background-color .22s ease,border-color .22s ease,transform .22s ease}
+.site-header .nav-cta:hover{background:rgba(155,184,206,.12);border-color:var(--blue);transform:translateY(-1px)}
+.site-header a:focus-visible,.btn:focus-visible,.service-card a:focus-visible,.project-card a:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
+.btn{border-radius:6px;transition:background-color .22s ease,color .22s ease,border-color .22s ease,box-shadow .22s ease,transform .22s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 9px 22px rgba(20,36,58,.12)}
+.btn:active{transform:translateY(0);box-shadow:none}
+.service-card,.solution-card,.project-card,.migrated-blog-grid article{transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease}
+.service-card:hover,.solution-card:hover,.project-card:hover,.migrated-blog-grid article:hover{transform:translateY(-5px);box-shadow:0 17px 32px rgba(20,36,58,.095)}
+.service-card:hover{border-color:var(--blue)}
+.project-card{overflow:hidden}
+.project-card .project-image img{transition:transform .55s ease}
+.project-card:hover .project-image img{transform:scale(1.025)}
+.js-motion .motion-entry{transition:opacity .62s ease,transform .62s ease,box-shadow .28s ease,border-color .28s ease}
+.js-motion .motion-entry:not(.is-visible){opacity:0;transform:translateY(14px)}
+@media(max-width:1100px){
+  .site-header .header-inner{display:flex;justify-content:space-between}
+  .site-header .menu-toggle{display:flex;flex-direction:column;justify-content:center;gap:6px;width:42px;height:42px;background:transparent;border:1px solid rgba(255,255,255,.3);padding:11px;border-radius:4px;flex:none}
+  .site-header .menu-toggle span{height:1px;width:18px;background:#fff;display:block}
+  .site-header .menu{display:none;position:absolute;top:100%;left:0;right:0;background:var(--navy);padding:14px max(18px,calc((100vw - 1220px)/2));flex-direction:column;align-items:stretch;gap:0;white-space:normal;border-top:1px solid rgba(255,255,255,.14);box-shadow:0 16px 28px rgba(20,36,58,.17)}
+  .site-header .menu.open{display:flex}
+  .site-header .menu>a{padding:12px 9px;min-height:44px;font-size:14px}
+  .site-header .header-actions{display:none}
+  .site-header .mobile-header-actions{display:flex;align-items:center;gap:14px;justify-content:space-between;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.17);margin-top:6px;padding-top:14px}
+  .site-header .mobile-header-actions .nav-cta{margin:0;padding:10px 13px;min-height:42px}
+}
+@media(max-width:480px){.site-header .mobile-header-actions{align-items:stretch}.site-header .mobile-header-actions .nav-cta{flex:1}}
+@media(prefers-reduced-motion:reduce){
+  .js-motion .motion-entry{opacity:1!important;transform:none!important}
+  .btn,.nav-cta,.service-card,.solution-card,.project-card,.migrated-blog-grid article,.project-card .project-image img{transition:none!important;animation:none!important}
+  .btn:hover,.nav-cta:hover,.service-card:hover,.solution-card:hover,.project-card:hover,.migrated-blog-grid article:hover,.project-card:hover .project-image img{transform:none!important}
+}
+
 </style>
   
 </head>
@@ -80,8 +126,10 @@
     </a>
     <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="menu-principal" aria-expanded="false"><span></span><span></span></button>
     <nav id="menu-principal" class="menu" aria-label="Navegação principal">
-      <a href="servicos.html">Serviços</a><a href="solucoes.html">Soluções</a><a href="projetos.html">Projetos</a><a href="blog.html">Conteúdos</a><a href="#sobre">Sobre</a><a class="nav-cta" href="contato.html">Vamos conversar <span aria-hidden="true">↗</span></a>
+      <a href="servicos.html">Serviços</a><a href="solucoes.html">Soluções</a><a href="projetos.html">Projetos</a><a href="blog.html">Conteúdos</a><a href="#sobre">Sobre</a>
+      <div class="mobile-header-actions"><div class="header-socials" aria-label="Redes sociais da DAYSLUME — perfis em confirmação"><span class="social-icon social-pending" role="img" aria-label="Instagram da DAYSLUME: perfil oficial pendente" title="Instagram DAYSLUME · perfil a confirmar"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.7" r=".8" fill="currentColor" stroke="none"/></svg></span><span class="social-icon social-pending" role="img" aria-label="LinkedIn da DAYSLUME: perfil oficial pendente" title="LinkedIn DAYSLUME · perfil a confirmar"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="3"/><path d="M7.4 10.1v7M7.4 7.3v.2M11 17.1v-7h3v1.2c.5-.9 1.3-1.4 2.3-1.4 1.9 0 2.6 1.1 2.6 3.1v4.1M11 13v4.1"/></svg></span></div><a class="nav-cta" href="contato.html">Vamos conversar <span aria-hidden="true">↗</span></a></div>
     </nav>
+    <div class="header-actions"><div class="header-socials" aria-label="Redes sociais da DAYSLUME — perfis em confirmação"><span class="social-icon social-pending" role="img" aria-label="Instagram da DAYSLUME: perfil oficial pendente" title="Instagram DAYSLUME · perfil a confirmar"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.7" r=".8" fill="currentColor" stroke="none"/></svg></span><span class="social-icon social-pending" role="img" aria-label="LinkedIn da DAYSLUME: perfil oficial pendente" title="LinkedIn DAYSLUME · perfil a confirmar"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="3"/><path d="M7.4 10.1v7M7.4 7.3v.2M11 17.1v-7h3v1.2c.5-.9 1.3-1.4 2.3-1.4 1.9 0 2.6 1.1 2.6 3.1v4.1M11 13v4.1"/></svg></span></div><a class="nav-cta" href="contato.html">Vamos conversar <span aria-hidden="true">↗</span></a></div>
   </div>
 </header>
 <main id="principal">
@@ -135,6 +183,16 @@ menuButton?.addEventListener('click',()=>{const isOpen=menu.classList.toggle('op
 menu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');menuButton?.setAttribute('aria-expanded','false');menuButton?.setAttribute('aria-label','Abrir menu');}));
 document.querySelector('#year').textContent=String(new Date().getFullYear());
 document.querySelector('#contact-form')?.addEventListener('submit',e=>{e.preventDefault();document.querySelector('#form-status').textContent='Dados preenchidos nesta prévia. Para habilitar o envio real, precisamos configurar o e-mail ou WhatsApp comercial da DAYSLUME e a política de privacidade.';});
+
+/* Entrada progressiva; conteúdo permanece visível quando JS ou IntersectionObserver falham. */
+if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const targets=[...document.querySelectorAll('.service-card,.solution-card,.project-card,.migrated-blog-grid article')];
+  const observer=new IntersectionObserver((entries,obs)=>{
+    entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');obs.unobserve(entry.target);}});
+  },{threshold:0.08,rootMargin:'0px 0px -16px 0px'});
+  targets.forEach(el=>{el.classList.add('motion-entry');observer.observe(el);});
+  document.documentElement.classList.add('js-motion');
+}
 
 </script>
 </body></html>
