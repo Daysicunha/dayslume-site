@@ -50,3 +50,14 @@ A branch `main` da DAYSLUME e o site pessoal publicado não foram alterados nest
 - Os arquivos fotográficos pessoais de Daysi Cunha, seu favicon e seu material de marca **não** foram transferidos para a DAYSLUME. A marca empresarial preserva seu símbolo e suas cores.
 - Não há capturas reais de New Rocket Play e ENGRENI Agenda no repositório original analisado; esses cards seguem como espaços reservados até recebermos capturas autorizadas desses projetos.
 - O briefing VITRINI pós-compra permanece sem migração funcional, porque sua integração de dados e pagamento ainda requer configuração segura.
+
+
+## Auditoria e correções de 22/09/2026 — branch de prévia
+
+- O blog da DAYSLUME já está na branch: índice `blog.html` e dois artigos adaptados em `blog/`. O original do site pessoal não foi modificado; os artigos da prévia mantêm `noindex,nofollow`. O arquivo `blog/artigo-modelo.html` da origem é rascunho/modelo e não foi publicado como artigo empresarial.
+- Os dois arquivos originais do case Tornearia Barbosa foram copiados com os mesmos hashes do repositório de origem: `assets/images/tornearia-barbosa-case.webp` e `assets/images/tornearia-barbosa-og.jpg`. Eles já são usados no portfólio e na página de projeto; o case agora não mostra a mensagem desatualizada de “captura pendente”.
+- A navegação “Conteúdos” foi acrescentada às páginas `projetos.html`, `projetos/tornearia-barbosa.html`, `vitrini.html`, `processo.html` e `contato.html`. A captura real do case passou a ter melhor enquadramento no card de portfólio, com o arquivo completo preservado na página individual.
+- Validação estática: as referências locais de `href` e `src` nas 12 páginas HTML secundárias da branch apontam para arquivos existentes. O `index.html` autocontido não integrou esta verificação estática de links; ainda exige revisão visual na prévia.
+- O GitHub recebeu status `Vercel: success` em commits da branch, confirmando a execução do deploy integrado; **não foi possível acessar o conteúdo publicado por meio da conexão Vercel disponível nesta auditoria**. Não confundir deploy com validação visual/funcional da prévia; revisar home, blog, case e imagens no navegador da conta autorizada.
+- Nenhuma alteração foi feita em `main` da DAYSLUME, no repositório/site público Daysi Cunha ou no símbolo/paleta/assinatura aprovada da DAYSLUME.
+- Imagens reais de outros projetos (New Rocket Play e ENGRENI Agenda), quando escolhidas e autorizadas, continuam pendentes. Não substituir por mockups apresentados como captura de um sistema funcional.
