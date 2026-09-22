@@ -1,5 +1,7 @@
 # DAYSLUME — auditoria e primeira entrega premium
 
+> Registro histórico da primeira entrega. Para o estado atual, consulte [a revisão de conclusão](auditoria-revisao-final.md).
+
 Data: 22/09/2026. Escopo: consolidação das branches e refinamento da home para aprovação. O acabamento das páginas internas é a próxima etapa, após avaliação da home.
 
 ## Branches comparadas
@@ -10,6 +12,8 @@ Data: 22/09/2026. Escopo: consolidação das branches e refinamento da home para
 | `feat/migracao-comercial-dayslume` | `6a1dc2eec8c183f6e3c555acb9d86709f35b3714` | Base mais completa: 13 páginas HTML, dois artigos, case Tornearia Barbosa, logos e favicon oficiais. |
 | `feat/animacoes-hero-dayslume` | `c2033ee72da42e050a6534360f7c6f1f6969f459` | Tem os efeitos ambientais e a faixa contínua, mas não tem as últimas atualizações de logo e WhatsApp da migração. |
 | `feat/finalizacao-premium-dayslume` | Nova branch | Consolidada sobre a migração, com a implementação de movimento adaptada da branch de animações. |
+
+Durante esta execução, a `main` recebeu externamente o commit `c329437892ffe31e2686524dd702eb3a93c92939`, adicionando somente `docs/DOCUMENTO-MESTRE-MARCA-DAYSLUME.md`. Esse documento foi lido e incorporado integralmente à branch premium, sem alterar a `main`.
 
 A comparação entre migração e animações identificou divergências em 17 arquivos. Substituir a migração pela branch de animações removeria três arquivos de marca e reverteria os cabeçalhos mais recentes. A resolução preserva integralmente a árvore da migração, aplica os movimentos necessários e registra ambas as branches como ancestrais do commit de consolidação. As branches anteriores permanecem disponíveis.
 
@@ -85,3 +89,7 @@ Os textos comerciais da home foram preservados. Só foram corrigidos estados de 
 - A prévia da migração exige autenticação Vercel. A conexão Vercel disponível não concedeu URL temporária para esse projeto. A confirmação visual/funcional no navegador da nova prévia será registrada no relatório de entrega quando o acesso estiver disponível; verificações estáticas não substituem essa etapa.
 
 Não publicar em produção antes da aprovação visual e da conclusão das verificações pendentes.
+
+## Deploy da primeira entrega
+
+Commit `4b95a9307a0c31098cfe27f082647a46968d33cd`: GitHub/Vercel confirmou **Ready** em 22/09/2026. PR em rascunho: https://github.com/Daysicunha/dayslume-site/pull/2. Prévia: https://dayslume-site-git-feat-finalizacao-premium-dayslume-daysi-cunha.vercel.app. O endereço exige autenticação Vercel; a validação visual permanece pendente até acesso autenticado.
