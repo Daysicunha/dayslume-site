@@ -131,3 +131,36 @@
 }
 @media(max-width:380px){.hero-content h1{font-size:41px}.hero-art-editorial{width:130%;margin-inline:-15%}.hero-actions .motion-label{display:none}}
 @media(prefers-reduced-motion:reduce){.hero-flower-stage,.hero-flower-stage::before,.flower-energy,.hero-art-editorial .hero-flower-stage .hero-flower{animation:none!important}.hero-art-editorial .hero-flower-stage .hero-flower{transform:translateX(-8%)!important}.site-header .nav-cta::before,.hero-actions .btn-light::before{display:none}.floating-whatsapp.days-overlaps-hero{transform:none!important}}
+
+
+/* Graceful navigation when JavaScript is blocked or unavailable.
+   The interactive mobile menu is activated only after its handlers are attached. */
+@media (max-width:1180px) {
+  html:not(.home-nav-ready) .site-header {
+    position:relative;
+    top:auto;
+    margin:10px auto 0;
+  }
+  html:not(.home-nav-ready) .site-header .header-inner {
+    height:auto;
+    min-height:82px;
+    flex-wrap:wrap;
+    padding-block:12px;
+  }
+  html:not(.home-nav-ready) .site-header .menu-toggle {
+    display:none;
+  }
+  html:not(.home-nav-ready) .site-header .menu {
+    display:flex;
+    position:static;
+    flex-basis:100%;
+    width:100%;
+    max-height:none;
+    overflow:visible;
+    margin-top:12px;
+    padding:12px 18px;
+  }
+  html:not(.home-nav-ready) .site-header .mobile-header-actions {
+    display:flex;
+  }
+}
