@@ -58,3 +58,14 @@ As pendências de mídia e confirmação não foram preenchidas com depoimentos,
 - Commit de implementação: `82739d308bfb7a0d8ec31a20f5d68444abd7fdbf`. GitHub/Vercel confirmou **Ready** em 22/09/2026, 18:18 UTC.
 - Deploy confirmado: https://vercel.com/daysi-cunha/dayslume-site/JBTYSDGb7LQhhi6ibxZo9Yw8S7C6
 - O deploy foi concluído; isso não substitui a conferência visual que segue pendente por autenticação.
+
+
+## Atualização de 23/09/2026 — retomada da finalização
+
+A partir do commit `c929edffb6fafe079c9c9cc55a1f5d66bc815221`, a home já utiliza o arquivo de vídeo real `assets/videos/dayslume-flower-light-hero.mp4` (aprox. 3,32 MB) como mídia de fundo da hero, com avanço temporal vinculado à posição do ponteiro em desktop e ao scroll em telas touch. Portanto, a pendência histórica acima "Nenhum arquivo de vídeo/GIF está implementado" não descreve mais o estado atual. Preservar o vídeo implementado; confirmar enquadramento, estabilidade e desempenho em navegador antes da produção.
+
+Em `efe3d43fba92baee7f3c3ec9f57c2c19b967d2b5`, foi corrigida a navegação móvel da home quando o JavaScript não está disponível: o menu permanece visível no fallback, e só passa ao comportamento recolhível quando os manipuladores são instalados. O GitHub retornou status **Vercel: success** para esse commit; não foi possível abrir a prévia protegida com a autorização atual da conexão.
+
+Checagem estática da árvore atual: 13 páginas HTML, 408 referências locais e 21 referências de âncoras internas; nenhum destino ausente no repositório ou âncora inexistente detectado. Esta verificação não equivale a teste de interface em navegador ou a validação de URLs externas.
+
+**Antes de publicar:** verificar visualmente a hero e o menu em desktop/mobile; revisar as imagens e links das redes sociais oficiais; confirmar ofertas publicáveis e o escopo do VITRINI Link; preparar metadados/canônica/sitemap conforme domínio definitivo; remover as marcações `noindex,nofollow` e o aviso de prévia do rodapé somente quando houver aprovação da versão final para produção. A branch `main` permanece inalterada.
