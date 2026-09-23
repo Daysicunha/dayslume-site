@@ -563,3 +563,405 @@ body .footer .footer-links a:hover {
     border-radius: 15px;
   }
 }
+
+
+/* DAYSLUME — destaque editorial VITRINI, inspirado na composição da antiga seção.
+   Exibição conceitual: não representa telas de produto publicadas ou recursos verificados. */
+.vitrini-showcase {
+  --vs-cream: #fcfaf6;
+  --vs-gold: #d8b6a5;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(86px, 8vw, 130px) 0;
+  color: #f7f9fd;
+  background: radial-gradient(ellipse 57% 76% at 84% 35%, rgba(92, 134, 183, .13), transparent 76%), linear-gradient(130deg, #101722 0%, #17243a 70%, #23324a 100%);
+  border-top: 1px solid rgba(155, 184, 206, .24);
+  border-bottom: 1px solid rgba(155, 184, 206, .24);
+}
+.vitrini-showcase::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px) 0 0 / 84px 84px;
+  mask-image: linear-gradient(90deg, transparent 25%, #000 100%);
+}
+.vitrini-showcase .vitrini-showcase-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .89fr) minmax(0, 1.11fr);
+  gap: clamp(36px, 4.7vw, 86px);
+  align-items: center;
+}
+.vitrini-showcase .vitrini-showcase-copy {
+  min-width: 0;
+  position: relative;
+  z-index: 2;
+}
+.vitrini-showcase .vitrini-kicker {
+  color: #e9bca7;
+  margin: 0 0 25px;
+  font: 700 11px/1.5 "DM Sans", sans-serif;
+  letter-spacing: .19em;
+  text-transform: uppercase;
+}
+.vitrini-showcase .vitrini-kicker::before {
+  content: "//";
+  margin-right: 12px;
+  opacity: .8;
+}
+.vitrini-showcase h2 {
+  margin: 0 0 26px;
+  max-width: 10.6ch;
+  font: 500 clamp(47px, 5.1vw, 80px)/1.055 Manrope, sans-serif;
+  letter-spacing: -.063em;
+  color: #fafbfe;
+  text-wrap: balance;
+}
+.vitrini-showcase h2 span {
+  color: #a9cce8;
+}
+.vitrini-showcase .vitrini-description {
+  max-width: 51ch;
+  color: #d0dce9;
+  font-size: clamp(15px, 1.05vw, 17px);
+  line-height: 1.76;
+  margin: 0 0 27px;
+}
+.vitrini-showcase .vitrini-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 0 0 33px;
+  padding: 0;
+  list-style: none;
+}
+.vitrini-showcase .vitrini-features li {
+  padding: 9px 12px;
+  border: 1px solid rgba(163, 198, 229, .36);
+  border-radius: 999px;
+  color: #e2eaf4;
+  font-size: 12px;
+  line-height: 1.35;
+  background: rgba(255, 255, 255, .025);
+}
+.vitrini-showcase .vitrini-showcase-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 13px;
+}
+.vitrini-showcase .vitrini-showcase-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 53px;
+  padding: 13px 21px;
+  border-radius: 999px;
+  border: 1px solid rgba(218, 235, 252, .46);
+  color: #f9fbff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform var(--ds-speed) var(--ds-ease), background-color var(--ds-speed) ease, border-color var(--ds-speed) ease;
+}
+.vitrini-showcase .vitrini-showcase-actions a:first-child {
+  background: #e4c7b5;
+  border-color: #e4c7b5;
+  color: #18253a;
+}
+.vitrini-showcase .vitrini-showcase-actions a:hover {
+  transform: translateY(-2px);
+  background-color: rgba(177, 208, 235, .13);
+  border-color: #d5e7f8;
+}
+.vitrini-showcase .vitrini-showcase-actions a:first-child:hover {
+  background-color: #f1d7c6;
+  border-color: #f1d7c6;
+}
+.vitrini-showcase a:focus-visible {
+  outline: 3px solid #f4cbae;
+  outline-offset: 4px;
+}
+.vitrini-showcase .vitrini-demo {
+  min-width: 0;
+  margin: 0;
+  position: relative;
+}
+.vitrini-showcase .vitrini-demo-stage {
+  position: relative;
+  min-height: 525px;
+  display: grid;
+  align-items: center;
+  padding: 26px 62px 35px 2px;
+}
+.vitrini-showcase .vitrini-demo-stage::before {
+  content: "";
+  position: absolute;
+  inset: 11% 3% 3% 7%;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(116, 170, 223, .18), transparent 67%);
+  filter: blur(6px);
+}
+.vitrini-showcase .vitrini-catalog {
+  min-height: 442px;
+  border: 1px solid rgba(255, 255, 255, .64);
+  border-radius: 23px;
+  padding: 27px 25px;
+  color: #1d2a3e;
+  background: var(--vs-cream);
+  box-shadow: 0 36px 66px rgba(3, 9, 17, .28);
+  transform: rotate(-2deg);
+}
+.vitrini-showcase .vitrini-catalog-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 19px;
+  border-bottom: 1px solid #d9dce0;
+  font-size: 10px;
+  letter-spacing: .12em;
+}
+.vitrini-showcase .vitrini-catalog-top strong {
+  font-size: 12px;
+  letter-spacing: .13em;
+}
+.vitrini-showcase .vitrini-catalog-top span {
+  color: #64768c;
+  font-size: 9px;
+}
+.vitrini-showcase .vitrini-catalog-body {
+  padding-top: clamp(25px, 3.5vw, 43px);
+}
+.vitrini-showcase .vitrini-catalog-body > strong {
+  display: block;
+  max-width: 10ch;
+  font: 500 clamp(28px, 2.6vw, 40px)/1.12 Manrope, sans-serif;
+  letter-spacing: -.05em;
+}
+.vitrini-showcase .vitrini-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 20px 0 14px;
+}
+.vitrini-showcase .vitrini-categories span {
+  border: 1px solid #cad5dc;
+  padding: 7px 10px;
+  border-radius: 20px;
+  color: #43536b;
+  font-size: 10px;
+  white-space: nowrap;
+}
+.vitrini-showcase .vitrini-categories span:first-child {
+  background: #1c2b3f;
+  border-color: #1c2b3f;
+  color: white;
+}
+.vitrini-showcase .vitrini-products {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.vitrini-showcase .vitrini-product {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 0;
+}
+.vitrini-showcase .vitrini-product::before {
+  content: "";
+  display: block;
+  height: clamp(87px, 9vw, 128px);
+  border-radius: 13px;
+  background: linear-gradient(145deg, #d2dfeb, #8aaaca);
+}
+.vitrini-showcase .vitrini-product:nth-child(2)::before {
+  background: linear-gradient(145deg, #e9d9cb, #c5a398);
+}
+.vitrini-showcase .vitrini-product:nth-child(3)::before {
+  background: linear-gradient(145deg, #c8d7df, #8d9fb5);
+}
+.vitrini-showcase .vitrini-product span {
+  display: block;
+  width: 80%;
+  height: 7px;
+  border-radius: 4px;
+  background: #b8c4d0;
+}
+.vitrini-showcase .vitrini-product span:last-child {
+  width: 55%;
+  opacity: .55;
+}
+.vitrini-showcase .vitrini-admin {
+  position: absolute;
+  width: min(58%, 310px);
+  right: 0;
+  bottom: 18px;
+  padding: 24px 21px;
+  border: 1px solid rgba(213, 231, 245, .22);
+  border-radius: 19px;
+  color: #f5f8fc;
+  background: linear-gradient(150deg, #17253b, #0c1626);
+  box-shadow: 0 29px 49px rgba(2, 7, 16, .45);
+  transform: rotate(2deg);
+}
+.vitrini-showcase .vitrini-admin-label {
+  margin: 0 0 11px;
+  color: #e3bbaa;
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: .15em;
+}
+.vitrini-showcase .vitrini-admin > strong {
+  display: block;
+  max-width: 22ch;
+  margin-bottom: 20px;
+  font: 600 clamp(16px, 1.3vw, 19px)/1.45 "DM Sans", sans-serif;
+}
+.vitrini-showcase .vitrini-admin-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 11px 0;
+  border-top: 1px solid rgba(202, 219, 235, .16);
+  font-size: 11px;
+  line-height: 1.3;
+  color: #e1e8f1;
+}
+.vitrini-showcase .vitrini-admin-row span:last-child {
+  color: #e3bbaa;
+}
+.vitrini-showcase .vitrini-demo figcaption {
+  margin-top: 9px;
+  color: #b2c2d3;
+  font-size: 11px;
+  line-height: 1.6;
+  text-align: right;
+}
+@media (max-width: 1100px) {
+  .vitrini-showcase .vitrini-showcase-grid {
+    gap: 32px;
+    grid-template-columns: minmax(0, .96fr) minmax(0, 1.04fr);
+  }
+  .vitrini-showcase .vitrini-demo-stage {
+    min-height: 470px;
+    padding: 18px 40px 30px 0;
+  }
+  .vitrini-showcase .vitrini-catalog {
+    min-height: 390px;
+    padding: 21px;
+  }
+  .vitrini-showcase .vitrini-admin {
+    padding: 18px 15px;
+  }
+}
+@media (max-width: 800px) {
+  .vitrini-showcase {
+    padding-block: 76px;
+  }
+  .vitrini-showcase .vitrini-showcase-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 34px;
+  }
+  .vitrini-showcase h2 {
+    font-size: clamp(44px, 8.5vw, 69px);
+  }
+  .vitrini-showcase .vitrini-demo {
+    max-width: 650px;
+    width: 100%;
+    margin-inline: auto;
+  }
+  .vitrini-showcase .vitrini-demo-stage {
+    min-height: 480px;
+    padding-inline: 2px 56px;
+  }
+  .vitrini-showcase .vitrini-catalog {
+    min-height: 420px;
+  }
+}
+@media (max-width: 560px) {
+  .vitrini-showcase {
+    padding-block: 63px;
+  }
+  .vitrini-showcase h2 {
+    font-size: clamp(43px, 11vw, 57px);
+    max-width: 10.8ch;
+  }
+  .vitrini-showcase .vitrini-showcase-actions a {
+    min-height: 50px;
+  }
+  .vitrini-showcase .vitrini-demo-stage {
+    min-height: 355px;
+    padding: 4px 30px 43px 0;
+  }
+  .vitrini-showcase .vitrini-catalog {
+    min-height: 340px;
+    padding: 16px;
+    border-radius: 16px;
+  }
+  .vitrini-showcase .vitrini-catalog-top {
+    padding-bottom: 13px;
+    font-size: 9px;
+  }
+  .vitrini-showcase .vitrini-catalog-top strong {
+    font-size: 10px;
+  }
+  .vitrini-showcase .vitrini-catalog-top span {
+    font-size: 8px;
+  }
+  .vitrini-showcase .vitrini-catalog-body {
+    padding-top: 20px;
+  }
+  .vitrini-showcase .vitrini-catalog-body > strong {
+    font-size: clamp(24px, 7vw, 33px);
+  }
+  .vitrini-showcase .vitrini-categories {
+    margin: 16px 0 11px;
+  }
+  .vitrini-showcase .vitrini-categories span {
+    padding: 6px 8px;
+    font-size: 9px;
+  }
+  .vitrini-showcase .vitrini-products {
+    gap: 7px;
+  }
+  .vitrini-showcase .vitrini-product::before {
+    height: clamp(70px, 22vw, 110px);
+    border-radius: 9px;
+  }
+  .vitrini-showcase .vitrini-admin {
+    width: min(59%, 228px);
+    bottom: 14px;
+    padding: 13px 11px;
+    border-radius: 13px;
+  }
+  .vitrini-showcase .vitrini-admin-label {
+    font-size: 8px;
+    margin-bottom: 6px;
+  }
+  .vitrini-showcase .vitrini-admin > strong {
+    font-size: 13px;
+    line-height: 1.3;
+    margin-bottom: 11px;
+  }
+  .vitrini-showcase .vitrini-admin-row {
+    font-size: 9px;
+    padding: 7px 0;
+  }
+  .vitrini-showcase .vitrini-demo figcaption {
+    font-size: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vitrini-showcase .vitrini-showcase-actions a {
+    transition: none !important;
+  }
+  .vitrini-showcase .vitrini-showcase-actions a:hover {
+    transform: none;
+  }
+}
