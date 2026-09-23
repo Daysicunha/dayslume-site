@@ -519,3 +519,47 @@ main .section:not(.hero) {
     transform: none !important;
   }
 }
+
+
+/* Aplicação dos mesmos tokens nas páginas internas, sem alterar suas heroes. */
+body .header .nav-cta {
+  border-radius: var(--ds-pill-radius);
+  min-height: 46px;
+  padding-inline: 19px;
+}
+body .header .social-icon {
+  border-radius: 50%;
+  border-color: rgba(155,184,206,.45);
+  transition: background-color var(--ds-speed) ease, border-color var(--ds-speed) ease;
+}
+body .header .social-icon:hover {
+  background: rgba(155,184,206,.13);
+  border-color: #b8d2e7;
+}
+body .section .box.days-card,
+body .section .box {
+  border-radius: var(--ds-card-radius);
+  border-color: var(--ds-border);
+}
+body .section .box.days-card:hover {
+  border-color: var(--ds-border-strong);
+  box-shadow: var(--ds-shadow-soft);
+}
+body .section .box h3 {
+  color: var(--ds-ink);
+}
+body .section .grid {
+  gap: clamp(16px, 2vw, 27px);
+}
+body .footer .footer-links a {
+  transition: color var(--ds-speed) ease;
+}
+body .footer .footer-links a:hover {
+  color: #e9c5b1;
+}
+@media (max-width: 560px) {
+  body .section .box.days-card,
+  body .section .box {
+    border-radius: 15px;
+  }
+}
