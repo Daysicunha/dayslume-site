@@ -1,10 +1,13 @@
 /* DAYSLUME / 01 O que fazemos — acabamento dedicado conforme referencia aprovada.
    Camada final da home, sem afetar componentes ou paginas internas. */
+/* Aproxima O que fazemos da próxima seção, sem alterar o conteúdo. */
+main .section.benefits-section { padding-top: clamp(40px, 3.8vw, 56px); }
+
 main .section.intro-section {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding-block: clamp(54px, 5vw, 76px) clamp(72px, 6vw, 104px);
+  padding-block: clamp(54px, 5vw, 76px) clamp(36px, 3.5vw, 52px);
   background:
     radial-gradient(ellipse 40% 65% at 98% 40%, rgba(155,184,206,.085), transparent 75%),
     linear-gradient(165deg,#fffefd 0%,#ffffff 48%,#fcfbf8 100%);
@@ -223,7 +226,8 @@ main .intro-section .service-card a.migration-link {
   main .intro-section .services-grid .service-card { padding: 22px; }
 }
 @media(max-width:800px) {
-  main .section.intro-section { padding-block: 60px 70px; }
+  main .section.intro-section { padding-block: 60px 46px; }
+  main .section.benefits-section { padding-top: 48px; }
   main .intro-section::before {
     top: 75px;
     right: -230px;
@@ -259,7 +263,8 @@ main .intro-section .service-card a.migration-link {
   main .intro-section .service-card a.migration-link { margin-top: 16px; }
 }
 @media(max-width:480px) {
-  main .section.intro-section { padding-block: 50px 60px; }
+  main .section.intro-section { padding-block: 50px 38px; }
+  main .section.benefits-section { padding-top: 42px; }
   main .intro-section .intro-heading h2 { font-size: clamp(33px,9.3vw,44px); }
   main .intro-section .intro-heading > .eyebrow { margin-bottom: 19px; }
   main .intro-section .intro-heading > p:last-of-type { font-size: 15px; }
