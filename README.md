@@ -1,3 +1,23 @@
+# DAYSLUME — finalização premium (prévia)
+
+Branch `feat/finalizacao-premium-dayslume`: continuação do projeto HTML/CSS/JavaScript existente.
+
+- [Documento Mestre da Marca](docs/DOCUMENTO-MESTRE-MARCA-DAYSLUME.md)
+- [Auditoria atual e pendências de conclusão](docs/auditoria-revisao-final.md)
+- [Auditoria inicial e consolidação](docs/auditoria-finalizacao-premium.md)
+- [Roteiro de conferência da home](docs/validar-home.md)
+- [Histórico da migração comercial](docs/migracao-daysi-dayslume.md)
+
+A hero mantém a composição Síntese Autoral 2.0. As 13 páginas compartilham navegação e controles de movimento; home e Contato preparam solicitações por WhatsApp. Os dois artigos, a identidade e as imagens foram preservados. Produção e site pessoal permanecem intactos. A conferência visual da prévia protegida e os materiais reais dos produtos ainda estão pendentes.
+
+Prévia local: `python -m http.server 8000`. Validação: `python scripts/check-site.py` e `node --test tests/contact.test.cjs`; sintaxe: `node --check assets/js/home-premium.js`. Não há etapa de build nem dependências adicionais.
+
+---
+
+## Registro histórico da primeira versão
+
+O conteúdo abaixo descreve a prévia original; o estado atual é o relatório de auditoria acima.
+
 # DAYSLUME — site institucional (prévia v1)
 
 Site responsivo em HTML, CSS e JS, pronto para visualização local (abra `index.html`) ou publicação como site estático.

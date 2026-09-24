@@ -1,0 +1,63 @@
+# Migração comercial Daysi Cunha → DAYSLUME
+Versão de trabalho · 21/09/2026
+
+## Estado
+Migração editorial e implementação em branch separada `feat/migracao-comercial-dayslume` do repositório `Daysicunha/dayslume-site`.
+A branch `main` da DAYSLUME e o site pessoal publicado não foram alterados nesta etapa. O objetivo é transferir a **função comercial**, não apagar a autoria dos projetos nem copiar campanhas expiradas.
+
+## Matriz origem e destino
+
+| Origem no site Daysi Cunha | Destino desenvolvido na DAYSLUME | Tratamento |
+|---|---|---|
+| `servicos.html` e `solucoes.html` | `servicos.html` e `solucoes.html` | Apresentação comercial de serviços e famílias de produtos; textos reescritos para a empresa. |
+| `landing-pages.html` | `landing-pages.html` | Página comercial específica, sem limites de escopo e prazo históricos presumidos. |
+| `sites-completos.html` | `sites-completos.html` | Página comercial específica, com definição de escopo na proposta. |
+| `vitrini.html` | `vitrini.html` | Conteúdo perene do catálogo e do painel, sem reaproveitar a pré-venda antiga de R$ 299 como vigente. |
+| `processo.html` | `processo.html` | Método de diagnóstico, planejamento, desenvolvimento, testes e entrega. |
+| `cases/tornearia-barbosa.html` | `projetos.html` e `projetos/tornearia-barbosa.html` | Atribuir o desenvolvimento à fundadora. A versão autoral permanece em Daysi Cunha. |
+| `contato.html` | `contato.html` | Contato **provisório** direciona explicitamente ao formulário pessoal existente enquanto o canal empresarial não estiver confirmado. A home da DAYSLUME ainda contém formulário demonstrativo. |
+| `briefing-vitrini.html` | Não migrado nesta etapa | O formulário de pós-compra está sem integração; requer fluxo autenticado e revisão de dados e privacidade antes de uso empresarial. |
+| Artigos e blog | Não migrados nesta etapa | Conteúdos autorais permanecem com Daysi Cunha. Conteúdos comerciais poderão ser reescritos para a DAYSLUME após revisão individual e planejamento de URLs. |
+
+## Decisões preservadas
+- DAYSLUME: empresa, estratégia e tecnologia para negócios, com identidade da margarida e lettering aprovados. Não alterar o símbolo nesta migração.
+- Daysi Cunha: marca pessoal, portfólio autoral, estudos e trajetória profissional.
+- Nenhuma venda, conversão ou efeito de SEO é afirmado sem medição e evidências.
+- Não copiar preços, prazos de entrega, políticas de manutenção ou garantias de ofertas históricas como vigentes.
+- Não apagar, redirecionar nem alterar URLs do site Daysi Cunha até que a migração seja avaliada e as páginas de destino estejam disponíveis e corretas.
+
+## Arquivos nesta branch
+- `index.html`: home ligada às novas páginas comerciais e case.
+- `assets/css/institucional.css`: estilo das páginas migradas na paleta da DAYSLUME.
+- `servicos.html`, `landing-pages.html`, `sites-completos.html`, `solucoes.html`, `vitrini.html`, `processo.html`, `projetos.html`, `projetos/tornearia-barbosa.html` e `contato.html`.
+
+## Bloqueadores antes de publicar como versão definitiva
+1. Aprovar conteúdo, consistência visual e navegação das páginas no desktop e mobile.
+2. Confirmar domínio final, canal empresarial, tratamento de dados de contato, informações obrigatórias e política de privacidade compatível.
+3. Remover `noindex,nofollow` das páginas migradas **apenas depois** de aprovar sua publicação e definir URLs/canônicas; o bloqueio protege prévias contra indexação.
+4. Substituir formulário demonstrativo da home por fluxo real ou por link direto para canal verificado.
+5. Validar o escopo vigente do VITRINI e a disponibilidade das soluções ENGRENI antes de apresentar detalhes de contratação.
+6. Selecionar capturas reais e autorizações de divulgação; evitar representação de um produto não concluído como entrega comercial pronta.
+7. Fazer plano individualizado de redirecionamentos 301 das páginas antigas para as correspondentes quando o conteúdo comercial definitivo estiver publicado. Não redirecionar a página do case autoral nem todo o blog automaticamente.
+8. Confirmar se a branch está ligada a um projeto de prévia da Vercel; não supor publicação automática.
+
+
+## Complemento da migração: blog e imagens reais
+- Foi criada a seção de conteúdos na home e as páginas `blog.html`, `blog/presenca-digital-estrategica.html` e `blog/depender-apenas-do-instagram-riscos.html`.
+- Os dois artigos publicados originalmente no site Daysi Cunha foram adaptados ao posicionamento tecnológico da DAYSLUME, preservando autoria, data original e link para cada texto autoral.
+- Os textos originais no site Daysi Cunha **continuam preservados**. Não duplicar páginas indexáveis simultaneamente: o blog DAYSLUME permanece com `noindex,nofollow` durante a etapa de revisão; antes da publicação pública, decidir a estratégia canônica e os redirecionamentos dos artigos comerciais.
+- Foram copiados em formato binário, sem regeneração, os arquivos originais `assets/images/tornearia-barbosa-case.webp` e `assets/images/tornearia-barbosa-og.jpg`. A captura real está integrada à home e às páginas de portfólio e case.
+- Os arquivos fotográficos pessoais de Daysi Cunha, seu favicon e seu material de marca **não** foram transferidos para a DAYSLUME. A marca empresarial preserva seu símbolo e suas cores.
+- Não há capturas reais de New Rocket Play e ENGRENI Agenda no repositório original analisado; esses cards seguem como espaços reservados até recebermos capturas autorizadas desses projetos.
+- O briefing VITRINI pós-compra permanece sem migração funcional, porque sua integração de dados e pagamento ainda requer configuração segura.
+
+
+## Auditoria e correções de 22/09/2026 — branch de prévia
+
+- O blog da DAYSLUME já está na branch: índice `blog.html` e dois artigos adaptados em `blog/`. O original do site pessoal não foi modificado; os artigos da prévia mantêm `noindex,nofollow`. O arquivo `blog/artigo-modelo.html` da origem é rascunho/modelo e não foi publicado como artigo empresarial.
+- Os dois arquivos originais do case Tornearia Barbosa foram copiados com os mesmos hashes do repositório de origem: `assets/images/tornearia-barbosa-case.webp` e `assets/images/tornearia-barbosa-og.jpg`. Eles já são usados no portfólio e na página de projeto; o case agora não mostra a mensagem desatualizada de “captura pendente”.
+- A navegação “Conteúdos” foi acrescentada às páginas `projetos.html`, `projetos/tornearia-barbosa.html`, `vitrini.html`, `processo.html` e `contato.html`. A captura real do case passou a ter melhor enquadramento no card de portfólio, com o arquivo completo preservado na página individual.
+- Validação estática: as referências locais de `href` e `src` nas 12 páginas HTML secundárias da branch apontam para arquivos existentes. O `index.html` autocontido não integrou esta verificação estática de links; ainda exige revisão visual na prévia.
+- O GitHub recebeu status `Vercel: success` em commits da branch, confirmando a execução do deploy integrado; **não foi possível acessar o conteúdo publicado por meio da conexão Vercel disponível nesta auditoria**. Não confundir deploy com validação visual/funcional da prévia; revisar home, blog, case e imagens no navegador da conta autorizada.
+- Nenhuma alteração foi feita em `main` da DAYSLUME, no repositório/site público Daysi Cunha ou no símbolo/paleta/assinatura aprovada da DAYSLUME.
+- Imagens reais de outros projetos (New Rocket Play e ENGRENI Agenda), quando escolhidas e autorizadas, continuam pendentes. Não substituir por mockups apresentados como captura de um sistema funcional.
