@@ -1,0 +1,36 @@
+/* New Rocket Play — composição editorial responsiva das interfaces desktop/mobile.
+   Mantém o screenshot real da home e reutiliza a foto do próprio site do cliente. */
+.nrp-showcase{position:relative;display:block;width:100%;height:100%;min-height:0;overflow:hidden;isolation:isolate;background:radial-gradient(ellipse 57% 55% at 15% 12%,#fff 0%,#f4f0ed 68%,transparent 100%),linear-gradient(140deg,#faf8f5,#eae4df);container-type:inline-size;}
+.nrp-showcase *{box-sizing:border-box}
+.nrp-showcase::after{content:"";position:absolute;z-index:0;left:9%;right:6%;bottom:8%;height:8%;border-radius:50%;background:rgba(27,29,37,.15);filter:blur(18px)}
+.nrp-showcase .nrp-laptop{position:absolute;z-index:1;left:4.5%;top:16%;width:79%;height:68%;filter:drop-shadow(0 7px 8px rgba(13,20,34,.17))}
+.nrp-showcase .nrp-display{position:relative;width:100%;height:92%;padding:1.9% 1.6% 2.2%;border:clamp(3px,.7cqw,8px) solid #181d24;border-bottom-width:clamp(5px,1cqw,11px);border-radius:3.3% 3.3% 1.1% 1.1% / 6% 6% 1% 1%;background:#11151b;overflow:hidden}
+.nrp-showcase .nrp-display::before{content:"";position:absolute;top:1%;left:50%;width:1%;aspect-ratio:1;border-radius:50%;transform:translateX(-50%);background:#3d4650}
+.nrp-showcase .nrp-display img{display:block;position:static!important;inset:auto!important;width:100%!important;height:100%!important;max-width:none!important;margin:0!important;aspect-ratio:auto!important;object-fit:fill!important;box-shadow:none!important;border-radius:1% 1% 0 0!important;transform:none!important;transition:none!important}
+.nrp-showcase .nrp-laptop-base{position:relative;left:-5%;width:110%;height:5.5%;border-radius:0 0 40% 40% / 0 0 80% 80%;background:linear-gradient(180deg,#c9cbd0 0%,#92959b 37%,#43464b 70%,#1e2025 100%);box-shadow:0 8px 9px rgba(18,22,28,.19)}
+.nrp-showcase .nrp-laptop-base::after{content:"";display:block;position:absolute;top:0;left:42%;width:16%;height:50%;border-radius:0 0 70% 70%;background:#83878e}
+.nrp-showcase .nrp-phone{position:absolute;z-index:2;right:3.7%;top:16%;width:24%;height:74%;padding:1.15%;border:clamp(2px,.45cqw,5px) solid #191d22;border-radius:11% / 5.1%;background:linear-gradient(105deg,#363a42,#070a0e 35%,#292c33 87%,#101116);box-shadow:0 10px 20px rgba(12,16,26,.23);overflow:hidden}
+.nrp-showcase .nrp-phone-screen{position:relative;width:100%;height:100%;overflow:hidden;border-radius:8% / 4%;background:#101012;color:#fff;font-family:Manrope,'DM Sans',sans-serif;text-align:center}
+.nrp-showcase .nrp-phone-island{position:absolute;z-index:3;top:.5%;left:35%;width:30%;height:2.4%;border-radius:0 0 10px 10px;background:#030507}
+.nrp-showcase .nrp-phone-top{height:9%;display:flex;align-items:center;justify-content:space-between;padding:2% 6%;border-bottom:1px solid #1f3c60;background:linear-gradient(125deg,#111d2d,#101823)}
+.nrp-showcase .nrp-phone-top img{position:static!important;inset:auto!important;width:19%!important;height:85%!important;max-width:none!important;object-fit:contain!important;aspect-ratio:auto!important;transform:none!important}
+.nrp-showcase .nrp-phone-top span{display:grid;place-items:center;width:15%;aspect-ratio:1;border:1px solid #5084be;border-radius:6px;color:white;font-size:2.1cqw;line-height:1}
+.nrp-showcase .nrp-phone-body{padding:3% 5% 5%;display:flex;flex-direction:column;align-items:stretch;gap:2.1%;height:91%}
+.nrp-showcase .nrp-phone-eyebrow{font-size:1.25cqw;letter-spacing:.15em;color:#42a5ff;line-height:1.2}
+.nrp-showcase .nrp-phone-body>strong{display:block;font-size:clamp(6px,2.2cqw,18px);font-weight:800;line-height:1.26;letter-spacing:-.04em;color:#fff}
+.nrp-showcase .nrp-phone-person{display:flex;flex-direction:column;min-height:0;flex:1;overflow:hidden;border:1px solid #2476bd;border-radius:7% / 3%;background:#161616;text-align:left}
+.nrp-showcase .nrp-phone-person>img{display:block!important;position:static!important;inset:auto!important;width:100%!important;height:67%!important;max-width:none!important;flex:1 1 67%;min-height:0;object-fit:cover!important;object-position:top!important;aspect-ratio:auto!important;transform:none!important;transition:none!important}
+.nrp-showcase .nrp-phone-person-copy{display:flex;flex-direction:column;gap:2%;padding:5% 6% 6%;flex:0 0 26%;color:white;line-height:1.25}
+.nrp-showcase .nrp-phone-person-copy b{font-size:1.55cqw;font-weight:800}
+.nrp-showcase .nrp-phone-person-copy small{font-size:1.32cqw;color:#d1d1d1}
+.nrp-showcase .nrp-phone-cta{display:block;margin-top:auto;padding:5% 2%;border-radius:7px;background:#168df2;text-align:center;font-size:1.24cqw;font-weight:700}
+.work-section .project-image.nrp-project{display:block;padding:0;aspect-ratio:1.65;background:#f6f1ed;overflow:hidden}
+.work-section .project-image.nrp-project .nrp-showcase{width:100%;height:100%}
+.work-section .nrp-project:hover .nrp-showcase img,.work-section .project-card:hover .nrp-project img{transform:none!important}
+.days-portfolio-grid .nrp-case-media{max-width:none;width:100%;margin:0 0 21px;border-radius:14px;background:#f6f1ed}
+.days-portfolio-grid .nrp-case-media .nrp-showcase{height:auto;aspect-ratio:1.7;min-height:0}
+.days-portfolio-grid .nrp-case-media .nrp-portfolio-media{display:block;aspect-ratio:1.7;overflow:hidden}
+.days-portfolio-grid .nrp-case-media figcaption{font-size:12px;line-height:1.5}
+.nrp-project:focus-visible,.nrp-portfolio-media:focus-visible{outline:3px solid #6596c3;outline-offset:4px}
+@media(max-width:700px){.work-section .project-image.nrp-project{aspect-ratio:1.55}.days-portfolio-grid .nrp-case-media .nrp-showcase,.days-portfolio-grid .nrp-case-media .nrp-portfolio-media{aspect-ratio:1.55}.nrp-showcase .nrp-laptop{left:2.7%;width:83%}.nrp-showcase .nrp-phone{right:2.5%;width:25.5%}}
+@media(prefers-reduced-motion:reduce){.nrp-showcase *{transition:none!important;animation:none!important}}
