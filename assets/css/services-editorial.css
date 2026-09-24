@@ -1,0 +1,275 @@
+/* DAYSLUME / 01 O que fazemos — acabamento dedicado conforme referencia aprovada.
+   Camada final da home, sem afetar componentes ou paginas internas. */
+main .section.intro-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(54px, 5vw, 76px) clamp(72px, 6vw, 104px);
+  background:
+    radial-gradient(ellipse 40% 65% at 98% 40%, rgba(155,184,206,.085), transparent 75%),
+    linear-gradient(165deg,#fffefd 0%,#ffffff 48%,#fcfbf8 100%);
+}
+main .intro-section::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  right: clamp(-270px,-12vw,-110px);
+  top: clamp(-125px,-6vw,-55px);
+  width: clamp(450px,46vw,730px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(211,166,152,.27);
+  border-radius: 50%;
+  box-shadow: 0 0 0 65px rgba(155,184,206,.018);
+  pointer-events: none;
+}
+main .intro-section::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: clamp(-165px,-8vw,-75px);
+  right: clamp(-210px,-7vw,-80px);
+  width: clamp(510px,49vw,780px);
+  aspect-ratio: 460/500;
+  background: url("../images/dayslume-flor-hero.svg") center/contain no-repeat;
+  opacity: .34;
+  transform: rotate(-12deg);
+  pointer-events: none;
+}
+main .intro-section > .container { position: relative; z-index: 1; }
+main .intro-section .intro-heading {
+  width: 100%;
+  max-width: 1030px;
+  margin-bottom: clamp(28px, 3vw, 44px);
+}
+main .intro-section .intro-heading > .eyebrow {
+  margin-bottom: clamp(22px, 2.3vw, 35px);
+}
+main .intro-section .intro-heading h2 {
+  max-width: none;
+  width: min(100%, 1010px);
+  margin: 0 0 clamp(12px, 1.4vw, 20px);
+  color: #22283c;
+  font-size: clamp(43px, 5vw, 78px);
+  font-weight: 400;
+  line-height: 1.055;
+  letter-spacing: -.068em;
+  text-wrap: initial;
+}
+main .intro-section .intro-title-first,
+main .intro-section .intro-title-second { display: block; }
+main .intro-section .intro-title-second { white-space: nowrap; }
+main .intro-section .intro-heading .underlined {
+  position: relative;
+  color: inherit;
+}
+main .intro-section .intro-heading .underlined::after {
+  height: 5px;
+  bottom: -4px;
+  background: linear-gradient(90deg,rgba(216,182,165,.62),rgba(155,184,206,.34));
+}
+main .intro-section .intro-heading > p:last-of-type {
+  max-width: 64ch;
+  margin: 0;
+  color: #526276;
+  font-size: clamp(15px,1.05vw,17px);
+  line-height: 1.57;
+}
+main .intro-section .intro-actions { margin-top: clamp(19px,2vw,28px); }
+main .intro-section .intro-whatsapp {
+  gap: 15px;
+  min-height: 58px;
+  padding-inline: clamp(22px, 2.5vw, 32px);
+  background: linear-gradient(110deg,#184973,#0e315a);
+  box-shadow: 0 11px 25px rgba(23,55,87,.14);
+}
+main .intro-section .intro-whatsapp .intro-cta-arrow {
+  margin-left: 10px;
+  font-size: 20px;
+}
+main .intro-section .services-grid {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  align-items: stretch;
+  gap: clamp(13px,1.3vw,22px);
+  overflow: visible;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+main .intro-section .services-grid .service-card,
+main .intro-section .services-grid .service-card:first-child,
+main .intro-section .services-grid .service-card:last-child {
+  min-width: 0;
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  isolation: isolate;
+  padding: clamp(23px,2.2vw,36px);
+  border: 1px solid #cfdeeb;
+  border-radius: 19px;
+  background: rgba(255,255,255,.93);
+  box-shadow: 0 12px 33px rgba(38,58,83,.04);
+  transition: border-color .3s ease, box-shadow .35s ease, transform .35s ease;
+}
+main .intro-section .services-grid .service-card:hover,
+main .intro-section .services-grid .service-card:focus-within {
+  transform: translateY(-4px);
+  border-color: #a7c0d8;
+  background: #fff;
+  box-shadow: 0 18px 40px rgba(38,58,83,.10);
+}
+main .intro-section .service-card::after { display: none; }
+main .intro-section .service-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  color: #5d7490;
+  font-size: 12px;
+  letter-spacing: .12em;
+}
+main .intro-section .service-card-top .service-number {
+  font-weight: 700;
+  font-size: 12px;
+}
+main .intro-section .service-card-top a.service-arrow {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  border: 1px solid #b7cee4;
+  background: #f3f8fd;
+  color: #1d3855;
+  font-size: 22px;
+  line-height: 1;
+}
+main .intro-section .service-icon-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 86px;
+  height: 86px;
+  margin: clamp(18px,2vw,28px) 0 15px;
+  border-radius: 17px;
+  background: linear-gradient(135deg,rgba(250,231,223,.80),rgba(251,246,243,.46));
+}
+main .intro-section .service-icon-tile .service-symbol,
+main .intro-section .service-icon-tile .service-symbol.screen-symbol {
+  flex: none;
+  width: 66px;
+  height: 62px;
+  margin: 0;
+}
+main .intro-section .service-icon-tile .service-symbol.screen-symbol {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+}
+main .intro-section .service-icon-tile .window-top {
+  left: 2px;
+  top: 6px;
+  width: 62px;
+  height: 47px;
+  background: #fff;
+}
+main .intro-section .service-icon-tile .window-content {
+  left: 12px;
+  top: 26px;
+  width: 41px;
+  height: 17px;
+}
+main .intro-section .service-icon-tile .nodes-symbol {
+  width: 75px;
+  height: 62px;
+  background: linear-gradient(#a1bfd9,#a1bfd9) center/1px 43px no-repeat;
+}
+main .intro-section .service-icon-tile .nodes-symbol i:nth-child(1) { left: 8px; top: 9px; }
+main .intro-section .service-icon-tile .nodes-symbol i:nth-child(2) { left: 51px; top: 9px; }
+main .intro-section .service-icon-tile .nodes-symbol i:nth-child(3) { left: 8px; top: 42px; }
+main .intro-section .service-icon-tile .nodes-symbol i:nth-child(4) { left: 51px; top: 42px; }
+main .intro-section .service-card h3 {
+  margin: 0 0 9px;
+  color: #27364b;
+  font-size: clamp(21px,1.8vw,27px);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -.045em;
+}
+main .intro-section .service-card > p {
+  max-width: 40ch;
+  margin: 0 0 22px;
+  color: #526276;
+  font-size: clamp(14px,1vw,16px);
+  line-height: 1.56;
+}
+main .intro-section .service-card a.migration-link {
+  width: fit-content;
+  max-width: 100%;
+  min-height: 44px;
+  margin: auto 0 0;
+  padding: 10px 17px;
+  font-size: 13px;
+}
+@media(max-width:1100px) and (min-width:801px) {
+  main .intro-section .intro-heading h2 {
+    width: 100%;
+    font-size: clamp(42px,4.85vw,55px);
+  }
+  main .intro-section::after { right: -215px; opacity: .23; }
+  main .intro-section .services-grid .service-card { padding: 22px; }
+}
+@media(max-width:800px) {
+  main .section.intro-section { padding-block: 60px 70px; }
+  main .intro-section::before {
+    top: 75px;
+    right: -230px;
+    width: 430px;
+    opacity: .45;
+  }
+  main .intro-section::after {
+    top: 45px;
+    right: -240px;
+    width: 450px;
+    opacity: .12;
+  }
+  main .intro-section .intro-heading { margin-bottom: 28px; }
+  main .intro-section .intro-heading h2 {
+    max-width: 100%;
+    font-size: clamp(36px,7.6vw,56px);
+    line-height: 1.11;
+  }
+  main .intro-section .intro-title-second { white-space: normal; }
+  main .intro-section .services-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  main .intro-section .services-grid .service-card,
+  main .intro-section .services-grid .service-card:first-child,
+  main .intro-section .services-grid .service-card:last-child {
+    min-height: 0;
+    padding: 25px 26px;
+    border: 1px solid #cfdeeb;
+    border-radius: 18px;
+  }
+  main .intro-section .service-icon-tile { margin-top: 13px; }
+  main .intro-section .service-card a.migration-link { margin-top: 16px; }
+}
+@media(max-width:480px) {
+  main .section.intro-section { padding-block: 50px 60px; }
+  main .intro-section .intro-heading h2 { font-size: clamp(33px,9.3vw,44px); }
+  main .intro-section .intro-heading > .eyebrow { margin-bottom: 19px; }
+  main .intro-section .intro-heading > p:last-of-type { font-size: 15px; }
+  main .intro-section .services-grid .service-card,
+  main .intro-section .services-grid .service-card:first-child,
+  main .intro-section .services-grid .service-card:last-child { padding: 23px 22px; }
+  main .intro-section .intro-whatsapp { width: 100%; justify-content: space-between; gap: 10px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  main .intro-section .services-grid .service-card,
+  main .intro-section .intro-whatsapp { transition: none!important; }
+  main .intro-section .services-grid .service-card:hover { transform: none!important; }
+}
