@@ -132,7 +132,6 @@
 @media(max-width:380px){.hero-content h1{font-size:41px}.hero-art-editorial{width:130%;margin-inline:-15%}.hero-actions .motion-label{display:none}}
 @media(prefers-reduced-motion:reduce){.hero-flower-stage,.hero-flower-stage::before,.flower-energy,.hero-art-editorial .hero-flower-stage .hero-flower{animation:none!important}.hero-art-editorial .hero-flower-stage .hero-flower{transform:translateX(-8%)!important}.site-header .nav-cta::before,.hero-actions .btn-light::before{display:none}.floating-whatsapp.days-overlaps-hero{transform:none!important}}
 
-<<<<<<< HEAD
 
 /* Graceful navigation when JavaScript is blocked or unavailable.
    The interactive mobile menu is activated only after its handlers are attached. */
@@ -165,7 +164,7 @@
     display:flex;
   }
 }
-=======
+
 /* Hero final: imagem oficial cobre toda a seção, sem elemento floral sobreposto. */
 .site-header{top:14px;width:min(calc(100% - 80px),1500px);margin:14px auto -96px;border-radius:22px}
 .site-header .header-inner{height:80px;padding-inline:clamp(24px,3vw,52px)}
@@ -385,4 +384,3 @@
 
 /* O menu pertence à abertura e sai de cena quando a página é rolada. */
 .site-header{position:absolute;left:50%;right:auto;margin:0;transform:translateX(-50%)}
->>>>>>> 7afb0aa (Refina identidade visual e interface do site Dayslume)
