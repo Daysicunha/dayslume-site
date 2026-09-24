@@ -30,3 +30,6 @@
 @media(prefers-reduced-motion:reduce){
   .work-section .project-large .project-image.has-approved-mockup img{transition:none}
 }
+
+/* O picture mantém a imagem otimizada e o print original como fallback. */
+.work-section .project-large .project-image.has-approved-mockup picture{display:block;width:100%;height:100%;overflow:hidden}
