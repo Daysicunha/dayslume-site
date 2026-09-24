@@ -1,0 +1,398 @@
+/* DAYSLUME / acabamento editorial global — 24.09.2026
+   Camada aditiva. A hero principal e a secao O que fazemos permanecem intocadas.
+   Carregar apos os estilos especificos de cada pagina. */
+:root{
+  --finish-ink:#26364e;
+  --finish-muted:#53677d;
+  --finish-line:#cfdae4;
+  --finish-blue:#143d69;
+  --finish-paper:#fcfbf8;
+  --finish-ease:cubic-bezier(.22,1,.36,1);
+}
+
+/* HOME / hierarquia editorial e ritmo entre as secoes seguintes. */
+main .section.benefits-section,
+main .section.solutions-section,
+main .section.work-section,
+main .section.migrated-blog,
+main .section.about-section,
+main .section.contact-section{
+  padding-block:clamp(74px,6.5vw,108px);
+}
+main .benefits-section .benefits-grid,
+main .about-section .about-grid,
+main .contact-section .contact-grid{
+  gap:clamp(32px,5vw,80px);
+  align-items:center;
+}
+main .benefits-section h2,
+main .solutions-section .section-heading h2,
+main .work-section .section-heading h2,
+main .migrated-blog .section-heading h2,
+main .about-section h2,
+main .contact-section h2{
+  font-family:Manrope,sans-serif;
+  font-size:clamp(40px,4.25vw,64px);
+  line-height:1.075;
+  letter-spacing:-.058em;
+  font-weight:400;
+  text-wrap:balance;
+}
+main .benefits-section .eyebrow,
+main .solutions-section .eyebrow,
+main .work-section .eyebrow,
+main .migrated-blog .eyebrow,
+main .about-section .eyebrow,
+main .contact-section .eyebrow{
+  margin-bottom:clamp(17px,2vw,25px);
+}
+main .solutions-section .section-heading,
+main .work-section .section-heading,
+main .migrated-blog .section-heading{
+  align-items:end;
+  margin-bottom:clamp(30px,3.3vw,48px);
+  gap:clamp(24px,4.2vw,70px);
+}
+main .solutions-section .split-heading>p,
+main .work-section .split-heading>p,
+main .migrated-blog .split-heading>p{
+  max-width:42ch;
+  line-height:1.65;
+}
+main .benefits-section{
+  background:radial-gradient(ellipse 44% 70% at 0% 85%,rgba(155,184,206,.2),transparent 80%),linear-gradient(130deg,#e8f0f5,#edf3f7);
+}
+main .benefits-section .benefits-grid{align-items:start}
+main .benefits-section .benefits-list article{
+  padding-block:clamp(19px,2.1vw,28px);
+  padding-inline:clamp(10px,1.25vw,18px);
+}
+main .benefits-section .benefits-list article:hover,
+main .benefits-section .benefits-list article:focus-within{
+  transform:none;
+  background:rgba(255,255,255,.52);
+}
+main .benefits-section .benefits-list h3{
+  font-size:clamp(23px,2vw,29px);
+  line-height:1.22;
+}
+main .benefits-section .benefits-list p{max-width:48ch;line-height:1.65}
+
+/* Solucoes / card inteiro legivel, links independentes e contraste preservado. */
+main .solutions-section .solutions-grid{gap:clamp(15px,2vw,27px)}
+main .solutions-section .solution-card{
+  min-height:clamp(345px,32vw,410px);
+  padding:clamp(26px,2.55vw,39px);
+  border-radius:21px;
+}
+main .solutions-section .solution-copy h3{
+  font-size:clamp(32px,3vw,44px);
+  line-height:1.08;
+}
+main .solutions-section .solution-copy div{max-width:42ch;line-height:1.65}
+main .solutions-section .solution-card:focus-within{
+  border-color:#9cb5ce;
+  box-shadow:var(--ds-shadow-hover);
+}
+main .solutions-section .solution-engreni:focus-within{border-color:#b6cce0}
+
+/* Produto em destaque / manter a cena original com um respiro mais controlado. */
+main .vitrini-showcase{padding-block:clamp(72px,6.8vw,106px)}
+main .vitrini-showcase .vitrini-showcase-grid{gap:clamp(30px,4.1vw,68px)}
+main .vitrini-showcase h2{
+  font-size:clamp(43px,4.65vw,74px);
+  line-height:1.075;
+}
+main .vitrini-showcase .vitrini-description{line-height:1.67}
+main .vitrini-showcase .vitrini-features{margin-bottom:clamp(20px,2.5vw,30px)}
+main .vitrini-showcase .vitrini-showcase-actions a{
+  min-height:50px;
+  border-radius:999px;
+}
+main .vitrini-showcase .vitrini-showcase-actions a:focus-visible{
+  outline:3px solid #f4cbae;
+  outline-offset:4px;
+}
+
+/* Portfolio e artigos da home / hierarquia e areas de toque equivalentes. */
+main .work-section .days-filterbar{margin-block:0 clamp(24px,2.8vw,36px)}
+main .work-section .project-description{
+  align-items:center;
+  gap:16px;
+  padding-top:clamp(16px,2vw,24px);
+}
+main .work-section .project-description h3{line-height:1.2}
+main .work-section .project-description a.project-arrow{
+  min-width:48px;min-height:48px;width:48px;height:48px;
+}
+main .work-section .project-card:focus-within .project-image{
+  border-color:#9cb5ce;
+  box-shadow:var(--ds-shadow-hover);
+}
+main .migrated-blog{
+  background:linear-gradient(140deg,#eaf2f7 0%,#f3f6f8 100%);
+}
+main .migrated-blog .migrated-blog-grid article{
+  min-height:clamp(270px,26vw,320px);
+  padding:clamp(25px,2.6vw,36px);
+}
+main .migrated-blog .migrated-blog-grid h3{line-height:1.2}
+main .migrated-blog .migrated-blog-grid article:focus-within{
+  background:#fff;
+  border-color:#a6bdd1;
+  box-shadow:var(--ds-shadow-soft);
+}
+main .migrated-blog .migrated-blog-grid article a.migration-link{
+  min-height:46px;
+  margin-top:auto;
+  padding:11px 20px;
+}
+main .about-section .about-copy>p:not(.eyebrow){
+  max-width:57ch;
+  line-height:1.68;
+}
+main .about-section .about-graphic-frame{
+  border-radius:clamp(18px,2.5vw,28px);
+}
+main .about-section .process{
+  margin-top:clamp(22px,2.6vw,34px);
+  border-radius:17px;
+}
+main .about-section .process span{min-height:54px}
+main .contact-section{
+  background:radial-gradient(ellipse 55% 70% at 98% 0%,rgba(155,184,206,.16),transparent 72%),var(--finish-paper);
+}
+main .contact-section .contact-grid{align-items:start}
+main .contact-section .contact-grid>div>p:not(.eyebrow){
+  max-width:50ch;
+  line-height:1.68;
+}
+main .contact-section .contact-form{
+  padding:clamp(24px,2.6vw,38px);
+  border-radius:20px;
+}
+
+/* PAGINAS INTERNAS / padrao da hero + composicao editorial da home.
+   Seletor de irmao evita alterar a hero aprovada da pagina inicial. */
+body:not(.blog-index):not(.blog-article) .header ~ main>.hero{
+  padding:clamp(64px,6vw,92px) 0 clamp(72px,6.5vw,100px);
+  background:radial-gradient(ellipse 55% 115% at 94% 36%,rgba(95,149,205,.16),transparent 70%),linear-gradient(116deg,#0c1a2e,#14233c 68%,#22344c);
+  isolation:isolate;
+}
+body:not(.blog-index):not(.blog-article) .header ~ main>.hero::after{
+  width:clamp(270px,35vw,520px);
+  height:auto;
+  aspect-ratio:1;
+  top:4%;
+  right:-12%;
+  border:0;
+  border-radius:0;
+  background:url("../images/dayslume-flor-hero.svg") center/contain no-repeat;
+  opacity:.15;
+  pointer-events:none;
+}
+body:not(.blog-index):not(.blog-article) .header ~ main>.hero .days-page-hero{
+  position:relative;
+  z-index:1;
+}
+body:not(.blog-index):not(.blog-article) .header ~ main>.hero h1{
+  max-width:19ch;
+  font:400 clamp(43px,5.15vw,72px)/1.08 Manrope,sans-serif;
+  letter-spacing:-.06em;
+  text-wrap:balance;
+  margin-bottom:clamp(18px,2.15vw,27px);
+}
+body:not(.blog-index):not(.blog-article) .header ~ main>.hero .lead{
+  max-width:64ch;
+  line-height:1.68;
+}
+body:not(.blog-index):not(.blog-article) .header ~ main>.hero .actions{
+  margin-top:clamp(23px,2.5vw,33px);
+  gap:12px;
+}
+body:not(.blog-index):not(.blog-article) .header ~ main>.hero .actions .btn{
+  min-height:50px;
+  padding:12px 22px;
+}
+
+/* Seções e cards de servicos, solucoes, portfolio, processo e contato. */
+body:not(.blog-index):not(.blog-article) .header ~ main>.section:not(.dark){
+  background:linear-gradient(150deg,#fcfbf8,#f5f7f9);
+}
+body:not(.blog-index):not(.blog-article) .header ~ main>.section{
+  padding-block:clamp(64px,6.5vw,100px);
+}
+body:not(.blog-index):not(.blog-article) .header ~ main>.section h2{
+  max-width:20ch;
+  font:400 clamp(34px,3.85vw,55px)/1.1 Manrope,sans-serif;
+  letter-spacing:-.052em;
+  text-wrap:balance;
+  margin-bottom:clamp(18px,2vw,26px);
+}
+body:not(.blog-index):not(.blog-article) .header ~ main>.section .intro,
+body:not(.blog-index):not(.blog-article) .header ~ main>.section .detail>div>p{
+  max-width:66ch;
+  line-height:1.7;
+}
+body:not(.blog-index):not(.blog-article) .header ~ main>.section .grid{
+  gap:clamp(14px,1.7vw,24px);
+}
+body:not(.blog-index):not(.blog-article) .header ~ main>.section .grid>.box.days-card{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:clamp(8px,1vw,12px);
+  padding:clamp(24px,2.7vw,37px);
+  border:1px solid var(--finish-line);
+  border-radius:20px;
+  background:#fffdfb;
+  box-shadow:0 12px 38px rgba(21,44,72,.065);
+}
+body:not(.blog-index):not(.blog-article) .header ~ main>.section .grid>.box.days-card h3{
+  margin:2px 0 4px;
+  font-size:clamp(22px,2vw,29px);
+  line-height:1.2;
+}
+body:not(.blog-index):not(.blog-article) .header ~ main>.section .grid>.box.days-card p{
+  margin:0 0 8px;
+  max-width:55ch;
+  line-height:1.65;
+}
+body:not(.blog-index):not(.blog-article) .header ~ main>.section .grid>.box.days-card>.btn{
+  margin-top:auto;
+  min-height:48px;
+}
+body:not(.blog-index):not(.blog-article) .header ~ main>.section .days-engreni-family{
+  background:#303c55!important;
+  border-color:#536783!important;
+}
+body:not(.blog-index):not(.blog-article) .header ~ main>.section .days-vitrini-family{
+  background:#e5ebef!important;
+}
+body:not(.blog-index):not(.blog-article) .header ~ main>.section .detail{
+  gap:clamp(24px,4vw,58px);
+}
+body:not(.blog-index):not(.blog-article) .header ~ main>.section .steps{
+  gap:0;
+  border-top:1px solid var(--finish-line);
+}
+body:not(.blog-index):not(.blog-article) .header ~ main>.section .step{
+  padding:clamp(17px,1.7vw,23px) 0;
+}
+body:not(.blog-index):not(.blog-article) .header ~ main>.section .callout{
+  padding:clamp(23px,2.5vw,36px);
+  border:1px solid var(--finish-line);
+  border-left:3px solid #9bb8ce;
+  border-radius:18px;
+  background:#eaf2f7;
+}
+body:not(.blog-index):not(.blog-article) .header ~ main>.section.dark .callout{
+  background:#303c55;
+  border-color:#536783;
+  color:#f8f9fb;
+}
+body:not(.blog-index):not(.blog-article) .header ~ main>.section.dark h2{
+  color:#f9fafb;
+}
+body:not(.blog-index):not(.blog-article) .header ~ main>.band{
+  padding-block:clamp(42px,4.5vw,66px);
+  background:linear-gradient(115deg,#e5eef4,#f4f1ec);
+}
+body:not(.blog-index):not(.blog-article) .header ~ main>.band .band-inner{
+  gap:clamp(18px,3.3vw,45px);
+}
+body:not(.blog-index):not(.blog-article) .header ~ main>.band h2{
+  font:400 clamp(29px,3vw,43px)/1.15 Manrope,sans-serif;
+  letter-spacing:-.045em;
+  max-width:22ch;
+}
+body:not(.blog-index):not(.blog-article) .header ~ main>.band .btn{
+  flex:none;
+  min-height:50px;
+  padding:12px 23px;
+}
+/* Blog / preservar identidade editorial e melhorar foco e area de toque. */
+body.blog-index .blog-story-link,
+body.blog-index .blog-pill-link,
+body.blog-index .blog-cta a{
+  min-height:46px;
+}
+body.blog-index .blog-story:focus-within{
+  border-color:#9bb8ce;
+  box-shadow:0 20px 34px rgba(32,42,61,.1);
+}
+body.blog-index .blog-filters button:focus-visible,
+body.blog-index .blog-story a:focus-visible,
+body.blog-index .blog-hero-actions a:focus-visible,
+body.blog-article a:focus-visible{
+  outline:3px solid #638daf;
+  outline-offset:4px;
+}
+body.blog-article .article-body p{line-height:1.8}
+
+/* Foco visivel, responsividade e respeito a preferencia de movimento. */
+@media(max-width:800px){
+  main .section.benefits-section,
+  main .section.solutions-section,
+  main .section.work-section,
+  main .section.migrated-blog,
+  main .section.about-section,
+  main .section.contact-section{padding-block:clamp(60px,8vw,75px)}
+  main .benefits-section .benefits-grid,
+  main .about-section .about-grid,
+  main .contact-section .contact-grid{gap:clamp(24px,5vw,38px)}
+  main .solutions-section .section-heading,
+  main .work-section .section-heading,
+  main .migrated-blog .section-heading{gap:clamp(14px,3vw,24px)}
+  main .solutions-section .solution-card{min-height:0}
+  main .vitrini-showcase{padding-block:clamp(60px,8vw,78px)}
+  main .vitrini-showcase .vitrini-showcase-grid{gap:clamp(22px,4vw,36px)}
+  main .migrated-blog .migrated-blog-grid article{min-height:0}
+  body:not(.blog-index):not(.blog-article) .header ~ main>.hero{
+    padding:clamp(52px,7vw,74px) 0 clamp(55px,8vw,76px);
+  }
+  body:not(.blog-index):not(.blog-article) .header ~ main>.hero::after{
+    right:-24%;top:8%;opacity:.09;
+  }
+  body:not(.blog-index):not(.blog-article) .header ~ main>.section{
+    padding-block:clamp(53px,8vw,76px);
+  }
+  body:not(.blog-index):not(.blog-article) .header ~ main>.section .grid>.box.days-card{
+    padding:clamp(22px,4vw,30px);
+  }
+}
+@media(max-width:560px){
+  main .benefits-section h2,
+  main .solutions-section .section-heading h2,
+  main .work-section .section-heading h2,
+  main .migrated-blog .section-heading h2,
+  main .about-section h2,
+  main .contact-section h2{
+    font-size:clamp(35px,9.4vw,45px);
+  }
+  main .vitrini-showcase h2{font-size:clamp(40px,10.3vw,54px)}
+  main .vitrini-showcase .vitrini-showcase-actions a{width:100%}
+  main .work-section .project-description{gap:12px}
+  main .about-section .process span{padding-inline:12px}
+  body:not(.blog-index):not(.blog-article) .header ~ main>.hero h1{
+    font-size:clamp(36px,10vw,50px);
+    overflow-wrap:normal;
+  }
+  body:not(.blog-index):not(.blog-article) .header ~ main>.section h2{
+    font-size:clamp(32px,8.4vw,43px);
+  }
+  body:not(.blog-index):not(.blog-article) .header ~ main>.band .band-inner{
+    align-items:stretch;
+  }
+  body:not(.blog-index):not(.blog-article) .header ~ main>.band .btn{
+    width:100%;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  main .benefits-section .benefits-list article,
+  main .solutions-section .solution-card,
+  main .migrated-blog .migrated-blog-grid article{transition:none!important}
+  main .benefits-section .benefits-list article:hover,
+  main .solutions-section .solution-card:hover,
+  main .migrated-blog .migrated-blog-grid article:hover{transform:none!important}
+}
