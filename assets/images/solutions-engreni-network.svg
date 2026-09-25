@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 280" fill="none" aria-hidden="true">
+<defs>
+<linearGradient id="glass" x1="116" y1="29" x2="360" y2="261" gradientUnits="userSpaceOnUse"><stop stop-color="#c4d4e8" stop-opacity=".22"/><stop offset=".53" stop-color="#c1d0e5" stop-opacity=".1"/><stop offset="1" stop-color="#a0b5d1" stop-opacity=".3"/></linearGradient>
+<linearGradient id="center" x1="262" y1="35" x2="377" y2="178" gradientUnits="userSpaceOnUse"><stop stop-color="#cedbe9" stop-opacity=".35"/><stop offset="1" stop-color="#b8c9e1" stop-opacity=".11"/></linearGradient>
+<radialGradient id="orb" cx=".34" cy=".25" r=".82"><stop stop-color="#fff5ed"/><stop offset=".45" stop-color="#f5d1b9"/><stop offset="1" stop-color="#dba98f"/></radialGradient>
+<filter id="glow"><feGaussianBlur stdDeviation="11"/></filter>
+</defs>
+<circle cx="300" cy="140" r="125" stroke="#b7c9df" stroke-opacity=".20" stroke-dasharray="2 4"/>
+<path d="M300 10v260M91 140h418" stroke="#bfd0e4" stroke-opacity=".32"/>
+<g fill="#bbcede"><circle cx="300" cy="10" r="2.5"/><circle cx="300" cy="270" r="2.5"/><circle cx="91" cy="140" r="2.5"/><circle cx="509" cy="140" r="2.5"/></g>
+<g transform="translate(300 140) rotate(45)" stroke="#b8cde7" stroke-width="1.2"><rect x="-162" y="-56" width="112" height="112" rx="15" fill="url(#glass)" stroke-opacity=".66"/><rect x="50" y="-56" width="112" height="112" rx="15" fill="url(#glass)" stroke-opacity=".66"/><rect x="-55" y="-107" width="110" height="110" rx="15" fill="url(#center)" stroke-opacity=".69"/></g>
+<circle cx="300" cy="140" r="29" fill="#f2beaa" opacity=".32" filter="url(#glow)"/>
+<circle cx="300" cy="140" r="15" fill="url(#orb)" stroke="#f4d3bc" stroke-width="1.2"/>
+</svg>
