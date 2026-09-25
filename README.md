@@ -43,3 +43,8 @@ Site responsivo em HTML, CSS e JS, pronto para visualização local (abra `index
 Prefira PNG ou WEBP com interface nítida e sem dados pessoais, notificações ou credenciais.
 
 Prévia HTML autocontida: index.html. O formulário não envia dados nesta versão.
+
+
+## Registro de publicação — 25/09/2026
+
+A versão aprovada e consolidada do site está na branch `main`. Esta atualização documental registra a tentativa de nova publicação em produção após a falha anterior por limite de builds da Vercel; a confirmação de publicação deve ser verificada no status do deployment. Nenhum componente visual ou funcional foi alterado por este registro.
