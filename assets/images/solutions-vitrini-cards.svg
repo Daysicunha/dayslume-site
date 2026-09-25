@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 280" fill="none" aria-hidden="true">
+<defs>
+<linearGradient id="blue" x1="80" y1="15" x2="248" y2="265" gradientUnits="userSpaceOnUse"><stop stop-color="#e6f3ff"/><stop offset=".55" stop-color="#b9d9f3"/><stop offset="1" stop-color="#e8f4ff"/></linearGradient>
+<linearGradient id="peach" x1="360" y1="10" x2="509" y2="235" gradientUnits="userSpaceOnUse"><stop stop-color="#fff5ed"/><stop offset=".55" stop-color="#f6d5c0"/><stop offset="1" stop-color="#fbefe7"/></linearGradient>
+<linearGradient id="front" x1="243" y1="37" x2="351" y2="246" gradientUnits="userSpaceOnUse"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#fffdfb"/></linearGradient>
+<linearGradient id="screen" x1="223" y1="49" x2="401" y2="149" gradientUnits="userSpaceOnUse"><stop stop-color="#b8d4e9"/><stop offset="1" stop-color="#d8eafa"/></linearGradient>
+<filter id="shadow" x="35" y="8" width="530" height="300" filterUnits="userSpaceOnUse"><feDropShadow dx="0" dy="11" stdDeviation="9" flood-color="#8faac2" flood-opacity=".19"/></filter>
+</defs>
+<g filter="url(#shadow)">
+<g transform="translate(118 32) rotate(-14 90 115)"><rect x="0" y="0" width="174" height="220" rx="9" fill="url(#blue)" stroke="#adcde8"/><rect x="17" y="22" width="140" height="88" rx="3" fill="#afcde5" opacity=".68"/><path d="M17 136h92M17 149h106M17 162h71" stroke="#aacde6" stroke-width="4" stroke-linecap="round"/></g>
+<g transform="translate(331 34) rotate(14 88 110)"><rect x="0" y="0" width="173" height="219" rx="9" fill="url(#peach)" stroke="#efc8b5"/><rect x="17" y="22" width="139" height="79" rx="3" fill="#a6c8df" opacity=".83"/></g>
+<g transform="translate(239 29) rotate(7 80 116)"><rect x="0" y="0" width="169" height="227" rx="10" fill="url(#front)" stroke="#d9e5f1"/><rect x="16" y="28" width="137" height="84" rx="3" fill="url(#screen)" stroke="#bad4e9"/><path d="M20 144h75M20 160h85M20 176h65" stroke="#c7e0f1" stroke-width="4" stroke-linecap="round"/></g>
+</g></svg>
