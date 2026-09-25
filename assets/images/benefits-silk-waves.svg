@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1905 560" preserveAspectRatio="none" fill="none" aria-hidden="true">
+<defs>
+  <linearGradient id="silk" x1="0" y1="110" x2="1490" y2="560" gradientUnits="userSpaceOnUse"><stop stop-color="#f2c6b6" stop-opacity=".07"/><stop offset=".25" stop-color="#e6c0c4" stop-opacity=".24"/><stop offset=".6" stop-color="#c2c9da" stop-opacity=".28"/><stop offset="1" stop-color="#b6cfea" stop-opacity=".37"/></linearGradient>
+  <linearGradient id="silk2" x1="0" y1="0" x2="1905" y2="560" gradientUnits="userSpaceOnUse"><stop stop-color="#f4b99d" stop-opacity=".15"/><stop offset=".45" stop-color="#e4c8d7" stop-opacity=".12"/><stop offset="1" stop-color="#eaf4ff" stop-opacity=".4"/></linearGradient>
+  <linearGradient id="edge" x1="0" y1="0" x2="1905" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#dca88f" stop-opacity=".75"/><stop offset=".47" stop-color="#fafafa" stop-opacity=".94"/><stop offset="1" stop-color="#ffffff" stop-opacity=".85"/></linearGradient>
+  <radialGradient id="orb" cx=".35" cy=".25" r=".8"><stop stop-color="#ffffff" stop-opacity=".95"/><stop offset=".65" stop-color="#d4aebb" stop-opacity=".27"/><stop offset="1" stop-color="#9fb3cb" stop-opacity=".06"/></radialGradient>
+</defs>
+<path d="M0 398C224 471 367 281 557 347S841 467 1057 410 1471 493 1905 241V560H0Z" fill="url(#silk2)"/>
+<path d="M0 453C267 405 294 304 516 378S825 555 1121 459 1575 564 1905 306V560H0Z" fill="url(#silk)"/>
+<path d="M0 392C227 473 361 284 558 348S845 467 1060 410 1470 495 1905 241" stroke="url(#edge)" stroke-width="2"/>
+<path d="M0 449C261 403 302 307 516 380S824 555 1122 457 1577 564 1905 309" stroke="#ffffff" stroke-opacity=".76" stroke-width="3"/>
+<path d="M0 510C212 480 379 402 572 457S824 579 1130 514 1630 615 1905 405" stroke="#ffffff" stroke-opacity=".55" stroke-width="2"/>
+<circle cx="715" cy="340" r="38" fill="url(#orb)"/><circle cx="555" cy="420" r="10" fill="url(#orb)" stroke="#e4c9be"/><circle cx="1370" cy="465" r="34" fill="url(#orb)" opacity=".56"/>
+</svg>
