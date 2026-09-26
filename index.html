@@ -247,66 +247,83 @@
         <div class="projects-heading-main">
           <p class="eyebrow">04 / PROJETOS</p>
           <h2 id="projects-title">Ideias que já <em>ganharam forma.</em></h2>
-          <p class="projects-subtitle">Uma seleção de experiências desenvolvidas pela fundadora e de projetos próprios.</p>
         </div>
         <div class="projects-heading-side">
-          <strong>Soluções reais, para negócios reais.</strong>
-          <p>Sites, landing pages e ferramentas digitais que apresentam, organizam e conectam negócios aos seus clientes.</p>
-          <a class="projects-portfolio-cta" href="projetos.html">Conheça o portfólio completo <span aria-hidden="true">↗</span></a>
+          <p>Conheça projetos que transformam diferentes necessidades em experiências digitais funcionais, com identidade e propósito.</p>
+          <a class="projects-portfolio-cta" href="projetos.html">Ver portfólio completo <span aria-hidden="true">↗</span></a>
         </div>
       </div>
-      <div class="days-filterbar" role="group" aria-label="Filtrar projetos">
-        <button type="button" class="days-filter is-selected" data-filter="all" aria-pressed="true">Todos</button>
-        <button type="button" class="days-filter" data-filter="web" aria-pressed="false">Sites</button>
-        <button type="button" class="days-filter" data-filter="experience" aria-pressed="false">Experiências</button>
-        <button type="button" class="days-filter" data-filter="product" aria-pressed="false">Produtos próprios</button>
-      </div>
-      <p class="sr-only" id="days-filter-count" role="status" aria-live="polite"></p>
-      <div class="projects-grid days-filter-grid">
-        <article class="project-card project-large" data-project-kind="web">
+
+      <div class="projects-grid projects-grid--launch">
+        <article class="project-card" data-project-kind="web">
+          <div class="project-card-head">
+            <div>
+              <h3><a href="projetos/tornearia-barbosa.html">Tornearia Barbosa</a></h3>
+              <p class="project-type">SITE INSTITUCIONAL</p>
+              <p class="project-summary">Uma presença digital para apresentar os serviços da empresa, valorizar sua experiência e facilitar o contato com novos clientes.</p>
+            </div>
+            <a class="project-arrow" href="projetos/tornearia-barbosa.html" aria-label="Ver o projeto Tornearia Barbosa"><span aria-hidden="true">↗</span></a>
+          </div>
           <a class="project-image migrated-case-photo has-approved-mockup" href="projetos/tornearia-barbosa.html" aria-label="Ver o projeto Tornearia Barbosa">
             <picture>
               <source srcset="assets/images/tornearia-barbosa-mockup.avif" type="image/avif">
               <img src="assets/images/tornearia-barbosa-case.webp" loading="lazy" decoding="async" width="1100" height="825" alt="Apresentação do site Tornearia Barbosa em desktop e celular, com identidade visual industrial em verde e preto">
             </picture>
           </a>
-          <div class="project-description">
-            <div>
-              <p>DESENVOLVIMENTO WEB</p>
-              <h3><a href="projetos/tornearia-barbosa.html">Tornearia Barbosa</a></h3>
-              <div class="project-summary">Site institucional para apresentar serviços e facilitar pedidos de orçamento.</div>
-            </div>
-            <a class="project-arrow" href="projetos/tornearia-barbosa.html" aria-label="Ver o projeto Tornearia Barbosa"><span aria-hidden="true">↗</span></a>
-          </div>
         </article>
+
         <article class="project-card" data-project-kind="experience">
-          <a class="project-image real-project nrp-project" href="https://new-rocket-play.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Visitar o projeto New Rocket Play (abre em nova aba)">
-            <img src="assets/images/new-rocket-play-home.webp" width="1868" height="863" loading="lazy" decoding="async" alt="Captura real da página inicial New Rocket Play enviada pela fundadora">
-          </a>
-          <div class="project-description">
+          <div class="project-card-head">
             <div>
-              <p>EXPERIÊNCIA DIGITAL</p>
               <h3><a href="https://new-rocket-play.vercel.app/" target="_blank" rel="noopener noreferrer">New Rocket Play</a></h3>
-              <div class="project-summary">Landing page para apresentar serviços, planos e canais de contato.</div>
+              <p class="project-type">LANDING PAGE</p>
+              <p class="project-summary">Uma página desenvolvida para apresentar os serviços da marca, comunicar sua proposta e facilitar o contato com potenciais clientes.</p>
             </div>
             <a class="project-arrow" href="https://new-rocket-play.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Visitar New Rocket Play (abre em nova aba)"><span aria-hidden="true">↗</span></a>
           </div>
-        </article>
-        <article class="project-card" data-project-kind="product">
-          <a class="project-image project-placeholder warm-placeholder" href="solucoes.html#engreni" aria-label="ENGRENI Agenda — conhecer a família de soluções">
-            <div class="placeholder-visual"><span>ENGRENI<br>AGENDA</span><i></i></div>
+          <a class="project-image real-project nrp-project" href="https://new-rocket-play.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Visitar o projeto New Rocket Play (abre em nova aba)">
+            <img src="assets/images/new-rocket-play-home.webp" width="1868" height="863" loading="lazy" decoding="async" alt="Captura real da página inicial New Rocket Play enviada pela fundadora">
           </a>
-          <div class="project-description">
+        </article>
+
+        <article class="project-card project-card--engreni" data-project-kind="product">
+          <div class="project-card-head">
             <div>
-              <p>SOLUÇÃO OPERACIONAL</p>
               <h3><a href="solucoes.html#engreni">ENGRENI Agenda</a></h3>
-              <div class="project-summary">Ferramenta digital para apoiar agendamentos e organizar horários.</div>
+              <p class="project-type">SOLUÇÃO OPERACIONAL</p>
+              <p class="project-summary">Uma ferramenta digital para organizar horários, disponibilizar serviços e facilitar agendamentos.</p>
             </div>
             <a class="project-arrow" href="solucoes.html#engreni" aria-label="Conhecer ENGRENI Agenda"><span aria-hidden="true">↗</span></a>
           </div>
+          <a class="project-image engreni-agenda-project" href="solucoes.html#engreni" aria-label="Conhecer ENGRENI Agenda">
+            <div class="engreni-project-scene" aria-hidden="true">
+              <div class="engreni-project-desktop">
+                <div class="engreni-project-topbar"><strong>ENGRENI</strong><span>Agenda</span><i></i></div>
+                <div class="engreni-project-shell">
+                  <div class="engreni-project-sidebar">
+                    <span class="is-active"></span><span></span><span></span><span></span>
+                  </div>
+                  <div class="engreni-project-calendar">
+                    <div class="engreni-calendar-title"><b>Agenda</b><span>Hoje</span></div>
+                    <div class="engreni-calendar-days"><span>SEG</span><span>TER</span><span>QUA</span><span>QUI</span><span>SEX</span></div>
+                    <div class="engreni-calendar-grid">
+                      <i></i><i class="event event-a"></i><i></i><i></i><i class="event event-b"></i>
+                      <i></i><i></i><i class="event event-c"></i><i></i><i></i>
+                      <i class="event event-d"></i><i></i><i></i><i class="event event-e"></i><i></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="engreni-project-phone">
+                <div class="engreni-phone-notch"></div>
+                <span class="engreni-phone-label">Agendar</span>
+                <strong>Escolha um horário</strong>
+                <i></i><i></i><i></i><i></i>
+              </div>
+            </div>
+          </a>
         </article>
       </div>
-      <p class="fine-note projects-footnote">Consulte o <a class="migration-link" href="projetos/tornearia-barbosa.html">case documentado da Tornearia Barbosa ↗</a>.</p>
     </div>
   </section>
   <section class="section migrated-blog" id="conteudos" aria-labelledby="conteudos-title">
