@@ -3,10 +3,10 @@
    Links de navegação, referências editoriais e ícones sociais preservam seu papel próprio. */
 :root {
   --action-radius: 999px;
-  --action-ink: #263b54;
-  --action-pale: #eaf3fa;
-  --action-border: #91abc3;
-  --action-focus: #527fa5;
+  --action-ink: var(--ink-deep);
+  --action-pale: rgba(169, 197, 216, .22);
+  --action-border: rgba(102, 117, 143, .56);
+  --action-focus: var(--plum-mineral);
   --action-ease: cubic-bezier(.22, 1, .36, 1);
 }
 body .section a.migration-link {
@@ -122,6 +122,10 @@ body .solutions-section .solution-engreni .solution-top a.solution-arrow:hover {
   color: #283b54;
   background: #e9f4fd;
 }
+body .solutions-section .solution-card:hover .solution-top a.solution-arrow,
+body .solutions-section .solution-card:focus-within .solution-top a.solution-arrow {
+  transform: translate(2px, -2px);
+}
 body .solutions-section .solution-card .solution-copy h3 a {
   text-decoration: none;
 }
@@ -196,6 +200,27 @@ body .band a.btn:active,
 body .contact-form a.btn:active {
   transform: translateY(0);
 }
+/* Três famílias de seta, uma única cadência: circular, botão e link inline. */
+body .section a.migration-link > span,
+body .section a.contents-all-link > span,
+body .section a.btn > span,
+body .hero a.btn > span,
+body .hero a.text-link > span,
+body .section a.projects-portfolio-cta > span {
+  display: inline-block;
+  margin-left: 2px;
+  font-size: 1.08em;
+  line-height: 1;
+  transition: transform .28s var(--action-ease);
+}
+body .section a.migration-link:hover > span,
+body .section a.contents-all-link:hover > span,
+body .section a.btn:hover > span,
+body .hero a.btn:hover > span,
+body .hero a.text-link:hover > span,
+body .section a.projects-portfolio-cta:hover > span {
+  transform: translate(3px, -3px);
+}
 /* Cabeçalhos e rodapés seguem como navegação, não como grupos de CTAs. */
 body .header a.nav-cta,
 body .site-header a.nav-cta {
@@ -259,7 +284,13 @@ body .hero a.btn:focus-visible {
   body .work-section .project-description a.project-arrow,
   body .section a.btn,
   body .hero a.btn,
-  body .band a.btn {
+  body .band a.btn,
+  body .section a.migration-link > span,
+  body .section a.contents-all-link > span,
+  body .section a.btn > span,
+  body .hero a.btn > span,
+  body .hero a.text-link > span,
+  body .section a.projects-portfolio-cta > span {
     transition: none !important;
     transform: none !important;
   }

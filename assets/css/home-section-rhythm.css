@@ -1,0 +1,254 @@
+/* Ritmo vertical da Home DAYSLUME.
+   A hero funciona como capa; as demais seções seguem famílias de altura,
+   sem forçar blocos de conteúdo diferentes a terem a mesma medida. */
+
+.home-page {
+  --home-section-pad: clamp(68px, 8.2vh, 104px);
+  --home-section-pad-compact: clamp(58px, 6.8vh, 86px);
+  --home-heading-gap: clamp(28px, 4.2vh, 46px);
+  --home-title-size: clamp(40px, 3.85vw, 56px);
+  --home-title-long-size: clamp(36px, 3.35vw, 50px);
+}
+
+.home-page main > .section {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-items: center;
+  min-block-size: clamp(600px, 76svh, 840px);
+  padding-block: var(--home-section-pad);
+  border-top: 1px solid rgba(var(--slate-mineral-rgb), .16);
+  scroll-margin-top: 72px;
+}
+
+.home-page main > .section > .container {
+  width: min(calc(100% - 72px), var(--container));
+}
+
+/* Três famílias: curta, editorial e card-heavy. */
+.home-page main > .launch-manifest {
+  min-block-size: clamp(510px, 64svh, 680px);
+  padding-block: var(--home-section-pad-compact);
+}
+
+.home-page main > .intro-section,
+.home-page main > .home-process-section,
+.home-page main > .about-section,
+.home-page main > .contact-section {
+  min-block-size: clamp(620px, 78svh, 850px);
+}
+
+.home-page main > .launch-products,
+.home-page main > .work-section,
+.home-page main > .migrated-blog {
+  min-block-size: clamp(700px, 86svh, 960px);
+}
+
+/* Transições de atmosfera com a paleta oficial, sem novos blocos cromáticos. */
+body.home-page main > .launch-manifest {
+  background:
+    radial-gradient(ellipse 34% 48% at 96% 18%, rgba(var(--plum-mineral-rgb), .07), transparent 76%),
+    var(--warm-ivory);
+}
+
+body.home-page main > .intro-section {
+  background:
+    radial-gradient(ellipse 40% 54% at 4% 94%, rgba(var(--mist-blue-rgb), .12), transparent 78%),
+    var(--warm-ivory);
+}
+
+body.home-page main > .launch-products {
+  background:
+    linear-gradient(180deg, rgba(var(--mist-blue-rgb), .09), transparent 22%),
+    var(--warm-ivory);
+}
+
+body.home-page main > .work-section {
+  background:
+    radial-gradient(ellipse 34% 48% at 100% 88%, rgba(var(--peach-rgb), .09), transparent 74%),
+    radial-gradient(ellipse 30% 42% at 0% 10%, rgba(var(--plum-mineral-rgb), .055), transparent 76%),
+    var(--warm-ivory);
+}
+
+body.home-page main > .home-process-section {
+  background:
+    radial-gradient(ellipse 44% 60% at 100% 50%, rgba(var(--plum-mineral-rgb), .06), transparent 78%),
+    rgba(var(--mist-blue-rgb), .2);
+}
+
+body.home-page main > .migrated-blog {
+  background:
+    radial-gradient(ellipse 35% 44% at 100% 0%, rgba(var(--mist-blue-rgb), .26), transparent 80%),
+    radial-gradient(ellipse 30% 40% at 0% 100%, rgba(var(--plum-mineral-rgb), .08), transparent 80%),
+    var(--warm-ivory);
+}
+
+body.home-page main > .about-section {
+  background:
+    radial-gradient(ellipse 36% 54% at 8% 50%, rgba(var(--plum-mineral-rgb), .065), transparent 76%),
+    rgba(var(--mist-blue-rgb), .2);
+}
+
+body.home-page main > .contact-section {
+  background:
+    radial-gradient(ellipse 30% 48% at 95% 78%, rgba(var(--peach-rgb), .075), transparent 76%),
+    var(--warm-ivory);
+}
+
+/* Cabeçalhos: largura previsível e títulos deliberadamente compostos em até duas linhas. */
+.home-page .section-heading {
+  width: 100%;
+  max-width: none;
+  margin-bottom: var(--home-heading-gap);
+}
+
+.home-page .section-heading.split-heading,
+.home-page .projects-heading {
+  grid-template-columns: minmax(0, 1.32fr) minmax(280px, .68fr);
+  gap: clamp(36px, 5vw, 72px);
+  align-items: end;
+}
+
+.home-page .section-heading h2,
+.home-page .about-copy h2,
+.home-page .contact-section h2 {
+  max-inline-size: 24ch;
+  margin-bottom: 0;
+  font-size: var(--home-title-size);
+  line-height: 1.06;
+  letter-spacing: -.052em;
+  text-wrap: balance;
+}
+
+.home-page .section-title--long {
+  font-size: var(--home-title-long-size);
+}
+
+.home-page .section-title > span {
+  display: block;
+  white-space: nowrap;
+}
+
+.home-page .section-heading .eyebrow,
+.home-page .about-copy > .eyebrow,
+.home-page .contact-grid .eyebrow {
+  margin-bottom: clamp(14px, 1.8vh, 20px);
+}
+
+.home-page .split-heading > div:last-child,
+.home-page .projects-heading-side {
+  align-self: end;
+  max-width: 48ch;
+  padding-bottom: 2px;
+}
+
+/* Conteúdo interno mais compacto para impedir seções artificialmente longas. */
+.home-page .launch-pillars .service-card {
+  min-height: clamp(220px, 27vh, 300px);
+}
+
+.home-page .launch-products .solution-card {
+  min-height: clamp(410px, 50vh, 500px);
+}
+
+.home-page .home-process-list li {
+  min-height: clamp(146px, 18vh, 190px);
+}
+
+.home-page .migrated-blog .launch-content-feature {
+  min-height: clamp(370px, 47vh, 440px) !important;
+}
+
+.home-page .migrated-blog .launch-content-secondary {
+  min-height: clamp(178px, 22vh, 210px) !important;
+}
+
+.home-page .about-grid,
+.home-page .contact-grid {
+  align-items: center;
+}
+
+@media (max-width: 1000px) {
+  .home-page {
+    --home-section-pad: clamp(62px, 7.5vh, 88px);
+    --home-heading-gap: clamp(26px, 3.8vh, 38px);
+    --home-title-size: clamp(36px, 5vw, 48px);
+    --home-title-long-size: clamp(33px, 4.45vw, 44px);
+  }
+
+  .home-page .section-heading.split-heading,
+  .home-page .projects-heading {
+    grid-template-columns: minmax(0, 1.18fr) minmax(250px, .82fr);
+    gap: 28px;
+  }
+}
+
+@media (max-width: 800px) {
+  .home-page {
+    --home-section-pad: clamp(56px, 8vh, 76px);
+    --home-section-pad-compact: clamp(50px, 7vh, 66px);
+    --home-heading-gap: 28px;
+    --home-title-size: clamp(31px, 8.1vw, 42px);
+    --home-title-long-size: clamp(28px, 7.25vw, 38px);
+  }
+
+  .home-page main > .section,
+  .home-page main > .launch-manifest,
+  .home-page main > .intro-section,
+  .home-page main > .home-process-section,
+  .home-page main > .about-section,
+  .home-page main > .contact-section,
+  .home-page main > .launch-products,
+  .home-page main > .work-section,
+  .home-page main > .migrated-blog {
+    min-block-size: auto;
+    padding-block: var(--home-section-pad);
+  }
+
+  .home-page main > .launch-manifest { padding-block: var(--home-section-pad-compact); }
+  .home-page main > .section > .container { width: calc(100% - 40px); }
+
+  .home-page .section-heading.split-heading,
+  .home-page .projects-heading {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .home-page .split-heading > div:last-child,
+  .home-page .projects-heading-side {
+    align-self: start;
+    max-width: 54ch;
+    padding-bottom: 0;
+  }
+
+  .home-page .launch-pillars .service-card,
+  .home-page .launch-products .solution-card,
+  .home-page .home-process-list li,
+  .home-page .migrated-blog .launch-content-feature,
+  .home-page .migrated-blog .launch-content-secondary {
+    min-height: 0 !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .home-page {
+    --home-title-size: clamp(28px, 8.1vw, 36px);
+    --home-title-long-size: clamp(25px, 6.8vw, 30px);
+  }
+
+  .home-page main > .section > .container { width: calc(100% - 32px); }
+  .home-page .section-title > span { white-space: nowrap; }
+  .home-page #solucoes-title { font-size: clamp(24px, 6.45vw, 28px); }
+  .home-page #about-title { font-size: clamp(24px, 6.4vw, 28px); }
+  .home-page #contact-title { font-size: clamp(27px, 7.2vw, 32px); }
+}
+
+@media (max-width: 380px) {
+  .home-page #solucoes-title,
+  .home-page #about-title { font-size: 23px; }
+  .home-page #contact-title { font-size: 26px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-page main > .section { scroll-margin-top: 0; }
+}

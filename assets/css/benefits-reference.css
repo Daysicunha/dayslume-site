@@ -1,6 +1,6 @@
 /* DAYSLUME | Caminho digital – composição editorial da referência aprovada. */
 body main .section.benefits-section {
-  --benefits-ink: #172338;
+  --benefits-ink: var(--ink-deep);
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -89,7 +89,7 @@ body main .benefits-section .benefits-list {
   min-width: 0;
 }
 body main .benefits-section .benefits-list .benefit-card {
-  --benefits-icon-tile: #f4f7fc;
+  --benefits-icon-tile: rgba(169,197,216,.2);
   display: grid;
   grid-template-columns: 52px 102px 1px minmax(0, 1fr) 54px;
   align-items: center;

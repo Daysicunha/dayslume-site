@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dayslume.daysicunha.com.br/sitemap.xml

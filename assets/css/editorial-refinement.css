@@ -2,11 +2,11 @@
    Camada aditiva. A hero principal e a secao O que fazemos permanecem intocadas.
    Carregar apos os estilos especificos de cada pagina. */
 :root{
-  --finish-ink:#26364e;
-  --finish-muted:#53677d;
-  --finish-line:#cfdae4;
-  --finish-blue:#143d69;
-  --finish-paper:#fcfbf8;
+  --finish-ink:var(--ink-deep);
+  --finish-muted:var(--slate-mineral);
+  --finish-line:rgba(102,117,143,.28);
+  --finish-blue:var(--plum-mineral);
+  --finish-paper:var(--warm-ivory);
   --finish-ease:cubic-bezier(.22,1,.36,1);
 }
 
@@ -263,11 +263,11 @@ body:not(.blog-index):not(.blog-article) .header ~ main>.section .grid>.box.days
   min-height:48px;
 }
 body:not(.blog-index):not(.blog-article) .header ~ main>.section .days-engreni-family{
-  background:#303c55!important;
-  border-color:#536783!important;
+  background:var(--ink-deep)!important;
+  border-color:rgba(var(--mist-blue-rgb),.34)!important;
 }
 body:not(.blog-index):not(.blog-article) .header ~ main>.section .days-vitrini-family{
-  background:#e5ebef!important;
+  background:rgba(var(--mist-blue-rgb),.28)!important;
 }
 body:not(.blog-index):not(.blog-article) .header ~ main>.section .detail{
   gap:clamp(24px,4vw,58px);

@@ -34,15 +34,52 @@
   root.classList.add('home-nav-ready');
   const year = document.querySelector('#year');
   if (year) year.textContent = String(new Date().getFullYear());
+  const manifestItems = [...document.querySelectorAll('.manifest-item')];
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+  const activateManifestItem = activeItem => {
+    manifestItems.forEach(item => {
+      const active = item === activeItem;
+      item.classList.toggle('is-active', active);
+      item.setAttribute('aria-pressed', String(active));
+    });
+  };
+  manifestItems.forEach(item => {
+    item.addEventListener('click', () => activateManifestItem(item));
+    item.addEventListener('focus', () => activateManifestItem(item));
+    item.addEventListener('pointerenter', () => {
+      if (finePointer.matches) activateManifestItem(item);
+    }, { passive: true });
+  });
   if ('IntersectionObserver' in window && !reduced.matches) {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
       });
     }, { threshold: 0.08 });
-    document.querySelectorAll('.service-card,.solution-card,.project-card,.migrated-blog-grid article').forEach(el => {
-      el.classList.add('motion-entry'); observer.observe(el);
+    const reveal = (selector, step = 70, start = 0) => {
+      document.querySelectorAll(selector).forEach((el, index) => {
+        el.classList.add('launch-reveal');
+        el.style.setProperty('--reveal-delay', `${start + index * step}ms`);
+        observer.observe(el);
+      });
+    };
+    reveal('.manifest-eyebrow, .manifest-title, .manifest-intro', 85);
+    reveal('.manifest-item', 70, 255);
+    reveal('.intro-section .section-heading > div', 90);
+    reveal('.launch-pillars .service-card', 85);
+    reveal('.launch-products .section-heading > div', 90);
+    reveal('.launch-products .solution-card', 105);
+    reveal('.home-process-section .section-heading > div', 90);
+    reveal('.home-process-list li', 70);
+    reveal('.migrated-blog .section-heading > div', 90);
+    reveal('.launch-content-grid article', 100);
+    reveal('.about-visual-card', 0);
+    reveal('.about-copy > .eyebrow, .about-copy > h2, .about-copy > .about-intro, .about-copy > .about-signature, .about-copy > .about-cta', 85);
+    document.querySelectorAll('.project-card').forEach(el => {
+      el.classList.add('launch-reveal'); observer.observe(el);
     });
+    const process = document.querySelector('.home-process-list');
+    if (process) observer.observe(process);
   }
 })();
 

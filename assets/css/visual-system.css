@@ -2,16 +2,16 @@
    Camada aditiva: preserva o header, a hero e suas animações existentes.
    Importar depois de home-base, home-premium e hero-tech na página inicial. */
 :root {
-  --ds-ink: #293449;
-  --ds-body: #526276;
-  --ds-navy: #22283c;
-  --ds-blue: #9bb8ce;
-  --ds-steel: #6e7f9b;
-  --ds-peach: #d8b6a5;
-  --ds-paper: #fbfaf7;
-  --ds-powder: #edf5fb;
-  --ds-border: #cbd7e2;
-  --ds-border-strong: #a8bacd;
+  --ds-ink: var(--ink-deep);
+  --ds-body: var(--slate-mineral);
+  --ds-navy: var(--ink-deep);
+  --ds-blue: var(--mist-blue);
+  --ds-steel: var(--slate-mineral);
+  --ds-peach: var(--peach);
+  --ds-paper: var(--warm-ivory);
+  --ds-powder: rgba(169, 197, 216, .22);
+  --ds-border: rgba(102, 117, 143, .28);
+  --ds-border-strong: rgba(102, 117, 143, .5);
   --ds-card-radius: 20px;
   --ds-pill-radius: 999px;
   --ds-shadow-soft: 0 18px 46px rgba(27, 45, 70, .075);
@@ -568,8 +568,8 @@ body .footer .footer-links a:hover {
 /* DAYSLUME — destaque editorial VITRINI, inspirado na composição da antiga seção.
    Exibição conceitual: não representa telas de produto publicadas ou recursos verificados. */
 .vitrini-showcase {
-  --vs-cream: #fcfaf6;
-  --vs-gold: #d8b6a5;
+  --vs-cream: var(--warm-ivory);
+  --vs-gold: var(--peach);
   position: relative;
   isolation: isolate;
   overflow: hidden;

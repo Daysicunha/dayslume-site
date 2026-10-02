@@ -1,5 +1,5 @@
 /* DAYSLUME — hero futurista inspirado na referência visual fornecida. */
-:root{--future-navy:#050d1b;--future-blue:#8dc4ff;--future-ice:#d9ecff;--future-warm:#ffc391}
+:root{--future-navy:var(--ink-deep);--future-blue:var(--mist-blue);--future-ice:var(--warm-ivory);--future-warm:var(--peach)}
 
 /* Cabeçalho flutuante de vidro, com reflexos azul e âmbar. */
 .site-header{position:sticky;top:20px;width:min(calc(100% - 64px),1608px);margin:20px auto -120px;overflow:visible;background:linear-gradient(108deg,rgba(10,31,56,.72),rgba(5,17,35,.8) 42%,rgba(12,25,45,.72) 76%,rgba(78,53,46,.52));border:1px solid rgba(142,197,255,.48);border-radius:28px;box-shadow:0 24px 64px rgba(0,6,18,.36),inset 0 1px 0 rgba(224,241,255,.12),inset 0 -1px 0 rgba(105,169,232,.08);backdrop-filter:blur(28px) saturate(145%);-webkit-backdrop-filter:blur(28px) saturate(145%)}
@@ -230,15 +230,15 @@
   background:radial-gradient(circle at 100% 45%,rgba(255,190,144,.2),transparent 18%),linear-gradient(90deg,rgba(91,169,248,.055),transparent 26% 82%,rgba(244,181,137,.075));
   box-shadow:inset 0 0 18px rgba(120,187,255,.03);
 }
-.site-header .header-inner{height:76px;padding-inline:clamp(22px,3vw,46px)}
-.brand-logo-img{width:clamp(178px,12.2vw,198px);filter:drop-shadow(0 0 9px rgba(141,196,255,.1))}
+.site-header .header-inner{height:64px;padding-inline:clamp(20px,2.7vw,42px)}
+.brand-logo-img{width:clamp(152px,10.5vw,170px);filter:drop-shadow(0 0 9px rgba(141,196,255,.1))}
 .site-header .menu{gap:clamp(16px,1.55vw,28px);font-size:14px}
 .site-header .menu>a:after{height:1px;box-shadow:0 0 8px rgba(141,196,255,.26)}
 .header-actions{gap:9px}
 .header-socials{gap:7px}
 .social-icon{
-  width:40px;
-  height:40px;
+  width:36px;
+  height:36px;
   border-color:rgba(151,202,252,.42);
   background:rgba(20,58,99,.1);
   box-shadow:inset 0 0 12px rgba(88,157,234,.055);
@@ -246,7 +246,7 @@
 .social-icon svg{width:17px;height:17px}
 .social-icon:hover{border-color:rgba(186,221,255,.78);background:rgba(78,144,219,.15);box-shadow:0 0 18px rgba(79,153,238,.18);transform:translateY(-1px)}
 .site-header .nav-cta{
-  min-height:46px;
+  min-height:42px;
   margin-left:12px;
   padding:11px 20px;
   border:1px solid rgba(205,229,252,.7);
@@ -285,7 +285,7 @@
 .hero-actions{gap:clamp(18px,2vw,28px)}
 .hero-actions .btn-light{min-height:54px;padding:14px 25px}
 .hero-foot{margin-top:clamp(24px,3.8vh,36px);font-size:10px}
-.hero-background-image{object-position:center center;filter:saturate(1.01) contrast(1.025) brightness(.86)}
+.hero-background-image{object-fit:contain;object-position:right center;filter:saturate(1.01) contrast(1.025) brightness(.86)}
 .hero-image-bg::after{background:linear-gradient(90deg,rgba(3,10,23,.96) 0%,rgba(3,10,23,.87) 26%,rgba(3,10,23,.48) 48%,rgba(3,10,23,.08) 73%,rgba(3,10,23,.025) 100%),linear-gradient(180deg,rgba(3,10,23,.2),transparent 27% 74%,rgba(3,10,23,.28))}
 .hero-ambient-light{
   position:absolute;
@@ -325,8 +325,8 @@
 }
 @media(max-width:1180px){
   .site-header{top:10px;width:calc(100% - 24px);margin:10px auto -86px;border-radius:20px}
-  .site-header .header-inner{height:72px;padding-inline:20px}
-  .brand-logo-img{width:184px}
+  .site-header .header-inner{height:62px;padding-inline:18px}
+  .brand-logo-img{width:158px}
   .site-header .mobile-header-actions .nav-cta{margin-left:0}
   .site-header .mobile-header-actions .nav-cta::after{display:none}
   .hero{padding-top:clamp(112px,14vh,132px)}
@@ -334,8 +334,8 @@
   .hero-content h1{font-size:clamp(49px,5.9vw,64px)}
 }
 @media(max-width:800px){
-  .site-header .header-inner{height:68px;padding-inline:15px}
-  .brand-logo-img{width:174px}
+  .site-header .header-inner{height:60px;padding-inline:14px}
+  .brand-logo-img{width:150px}
   .site-header .menu{top:calc(100% + 8px)}
   .site-header .mobile-header-actions .social-icon{width:44px;height:44px}
   .hero{display:block;min-height:auto;padding:104px 0 34px}
@@ -348,7 +348,7 @@
   .hero-rotator{margin-bottom:17px}
   .hero-actions{gap:14px 20px}
   .hero-actions .btn-light{min-height:52px;padding:13px 21px}
-  .hero-background-image{object-position:70% center;filter:saturate(1) contrast(1.02) brightness(.7)}
+  .hero-background-image{object-fit:cover;object-position:70% center;filter:saturate(1) contrast(1.02) brightness(.7)}
   .hero-image-bg::after{background:linear-gradient(90deg,rgba(3,10,23,.96),rgba(3,10,23,.82) 62%,rgba(3,10,23,.42)),linear-gradient(180deg,rgba(3,10,23,.15),transparent 33%,rgba(3,10,23,.46))}
   .hero-cursor-light{display:none}
   .hero-ambient-light{background:radial-gradient(ellipse 52% 35% at 82% 67%,rgba(72,153,245,.1),transparent 75%)}
@@ -358,8 +358,8 @@
 }
 @media(max-width:560px){
   .site-header{margin-bottom:-82px}
-  .site-header .header-inner{height:64px;padding-inline:13px}
-  .brand-logo-img{width:160px}
+  .site-header .header-inner{height:58px;padding-inline:12px}
+  .brand-logo-img{width:138px}
   .hero{padding-top:96px;padding-bottom:30px}
   .hero .container{width:calc(100% - 32px)}
   .hero-content h1{font-size:clamp(40px,12vw,52px)}
@@ -384,3 +384,15 @@
 
 /* O menu pertence à abertura e sai de cena quando a página é rolada. */
 .site-header{position:absolute;left:50%;right:auto;margin:0;transform:translateX(-50%)}
+
+/* Mantém uma distância previsível entre "Sobre" e o Instagram. */
+@media(min-width:1181px){
+  .site-header .header-inner{
+    grid-template-columns:minmax(190px,1fr) auto auto;
+    column-gap:clamp(20px,2vw,30px);
+  }
+  .site-header .menu,
+  .site-header .header-actions{
+    transform:none;
+  }
+}

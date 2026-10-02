@@ -149,14 +149,14 @@ main .work-section .projects-grid .project-card.project-large{
   border:1px solid rgba(89,111,137,.12);
   border-radius:21px;
   background:rgba(255,255,255,.9);
-  box-shadow:0 16px 45px rgba(32,48,74,.065)!important;
+  box-shadow:0 16px 45px rgba(var(--ink-deep-rgb),.065)!important;
   transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s ease,border-color .4s ease;
 }
 main .work-section .projects-grid .project-card:hover,
 main .work-section .projects-grid .project-card:focus-within{
   transform:translateY(-4px);
   border-color:#b3c7da;
-  box-shadow:0 24px 55px rgba(32,48,74,.12)!important;
+  box-shadow:0 24px 55px rgba(var(--ink-deep-rgb),.12)!important;
 }
 main .work-section .projects-grid .project-image,
 main .work-section .projects-grid .project-large .project-image.has-approved-mockup{
@@ -503,14 +503,14 @@ main .work-section .projects-grid--launch .project-card{
   border:1px solid rgba(102,126,150,.18);
   border-radius:17px;
   background:rgba(255,255,255,.92);
-  box-shadow:0 12px 34px rgba(32,48,74,.06)!important;
+  box-shadow:0 12px 34px rgba(var(--ink-deep-rgb),.06)!important;
   transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease,border-color .35s ease;
 }
 main .work-section .projects-grid--launch .project-card:hover,
 main .work-section .projects-grid--launch .project-card:focus-within{
   transform:translateY(-3px);
   border-color:#b5c9da;
-  box-shadow:0 20px 42px rgba(32,48,74,.105)!important;
+  box-shadow:0 20px 42px rgba(var(--ink-deep-rgb),.105)!important;
 }
 main .work-section .projects-grid--launch .project-card-head{
   display:grid;

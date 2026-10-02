@@ -1,5 +1,5 @@
 /* DAYSLUME Conteúdos — camada editorial sobre o sistema institucional existente */
-:root{--editor-navy:#141c2e;--editor-dark:#22283c;--editor-paper:#f2f0eb;--editor-ink:#22283c;--editor-muted:#5d6575;--editor-lilac:#cbbfe5;--editor-peach:#d8b6a5;--editor-blue:#9bb8ce}
+:root{--editor-navy:var(--ink-deep);--editor-dark:var(--ink-deep);--editor-paper:var(--warm-ivory);--editor-ink:var(--ink-deep);--editor-muted:var(--slate-mineral);--editor-lilac:var(--plum-mineral);--editor-peach:var(--peach);--editor-blue:var(--mist-blue)}
 body.blog-index,body.blog-article{background:var(--editor-paper);overflow-x:hidden}
 .blog-index .header,.blog-article .header{background:#181f31}
 .blog-index .header .header-inner,.blog-article .header .header-inner{min-height:80px}

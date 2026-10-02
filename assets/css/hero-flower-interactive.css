@@ -1,0 +1,278 @@
+/* Hero DAYSLUME — composição oficial em seis pétalas independentes.
+   As coordenadas abaixo remontam exatamente o arquivo FLOR INTEIRA MODELO.png
+   (canvas de referência: 1682 × 1672). */
+
+.hero.hero--interactive-flower {
+  --hero-bg-x: 0px;
+  --hero-bg-y: 0px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: calc(min(76svh, 760px) - 2cm);
+  padding-top: clamp(106px, 11vh, 124px);
+  padding-bottom: clamp(24px, 3vh, 32px);
+  background: #202532;
+}
+
+/* Camadas 0–2: base sólida, artwork e proteção editorial do conteúdo. */
+.hero--interactive-flower .hero__bg-base,
+.hero--interactive-flower .hero__bg-image,
+.hero--interactive-flower .hero__bg-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero--interactive-flower .hero__bg-base {
+  z-index: 0;
+  background: #202532;
+}
+
+.hero--interactive-flower .hero__bg-image {
+  z-index: 1;
+  inset: 0;
+  background-image: url("../images/dayslume-hero-background.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transform: translate3d(var(--hero-bg-x), var(--hero-bg-y), 0);
+  transform-origin: right center;
+  transition: transform .72s cubic-bezier(.22, 1, .36, 1);
+  will-change: transform;
+}
+
+.hero--interactive-flower .hero__bg-overlay {
+  z-index: 2;
+  background:
+    linear-gradient(90deg, rgba(32, 37, 50, .7) 0%, rgba(32, 37, 50, .49) 28%, rgba(32, 37, 50, .17) 52%, rgba(32, 37, 50, .035) 70%, transparent 84%),
+    linear-gradient(180deg, rgba(32, 37, 50, .22) 0%, transparent 31%, transparent 70%, rgba(32, 37, 50, .28) 100%);
+}
+
+/* Neutraliza os tratamentos antigos da hero: os arcos vivem somente no artwork. */
+.hero.hero--interactive-flower::before,
+.hero.hero--interactive-flower::after {
+  content: none;
+  display: none;
+}
+
+.hero--interactive-flower .hero-ambient-light {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  background: radial-gradient(ellipse 38% 58% at 78% 52%, rgba(var(--mist-blue-rgb), .11), rgba(var(--plum-mineral-rgb), .045) 42%, transparent 74%);
+  opacity: .88;
+  animation: flower-ambient-breathe 16s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.hero--interactive-flower .hero-ambient-light::before,
+.hero--interactive-flower .hero-ambient-light::after {
+  content: none;
+  display: none;
+}
+
+.hero--interactive-flower .hero-grid {
+  position: relative;
+  z-index: 4;
+  grid-template-columns: minmax(440px, .92fr) minmax(470px, 1.08fr);
+  gap: clamp(20px, 3vw, 48px);
+  align-items: center;
+}
+
+.hero--interactive-flower .hero-content {
+  position: relative;
+  z-index: 2;
+  transform: translateY(-.5cm);
+}
+
+.hero--interactive-flower .hero-visual-composition {
+  position: relative;
+  isolation: isolate;
+  align-self: center;
+  justify-self: end;
+  width: min(38vw, calc(580px - 2cm));
+  min-height: 0;
+  aspect-ratio: 1682 / 1672;
+  transform: translateY(-.5cm);
+  transition: none;
+  pointer-events: none;
+}
+
+.flower-scene {
+  --flower-scene-scale: 1;
+  --flower-glow-opacity: .48;
+  --flower-glow-scale: 1;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1682 / 1672;
+  transform: translate3d(0, 0, 0) scale(var(--flower-scene-scale));
+  transform-origin: 50% 50%;
+  filter: drop-shadow(0 24px 38px rgba(var(--ink-deep-rgb), .34));
+  animation: flower-scene-enter .85s cubic-bezier(.22, 1, .36, 1) both;
+  will-change: transform;
+}
+
+.flower-glow {
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  top: 50%;
+  width: 72%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(var(--mist-blue-rgb), .18) 0%, rgba(var(--plum-mineral-rgb), .12) 34%, transparent 72%);
+  filter: blur(28px);
+  opacity: var(--flower-glow-opacity);
+  transform: translate3d(-50%, -50%, 0) scale(var(--flower-glow-scale));
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+.flower-petal {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  max-width: none;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0) rotate(0deg);
+  will-change: transform;
+}
+
+/* Posição original de cada PNG dentro do canvas oficial 1682 × 1672. */
+.flower-petal--01 { left: 33.829%; top: .359%; width: 35.196%; transform-origin: 45.95% 99.28%; }
+.flower-petal--02 { left: 48.038%; top: 23.505%; width: 47.622%; transform-origin: 4.12% 98.44%; }
+.flower-petal--03 { left: 50.297%; top: 45.395%; width: 44.233%; transform-origin: 0% 13%; }
+.flower-petal--04 { left: 35.850%; top: 49.522%; width: 32.342%; transform-origin: 43.75% .94%; }
+.flower-petal--05 { left: 3.092%; top: 42.763%; width: 50.416%; transform-origin: 93.04% 17.31%; }
+.flower-petal--06 { left: 10.048%; top: 19.797%; width: 44.649%; transform-origin: 89.48% 82.38%; }
+
+@keyframes flower-scene-enter {
+  from { opacity: 0; transform: translate3d(0, 9px, 0) scale(.985); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(var(--flower-scene-scale)); }
+}
+
+@keyframes flower-ambient-breathe {
+  from { opacity: .76; transform: scale(.99); }
+  to { opacity: 1; transform: scale(1.01); }
+}
+
+@media (max-width: 1380px) {
+  .hero--interactive-flower .hero-grid {
+    grid-template-columns: minmax(410px, .94fr) minmax(430px, 1.06fr);
+  }
+  .hero--interactive-flower .hero-visual-composition { width: min(42vw, calc(560px - 2cm)); }
+}
+
+@media (max-width: 1180px) {
+  .hero.hero--interactive-flower {
+    min-height: auto;
+    padding-top: 110px;
+    padding-bottom: 26px;
+  }
+  .hero--interactive-flower .hero-grid {
+    grid-template-columns: minmax(0, .98fr) minmax(0, 1.02fr);
+    gap: 8px;
+  }
+  .hero--interactive-flower .hero-visual-composition { width: min(44vw, calc(520px - 2cm)); }
+}
+
+@media (max-width: 800px) {
+  .hero.hero--interactive-flower {
+    padding-top: 90px;
+    padding-bottom: 26px;
+    background: #202532;
+  }
+  .hero--interactive-flower .hero__bg-image {
+    inset: 0;
+    background-position: center;
+    background-size: cover;
+    transform: none;
+    opacity: .8;
+  }
+  .hero--interactive-flower .hero__bg-overlay {
+    background:
+      linear-gradient(180deg, rgba(32, 37, 50, .67) 0%, rgba(32, 37, 50, .45) 39%, rgba(32, 37, 50, .12) 64%, rgba(32, 37, 50, .27) 100%),
+      linear-gradient(90deg, rgba(32, 37, 50, .42), rgba(32, 37, 50, .08) 72%, transparent);
+  }
+  .hero--interactive-flower .hero-ambient-light {
+    background: radial-gradient(ellipse 63% 32% at 73% 75%, rgba(var(--mist-blue-rgb), .09), transparent 74%);
+    opacity: .72;
+  }
+  .hero--interactive-flower .hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+  .hero--interactive-flower .hero-content {
+    transform: none;
+  }
+  .hero--interactive-flower .hero-visual-composition {
+    grid-row: 2;
+    width: min(74vw, 480px);
+    margin: -8px auto -8%;
+  }
+  .flower-petal {
+    --ambient-x: 2px;
+    --ambient-y: -2px;
+    --ambient-r: .35deg;
+    animation: flower-petal-ambient 20s ease-in-out infinite alternate;
+  }
+  .flower-petal--02,
+  .flower-petal--05 { --ambient-x: -2px; --ambient-y: 1px; --ambient-r: -.3deg; animation-duration: 23s; }
+  .flower-petal--03,
+  .flower-petal--06 { --ambient-x: 1px; --ambient-y: 2px; --ambient-r: .25deg; animation-duration: 26s; }
+}
+
+@media (max-width: 560px) {
+  .hero--interactive-flower .hero__bg-image {
+    background-position: center;
+    background-size: cover;
+    opacity: .68;
+  }
+  .hero--interactive-flower .hero__bg-overlay {
+    background:
+      linear-gradient(180deg, rgba(32, 37, 50, .76) 0%, rgba(32, 37, 50, .56) 42%, rgba(32, 37, 50, .17) 68%, rgba(32, 37, 50, .32) 100%),
+      linear-gradient(90deg, rgba(32, 37, 50, .4), transparent 82%);
+  }
+  .hero--interactive-flower .hero-visual-composition {
+    width: min(86vw, 420px);
+    margin-inline: auto;
+    margin-bottom: -9%;
+  }
+  .flower-glow { width: 78%; filter: blur(24px); }
+}
+
+@keyframes flower-petal-ambient {
+  from { transform: translate3d(0, 0, 0) rotate(0deg); }
+  to { transform: translate3d(var(--ambient-x), var(--ambient-y), 0) rotate(var(--ambient-r)); }
+}
+
+.motion-paused .hero--interactive-flower .hero-ambient-light,
+.motion-paused .flower-scene,
+.motion-paused .flower-petal {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero--interactive-flower .hero__bg-image,
+  .hero--interactive-flower .hero-ambient-light,
+  .flower-scene,
+  .flower-petal {
+    animation: none !important;
+    transition: none !important;
+  }
+  .hero--interactive-flower .hero__bg-image {
+    transform: none !important;
+  }
+  .flower-scene {
+    --flower-scene-scale: 1 !important;
+    --flower-glow-opacity: .48 !important;
+    --flower-glow-scale: 1 !important;
+    transform: none !important;
+  }
+  .flower-petal { transform: none !important; }
+}

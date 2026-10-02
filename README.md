@@ -1,6 +1,6 @@
-# DAYSLUME — finalização premium (prévia)
+# DAYSLUME — versão de lançamento em validação
 
-Branch `feat/finalizacao-premium-dayslume`: continuação do projeto HTML/CSS/JavaScript existente.
+Site institucional estático em HTML, CSS e JavaScript. A arquitetura de lançamento organiza a navegação em Soluções, Produtos, Projetos, Conteúdos e Sobre, preservando as páginas específicas e a identidade visual existente.
 
 - [Documento Mestre da Marca](docs/DOCUMENTO-MESTRE-MARCA-DAYSLUME.md)
 - [Auditoria atual e pendências de conclusão](docs/auditoria-revisao-final.md)
@@ -8,9 +8,9 @@ Branch `feat/finalizacao-premium-dayslume`: continuação do projeto HTML/CSS/Ja
 - [Roteiro de conferência da home](docs/validar-home.md)
 - [Histórico da migração comercial](docs/migracao-daysi-dayslume.md)
 
-A hero mantém a composição Síntese Autoral 2.0. As 13 páginas compartilham navegação e controles de movimento; home e Contato preparam solicitações por WhatsApp. Os dois artigos, a identidade e as imagens foram preservados. Produção e site pessoal permanecem intactos. A conferência visual da prévia protegida e os materiais reais dos produtos ainda estão pendentes.
+A hero mantém a composição aprovada e o enquadramento refinado da flor. As 19 páginas compartilham navegação e rodapé; Home e Contato preparam solicitações por WhatsApp. A publicação permanece pendente de validação visual final.
 
-Prévia local: `python -m http.server 8000`. Validação: `python scripts/check-site.py` e `node --test tests/contact.test.cjs`; sintaxe: `node --check assets/js/home-premium.js`. Não há etapa de build nem dependências adicionais.
+Prévia local: qualquer servidor HTTP estático. Validação disponível sem dependências: `node --test tests/*.test.cjs`; sintaxe: `node --check assets/js/home-premium.js`. A checagem Python histórica continua disponível quando houver Python instalado.
 
 ---
 
