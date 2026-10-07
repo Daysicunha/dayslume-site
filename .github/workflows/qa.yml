@@ -1,0 +1,26 @@
+name: QA
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  static-qa:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run HTML and contact tests
+        run: node --test tests/*.test.cjs
+      - name: Check JavaScript syntax
+        run: node --check assets/js/*.js
+      - name: Run static site checks
+        run: python scripts/check-site.py

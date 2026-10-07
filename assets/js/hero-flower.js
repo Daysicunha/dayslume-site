@@ -34,6 +34,7 @@
 
     const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
     const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
+    const saveData = Boolean(navigator.connection?.saveData);
     const petalState = FLOWER_MOTION.petals.map(() => ({
       x: 0, y: 0, rotate: 0,
       vx: 0, vy: 0, vRotate: 0,
@@ -52,6 +53,19 @@
     let glowScale = 1;
     let glowScaleVelocity = 0;
     let glowScaleTarget = 1;
+
+    const syncBackgroundPlayback = () => {
+      if (!(background instanceof HTMLVideoElement)) return;
+      const shouldPause = (
+        reducedMotion.matches ||
+        saveData ||
+        document.hidden ||
+        document.documentElement.classList.contains('motion-paused')
+      );
+
+      if (shouldPause) background.pause();
+      else background.play().catch(() => {});
+    };
 
     const isActive = () => (
       finePointer.matches &&
@@ -185,6 +199,7 @@
       clearTargets(true);
       hero.style.setProperty('--hero-bg-x', '0px');
       hero.style.setProperty('--hero-bg-y', '0px');
+      syncBackgroundPlayback();
       requestRender();
     };
 

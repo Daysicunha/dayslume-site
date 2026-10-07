@@ -4,17 +4,12 @@
   const root = document.documentElement;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const terms = [...document.querySelectorAll('.rotating-term')];
-  const videos = [...document.querySelectorAll('[data-motion-video]')];
   let timer;
   let index = 0;
   const sync = () => {
     clearInterval(timer);
     const stopped = reduced.matches || document.hidden;
     root.classList.toggle('motion-paused', stopped);
-    videos.forEach(video => {
-      if (stopped || video.dataset.motionVideo === 'scrub') video.pause();
-      else video.play().catch(() => {});
-    });
     document.dispatchEvent(new Event('dayslume:motion'));
     if (!stopped && terms.length > 1) timer = setInterval(() => {
       terms[index].classList.remove('is-current');
@@ -28,72 +23,71 @@
   sync();
 })();
 
-/* The hero film is explored by pointer movement on desktop and scroll on touch screens. */
+/* Keep the persistent contact shortcut away from contact areas and foreground
+   actions. This runs on every page because dayslume-motion.js is shared. */
 (() => {
   'use strict';
-  const root = document.documentElement;
-  const video = document.querySelector('[data-motion-video="scrub"]');
-  const hero = video?.closest('.hero');
-  if (!video || !hero) return;
 
-  const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
-  let duration = 0;
-  let targetTime = 0;
-  let frame = 0;
+  const init = () => {
+    const action = document.querySelector('.floating-whatsapp');
+    if (!action) return;
 
-  const clamp = value => Math.max(0, Math.min(1, value));
-  const canScrub = () => duration > 0 && !document.hidden && !root.classList.contains('motion-paused');
-  const render = () => {
-    frame = 0;
-    if (!canScrub()) return;
-    const time = Math.min(Math.max(targetTime, 0), Math.max(duration - 0.04, 0));
-    if (Math.abs(video.currentTime - time) > 0.012) video.currentTime = time;
-  };
-  const seekTo = progress => {
-    if (!duration) return;
-    targetTime = clamp(progress) * duration;
-    if (!frame) frame = requestAnimationFrame(render);
-  };
-  const seekFromPointer = event => {
-    if (!finePointer.matches || !canScrub()) return;
-    const rect = hero.getBoundingClientRect();
-    if (!rect.width || !rect.height) return;
-    const horizontal = clamp((event.clientX - rect.left) / rect.width);
-    const vertical = clamp((event.clientY - rect.top) / rect.height);
-    seekTo((horizontal * .9) + (vertical * .1));
-  };
-  const seekFromScroll = () => {
-    if (finePointer.matches && innerWidth > 800) return;
-    const rect = hero.getBoundingClientRect();
-    const range = Math.max(rect.height * .82, 1);
-    seekTo(clamp(-rect.top / range));
-  };
-  const ready = () => {
-    duration = Number.isFinite(video.duration) ? video.duration : 0;
-    video.pause();
-    if (finePointer.matches && innerWidth > 800) seekTo(.04);
-    else seekFromScroll();
+    const contextTargets = [...document.querySelectorAll(
+      '#contato, #solicitar, .contact-form, main > .band:last-child, .site-footer, .footer'
+    )];
+    const overlapTargets = [...document.querySelectorAll(
+      'main a.btn, main button.btn, .contact-note a, .projects-portfolio-cta, .content-archive'
+    )];
+    const initialTabindex = action.getAttribute('tabindex');
+    let frame = 0;
+
+    const overlaps = (left, right) => (
+      left.bottom > right.top + 6 &&
+      left.top < right.bottom - 6 &&
+      left.right > right.left + 6 &&
+      left.left < right.right - 6
+    );
+
+    const setHidden = hidden => {
+      action.classList.toggle('is-context-hidden', hidden);
+      action.classList.toggle('days-overlaps-hero', hidden);
+      if (hidden && document.activeElement !== action) {
+        action.setAttribute('aria-hidden', 'true');
+        action.tabIndex = -1;
+      } else {
+        action.removeAttribute('aria-hidden');
+        if (initialTabindex === null) action.removeAttribute('tabindex');
+        else action.setAttribute('tabindex', initialTabindex);
+      }
+    };
+
+    const update = () => {
+      frame = 0;
+      const actionBounds = action.getBoundingClientRect();
+      const nearContactContext = contextTargets.some(target => {
+        const bounds = target.getBoundingClientRect();
+        return bounds.top < innerHeight - 24 && bounds.bottom > actionBounds.top;
+      });
+      const coveringAction = overlapTargets.some(target => overlaps(
+        target.getBoundingClientRect(), actionBounds
+      ));
+      setHidden((nearContactContext || coveringAction) && document.activeElement !== action);
+    };
+
+    const requestUpdate = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    addEventListener('scroll', requestUpdate, { passive: true });
+    addEventListener('resize', requestUpdate, { passive: true });
+    addEventListener('orientationchange', requestUpdate, { passive: true });
+    action.addEventListener('blur', requestUpdate);
+    requestUpdate();
   };
 
-  if (video.readyState >= 1) ready();
-  else video.addEventListener('loadedmetadata', ready, { once: true });
-
-  hero.addEventListener('pointermove', seekFromPointer, { passive: true });
-  addEventListener('scroll', seekFromScroll, { passive: true });
-  addEventListener('resize', seekFromScroll, { passive: true });
-  document.addEventListener('dayslume:motion', () => {
-    video.pause();
-    if (!finePointer.matches || innerWidth <= 800) seekFromScroll();
-  });
-
-  /* A first touch unlocks seeking on mobile Safari without leaving the film playing. */
-  hero.addEventListener('pointerdown', () => {
-    if (finePointer.matches || root.classList.contains('motion-paused')) return;
-    const time = video.currentTime;
-    const attempt = video.play();
-    if (attempt) attempt.then(() => {
-      video.pause();
-      video.currentTime = time;
-    }).catch(() => {});
-  }, { once: true, passive: true });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
 })();

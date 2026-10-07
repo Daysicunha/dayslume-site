@@ -106,49 +106,6 @@ body.home-page main .about-section .about-visual-inner img {
   filter: none;
 }
 
-body.home-page main .about-section .about-photo-caption {
-  position: absolute;
-  z-index: 2;
-  left: clamp(18px, 2.2vw, 28px);
-  bottom: clamp(17px, 2.1vw, 26px);
-  display: grid;
-  gap: 2px;
-  max-width: calc(100% - 36px);
-  padding: 18px 22px 15px 0;
-  color: var(--warm-ivory, #f3efe8);
-  text-align: left;
-  text-shadow: 0 1px 12px rgba(0, 0, 0, .52);
-}
-
-body.home-page main .about-section .about-photo-caption::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: -18px -30px -18px -24px;
-  background: radial-gradient(ellipse at 22% 72%, rgba(18, 20, 27, .82), rgba(18, 20, 27, .45) 46%, transparent 75%);
-  pointer-events: none;
-}
-
-body.home-page main .about-section .about-photo-caption strong {
-  font: 600 clamp(15px, 1.25vw, 18px) / 1.25 Manrope, sans-serif;
-  letter-spacing: -.02em;
-}
-
-body.home-page main .about-section .about-photo-caption span,
-body.home-page main .about-section .about-photo-caption small {
-  color: rgba(243, 239, 232, .82);
-  font: 500 10px / 1.45 "DM Sans", sans-serif;
-  letter-spacing: .11em;
-  text-transform: uppercase;
-}
-
-body.home-page main .about-section .about-photo-caption small {
-  margin-top: 5px;
-  color: rgba(216, 182, 165, .94);
-  font-size: 9px;
-  letter-spacing: .095em;
-}
-
 body.home-page main .about-section .about-copy {
   min-width: 0;
   max-width: 760px;
@@ -351,10 +308,6 @@ body.home-page main .about-section .about-cta:focus-visible > span {
     padding-inline: 18px;
   }
 
-  body.home-page main .about-section .about-photo-caption span,
-  body.home-page main .about-section .about-photo-caption small {
-    letter-spacing: .075em;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

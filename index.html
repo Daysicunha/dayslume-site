@@ -10,8 +10,9 @@
   <meta property="og:description" content="Estratégia, design e tecnologia para criar soluções digitais pensadas para negócios reais.">
   <meta property="og:locale" content="pt_BR"><meta property="og:type" content="website"><meta property="og:url" content="https://dayslume.daysicunha.com.br/">
   <link rel="canonical" href="https://dayslume.daysicunha.com.br/"><link rel="icon" type="image/webp" href="assets/images/dayslume-flor.webp">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://dayslume.daysicunha.com.br/#organization","name":"DAYSLUME","url":"https://dayslume.daysicunha.com.br/","sameAs":["https://www.instagram.com/dayslume/","https://www.linkedin.com/company/dayslume/","https://www.tiktok.com/@dayslume"]},{"@type":"WebSite","@id":"https://dayslume.daysicunha.com.br/#website","url":"https://dayslume.daysicunha.com.br/","name":"DAYSLUME","publisher":{"@id":"https://dayslume.daysicunha.com.br/#organization"}}]}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/home-base.css"><link rel="stylesheet" href="assets/css/home-premium.css"><link rel="stylesheet" href="assets/css/hero-tech.css"><link rel="stylesheet" href="assets/css/hero-flower-interactive.css"><link rel="stylesheet" href="assets/css/visual-system.css"><link rel="stylesheet" href="assets/css/action-system.css"><link rel="stylesheet" href="assets/css/editorial-refinement.css"><link rel="stylesheet" href="assets/css/tornearia-mockup.css"><link rel="stylesheet" href="assets/css/projects-editorial.css"><link rel="stylesheet" href="assets/css/contents-reference.css"><link rel="stylesheet" href="assets/css/about-reference.css"><link rel="stylesheet" href="assets/css/home-section-rhythm.css">
+  <link rel="stylesheet" href="assets/css/home-base.css"><link rel="stylesheet" href="assets/css/home-premium.css"><link rel="stylesheet" href="assets/css/hero-tech.css"><link rel="stylesheet" href="assets/css/hero-flower-interactive.css"><link rel="stylesheet" href="assets/css/visual-system.css"><link rel="stylesheet" href="assets/css/action-system.css"><link rel="stylesheet" href="assets/css/editorial-refinement.css"><link rel="stylesheet" href="assets/css/tornearia-mockup.css"><link rel="stylesheet" href="assets/css/projects-editorial.css"><link rel="stylesheet" href="assets/css/contents-editorial.css"><link rel="stylesheet" href="assets/css/about-reference.css"><link rel="stylesheet" href="assets/css/home-section-rhythm.css">
 <link rel="stylesheet" href="assets/css/brand-palette.css"></head>
 <body class="home-page">
 <a class="skip" href="#principal">Ir para o conteúdo</a>
@@ -29,7 +30,11 @@
 <main id="principal">
   <section class="hero hero--interactive-flower" aria-labelledby="hero-title">
     <div class="hero__bg-base" aria-hidden="true"></div>
-    <div class="hero__bg-image" data-hero-background aria-hidden="true"></div>
+    <div class="hero__bg-image" data-hero-background aria-hidden="true">
+      <video class="hero__bg-video" autoplay muted loop playsinline preload="auto" poster="assets/images/dayslume-hero-atmosphere.webp" tabindex="-1">
+        <source src="assets/videos/herovideobackground.mp4" type="video/mp4">
+      </video>
+    </div>
     <div class="hero__bg-overlay" aria-hidden="true"></div>
     <div class="hero-ambient-light" aria-hidden="true"></div>
     <div class="container hero-grid">
@@ -54,41 +59,37 @@
       </div>
     </div>
   </section>
-  <section class="section launch-manifest" aria-labelledby="manifesto-title">
+  <section class="section launch-manifest section-shell section-atmosphere section-atmosphere--manifest" aria-labelledby="manifesto-title">
     <div class="container launch-manifest-grid">
       <div class="manifest-concept">
-        <p class="eyebrow manifest-eyebrow">01 / COMO PENSAMOS</p>
-        <h2 id="manifesto-title" class="manifest-title">Desenvolvimento<br>com intenção.</h2>
+        <p class="eyebrow manifest-eyebrow section-eyebrow"><span class="section-eyebrow__number">01</span><span class="section-eyebrow__label">COMO PENSAMOS</span></p>
+        <h2 id="manifesto-title" class="manifest-title">Desenvolvimento<br><span class="manifest-title-line">com intenção.</span></h2>
         <p class="manifest-intro">Cada projeto nasce da união entre estratégia, design e tecnologia — para transformar necessidades reais em soluções claras, funcionais e coerentes com o negócio.</p>
       </div>
       <div class="manifest-list" aria-label="Princípios da DAYSLUME">
-        <button class="manifest-item" type="button" aria-pressed="false">
+        <article class="manifest-item">
           <span class="manifest-number" aria-hidden="true">01</span>
           <span class="manifest-item-copy"><span class="manifest-item-title">Estratégia antes da ferramenta.</span><span class="manifest-item-description">Entendemos o contexto, o objetivo e o problema antes de decidir o que construir.</span></span>
-          <span class="manifest-arrow" aria-hidden="true">↗</span>
-        </button>
-        <button class="manifest-item" type="button" aria-pressed="false">
+        </article>
+        <article class="manifest-item">
           <span class="manifest-number" aria-hidden="true">02</span>
           <span class="manifest-item-copy"><span class="manifest-item-title">Tecnologia quando ela resolve.</span><span class="manifest-item-description">A escolha técnica vem da utilidade, da clareza e da sustentabilidade da solução.</span></span>
-          <span class="manifest-arrow" aria-hidden="true">↗</span>
-        </button>
-        <button class="manifest-item" type="button" aria-pressed="false">
+        </article>
+        <article class="manifest-item">
           <span class="manifest-number" aria-hidden="true">03</span>
           <span class="manifest-item-copy"><span class="manifest-item-title">Design quando ele comunica.</span><span class="manifest-item-description">Design não é ornamento: é direção, percepção e experiência.</span></span>
-          <span class="manifest-arrow" aria-hidden="true">↗</span>
-        </button>
-        <button class="manifest-item is-active" type="button" aria-pressed="true">
+        </article>
+        <article class="manifest-item is-active">
           <span class="manifest-number" aria-hidden="true">04</span>
           <span class="manifest-item-copy"><span class="manifest-item-title">Desenvolvimento pensado para negócios reais.</span><span class="manifest-item-description">Criamos soluções digitais para apresentar, organizar, vender e facilitar o contato.</span></span>
-          <span class="manifest-arrow" aria-hidden="true">↗</span>
-        </button>
+        </article>
       </div>
     </div>
   </section>
-  <section class="section intro-section" id="solucoes" aria-labelledby="solucoes-title"><div class="container"><div class="section-heading split-heading"><div><p class="eyebrow">02 / O QUE FAZEMOS</p><h2 id="solucoes-title" class="section-title section-title--long"><span>Três caminhos para transformar</span><span>necessidades em soluções.</span></h2></div><div><p>Partimos do contexto do negócio para definir a experiência, o produto ou o sistema que realmente precisa ser construído.</p><a class="migration-link" href="servicos.html">Ver todas as soluções <span aria-hidden="true">↗</span></a></div></div><div class="services-grid launch-pillars"><article class="service-card days-service-card"><div class="service-card-top"><span class="service-number">01</span><a class="service-arrow" href="servicos.html#presenca-digital" aria-label="Conhecer presença digital">↗</a></div><h3>Presença digital</h3><p>Sites, landing pages e experiências digitais para apresentar negócios com clareza e identidade.</p></article><article class="service-card days-service-card"><div class="service-card-top"><span class="service-number">02</span><a class="service-arrow" href="solucoes.html" aria-label="Conhecer produtos digitais">↗</a></div><h3>Produtos digitais</h3><p>Catálogos, plataformas e soluções próprias para apresentação, contato e operação.</p></article><article class="service-card days-service-card"><div class="service-card-top"><span class="service-number">03</span><a class="service-arrow" href="servicos.html#sistemas-aplicacoes" aria-label="Conhecer sistemas para negócios">↗</a></div><h3>Sistemas para negócios</h3><p>Ferramentas digitais que ajudam equipes a organizar informações, rotinas e processos.</p></article></div></div></section>
-	  <section class="section solutions-section launch-products" id="produtos" aria-labelledby="produtos-title">
+  <section class="section intro-section section-shell section-atmosphere section-atmosphere--structure section-grid section-grid--partial" id="solucoes" aria-labelledby="solucoes-title"><div class="container"><div class="section-heading split-heading"><div><p class="eyebrow section-eyebrow"><span class="section-eyebrow__number">02</span><span class="section-eyebrow__label">O QUE FAZEMOS</span></p><h2 id="solucoes-title" class="section-title section-title--long"><span>Três caminhos para transformar</span><span>necessidades em soluções.</span></h2></div><div><p>Partimos do contexto do negócio para definir a experiência, o produto ou o sistema que realmente precisa ser construído.</p><a class="migration-link" href="servicos.html">Ver todas as soluções <span aria-hidden="true">↗</span></a></div></div><div class="services-grid launch-pillars"><article class="service-card days-service-card"><div class="service-card-top"><span class="service-number">01</span><a class="service-arrow" href="servicos.html#presenca-digital" aria-label="Conhecer presença digital">↗</a></div><h3>Presença digital</h3><p>Sites, landing pages e experiências digitais para apresentar negócios com clareza e identidade.</p></article><article class="service-card days-service-card"><div class="service-card-top"><span class="service-number">02</span><a class="service-arrow" href="solucoes.html" aria-label="Conhecer produtos digitais">↗</a></div><h3>Produtos digitais</h3><p>Catálogos, plataformas e soluções próprias para apresentação, contato e operação.</p></article><article class="service-card days-service-card"><div class="service-card-top"><span class="service-number">03</span><a class="service-arrow" href="servicos.html#sistemas-aplicacoes" aria-label="Conhecer sistemas para negócios">↗</a></div><h3>Sistemas para negócios</h3><p>Ferramentas digitais que ajudam equipes a organizar informações, rotinas e processos.</p></article></div></div></section>
+	  <section class="section solutions-section launch-products section-shell section-atmosphere section-atmosphere--network section-grid section-grid--modules" id="produtos" aria-labelledby="produtos-title">
 	    <div class="container">
-	      <div class="section-heading split-heading"><div><p class="eyebrow">03 / PRODUTOS DAYSLUME</p><h2 id="produtos-title" class="section-title"><span>Ecossistemas para apresentar</span><span>e organizar.</span></h2></div><div><p>Produtos digitais desenvolvidos para necessidades recorrentes de negócios reais.</p><a class="migration-link" href="solucoes.html">Conhecer os produtos <span aria-hidden="true">↗</span></a></div></div>
+	      <div class="section-heading split-heading"><div><p class="eyebrow section-eyebrow"><span class="section-eyebrow__number">03</span><span class="section-eyebrow__label">PRODUTOS DAYSLUME</span></p><h2 id="produtos-title" class="section-title"><span>Ecossistemas para</span><span>apresentar e organizar.</span></h2></div><div><p>Produtos digitais desenvolvidos para necessidades recorrentes de negócios reais.</p><a class="migration-link" href="solucoes.html">Conhecer os produtos <span aria-hidden="true">↗</span></a></div></div>
 	      <div class="solutions-grid">
 	        <article class="solution-card solution-vitrini">
 	          <div class="solution-top"><span>ECOSSISTEMA / 01</span><a class="solution-arrow" href="solucoes.html#vitrini" aria-label="Conhecer o ecossistema VITRINI">↗</a></div>
@@ -122,27 +123,89 @@
 	      </div>
 	    </div>
 	  </section>
-  <section class="section work-section" id="projetos" aria-labelledby="projects-title"><div class="container"><div class="section-heading projects-heading"><div class="projects-heading-main"><p class="eyebrow">04 / PROJETOS</p><h2 id="projects-title" class="section-title"><span>Ideias que já</span><span><em>ganharam forma.</em></span></h2></div><div class="projects-heading-side"><p>Projetos selecionados que transformam necessidades em experiências digitais funcionais.</p><a class="projects-portfolio-cta" href="projetos.html">Ver todos os projetos <span aria-hidden="true">↗</span></a></div></div><div class="projects-grid projects-grid--launch">
+  <section class="section work-section section-shell section-atmosphere section-atmosphere--frame" id="projetos" aria-labelledby="projects-title"><div class="container"><div class="section-heading projects-heading"><div class="projects-heading-main"><p class="eyebrow section-eyebrow"><span class="section-eyebrow__number">04</span><span class="section-eyebrow__label">PROJETOS</span></p><h2 id="projects-title" class="section-title"><span>Ideias que já</span><span><em>ganharam forma.</em></span></h2></div><div class="projects-heading-side"><p>Projetos selecionados que transformam necessidades em experiências digitais funcionais.</p><a class="projects-portfolio-cta" href="projetos.html">Ver todos os projetos <span aria-hidden="true">↗</span></a></div></div><div class="projects-grid projects-grid--launch">
     <article class="project-card" data-project-kind="web"><div class="project-card-head"><div><h3><a href="projetos/tornearia-barbosa.html">Tornearia Barbosa</a></h3><p class="project-type">SITE INSTITUCIONAL</p><p class="project-summary">Presença digital para apresentar serviços, valorizar a experiência da empresa e facilitar novos contatos.</p></div><a class="project-arrow" href="projetos/tornearia-barbosa.html" aria-label="Ver o projeto Tornearia Barbosa">↗</a></div><a class="project-image migrated-case-photo has-approved-mockup" href="projetos/tornearia-barbosa.html" aria-label="Ver o projeto Tornearia Barbosa"><picture><source srcset="assets/images/tornearia-barbosa-mockup.avif" type="image/avif"><img src="assets/images/tornearia-barbosa-case.webp" loading="lazy" decoding="async" width="1100" height="825" alt="Apresentação do site Tornearia Barbosa em desktop e celular"></picture></a></article>
     <article class="project-card" data-project-kind="experience"><div class="project-card-head"><div><h3><a href="https://new-rocket-play.vercel.app/" target="_blank" rel="noopener noreferrer">New Rocket Play</a></h3><p class="project-type">LANDING PAGE</p><p class="project-summary">Página para comunicar a proposta da marca e facilitar o contato com potenciais clientes.</p></div><a class="project-arrow" href="https://new-rocket-play.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Visitar New Rocket Play">↗</a></div><a class="project-image real-project nrp-project" href="https://new-rocket-play.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Visitar New Rocket Play"><img src="assets/images/new-rocket-play-home.webp" width="1868" height="863" loading="lazy" decoding="async" alt="Página inicial do projeto New Rocket Play"></a></article>
     <article class="project-card project-card--engreni" data-project-kind="product"><div class="project-card-head"><div><h3><a href="solucoes.html#engreni-agenda">ENGRENI Agenda</a></h3><p class="project-type">SISTEMA DE AGENDAMENTO</p><p class="project-summary">Ferramenta digital para organizar horários, disponibilizar serviços e facilitar agendamentos.</p></div><a class="project-arrow" href="solucoes.html#engreni-agenda" aria-label="Conhecer ENGRENI Agenda">↗</a></div><a class="project-image engreni-agenda-project" href="solucoes.html#engreni-agenda" aria-label="Conhecer ENGRENI Agenda"><div class="engreni-project-scene" aria-hidden="true"><div class="engreni-project-desktop"><div class="engreni-project-topbar"><strong>ENGRENI</strong><span>Agenda</span><i></i></div><div class="engreni-project-shell"><div class="engreni-project-sidebar"><span class="is-active"></span><span></span><span></span><span></span></div><div class="engreni-project-calendar"><div class="engreni-calendar-title"><b>Agenda</b><span>Hoje</span></div><div class="engreni-calendar-days"><span>SEG</span><span>TER</span><span>QUA</span><span>QUI</span><span>SEX</span></div><div class="engreni-calendar-grid"><i></i><i class="event event-a"></i><i></i><i></i><i class="event event-b"></i><i></i><i></i><i class="event event-c"></i><i></i><i></i><i class="event event-d"></i><i></i><i></i><i class="event event-e"></i><i></i></div></div></div></div><div class="engreni-project-phone"><div class="engreni-phone-notch"></div><span class="engreni-phone-label">Agendar</span><strong>Escolha um horário</strong><i></i><i></i><i></i><i></i></div></div></a></article>
   </div></div></section>
-  <section class="section home-process-section" id="processo-home" aria-labelledby="process-title"><div class="container"><div class="section-heading split-heading"><div><p class="eyebrow">05 / COMO TRABALHAMOS</p><h2 id="process-title">Do contexto à evolução.</h2></div><div><p>Um processo claro para transformar necessidades em experiências e soluções digitais consistentes.</p><a class="migration-link" href="processo.html">Conheça nosso processo <span aria-hidden="true">↗</span></a></div></div><ol class="home-process-list"><li tabindex="0"><span>01</span><strong>Entender</strong><em>Contexto, objetivo e necessidade.</em></li><li tabindex="0"><span>02</span><strong>Estruturar</strong><em>Informações, caminhos e escopo.</em></li><li tabindex="0"><span>03</span><strong>Criar</strong><em>Identidade, conteúdo e experiência.</em></li><li tabindex="0"><span>04</span><strong>Desenvolver</strong><em>Interface, tecnologia e responsividade.</em></li><li tabindex="0"><span>05</span><strong>Evoluir</strong><em>Testes, entrega e próximos passos.</em></li></ol></div></section>
-  <section class="section migrated-blog" id="conteudos" aria-labelledby="conteudos-title"><div class="container"><div class="section-heading split-heading"><div><p class="eyebrow">06 / CONTEÚDOS</p><h2 id="conteudos-title" class="section-title"><span>Ideias para usar melhor</span><span>o digital.</span></h2></div><div class="contents-intro"><p>Estratégia, design e tecnologia aplicados à construção de produtos e experiências reais.</p><a class="contents-all-link" href="blog.html">Explorar conteúdos <span aria-hidden="true">↗</span></a></div></div><div class="migrated-blog-grid launch-content-grid"><article class="launch-content-feature"><span class="content-edition">DAYSLUME / EDIÇÃO 01</span><div class="content-feature-art" aria-hidden="true"><span>01</span><div><i></i><i></i><i></i><i></i></div><small>PENSAMENTO<br>DIGITAL</small></div><p class="eyebrow">ARTIGO 01 · 06 MIN</p><h3><a href="blog/presenca-digital-estrategica.html">Como organizar seus canais digitais</a></h3><p>O papel do site, das redes sociais e dos canais de atendimento.</p><a class="migration-link" href="blog/presenca-digital-estrategica.html">Ler artigo <span aria-hidden="true">↗</span></a></article><article class="launch-content-secondary launch-content-secondary--blue"><span class="content-edition">DAYSLUME / EDIÇÃO 01</span><p class="eyebrow">ARTIGO 02 · 05 MIN</p><h3><a href="blog/site-bonito-precisa-funcionar.html">Um site bonito também precisa funcionar</a></h3><p>Estética, navegação e clareza em experiências úteis para quem visita.</p><a class="migration-link" href="blog/site-bonito-precisa-funcionar.html">Ler artigo <span aria-hidden="true">↗</span></a></article><article class="launch-content-secondary launch-content-secondary--warm"><span class="content-edition">DAYSLUME / EDIÇÃO 01</span><p class="eyebrow">ARTIGO 03 · 06 MIN</p><h3><a href="blog/ia-negocios-com-criterio.html">IA no negócio: comece pelo problema</a></h3><p>Como identificar oportunidades reais sem complicar a operação.</p><a class="migration-link" href="blog/ia-negocios-com-criterio.html">Ler artigo <span aria-hidden="true">↗</span></a></article></div></div></section>
-  <section class="section about-section" id="sobre" aria-labelledby="about-title">
+  <section class="section home-process-section section-shell section-atmosphere section-atmosphere--path" id="processo-home" aria-labelledby="process-title"><div class="container"><div class="section-heading split-heading"><div><p class="eyebrow section-eyebrow"><span class="section-eyebrow__number">05</span><span class="section-eyebrow__label">COMO TRABALHAMOS</span></p><h2 id="process-title">Do contexto à evolução.</h2></div><div><p>Um processo claro para transformar necessidades em experiências e soluções digitais consistentes.</p><a class="migration-link" href="processo.html">Conheça nosso processo <span aria-hidden="true">↗</span></a></div></div><ol class="home-process-list"><li><span>01</span><strong>Entender</strong><em>Contexto, objetivo e necessidade.</em></li><li><span>02</span><strong>Estruturar</strong><em>Informações, caminhos e escopo.</em></li><li><span>03</span><strong>Criar</strong><em>Identidade, conteúdo e experiência.</em></li><li><span>04</span><strong>Desenvolver</strong><em>Interface, tecnologia e responsividade.</em></li><li><span>05</span><strong>Evoluir</strong><em>Testes, entrega e próximos passos.</em></li></ol></div></section>
+  <section class="section migrated-blog content-magazine section-shell section-atmosphere section-atmosphere--editorial section-grid section-grid--editorial" id="conteudos" aria-labelledby="conteudos-title">
+    <div class="container">
+      <header class="content-masthead">
+        <p class="eyebrow section-eyebrow"><span class="section-eyebrow__number">06</span><span class="section-eyebrow__label">CONTEÚDOS</span></p>
+        <div class="content-masthead__top">
+          <h2 id="conteudos-title">CONTEÚDOS</h2>
+          <p class="content-edition"><span>EDIÇÃO 01 / 2026</span><i aria-hidden="true"></i></p>
+        </div>
+        <p class="content-deck">Ideias que atravessam design, tecnologia e negócio.</p>
+      </header>
+
+      <article class="content-featured">
+        <div class="content-featured__copy">
+          <div class="content-meta"><span>ESTRATÉGIA <i>·</i> DESIGN</span><span>05 min</span></div>
+          <h3><a href="blog/presenca-digital-estrategica.html">O digital não precisa parecer igual para funcionar.</a></h3>
+          <span class="content-rule editorial-divider" aria-hidden="true"></span>
+          <p>Marcas relevantes não seguem fórmulas. Elas encontram formas próprias de existir no digital — com estratégia, coerência e intenção.</p>
+          <a class="content-read content-read--featured" href="blog/presenca-digital-estrategica.html"><span class="content-read__circle" aria-hidden="true">→</span><span>LER ARTIGO</span></a>
+        </div>
+        <a class="content-featured__media" href="blog/presenca-digital-estrategica.html" aria-label="Ler: O digital não precisa parecer igual para funcionar">
+          <img src="assets/images/conteudos-editorial-glass-v1.jpg" width="1896" height="832" loading="lazy" decoding="async" alt="Escultura de vidro translúcido em uma arquitetura de travertino iluminada pelo sol">
+          <span class="content-image-note">IDEIAS<br>QUE CRIAM<br>NOVOS<br>HORIZONTES.<i aria-hidden="true"></i></span>
+        </a>
+      </article>
+
+      <div class="content-secondary-grid">
+        <article class="content-secondary">
+          <a class="content-secondary__link" href="blog/site-bonito-precisa-funcionar.html" aria-label="Ler: Design que resolve antes de impressionar">
+            <div class="content-secondary__copy">
+              <div class="content-meta"><span>PROCESSO <i>·</i> NEGÓCIO</span><span>05 min</span></div>
+              <h3>Design que resolve antes de impressionar.</h3>
+              <span class="content-rule editorial-divider" aria-hidden="true"></span>
+              <p>Mais do que estética, o design estratégico antecipa problemas, simplifica escolhas e cria caminhos mais claros para o crescimento.</p>
+              <span class="content-read"><span>LER ARTIGO</span><span aria-hidden="true">→</span></span>
+            </div>
+            <span class="content-secondary__media content-secondary__media--stone">
+              <img src="assets/images/conteudos-editorial-processo-v1.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Notebook sobre bancada de travertino com sombras naturais">
+            </span>
+          </a>
+        </article>
+
+        <article class="content-secondary">
+          <a class="content-secondary__link" href="blog/tecnologia-com-intencao.html" aria-label="Ler: Quando tecnologia vira experiência">
+            <div class="content-secondary__copy">
+              <div class="content-meta"><span>TECNOLOGIA <i>·</i> EXPERIÊNCIA</span><span>04 min</span></div>
+              <h3>Quando tecnologia vira experiência.</h3>
+              <span class="content-rule editorial-divider" aria-hidden="true"></span>
+              <p>A tecnologia certa não aparece — ela se sente. É nesse encontro entre performance e sensibilidade que nascem experiências digitais memoráveis.</p>
+              <span class="content-read"><span>LER ARTIGO</span><span aria-hidden="true">→</span></span>
+            </div>
+            <span class="content-secondary__media content-secondary__media--horizon">
+              <img src="assets/images/conteudos-editorial-experiencia-v1.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Pavilhão de pedra diante de uma piscina e do horizonte ao entardecer">
+            </span>
+          </a>
+        </article>
+      </div>
+
+      <div class="content-insights">
+        <div class="content-insights__label">INSIGHTS / NOTAS</div>
+        <ol class="content-insights__list">
+          <li><a href="blog/presenca-digital-estrategica.html"><span class="content-insights__number">01</span><span>Marcas não precisam de mais conteúdo. Precisam de mais intenção.</span><span aria-hidden="true">→</span></a></li>
+          <li><a href="blog/da-ideia-a-interface.html"><span class="content-insights__number">02</span><span>Um bom site começa antes do layout.</span><span aria-hidden="true">→</span></a></li>
+          <li><a href="blog/site-bonito-precisa-funcionar.html"><span class="content-insights__number">03</span><span>O que torna uma experiência digital memorável?</span><span aria-hidden="true">→</span></a></li>
+        </ol>
+        <a class="content-archive" href="blog.html">VER ARQUIVO <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+  <section class="section about-section section-shell section-atmosphere section-atmosphere--about section-grid section-grid--full" id="sobre" aria-labelledby="about-title">
     <div class="container about-grid">
       <figure class="about-visual-card">
         <div class="about-visual-inner">
           <img src="assets/images/daysi-cunha-editorial.jpg" alt="Daysi Cunha, fundadora da DAYSLUME" width="1122" height="1402" loading="lazy" decoding="async">
-          <figcaption class="about-photo-caption">
-            <strong>Daysi Cunha</strong>
-            <span>Founder, DAYSLUME</span>
-            <small>Estratégia · Design · Desenvolvimento</small>
-          </figcaption>
         </div>
       </figure>
       <div class="about-copy">
-        <p class="eyebrow">07 / SOBRE A DAYSLUME</p>
+        <p class="eyebrow section-eyebrow"><span class="section-eyebrow__number">07</span><span class="section-eyebrow__label">SOBRE A DAYSLUME</span></p>
         <h2 id="about-title" class="section-title section-title--long">
           <span>Estratégia, design</span>
           <span>e tecnologia,</span>
@@ -157,9 +220,9 @@
       </div>
     </div>
   </section>
-  <section class="section contact-section" id="contato" aria-labelledby="contact-title"><div class="container contact-grid"><div><p class="eyebrow">08 / VAMOS CONVERSAR?</p><h2 id="contact-title" class="section-title"><span>Seu próximo projeto</span><span><em>começa com uma conversa.</em></span></h2><p>Conte um pouco sobre a necessidade do seu negócio. Vamos conhecer seu contexto e avaliar as possibilidades.</p><div class="contact-note"><a class="migration-link" href="https://wa.me/5531994492474?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20DAYSLUME%20e%20gostaria%20de%20falar%20sobre%20um%20projeto." target="_blank" rel="noopener noreferrer">Falar diretamente pelo WhatsApp ↗</a></div></div><form class="contact-form" id="contact-form" hidden data-whatsapp="5531994492474" aria-describedby="contact-privacy"><label for="nome">Seu nome <span>*</span></label><input disabled id="nome" name="nome" maxlength="100" autocomplete="name" required placeholder="Como podemos chamar você?"><label for="email">Seu e-mail <span>*</span></label><input disabled id="email" name="email" maxlength="254" type="email" autocomplete="email" required placeholder="voce@empresa.com.br"><label for="empresa">Empresa ou projeto</label><input disabled id="empresa" name="empresa" autocomplete="organization" maxlength="150" placeholder="Nome do negócio (opcional)"><label for="necessidade">Conte um pouco sobre a sua ideia <span>*</span></label><textarea disabled id="necessidade" name="necessidade" maxlength="2000" required minlength="10" rows="4" placeholder="O que você precisa desenvolver?"></textarea><button class="btn btn-navy" type="button" disabled>Preparar solicitação <span aria-hidden="true">↗</span></button><p class="form-status" id="form-status" role="status" aria-live="polite">Preencha os campos para preparar sua mensagem.</p><p id="contact-privacy" class="contact-privacy">Os dados são usados apenas para montar sua mensagem neste navegador. Você revisa e confirma o envio no WhatsApp.</p><a class="btn btn-navy whatsapp-submit" id="whatsapp-submit" hidden target="_blank" rel="noopener noreferrer">Continuar no WhatsApp <span aria-hidden="true">↗</span></a></form><noscript><p>Para enviar sua solicitação, utilize o link de WhatsApp acima.</p></noscript></div></section>
+  <section class="section contact-section section-shell section-atmosphere section-atmosphere--contact" id="contato" aria-labelledby="contact-title"><div class="container contact-grid"><div><p class="eyebrow section-eyebrow"><span class="section-eyebrow__number">08</span><span class="section-eyebrow__label">VAMOS CONVERSAR?</span></p><h2 id="contact-title" class="section-title"><span>Seu próximo projeto</span><span><em>começa com uma conversa.</em></span></h2><p>Conte um pouco sobre a necessidade do seu negócio. Vamos conhecer seu contexto e avaliar as possibilidades.</p><div class="contact-note"><a class="migration-link" href="https://wa.me/5531994492474?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20DAYSLUME%20e%20gostaria%20de%20falar%20sobre%20um%20projeto." target="_blank" rel="noopener noreferrer">Falar diretamente pelo WhatsApp ↗</a></div></div><form class="contact-form" id="contact-form" hidden data-whatsapp="5531994492474" aria-describedby="contact-privacy"><div class="form-row"><div class="form-field"><label for="nome">Seu nome <span>*</span></label><input disabled id="nome" name="nome" maxlength="100" autocomplete="name" required placeholder="Como podemos chamar você?"></div><div class="form-field"><label for="email">Seu e-mail <span>*</span></label><input disabled id="email" name="email" maxlength="254" type="email" autocomplete="email" required placeholder="voce@empresa.com.br"></div></div><div class="form-field"><label for="empresa">Empresa ou projeto</label><input disabled id="empresa" name="empresa" autocomplete="organization" maxlength="150" placeholder="Nome do negócio (opcional)"></div><div class="form-field"><label for="necessidade">Conte um pouco sobre a sua ideia <span>*</span></label><textarea disabled id="necessidade" name="necessidade" maxlength="2000" required minlength="10" rows="4" placeholder="O que você precisa desenvolver?"></textarea></div><button class="btn btn-navy" type="button" disabled>Preparar solicitação <span aria-hidden="true">↗</span></button><p class="form-status" id="form-status" role="status" aria-live="polite">Preencha os campos para preparar sua mensagem.</p><p id="contact-privacy" class="contact-privacy">Os dados são usados apenas para montar sua mensagem neste navegador. Você revisa e confirma o envio no WhatsApp.</p><a class="btn btn-navy whatsapp-submit" id="whatsapp-submit" hidden target="_blank" rel="noopener noreferrer">Continuar no WhatsApp <span aria-hidden="true">↗</span></a></form><noscript><p>Para enviar sua solicitação, utilize o link de WhatsApp acima.</p></noscript></div></section>
 </main>
-<footer class="site-footer"><div class="container"><div class="footer-main"><a href="index.html" class="footer-brand footer-logo" aria-label="DAYSLUME, início"><img src="assets/images/dayslume-logo-horizontal-branca.png" alt="DAYSLUME — Estúdio de desenvolvimento digital" class="footer-logo-img" width="320" height="73" loading="lazy"></a><p>Estratégia e tecnologia para negócios.</p></div><nav class="footer-nav" aria-label="Navegação do rodapé"><a href="servicos.html">Soluções</a><a href="solucoes.html">Produtos</a><a href="projetos.html">Projetos</a><a href="blog.html">Conteúdos</a><a href="sobre.html">Sobre</a><a href="contato.html">Contato</a></nav><nav class="footer-socials" aria-label="Redes sociais"><a href="https://www.instagram.com/dayslume/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.linkedin.com/company/dayslume/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.tiktok.com/@dayslume" target="_blank" rel="noopener noreferrer">TikTok</a></nav><div class="footer-bottom"><span>© <span id="year"></span> DAYSLUME</span><a href="#topo">Voltar ao topo ↑</a></div></div></footer>
+<footer class="site-footer"><div class="container"><div class="footer-main"><a href="index.html" class="footer-brand footer-logo" aria-label="DAYSLUME, início"><img src="assets/images/dayslume-logo-horizontal-branca.png" alt="DAYSLUME — Estúdio de desenvolvimento digital" class="footer-logo-img" width="320" height="73" loading="lazy"></a><p><strong>Estúdio de desenvolvimento digital.</strong><span>Estratégia, design e tecnologia para negócios.</span></p></div><nav class="footer-nav" aria-label="Navegação do rodapé"><a href="servicos.html">Soluções</a><a href="solucoes.html">Produtos</a><a href="projetos.html">Projetos</a><a href="blog.html">Conteúdos</a><a href="sobre.html">Sobre</a><a href="contato.html">Contato</a></nav><nav class="footer-socials" aria-label="Redes sociais"><a href="https://www.instagram.com/dayslume/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.linkedin.com/company/dayslume/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.tiktok.com/@dayslume" target="_blank" rel="noopener noreferrer">TikTok</a></nav><div class="footer-bottom"><span>© <span id="year"></span> DAYSLUME</span><a href="#topo">Voltar ao topo ↑</a></div></div></footer>
 <script src="assets/js/dayslume-motion.js" defer></script><script src="assets/js/dayslume-contact.js" defer></script><script src="assets/js/home-premium.js" defer></script><script src="assets/js/hero-flower.js" defer></script>
 <a class="floating-whatsapp" href="https://wa.me/5531994492474?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20DAYSLUME%20e%20gostaria%20de%20falar%20sobre%20um%20projeto." target="_blank" rel="noopener noreferrer" aria-label="Falar com a DAYSLUME pelo WhatsApp" title="Fale com a DAYSLUME pelo WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 11.6a8.4 8.4 0 0 1-12.4 7.3L3.4 20l1.2-4.4a8.4 8.4 0 1 1 15.8-4z"/><path d="M8.4 8.5c.2-.4.5-.4.8-.4l.5.1c.1 0 .3.2.4.5l.5 1.3c.1.3.1.5-.1.8l-.5.6c.7 1.4 1.7 2.4 3.1 3.1l.6-.6c.2-.2.5-.2.8-.1l1.3.5c.3.1.5.3.5.5.1.7-.2 1.2-.8 1.5-1.5.6-3.4-.3-5.1-2s-2.7-3.7-2-5.1z"/></svg></a>
 </body>

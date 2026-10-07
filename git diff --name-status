@@ -1,0 +1,30 @@
+warning: in the working copy of 'assets/css/about-reference.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'assets/css/brand-palette.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'assets/css/hero-flower-interactive.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'assets/css/home-section-rhythm.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'assets/js/hero-flower.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'sitemap.xml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/site-structure.test.cjs', LF will be replaced by CRLF the next time Git touches it
+ README.md                                          |   14 [32m+[m[31m-[m
+ assets/css/about-reference.css                     |   47 [31m-[m
+ assets/css/brand-palette.css                       | 1326 [32m++++++++++++++++++++[m
+ assets/css/contents-reference.css                  |  161 [32m+[m[31m--[m
+ assets/css/hero-flower-interactive.css             |   14 [32m+[m[31m-[m
+ assets/css/hero-tech.css                           |   16 [31m-[m
+ assets/css/home-premium.css                        |  146 [32m+[m[31m--[m
+ assets/css/home-section-rhythm.css                 |   65 [32m+[m[31m-[m
+ assets/js/dayslume-contact.js                      |   33 [32m+[m[31m-[m
+ assets/js/dayslume-motion.js                       |  126 [32m+[m[31m-[m
+ assets/js/hero-flower.js                           |   15 [32m+[m
+ assets/js/home-premium.js                          |   32 [32m+[m[31m-[m
+ ...tating_with_lig\342\200\246_20260923121956.mp4" |  Bin [31m5898949[m -> [32m0[m bytes
+ assets/videos/background.mp4                       |  Bin [31m2414613[m -> [32m0[m bytes
+ assets/videos/dayslume-flower-light-hero.mp4       |  Bin [31m3320158[m -> [32m0[m bytes
+ assets/videos/download.mp4                         |  Bin [31m5188612[m -> [32m0[m bytes
+ contato.html                                       |   14 [32m+[m[31m-[m
+ index.html                                         |  127 [32m+[m[31m-[m
+ projetos.html                                      |    2 [32m+[m[31m-[m
+ sitemap.xml                                        |    6 [32m+[m[31m-[m
+ tests/site-structure.test.cjs                      |   48 [32m+[m[31m-[m
+ 21 files changed, 1675 insertions(+), 517 deletions(-)

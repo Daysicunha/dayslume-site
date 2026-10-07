@@ -1,4 +1,4 @@
-# DAYSLUME — versão de lançamento em validação
+# DAYSLUME — site institucional em produção
 
 Site institucional estático em HTML, CSS e JavaScript. A arquitetura de lançamento organiza a navegação em Soluções, Produtos, Projetos, Conteúdos e Sobre, preservando as páginas específicas e a identidade visual existente.
 
@@ -8,7 +8,17 @@ Site institucional estático em HTML, CSS e JavaScript. A arquitetura de lançam
 - [Roteiro de conferência da home](docs/validar-home.md)
 - [Histórico da migração comercial](docs/migracao-daysi-dayslume.md)
 
-A hero mantém a composição aprovada e o enquadramento refinado da flor. As 19 páginas compartilham navegação e rodapé; Home e Contato preparam solicitações por WhatsApp. A publicação permanece pendente de validação visual final.
+A hero mantém a composição aprovada e o enquadramento refinado da flor. As 19 páginas compartilham navegação e rodapé; Home e Contato preparam solicitações por WhatsApp.
+
+## Estado atual de produção
+
+- páginas públicas com `index, follow`;
+- canonicals absolutos e Open Graph URL coerentes;
+- `robots.txt` e `sitemap.xml` ativos;
+- formulário que prepara a mensagem localmente para revisão e envio no WhatsApp;
+- validação automatizada de estrutura, referências, metadados e segurança básica.
+
+A validação visual continua sendo uma etapa obrigatória antes de cada merge ou nova publicação.
 
 Prévia local: qualquer servidor HTTP estático. Validação disponível sem dependências: `node --test tests/*.test.cjs`; sintaxe: `node --check assets/js/home-premium.js`. A checagem Python histórica continua disponível quando houver Python instalado.
 

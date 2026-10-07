@@ -18,7 +18,7 @@ const sources = new Map(pages.map((page) => [page, fs.readFileSync(page, 'utf8')
 
 test('all HTML pages have valid metadata, landmarks and local references', () => {
   const errors = [];
-  const requiredMetadata = ['description', 'theme-color', 'robots', 'og:title', 'og:description', 'og:type', 'og:locale'];
+  const requiredMetadata = ['description', 'theme-color', 'robots', 'og:title', 'og:description', 'og:type', 'og:locale', 'og:url'];
 
   for (const [page, source] of sources) {
     const label = path.relative(root, page);
@@ -30,6 +30,13 @@ test('all HTML pages have valid metadata, landmarks and local references', () =>
       const pattern = new RegExp(`<meta\\s+(?:name|property)=["']${escaped}["']`, 'gi');
       const count = (source.match(pattern) || []).length;
       if (count !== 1) errors.push(`${label}: metadata ${key} count is ${count}`);
+    }
+
+    const canonicals = [...source.matchAll(/<link\b[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["'][^>]*>/gi)];
+    if (canonicals.length !== 1) errors.push(`${label}: canonical count is ${canonicals.length}`);
+    const ogUrl = source.match(/<meta\b[^>]*property=["']og:url["'][^>]*content=["']([^"']+)["'][^>]*>/i)?.[1];
+    if (canonicals.length === 1 && ogUrl && canonicals[0][1] !== ogUrl) {
+      errors.push(`${label}: canonical and og:url differ`);
     }
 
     const ids = [...source.matchAll(/\sid=["']([^"']+)["']/gi)].map((match) => match[1]);
@@ -59,6 +66,36 @@ test('all HTML pages have valid metadata, landmarks and local references', () =>
         if (!new RegExp(`\\sid=["']${anchor}["']`, 'i').test(targetSource)) errors.push(`${label}: missing anchor ${reference}`);
       }
     }
+  }
+
+  assert.deepEqual(errors, []);
+});
+
+test('sitemap contains only existing pages and matches their canonical URLs', () => {
+  const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
+  const locations = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+  const errors = [];
+
+  if (new Set(locations).size !== locations.length) errors.push('sitemap: duplicate URLs');
+
+  const sitemapUrls = new Set(locations);
+  for (const [page, source] of sources) {
+    const canonical = source.match(/<link\b[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["'][^>]*>/i)?.[1];
+    if (canonical && !sitemapUrls.has(canonical)) {
+      errors.push(`${path.relative(root, page)}: canonical missing from sitemap`);
+    }
+  }
+
+  for (const location of locations) {
+    const url = new URL(location);
+    const relative = url.pathname === '/' ? 'index.html' : decodeURIComponent(url.pathname.slice(1));
+    const target = path.join(root, relative);
+    if (!fs.existsSync(target) || !sources.has(target)) {
+      errors.push(`sitemap: missing page ${location}`);
+      continue;
+    }
+    const canonical = sources.get(target).match(/<link\b[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["'][^>]*>/i)?.[1];
+    if (canonical !== location) errors.push(`${relative}: canonical does not match sitemap`);
   }
 
   assert.deepEqual(errors, []);
@@ -137,4 +174,13 @@ test('home hero uses the six official independent petals with motion safeguards'
   assert.match(heroJs, /prefers-reduced-motion:\s*reduce/);
   assert.match(heroCss, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
   assert.match(heroCss, /@media\s*\(max-width:\s*800px\)/);
+});
+
+test('home static content is not exposed as a fake control or viewport-height section', () => {
+  const home = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  const rhythm = fs.readFileSync(path.join(root, 'assets', 'css', 'home-section-rhythm.css'), 'utf8');
+
+  assert.doesNotMatch(home, /<button\b[^>]*class=["'][^"']*manifest-item/i);
+  assert.doesNotMatch(home, /<li\b[^>]*tabindex=/i);
+  assert.doesNotMatch(rhythm, /min-(?:block-size|height)\s*:[^;]*(?:svh|vh)/i);
 });
