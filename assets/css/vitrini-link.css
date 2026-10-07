@@ -176,3 +176,448 @@ main .vl-home:before{content:"";position:absolute;pointer-events:none;width:min(
  .vl-btn,.vl-text-link,.vl-device,.vl-model{transition:none!important}
  .vl-btn:hover,.vl-home-display:hover .vl-device,.vl-model:hover{transform:none!important}
 }
+
+
+/* === VITRINI LINK / IDENTIDADE DAYSLUME 2026 === */
+/* Camada visual final do produto. Mantém a estrutura existente e usa somente
+   os tokens oficiais definidos em brand-palette.css. */
+.vl-home,
+.vl-page {
+  --vl-ink: var(--ink-deep);
+  --vl-body: var(--text-secondary);
+  --vl-line: rgba(var(--slate-mineral-rgb), .28);
+  --vl-accent: var(--plum-mineral);
+  --vl-accent-soft: rgba(var(--plum-mineral-rgb), .10);
+  --vl-blue-soft: rgba(var(--mist-blue-rgb), .22);
+  --vl-peach-soft: rgba(var(--peach-rgb), .18);
+  --vl-surface: var(--warm-ivory);
+  --vl-deep: var(--ink-deep);
+}
+
+.vl-page {
+  background: var(--warm-ivory);
+  color: var(--ink-deep);
+}
+
+.vl-page main {
+  background: var(--warm-ivory);
+}
+
+/* Assinatura editorial compartilhada com a home. */
+.vl-eyebrow {
+  color: var(--plum-mineral);
+}
+.vl-eyebrow > span {
+  width: 28px;
+  background: linear-gradient(90deg, var(--plum-mineral), var(--peach));
+}
+.vl-eyebrow--light {
+  color: var(--peach);
+}
+.vl-eyebrow--light > span {
+  background: linear-gradient(90deg, var(--peach), var(--mist-blue));
+}
+
+.vl-btn-dark {
+  background: var(--ink-deep);
+  color: var(--warm-ivory);
+  border-color: var(--ink-deep);
+  box-shadow: 0 12px 28px rgba(var(--ink-deep-rgb), .14);
+}
+.vl-btn-dark:hover {
+  background: var(--plum-mineral);
+  border-color: var(--plum-mineral);
+  color: var(--warm-ivory);
+  box-shadow: 0 16px 34px rgba(var(--ink-deep-rgb), .18);
+}
+.vl-btn-light {
+  color: var(--ink-deep);
+  background: var(--warm-ivory);
+  border-color: rgba(var(--warm-ivory-rgb), .85);
+}
+.vl-btn-light:hover {
+  color: var(--ink-deep);
+  background: var(--mist-blue);
+  border-color: var(--mist-blue);
+}
+.vl-text-link {
+  color: var(--plum-mineral);
+}
+.vl-text-link:hover {
+  color: var(--ink-deep);
+}
+.vl-home a:focus-visible,
+.vl-page main a:focus-visible {
+  outline-color: var(--plum-mineral);
+}
+
+/* Bloco do produto dentro da home. */
+main .vl-home {
+  background:
+    radial-gradient(circle at 91% 18%, rgba(var(--plum-mineral-rgb), .12), transparent 31%),
+    radial-gradient(circle at 12% 82%, rgba(var(--mist-blue-rgb), .18), transparent 34%),
+    var(--warm-ivory);
+  color: var(--ink-deep);
+  border-top: 1px solid rgba(var(--slate-mineral-rgb), .18);
+  border-bottom: 1px solid rgba(var(--slate-mineral-rgb), .18);
+}
+main .vl-home::before {
+  opacity: .055;
+  filter: saturate(.72);
+}
+.vl-home h2 {
+  color: var(--ink-deep);
+}
+.vl-home h2 em {
+  color: var(--plum-mineral);
+}
+.vl-home-lead,
+.vl-home-points li {
+  color: var(--text-secondary);
+}
+.vl-home-points li::before {
+  background: var(--plum-mineral);
+  box-shadow: 0 0 0 4px rgba(var(--plum-mineral-rgb), .12);
+}
+.vl-home-orbit {
+  border-color: rgba(var(--slate-mineral-rgb), .34);
+}
+.vl-home-orbit::before {
+  border-color: rgba(var(--peach-rgb), .34);
+}
+
+/* Hero: mesma família visual da nova DAYSLUME, sem copiar a home literalmente. */
+.vl-page .vl-page-hero {
+  background:
+    radial-gradient(circle at 82% 28%, rgba(var(--plum-mineral-rgb), .34), transparent 34%),
+    radial-gradient(circle at 72% 70%, rgba(var(--mist-blue-rgb), .11), transparent 28%),
+    linear-gradient(118deg, var(--ink-deep) 0%, #262a38 62%, #2b2c3b 100%);
+  color: var(--warm-ivory);
+}
+.vl-page .vl-page-hero::before {
+  opacity: .075;
+  filter: saturate(.65);
+}
+.vl-page-hero h1 {
+  color: var(--warm-ivory);
+}
+.vl-page-hero h1 em {
+  color: var(--mist-blue);
+}
+.vl-page-lead {
+  color: rgba(var(--warm-ivory-rgb), .78);
+}
+.vl-page-inline {
+  color: var(--warm-ivory);
+  border-bottom-color: rgba(var(--mist-blue-rgb), .55);
+}
+.vl-page-inline:hover {
+  color: var(--peach);
+}
+.vl-page-hero-note {
+  color: rgba(var(--mist-blue-rgb), .82);
+}
+.vl-page-preview-glow {
+  border-color: rgba(var(--mist-blue-rgb), .22);
+}
+.vl-page-preview-glow::before {
+  border-color: rgba(var(--peach-rgb), .30);
+}
+.vl-page-preview figcaption {
+  color: rgba(var(--warm-ivory-rgb), .66);
+}
+
+/* Mockup central do produto. */
+.vl-device,
+.vl-demo-device {
+  border-color: rgba(var(--slate-mineral-rgb), .30);
+  background:
+    linear-gradient(150deg, rgba(var(--warm-ivory-rgb), .98), rgba(var(--mist-blue-rgb), .18));
+  box-shadow:
+    0 30px 65px rgba(var(--ink-deep-rgb), .19),
+    inset 0 1px 0 rgba(var(--warm-ivory-rgb), .95);
+  color: var(--ink-deep);
+}
+.vl-home-display:hover .vl-device {
+  box-shadow:
+    0 38px 75px rgba(var(--ink-deep-rgb), .23),
+    inset 0 1px 0 rgba(var(--warm-ivory-rgb), .95);
+}
+.vl-device-top,
+.vl-demo-device-top {
+  color: var(--slate-mineral);
+}
+.vl-device-top span:last-child,
+.vl-demo-device-top span:last-child {
+  color: var(--plum-mineral);
+}
+.vl-device-avatar,
+.vl-demo-device-flower {
+  border-color: rgba(var(--slate-mineral-rgb), .24);
+  background: var(--warm-ivory);
+  box-shadow: 0 9px 25px rgba(var(--ink-deep-rgb), .08);
+}
+.vl-device > p,
+.vl-demo-device > p,
+.vl-device-foot,
+.vl-demo-device-footer,
+.vl-home-display figcaption {
+  color: var(--text-secondary);
+}
+.vl-device-links span,
+.vl-demo-device-actions span {
+  border-color: rgba(var(--slate-mineral-rgb), .30);
+  background: rgba(var(--warm-ivory-rgb), .88);
+  color: var(--ink-deep);
+}
+.vl-device-links span:last-child,
+.vl-demo-device-actions span:last-child {
+  background: var(--plum-mineral);
+  border-color: var(--plum-mineral);
+  color: var(--warm-ivory);
+}
+
+/* Seções claras e atmosfera editorial. */
+.vl-page-benefits,
+.vl-steps-section {
+  position: relative;
+  background: var(--warm-ivory);
+}
+.vl-page-benefits {
+  background:
+    radial-gradient(circle at 94% 18%, rgba(var(--mist-blue-rgb), .18), transparent 27%),
+    var(--warm-ivory);
+}
+.vl-models-section {
+  position: relative;
+  background:
+    linear-gradient(125deg, rgba(var(--mist-blue-rgb), .22), transparent 42%),
+    radial-gradient(circle at 88% 76%, rgba(var(--peach-rgb), .16), transparent 30%),
+    var(--warm-ivory);
+  border-top: 1px solid rgba(var(--slate-mineral-rgb), .18);
+  border-bottom: 1px solid rgba(var(--slate-mineral-rgb), .18);
+}
+.vl-compare-section {
+  background:
+    radial-gradient(circle at 10% 12%, rgba(var(--plum-mineral-rgb), .09), transparent 26%),
+    rgba(var(--mist-blue-rgb), .18);
+}
+.vl-page-benefits::before,
+.vl-models-section::before,
+.vl-steps-section::before,
+.vl-compare-section::before {
+  content: "";
+  position: absolute;
+  width: clamp(120px, 15vw, 220px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(var(--plum-mineral-rgb), .08);
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: rotate(-28deg);
+}
+.vl-page-benefits::before {
+  left: -60px;
+  bottom: 18px;
+}
+.vl-models-section::before {
+  right: -70px;
+  top: 48px;
+  transform: rotate(145deg);
+}
+.vl-steps-section::before {
+  left: 8%;
+  bottom: -90px;
+}
+.vl-compare-section::before {
+  right: 5%;
+  top: -80px;
+}
+
+.vl-heading h2,
+.vl-steps-lead h2 {
+  color: var(--ink-deep);
+}
+.vl-heading h2 em,
+.vl-steps-lead h2 em {
+  color: var(--plum-mineral);
+}
+.vl-heading > p,
+.vl-steps-lead > p:not(.vl-eyebrow) {
+  color: var(--text-secondary);
+}
+
+/* Cards de benefícios. */
+.vl-benefits-grid {
+  border-color: rgba(var(--slate-mineral-rgb), .24);
+  background: rgba(var(--warm-ivory-rgb), .82);
+  box-shadow: 0 18px 46px rgba(var(--ink-deep-rgb), .07);
+}
+.vl-benefits-grid article {
+  border-color: rgba(var(--slate-mineral-rgb), .24);
+}
+.vl-benefit-index {
+  color: var(--plum-mineral);
+}
+.vl-benefit-mark {
+  border-color: rgba(var(--mist-blue-rgb), .75);
+  color: var(--plum-mineral);
+  background: rgba(var(--mist-blue-rgb), .19);
+}
+.vl-benefits-grid h3 {
+  color: var(--ink-deep);
+}
+.vl-benefits-grid p {
+  color: var(--text-secondary);
+}
+
+/* Seis estilos: família DAYSLUME, com variação interna controlada. */
+.vl-model {
+  border-color: rgba(var(--slate-mineral-rgb), .25);
+  background: rgba(var(--warm-ivory-rgb), .90);
+  box-shadow: 0 13px 36px rgba(var(--ink-deep-rgb), .06);
+}
+.vl-model:hover {
+  border-color: rgba(var(--plum-mineral-rgb), .42);
+  box-shadow: 0 19px 45px rgba(var(--ink-deep-rgb), .11);
+}
+.vl-model-top,
+.vl-model-label {
+  color: var(--slate-mineral);
+}
+.vl-model-copy h3 {
+  color: var(--ink-deep);
+}
+.vl-model-copy > p:last-child,
+.vl-model-note p {
+  color: var(--text-secondary);
+}
+.vl-model-note,
+.vl-steps-list,
+.vl-steps-list li {
+  border-color: rgba(var(--slate-mineral-rgb), .28);
+}
+.vl-model-dot {
+  background: var(--preview-accent, var(--plum-mineral));
+}
+.vl-model--essencial .vl-model-window {
+  --preview-bg: var(--warm-ivory);
+  --preview-paper: var(--warm-ivory);
+  --preview-accent: var(--slate-mineral);
+  --preview-light: rgba(var(--mist-blue-rgb), .28);
+}
+.vl-model--noir .vl-model-window {
+  --preview-bg: var(--ink-deep);
+  --preview-paper: rgba(var(--mist-blue-rgb), .11);
+  --preview-accent: var(--peach);
+  --preview-light: rgba(var(--mist-blue-rgb), .22);
+}
+.vl-model--editorial .vl-model-window {
+  --preview-bg: var(--warm-ivory);
+  --preview-paper: var(--warm-ivory);
+  --preview-accent: var(--peach);
+  --preview-light: rgba(var(--peach-rgb), .30);
+}
+.vl-model--soft .vl-model-window {
+  --preview-bg: var(--warm-ivory);
+  --preview-paper: var(--warm-ivory);
+  --preview-accent: var(--plum-mineral);
+  --preview-light: rgba(var(--plum-mineral-rgb), .18);
+}
+.vl-model--institucional .vl-model-window {
+  --preview-bg: var(--warm-ivory);
+  --preview-paper: var(--warm-ivory);
+  --preview-accent: var(--mist-blue);
+  --preview-light: rgba(var(--slate-mineral-rgb), .16);
+}
+.vl-model--comercial .vl-model-window {
+  --preview-bg: var(--warm-ivory);
+  --preview-paper: var(--warm-ivory);
+  --preview-accent: var(--plum-mineral);
+  --preview-light: rgba(var(--peach-rgb), .24);
+}
+
+/* Etapas e comparação. */
+.vl-steps-list li > span {
+  color: var(--plum-mineral);
+}
+.vl-steps-list h3 {
+  color: var(--ink-deep);
+}
+.vl-steps-list p {
+  color: var(--text-secondary);
+}
+.vl-compare-grid article {
+  border-color: rgba(var(--slate-mineral-rgb), .28);
+  background: rgba(var(--warm-ivory-rgb), .92);
+}
+.vl-compare-grid article:last-child {
+  background:
+    radial-gradient(circle at 90% 12%, rgba(var(--plum-mineral-rgb), .30), transparent 35%),
+    var(--ink-deep);
+  color: var(--warm-ivory);
+  border-color: rgba(var(--mist-blue-rgb), .26);
+}
+.vl-compare-label,
+.vl-compare-meta {
+  color: var(--plum-mineral);
+}
+.vl-compare-grid article:last-child .vl-compare-label {
+  color: var(--peach);
+}
+.vl-compare-grid p {
+  color: var(--text-secondary);
+}
+.vl-compare-grid article:last-child p {
+  color: rgba(var(--warm-ivory-rgb), .76);
+}
+.vl-compare-grid .vl-text-link {
+  color: var(--mist-blue);
+}
+.vl-compare-grid .vl-text-link:hover {
+  color: var(--warm-ivory);
+}
+
+/* CTA final: continuidade direta da assinatura escura da marca. */
+.vl-final-section {
+  background:
+    radial-gradient(circle at 88% 24%, rgba(var(--plum-mineral-rgb), .38), transparent 35%),
+    radial-gradient(circle at 12% 100%, rgba(var(--mist-blue-rgb), .10), transparent 30%),
+    var(--ink-deep);
+  color: var(--warm-ivory);
+}
+.vl-final-inner h2 {
+  color: var(--warm-ivory);
+}
+.vl-final-inner h2 em {
+  color: var(--mist-blue);
+}
+.vl-final-inner p:not(.vl-eyebrow) {
+  color: rgba(var(--warm-ivory-rgb), .76);
+}
+
+/* Evita que os adornos interceptem cliques e preserva legibilidade no mobile. */
+.vl-page-benefits > .container,
+.vl-models-section > .container,
+.vl-steps-section > .container,
+.vl-compare-section > .container {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 760px) {
+  .vl-page-benefits::before,
+  .vl-models-section::before,
+  .vl-steps-section::before,
+  .vl-compare-section::before {
+    opacity: .55;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vl-model:hover,
+  .vl-home-display:hover .vl-device {
+    transform: none !important;
+  }
+}
