@@ -51,17 +51,12 @@
     reveal('.manifest-item', 70, 255);
     reveal('.intro-section .section-heading > div', 90);
     reveal('.launch-pillars .service-card', 85);
-    reveal('.launch-products .section-heading > div', 90);
-    reveal('.launch-products .solution-card', 105);
+    // Hero motion module owns section 03's editorial choreography.
     reveal('.home-process-section .section-heading > div', 90);
     // Os cinco passos são acionados por progresso real de scroll na hero experimental.
     reveal('.home-process-list:not([data-process-scroll]) li', 70);
-    reveal('.content-masthead > *, .content-featured, .content-secondary, .content-insights__label, .content-insights__list li, .content-archive', 85);
-    reveal('.about-visual-card', 0);
-    reveal('.about-copy > .eyebrow, .about-copy > h2, .about-copy > .about-intro, .about-copy > .about-signature, .about-copy > .about-cta', 85);
-    document.querySelectorAll('.project-card').forEach(el => {
-      el.classList.add('launch-reveal'); observer.observe(el);
-    });
+    // Sections 04/06/07/08 now use one-shot, section-specific reveals
+    // from the hero motion module; prevent double animations.
     const process = document.querySelector('.home-process-list');
     if (process) observer.observe(process);
   }

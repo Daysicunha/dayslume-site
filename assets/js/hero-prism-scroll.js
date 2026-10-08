@@ -27,7 +27,51 @@
   const clamp = (value, min=0, max=1) => Math.max(min, Math.min(max,value));
   const easing = value => { const p=clamp(value);return p*p*(3-2*p); };
   const range = (p,start,end)=>easing((p-start)/(end-start));
+  // One shared scroll choreography; all cues use normalized viewport progress.
+  // The headline remains readable until the flower and color panel have moved.
+  const MOTION_CUES = Object.freeze({
+    hero: Object.freeze({
+      flowerStart:.08, flowerEnd:.80, panelStart:.07, panelEnd:.78,
+      textStart:.18, textEnd:.76, hintStart:.03, hintEnd:.18
+    }),
+    cards: Object.freeze({ start:.93, distance:.58, stagger:.11, duration:.88 }),
+    process: Object.freeze({ start:.91, distance:.69, stagger:.11, duration:.53 })
+  });
+  const scrollRange = (top, cues)=>clamp((innerHeight*cues.start-top)/
+    Math.max(1,innerHeight*cues.distance));
   let enabled = false;
+  let editorialObserver = null;
+  const editorialItems = [];
+  const editorialGroups = [
+    // 03: product ecosystems arrive as two separate interface panels.
+    {selector:'#produtos', items:[
+      ['.section-heading > div','heading'],
+      ['.solution-card','ecosystem']
+    ]},
+    // 04: real case studies enter sequentially; proof comes afterward.
+    {selector:'#projetos', items:[
+      ['.projects-heading > div','heading'],
+      ['.flagship-case','case'],
+      ['.execution-proof','proof']
+    ]},
+    // 06: a restrained editorial magazine, with article covers unfolding.
+    {selector:'#conteudos', items:[
+      ['.content-masthead','heading'],
+      ['.content-featured','feature'],
+      ['.content-secondary','article'],
+      ['.content-insights__label, .content-insights__list li, .content-archive','note']
+    ]},
+    // 07: portrait first, founder narrative alongside it.
+    {selector:'#sobre', items:[
+      ['.about-visual-card','portrait'],
+      ['.about-copy > .eyebrow, .about-copy > h2','heading'],
+      ['.about-copy > .about-intro, .about-copy > .founder-statement, .about-copy > .founder-trust-list, .about-copy > .about-signature, .about-copy > .about-cta','copy']
+    ]},
+    // 08: the contact message only, with all actions remaining usable.
+    {selector:'#contato', items:[
+      ['.contact-grid > div:first-child','contact']
+    ]}
+  ];
   let frame = 0;
   const current={x:75,y:47,gx:50,gy:50};
   const target={...current};
@@ -43,8 +87,10 @@
     const bounds=hero.getBoundingClientRect();
     const distance=Math.max(1,bounds.height-innerHeight);
     const p=clamp(-bounds.top/distance);
-    const invasion=range(p,.08,.82);
-    const fade=range(p,.13,.58);
+    const cues=MOTION_CUES.hero;
+    const invasion=range(p,cues.flowerStart,cues.flowerEnd);
+    const fade=range(p,cues.textStart,cues.textEnd);
+    const panel=range(p,cues.panelStart,cues.panelEnd);
     const move=-Math.min(innerWidth*.35,510)*invasion;
     const lift=-12*invasion;
     const growth=1+invasion*.46;
@@ -58,11 +104,11 @@
     flower.style.transform='translate3d('+move.toFixed(2)+'px,'+
       lift.toFixed(2)+'px,0) scale('+growth.toFixed(4)+')';
     hero.style.setProperty('--hero-meter-progress',p.toFixed(4));
-    hero.style.setProperty('--hero-split-x',(52*(1-range(p,.07,.79))).toFixed(2)+'%');
+    hero.style.setProperty('--hero-split-x',(52*(1-panel)).toFixed(2)+'%');
     hero.style.setProperty('--hero-rays-shift',(-innerWidth*.12*invasion).toFixed(2)+'px');
     hero.style.setProperty('--hero-light-focus',(78-34*invasion).toFixed(2)+'%');
     const hint=hero.querySelector('.hero-scroll-hint');
-    if (hint) hint.style.opacity=(1-range(p,.02,.15)).toFixed(3);
+    if (hint) hint.style.opacity=(1-range(p,cues.hintStart,cues.hintEnd)).toFixed(3);
   }
 
   function scrollCards() {
@@ -72,10 +118,11 @@
     const gridRect=cardGrid.getBoundingClientRect();
     const sectionRect=section.getBoundingClientRect();
     if (sectionRect.top>innerHeight*1.3 || sectionRect.bottom<0) return;
-    const entry=clamp((innerHeight*.94-gridRect.top)/(innerHeight*.68));
+    const cues=MOTION_CUES.cards;
+    const entry=scrollRange(gridRect.top,cues);
     const show=easing(entry);
     cards.forEach((card,i)=>{
-      const t=easing(clamp((entry-i*.16)/.84));
+      const t=easing(clamp((entry-i*cues.stagger)/cues.duration));
       const sign=i===0?-1:1;
       const travel=Math.min(innerWidth*.33,390);
       const rollX=sign*travel*(1-t);
@@ -115,15 +162,61 @@
     const rect=process.getBoundingClientRect();
     if(rect.top>innerHeight+150 || rect.bottom<-150) return;
     // A passagem do bloco pelo viewport aciona os cinco passos separadamente.
-    const progress=clamp((innerHeight*.90-rect.top)/(innerHeight*.68));
+    const cues=MOTION_CUES.process;
+    const progress=scrollRange(rect.top,cues);
     process.style.setProperty('--process-fill',easing(progress).toFixed(4));
     processCards.forEach((card,i)=>{
-      const t=easing(clamp((progress-i*.14)/.43));
+      const t=easing(clamp((progress-i*cues.stagger)/cues.duration));
       card.style.setProperty('--process-opacity',t.toFixed(3));
       card.style.setProperty('--process-y',(24*(1-t)).toFixed(2)+'px');
       card.style.setProperty('--process-scale',(.97+.03*t).toFixed(4));
       card.classList.toggle('is-process-visible',t>.98);
     });
+  }
+
+  function clearEditorial() {
+    if(editorialObserver) {
+      editorialObserver.disconnect();
+      editorialObserver=null;
+    }
+    editorialItems.splice(0).forEach(node=>{
+      node.classList.remove('motion-story-item','is-in-view');
+      node.removeAttribute('data-motion-type');
+      node.style.removeProperty('--motion-delay');
+    });
+  }
+
+  function setupEditorial() {
+    clearEditorial();
+    if(!enabled || !('IntersectionObserver' in window)) return;
+
+    editorialObserver=new IntersectionObserver(entries=>{
+      // One-shot reveals; no scroll listener or constantly running animations
+      // in the other sections. Once visible, each item stays visible.
+      for(const entry of entries){
+        if(!entry.isIntersecting) continue;
+        entry.target.classList.add('is-in-view');
+        editorialObserver.unobserve(entry.target);
+      }
+    },{rootMargin:'0px 0px -10% 0px',threshold:.12});
+
+    for(const group of editorialGroups){
+      const root=document.querySelector(group.selector);
+      if(!root) continue;
+      let position=0;
+      for(const [selector,variant] of group.items){
+        root.querySelectorAll(selector).forEach(node=>{
+          // Inputs and active controls are not animated or moved.
+          if(node.matches('input,textarea,button,form'))return;
+          node.classList.add('motion-story-item');
+          node.dataset.motionType=variant;
+          node.style.setProperty('--motion-delay',Math.min(position*80,320)+'ms');
+          editorialItems.push(node);
+          editorialObserver.observe(node);
+          position++;
+        });
+      }
+    }
   }
 
   function renderPointer(){
@@ -198,11 +291,13 @@
   }
   function sync(){
     const next=allowMotion();
+    const changed=next!==enabled;
     if(!next){cancelAnimationFrame(frame);frame=0;enabled=false;clearMotion();}
     else enabled=true;
     hero.classList.toggle('hero-scroll-ready',enabled);
     section?.classList.toggle('kiru-cards-ready',enabled);
     process?.classList.toggle('process-scroll-ready',enabled);
+    if(changed)setupEditorial();
     if(!allowPointer())onPointerLeave();
     schedule();
   }

@@ -525,3 +525,82 @@ body.home-page main > #processo-home .home-process-list[data-process-scroll].pro
     transition:none!important;
   }
 }
+
+
+/* Unified DAYSLUME motion rhythm v3.5
+   Scroll-pinned scenes use normalized progress in hero-prism-scroll.js.
+   Other sections use single, accessible one-shot reveals.
+   Timings: 620–820ms, stagger ≤320ms; no additional JS animation loops. */
+@media (min-width:801px) and (prefers-reduced-motion:no-preference) {
+  /* Hero duration ≈ 0.85 viewport of scroll, rather than a long empty hold. */
+  .hero.hero--scroll-invasion.hero-scroll-ready {
+    height:185svh;
+  }
+  body.home-page main > :is(#produtos,#projetos,#conteudos,#sobre,#contato) .motion-story-item {
+    --motion-x:0px;
+    --motion-y:22px;
+    opacity:0;
+    translate:var(--motion-x) var(--motion-y);
+    transition:
+      opacity 660ms cubic-bezier(.22,1,.36,1) var(--motion-delay,0ms),
+      translate 740ms cubic-bezier(.22,1,.36,1) var(--motion-delay,0ms);
+  }
+  body.home-page main > :is(#produtos,#projetos,#conteudos,#sobre,#contato) .motion-story-item.is-in-view {
+    opacity:1;
+    translate:0px 0px;
+  }
+  /* 03 | Ecosystems: interfaces slide from opposing sides but settle fully. */
+  body.home-page main > #produtos .motion-story-item[data-motion-type="ecosystem"] {
+    --motion-y:28px;
+    --motion-x:-32px;
+    transition-duration:780ms,860ms;
+  }
+  body.home-page main > #produtos .solution-card:nth-child(2).motion-story-item {
+    --motion-x:32px;
+  }
+  /* 04 | Cases: understated upward stagger, no cover hover interference. */
+  body.home-page main > #projetos .motion-story-item[data-motion-type="case"] {
+    --motion-y:32px;
+    transition-duration:700ms,780ms;
+  }
+  body.home-page main > #projetos .motion-story-item[data-motion-type="proof"] {
+    --motion-y:14px;
+  }
+  /* 06 | Editorial: featured cover lifts gently, secondary articles follow. */
+  body.home-page main > #conteudos .motion-story-item[data-motion-type="feature"] {
+    --motion-y:28px;
+    transition-duration:760ms,820ms;
+  }
+  body.home-page main > #conteudos .motion-story-item[data-motion-type="article"] {
+    --motion-y:22px;
+  }
+  body.home-page main > #conteudos .motion-story-item[data-motion-type="note"] {
+    --motion-y:10px;
+    transition-duration:480ms,600ms;
+  }
+  /* 07 | Founder: portrait from the side; the copy remains typographic. */
+  body.home-page main > #sobre .motion-story-item[data-motion-type="portrait"] {
+    --motion-x:-24px;
+    --motion-y:12px;
+    transition-duration:840ms,900ms;
+  }
+  body.home-page main > #sobre .motion-story-item[data-motion-type="copy"] {
+    --motion-y:14px;
+    transition-duration:620ms,720ms;
+  }
+  /* 08 | Contact: final, calm landing instead of competing card movement. */
+  body.home-page main > #contato .motion-story-item[data-motion-type="contact"] {
+    --motion-y:18px;
+    transition-duration:780ms,820ms;
+  }
+}
+
+/* Synchronization safety: stop optical effects when reduced-motion is set;
+   never hide static content without JS or on touch/mobile/saving-data layouts. */
+@media (max-width:800px), (prefers-reduced-motion:reduce) {
+  body.home-page main > :is(#produtos,#projetos,#conteudos,#sobre,#contato) .motion-story-item {
+    opacity:1!important;
+    translate:none!important;
+    transition:none!important;
+  }
+}

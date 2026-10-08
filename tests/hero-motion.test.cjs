@@ -84,9 +84,39 @@ test('section 05 scrolls its five cards individually without old reveal collisio
  assert.match(html,/home-process-list" data-process-scroll/);
  assert.equal((html.match(/<li><span>0[1-5]<\/span>/g)||[]).length,5);
  assert.match(js,/function scrollProcess\(/);
- assert.match(js,/progress-i\*\.14/);
+ assert.match(js,/progress-i\*cues\.stagger/);
  assert.match(js,/processCards\.forEach/);
  assert.match(css,/\.process-scroll-ready li/);
  assert.match(homeJs,/home-process-list:not\(\[data-process-scroll\]\) li/);
  assert.match(css,/prefers-reduced-motion:reduce/);
+});
+
+
+test('shared normalized choreography keeps hero panel/flower/text in sync',()=>{
+ const js=read('assets/js/hero-prism-scroll.js');
+ const css=read('assets/css/hero-prism-scroll.css');
+ assert.match(js,/const MOTION_CUES = Object\.freeze/);
+ assert.match(js,/flowerEnd:\.80/);
+ assert.match(js,/panelEnd:\.78/);
+ assert.match(js,/textEnd:\.76/);
+ assert.match(js,/const scrollRange =/);
+ assert.match(js,/const entry=scrollRange\(gridRect\.top,cues\)/);
+ assert.match(js,/const progress=scrollRange\(rect\.top,cues\)/);
+ assert.match(css,/height:185svh/);
+});
+test('all later sections use one-shot editorial reveal rather than competing observers',()=>{
+ const js=read('assets/js/hero-prism-scroll.js');
+ const css=read('assets/css/hero-prism-scroll.css');
+ const home=read('assets/js/home-premium.js');
+ for(const id of ['produtos','projetos','conteudos','sobre','contato']){
+   assert.match(js,new RegExp("selector:'#"+id+"'"));
+ }
+ assert.match(js,/new IntersectionObserver/);
+ assert.match(js,/editorialObserver\.unobserve\(entry\.target\)/);
+ assert.match(js,/if\(changed\)setupEditorial\(\)/);
+ assert.match(css,/motion-story-item\.is-in-view/);
+ assert.match(css,/max-width:800px/);
+ assert.doesNotMatch(home,/reveal\('\.launch-products \.solution-card'/);
+ assert.doesNotMatch(home,/reveal\('\.content-masthead/);
+ assert.doesNotMatch(home,/querySelectorAll\('\.project-card'\)/);
 });
