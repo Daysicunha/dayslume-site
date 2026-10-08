@@ -1934,3 +1934,24 @@ body.home-page main .content-magazine .content-masthead h2 {
   .site-footer .footer-nav { gap: 11px 20px; padding-block: 15px; }
   .site-footer .footer-socials { flex-wrap: wrap; }
 }
+
+
+/* Auditoria por vídeo — atalho de WhatsApp mais silencioso no desktop */
+@media (min-width: 801px) {
+  .floating-whatsapp {
+    width: 48px;
+    min-width: 48px;
+    height: 48px;
+    padding: 0;
+    border-radius: 50%;
+    gap: 0;
+  }
+  .floating-whatsapp::before,
+  .floating-whatsapp::after {
+    display: none;
+  }
+  .floating-whatsapp svg {
+    width: 19px;
+    height: 19px;
+  }
+}
