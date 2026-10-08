@@ -437,3 +437,36 @@
     max-inline-size:22ch;
   }
 }
+
+
+/* Auditoria por vídeo — cases mais leves e escaneáveis */
+.case-story--compact{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:0;
+  padding-top:.8rem;
+}
+.case-story--compact p{
+  padding:0 .9rem 0 0;
+}
+.case-story--compact p + p{
+  padding:0 0 0 .9rem;
+  border-left:1px solid rgba(32,37,50,.1);
+}
+.case-deck{
+  margin:0 0 .85rem!important;
+  max-width:58ch;
+  font-size:.92rem;
+  line-height:1.6;
+}
+.home-page .flagship-cases .case-story--compact{
+  margin-inline:clamp(16px,1.6vw,23px);
+}
+@media(max-width:760px){
+  .case-story--compact{grid-template-columns:1fr}
+  .case-story--compact p{padding:0}
+  .case-story--compact p + p{
+    margin-top:.75rem;
+    padding:0;
+    border-left:0;
+  }
+}
