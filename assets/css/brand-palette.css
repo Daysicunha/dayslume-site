@@ -365,7 +365,7 @@ body.home-page main > .launch-manifest {
 .manifest-item.is-active .manifest-arrow { color: var(--warm-ivory); border-color: var(--plum-mineral); background: var(--plum-mineral); transform: translateX(4px); }
 .manifest-item:focus-visible { z-index: 1; outline: 2px solid var(--plum-mineral); outline-offset: 3px; }
 .days-motion-ready .launch-manifest .launch-reveal.is-visible { animation-name: manifest-reveal; animation-duration: .7s; }
-@keyframes manifest-reveal { from { opacity: 0; translate: 0 14px; } to { opacity: 1; translate: 0 0; } }
+@keyframes manifest-reveal { from { opacity: 1; translate: 0 8px; } to { opacity: 1; translate: 0 0; } }
 @media (max-width: 1000px) {
   .launch-manifest-grid { grid-template-columns: minmax(0, .62fr) minmax(0, 1fr); gap: 44px; }
   .launch-manifest .manifest-title { font-size: clamp(43px, 5.6vw, 58px); }
