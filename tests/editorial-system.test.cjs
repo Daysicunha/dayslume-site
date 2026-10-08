@@ -56,9 +56,10 @@ test('floating contact control retracts near contact and footer content on every
   assert.match(palette, /@media\s*\(max-width:\s*620px\)[\s\S]*\.floating-whatsapp::after\s*\{\s*display:\s*none/);
 });
 
-test('hero video keeps autoplay while retaining the compressed fallback', () => {
-  assert.match(home, /<video\b[^>]*\sautoplay(?:\s|>)/i);
-  assert.match(home, /<video\b[^>]*preload=["']auto["']/i);
-  assert.match(home, /poster=["']assets\/images\/dayslume-hero-atmosphere\.webp["']/i);
+test('hero uses the lightweight prism and keeps the original flower safeguards', () => {
+  assert.match(home, /hero--motion-lab/);
+  assert.match(home, /hero__spotlight/);
+  assert.match(home, /hero__beam-field/);
+  assert.doesNotMatch(home, /data-hero-video|<video\b[^>]*autoplay/i);
   assert.match(heroMotion, /navigator\.connection\?\.saveData/);
 });
