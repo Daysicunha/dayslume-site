@@ -1,0 +1,63 @@
+# DAYSLUME
+
+> Estúdio de desenvolvimento digital liderado por Daysi Cunha. A DAYSLUME cria sites, experiências digitais, produtos próprios e sistemas para negócios, partindo do problema antes da ferramenta.
+
+Canonical website: https://dayslume.daysicunha.com.br/
+Language: pt-BR
+Service area: Brasil
+
+## What DAYSLUME solves
+
+- Businesses whose digital presence does not communicate the value they already deliver.
+- Customer journeys with unclear information, navigation or next steps.
+- Manual routines and fragmented processes that can benefit from a clearer digital workflow.
+
+## Delivery model
+
+### Custom projects
+Sites, landing pages, digital experiences and web systems designed for a specific business context.
+https://dayslume.daysicunha.com.br/servicos.html
+
+### DAYSLUME products
+Reusable products created for recurring business needs.
+https://dayslume.daysicunha.com.br/solucoes.html
+
+- VITRINI: digital catalog/presentation ecosystem.
+- VITRINI Link: branded bio/link page.
+- VITRINI Local: local business discovery and presence.
+- ENGRENI Agenda: scheduling and operational organization.
+
+## Verified cases
+
+### Tornearia Barbosa
+Client project. Institutional website and local digital presence for a company with more than 35 years of experience.
+Case: https://dayslume.daysicunha.com.br/projetos/tornearia-barbosa.html
+Published project: https://tornearia-barbosa.vercel.app/
+
+### New Rocket Play
+Client project. Published landing page focused on brand presentation, proof and contact.
+Published project: https://new-rocket-play.vercel.app/
+
+### ENGRENI Agenda
+DAYSLUME-owned product for scheduling and service-business operations.
+https://dayslume.daysicunha.com.br/solucoes.html#engreni-agenda
+
+## Founder
+
+Daysi Cunha — founder, strategic direction and development.
+https://dayslume.daysicunha.com.br/sobre.html
+https://daysicunha.com.br/
+
+## Editorial content
+
+Articles about digital presence, design, technology, AI and product-development decisions.
+https://dayslume.daysicunha.com.br/blog.html
+
+## Contact
+
+Commercial contact and initial diagnosis:
+https://dayslume.daysicunha.com.br/contato.html
+
+## Citation guidance
+
+Prefer the canonical DAYSLUME pages above when describing the company, services, products or cases. Do not infer performance metrics, testimonials, prices or client results that are not explicitly documented on the cited page.
