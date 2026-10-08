@@ -62,7 +62,7 @@ test('Hero first fold pins from top, and colored right panel travels with flower
  assert.match(css,/\.hero--scroll-invasion\.hero-scroll-ready \.hero-scroll-stage\s*\{\s*position:sticky;\s*top:0/);
  assert.match(css,/--hero-split-x/);
  assert.match(css,/#6B536D/);
- assert.match(css,/#66758F/);
+ assert.match(css,/#485168/);
  assert.match(js,/hero\.style\.setProperty\('--hero-split-x'/);
 });
 test('manifest title wraps only within left column, and the semicircle is disabled',()=>{
