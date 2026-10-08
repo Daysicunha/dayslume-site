@@ -17,8 +17,6 @@
   const processCards = [...(process?.querySelectorAll(':scope > li') || [])];
   const cards = [...(section?.querySelectorAll('[data-kiru-card]') || [])];
   const cardGrid = section?.querySelector('.services-grid.commercial-paths');
-  const panels = [...(section?.querySelectorAll('[data-kiru-panel]') || [])];
-  const sweeps = [...(section?.querySelectorAll('[data-kiru-sweep]') || [])];
   if (!stage || !copy || !flower) return;
 
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
@@ -136,25 +134,7 @@
       card.style.setProperty('--kiru-opacity',opacity.toFixed(3));
       card.classList.toggle('is-kiru-settled',t>.995);
     });
-    // Graphic micro-cards echo the Kiru recording: objects arrive from
-    // different positions and gather around the editorial heading.
-    const xOffsets=[-190,210,110],yOffsets=[115,-120,190],angles=[-18,17,24];
-    panels.forEach((panel,i)=>{
-      const t=easing(clamp((entry-i*.115)/(.75-i*.07)));
-      const exit=easing(clamp((entry-.83)/.17));
-      const float=1-t;
-      const x=xOffsets[i]*float+((i-1)*25*exit);
-      const y=yOffsets[i]*float-(i+1)*15*exit;
-      panel.style.transform='translate3d('+x.toFixed(1)+'px,'+
-        y.toFixed(1)+'px,0) rotate('+(angles[i]*float).toFixed(2)+
-        'deg) scale('+(.65+.35*t).toFixed(3)+')';
-      panel.style.opacity=(.16+.56*t-.33*exit).toFixed(3);
-    });
-    sweeps.forEach((bar,i)=>{
-      const p=easing(clamp((entry-i*.115)/.49));
-      bar.style.transform='scaleX('+p.toFixed(3)+')';
-      bar.style.opacity=(.08+.32*(1-show)).toFixed(3);
-    });
+
   }
 
   function scrollProcess(){
@@ -274,14 +254,6 @@
     cards.forEach(card=>{
       for(const key of ['--kiru-x','--kiru-y','--kiru-angle','--kiru-size','--kiru-opacity'])card.style.removeProperty(key);
       card.classList.remove('is-kiru-settled');
-    });
-    panels.forEach(panel=>{
-      panel.style.removeProperty('transform');
-      panel.style.removeProperty('opacity');
-    });
-    sweeps.forEach(bar=>{
-      bar.style.removeProperty('transform');
-      bar.style.removeProperty('opacity');
     });
     process?.style.removeProperty('--process-fill');
     processCards.forEach(card=>{

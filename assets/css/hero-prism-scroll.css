@@ -248,116 +248,6 @@
 }
 
 
-/* Motion reference: Kiru recording, 08 Oct 2026.
-   Decorative data cards orbit around the section heading; the two actual
-   commercial cards then roll into readable, clickable positions. */
-.home-page #modelo[data-kiru-cards] {
-  isolation:isolate;
-  overflow:clip;
-}
-.home-page #modelo[data-kiru-cards] > .container {
-  position:relative;
-  isolation:isolate;
-}
-.home-page #modelo[data-kiru-cards] .section-heading,
-.home-page #modelo[data-kiru-cards] .services-grid,
-.home-page #modelo[data-kiru-cards] .commercial-diagnostic {
-  position:relative;
-  z-index:2;
-}
-.home-page #modelo .kiru-motion-sweeps {
-  position:absolute;
-  z-index:0;
-  left:0;
-  right:0;
-  top:clamp(4px,2vw,25px);
-  height:64px;
-  overflow:visible;
-  pointer-events:none;
-}
-.home-page #modelo .kiru-motion-sweeps span {
-  display:block;
-  width:clamp(190px,38%,520px);
-  height:3px;
-  margin-bottom:13px;
-  border-radius:20px;
-  background:linear-gradient(90deg,transparent,rgba(107,83,109,.53),rgba(169,197,216,.41),transparent);
-  transform-origin:left center;
-}
-.home-page #modelo .kiru-motion-sweeps span:nth-child(2) {
-  margin-left:15%;height:2px;opacity:.72;transform-origin:right center;
-}
-.home-page #modelo .kiru-motion-sweeps span:nth-child(3) {
-  margin-left:27%;height:2px;opacity:.52;
-}
-.home-page #modelo .kiru-motion-panels {
-  position:absolute;
-  z-index:1;
-  inset:0 0 auto;
-  height:clamp(225px,21vw,330px);
-  pointer-events:none;
-  overflow:visible;
-}
-.home-page #modelo .kiru-motion-panel {
-  position:absolute;
-  width:clamp(80px,7.7vw,117px);
-  aspect-ratio: .79;
-  border:1px solid rgba(243,239,232,.32);
-  border-radius:12px;
-  padding:14px 11px;
-  opacity:.24;
-  box-shadow: 0 18px 42px rgba(32,37,50,.12), inset 0 1px 0 rgba(255,255,255,.3);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:space-around;
-  filter: saturate(.94);
-  transform-origin:center;
-  background:linear-gradient(155deg,#6B536D,#4D4059);
-}
-.home-page #modelo .kiru-motion-panel--one {
-  right:17%;top:8%;
-  background:linear-gradient(155deg,#6B536D,#423750);
-  color:#F3EFE8;
-}
-.home-page #modelo .kiru-motion-panel--two {
-  right:3%;top:30%;
-  background:linear-gradient(155deg,#A9C5D8,#778FAB);
-  color:#202532;
-}
-.home-page #modelo .kiru-motion-panel--three {
-  right:29%;top:33%;
-  background:linear-gradient(155deg,#D8B6A5,#987F88);
-  color:#202532;
-}
-.home-page #modelo .kiru-motion-panel__ring {
-  width:42%;
-  aspect-ratio:1;
-  border-radius:50%;
-  border:6px solid rgba(243,239,232,.34);
-  border-left-color:currentColor;
-  border-top-color:currentColor;
-  transform:rotate(-32deg);
-}
-.home-page #modelo .kiru-motion-panel__bars {
-  display:flex;
-  gap:5px;
-  align-items:end;
-  justify-content:space-around;
-  width:100%;
-  height:38%;
-  border-bottom:1px solid rgba(243,239,232,.47);
-}
-.home-page #modelo .kiru-motion-panel__bars i {
-  display:block;flex:1;max-width:13px;
-  border-radius:3px 3px 0 0;
-  background:currentColor;
-  opacity:.75;
-}
-.home-page #modelo .kiru-motion-panel__bars i:nth-child(1){height:32%}
-.home-page #modelo .kiru-motion-panel__bars i:nth-child(2){height:62%}
-.home-page #modelo .kiru-motion-panel__bars i:nth-child(3){height:47%}
-.home-page #modelo .kiru-motion-panel__bars i:nth-child(4){height:88%}
 .home-page #modelo[data-kiru-cards].kiru-cards-ready .commercial-path-card {
   will-change:transform,opacity;
   backface-visibility:hidden;
@@ -369,15 +259,9 @@
   z-index:8;
   transform-origin:50% 50%;
 }
-@media(max-width:1050px) {
-  .home-page #modelo .kiru-motion-panels {opacity:.48;}
-}
 @media(max-width:800px), (prefers-reduced-motion:reduce) {
-  .home-page #modelo .kiru-motion-panels,
-  .home-page #modelo .kiru-motion-sweeps { display:none; }
   .home-page #modelo[data-kiru-cards].kiru-cards-ready .commercial-path-card {will-change:auto;}
 }
-
 
 /* Hero 3.4 — split real e sem faixa vazia. O CSS legado define a hero como
    grid; anulamos isso porque um item sticky era CENTRALIZADO na altura do
@@ -400,7 +284,9 @@
   pointer-events: none;
   transform: translate3d(var(--hero-split-x,52%),0,0);
   will-change: transform;
-  background: linear-gradient(122deg,#6B536D 0%,#66758F 57%,#A9C5D8 135%);
+  background:
+    radial-gradient(ellipse 68% 74% at 82% 33%,rgba(169,197,216,.16),transparent 78%),
+    linear-gradient(118deg,#2C3448 0%,#485168 48%,#6B536D 100%);
 }
 .hero--scroll-invasion .hero__bg-overlay {
   background:
@@ -450,7 +336,7 @@
   .hero--scroll-invasion .hero__split-panel {
     transform:none;
     opacity:.25;
-    background:linear-gradient(130deg,transparent 35%,#66758F 100%);
+    background:linear-gradient(135deg,transparent 30%,#485168 70%,#6B536D 100%);
   }
   .hero--scroll-invasion .hero-grid {grid-template-columns:minmax(0,1fr);}
   .hero--scroll-invasion .hero-visual-composition {width:min(79vw,440px);}

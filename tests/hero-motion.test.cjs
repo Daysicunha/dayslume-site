@@ -44,19 +44,14 @@ test('pin and invasion use scroll progress, disable on small screens and reduced
 });
 
 
-test('Kiru recording inspired motion uses three layered microcards and scroll-tied sweeps',()=>{
-  const html=read('index.html');
-  const css=read('assets/css/hero-prism-scroll.css');
+test('section 02 keeps the two real service cards without floating data graphics',()=>{
+  const html=read('index.html'),css=read('assets/css/hero-prism-scroll.css');
   const js=read('assets/js/hero-prism-scroll.js');
-  assert.equal((html.match(/data-kiru-panel\b/g)||[]).length,3);
-  assert.equal((html.match(/data-kiru-sweep\b/g)||[]).length,3);
-  assert.equal((html.match(/data-kiru-card\b/g)||[]).length,2);
-  assert.match(css,/\.kiru-motion-panels/);
-  assert.match(css,/\.kiru-motion-panel__bars/);
-  assert.match(js,/gridRect=cardGrid\.getBoundingClientRect/);
-  assert.match(js,/panels\.forEach/);
-  assert.match(js,/sweeps\.forEach/);
-  assert.match(js,/Math\.min\(innerWidth\*\.33,390\)/);
+  assert.equal((html.match(/data-kiru-card\\b/g)||[]).length,2);
+  assert.doesNotMatch(html,/kiru-motion-panels|kiru-motion-sweeps|data-kiru-panel|data-kiru-sweep/);
+  assert.doesNotMatch(css,/kiru-motion-panel__bars|kiru-motion-panels|kiru-motion-sweeps/);
+  assert.doesNotMatch(js,/\bpanels\.forEach|\bsweeps\.forEach/);
+  assert.match(js,/scrollCards/);
 });
 
 
@@ -119,4 +114,25 @@ test('all later sections use one-shot editorial reveal rather than competing obs
  assert.doesNotMatch(home,/reveal\('\.launch-products \.solution-card'/);
  assert.doesNotMatch(home,/reveal\('\.content-masthead/);
  assert.doesNotMatch(home,/querySelectorAll\('\.project-card'\)/);
+});
+
+
+test('new mineral hero gradient and concise case stories keep brand identity',()=>{
+ const html=read('index.html'),css=read('assets/css/hero-prism-scroll.css');
+ const palette=read('assets/css/brand-palette.css');
+ assert.match(css,/#2C3448 0%,#485168 48%,#6B536D 100%/);
+ assert.match(html,/Site próprio que reúne especialidades/);
+ assert.match(html,/Landing page com hierarquia visual/);
+ assert.match(html,/Agenda digital mais clara/);
+ assert.match(palette,/main > #projetos \.projects-grid\.projects-grid--launch \.case-story/);
+ assert.match(palette,/main > #projetos \.projects-grid\.projects-grid--launch \.project-card-head\s*\{\s*min-height:0;/);
+});
+test('section 08 has readable, wrapping copy and isolated two-column layout',()=>{
+ const html=read('index.html'),palette=read('assets/css/brand-palette.css');
+ assert.match(html,/O que precisa funcionar/);
+ assert.match(html,/melhor no digital\?/);
+ assert.match(html,/Conte o que está travando seu negócio/);
+ assert.match(palette,/main > #contato #contact-title > span\s*\{[\s\S]*?white-space:normal/);
+ assert.match(palette,/main > #contato \.contact-grid > div:first-child/);
+ assert.match(html,/<form class="contact-form" id="contact-form"/);
 });

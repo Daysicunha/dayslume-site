@@ -1934,3 +1934,130 @@ body.home-page main .content-magazine .content-masthead h2 {
   .site-footer .footer-nav { gap: 11px 20px; padding-block: 15px; }
   .site-footer .footer-socials { flex-wrap: wrap; }
 }
+
+
+/* Home layout pass — editorial cases and readable contact section.
+   Kept at end of official palette so earlier migration styles cannot
+   reintroduce oversized headers or nowrap title spans. */
+body.home-page main > #projetos .projects-grid.projects-grid--launch .project-card {
+  min-width:0;
+}
+body.home-page main > #projetos .projects-grid.projects-grid--launch .project-card-head {
+  min-height:0;
+  padding:clamp(18px,1.5vw,23px) clamp(19px,1.6vw,24px) clamp(14px,1.25vw,20px);
+  align-items:start;
+}
+body.home-page main > #projetos .projects-grid.projects-grid--launch .project-card-head h3 {
+  font-size:clamp(19px,1.45vw,23px);
+  line-height:1.18;
+  margin-bottom:6px;
+}
+body.home-page main > #projetos .projects-grid.projects-grid--launch .case-proof-label {
+  font-size:10px!important;
+  line-height:1.35;
+  letter-spacing:.115em;
+  margin-bottom:8px;
+}
+body.home-page main > #projetos .projects-grid.projects-grid--launch .project-type {
+  font-size:10px;
+  line-height:1.35;
+  letter-spacing:.08em;
+}
+body.home-page main > #projetos .projects-grid.projects-grid--launch .case-story {
+  display:grid;
+  gap:clamp(12px,1.1vw,17px);
+  padding:clamp(17px,1.5vw,22px) clamp(19px,1.6vw,24px) 6px;
+  border-top:1px solid rgba(var(--slate-mineral-rgb),.19);
+}
+body.home-page main > #projetos .projects-grid.projects-grid--launch .case-story p {
+  min-width:0;
+  margin:0;
+  color:rgba(var(--ink-deep-rgb),.82);
+  opacity:1;
+  font-size:clamp(13px,.91vw,15px);
+  line-height:1.52;
+  overflow-wrap:break-word;
+}
+body.home-page main > #projetos .projects-grid.projects-grid--launch .case-story span {
+  display:block;
+  margin-bottom:5px;
+  color:var(--plum-mineral);
+  opacity:1;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.12em;
+}
+body.home-page main > #projetos .projects-grid.projects-grid--launch .case-actions {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px 16px;
+  padding:clamp(16px,1.5vw,23px) clamp(19px,1.6vw,24px) clamp(19px,1.6vw,24px);
+  margin-top:auto;
+}
+body.home-page main > #projetos .projects-grid.projects-grid--launch .case-actions a {
+  margin:0;
+  font-size:10px;
+  line-height:1.45;
+  letter-spacing:.055em;
+  overflow-wrap:normal;
+  text-wrap:pretty;
+}
+
+/* Contact title must wrap inside the LEFT column, never over the form. */
+body.home-page main > #contato .contact-grid {
+  display:grid;
+  grid-template-columns:minmax(0,.90fr) minmax(0,1.10fr);
+  column-gap:clamp(30px,4.2vw,66px);
+  align-items:start;
+}
+body.home-page main > #contato .contact-grid > div:first-child,
+body.home-page main > #contato .contact-grid > form {
+  min-width:0;
+  max-width:100%;
+}
+body.home-page main > #contato #contact-title {
+  max-width:100%;
+  font-size:clamp(34px,3.0vw,49px);
+  line-height:1.11;
+  letter-spacing:-.056em;
+  overflow-wrap:normal;
+  text-wrap:balance;
+}
+body.home-page main > #contato #contact-title > span {
+  display:block;
+  white-space:normal;
+  max-width:100%;
+  text-wrap:balance;
+}
+body.home-page main > #contato .contact-grid > div:first-child > p:not(.eyebrow) {
+  max-width:48ch;
+  line-height:1.67;
+  margin-top:18px;
+}
+body.home-page main > #contato .contact-note {
+  max-width:100%;
+  margin-top:clamp(20px,2.7vw,35px);
+}
+@media(max-width:1050px) {
+  body.home-page main > #contato .contact-grid {
+    grid-template-columns:minmax(0,1fr);
+    gap:clamp(28px,4vw,48px);
+  }
+  body.home-page main > #contato #contact-title {
+    max-width:19ch;
+    font-size:clamp(34px,4.8vw,48px);
+  }
+}
+@media(max-width:560px) {
+  body.home-page main > #contato #contact-title {
+    font-size:clamp(31px,8vw,38px);
+    max-width:100%;
+  }
+  body.home-page main > #projetos .projects-grid.projects-grid--launch .case-story {
+    padding:17px 18px 5px;
+  }
+  body.home-page main > #projetos .projects-grid.projects-grid--launch .case-actions {
+    padding:14px 18px 20px;
+  }
+}
