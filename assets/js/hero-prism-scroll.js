@@ -1,116 +1,187 @@
-/* DAYSLUME experimental hero: CSS-powered spotlight, prism glint, scroll movement.
-   No GSAP dependency; uses one coalesced requestAnimationFrame per visual update. */
+/* DAYSLUME Hero 3.1: editorial typography that splits, re-forms and
+   reveals the commercial hero during scroll. All movements are scroll-driven
+   (reversible), progressive and disabled on mobile, reduced motion / Save-Data.
+   Retains the independent six-petal flower module and the prism spotlight. */
 (() => {
   'use strict';
-
-  const hero = document.querySelector('.hero--motion-lab');
+  const hero = document.querySelector('[data-kiru-story]');
   if (!hero) return;
 
+  const stage = hero.querySelector('[data-kiru-stage]');
+  const words = [...hero.querySelectorAll('[data-kiru-word]')];
+  const keywords = [...hero.querySelectorAll('[data-kiru-keyword]')];
+  const opening = hero.querySelector('.hero-kiru-opening');
+  const reveal = hero.querySelector('[data-kiru-reveal]');
+  const flower = hero.querySelector('.hero-visual-composition');
   const scene = hero.querySelector('[data-flower-scene]');
+  const progressLine = hero.querySelector('[data-kiru-progress]');
+  if (!stage || !opening || !reveal || !flower || words.length !== 6 || keywords.length !== 3) return;
+
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const fine = matchMedia('(hover: hover) and (pointer: fine)');
   const saveData = Boolean(navigator.connection && navigator.connection.saveData);
   if (saveData) document.documentElement.classList.add('dayslume-lite-motion');
 
-  const clamp = (value, low, high) => Math.max(low, Math.min(high, value));
-  const current = { x: 76, y: 49, glintX: 50, glintY: 45 };
-  const target = { ...current };
+  const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+  const smooth = v => { const x = clamp(v); return x * x * (3 - 2 * x); };
+  const phase = (p, start, end) => smooth((p - start) / (end - start));
+  const vectors = [
+    [-.40, -.21, -14], [.38, -.23, 13],
+    [-.34, -.07, -9],  [.34, .09, 11],
+    [-.26, .26, -14],  [.30, .23, 14]
+  ];
+
+  let enabled = false;
   let frame = 0;
-  let lastScroll = -1;
+  let pointerActive = false;
+  const cursor = { x: 74, y: 48, glintX: 50, glintY: 50 };
+  const target = { ...cursor };
 
-  const canMove = () => (
-    !reduced.matches && !saveData && fine.matches && innerWidth > 800 &&
-    !document.hidden && !document.documentElement.classList.contains('motion-paused')
-  );
-  const canScroll = () => !reduced.matches && !saveData && innerWidth > 800;
+  const allowMode = () => innerWidth > 800 && !reduced.matches && !saveData;
+  const allowCursor = () => enabled && fine.matches && !document.hidden &&
+    !document.documentElement.classList.contains('motion-paused');
 
-  function updateScroll() {
-    if (!canScroll()) {
-      hero.style.removeProperty('--hero-scroll-shift');
-      hero.style.removeProperty('--hero-scroll-rotate');
-      hero.style.removeProperty('--hero-scroll-opacity');
-      lastScroll = 0;
-      return;
-    }
-    const bounds = hero.getBoundingClientRect();
-    if (bounds.top > innerHeight || bounds.bottom < 0) return;
-    const progress = clamp(-bounds.top / Math.max(bounds.height, 1), 0, 1);
-    if (Math.abs(progress - lastScroll) < .002) return;
-    lastScroll = progress;
-    hero.style.setProperty('--hero-scroll-shift', (-progress * 42).toFixed(2) + 'px');
-    hero.style.setProperty('--hero-scroll-rotate', (-progress * 3.5).toFixed(2) + 'deg');
-    hero.style.setProperty('--hero-scroll-opacity', (1 - progress * .22).toFixed(3));
+  function resetStatic() {
+    words.forEach(word => { word.style.removeProperty('transform'); word.style.removeProperty('opacity'); });
+    keywords.forEach(word => { word.style.removeProperty('transform'); word.style.removeProperty('opacity'); });
+    [opening, reveal, flower].forEach(el => {
+      el.style.removeProperty('opacity'); el.style.removeProperty('transform');
+    });
+    opening.style.removeProperty('pointer-events');
+    reveal.style.removeProperty('pointer-events');
+    reveal.inert = false;
+    hero.style.removeProperty('--kiru-scroll-hint');
+    hero.style.removeProperty('--kiru-intro-opacity');
+    hero.style.removeProperty('--kiru-intro-y');
+    hero.style.removeProperty('--kiru-copy-shift');
+    hero.style.removeProperty('--glint-strength');
+    if (progressLine) progressLine.style.removeProperty('width');
   }
 
-  function render() {
+  function renderScroll() {
+    if (!enabled) return;
+    const rect = hero.getBoundingClientRect();
+    const distance = Math.max(1, rect.height - innerHeight);
+    const p = clamp(-rect.top / distance);
+    const split = phase(p, .055, .35);
+    const exit = phase(p, .29, .43);
+    const wordsIn = phase(p, .32, .52);
+    const wordsOut = phase(p, .53, .70);
+    const disclosure = phase(p, .64, .86);
+    const flowerIn = phase(p, .44, .80);
+
+    words.forEach((word, i) => {
+      const [dx,dy,rotate] = vectors[i];
+      const x = dx * innerWidth * split;
+      const y = dy * innerHeight * split;
+      word.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' +
+        y.toFixed(1) + 'px,0) rotate(' + (rotate * split).toFixed(2) + 'deg)';
+      word.style.opacity = (1 - exit).toFixed(3);
+    });
+
+    hero.style.setProperty('--kiru-intro-opacity', (1 - phase(p,.10,.34)).toFixed(3));
+    hero.style.setProperty('--kiru-intro-y', (-18 * split).toFixed(1) + 'px');
+    hero.style.setProperty('--kiru-scroll-hint', (1 - phase(p,.02,.15)).toFixed(3));
+
+    keywords.forEach((word, i) => {
+      const stagger = phase(p, .32 + .035*i, .50 + .035*i);
+      const escape = phase(p, .54 + .018*i, .70 + .018*i);
+      const visible = Math.min(stagger, 1 - escape);
+      const x = (i-1) * 90 * escape;
+      const y = (1 - stagger)*46 + escape*(i%2===0?-55:60);
+      const rotation = (i-1)*6*escape;
+      word.style.opacity = clamp(visible).toFixed(3);
+      word.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' +
+        y.toFixed(1) + 'px,0) rotate(' + rotation.toFixed(2) +
+        'deg) scale(' + (.91 + stagger*.09 + escape*.075).toFixed(3) + ')';
+    });
+
+    reveal.style.opacity = disclosure.toFixed(3);
+    reveal.style.transform = 'translate3d(0,calc(-50% + ' +
+      ((1-disclosure)*40).toFixed(1) + 'px),0)';
+    reveal.style.pointerEvents = disclosure > .85 ? 'auto' : 'none';
+    reveal.inert = disclosure < .85;
+
+    flower.style.opacity = (flowerIn * (.48 + .52*disclosure)).toFixed(3);
+    const flowerX = 70 * (1 - flowerIn);
+    flower.style.transform = 'translate3d(' + flowerX.toFixed(1) +
+      'px,-50%,0) scale(' + (.80 + .20*flowerIn).toFixed(3) + ')';
+    hero.style.setProperty('--glint-strength', (.1 + .5*flowerIn).toFixed(3));
+    if (progressLine) progressLine.style.width = (p*100).toFixed(2) + '%';
+    opening.style.pointerEvents = 'none';
+  }
+
+  function renderPointer() {
+    if (!allowCursor()) return false;
+    let movement = false;
+    for (const prop of ['x','y','glintX','glintY']) {
+      const delta = target[prop] - cursor[prop];
+      cursor[prop] += delta*.12;
+      if (Math.abs(delta) < .06) cursor[prop] = target[prop];
+      else movement = true;
+    }
+    hero.style.setProperty('--spot-x',cursor.x.toFixed(2)+'%');
+    hero.style.setProperty('--spot-y',cursor.y.toFixed(2)+'%');
+    hero.style.setProperty('--prism-x',cursor.x.toFixed(2)+'%');
+    hero.style.setProperty('--prism-y',cursor.y.toFixed(2)+'%');
+    hero.style.setProperty('--glint-x',cursor.glintX.toFixed(2)+'%');
+    hero.style.setProperty('--glint-y',cursor.glintY.toFixed(2)+'%');
+    return movement;
+  }
+
+  function tick() {
     frame = 0;
-    updateScroll();
-    if (!canMove()) return;
+    renderScroll();
+    if (renderPointer()) schedule();
+  }
+  function schedule() {
+    if (!frame) frame = requestAnimationFrame(tick);
+  }
 
-    let isMoving = false;
-    for (const key of ['x', 'y', 'glintX', 'glintY']) {
-      const delta = target[key] - current[key];
-      current[key] += delta * .105;
-      if (Math.abs(delta) > .08) isMoving = true;
-      else current[key] = target[key];
-    }
-    hero.style.setProperty('--spot-x', current.x.toFixed(2) + '%');
-    hero.style.setProperty('--spot-y', current.y.toFixed(2) + '%');
-    hero.style.setProperty('--prism-x', current.x.toFixed(2) + '%');
-    hero.style.setProperty('--prism-y', current.y.toFixed(2) + '%');
-    hero.style.setProperty('--glint-x', current.glintX.toFixed(2) + '%');
-    hero.style.setProperty('--glint-y', current.glintY.toFixed(2) + '%');
-    hero.style.setProperty('--glint-strength', '.66');
-    if (isMoving) requestRender();
-  }
-  function requestRender() {
-    if (!frame) frame = requestAnimationFrame(render);
-  }
-  function onPointerMove(event) {
-    if (!canMove() || event.pointerType === 'touch') return;
-    const bounds = hero.getBoundingClientRect();
-    target.x = clamp((event.clientX - bounds.left) * 100 / bounds.width, 0, 100);
-    target.y = clamp((event.clientY - bounds.top) * 100 / bounds.height, 0, 100);
+  function onPointerMove(e) {
+    if (!allowCursor() || e.pointerType === 'touch') return;
+    const bounds = stage.getBoundingClientRect();
+    target.x = clamp((e.clientX-bounds.left)/bounds.width)*100;
+    target.y = clamp((e.clientY-bounds.top)/bounds.height)*100;
     if (scene) {
-      const flower = scene.getBoundingClientRect();
-      target.glintX = clamp((event.clientX - flower.left) * 100 / flower.width, 8, 92);
-      target.glintY = clamp((event.clientY - flower.top) * 100 / flower.height, 8, 92);
+      const flowerRect=scene.getBoundingClientRect();
+      target.glintX = clamp((e.clientX-flowerRect.left)/flowerRect.width)*100;
+      target.glintY = clamp((e.clientY-flowerRect.top)/flowerRect.height)*100;
     }
-    requestRender();
+    pointerActive = true;
+    schedule();
   }
   function onPointerLeave() {
-    target.x = 76;
-    target.y = 49;
-    target.glintX = 50;
-    target.glintY = 45;
-    requestRender();
-  }
-  function sync() {
-    if (!canMove()) {
-      cancelAnimationFrame(frame);
-      frame = 0;
-      hero.style.removeProperty('--spot-x');
-      hero.style.removeProperty('--spot-y');
-      hero.style.removeProperty('--prism-x');
-      hero.style.removeProperty('--prism-y');
-      hero.style.removeProperty('--glint-x');
-      hero.style.removeProperty('--glint-y');
-      hero.style.removeProperty('--glint-strength');
-    } else {
-      Object.assign(current, { x: 76, y: 49, glintX: 50, glintY: 45 });
-      Object.assign(target, current);
-    }
-    lastScroll = -1;
-    requestRender();
+    if (!pointerActive) return;
+    pointerActive = false;
+    Object.assign(target,{x:74,y:48,glintX:50,glintY:50});
+    schedule();
   }
 
-  hero.addEventListener('pointermove', onPointerMove, { passive: true });
-  hero.addEventListener('pointerleave', onPointerLeave, { passive: true });
-  addEventListener('scroll', requestRender, { passive: true });
-  addEventListener('resize', sync, { passive: true });
-  reduced.addEventListener('change', sync);
-  fine.addEventListener('change', sync);
-  document.addEventListener('visibilitychange', sync);
-  document.addEventListener('dayslume:motion', sync);
-  sync();
+  function syncMode() {
+    const wasEnabled = enabled;
+    enabled = allowMode();
+    hero.classList.toggle('hero--kiru-ready',enabled);
+    if (!enabled) {
+      cancelAnimationFrame(frame);
+      frame = 0;
+      resetStatic();
+    } else if (!wasEnabled) {
+      Object.assign(cursor,{x:74,y:48,glintX:50,glintY:50});
+      Object.assign(target,cursor);
+      reveal.inert = true;
+    }
+    if (!allowCursor()) onPointerLeave();
+    schedule();
+  }
+
+  stage.addEventListener('pointermove',onPointerMove,{passive:true});
+  stage.addEventListener('pointerleave',onPointerLeave,{passive:true});
+  addEventListener('scroll',schedule,{passive:true});
+  addEventListener('resize',syncMode,{passive:true});
+  reduced.addEventListener('change',syncMode);
+  fine.addEventListener('change',syncMode);
+  document.addEventListener('dayslume:motion',schedule);
+  document.addEventListener('visibilitychange',syncMode);
+  syncMode();
 })();

@@ -80,23 +80,41 @@
   </div>
 </header>
 <main id="principal">
-  <section class="hero hero--interactive-flower hero--motion-lab" aria-labelledby="hero-title">
-    <div class="hero__bg-base" aria-hidden="true"></div>
-    <div class="hero__bg-image" data-hero-background aria-hidden="true"></div>
-    <div class="hero__beam-field" aria-hidden="true"><span class="hero__beam hero__beam--one"></span><span class="hero__beam hero__beam--two"></span><span class="hero__beam hero__beam--three"></span></div>
-    <div class="hero__spotlight" aria-hidden="true"></div>
-    <div class="hero__prism-orbit" aria-hidden="true"></div>
-    <div class="hero__bg-overlay" aria-hidden="true"></div>
-    <div class="hero-ambient-light" aria-hidden="true"></div>
-    <div class="container hero-grid">
-      <div class="hero-content" data-days-reveal-group>
+  <section class="hero hero--interactive-flower hero--motion-lab hero--kiru-story" aria-labelledby="hero-title" data-kiru-story>
+    <div class="hero-kiru-stage" data-kiru-stage>
+      <div class="hero__bg-base" aria-hidden="true"></div>
+      <div class="hero__bg-image" data-hero-background aria-hidden="true"></div>
+      <div class="hero__beam-field" aria-hidden="true"><span class="hero__beam hero__beam--one"></span><span class="hero__beam hero__beam--two"></span><span class="hero__beam hero__beam--three"></span></div>
+      <div class="hero__spotlight" aria-hidden="true"></div>
+      <div class="hero__prism-orbit" aria-hidden="true"></div>
+      <div class="hero__bg-overlay" aria-hidden="true"></div>
+      <div class="hero-ambient-light" aria-hidden="true"></div>
+
+      <div class="hero-kiru-opening">
         <p class="eyebrow hero-eyebrow"><span class="signal"></span> ESTÚDIO DE DESENVOLVIMENTO DIGITAL</p>
-        <h1 id="hero-title">Faça o digital<br><em>trabalhar melhor</em><br><span class="hero-title-last">para o seu negócio<span class="accent-point">.</span></span></h1>
+        <h1 id="hero-title" class="hero-kiru-title">
+          <span class="hero-kiru-line"><span class="hero-kiru-word" data-kiru-word>Faça</span> <span class="hero-kiru-word" data-kiru-word>o digital</span></span>
+          <span class="hero-kiru-line hero-kiru-line--accent"><em><span class="hero-kiru-word" data-kiru-word>trabalhar</span> <span class="hero-kiru-word" data-kiru-word>melhor</span></em></span>
+          <span class="hero-kiru-line hero-kiru-line--small"><span class="hero-kiru-word" data-kiru-word>para o</span> <span class="hero-kiru-word" data-kiru-word>seu negócio<span class="accent-point">.</span></span></span>
+        </h1>
+        <p class="hero-kiru-scroll-note">DESLIZE PARA TRANSFORMAR <span aria-hidden="true">↓</span></p>
+      </div>
+
+      <div class="hero-kiru-keywords" aria-hidden="true">
+        <span class="hero-kiru-keyword hero-kiru-keyword--01" data-kiru-keyword>ESTRATÉGIA<span class="hero-kiru-dot">.</span></span>
+        <span class="hero-kiru-keyword hero-kiru-keyword--02" data-kiru-keyword>DESIGN<span class="hero-kiru-dot">.</span></span>
+        <span class="hero-kiru-keyword hero-kiru-keyword--03" data-kiru-keyword>TECNOLOGIA<span class="hero-kiru-dot">.</span></span>
+      </div>
+
+      <div class="hero-kiru-reveal" data-kiru-reveal>
+        <p class="eyebrow hero-eyebrow"><span class="signal"></span> ESTRATÉGIA, DESIGN E TECNOLOGIA</p>
+        <h2 class="hero-kiru-resolve-title">O digital que <em>faz sentido</em> para o seu negócio.</h2>
         <p class="hero-lead">Transformamos presença confusa, jornadas que perdem clientes e processos manuais em sites, produtos e sistemas claros, úteis e prontos para evoluir.</p>
         <div class="hero-rotator" aria-label="Da necessidade à solução"><span class="hero-rotator-label" aria-hidden="true">DA NECESSIDADE À</span><span class="rotating-terms" aria-hidden="true"><span class="rotating-term is-current">PRESENÇA</span><span class="rotating-term">EXPERIÊNCIA</span><span class="rotating-term">OPERAÇÃO</span></span></div>
         <div class="hero-actions"><a class="btn btn-light" href="#problemas">Quero resolver um problema <span aria-hidden="true">↗</span></a><a class="text-link light-link" href="#projetos">Ver projetos reais <span aria-hidden="true">↗</span></a></div>
         <div class="hero-foot"><span class="hero-line"></span> PROJETOS SOB MEDIDA + PRODUTOS PRÓPRIOS</div>
       </div>
+
       <div class="hero-visual-composition" aria-hidden="true">
         <div class="flower-scene" data-flower-scene>
           <div class="flower-glow"></div>
@@ -109,6 +127,8 @@
           <div class="flower-prism-glint" aria-hidden="true"></div>
         </div>
       </div>
+      <a class="hero-kiru-skip" href="#problemas">Pular animação <span aria-hidden="true">↗</span></a>
+      <div class="hero-kiru-progress" aria-hidden="true"><span data-kiru-progress></span></div>
     </div>
   </section>
   <section class="section launch-manifest section-shell section-atmosphere section-atmosphere--manifest" id="problemas" aria-labelledby="manifesto-title">

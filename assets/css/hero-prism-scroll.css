@@ -161,3 +161,282 @@
 .dayslume-lite-motion .hero--motion-lab .hero__beam { animation: none !important; }
 .dayslume-lite-motion .hero--motion-lab .hero__spotlight,
 .dayslume-lite-motion .hero--motion-lab .hero__prism-orbit { display: none; }
+
+
+/* Kiru-inspired editorial scroll story — the centered headline unfolds into
+   strategy/design/technology and finally resolves into a commercial layout.
+   Works as a static hero without JS, on smaller screens, reduced motion or Save-Data. */
+.hero.hero--interactive-flower.hero--motion-lab.hero--kiru-story {
+  min-height: 0;
+  padding: 0;
+  overflow: visible;
+  isolation: isolate;
+  background: #202532;
+}
+.hero--kiru-story .hero-kiru-stage {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  min-height: 100svh;
+  overflow: hidden;
+  padding: clamp(118px, 13vh, 150px) 5vw 46px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  background: #202532;
+}
+.hero--kiru-story .hero__bg-overlay { pointer-events: none; }
+.hero--kiru-story .hero-kiru-opening {
+  position: relative;
+  z-index: 8;
+  width: min(100%, 1410px);
+  text-align: center;
+  pointer-events: none;
+}
+.hero--kiru-story .hero-kiru-opening .hero-eyebrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .6rem;
+  margin: 0 auto clamp(16px,2.5vh,26px);
+  font-size: clamp(10px,.95vw,13px);
+  letter-spacing: .19em;
+  color: #D8B6A5;
+}
+.hero--kiru-story .hero-kiru-title {
+  display: block;
+  margin: 0;
+  padding: 0;
+  font-size: clamp(48px,7.35vw,116px);
+  font-weight: 500;
+  letter-spacing: -.075em;
+  line-height: .985;
+  text-transform: none;
+  color: #F3EFE8;
+  text-shadow: 0 8px 45px rgba(0,0,0,.16);
+  text-wrap: nowrap;
+}
+.hero--kiru-story .hero-kiru-line {
+  display: block;
+  white-space: nowrap;
+  line-height: 1.05;
+}
+.hero--kiru-story .hero-kiru-line--small {
+  margin-top: .06em;
+  font-size: .79em;
+}
+.hero--kiru-story .hero-kiru-line--accent em {
+  color: #A9C5D8;
+  font-weight: 400;
+  font-style: italic;
+}
+.hero--kiru-story .hero-kiru-word {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  vertical-align: baseline;
+  will-change: auto;
+}
+.hero--kiru-story .hero-kiru-word + .hero-kiru-word { margin-left: .08em; }
+.hero--kiru-story .hero-kiru-title .accent-point { color: #D8B6A5; }
+.hero--kiru-story .hero-kiru-scroll-note {
+  margin: clamp(27px,5vh,53px) auto 0;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .26em;
+  color: rgba(243,239,232,.68);
+}
+.hero--kiru-story .hero-kiru-scroll-note span {
+  display: inline-block;
+  margin-left: .7rem;
+  font-size: 19px;
+  vertical-align: -.1em;
+}
+.hero--kiru-story .hero-kiru-keywords { display: none; }
+.hero--kiru-story .hero-kiru-reveal {
+  position: relative;
+  z-index: 9;
+  width: min(100%, 670px);
+  padding: 0;
+  color: #F3EFE8;
+}
+.hero--kiru-story .hero-kiru-reveal .hero-eyebrow { font-size: 11px; margin-bottom: 18px; }
+.hero--kiru-story .hero-kiru-resolve-title {
+  color: #F3EFE8;
+  font-size: clamp(36px,4.35vw,66px);
+  font-weight: 500;
+  line-height: 1.06;
+  letter-spacing: -.065em;
+  margin: 0 0 22px;
+  max-width: 12ch;
+}
+.hero--kiru-story .hero-kiru-resolve-title em { color: #A9C5D8; font-weight: 400; }
+.hero--kiru-story .hero-kiru-reveal .hero-lead { max-width: 48ch; line-height: 1.6; }
+.hero--kiru-story .hero-kiru-reveal .hero-actions { margin-top: 14px; }
+.hero--kiru-story .hero-kiru-reveal .hero-foot { margin-top: 25px; }
+.hero--kiru-story .hero-visual-composition {
+  position: relative;
+  z-index: 5;
+  justify-self: center;
+  align-self: center;
+  width: min(62vw, 370px);
+  transform: none;
+  opacity: 1;
+  pointer-events: none;
+}
+.hero--kiru-story .hero-kiru-skip,
+.hero--kiru-story .hero-kiru-progress { display: none; }
+
+/* Motion only when enhanced. The pinned 2.7-screen journey releases into
+   section 01 normally; no other section is animated or restructured. */
+@media (min-width: 801px) and (prefers-reduced-motion: no-preference) {
+  .hero.hero--kiru-story.hero--kiru-ready {
+    height: 270svh;
+    min-height: 0;
+    padding: 0;
+  }
+  .hero--kiru-ready .hero-kiru-stage {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100svh;
+    min-height: 0;
+    padding: 0;
+    display: block;
+    overflow: hidden;
+  }
+  .hero--kiru-ready .hero-kiru-opening {
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    transform: translate3d(-50%,-50%,0);
+    width: min(94vw,1420px);
+  }
+  .hero--kiru-ready .hero-kiru-opening .hero-eyebrow {
+    opacity: var(--kiru-intro-opacity,1);
+    transform: translate3d(0,calc(var(--kiru-intro-y,0px)),0);
+  }
+  .hero--kiru-ready .hero-kiru-word { will-change: transform,opacity; }
+  .hero--kiru-ready .hero-kiru-scroll-note {
+    opacity: var(--kiru-scroll-hint,1);
+    transition: opacity .14s linear;
+  }
+  .hero--kiru-ready .hero-kiru-keywords {
+    display: flex;
+    position: absolute;
+    z-index: 7;
+    top: 49%;
+    left: 50%;
+    transform: translate3d(-50%,-50%,0);
+    width: min(89vw,1180px);
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    pointer-events: none;
+  }
+  .hero--kiru-ready .hero-kiru-keyword {
+    font-family: inherit;
+    font-size: clamp(43px,7vw,108px);
+    font-weight: 600;
+    letter-spacing: -.075em;
+    line-height: 1.04;
+    color: #F3EFE8;
+    opacity: 0;
+    white-space: nowrap;
+    text-shadow: 0 8px 34px rgba(32,37,50,.32);
+    will-change: transform,opacity;
+  }
+  .hero--kiru-ready .hero-kiru-keyword--02 { color: #A9C5D8; }
+  .hero--kiru-ready .hero-kiru-keyword--03 { color: #D8B6A5; }
+  .hero--kiru-ready .hero-kiru-dot { color: #6B536D; }
+  .hero--kiru-ready .hero-kiru-reveal {
+    position: absolute;
+    left: clamp(42px,8vw,136px);
+    top: 51%;
+    width: min(41vw,610px);
+    opacity: 0;
+    transform: translate3d(0,calc(-50% + var(--kiru-copy-shift,28px)),0);
+    pointer-events: none;
+    will-change: transform,opacity;
+  }
+  .hero--kiru-ready .hero-visual-composition {
+    position: absolute;
+    z-index: 6;
+    top: 50%;
+    right: clamp(24px,5vw,92px);
+    width: min(40vw,540px);
+    max-width: none;
+    margin: 0;
+    opacity: 0;
+    transform: translate3d(0,-50%,0) scale(.87);
+    will-change: opacity,transform;
+  }
+  .hero--kiru-ready .hero-kiru-skip {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    z-index: 10;
+    bottom: clamp(21px,4vh,40px);
+    right: clamp(24px,5vw,74px);
+    padding: .65rem .4rem;
+    color: rgba(243,239,232,.78);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .13em;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(169,197,216,.25);
+  }
+  .hero--kiru-ready .hero-kiru-skip:focus-visible {
+    outline: 2px solid #A9C5D8; outline-offset: 5px;
+  }
+  .hero--kiru-ready .hero-kiru-progress {
+    position: absolute;
+    z-index: 10;
+    left: clamp(24px,5vw,74px);
+    bottom: clamp(21px,4vh,40px);
+    display: block;
+    width: clamp(72px,8vw,130px);
+    height: 1px;
+    background: rgba(169,197,216,.24);
+  }
+  .hero--kiru-ready .hero-kiru-progress span {
+    display: block; height: 100%; width: 0;
+    background: #A9C5D8;
+    transform-origin: 0 50%;
+  }
+  .hero--kiru-ready .hero__bg-image {
+    background:
+      radial-gradient(ellipse 54% 66% at 73% 52%, rgba(107,83,109,.2), transparent 71%),
+      radial-gradient(ellipse 38% 62% at 67% 59%, rgba(169,197,216,.08), transparent 77%),
+      linear-gradient(122deg,#202532,#242938 58%,#202532);
+  }
+}
+@media (min-width:801px) and (max-width:1130px) {
+  .hero--kiru-story .hero-kiru-title { font-size: clamp(54px,7vw,83px); }
+  .hero--kiru-ready .hero-kiru-reveal { left: 5vw; width: 48vw; }
+  .hero--kiru-ready .hero-visual-composition { width: 43vw; right: 2vw; }
+  .hero--kiru-story .hero-kiru-resolve-title { font-size: clamp(36px,4.1vw,54px); }
+}
+@media (max-width:800px) {
+  .hero--kiru-story .hero-kiru-stage { gap: 1.45rem; padding: 115px 6vw 35px; }
+  .hero--kiru-story .hero-kiru-title { font-size: clamp(36px,9.4vw,67px); letter-spacing: -.067em; }
+  .hero--kiru-story .hero-kiru-opening .hero-eyebrow { font-size: 9px; letter-spacing: .12em; }
+  .hero--kiru-story .hero-kiru-scroll-note { display: none; }
+  .hero--kiru-story .hero-kiru-reveal { text-align: left; order: 3; margin: 0 auto; }
+  .hero--kiru-story .hero-visual-composition { order: 2; width: min(73vw,365px); }
+  .hero--kiru-story .hero-kiru-resolve-title { font-size: clamp(36px,9vw,55px); }
+  .hero--kiru-story .hero__bg-image { background: radial-gradient(ellipse 82% 50% at 70% 40%,rgba(169,197,216,.12),transparent 80%),#202532; }
+}
+@media (max-width:440px) {
+  .hero--kiru-story .hero-kiru-title { font-size: clamp(32px,9vw,43px); }
+  .hero--kiru-story .hero-kiru-reveal .hero-actions { display: flex; flex-direction: column; align-items: stretch; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero--kiru-story .hero-kiru-word,
+  .hero--kiru-story .hero-kiru-keyword,
+  .hero--kiru-story .hero-kiru-reveal,
+  .hero--kiru-story .hero-visual-composition { transition: none !important; animation: none !important; transform: none !important; opacity: 1 !important; }
+}
