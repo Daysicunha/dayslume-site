@@ -54,7 +54,8 @@
     reveal('.launch-products .section-heading > div', 90);
     reveal('.launch-products .solution-card', 105);
     reveal('.home-process-section .section-heading > div', 90);
-    reveal('.home-process-list li', 70);
+    // Os cinco passos são acionados por progresso real de scroll na hero experimental.
+    reveal('.home-process-list:not([data-process-scroll]) li', 70);
     reveal('.content-masthead > *, .content-featured, .content-secondary, .content-insights__label, .content-insights__list li, .content-archive', 85);
     reveal('.about-visual-card', 0);
     reveal('.about-copy > .eyebrow, .about-copy > h2, .about-copy > .about-intro, .about-copy > .about-signature, .about-copy > .about-cta', 85);

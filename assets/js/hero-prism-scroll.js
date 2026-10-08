@@ -13,6 +13,8 @@
   const copy = hero.querySelector('.hero-content');
   const flower = hero.querySelector('.hero-visual-composition');
   const scene = hero.querySelector('[data-flower-scene]');
+  const process = document.querySelector('[data-process-scroll]');
+  const processCards = [...(process?.querySelectorAll(':scope > li') || [])];
   const cards = [...(section?.querySelectorAll('[data-kiru-card]') || [])];
   const cardGrid = section?.querySelector('.services-grid.commercial-paths');
   const panels = [...(section?.querySelectorAll('[data-kiru-panel]') || [])];
@@ -56,6 +58,7 @@
     flower.style.transform='translate3d('+move.toFixed(2)+'px,'+
       lift.toFixed(2)+'px,0) scale('+growth.toFixed(4)+')';
     hero.style.setProperty('--hero-meter-progress',p.toFixed(4));
+    hero.style.setProperty('--hero-split-x',(52*(1-range(p,.07,.79))).toFixed(2)+'%');
     hero.style.setProperty('--hero-rays-shift',(-innerWidth*.12*invasion).toFixed(2)+'px');
     hero.style.setProperty('--hero-light-focus',(78-34*invasion).toFixed(2)+'%');
     const hint=hero.querySelector('.hero-scroll-hint');
@@ -107,6 +110,22 @@
     });
   }
 
+  function scrollProcess(){
+    if(!enabled || !process || processCards.length!==5) return;
+    const rect=process.getBoundingClientRect();
+    if(rect.top>innerHeight+150 || rect.bottom<-150) return;
+    // A passagem do bloco pelo viewport aciona os cinco passos separadamente.
+    const progress=clamp((innerHeight*.90-rect.top)/(innerHeight*.68));
+    process.style.setProperty('--process-fill',easing(progress).toFixed(4));
+    processCards.forEach((card,i)=>{
+      const t=easing(clamp((progress-i*.14)/.43));
+      card.style.setProperty('--process-opacity',t.toFixed(3));
+      card.style.setProperty('--process-y',(24*(1-t)).toFixed(2)+'px');
+      card.style.setProperty('--process-scale',(.97+.03*t).toFixed(4));
+      card.classList.toggle('is-process-visible',t>.98);
+    });
+  }
+
   function renderPointer(){
     if (!allowPointer()) return false;
     let moving=false;
@@ -125,6 +144,7 @@
     frame=0;
     scrollHero();
     scrollCards();
+    scrollProcess();
     if(renderPointer())schedule();
   }
   function schedule(){if(!frame)frame=requestAnimationFrame(tick);}
@@ -155,6 +175,7 @@
     hero.style.removeProperty('--hero-meter-progress');
     hero.style.removeProperty('--hero-rays-shift');
     hero.style.removeProperty('--hero-light-focus');
+    hero.style.removeProperty('--hero-split-x');
     hero.querySelector('.hero-scroll-hint')?.style.removeProperty('opacity');
     for(const key of ['--spot-x','--spot-y','--glint-x','--glint-y'])hero.style.removeProperty(key);
     cards.forEach(card=>{
@@ -169,6 +190,11 @@
       bar.style.removeProperty('transform');
       bar.style.removeProperty('opacity');
     });
+    process?.style.removeProperty('--process-fill');
+    processCards.forEach(card=>{
+      for(const key of ['--process-opacity','--process-y','--process-scale'])card.style.removeProperty(key);
+      card.classList.remove('is-process-visible');
+    });
   }
   function sync(){
     const next=allowMotion();
@@ -176,6 +202,7 @@
     else enabled=true;
     hero.classList.toggle('hero-scroll-ready',enabled);
     section?.classList.toggle('kiru-cards-ready',enabled);
+    process?.classList.toggle('process-scroll-ready',enabled);
     if(!allowPointer())onPointerLeave();
     schedule();
   }

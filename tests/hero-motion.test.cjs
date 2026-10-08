@@ -58,3 +58,35 @@ test('Kiru recording inspired motion uses three layered microcards and scroll-ti
   assert.match(js,/sweeps\.forEach/);
   assert.match(js,/Math\.min\(innerWidth\*\.33,390\)/);
 });
+
+
+test('Hero first fold pins from top, and colored right panel travels with flower',()=>{
+ const html=read('index.html'),css=read('assets/css/hero-prism-scroll.css'),js=read('assets/js/hero-prism-scroll.js');
+ assert.match(html,/hero__split-panel/);
+ assert.match(css,/\.hero\.hero--interactive-flower\.hero--motion-lab\.hero--scroll-invasion\s*\{\s*display:\s*block/);
+ assert.match(css,/\.hero--scroll-invasion\.hero-scroll-ready \.hero-scroll-stage\s*\{\s*position:sticky;\s*top:0/);
+ assert.match(css,/--hero-split-x/);
+ assert.match(css,/#6B536D/);
+ assert.match(css,/#66758F/);
+ assert.match(js,/hero\.style\.setProperty\('--hero-split-x'/);
+});
+test('manifest title wraps only within left column, and the semicircle is disabled',()=>{
+ const html=read('index.html'),css=read('assets/css/hero-prism-scroll.css');
+ assert.match(html,/manifest-title-line">Onde o digital/);
+ assert.match(html,/manifest-title-line">está travando/);
+ assert.match(html,/manifest-title-line">o seu negócio\?/);
+ assert.match(css,/body\.home-page main > #problemas \.manifest-concept::after\s*\{\s*content:none;/);
+ assert.match(css,/body\.home-page main > #problemas \.manifest-title \.manifest-title-line\s*\{[\s\S]*?white-space:normal;/);
+});
+test('section 05 scrolls its five cards individually without old reveal collisions',()=>{
+ const html=read('index.html'),css=read('assets/css/hero-prism-scroll.css'),js=read('assets/js/hero-prism-scroll.js');
+ const homeJs=read('assets/js/home-premium.js');
+ assert.match(html,/home-process-list" data-process-scroll/);
+ assert.equal((html.match(/<li><span>0[1-5]<\/span>/g)||[]).length,5);
+ assert.match(js,/function scrollProcess\(/);
+ assert.match(js,/progress-i\*\.14/);
+ assert.match(js,/processCards\.forEach/);
+ assert.match(css,/\.process-scroll-ready li/);
+ assert.match(homeJs,/home-process-list:not\(\[data-process-scroll\]\) li/);
+ assert.match(css,/prefers-reduced-motion:reduce/);
+});

@@ -377,3 +377,151 @@
   .home-page #modelo .kiru-motion-sweeps { display:none; }
   .home-page #modelo[data-kiru-cards].kiru-cards-ready .commercial-path-card {will-change:auto;}
 }
+
+
+/* Hero 3.4 — split real e sem faixa vazia. O CSS legado define a hero como
+   grid; anulamos isso porque um item sticky era CENTRALIZADO na altura do
+   contêiner de ~215svh, atrasando a primeira dobra em mais de meio viewport. */
+.hero.hero--interactive-flower.hero--motion-lab.hero--scroll-invasion {
+  display: block;
+  align-items: initial;
+}
+.hero--scroll-invasion .hero-scroll-stage {
+  padding-top: clamp(104px, 12vh, 130px);
+  padding-bottom: clamp(28px, 4vh, 52px);
+}
+.hero--scroll-invasion .hero__bg-image {
+  background: #202532;
+}
+.hero--scroll-invasion .hero__split-panel {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  transform: translate3d(var(--hero-split-x,52%),0,0);
+  will-change: transform;
+  background: linear-gradient(122deg,#6B536D 0%,#66758F 57%,#A9C5D8 135%);
+}
+.hero--scroll-invasion .hero__bg-overlay {
+  background:
+    linear-gradient(90deg,rgba(32,37,50,.42) 0%,rgba(32,37,50,.20) 30%,rgba(32,37,50,.04) 57%,rgba(32,37,50,.02) 100%),
+    linear-gradient(180deg,rgba(32,37,50,.08),transparent 36%,transparent 74%,rgba(32,37,50,.20));
+}
+.hero--scroll-invasion .hero-grid {
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  gap: clamp(22px,3vw,48px);
+}
+.hero--scroll-invasion .hero-content h1 {
+  font-size: clamp(43px,4.35vw,72px);
+}
+.hero--scroll-invasion .hero-visual-composition {
+  width: min(40vw,515px);
+}
+@media (min-width:801px) and (prefers-reduced-motion:no-preference) {
+  .hero.hero--scroll-invasion.hero-scroll-ready {
+    display: block;
+    height: 195svh;
+    align-items: initial;
+  }
+  .hero--scroll-invasion.hero-scroll-ready .hero-scroll-stage {
+    position:sticky;
+    top:0;
+    height:100svh;
+    min-height:0;
+    padding-top:clamp(104px,12vh,130px);
+    padding-bottom:clamp(28px,4vh,52px);
+  }
+}
+@media (max-height:740px) and (min-width:801px) {
+  .hero--scroll-invasion .hero-scroll-stage,
+  .hero--scroll-invasion.hero-scroll-ready .hero-scroll-stage {
+    padding-top:94px;
+    padding-bottom:20px;
+  }
+  .hero--scroll-invasion .hero-content h1 {
+    font-size:clamp(39px,4vw,60px);
+    margin-bottom:12px;
+  }
+  .hero--scroll-invasion .hero-lead {line-height:1.47;margin-bottom:12px;}
+  .hero--scroll-invasion .hero-foot {margin-top:12px;}
+}
+@media (max-width:800px) {
+  .hero--scroll-invasion .hero-scroll-stage {padding-top:108px;padding-bottom:30px;}
+  .hero--scroll-invasion .hero__split-panel {
+    transform:none;
+    opacity:.25;
+    background:linear-gradient(130deg,transparent 35%,#66758F 100%);
+  }
+  .hero--scroll-invasion .hero-grid {grid-template-columns:minmax(0,1fr);}
+  .hero--scroll-invasion .hero-visual-composition {width:min(79vw,440px);}
+}
+@media (prefers-reduced-motion:reduce) {
+  .hero--scroll-invasion .hero__split-panel {transform:translate3d(52%,0,0)!important;will-change:auto;}
+}
+
+/* Seção 01: desfaz "nowrap" do legado (causa da invasão sobre os cards),
+   alarga a coluna editorial e remove o semicírculo sob o parágrafo. */
+body.home-page main > #problemas .launch-manifest-grid {
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  gap:clamp(34px,4vw,60px);
+}
+body.home-page main > #problemas .manifest-concept {
+  padding-bottom:0;
+  min-width:0;
+}
+body.home-page main > #problemas .manifest-concept::after {
+  content:none;
+  display:none;
+}
+body.home-page main > #problemas .manifest-title {
+  max-width:100%;
+  font-size:clamp(39px,3.75vw,61px);
+  line-height:1.085;
+  letter-spacing:-.056em;
+  overflow-wrap:normal;
+  text-wrap:balance;
+}
+body.home-page main > #problemas .manifest-title .manifest-title-line {
+  display:block;
+  max-width:100%;
+  white-space:normal;
+  text-wrap:balance;
+}
+body.home-page main > #problemas .manifest-intro {max-width:43ch;}
+@media (max-width:980px) {
+  body.home-page main > #problemas .launch-manifest-grid {
+    grid-template-columns:minmax(0,1fr);
+    gap:32px;
+  }
+  body.home-page main > #problemas .manifest-title {
+    max-width:100%;
+    font-size:clamp(38px,6.8vw,55px);
+  }
+}
+@media (max-width:620px) {
+  body.home-page main > #problemas .manifest-title {
+    font-size:clamp(34px,9vw,47px);
+  }
+}
+
+/* Seção 05: timeline de cinco cartões, ligada ao scroll, sem disparo geral
+   do antigo IntersectionObserver. Sem JS, mobile e reduced-motion: conteúdo visível. */
+body.home-page main > #processo-home .home-process-list[data-process-scroll].process-scroll-ready li {
+  opacity:var(--process-opacity,1);
+  transform:translate3d(0,var(--process-y,0px),0) scale(var(--process-scale,1));
+  transition:background-color .35s ease,box-shadow .35s ease,opacity .12s linear;
+}
+body.home-page main > #processo-home .home-process-list[data-process-scroll].process-scroll-ready li:hover {
+  transform:translate3d(0,calc(var(--process-y,0px) - 4px),0) scale(var(--process-scale,1));
+}
+body.home-page main > #processo-home .home-process-list[data-process-scroll].process-scroll-ready.is-visible::after {
+  transform:scaleX(var(--process-fill,0));
+  transition:none;
+}
+@media (max-width:800px), (prefers-reduced-motion:reduce) {
+  body.home-page main > #processo-home .home-process-list[data-process-scroll] li {
+    opacity:1!important;
+    transform:none!important;
+    transition:none!important;
+  }
+}
