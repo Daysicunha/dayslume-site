@@ -47,7 +47,7 @@ test('pin and invasion use scroll progress, disable on small screens and reduced
 test('section 02 keeps the two real service cards without floating data graphics',()=>{
   const html=read('index.html'),css=read('assets/css/hero-prism-scroll.css');
   const js=read('assets/js/hero-prism-scroll.js');
-  assert.equal((html.match(/data-kiru-card\\b/g)||[]).length,2);
+  assert.equal((html.match(/data-kiru-card\b/g)||[]).length,2);
   assert.doesNotMatch(html,/kiru-motion-panels|kiru-motion-sweeps|data-kiru-panel|data-kiru-sweep/);
   assert.doesNotMatch(css,/kiru-motion-panel__bars|kiru-motion-panels|kiru-motion-sweeps/);
   assert.doesNotMatch(js,/\bpanels\.forEach|\bsweeps\.forEach/);
