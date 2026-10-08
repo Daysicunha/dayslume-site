@@ -494,3 +494,22 @@ body:not(.home-page) .commercial-diagnostic{
     scroll-behavior:auto!important;
   }
 }
+
+
+/* Auditoria por vídeo — contraste real em seções escuras */
+body:not(.home-page):not(.blog-index):not(.blog-article) main>.section.dark .grid>.box.days-card h2,
+body:not(.home-page):not(.blog-index):not(.blog-article) main>.section.dark .grid>.box.days-card h3,
+body:not(.home-page):not(.blog-index):not(.blog-article) main>.section.dark .grid>.box.days-card strong{
+  color:var(--warm-ivory)!important;
+}
+body:not(.home-page):not(.blog-index):not(.blog-article) main>.section.dark .grid>.box.days-card small{
+  color:var(--peach)!important;
+}
+body:not(.home-page):not(.blog-index):not(.blog-article) main>.section.dark .grid>.box.days-card .btn{
+  background:var(--warm-ivory);
+  color:var(--ink-deep);
+  border-color:var(--warm-ivory);
+}
+body:not(.home-page):not(.blog-index):not(.blog-article) main>.section.dark .service-shift span{
+  color:rgba(243,239,232,.82);
+}
