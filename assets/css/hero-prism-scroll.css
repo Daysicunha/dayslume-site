@@ -1,442 +1,248 @@
-/* DAYSLUME Hero 3.0 — Spotlight + prism + scroll choreography.
-   Scoped to the experimental branch's hero; the rest of the site is untouched.
-   No video, canvas, remote animation scripts or layout-changing transitions. */
-.hero.hero--motion-lab {
-  --spot-x: 76%;
-  --spot-y: 49%;
-  --prism-x: 76%;
-  --prism-y: 49%;
-  --glint-x: 50%;
-  --glint-y: 45%;
-  --glint-strength: .2;
-  --hero-scroll-shift: 0px;
-  --hero-scroll-rotate: 0deg;
-  --hero-scroll-opacity: 1;
-  background: #202532;
-}
-.hero--motion-lab .hero__bg-image {
-  transform: none;
-  transition: none;
-  will-change: auto;
-  opacity: 1;
-  background:
-    radial-gradient(ellipse 56% 76% at 82% 48%, rgba(107,83,109,.24), transparent 73%),
-    radial-gradient(ellipse 37% 55% at 74% 64%, rgba(169,197,216,.12), transparent 76%),
-    linear-gradient(118deg, #202532 12%, #252939 58%, #202532 100%);
-}
-.hero--motion-lab .hero__beam-field,
-.hero--motion-lab .hero__spotlight,
-.hero--motion-lab .hero__prism-orbit {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-.hero--motion-lab .hero__beam-field {
-  z-index: 2;
-  overflow: hidden;
-  opacity: .8;
-  -webkit-mask-image: linear-gradient(90deg, transparent 10%, rgba(0,0,0,.16) 40%, #000 64%);
-  mask-image: linear-gradient(90deg, transparent 10%, rgba(0,0,0,.16) 40%, #000 64%);
-}
-.hero--motion-lab .hero__beam {
-  position: absolute;
-  top: -65%;
-  height: 230%;
-  display: block;
-  transform: rotate(25deg);
-  transform-origin: center;
-  border-radius: 50%;
-  opacity: .65;
-  animation: hero-beam-drift 17s ease-in-out infinite alternate;
-}
-.hero--motion-lab .hero__beam--one {
-  right: 7%;
-  width: 22%;
-  background: linear-gradient(90deg, transparent, rgba(169,197,216,.025) 28%, rgba(169,197,216,.22) 48%, rgba(243,239,232,.08) 54%, transparent 80%);
-}
-.hero--motion-lab .hero__beam--two {
-  right: 23%;
-  width: 13%;
-  background: linear-gradient(90deg, transparent, rgba(216,182,165,.04) 24%, rgba(216,182,165,.15) 47%, transparent 74%);
-  animation-duration: 23s;
-  animation-delay: -6s;
-}
-.hero--motion-lab .hero__beam--three {
-  right: -8%;
-  width: 19%;
-  background: linear-gradient(90deg, transparent, rgba(169,197,216,.08) 32%, rgba(169,197,216,.19) 49%, transparent 78%);
-  animation-duration: 27s;
-  animation-delay: -13s;
-}
-.hero--motion-lab .hero__spotlight {
-  z-index: 3;
-  opacity: .9;
-  background:
-    radial-gradient(ellipse 230px 200px at var(--spot-x) var(--spot-y), rgba(243,239,232,.13) 0%, rgba(169,197,216,.14) 25%, rgba(107,83,109,.08) 48%, transparent 76%);
-  mix-blend-mode: screen;
-}
-.hero--motion-lab .hero__prism-orbit {
-  z-index: 3;
-  opacity: .58;
-  background:
-    radial-gradient(circle 165px at var(--prism-x) var(--prism-y), transparent 55%, rgba(169,197,216,.095) 65%, rgba(216,182,165,.08) 70%, transparent 80%),
-    radial-gradient(circle 95px at var(--prism-x) var(--prism-y), rgba(243,239,232,.045), transparent 82%);
-}
-.hero--motion-lab .hero__bg-overlay {
-  z-index: 4;
-  background:
-    linear-gradient(90deg, rgba(32,37,50,.83) 0%, rgba(32,37,50,.62) 28%, rgba(32,37,50,.24) 58%, rgba(32,37,50,.08) 85%),
-    linear-gradient(180deg, rgba(32,37,50,.21), transparent 32%, transparent 70%, rgba(32,37,50,.33));
-}
-.hero--motion-lab .hero-ambient-light {
-  z-index: 4;
-  opacity: .8;
-  background: radial-gradient(ellipse 40% 62% at 78% 53%, rgba(169,197,216,.09), rgba(107,83,109,.04) 43%, transparent 75%);
-}
-.hero--motion-lab .hero-grid { z-index: 5; }
-.hero--motion-lab .hero-visual-composition {
-  transform: translate3d(0, calc(-.5cm + var(--hero-scroll-shift)), 0) rotate(var(--hero-scroll-rotate));
-  opacity: var(--hero-scroll-opacity);
-  transform-origin: 50% 52%;
-  transition: none;
-}
-.hero--motion-lab .flower-scene { isolation: isolate; }
-.hero--motion-lab .flower-prism-glint {
-  position: absolute;
-  z-index: 2;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(127deg, transparent 25%, rgba(169,197,216,.05) 42%, rgba(243,239,232,.19) 49%, rgba(216,182,165,.09) 54%, transparent 71%);
-  -webkit-mask-image: radial-gradient(ellipse 26% 36% at var(--glint-x) var(--glint-y), #000 15%, transparent 100%);
-  mask-image: radial-gradient(ellipse 26% 36% at var(--glint-x) var(--glint-y), #000 15%, transparent 100%);
-  mix-blend-mode: screen;
-  opacity: var(--glint-strength);
-}
-.hero--motion-lab .hero-content > .hero-eyebrow,
-.hero--motion-lab .hero-content > h1,
-.hero--motion-lab .hero-content > .hero-lead,
-.hero--motion-lab .hero-content > .hero-rotator,
-.hero--motion-lab .hero-content > .hero-actions,
-.hero--motion-lab .hero-content > .hero-foot {
-  animation: hero-editorial-arrive .85s cubic-bezier(.22,1,.36,1) both;
-}
-.hero--motion-lab .hero-content > h1 { animation-delay: 90ms; }
-.hero--motion-lab .hero-content > .hero-lead { animation-delay: 190ms; }
-.hero--motion-lab .hero-content > .hero-rotator { animation-delay: 270ms; }
-.hero--motion-lab .hero-content > .hero-actions { animation-delay: 345ms; }
-.hero--motion-lab .hero-content > .hero-foot { animation-delay: 430ms; }
-@keyframes hero-editorial-arrive {
-  from { opacity: 0; transform: translate3d(0, 19px, 0); }
-  to { opacity: 1; transform: translate3d(0, 0, 0); }
-}
-@keyframes hero-beam-drift {
-  from { transform: translate3d(-14px, -6px, 0) rotate(24deg); opacity: .34; }
-  to { transform: translate3d(16px, 9px, 0) rotate(28deg); opacity: .74; }
-}
-@media (max-width: 1180px) {
-  .hero--motion-lab .hero__bg-overlay {
-    background: linear-gradient(90deg, rgba(32,37,50,.88), rgba(32,37,50,.38) 80%), linear-gradient(180deg, transparent 60%, rgba(32,37,50,.24));
-  }
-}
-@media (max-width: 800px) {
-  .hero--motion-lab .hero__beam-field { opacity: .33; }
-  .hero--motion-lab .hero__spotlight,
-  .hero--motion-lab .hero__prism-orbit,
-  .hero--motion-lab .flower-prism-glint { display: none; }
-  .hero--motion-lab .hero__bg-image { opacity: 1; }
-  .hero--motion-lab .hero__bg-overlay {
-    background: linear-gradient(180deg, rgba(32,37,50,.82), rgba(32,37,50,.58) 49%, rgba(32,37,50,.22) 80%);
-  }
-  .hero--motion-lab .hero-visual-composition { transform: none; opacity: 1; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero--motion-lab .hero__beam,
-  .hero--motion-lab .hero-content > *,
-  .hero--motion-lab .flower-prism-glint { animation: none !important; }
-  .hero--motion-lab .hero__spotlight,
-  .hero--motion-lab .hero__prism-orbit { display: none; }
-  .hero--motion-lab .hero-visual-composition { transform: none !important; opacity: 1 !important; }
-}
-.motion-paused .hero--motion-lab .hero__beam,
-.dayslume-lite-motion .hero--motion-lab .hero__beam { animation: none !important; }
-.dayslume-lite-motion .hero--motion-lab .hero__spotlight,
-.dayslume-lite-motion .hero--motion-lab .hero__prism-orbit { display: none; }
-
-
-/* Kiru-inspired editorial scroll story — the centered headline unfolds into
-   strategy/design/technology and finally resolves into a commercial layout.
-   Works as a static hero without JS, on smaller screens, reduced motion or Save-Data. */
-.hero.hero--interactive-flower.hero--motion-lab.hero--kiru-story {
+/* DAYSLUME experimental motion: scroll-driven flower invasion + editorial rolling cards.
+   Scoped to home hero and #modelo, preserving every other section and brand palette. */
+.hero.hero--interactive-flower.hero--motion-lab.hero--scroll-invasion {
+  --spot-x: 75%; --spot-y: 47%;
+  --glint-x: 50%; --glint-y: 50%;
+  --hero-meter-progress: 0;
+  --hero-rays-shift: 0px;
+  --hero-light-focus: 78%;
   min-height: 0;
   padding: 0;
   overflow: visible;
   isolation: isolate;
   background: #202532;
 }
-.hero--kiru-story .hero-kiru-stage {
+.hero--scroll-invasion .hero-scroll-stage {
   position: relative;
-  z-index: 1;
   isolation: isolate;
-  min-height: 100svh;
+  min-height: max(680px, 100svh);
   overflow: hidden;
-  padding: clamp(118px, 13vh, 150px) 5vw 46px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 2rem;
   background: #202532;
+  padding: clamp(116px, 14vh, 160px) 0 clamp(45px, 6vh, 85px);
 }
-.hero--kiru-story .hero__bg-overlay { pointer-events: none; }
-.hero--kiru-story .hero-kiru-opening {
-  position: relative;
-  z-index: 8;
-  width: min(100%, 1410px);
-  text-align: center;
+.hero--scroll-invasion .hero__bg-image {
+  transform: none;
+  transition: none;
+  will-change: auto;
+  opacity: 1;
+  background:
+    radial-gradient(ellipse 65% 72% at var(--hero-light-focus) 47%, rgba(107,83,109,.21) 0%, transparent 69%),
+    radial-gradient(ellipse 38% 60% at var(--hero-light-focus) 62%, rgba(169,197,216,.10), transparent 80%),
+    linear-gradient(125deg, #202532 8%, #242a3a 62%, #202532);
+}
+.hero--scroll-invasion .hero__beam-field,
+.hero--scroll-invasion .hero__spotlight,
+.hero--scroll-invasion .hero__prism-orbit {
+  position: absolute;
+  inset: 0;
   pointer-events: none;
 }
-.hero--kiru-story .hero-kiru-opening .hero-eyebrow {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: .6rem;
-  margin: 0 auto clamp(16px,2.5vh,26px);
-  font-size: clamp(10px,.95vw,13px);
-  letter-spacing: .19em;
-  color: #D8B6A5;
+.hero--scroll-invasion .hero__beam-field {
+  z-index: 2;
+  overflow: hidden;
+  opacity: .7;
+  transform: translate3d(var(--hero-rays-shift),0,0);
+  -webkit-mask-image: linear-gradient(90deg,transparent 18%,#000 68%);
+  mask-image: linear-gradient(90deg,transparent 18%,#000 68%);
 }
-.hero--kiru-story .hero-kiru-title {
+.hero--scroll-invasion .hero__beam {
   display: block;
-  margin: 0;
-  padding: 0;
-  font-size: clamp(48px,7.35vw,116px);
-  font-weight: 500;
-  letter-spacing: -.075em;
-  line-height: .985;
-  text-transform: none;
-  color: #F3EFE8;
-  text-shadow: 0 8px 45px rgba(0,0,0,.16);
-  text-wrap: nowrap;
+  position: absolute;
+  height: 210%; top: -55%;
+  width: 21%;
+  border-radius: 50%;
+  transform: rotate(24deg);
+  background: linear-gradient(90deg,transparent,rgba(169,197,216,.02) 23%,rgba(169,197,216,.17) 51%,rgba(243,239,232,.045) 56%,transparent 80%);
+  animation: hero-invasion-beam 19s ease-in-out infinite alternate;
 }
-.hero--kiru-story .hero-kiru-line {
-  display: block;
-  white-space: nowrap;
-  line-height: 1.05;
+.hero--scroll-invasion .hero__beam--one { right: 8%; }
+.hero--scroll-invasion .hero__beam--two {
+  right: 23%; width: 15%;
+  background: linear-gradient(90deg,transparent,rgba(216,182,165,.14) 51%,transparent 80%);
+  animation-duration: 26s; animation-delay: -7s;
 }
-.hero--kiru-story .hero-kiru-line--small {
-  margin-top: .06em;
-  font-size: .79em;
+.hero--scroll-invasion .hero__beam--three {
+  right: -7%; width: 24%; animation-duration: 24s; animation-delay: -12s;
 }
-.hero--kiru-story .hero-kiru-line--accent em {
-  color: #A9C5D8;
-  font-weight: 400;
-  font-style: italic;
+.hero--scroll-invasion .hero__spotlight {
+  z-index: 3;
+  opacity: .85;
+  background: radial-gradient(ellipse 210px 210px at var(--spot-x) var(--spot-y),rgba(243,239,232,.12),rgba(169,197,216,.12) 32%,rgba(107,83,109,.07) 52%,transparent 77%);
+  mix-blend-mode: screen;
 }
-.hero--kiru-story .hero-kiru-word {
-  display: inline-block;
-  position: relative;
-  white-space: nowrap;
-  vertical-align: baseline;
-  will-change: auto;
+.hero--scroll-invasion .hero__prism-orbit {
+  z-index: 3;
+  opacity: .55;
+  background: radial-gradient(circle 170px at var(--spot-x) var(--spot-y),transparent 56%,rgba(169,197,216,.10) 67%,rgba(216,182,165,.06) 72%,transparent 79%);
 }
-.hero--kiru-story .hero-kiru-word + .hero-kiru-word { margin-left: .08em; }
-.hero--kiru-story .hero-kiru-title .accent-point { color: #D8B6A5; }
-.hero--kiru-story .hero-kiru-scroll-note {
-  margin: clamp(27px,5vh,53px) auto 0;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: .26em;
-  color: rgba(243,239,232,.68);
+.hero--scroll-invasion .hero__bg-overlay {
+  z-index: 4;
+  background:
+    linear-gradient(90deg,rgba(32,37,50,.77) 0%,rgba(32,37,50,.52) 28%,rgba(32,37,50,.19) 53%,rgba(32,37,50,.04) 84%),
+    linear-gradient(180deg,rgba(32,37,50,.20),transparent 35%,transparent 66%,rgba(32,37,50,.26));
 }
-.hero--kiru-story .hero-kiru-scroll-note span {
-  display: inline-block;
-  margin-left: .7rem;
-  font-size: 19px;
-  vertical-align: -.1em;
+.hero--scroll-invasion .hero-ambient-light {
+  z-index: 4; opacity: .62; pointer-events:none;
+  background: radial-gradient(ellipse 48% 56% at var(--hero-light-focus) 50%, rgba(169,197,216,.09),rgba(107,83,109,.035) 47%,transparent 75%);
 }
-.hero--kiru-story .hero-kiru-keywords { display: none; }
-.hero--kiru-story .hero-kiru-reveal {
-  position: relative;
-  z-index: 9;
-  width: min(100%, 670px);
-  padding: 0;
-  color: #F3EFE8;
-}
-.hero--kiru-story .hero-kiru-reveal .hero-eyebrow { font-size: 11px; margin-bottom: 18px; }
-.hero--kiru-story .hero-kiru-resolve-title {
-  color: #F3EFE8;
-  font-size: clamp(36px,4.35vw,66px);
-  font-weight: 500;
-  line-height: 1.06;
-  letter-spacing: -.065em;
-  margin: 0 0 22px;
-  max-width: 12ch;
-}
-.hero--kiru-story .hero-kiru-resolve-title em { color: #A9C5D8; font-weight: 400; }
-.hero--kiru-story .hero-kiru-reveal .hero-lead { max-width: 48ch; line-height: 1.6; }
-.hero--kiru-story .hero-kiru-reveal .hero-actions { margin-top: 14px; }
-.hero--kiru-story .hero-kiru-reveal .hero-foot { margin-top: 25px; }
-.hero--kiru-story .hero-visual-composition {
+.hero--scroll-invasion .hero-grid {
   position: relative;
   z-index: 5;
-  justify-self: center;
+  display: grid;
+  grid-template-columns: minmax(0,1.06fr) minmax(0,.94fr);
+  align-items: center;
+  gap: clamp(15px,2.2vw,42px);
+  width: min(calc(100% - 76px), 1320px);
+}
+.hero--scroll-invasion .hero-content {
+  position: relative;
+  z-index: 7;
+  min-width: 0;
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+.hero--scroll-invasion .hero-content h1 {
+  max-width: 13ch;
+  font-size: clamp(43px,4.6vw,77px);
+  line-height: 1.035;
+  letter-spacing: -.055em;
+  margin-bottom: clamp(15px,2.3vh,25px);
+  text-wrap: balance;
+}
+.hero--scroll-invasion .hero-content h1 em {
+  color: #A9C5D8;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+}
+.hero--scroll-invasion .hero-lead { max-width: 48ch; font-size: clamp(14px,1.19vw,17px); line-height: 1.58; }
+.hero--scroll-invasion .hero-foot { margin-top: 20px; }
+.hero--scroll-invasion .hero-visual-composition {
+  position: relative;
+  isolation: isolate;
+  z-index: 6;
   align-self: center;
-  width: min(62vw, 370px);
+  justify-self: end;
+  width: min(41.5vw,550px);
+  min-height: 0;
+  aspect-ratio: 1682 / 1672;
+  margin: 0;
   transform: none;
   opacity: 1;
+  transition: none;
   pointer-events: none;
 }
-.hero--kiru-story .hero-kiru-skip,
-.hero--kiru-story .hero-kiru-progress { display: none; }
-
-/* Motion only when enhanced. The pinned 2.7-screen journey releases into
-   section 01 normally; no other section is animated or restructured. */
+.hero--scroll-invasion .flower-scene {
+  position: relative;
+  width: 100%; height: 100%;
+  isolation: isolate;
+}
+.hero--scroll-invasion .flower-prism-glint {
+  position: absolute; z-index: 3; inset: 0; pointer-events:none;
+  background: linear-gradient(120deg,transparent 27%,rgba(169,197,216,.05) 40%,rgba(243,239,232,.2) 49%,rgba(216,182,165,.065) 55%,transparent 71%);
+  -webkit-mask-image: radial-gradient(ellipse 27% 34% at var(--glint-x) var(--glint-y),#000 10%,transparent 100%);
+  mask-image: radial-gradient(ellipse 27% 34% at var(--glint-x) var(--glint-y),#000 10%,transparent 100%);
+  mix-blend-mode: screen;
+  opacity: .52;
+}
+.hero--scroll-invasion .hero-scroll-hint {
+  position:absolute; z-index:8;
+  left: 50%; bottom: clamp(17px,3vh,36px);
+  transform: translateX(-50%);
+  white-space: nowrap; pointer-events:none;
+  color: rgba(243,239,232,.63);
+  font-size: 10px; font-weight: 600; letter-spacing: .21em;
+}
+.hero--scroll-invasion .hero-scroll-hint span { margin-left: 12px; font-size: 18px; }
+.hero--scroll-invasion .hero-scroll-meter { display:none; }
+@keyframes hero-invasion-beam {
+  from { transform: translate3d(-10px,-8px,0) rotate(22deg); opacity: .33; }
+  to { transform: translate3d(14px,7px,0) rotate(28deg); opacity: .75; }
+}
+/* Enable pinning only when JavaScript has activated scroll tracking. */
 @media (min-width: 801px) and (prefers-reduced-motion: no-preference) {
-  .hero.hero--kiru-story.hero--kiru-ready {
-    height: 270svh;
-    min-height: 0;
-    padding: 0;
+  .hero.hero--scroll-invasion.hero-scroll-ready {
+    height: 215svh;
+    min-height:0;
+    overflow:visible;
+    padding:0;
   }
-  .hero--kiru-ready .hero-kiru-stage {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    height: 100svh;
-    min-height: 0;
-    padding: 0;
-    display: block;
-    overflow: hidden;
+  .hero--scroll-invasion.hero-scroll-ready .hero-scroll-stage {
+    position: sticky; top: 0;
+    height: 100svh; min-height:0;
+    padding: clamp(110px,13vh,155px) 0 clamp(35px,6vh,65px);
   }
-  .hero--kiru-ready .hero-kiru-opening {
-    position: absolute;
-    left: 50%;
-    top: 48%;
-    transform: translate3d(-50%,-50%,0);
-    width: min(94vw,1420px);
+  .hero--scroll-invasion.hero-scroll-ready .hero-content,
+  .hero--scroll-invasion.hero-scroll-ready .hero-visual-composition {
+    will-change: transform, opacity;
   }
-  .hero--kiru-ready .hero-kiru-opening .hero-eyebrow {
-    opacity: var(--kiru-intro-opacity,1);
-    transform: translate3d(0,calc(var(--kiru-intro-y,0px)),0);
+  .hero--scroll-invasion.hero-scroll-ready .hero-scroll-meter {
+    position:absolute; z-index:8; bottom:clamp(16px,3vh,30px);
+    left: clamp(22px,4vw,64px); display:block;
+    width: 90px; height: 1px; background:rgba(169,197,216,.3);
   }
-  .hero--kiru-ready .hero-kiru-word { will-change: transform,opacity; }
-  .hero--kiru-ready .hero-kiru-scroll-note {
-    opacity: var(--kiru-scroll-hint,1);
-    transition: opacity .14s linear;
-  }
-  .hero--kiru-ready .hero-kiru-keywords {
-    display: flex;
-    position: absolute;
-    z-index: 7;
-    top: 49%;
-    left: 50%;
-    transform: translate3d(-50%,-50%,0);
-    width: min(89vw,1180px);
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    pointer-events: none;
-  }
-  .hero--kiru-ready .hero-kiru-keyword {
-    font-family: inherit;
-    font-size: clamp(43px,7vw,108px);
-    font-weight: 600;
-    letter-spacing: -.075em;
-    line-height: 1.04;
-    color: #F3EFE8;
-    opacity: 0;
-    white-space: nowrap;
-    text-shadow: 0 8px 34px rgba(32,37,50,.32);
-    will-change: transform,opacity;
-  }
-  .hero--kiru-ready .hero-kiru-keyword--02 { color: #A9C5D8; }
-  .hero--kiru-ready .hero-kiru-keyword--03 { color: #D8B6A5; }
-  .hero--kiru-ready .hero-kiru-dot { color: #6B536D; }
-  .hero--kiru-ready .hero-kiru-reveal {
-    position: absolute;
-    left: clamp(42px,8vw,136px);
-    top: 51%;
-    width: min(41vw,610px);
-    opacity: 0;
-    transform: translate3d(0,calc(-50% + var(--kiru-copy-shift,28px)),0);
-    pointer-events: none;
-    will-change: transform,opacity;
-  }
-  .hero--kiru-ready .hero-visual-composition {
-    position: absolute;
-    z-index: 6;
-    top: 50%;
-    right: clamp(24px,5vw,92px);
-    width: min(40vw,540px);
-    max-width: none;
-    margin: 0;
-    opacity: 0;
-    transform: translate3d(0,-50%,0) scale(.87);
-    will-change: opacity,transform;
-  }
-  .hero--kiru-ready .hero-kiru-skip {
-    position: absolute;
-    display: inline-flex;
-    align-items: center;
-    gap: .4rem;
-    z-index: 10;
-    bottom: clamp(21px,4vh,40px);
-    right: clamp(24px,5vw,74px);
-    padding: .65rem .4rem;
-    color: rgba(243,239,232,.78);
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: .13em;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(169,197,216,.25);
-  }
-  .hero--kiru-ready .hero-kiru-skip:focus-visible {
-    outline: 2px solid #A9C5D8; outline-offset: 5px;
-  }
-  .hero--kiru-ready .hero-kiru-progress {
-    position: absolute;
-    z-index: 10;
-    left: clamp(24px,5vw,74px);
-    bottom: clamp(21px,4vh,40px);
-    display: block;
-    width: clamp(72px,8vw,130px);
-    height: 1px;
-    background: rgba(169,197,216,.24);
-  }
-  .hero--kiru-ready .hero-kiru-progress span {
-    display: block; height: 100%; width: 0;
-    background: #A9C5D8;
-    transform-origin: 0 50%;
-  }
-  .hero--kiru-ready .hero__bg-image {
-    background:
-      radial-gradient(ellipse 54% 66% at 73% 52%, rgba(107,83,109,.2), transparent 71%),
-      radial-gradient(ellipse 38% 62% at 67% 59%, rgba(169,197,216,.08), transparent 77%),
-      linear-gradient(122deg,#202532,#242938 58%,#202532);
+  .hero--scroll-invasion.hero-scroll-ready .hero-scroll-meter span {
+    display:block; height:100%; width:100%; transform:scaleX(var(--hero-meter-progress));
+    transform-origin:left; background:#A9C5D8;
   }
 }
-@media (min-width:801px) and (max-width:1130px) {
-  .hero--kiru-story .hero-kiru-title { font-size: clamp(54px,7vw,83px); }
-  .hero--kiru-ready .hero-kiru-reveal { left: 5vw; width: 48vw; }
-  .hero--kiru-ready .hero-visual-composition { width: 43vw; right: 2vw; }
-  .hero--kiru-story .hero-kiru-resolve-title { font-size: clamp(36px,4.1vw,54px); }
+@media (min-width: 801px) and (max-width: 1160px) {
+  .hero--scroll-invasion .hero-grid { width:calc(100% - 60px); grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr); gap:14px; }
+  .hero--scroll-invasion .hero-content h1 { font-size: clamp(43px,5vw,66px); }
+  .hero--scroll-invasion .hero-visual-composition { width:min(43vw,490px); }
+  .hero--scroll-invasion .hero-lead {font-size:14px;}
 }
-@media (max-width:800px) {
-  .hero--kiru-story .hero-kiru-stage { gap: 1.45rem; padding: 115px 6vw 35px; }
-  .hero--kiru-story .hero-kiru-title { font-size: clamp(36px,9.4vw,67px); letter-spacing: -.067em; }
-  .hero--kiru-story .hero-kiru-opening .hero-eyebrow { font-size: 9px; letter-spacing: .12em; }
-  .hero--kiru-story .hero-kiru-scroll-note { display: none; }
-  .hero--kiru-story .hero-kiru-reveal { text-align: left; order: 3; margin: 0 auto; }
-  .hero--kiru-story .hero-visual-composition { order: 2; width: min(73vw,365px); }
-  .hero--kiru-story .hero-kiru-resolve-title { font-size: clamp(36px,9vw,55px); }
-  .hero--kiru-story .hero__bg-image { background: radial-gradient(ellipse 82% 50% at 70% 40%,rgba(169,197,216,.12),transparent 80%),#202532; }
+@media (max-width: 800px) {
+  .hero.hero--scroll-invasion { min-height:0; padding:0; overflow:hidden; }
+  .hero--scroll-invasion .hero-scroll-stage {
+    min-height:0; padding: 116px 0 30px; display:block;
+  }
+  .hero--scroll-invasion .hero-grid {
+    display:grid; grid-template-columns:minmax(0,1fr); gap:10px;
+    width:calc(100% - 38px);
+  }
+  .hero--scroll-invasion .hero-content { transform:none; }
+  .hero--scroll-invasion .hero-content h1 { max-width:none; font-size:clamp(38px,9.6vw,59px); margin-bottom:18px; }
+  .hero--scroll-invasion .hero__bg-image { opacity:1; transform:none; }
+  .hero--scroll-invasion .hero__beam-field { opacity:.35; }
+  .hero--scroll-invasion .hero__spotlight,
+  .hero--scroll-invasion .hero__prism-orbit,
+  .hero--scroll-invasion .flower-prism-glint,
+  .hero--scroll-invasion .hero-scroll-hint {display:none;}
+  .hero--scroll-invasion .hero__bg-overlay { background:linear-gradient(180deg,rgba(32,37,50,.52),rgba(32,37,50,.22) 55%,rgba(32,37,50,.18)); }
+  .hero--scroll-invasion .hero-visual-composition {
+    grid-row:2; justify-self:center; width:min(79vw,440px);
+    margin:-4px auto -6%; transform:none; opacity:1;
+  }
 }
 @media (max-width:440px) {
-  .hero--kiru-story .hero-kiru-title { font-size: clamp(32px,9vw,43px); }
-  .hero--kiru-story .hero-kiru-reveal .hero-actions { display: flex; flex-direction: column; align-items: stretch; }
+  .hero--scroll-invasion .hero-scroll-stage { padding-top:102px; }
+  .hero--scroll-invasion .hero-grid {width:calc(100% - 30px);}
+  .hero--scroll-invasion .hero-content h1 {font-size:clamp(35px,10vw,46px);}
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero--kiru-story .hero-kiru-word,
-  .hero--kiru-story .hero-kiru-keyword,
-  .hero--kiru-story .hero-kiru-reveal,
-  .hero--kiru-story .hero-visual-composition { transition: none !important; animation: none !important; transform: none !important; opacity: 1 !important; }
+  .hero--scroll-invasion .hero__beam {animation:none!important;}
+  .hero--scroll-invasion .hero-ambient-light {animation:none!important;}
+  .hero--scroll-invasion .hero-content,
+  .hero--scroll-invasion .hero-visual-composition {animation:none!important;transition:none!important;transform:none!important;opacity:1!important;}
+}
+/* Kiru-inspired card entrances in ONE lower section (#modelo): alternating
+   horizontal movement + a measured rotation and staggered reveal on scroll. */
+.home-page #modelo[data-kiru-cards].kiru-cards-ready .commercial-path-card {
+  opacity:var(--kiru-opacity,1);
+  transform: translate3d(var(--kiru-x,0px),var(--kiru-y,0px),0)
+    rotate(var(--kiru-angle,0deg)) scale(var(--kiru-size,1));
+  transition: border-color .22s ease, box-shadow .22s ease;
+}
+.home-page #modelo[data-kiru-cards].kiru-cards-ready .commercial-path-card.is-kiru-settled:hover,
+.home-page #modelo[data-kiru-cards].kiru-cards-ready .commercial-path-card.is-kiru-settled:focus-within {
+  transform:translateY(-3px);
+}
+@media (max-width:800px), (prefers-reduced-motion:reduce) {
+  .home-page #modelo[data-kiru-cards].kiru-cards-ready .commercial-path-card {
+    opacity:1!important;
+    transform:none!important;
+  }
 }

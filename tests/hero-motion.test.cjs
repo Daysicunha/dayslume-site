@@ -1,37 +1,44 @@
-const { test } = require('node:test');
-const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const path = require('node:path');
-const root = path.resolve(__dirname, '..');
-const read = (name) => fs.readFileSync(path.join(root, name), 'utf8');
-
-test('Kiru story has one semantic hero title and six official petals', () => {
+const {test}=require('node:test');
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+const root=path.resolve(__dirname,'..');
+const read=(name)=>fs.readFileSync(path.join(root,name),'utf8');
+test('scroll hero places original text left and six original petals right',()=>{
   const html=read('index.html');
-  assert.match(html,/hero--interactive-flower hero--motion-lab hero--kiru-story/);
-  assert.match(html,/id="hero-title" class="hero-kiru-title"/);
-  assert.equal((html.match(/data-kiru-word\b/g)||[]).length,6);
-  assert.equal((html.match(/data-kiru-keyword\b/g)||[]).length,3);
+  assert.match(html,/hero--interactive-flower hero--motion-lab hero--scroll-invasion/);
+  assert.match(html,/data-scroll-hero/);
+  assert.match(html,/<div class="container hero-grid">[\s\S]*<div class="hero-content">[\s\S]*<h1 id="hero-title">Faça o digital/);
+  assert.match(html,/<div class="hero-visual-composition"/);
   assert.equal((html.match(/data-flower-petal\b/g)||[]).length,6);
-  assert.match(html,/Pular animação/);
   assert.match(html,/href="#problemas"/);
   assert.match(html,/href="#projetos"/);
-  assert.doesNotMatch(html,/data-hero-video|hero-video-loader\.js/);
+  assert.doesNotMatch(html,/data-kiru-word|hero-kiru-keyword|data-hero-video/);
 });
-test('scroll-tied kinetic motion is progressive, reversible and accessibility-aware',()=>{
+test('Kiru rolling cards are limited to the two commercial paths',()=>{
+  const html=read('index.html');
   const css=read('assets/css/hero-prism-scroll.css');
   const js=read('assets/js/hero-prism-scroll.js');
-  assert.match(css,/hero--kiru-ready \.hero-kiru-stage/);
+  assert.match(html,/data-kiru-cards id="modelo"/);
+  assert.equal((html.match(/data-kiru-card\b/g)||[]).length,2);
+  assert.match(css,/\.home-page #modelo\[data-kiru-cards\]/);
+  assert.match(js,/scrollCards/);
+  assert.match(js,/kiru-cards-ready/);
+});
+test('pin and invasion use scroll progress, disable on small screens and reduced motion',()=>{
+  const css=read('assets/css/hero-prism-scroll.css');
+  const js=read('assets/js/hero-prism-scroll.js');
+  assert.match(css,/\.hero--scroll-invasion\.hero-scroll-ready \.hero-scroll-stage/);
   assert.match(css,/position: sticky/);
-  assert.match(css,/hero--motion-lab \.hero__spotlight/);
-  assert.match(css,/hero--motion-lab \.flower-prism-glint/);
+  assert.match(css,/\.hero--scroll-invasion \.hero__spotlight/);
+  assert.match(css,/\.hero--scroll-invasion \.flower-prism-glint/);
+  assert.match(css,/max-width: 800px/);
   assert.match(css,/prefers-reduced-motion: reduce/);
-  assert.match(css,/max-width:800px/);
   assert.match(js,/requestAnimationFrame/);
-  assert.match(js,/prefers-reduced-motion: reduce/);
-  assert.match(js,/navigator\.connection && navigator\.connection\.saveData/);
-  assert.match(js,/pointermove/);
-  assert.match(js,/renderScroll/);
-  assert.match(js,/reveal\.inert/);
+  assert.match(js,/invasion=range/);
+  assert.match(js,/copy\.style\.opacity/);
   assert.match(js,/flower\.style\.transform/);
-  assert.match(js,/phase\(p/);
+  assert.match(js,/prefers-reduced-motion: reduce/);
+  assert.match(js,/saveData/);
+  assert.match(js,/\.inert/);
 });
