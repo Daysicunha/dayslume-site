@@ -239,3 +239,234 @@
 @media(max-width:760px){
   .service-shift{grid-template-columns:1fr}
 }
+
+
+/* Correções de layout da rodada flagship na Home */
+.home-page .launch-manifest .manifest-concept{min-width:0}
+.home-page .launch-manifest .manifest-title{
+  max-width:13ch;
+  margin:0 0 22px;
+  font-size:clamp(38px,3.7vw,54px);
+  line-height:1.08;
+  letter-spacing:-.052em;
+  font-weight:400;
+  text-wrap:balance;
+}
+.home-page .launch-manifest .manifest-title-line{color:var(--plum-mineral)}
+.home-page .launch-manifest .manifest-intro{
+  max-width:48ch;
+  margin:0;
+  color:var(--text-secondary);
+  font-size:clamp(15px,1vw,17px);
+  line-height:1.76;
+}
+.home-page .launch-manifest .manifest-list{
+  min-width:0;
+  border-top:1px solid rgba(102,117,143,.25);
+}
+.home-page .launch-manifest .manifest-item{
+  display:grid;
+  grid-template-columns:46px minmax(0,1fr);
+  gap:clamp(14px,1.6vw,22px);
+  padding:clamp(20px,2.1vw,28px) clamp(8px,1vw,14px);
+  border-bottom:1px solid rgba(102,117,143,.22);
+  transition:background-color .28s ease,transform .28s ease;
+}
+.home-page .launch-manifest .manifest-item:hover,
+.home-page .launch-manifest .manifest-item:focus-within{
+  background:rgba(255,255,255,.46);
+  transform:translateX(3px);
+}
+.home-page .launch-manifest .manifest-number{
+  padding-top:.28rem;
+  color:var(--plum-mineral);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.13em;
+}
+.home-page .launch-manifest .manifest-item-copy{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+.home-page .launch-manifest .manifest-item-title{
+  max-width:34ch;
+  color:var(--ink-deep);
+  font:500 clamp(20px,1.85vw,28px)/1.22 Manrope,sans-serif;
+  letter-spacing:-.035em;
+}
+.home-page .launch-manifest .manifest-item-description{
+  max-width:58ch;
+  margin-top:8px;
+  color:var(--text-secondary);
+  font-size:14px;
+  line-height:1.65;
+}
+.home-page .launch-manifest .problem-link{
+  margin-top:12px;
+  padding:8px 0;
+  color:var(--plum-mineral);
+}
+
+/* Cases: o conteúdo novo precisa respeitar o padding dos cards existentes */
+.home-page .flagship-cases .case-story{
+  margin:0 clamp(16px,1.6vw,23px);
+  padding:16px 0 0;
+}
+.home-page .flagship-cases .case-actions{
+  margin-top:auto;
+  padding:12px clamp(16px,1.6vw,23px) clamp(18px,1.7vw,24px);
+}
+.home-page .flagship-cases .project-card-head{
+  min-height:142px;
+}
+.home-page .flagship-cases .project-summary{display:none}
+.home-page .execution-proof{
+  width:100%;
+}
+.home-page .execution-proof__items a{
+  min-width:0;
+  overflow:hidden;
+}
+
+/* O bloco de caminhos mantém a mesma geometria editorial da Home */
+.home-page .commercial-paths{
+  border:1px solid rgba(102,117,143,.25);
+  border-radius:20px;
+  overflow:hidden;
+  gap:0;
+  background:rgba(255,255,255,.42);
+}
+.home-page .commercial-paths .commercial-path-card{
+  border:0;
+  border-right:1px solid rgba(102,117,143,.25);
+  border-radius:0;
+  padding:clamp(28px,2.6vw,40px);
+  background:transparent;
+}
+.home-page .commercial-paths .commercial-path-card:last-child{border-right:0}
+.home-page .commercial-paths .commercial-path-card:hover{
+  transform:none;
+  background:rgba(169,197,216,.12);
+  box-shadow:none;
+}
+.home-page .commercial-diagnostic{
+  margin-top:18px;
+  border-radius:16px;
+  background:rgba(169,197,216,.12);
+}
+
+@media(max-width:980px){
+  .home-page .flagship-cases{
+    grid-template-columns:1fr 1fr!important;
+  }
+  .home-page .flagship-cases .project-card:last-child{
+    grid-column:1/-1;
+  }
+}
+@media(max-width:760px){
+  .home-page .launch-manifest .manifest-title{max-width:18ch}
+  .home-page .launch-manifest .manifest-item{
+    grid-template-columns:34px minmax(0,1fr);
+    padding-inline:0;
+  }
+  .home-page .launch-manifest .manifest-item:hover,
+  .home-page .launch-manifest .manifest-item:focus-within{transform:none}
+  .home-page .commercial-paths{
+    border-radius:17px;
+  }
+  .home-page .commercial-paths .commercial-path-card{
+    border-right:0;
+    border-bottom:1px solid rgba(102,117,143,.25);
+  }
+  .home-page .commercial-paths .commercial-path-card:last-child{border-bottom:0}
+  .home-page .flagship-cases{
+    grid-template-columns:1fr!important;
+  }
+  .home-page .flagship-cases .project-card:last-child{grid-column:auto}
+  .home-page .flagship-cases .project-card-head{min-height:0}
+  .home-page .execution-proof__items{grid-template-columns:1fr}
+}
+
+
+/* Auditoria por vídeo — conteúdo nunca deve desaparecer durante o scroll */
+.home-page .launch-reveal,
+.home-page .launch-reveal.is-visible{
+  opacity:1!important;
+  filter:none!important;
+}
+.home-page .launch-reveal.is-visible{
+  animation:dayslume-readable-reveal .42s cubic-bezier(.22,1,.36,1) var(--reveal-delay,0ms) both!important;
+}
+@keyframes dayslume-readable-reveal{
+  from{opacity:1;translate:0 8px;filter:none}
+  to{opacity:1;translate:0 0;filter:none}
+}
+
+/* Contato: o título comercial não pode invadir/cortar na coluna do formulário */
+.home-page #contact-title{
+  max-inline-size:17ch;
+  font-size:clamp(34px,3.25vw,48px);
+  line-height:1.07;
+}
+.home-page #contact-title>span{
+  white-space:normal!important;
+}
+.home-page .contact-grid{
+  grid-template-columns:minmax(0,.88fr) minmax(520px,1.12fr);
+  gap:clamp(42px,5vw,76px);
+}
+
+/* Prova: logos claros precisam de suporte de contraste */
+.home-page .execution-proof__items>a:first-child{
+  background:var(--ink-deep);
+  color:var(--warm-ivory);
+  border-color:var(--ink-deep);
+}
+.home-page .execution-proof__items>a:first-child span{
+  color:rgba(243,239,232,.74);
+  opacity:1;
+}
+
+@media(max-width:980px){
+  .home-page .contact-grid{
+    grid-template-columns:1fr;
+  }
+  .home-page #contact-title{
+    max-inline-size:22ch;
+  }
+}
+
+
+/* Auditoria por vídeo — cases mais leves e escaneáveis */
+.case-story--compact{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:0;
+  padding-top:.8rem;
+}
+.case-story--compact p{
+  padding:0 .9rem 0 0;
+}
+.case-story--compact p + p{
+  padding:0 0 0 .9rem;
+  border-left:1px solid rgba(32,37,50,.1);
+}
+.case-deck{
+  margin:0 0 .85rem!important;
+  max-width:58ch;
+  font-size:.92rem;
+  line-height:1.6;
+}
+.home-page .flagship-cases .case-story--compact{
+  margin-inline:clamp(16px,1.6vw,23px);
+}
+@media(max-width:760px){
+  .case-story--compact{grid-template-columns:1fr}
+  .case-story--compact p{padding:0}
+  .case-story--compact p + p{
+    margin-top:.75rem;
+    padding:0;
+    border-left:0;
+  }
+}
