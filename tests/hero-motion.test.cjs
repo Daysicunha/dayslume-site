@@ -42,3 +42,19 @@ test('pin and invasion use scroll progress, disable on small screens and reduced
   assert.match(js,/saveData/);
   assert.match(js,/\.inert/);
 });
+
+
+test('Kiru recording inspired motion uses three layered microcards and scroll-tied sweeps',()=>{
+  const html=read('index.html');
+  const css=read('assets/css/hero-prism-scroll.css');
+  const js=read('assets/js/hero-prism-scroll.js');
+  assert.equal((html.match(/data-kiru-panel\b/g)||[]).length,3);
+  assert.equal((html.match(/data-kiru-sweep\b/g)||[]).length,3);
+  assert.equal((html.match(/data-kiru-card\b/g)||[]).length,2);
+  assert.match(css,/\.kiru-motion-panels/);
+  assert.match(css,/\.kiru-motion-panel__bars/);
+  assert.match(js,/gridRect=cardGrid\.getBoundingClientRect/);
+  assert.match(js,/panels\.forEach/);
+  assert.match(js,/sweeps\.forEach/);
+  assert.match(js,/Math\.min\(innerWidth\*\.33,390\)/);
+});

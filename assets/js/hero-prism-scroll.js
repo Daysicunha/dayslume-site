@@ -14,6 +14,9 @@
   const flower = hero.querySelector('.hero-visual-composition');
   const scene = hero.querySelector('[data-flower-scene]');
   const cards = [...(section?.querySelectorAll('[data-kiru-card]') || [])];
+  const cardGrid = section?.querySelector('.services-grid.commercial-paths');
+  const panels = [...(section?.querySelectorAll('[data-kiru-panel]') || [])];
+  const sweeps = [...(section?.querySelectorAll('[data-kiru-sweep]') || [])];
   if (!stage || !copy || !flower) return;
 
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
@@ -42,7 +45,7 @@
     const fade=range(p,.13,.58);
     const move=-Math.min(innerWidth*.35,510)*invasion;
     const lift=-12*invasion;
-    const growth=1+invasion*.42;
+    const growth=1+invasion*.46;
     const copyX=-50*fade;
 
     copy.style.opacity=(1-fade).toFixed(3);
@@ -60,24 +63,47 @@
   }
 
   function scrollCards() {
-    if (!enabled || cards.length===0) return;
+    if (!enabled || !section || !cardGrid || cards.length!==2) return;
+    // The grid does not receive transforms: its layout geometry is a stable
+    // scroll anchor even as the cards translate and rotate independently.
+    const gridRect=cardGrid.getBoundingClientRect();
+    const sectionRect=section.getBoundingClientRect();
+    if (sectionRect.top>innerHeight*1.3 || sectionRect.bottom<0) return;
+    const entry=clamp((innerHeight*.94-gridRect.top)/(innerHeight*.68));
+    const show=easing(entry);
     cards.forEach((card,i)=>{
-      const box=card.getBoundingClientRect();
-      if (box.top>innerHeight+180 || box.bottom < -180) return;
-      const progress=easing((innerHeight*.98-box.top)/(innerHeight*.46));
-      const adjusted=clamp(progress-i*.10);
-      const t=easing(adjusted);
-      const sign=i%2===0 ? -1 : 1;
-      const rollX=sign*95*(1-t);
-      const rollY=85*(1-t);
-      const angle=-sign*7*(1-t);
-      const opacity=.1+.9*t;
+      const t=easing(clamp((entry-i*.16)/.84));
+      const sign=i===0?-1:1;
+      const travel=Math.min(innerWidth*.33,390);
+      const rollX=sign*travel*(1-t);
+      const rollY=(i===0?170:212)*(1-t);
+      const angle=sign*(i===0?13:17)*(1-t);
+      const opacity=.14+.86*t;
       card.style.setProperty('--kiru-x',rollX.toFixed(2)+'px');
       card.style.setProperty('--kiru-y',rollY.toFixed(2)+'px');
       card.style.setProperty('--kiru-angle',angle.toFixed(3)+'deg');
-      card.style.setProperty('--kiru-size',(.94+.06*t).toFixed(4));
+      card.style.setProperty('--kiru-size',(.78+.22*t).toFixed(4));
       card.style.setProperty('--kiru-opacity',opacity.toFixed(3));
       card.classList.toggle('is-kiru-settled',t>.995);
+    });
+    // Graphic micro-cards echo the Kiru recording: objects arrive from
+    // different positions and gather around the editorial heading.
+    const xOffsets=[-190,210,110],yOffsets=[115,-120,190],angles=[-18,17,24];
+    panels.forEach((panel,i)=>{
+      const t=easing(clamp((entry-i*.115)/(.75-i*.07)));
+      const exit=easing(clamp((entry-.83)/.17));
+      const float=1-t;
+      const x=xOffsets[i]*float+((i-1)*25*exit);
+      const y=yOffsets[i]*float-(i+1)*15*exit;
+      panel.style.transform='translate3d('+x.toFixed(1)+'px,'+
+        y.toFixed(1)+'px,0) rotate('+(angles[i]*float).toFixed(2)+
+        'deg) scale('+(.65+.35*t).toFixed(3)+')';
+      panel.style.opacity=(.16+.56*t-.33*exit).toFixed(3);
+    });
+    sweeps.forEach((bar,i)=>{
+      const p=easing(clamp((entry-i*.115)/.49));
+      bar.style.transform='scaleX('+p.toFixed(3)+')';
+      bar.style.opacity=(.08+.32*(1-show)).toFixed(3);
     });
   }
 
@@ -134,6 +160,14 @@
     cards.forEach(card=>{
       for(const key of ['--kiru-x','--kiru-y','--kiru-angle','--kiru-size','--kiru-opacity'])card.style.removeProperty(key);
       card.classList.remove('is-kiru-settled');
+    });
+    panels.forEach(panel=>{
+      panel.style.removeProperty('transform');
+      panel.style.removeProperty('opacity');
+    });
+    sweeps.forEach(bar=>{
+      bar.style.removeProperty('transform');
+      bar.style.removeProperty('opacity');
     });
   }
   function sync(){
