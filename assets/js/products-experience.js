@@ -59,6 +59,9 @@
     const description = showcase.root.querySelector('[data-vitrini-description]');
     const steps = Array.from(showcase.root.querySelectorAll('[data-vitrini-step]'));
     const link = showcase.root.querySelector('[data-vitrini-link]');
+    const syncAnchor = () => { if (window.location.hash === '#vitrini-local') { const local = showcase.tabs.find(tab => tab.dataset.vitriniProduct === 'local'); if (local) { local.click(); requestAnimationFrame(() => document.getElementById('vitrini')?.scrollIntoView({block:'start'})); } } };
+    window.addEventListener('hashchange', syncAnchor);
+    syncAnchor();
     showcase.tabs.forEach(tab=> tab.addEventListener('click',()=>{
       const data=map[tab.dataset.vitriniProduct];
       if (!data) return;
