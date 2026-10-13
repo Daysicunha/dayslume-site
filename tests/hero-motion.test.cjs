@@ -123,7 +123,7 @@ test('new mineral hero gradient and concise case stories keep brand identity',()
  assert.match(css,/#2C3448 0%,#485168 48%,#6B536D 100%/);
  assert.match(html,/Site próprio que reúne especialidades/);
  assert.match(html,/Landing page com hierarquia visual/);
- assert.match(html,/Agenda digital mais clara/);
+ assert.match(html,/Página autoral com fluxo de atendimento conectado ao ENGRENI Agenda/);
  assert.match(palette,/main > #projetos \.projects-grid\.projects-grid--launch \.case-story/);
  assert.match(palette,/main > #projetos \.projects-grid\.projects-grid--launch \.project-card-head\s*\{\s*min-height:0;/);
 });
