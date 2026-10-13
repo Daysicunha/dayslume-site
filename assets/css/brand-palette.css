@@ -2081,3 +2081,133 @@ body.home-page main > #contato .contact-note {
     height: 19px;
   }
 }
+
+
+/* DAYSLUME 2026 / WhatsApp side-tab inspired by vertical support rail */
+/* The HTML keeps one real WhatsApp link. A visible CSS label replaces
+   the previous circular icon, without injecting redundant anchors. */
+body.home-page > a.floating-whatsapp,
+body:not(.home-page) > a.floating-whatsapp {
+  position:fixed;
+  z-index:110;
+  top:auto;
+  right:0;
+  bottom:clamp(30px,8vh,86px);
+  left:auto;
+  width:44px;
+  min-width:44px;
+  height:144px;
+  min-height:144px;
+  max-height:none;
+  padding:13px 7px 11px;
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;
+  gap:11px;
+  border:1px solid rgba(169,197,216,.55);
+  border-right:0;
+  border-radius:15px 0 0 15px;
+  background:#6B536D;
+  background-image:linear-gradient(180deg,#6B536D 0%,#59475E 100%);
+  background-position:center;
+  background-size:100% 100%;
+  color:#F3EFE8;
+  font-family:Manrope,'DM Sans',sans-serif;
+  font-weight:700;
+  text-decoration:none;
+  box-shadow:-6px 9px 24px rgba(32,37,50,.22);
+  opacity:1;
+  -webkit-backdrop-filter:none;
+  backdrop-filter:none;
+  transform:none;
+  transition:background-color .23s ease,box-shadow .23s ease,transform .23s ease;
+}
+body.home-page > a.floating-whatsapp::before,
+body:not(.home-page) > a.floating-whatsapp::before {
+  content:"WhatsApp";
+  display:block;
+  visibility:visible;
+  order:0;
+  flex:0 0 auto;
+  margin:0;
+  padding:0;
+  color:inherit;
+  font-family:inherit;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.03em;
+  line-height:1;
+  white-space:nowrap;
+  writing-mode:vertical-rl;
+  text-orientation:mixed;
+  transform:rotate(180deg);
+  transition:none;
+}
+body.home-page > a.floating-whatsapp::after,
+body:not(.home-page) > a.floating-whatsapp::after {
+  content:none;
+  display:none;
+}
+body.home-page > a.floating-whatsapp svg,
+body:not(.home-page) > a.floating-whatsapp svg {
+  order:1;
+  display:block;
+  flex:none;
+  width:21px;
+  height:21px;
+  min-width:21px;
+  stroke:currentColor;
+  transform:none;
+}
+body.home-page > a.floating-whatsapp:hover,
+body.home-page > a.floating-whatsapp:focus-visible,
+body:not(.home-page) > a.floating-whatsapp:hover,
+body:not(.home-page) > a.floating-whatsapp:focus-visible {
+  border-color:#A9C5D8;
+  border-right:0;
+  color:#F3EFE8;
+  background:#202532;
+  background-image:linear-gradient(180deg,#202532,#303A4C);
+  background-position:center;
+  box-shadow:-9px 12px 30px rgba(32,37,50,.28);
+  transform:translateX(-2px);
+}
+body.home-page > a.floating-whatsapp:focus-visible,
+body:not(.home-page) > a.floating-whatsapp:focus-visible {
+  outline:3px solid #A9C5D8;
+  outline-offset:3px;
+}
+@media(max-width:800px){
+  body.home-page > a.floating-whatsapp,
+  body:not(.home-page) > a.floating-whatsapp {
+    right:0;
+    bottom:calc(72px + env(safe-area-inset-bottom,0px));
+    width:44px;
+    min-width:44px;
+    height:131px;
+    min-height:131px;
+    padding:11px 7px 9px;
+    border-radius:14px 0 0 14px;
+  }
+  body.home-page > a.floating-whatsapp::before,
+  body:not(.home-page) > a.floating-whatsapp::before{
+    display:block;
+    font-size:11px;
+  }
+  body.home-page > a.floating-whatsapp svg,
+  body:not(.home-page) > a.floating-whatsapp svg{
+    width:19px;height:19px;min-width:19px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  body.home-page > a.floating-whatsapp,
+  body:not(.home-page) > a.floating-whatsapp{
+    transition:none;
+  }
+  body.home-page > a.floating-whatsapp:hover,
+  body:not(.home-page) > a.floating-whatsapp:hover{
+    transform:none;
+  }
+}
