@@ -50,7 +50,7 @@ main .vl-home:before{content:"";position:absolute;pointer-events:none;width:min(
 .vl-page main{overflow:clip}
 .vl-page main section[id]{scroll-margin-top:24px}
 .vl-page .vl-page-hero{position:relative;isolation:isolate;overflow:hidden;padding:clamp(66px,7vw,110px) 0 clamp(74px,7vw,112px);background:radial-gradient(ellipse 50% 70% at 85% 34%,rgba(92,142,191,.18),transparent 74%),linear-gradient(125deg,#0a1728,#13243c 65%,#243750);color:#f9fbfd}
-.vl-page .vl-page-hero:before{content:"";position:absolute;z-index:-1;right:-15%;top:-11%;width:min(50vw,690px);aspect-ratio:1;background:url("../images/dayslume-flor-hero.svg") center/contain no-repeat;opacity:.12;pointer-events:none;transform:rotate(17deg)}
+.vl-page .vl-page-hero:before{content:"";position:absolute;z-index:-1;right:-15%;top:-11%;width:min(50vw,690px);aspect-ratio:1;background:none;opacity:.12;pointer-events:none;transform:rotate(17deg)}
 .vl-page-hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:center;gap:clamp(28px,6vw,85px)}
 .vl-page-hero-copy{position:relative;z-index:1;min-width:0}
 .vl-page-hero h1{max-width:12ch;margin:0 0 25px;color:#f9fbfd;font:400 clamp(46px,5.45vw,82px)/1.065 Manrope,"DM Sans",sans-serif;letter-spacing:-.065em;text-wrap:balance}

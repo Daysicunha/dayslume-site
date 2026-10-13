@@ -60,3 +60,33 @@ test('all interior pages share the complete Home flagship design system',()=>{
   assert.match(source,/internal-home-parity\.css/,path.relative(root,page));
  }
 });
+
+
+test('logo do menu Home é o mesmo arquivo em todos os cabeçalhos e rodapés',()=>{
+ const pages=allHtml(root);assert.equal(pages.length,19);
+ const canonical='logohorizontalbranca.png';
+ for(const page of pages){
+  const s=fs.readFileSync(page,'utf8');
+  const links=[...s.matchAll(/<(?:header|footer)\b[\s\S]*?<\/(?:header|footer)>/gi)].map(x=>x[0]);
+  assert.equal(links.length,2,path.relative(root,page));
+  for(const part of links){
+   assert.match(part,/src="(?:\.\.\/)?assets\/images\/logohorizontalbranca\.png"/,path.relative(root,page));
+  }
+  assert.doesNotMatch(s,/dayslume-logo-horizontal-branca\.png/);
+ }
+ const home=fs.readFileSync(path.join(root,'index.html'),'utf8');
+ assert.match(home,/"logo":"https:\/\/dayslume\.daysicunha\.com\.br\/assets\/images\/logohorizontalbranca\.png"/);
+});
+test('flores decorativas internas reutilizam exclusivamente as seis pétalas da Home',()=>{
+ const p=read('assets/css/internal-home-parity.css');
+ const blog=read('blog.html');
+ const vit=read('vitrini-link.html');
+ assert.match(p,/--dayslume-home-petals:/);
+ for(let i=1;i<=6;i++)assert.ok(p.includes('hero-flower-petals/petal-0'+i+'.png'));
+ assert.match(p,/background-image:var\(--dayslume-home-petals\)/);
+ assert.equal((blog.match(/class="dayslume-home-flower-art"/g)||[]).length,2);
+ assert.equal((vit.match(/class="dayslume-home-flower-art"/g)||[]).length,1);
+ assert.doesNotMatch(blog,/dayslume-flor-hero\.png/);
+ assert.doesNotMatch(vit,/dayslume-flor-oficial\.webp/);
+ assert.doesNotMatch(p,/dayslume-flor-hero\.svg/);
+});

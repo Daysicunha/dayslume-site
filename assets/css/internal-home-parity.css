@@ -123,7 +123,7 @@ body:not(.home-page):not(.blog-index):not(.blog-article) .header~main>.hero::aft
   right:-9%;
   width:clamp(300px,35vw,520px);
   aspect-ratio:1;
-  background:url("../images/dayslume-flor-hero.svg") center/contain no-repeat;
+  background:none;
   opacity:.12;
   border:0;
   border-radius:0;
@@ -817,7 +817,7 @@ body:not(.home-page):not(.blog-index):not(.blog-article):not(.vl-page) .header~m
   content:"";position:absolute;top:50%;right:6%;left:auto;bottom:auto;
   width:min(28vw,370px);height:auto;aspect-ratio:1;opacity:.17;
   transform:translateY(-50%);
-  background:url("../images/dayslume-flor-hero.svg") center/contain no-repeat;
+  background:none;
   border:0;border-radius:0;pointer-events:none;
 }
 body:not(.home-page):not(.blog-index):not(.blog-article):not(.vl-page) .days-page-hero {
@@ -1095,5 +1095,87 @@ body:not(.home-page) .footer :is(a:hover,a[aria-current="page"]) {color:var(--pe
   body:not(.home-page) main a.btn,
   body:not(.home-page) main .grid>.box.days-card {
     transition:none!important;transform:none!important;
+  }
+}
+
+
+/* Identidade unificada: a flor decorativa é composta pelos MESMOS seis PNGs
+   e posições da hero da Home, sem SVGs ou flores antigas concorrentes.
+   Cada camada reproduz a posição do canvas original 1682 × 1672. */
+:root {
+  --dayslume-home-petals:
+     url("../images/hero-flower-petals/petal-01.png"),
+     url("../images/hero-flower-petals/petal-02.png"),
+     url("../images/hero-flower-petals/petal-03.png"),
+     url("../images/hero-flower-petals/petal-04.png"),
+     url("../images/hero-flower-petals/petal-05.png"),
+     url("../images/hero-flower-petals/petal-06.png");
+  --dayslume-home-petal-sizes: 35.196% auto, 47.622% auto, 44.233% auto, 32.342% auto, 50.416% auto, 44.649% auto;
+  --dayslume-home-petal-positions:
+     52.2020% 0.7180%,
+     91.7141% 32.1607%,
+     90.1913% 71.0013%,
+     52.9871% 100.9766%,
+     6.2359% 73.4838%,
+     18.1532% 31.2565%;
+}
+body:not(.home-page) .dayslume-home-flower-art {
+  display:block;
+  aspect-ratio:1682 / 1672;
+  background-image:var(--dayslume-home-petals);
+  background-repeat:no-repeat;
+  background-size:var(--dayslume-home-petal-sizes);
+  background-position:var(--dayslume-home-petal-positions);
+  pointer-events:none;
+}
+body.blog-index .blog-hero-art .dayslume-home-flower-art {
+  position:absolute;
+  inset:6% 0 0 7%;
+  width:min(86%,490px);
+  height:auto;
+  max-height:88%;
+  margin:auto;
+  filter:drop-shadow(0 0 25px rgba(169,197,216,.18));
+  animation:blog-flower-float 8s ease-in-out infinite alternate;
+}
+body.blog-index .blog-visual--flower .dayslume-home-flower-art {
+  position:absolute;
+  left:11%;
+  top:11%;
+  width:78%;
+  height:auto;
+  transition:transform .65s ease;
+}
+body.blog-index .blog-story:hover .blog-visual--flower .dayslume-home-flower-art {
+  transform:scale(1.06) rotate(3deg);
+}
+body.vl-page .vl-demo-device-flower .dayslume-home-flower-art {
+  width:100%;
+  height:auto;
+  aspect-ratio:1682 / 1672;
+}
+body:not(.home-page):not(.blog-index):not(.blog-article):not(.vl-page) .header~main>.hero::after,
+body.blog-article .hero.blog-reading-hero::after,
+body.vl-page .vl-page-hero::before {
+  background-image:var(--dayslume-home-petals);
+  background-repeat:no-repeat;
+  background-size:var(--dayslume-home-petal-sizes);
+  background-position:var(--dayslume-home-petal-positions);
+  border:0;
+  border-radius:0;
+  aspect-ratio:1682 / 1672;
+  pointer-events:none;
+}
+@media (max-width:800px) {
+  body.blog-index .blog-hero-art .dayslume-home-flower-art {
+    width:min(82%,330px);
+    max-height:86%;
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  body.blog-index .dayslume-home-flower-art {
+    animation:none!important;
+    transition:none!important;
+    transform:none!important;
   }
 }
