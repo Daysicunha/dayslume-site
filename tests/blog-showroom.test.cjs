@@ -12,7 +12,7 @@ test('editorial hero offers a real feature and fits the digital reading architec
  assert.match(page,/<h1 id="blog-title">Ideias para usar o digital com <em>intenção\.<\/em><\/h1>/);
  assert.match(page,/class="blog-hero-art blog-editorial-cover"/);
  assert.match(page,/href="blog\/presenca-digital-estrategica.html"/);
- assert.match(page,/class="dayslume-home-flower-art blog-cover-flower"/);
+ assert.match(page,/class="dayslume-home-flower-art"/);
  assert.equal((page.match(/<h1\b/g)||[]).length,1);
  const styles=[...page.matchAll(/href="(assets\/css\/[^"]+\.css)"/g)].map(x=>x[1]);
  assert.equal(styles.at(-1),'assets/css/brand-palette.css');
