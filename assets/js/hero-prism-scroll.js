@@ -1,5 +1,5 @@
 /* DAYSLUME scroll choreography.
- * Desktop: split editorial hero; mobile: commercial copy first, then centered six-petal flower.
+ * Desktop: split editorial hero; mobile: full flower first, then commercial copy and CTAs.
  * #modelo: two editorial cards roll into place as visitors scroll.
  * Scroll progression follows document position, and reverses on scroll up.
  * Progressive: desktop + supported mobile scroll scenes; reduced-motion,
@@ -35,10 +35,11 @@
       textStart:.32, textEnd:.95, hintStart:.03, hintEnd:.18
     }),
     mobileHero: Object.freeze({
-      // Two separate scenes. No petal, shadow or split overlay during copy.
-      // The second scene completes before the sticky hero releases section 01.
-      flowerStart:.34, flowerEnd:.57, panelStart:.35, panelEnd:.62,
-      textStart:.09, textEnd:.32, hintStart:.03, hintEnd:.18
+      // Opening: full flower. It exits completely before the copy fades in.
+      // Text + CTAs remain on screen before releasing the next section.
+      flowerExitStart:.12, flowerExitEnd:.34,
+      textEnterStart:.36, textEnterEnd:.56,
+      hintStart:.02, hintEnd:.19
     }),
     cards: Object.freeze({ start:.93, distance:.58, stagger:.11, duration:.88 }),
     process: Object.freeze({ start:.91, distance:.69, stagger:.11, duration:.53 })
@@ -97,45 +98,61 @@
 
   function scrollHero() {
     if (!enabled && !mobileHeroEnabled) return;
-    const mobile = mobileHeroEnabled;
+    const mobile=mobileHeroEnabled;
     const bounds=hero.getBoundingClientRect();
     const distance=Math.max(1,bounds.height-(mobile ? stage.offsetHeight : innerHeight));
     const p=clamp(-bounds.top/distance);
     const cues=mobile ? MOTION_CUES.mobileHero : MOTION_CUES.hero;
+    const hint=hero.querySelector('.hero-scroll-hint');
+    hero.style.setProperty('--hero-meter-progress',p.toFixed(4));
+
+    if(mobile) {
+      // Flower → text, never blended. An intentional scroll sequence:
+      // 0–.12 flower holds; .12–.34 flower exits; .36–.56 copy enters.
+      // Copy stays fully visible until p=1, when section 01 begins.
+      const leaving=range(p,cues.flowerExitStart,cues.flowerExitEnd);
+      const entering=range(p,cues.textEnterStart,cues.textEnterEnd);
+      const copyFocused=copy.contains(document.activeElement);
+      const showCopy=copyFocused ? 1 : entering;
+      const showFlower=copyFocused ? 0 : 1-leaving;
+      copy.style.opacity=showCopy.toFixed(3);
+      copy.style.transform=copyFocused ? 'none' :
+        'translate3d(0,'+(16*(1-entering)).toFixed(2)+'px,0)';
+      // Do not hide the H1/links from assistive technology. Block only
+      // accidental touch interaction with visually hidden CTAs.
+      copy.inert=false;
+      copy.style.pointerEvents=(copyFocused || entering>.97) ? 'auto' : 'none';
+      flower.style.opacity=showFlower.toFixed(3);
+      flower.style.transform='translate3d(0,'+(-18*leaving).toFixed(2)+
+        'px,0) scale('+(1-.09*leaving).toFixed(4)+')';
+      hero.style.setProperty('--hero-mobile-panel-opacity',
+        (.58*showFlower).toFixed(3));
+      if(hint) hint.style.opacity=(1-range(p,cues.hintStart,cues.hintEnd)).toFixed(3);
+      return;
+    }
+
+    // Desktop keeps the original approved split-screen choreography.
+    copy.style.removeProperty('pointer-events');
     const invasion=range(p,cues.flowerStart,cues.flowerEnd);
     const fade=range(p,cues.textStart,cues.textEnd);
     const panel=range(p,cues.panelStart,cues.panelEnd);
-    const move=mobile ? 0 : -Math.min(innerWidth*.35,510)*invasion;
-    const lift=mobile ? 0 : -12*invasion;
-    const growth=mobile ? (.86+.18*invasion) : (1+invasion*.46);
-    const copyX=(mobile ? -14 : -50)*fade;
+    const move=-Math.min(innerWidth*.35,510)*invasion;
+    const lift=-12*invasion;
+    const growth=1+invasion*.46;
+    const copyX=-50*fade;
     const copyFocused=copy.contains(document.activeElement);
     copy.style.opacity=copyFocused ? '1' : (1-fade).toFixed(3);
     copy.style.transform=copyFocused ? 'none' :
       'translate3d('+copyX.toFixed(2)+'px,0,0)';
-    const canInteract=fade<.76 || copyFocused;
-    copy.inert=!canInteract;
+    copy.inert=!(fade<.76 || copyFocused);
     flower.style.transform='translate3d('+move.toFixed(2)+'px,'+
       lift.toFixed(2)+'px,0) scale('+growth.toFixed(4)+')';
-    if(mobile) {
-      // Deliberate zero overlap: copy opacity reaches zero at p=.32;
-      // flower and panel start only at p=.34+. No blurred petals behind copy.
-      const bloom=range(p,cues.flowerStart,cues.flowerEnd);
-      const exit=1-range(p,.88,1);
-      const mobileFlower=copyFocused ? 0 : bloom*exit;
-      flower.style.opacity=mobileFlower.toFixed(3);
-      hero.style.setProperty('--hero-mobile-panel-opacity',
-        (copyFocused ? 0 : range(p,.36,.65)*exit).toFixed(3));
-    } else {
-      flower.style.removeProperty('opacity');
-      hero.style.removeProperty('--hero-mobile-panel-opacity');
-    }
-    hero.style.setProperty('--hero-meter-progress',p.toFixed(4));
-    hero.style.setProperty('--hero-split-x',((mobile?68:52)*(1-panel)).toFixed(2)+'%');
-    hero.style.setProperty('--hero-rays-shift',(-innerWidth*(mobile ? .05 : .12)*invasion).toFixed(2)+'px');
+    flower.style.removeProperty('opacity');
+    hero.style.removeProperty('--hero-mobile-panel-opacity');
+    hero.style.setProperty('--hero-split-x',(52*(1-panel)).toFixed(2)+'%');
+    hero.style.setProperty('--hero-rays-shift',(-innerWidth*.12*invasion).toFixed(2)+'px');
     hero.style.setProperty('--hero-light-focus',(78-34*invasion).toFixed(2)+'%');
-    const hint=hero.querySelector('.hero-scroll-hint');
-    if (hint) hint.style.opacity=(1-range(p,cues.hintStart,cues.hintEnd)).toFixed(3);
+    if(hint) hint.style.opacity=(1-range(p,cues.hintStart,cues.hintEnd)).toFixed(3);
   }
 
   function scrollCards() {
@@ -272,6 +289,7 @@
   function clearMotion(){
     copy.style.removeProperty('transform');
     copy.style.removeProperty('opacity');
+    copy.style.removeProperty('pointer-events');
     copy.inert=false;
     flower.style.removeProperty('transform');
     flower.style.removeProperty('opacity');
@@ -312,6 +330,9 @@
     if(!allowPointer())onPointerLeave();
     schedule();
   }
+  // If tab navigation focuses a hero CTA, reveal that scene immediately.
+  copy.addEventListener('focusin',schedule);
+  copy.addEventListener('focusout',schedule);
   stage.addEventListener('pointermove',onPointerMove,{passive:true});
   stage.addEventListener('pointerleave',onPointerLeave,{passive:true});
   addEventListener('scroll',schedule,{passive:true});

@@ -492,9 +492,9 @@ body.home-page main > #processo-home .home-process-list[data-process-scroll].pro
 }
 
 /* DAYSLUME mobile — two distinct scroll scenes.
-   01 full copy/CTAs on a clean mineral field.
-   02 full centered flower after the text has disappeared.
-   03 flower exits; only then does the sticky stage release section 01.
+   01 Full centered flower, with no blurred copy behind it.
+   02 Flower disappears; headline and CTAs enter on a clean mineral field.
+   03 The text stays visible until the sticky stage releases section 01.
    Motion is opt-in via JS class; compact screens/reduced motion stay static. */
 @media (max-width:800px) {
   /* Static fallback keeps the message clean too (no ghost flower below text). */
@@ -539,6 +539,9 @@ body.home-page main > #processo-home .home-process-list[data-process-scroll].pro
     max-width:100%;
     margin:0;
     padding:0;
+    opacity:0;
+    transform:translate3d(0,16px,0);
+    pointer-events:none;
     transform-origin:left center;
     will-change:opacity,transform;
   }
@@ -587,7 +590,7 @@ body.home-page main > #processo-home .home-process-list[data-process-scroll].pro
     margin:0;
     translate:-50% -50%;
     transform-origin:center;
-    opacity:0;
+    opacity:1;
     will-change:transform,opacity;
     pointer-events:none;
     filter:none;
@@ -604,12 +607,12 @@ body.home-page main > #processo-home .home-process-list[data-process-scroll].pro
     transform:none;
     filter:none;
   }
-  /* The mineral color shift belongs to the flower scene, not the copy scene. */
+  /* Mineral color is strongest behind the flower, then recedes for copy. */
   .hero--scroll-invasion.hero-mobile-scroll-ready .hero__split-panel {
-    opacity:var(--hero-mobile-panel-opacity,0);
+    opacity:var(--hero-mobile-panel-opacity,.58);
     background:linear-gradient(130deg,#2C3448 0%,#485168 48%,#6B536D 100%);
-    transform:translate3d(var(--hero-split-x,68%),0,0);
-    will-change:transform,opacity;
+    transform:none;
+    will-change:opacity;
   }
   .hero--scroll-invasion.hero-mobile-scroll-ready .hero__bg-overlay {
     background:linear-gradient(90deg,rgba(32,37,50,.28),rgba(32,37,50,.06) 65%,transparent);
