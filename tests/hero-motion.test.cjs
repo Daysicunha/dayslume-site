@@ -154,7 +154,7 @@ test('mobile scroll hero keeps the desktop visual language with safe fallbacks',
  assert.match(js,/const mobile = mobileHeroEnabled/);
  assert.match(js,/mobileHero: Object\.freeze/);
  assert.match(js,/hero\.classList\.toggle\('hero-mobile-scroll-ready',mobileHeroEnabled\)/);
- assert.match(js,/flower\.style\.opacity=\(\.32\+\.68\*range/);
+ assert.match(js,/flower\.style\.opacity=\(\.08\+\.92\*range/);
  assert.match(css,/max-width:800px\) and \(min-height:700px\) and \(prefers-reduced-motion:no-preference/);
  assert.match(css,/\.hero--scroll-invasion\.hero-mobile-scroll-ready \.hero-scroll-stage\s*\{\s*position:sticky/);
  assert.match(css,/height:158svh/);
@@ -163,4 +163,18 @@ test('mobile scroll hero keeps the desktop visual language with safe fallbacks',
  assert.match(css,/max-height:699px/);
  assert.match(js,/saveData/);
  assert.match(js,/copyFocused/);
+});
+
+
+test('Android mobile first fold keeps hero copy readable while flower follows scroll',()=>{
+ const css=read('assets/css/hero-prism-scroll.css');
+ const js=read('assets/js/hero-prism-scroll.js');
+ assert.match(css,/mobile QA from real Android screenshot/);
+ assert.match(css,/\.hero--scroll-invasion\.hero-mobile-scroll-ready \.hero-grid\s*\{\s*position:absolute;\s*top:clamp/);
+ assert.match(css,/\.hero--scroll-invasion\.hero-mobile-scroll-ready \.hero-title-last\s*\{\s*display:inline;\s*white-space:normal;/);
+ assert.match(css,/\.hero--scroll-invasion\.hero-mobile-scroll-ready \.hero-visual-composition\s*\{\s*bottom:clamp/);
+ assert.match(css,/\.hero--scroll-invasion\.hero-mobile-scroll-ready \.hero-scroll-hint\s*\{\s*display:block/);
+ assert.match(js,/mobile\?68:52/);
+ assert.match(js,/range\(p,\.48,\.94\)/);
+ assert.match(css,/max-width:359px/);
 });

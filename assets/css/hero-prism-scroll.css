@@ -609,3 +609,110 @@ body.home-page main > #processo-home .home-process-list[data-process-scroll].pro
   .hero--scroll-invasion .hero-content,
   .hero--scroll-invasion .hero-visual-composition {opacity:1;}
 }
+
+
+/* 13/10: mobile QA from real Android screenshot — compact first fold,
+   readable commercial copy, flower grows only after scrolling.
+   Applies solely when mobile scroll choreography is active. */
+@media (max-width:800px) and (min-height:700px) and (prefers-reduced-motion:no-preference) {
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-scroll-stage {
+    padding:0;
+    align-items:initial;
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-grid {
+    position:absolute;
+    top:clamp(87px,12svh,115px);
+    left:50%;
+    transform:translateX(-50%);
+    height:calc(100svh - clamp(87px,12svh,115px));
+    width:calc(100% - 38px);
+    margin:0;
+    display:block;
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-content {
+    margin:0;
+    padding:0;
+    max-width:100%;
+    transform-origin:left center;
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-content h1 {
+    margin-top:0;
+    font-size:clamp(34px,8.9vw,48px);
+    line-height:1.065;
+    letter-spacing:-.055em;
+    text-wrap:balance;
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-title-last {
+    display:inline;
+    white-space:normal;
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-eyebrow {
+    margin-bottom:clamp(12px,1.8svh,18px);
+    font-size:clamp(9px,2.5vw,11px);
+    letter-spacing:.12em;
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-lead {
+    max-width:40ch;
+    line-height:1.53;
+    margin-bottom:clamp(12px,1.9svh,18px);
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-rotator {
+    min-height:30px;
+    margin-bottom:clamp(14px,2svh,20px);
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-actions {
+    gap:clamp(12px,1.8svh,17px);
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-actions .btn-light {
+    min-height:49px;
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-visual-composition {
+    bottom:clamp(44px,9svh,85px);
+    right:-7%;
+    width:min(70vw,324px);
+    opacity:.08;
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero__split-panel {
+    opacity:.74;
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero__bg-overlay {
+    background:
+      linear-gradient(90deg,rgba(32,37,50,.64),rgba(32,37,50,.19) 68%,transparent),
+      linear-gradient(180deg,rgba(32,37,50,.12),transparent 42%,rgba(32,37,50,.19));
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-scroll-hint {
+    display:block;
+    bottom:clamp(18px,3.2svh,32px);
+    left:50%;
+    width:max-content;
+    font-size:9px;
+    letter-spacing:.14em;
+    color:rgba(243,239,232,.7);
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-scroll-hint span {
+    font-size:14px;
+  }
+}
+@media (max-width:440px) and (min-height:700px) and (prefers-reduced-motion:no-preference) {
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-grid {
+    top:clamp(83px,11.7svh,107px);
+    height:calc(100svh - clamp(83px,11.7svh,107px));
+    width:calc(100% - 34px);
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-content h1 {
+    font-size:clamp(33px,8.85vw,41px);
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-visual-composition {
+    right:-10%;
+    width:70vw;
+  }
+}
+/* On narrower displays prioritize legible text over the visual flourish. */
+@media (max-width:359px) and (min-height:700px) and (prefers-reduced-motion:no-preference) {
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-content h1 {
+    font-size:clamp(30px,8.6vw,34px);
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-lead {
+    font-size:13px;
+  }
+}

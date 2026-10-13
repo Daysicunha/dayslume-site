@@ -116,10 +116,10 @@
     copy.inert=!canInteract;
     flower.style.transform='translate3d('+move.toFixed(2)+'px,'+
       lift.toFixed(2)+'px,0) scale('+growth.toFixed(4)+')';
-    if(mobile) flower.style.opacity=(.32+.68*range(p,.12,.85)).toFixed(3);
+    if(mobile) flower.style.opacity=(.08+.92*range(p,.48,.94)).toFixed(3);
     else flower.style.removeProperty('opacity');
     hero.style.setProperty('--hero-meter-progress',p.toFixed(4));
-    hero.style.setProperty('--hero-split-x',(52*(1-panel)).toFixed(2)+'%');
+    hero.style.setProperty('--hero-split-x',((mobile?68:52)*(1-panel)).toFixed(2)+'%');
     hero.style.setProperty('--hero-rays-shift',(-innerWidth*(mobile ? .05 : .12)*invasion).toFixed(2)+'px');
     hero.style.setProperty('--hero-light-focus',(78-34*invasion).toFixed(2)+'%');
     const hint=hero.querySelector('.hero-scroll-hint');
