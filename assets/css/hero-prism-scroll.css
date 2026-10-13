@@ -1,0 +1,492 @@
+/* DAYSLUME experimental motion: scroll-driven flower invasion + editorial rolling cards.
+   Scoped to home hero and #modelo, preserving every other section and brand palette. */
+.hero.hero--interactive-flower.hero--motion-lab.hero--scroll-invasion {
+  --spot-x: 75%; --spot-y: 47%;
+  --glint-x: 50%; --glint-y: 50%;
+  --hero-meter-progress: 0;
+  --hero-rays-shift: 0px;
+  --hero-light-focus: 78%;
+  min-height: 0;
+  padding: 0;
+  overflow: visible;
+  isolation: isolate;
+  background: #202532;
+}
+.hero--scroll-invasion .hero-scroll-stage {
+  position: relative;
+  isolation: isolate;
+  min-height: max(680px, 100svh);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background: #202532;
+  padding: clamp(116px, 14vh, 160px) 0 clamp(45px, 6vh, 85px);
+}
+.hero--scroll-invasion .hero__bg-image {
+  transform: none;
+  transition: none;
+  will-change: auto;
+  opacity: 1;
+  background:
+    radial-gradient(ellipse 65% 72% at var(--hero-light-focus) 47%, rgba(107,83,109,.21) 0%, transparent 69%),
+    radial-gradient(ellipse 38% 60% at var(--hero-light-focus) 62%, rgba(169,197,216,.10), transparent 80%),
+    linear-gradient(125deg, #202532 8%, #242a3a 62%, #202532);
+}
+.hero--scroll-invasion .hero__beam-field,
+.hero--scroll-invasion .hero__spotlight,
+.hero--scroll-invasion .hero__prism-orbit {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.hero--scroll-invasion .hero__beam-field {
+  z-index: 2;
+  overflow: hidden;
+  opacity: .7;
+  transform: translate3d(var(--hero-rays-shift),0,0);
+  -webkit-mask-image: linear-gradient(90deg,transparent 18%,#000 68%);
+  mask-image: linear-gradient(90deg,transparent 18%,#000 68%);
+}
+.hero--scroll-invasion .hero__beam {
+  display: block;
+  position: absolute;
+  height: 210%; top: -55%;
+  width: 21%;
+  border-radius: 50%;
+  transform: rotate(24deg);
+  background: linear-gradient(90deg,transparent,rgba(169,197,216,.02) 23%,rgba(169,197,216,.17) 51%,rgba(243,239,232,.045) 56%,transparent 80%);
+  animation: hero-invasion-beam 19s ease-in-out infinite alternate;
+}
+.hero--scroll-invasion .hero__beam--one { right: 8%; }
+.hero--scroll-invasion .hero__beam--two {
+  right: 23%; width: 15%;
+  background: linear-gradient(90deg,transparent,rgba(216,182,165,.14) 51%,transparent 80%);
+  animation-duration: 26s; animation-delay: -7s;
+}
+.hero--scroll-invasion .hero__beam--three {
+  right: -7%; width: 24%; animation-duration: 24s; animation-delay: -12s;
+}
+.hero--scroll-invasion .hero__spotlight {
+  z-index: 3;
+  opacity: .85;
+  background: radial-gradient(ellipse 210px 210px at var(--spot-x) var(--spot-y),rgba(243,239,232,.12),rgba(169,197,216,.12) 32%,rgba(107,83,109,.07) 52%,transparent 77%);
+  mix-blend-mode: screen;
+}
+.hero--scroll-invasion .hero__prism-orbit {
+  z-index: 3;
+  opacity: .55;
+  background: radial-gradient(circle 170px at var(--spot-x) var(--spot-y),transparent 56%,rgba(169,197,216,.10) 67%,rgba(216,182,165,.06) 72%,transparent 79%);
+}
+.hero--scroll-invasion .hero__bg-overlay {
+  z-index: 4;
+  background:
+    linear-gradient(90deg,rgba(32,37,50,.77) 0%,rgba(32,37,50,.52) 28%,rgba(32,37,50,.19) 53%,rgba(32,37,50,.04) 84%),
+    linear-gradient(180deg,rgba(32,37,50,.20),transparent 35%,transparent 66%,rgba(32,37,50,.26));
+}
+.hero--scroll-invasion .hero-ambient-light {
+  z-index: 4; opacity: .62; pointer-events:none;
+  background: radial-gradient(ellipse 48% 56% at var(--hero-light-focus) 50%, rgba(169,197,216,.09),rgba(107,83,109,.035) 47%,transparent 75%);
+}
+.hero--scroll-invasion .hero-grid {
+  position: relative;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: minmax(0,1.06fr) minmax(0,.94fr);
+  align-items: center;
+  gap: clamp(15px,2.2vw,42px);
+  width: min(calc(100% - 76px), 1320px);
+}
+.hero--scroll-invasion .hero-content {
+  position: relative;
+  z-index: 7;
+  min-width: 0;
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+.hero--scroll-invasion .hero-content h1 {
+  max-width: 13ch;
+  font-size: clamp(43px,4.6vw,77px);
+  line-height: 1.035;
+  letter-spacing: -.055em;
+  margin-bottom: clamp(15px,2.3vh,25px);
+  text-wrap: balance;
+}
+.hero--scroll-invasion .hero-content h1 em {
+  color: #A9C5D8;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+}
+.hero--scroll-invasion .hero-lead { max-width: 48ch; font-size: clamp(14px,1.19vw,17px); line-height: 1.58; }
+.hero--scroll-invasion .hero-foot { margin-top: 20px; }
+.hero--scroll-invasion .hero-visual-composition {
+  position: relative;
+  isolation: isolate;
+  z-index: 6;
+  align-self: center;
+  justify-self: end;
+  width: min(41.5vw,550px);
+  min-height: 0;
+  aspect-ratio: 1682 / 1672;
+  margin: 0;
+  transform: none;
+  opacity: 1;
+  transition: none;
+  pointer-events: none;
+}
+.hero--scroll-invasion .flower-scene {
+  position: relative;
+  width: 100%; height: 100%;
+  isolation: isolate;
+}
+.hero--scroll-invasion .flower-prism-glint {
+  position: absolute; z-index: 3; inset: 0; pointer-events:none;
+  background: linear-gradient(120deg,transparent 27%,rgba(169,197,216,.05) 40%,rgba(243,239,232,.2) 49%,rgba(216,182,165,.065) 55%,transparent 71%);
+  -webkit-mask-image: radial-gradient(ellipse 27% 34% at var(--glint-x) var(--glint-y),#000 10%,transparent 100%);
+  mask-image: radial-gradient(ellipse 27% 34% at var(--glint-x) var(--glint-y),#000 10%,transparent 100%);
+  mix-blend-mode: screen;
+  opacity: .52;
+}
+.hero--scroll-invasion .hero-scroll-hint {
+  position:absolute; z-index:8;
+  left: 50%; bottom: clamp(17px,3vh,36px);
+  transform: translateX(-50%);
+  white-space: nowrap; pointer-events:none;
+  color: rgba(243,239,232,.63);
+  font-size: 10px; font-weight: 600; letter-spacing: .21em;
+}
+.hero--scroll-invasion .hero-scroll-hint span { margin-left: 12px; font-size: 18px; }
+.hero--scroll-invasion .hero-scroll-meter { display:none; }
+@keyframes hero-invasion-beam {
+  from { transform: translate3d(-10px,-8px,0) rotate(22deg); opacity: .33; }
+  to { transform: translate3d(14px,7px,0) rotate(28deg); opacity: .75; }
+}
+/* Enable pinning only when JavaScript has activated scroll tracking. */
+@media (min-width: 801px) and (prefers-reduced-motion: no-preference) {
+  .hero.hero--scroll-invasion.hero-scroll-ready {
+    height: 215svh;
+    min-height:0;
+    overflow:visible;
+    padding:0;
+  }
+  .hero--scroll-invasion.hero-scroll-ready .hero-scroll-stage {
+    position: sticky; top: 0;
+    height: 100svh; min-height:0;
+    padding: clamp(110px,13vh,155px) 0 clamp(35px,6vh,65px);
+  }
+  .hero--scroll-invasion.hero-scroll-ready .hero-content,
+  .hero--scroll-invasion.hero-scroll-ready .hero-visual-composition {
+    will-change: transform, opacity;
+  }
+  .hero--scroll-invasion.hero-scroll-ready .hero-scroll-meter {
+    position:absolute; z-index:8; bottom:clamp(16px,3vh,30px);
+    left: clamp(22px,4vw,64px); display:block;
+    width: 90px; height: 1px; background:rgba(169,197,216,.3);
+  }
+  .hero--scroll-invasion.hero-scroll-ready .hero-scroll-meter span {
+    display:block; height:100%; width:100%; transform:scaleX(var(--hero-meter-progress));
+    transform-origin:left; background:#A9C5D8;
+  }
+}
+@media (min-width: 801px) and (max-width: 1160px) {
+  .hero--scroll-invasion .hero-grid { width:calc(100% - 60px); grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr); gap:14px; }
+  .hero--scroll-invasion .hero-content h1 { font-size: clamp(43px,5vw,66px); }
+  .hero--scroll-invasion .hero-visual-composition { width:min(43vw,490px); }
+  .hero--scroll-invasion .hero-lead {font-size:14px;}
+}
+@media (max-width: 800px) {
+  .hero.hero--scroll-invasion { min-height:0; padding:0; overflow:hidden; }
+  .hero--scroll-invasion .hero-scroll-stage {
+    min-height:0; padding: 116px 0 30px; display:block;
+  }
+  .hero--scroll-invasion .hero-grid {
+    display:grid; grid-template-columns:minmax(0,1fr); gap:10px;
+    width:calc(100% - 38px);
+  }
+  .hero--scroll-invasion .hero-content { transform:none; }
+  .hero--scroll-invasion .hero-content h1 { max-width:none; font-size:clamp(38px,9.6vw,59px); margin-bottom:18px; }
+  .hero--scroll-invasion .hero__bg-image { opacity:1; transform:none; }
+  .hero--scroll-invasion .hero__beam-field { opacity:.35; }
+  .hero--scroll-invasion .hero__spotlight,
+  .hero--scroll-invasion .hero__prism-orbit,
+  .hero--scroll-invasion .flower-prism-glint,
+  .hero--scroll-invasion .hero-scroll-hint {display:none;}
+  .hero--scroll-invasion .hero__bg-overlay { background:linear-gradient(180deg,rgba(32,37,50,.52),rgba(32,37,50,.22) 55%,rgba(32,37,50,.18)); }
+  .hero--scroll-invasion .hero-visual-composition {
+    grid-row:2; justify-self:center; width:min(79vw,440px);
+    margin:-4px auto -6%; transform:none; opacity:1;
+  }
+}
+@media (max-width:440px) {
+  .hero--scroll-invasion .hero-scroll-stage { padding-top:102px; }
+  .hero--scroll-invasion .hero-grid {width:calc(100% - 30px);}
+  .hero--scroll-invasion .hero-content h1 {font-size:clamp(35px,10vw,46px);}
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero--scroll-invasion .hero__beam {animation:none!important;}
+  .hero--scroll-invasion .hero-ambient-light {animation:none!important;}
+  .hero--scroll-invasion .hero-content,
+  .hero--scroll-invasion .hero-visual-composition {animation:none!important;transition:none!important;transform:none!important;opacity:1!important;}
+}
+/* Kiru-inspired card entrances in ONE lower section (#modelo): alternating
+   horizontal movement + a measured rotation and staggered reveal on scroll. */
+.home-page #modelo[data-kiru-cards].kiru-cards-ready .commercial-path-card {
+  opacity:var(--kiru-opacity,1);
+  transform: translate3d(var(--kiru-x,0px),var(--kiru-y,0px),0)
+    rotate(var(--kiru-angle,0deg)) scale(var(--kiru-size,1));
+  transition: border-color .22s ease, box-shadow .22s ease;
+}
+.home-page #modelo[data-kiru-cards].kiru-cards-ready .commercial-path-card.is-kiru-settled:hover,
+.home-page #modelo[data-kiru-cards].kiru-cards-ready .commercial-path-card.is-kiru-settled:focus-within {
+  transform:translateY(-3px);
+}
+@media (max-width:800px), (prefers-reduced-motion:reduce) {
+  .home-page #modelo[data-kiru-cards].kiru-cards-ready .commercial-path-card {
+    opacity:1!important;
+    transform:none!important;
+  }
+}
+
+
+.home-page #modelo[data-kiru-cards].kiru-cards-ready .commercial-path-card {
+  will-change:transform,opacity;
+  backface-visibility:hidden;
+}
+.home-page #modelo[data-kiru-cards].kiru-cards-ready .commercial-path-card.is-kiru-settled {
+  will-change:auto;
+}
+.hero--scroll-invasion .hero-visual-composition {
+  z-index:8;
+  transform-origin:50% 50%;
+}
+@media(max-width:800px), (prefers-reduced-motion:reduce) {
+  .home-page #modelo[data-kiru-cards].kiru-cards-ready .commercial-path-card {will-change:auto;}
+}
+
+/* Hero 3.4 — split real e sem faixa vazia. O CSS legado define a hero como
+   grid; anulamos isso porque um item sticky era CENTRALIZADO na altura do
+   contêiner de ~215svh, atrasando a primeira dobra em mais de meio viewport. */
+.hero.hero--interactive-flower.hero--motion-lab.hero--scroll-invasion {
+  display: block;
+  align-items: initial;
+}
+.hero--scroll-invasion .hero-scroll-stage {
+  padding-top: clamp(104px, 12vh, 130px);
+  padding-bottom: clamp(28px, 4vh, 52px);
+}
+.hero--scroll-invasion .hero__bg-image {
+  background: #202532;
+}
+.hero--scroll-invasion .hero__split-panel {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  transform: translate3d(var(--hero-split-x,52%),0,0);
+  will-change: transform;
+  background:
+    radial-gradient(ellipse 68% 74% at 82% 33%,rgba(169,197,216,.16),transparent 78%),
+    linear-gradient(118deg,#2C3448 0%,#485168 48%,#6B536D 100%);
+}
+.hero--scroll-invasion .hero__bg-overlay {
+  background:
+    linear-gradient(90deg,rgba(32,37,50,.42) 0%,rgba(32,37,50,.20) 30%,rgba(32,37,50,.04) 57%,rgba(32,37,50,.02) 100%),
+    linear-gradient(180deg,rgba(32,37,50,.08),transparent 36%,transparent 74%,rgba(32,37,50,.20));
+}
+.hero--scroll-invasion .hero-grid {
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  gap: clamp(22px,3vw,48px);
+}
+.hero--scroll-invasion .hero-content h1 {
+  font-size: clamp(43px,4.35vw,72px);
+}
+.hero--scroll-invasion .hero-visual-composition {
+  width: min(40vw,515px);
+}
+@media (min-width:801px) and (prefers-reduced-motion:no-preference) {
+  .hero.hero--scroll-invasion.hero-scroll-ready {
+    display: block;
+    height: 195svh;
+    align-items: initial;
+  }
+  .hero--scroll-invasion.hero-scroll-ready .hero-scroll-stage {
+    position:sticky;
+    top:0;
+    height:100svh;
+    min-height:0;
+    padding-top:clamp(104px,12vh,130px);
+    padding-bottom:clamp(28px,4vh,52px);
+  }
+}
+@media (max-height:740px) and (min-width:801px) {
+  .hero--scroll-invasion .hero-scroll-stage,
+  .hero--scroll-invasion.hero-scroll-ready .hero-scroll-stage {
+    padding-top:94px;
+    padding-bottom:20px;
+  }
+  .hero--scroll-invasion .hero-content h1 {
+    font-size:clamp(39px,4vw,60px);
+    margin-bottom:12px;
+  }
+  .hero--scroll-invasion .hero-lead {line-height:1.47;margin-bottom:12px;}
+  .hero--scroll-invasion .hero-foot {margin-top:12px;}
+}
+@media (max-width:800px) {
+  .hero--scroll-invasion .hero-scroll-stage {padding-top:108px;padding-bottom:30px;}
+  .hero--scroll-invasion .hero__split-panel {
+    transform:none;
+    opacity:.25;
+    background:linear-gradient(135deg,transparent 30%,#485168 70%,#6B536D 100%);
+  }
+  .hero--scroll-invasion .hero-grid {grid-template-columns:minmax(0,1fr);}
+  .hero--scroll-invasion .hero-visual-composition {width:min(79vw,440px);}
+}
+@media (prefers-reduced-motion:reduce) {
+  .hero--scroll-invasion .hero__split-panel {transform:translate3d(52%,0,0)!important;will-change:auto;}
+}
+
+/* Seção 01: desfaz "nowrap" do legado (causa da invasão sobre os cards),
+   alarga a coluna editorial e remove o semicírculo sob o parágrafo. */
+body.home-page main > #problemas .launch-manifest-grid {
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  gap:clamp(34px,4vw,60px);
+}
+body.home-page main > #problemas .manifest-concept {
+  padding-bottom:0;
+  min-width:0;
+}
+body.home-page main > #problemas .manifest-concept::after {
+  content:none;
+  display:none;
+}
+body.home-page main > #problemas .manifest-title {
+  max-width:100%;
+  font-size:clamp(39px,3.75vw,61px);
+  line-height:1.085;
+  letter-spacing:-.056em;
+  overflow-wrap:normal;
+  text-wrap:balance;
+}
+body.home-page main > #problemas .manifest-title .manifest-title-line {
+  display:block;
+  max-width:100%;
+  white-space:normal;
+  text-wrap:balance;
+}
+body.home-page main > #problemas .manifest-intro {max-width:43ch;}
+@media (max-width:980px) {
+  body.home-page main > #problemas .launch-manifest-grid {
+    grid-template-columns:minmax(0,1fr);
+    gap:32px;
+  }
+  body.home-page main > #problemas .manifest-title {
+    max-width:100%;
+    font-size:clamp(38px,6.8vw,55px);
+  }
+}
+@media (max-width:620px) {
+  body.home-page main > #problemas .manifest-title {
+    font-size:clamp(34px,9vw,47px);
+  }
+}
+
+/* Seção 05: timeline de cinco cartões, ligada ao scroll, sem disparo geral
+   do antigo IntersectionObserver. Sem JS, mobile e reduced-motion: conteúdo visível. */
+body.home-page main > #processo-home .home-process-list[data-process-scroll].process-scroll-ready li {
+  opacity:var(--process-opacity,1);
+  transform:translate3d(0,var(--process-y,0px),0) scale(var(--process-scale,1));
+  transition:background-color .35s ease,box-shadow .35s ease,opacity .12s linear;
+}
+body.home-page main > #processo-home .home-process-list[data-process-scroll].process-scroll-ready li:hover {
+  transform:translate3d(0,calc(var(--process-y,0px) - 4px),0) scale(var(--process-scale,1));
+}
+body.home-page main > #processo-home .home-process-list[data-process-scroll].process-scroll-ready.is-visible::after {
+  transform:scaleX(var(--process-fill,0));
+  transition:none;
+}
+@media (max-width:800px), (prefers-reduced-motion:reduce) {
+  body.home-page main > #processo-home .home-process-list[data-process-scroll] li {
+    opacity:1!important;
+    transform:none!important;
+    transition:none!important;
+  }
+}
+
+
+/* Unified DAYSLUME motion rhythm v3.5
+   Scroll-pinned scenes use normalized progress in hero-prism-scroll.js.
+   Other sections use single, accessible one-shot reveals.
+   Timings: 620–820ms, stagger ≤320ms; no additional JS animation loops. */
+@media (min-width:801px) and (prefers-reduced-motion:no-preference) {
+  /* Hero duration ≈ 0.85 viewport of scroll, rather than a long empty hold. */
+  .hero.hero--scroll-invasion.hero-scroll-ready {
+    height:185svh;
+  }
+  body.home-page main > :is(#produtos,#projetos,#conteudos,#sobre,#contato) .motion-story-item {
+    --motion-x:0px;
+    --motion-y:22px;
+    opacity:0;
+    translate:var(--motion-x) var(--motion-y);
+    transition:
+      opacity 660ms cubic-bezier(.22,1,.36,1) var(--motion-delay,0ms),
+      translate 740ms cubic-bezier(.22,1,.36,1) var(--motion-delay,0ms);
+  }
+  body.home-page main > :is(#produtos,#projetos,#conteudos,#sobre,#contato) .motion-story-item.is-in-view {
+    opacity:1;
+    translate:0px 0px;
+  }
+  /* 03 | Ecosystems: interfaces slide from opposing sides but settle fully. */
+  body.home-page main > #produtos .motion-story-item[data-motion-type="ecosystem"] {
+    --motion-y:28px;
+    --motion-x:-32px;
+    transition-duration:780ms,860ms;
+  }
+  body.home-page main > #produtos .solution-card:nth-child(2).motion-story-item {
+    --motion-x:32px;
+  }
+  /* 04 | Cases: understated upward stagger, no cover hover interference. */
+  body.home-page main > #projetos .motion-story-item[data-motion-type="case"] {
+    --motion-y:32px;
+    transition-duration:700ms,780ms;
+  }
+  body.home-page main > #projetos .motion-story-item[data-motion-type="proof"] {
+    --motion-y:14px;
+  }
+  /* 06 | Editorial: featured cover lifts gently, secondary articles follow. */
+  body.home-page main > #conteudos .motion-story-item[data-motion-type="feature"] {
+    --motion-y:28px;
+    transition-duration:760ms,820ms;
+  }
+  body.home-page main > #conteudos .motion-story-item[data-motion-type="article"] {
+    --motion-y:22px;
+  }
+  body.home-page main > #conteudos .motion-story-item[data-motion-type="note"] {
+    --motion-y:10px;
+    transition-duration:480ms,600ms;
+  }
+  /* 07 | Founder: portrait from the side; the copy remains typographic. */
+  body.home-page main > #sobre .motion-story-item[data-motion-type="portrait"] {
+    --motion-x:-24px;
+    --motion-y:12px;
+    transition-duration:840ms,900ms;
+  }
+  body.home-page main > #sobre .motion-story-item[data-motion-type="copy"] {
+    --motion-y:14px;
+    transition-duration:620ms,720ms;
+  }
+  /* 08 | Contact: final, calm landing instead of competing card movement. */
+  body.home-page main > #contato .motion-story-item[data-motion-type="contact"] {
+    --motion-y:18px;
+    transition-duration:780ms,820ms;
+  }
+}
+
+/* Synchronization safety: stop optical effects when reduced-motion is set;
+   never hide static content without JS or on touch/mobile/saving-data layouts. */
+@media (max-width:800px), (prefers-reduced-motion:reduce) {
+  body.home-page main > :is(#produtos,#projetos,#conteudos,#sobre,#contato) .motion-story-item {
+    opacity:1!important;
+    translate:none!important;
+    transition:none!important;
+  }
+}
