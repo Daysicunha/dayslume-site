@@ -256,3 +256,20 @@ body.projects-page main>.section.projects-perspective {padding-top:clamp(55px,5.
  body.projects-page .projects-gallery .projects-case-card .engreni-demo-slot{min-height:54px;padding:8px}
  body.projects-page .projects-gallery .execution-proof__items>a{min-height:125px}
 }
+
+
+/* Caption belongs to the image, not to a floating white block. */
+body.projects-page .projects-gallery .projects-case-card .engreni-case-media figcaption{
+ position:absolute;
+ inset:auto 14px 11px;
+ width:auto;
+ margin:0;
+ padding:0;
+ background:transparent;
+ color:#42536a;
+ border:0;
+ text-align:center;
+ font:600 11px/1.5 'DM Sans',sans-serif;
+ letter-spacing:.025em;
+}
+body.projects-page .projects-gallery .projects-case-card .engreni-case-media{padding-bottom:37px}
