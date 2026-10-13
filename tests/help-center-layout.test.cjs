@@ -64,3 +64,21 @@ test('shared CSS preserves palette, spacing and mobile accessibility',()=>{
   assert.match(styles.at(-1)||'',/brand-palette\.css$/,page);
  }
 });
+
+
+test('footer service details show only verified contact options',()=>{
+ const css=read('assets/css/brand-palette.css');
+ assert.match(css,/Atendimento com dados de contato verificáveis/);
+ assert.match(css,/\.days-support-contacts\{/);
+ assert.match(css,/\.days-support-contact-icon\{/);
+ for(const page of all){
+  const html=read(page);
+  assert.equal((html.match(/class="days-support-contacts"/g)||[]).length,1,page);
+  assert.equal((html.match(/class="days-support-contact"/g)||[]).length,3,page);
+  assert.match(html,/\+55 \(31\) 99449-2474/,page);
+  assert.match(html,/Atendimento por mensagem · retorno conforme disponibilidade\./,page);
+  assert.match(html,/Solicitar uma ligação/,page);
+  assert.match(html,/Clique aqui e fale conosco\./,page);
+  assert.equal((html.match(/class="days-support-contact-icon"/g)||[]).length,3,page);
+ }
+});
