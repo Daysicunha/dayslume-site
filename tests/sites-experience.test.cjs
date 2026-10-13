@@ -49,7 +49,7 @@ function setup(){
   return {views,scenes,devices,tabs,panels,frame,tools,status};
 }
 test('new interactive section is below existing approved hero with case and contacts',()=>{
-  const hero=page.indexOf('<section class="hero">');
+  const hero=page.indexOf('<section class="hero sites-hero-flagship"');
   const lab=page.indexOf('<section class="section sites-showcase"');
   const details=page.indexOf('<div class="container detail">');
   assert.ok(hero>=0 && hero<lab && lab<details);
@@ -63,8 +63,9 @@ test('new interactive section is below existing approved hero with case and cont
   }
   assert.match(page,/<script src="assets\/js\/sites-experience\.js" defer>/);
   const styles=[...page.matchAll(/<link\b[^>]*rel="stylesheet"[^>]*href="([^"]+)"/g)].map(x=>x[1]);
-  assert.equal(styles.at(-1),'assets/css/brand-palette.css');
-  assert.equal(styles.at(-2),'assets/css/sites-experience.css');
+  assert.equal(styles.at(-1),'assets/css/sites-hero.css');
+  assert.equal(styles.at(-2),'assets/css/brand-palette.css');
+  assert.equal(styles.at(-3),'assets/css/sites-experience.css');
 });
 test('before/after comparison works, hides device selector when it does not apply',()=>{
   const s=setup();
