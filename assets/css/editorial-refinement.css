@@ -187,7 +187,7 @@ body:not(.blog-index):not(.blog-article) .header ~ main>.hero::after{
   right:-12%;
   border:0;
   border-radius:0;
-  background:url("../images/dayslume-flor-hero.svg") center/contain no-repeat;
+  background:none;
   opacity:.15;
   pointer-events:none;
 }

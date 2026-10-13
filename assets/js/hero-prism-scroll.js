@@ -1,8 +1,9 @@
-/* DAYSLUME experimental motion.
- * Hero: text left → independent six-petal flower moves left and grows on scroll.
+/* DAYSLUME scroll choreography.
+ * Desktop: split editorial hero; mobile: full flower first, then commercial copy and CTAs.
  * #modelo: two editorial cards roll into place as visitors scroll.
  * Scroll progression follows document position, and reverses on scroll up.
- * Progressive: no pinned layout without JS; reduced-motion/mobile/data-saver static.
+ * Progressive: desktop + supported mobile scroll scenes; reduced-motion,
+ * compact-height devices and data-saver preserve a static, accessible layout.
  */
 (() => {
   'use strict';
@@ -21,16 +22,24 @@
 
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const precise = matchMedia('(hover: hover) and (pointer: fine)');
+  const mobileViewport = matchMedia('(max-width: 800px) and (min-height: 700px)');
   const saveData = Boolean(navigator.connection && navigator.connection.saveData);
   const clamp = (value, min=0, max=1) => Math.max(min, Math.min(max,value));
   const easing = value => { const p=clamp(value);return p*p*(3-2*p); };
   const range = (p,start,end)=>easing((p-start)/(end-start));
   // One shared scroll choreography; all cues use normalized viewport progress.
-  // The headline remains readable until the flower and color panel have moved.
+  // Retain readable text through most of the scroll to avoid an empty full-screen flower hold.
   const MOTION_CUES = Object.freeze({
     hero: Object.freeze({
-      flowerStart:.08, flowerEnd:.80, panelStart:.07, panelEnd:.78,
-      textStart:.18, textEnd:.76, hintStart:.03, hintEnd:.18
+      flowerStart:.08, flowerEnd:.93, panelStart:.07, panelEnd:.92,
+      textStart:.32, textEnd:.95, hintStart:.03, hintEnd:.18
+    }),
+    mobileHero: Object.freeze({
+      // Opening: full flower. It exits completely before the copy fades in.
+      // Text + CTAs remain on screen before releasing the next section.
+      flowerExitStart:.12, flowerExitEnd:.34,
+      textEnterStart:.36, textEnterEnd:.56,
+      hintStart:.02, hintEnd:.19
     }),
     cards: Object.freeze({ start:.93, distance:.58, stagger:.11, duration:.88 }),
     process: Object.freeze({ start:.91, distance:.69, stagger:.11, duration:.53 })
@@ -38,6 +47,7 @@
   const scrollRange = (top, cues)=>clamp((innerHeight*cues.start-top)/
     Math.max(1,innerHeight*cues.distance));
   let enabled = false;
+  let mobileHeroEnabled = false;
   let editorialObserver = null;
   const editorialItems = [];
   const editorialGroups = [
@@ -75,17 +85,54 @@
   const target={...current};
 
   function allowMotion() { return !reduced.matches && !saveData && innerWidth>800; }
+  // Mobile uses the same scroll narrative but no extra card/process observers.
+  // Compact-height devices retain the readable, non-pinned layout.
+  function allowMobileHero() {
+    return !reduced.matches && !saveData &&
+      innerWidth>=320 && mobileViewport.matches;
+  }
   function allowPointer() {
     return enabled && precise.matches && !document.hidden &&
       !document.documentElement.classList.contains('motion-paused');
   }
 
   function scrollHero() {
-    if (!enabled) return;
+    if (!enabled && !mobileHeroEnabled) return;
+    const mobile=mobileHeroEnabled;
     const bounds=hero.getBoundingClientRect();
-    const distance=Math.max(1,bounds.height-innerHeight);
+    const distance=Math.max(1,bounds.height-(mobile ? stage.offsetHeight : innerHeight));
     const p=clamp(-bounds.top/distance);
-    const cues=MOTION_CUES.hero;
+    const cues=mobile ? MOTION_CUES.mobileHero : MOTION_CUES.hero;
+    const hint=hero.querySelector('.hero-scroll-hint');
+    hero.style.setProperty('--hero-meter-progress',p.toFixed(4));
+
+    if(mobile) {
+      // Flower → text, never blended. An intentional scroll sequence:
+      // 0–.12 flower holds; .12–.34 flower exits; .36–.56 copy enters.
+      // Copy stays fully visible until p=1, when section 01 begins.
+      const leaving=range(p,cues.flowerExitStart,cues.flowerExitEnd);
+      const entering=range(p,cues.textEnterStart,cues.textEnterEnd);
+      const copyFocused=copy.contains(document.activeElement);
+      const showCopy=copyFocused ? 1 : entering;
+      const showFlower=copyFocused ? 0 : 1-leaving;
+      copy.style.opacity=showCopy.toFixed(3);
+      copy.style.transform=copyFocused ? 'none' :
+        'translate3d(0,'+(16*(1-entering)).toFixed(2)+'px,0)';
+      // Do not hide the H1/links from assistive technology. Block only
+      // accidental touch interaction with visually hidden CTAs.
+      copy.inert=false;
+      copy.style.pointerEvents=(copyFocused || entering>.97) ? 'auto' : 'none';
+      flower.style.opacity=showFlower.toFixed(3);
+      flower.style.transform='translate3d(0,'+(-18*leaving).toFixed(2)+
+        'px,0) scale('+(1-.09*leaving).toFixed(4)+')';
+      hero.style.setProperty('--hero-mobile-panel-opacity',
+        (.58*showFlower).toFixed(3));
+      if(hint) hint.style.opacity=(1-range(p,cues.hintStart,cues.hintEnd)).toFixed(3);
+      return;
+    }
+
+    // Desktop keeps the original approved split-screen choreography.
+    copy.style.removeProperty('pointer-events');
     const invasion=range(p,cues.flowerStart,cues.flowerEnd);
     const fade=range(p,cues.textStart,cues.textEnd);
     const panel=range(p,cues.panelStart,cues.panelEnd);
@@ -93,20 +140,19 @@
     const lift=-12*invasion;
     const growth=1+invasion*.46;
     const copyX=-50*fade;
-
-    copy.style.opacity=(1-fade).toFixed(3);
-    copy.style.transform='translate3d('+copyX.toFixed(2)+'px,0,0)';
-    const canInteract=fade<.76;
-    if (!canInteract && !copy.contains(document.activeElement)) copy.inert=true;
-    else copy.inert=false;
+    const copyFocused=copy.contains(document.activeElement);
+    copy.style.opacity=copyFocused ? '1' : (1-fade).toFixed(3);
+    copy.style.transform=copyFocused ? 'none' :
+      'translate3d('+copyX.toFixed(2)+'px,0,0)';
+    copy.inert=!(fade<.76 || copyFocused);
     flower.style.transform='translate3d('+move.toFixed(2)+'px,'+
       lift.toFixed(2)+'px,0) scale('+growth.toFixed(4)+')';
-    hero.style.setProperty('--hero-meter-progress',p.toFixed(4));
+    flower.style.removeProperty('opacity');
+    hero.style.removeProperty('--hero-mobile-panel-opacity');
     hero.style.setProperty('--hero-split-x',(52*(1-panel)).toFixed(2)+'%');
     hero.style.setProperty('--hero-rays-shift',(-innerWidth*.12*invasion).toFixed(2)+'px');
     hero.style.setProperty('--hero-light-focus',(78-34*invasion).toFixed(2)+'%');
-    const hint=hero.querySelector('.hero-scroll-hint');
-    if (hint) hint.style.opacity=(1-range(p,cues.hintStart,cues.hintEnd)).toFixed(3);
+    if(hint) hint.style.opacity=(1-range(p,cues.hintStart,cues.hintEnd)).toFixed(3);
   }
 
   function scrollCards() {
@@ -243,11 +289,15 @@
   function clearMotion(){
     copy.style.removeProperty('transform');
     copy.style.removeProperty('opacity');
+    copy.style.removeProperty('pointer-events');
     copy.inert=false;
     flower.style.removeProperty('transform');
+    flower.style.removeProperty('opacity');
     hero.style.removeProperty('--hero-meter-progress');
     hero.style.removeProperty('--hero-rays-shift');
     hero.style.removeProperty('--hero-light-focus');
+    hero.style.removeProperty('--hero-boundary-opacity');
+    hero.style.removeProperty('--hero-mobile-panel-opacity');
     hero.style.removeProperty('--hero-split-x');
     hero.querySelector('.hero-scroll-hint')?.style.removeProperty('opacity');
     for(const key of ['--spot-x','--spot-y','--glint-x','--glint-y'])hero.style.removeProperty(key);
@@ -263,22 +313,33 @@
   }
   function sync(){
     const next=allowMotion();
-    const changed=next!==enabled;
-    if(!next){cancelAnimationFrame(frame);frame=0;enabled=false;clearMotion();}
-    else enabled=true;
-    hero.classList.toggle('hero-scroll-ready',enabled);
+    const nextMobile=allowMobileHero();
+    const changed=next!==enabled || nextMobile!==mobileHeroEnabled;
+    if(changed) {
+      cancelAnimationFrame(frame);
+      frame=0;
+      clearMotion();
+    }
+    enabled=next;
+    mobileHeroEnabled=nextMobile;
+    hero.classList.toggle('hero-scroll-ready',enabled || mobileHeroEnabled);
+    hero.classList.toggle('hero-mobile-scroll-ready',mobileHeroEnabled);
     section?.classList.toggle('kiru-cards-ready',enabled);
     process?.classList.toggle('process-scroll-ready',enabled);
     if(changed)setupEditorial();
     if(!allowPointer())onPointerLeave();
     schedule();
   }
+  // If tab navigation focuses a hero CTA, reveal that scene immediately.
+  copy.addEventListener('focusin',schedule);
+  copy.addEventListener('focusout',schedule);
   stage.addEventListener('pointermove',onPointerMove,{passive:true});
   stage.addEventListener('pointerleave',onPointerLeave,{passive:true});
   addEventListener('scroll',schedule,{passive:true});
   addEventListener('resize',sync,{passive:true});
   reduced.addEventListener('change',sync);
   precise.addEventListener('change',sync);
+  mobileViewport.addEventListener('change',sync);
   document.addEventListener('visibilitychange',sync);
   document.addEventListener('dayslume:motion',schedule);
   sync();

@@ -6,7 +6,7 @@
   const button = header?.querySelector('.days-menu-toggle');
   const menu = header?.querySelector('#menu-principal');
   if (!button || !menu) return;
-  const mobile = matchMedia('(max-width: 1000px)');
+  const mobile = matchMedia('(max-width: 1180px)');
   const close = (restoreFocus = false) => {
     menu.classList.remove('is-open');
     button.setAttribute('aria-expanded', 'false');
