@@ -2363,3 +2363,87 @@ body .site-footer.days-support-ready .container{padding-bottom:clamp(18px,2vw,27
 @media(prefers-reduced-motion:reduce){
  .days-back-top a{transition:none}
 }
+
+
+/* DAYSLUME / Atendimento com dados de contato verificáveis */
+/* Amplia o antigo bloco de botões para incluir os canais de atendimento,
+   mantendo todo o conteúdo utilizável sem JavaScript. */
+body .days-footer-support{
+  grid-template-columns:minmax(0,.75fr) minmax(0,1.15fr) minmax(160px,.75fr);
+  gap:clamp(18px,2.6vw,38px);
+  align-items:center;
+}
+body .days-footer-support-intro{min-width:0}
+body .days-support-contacts{
+  display:grid;
+  gap:15px;
+  min-width:0;
+  align-self:center;
+}
+body .days-support-contact{
+  display:flex;align-items:flex-start;
+  gap:12px;
+  min-width:0;
+  color:#F3EFE8;
+}
+body .days-support-contact-icon{
+  flex:0 0 20px;
+  width:20px;
+  height:20px;
+  margin-top:2px;
+  color:#A9C5D8;
+  stroke:currentColor;
+}
+body .days-support-contact-copy{
+  min-width:0;
+  font:400 12px/1.55 'DM Sans',sans-serif;
+  overflow-wrap:anywhere;
+}
+body .days-support-contact-copy strong{
+  font-weight:700;
+  color:#F3EFE8;
+}
+body .days-support-contact-copy a{
+  color:#F3EFE8;
+  text-decoration:underline;
+  text-decoration-color:rgba(169,197,216,.45);
+  text-underline-offset:3px;
+}
+body .days-support-contact-copy a:hover,
+body .days-support-contact-copy a:focus-visible{
+  color:#A9C5D8;
+  text-decoration-color:currentColor;
+}
+body .days-support-contact-copy small{
+  display:block;
+  margin-top:2px;
+  font-size:11px;
+  line-height:1.5;
+  color:rgba(243,239,232,.72);
+}
+body .days-footer-support-actions{
+  flex-direction:column;
+  align-items:stretch;
+  justify-content:center;
+  gap:9px;
+  min-width:0;
+}
+body .days-footer-support-actions a{
+  white-space:normal;
+  text-align:center;
+  min-width:0;
+}
+@media(max-width:1120px){
+  body .days-footer-support{
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  }
+  body .days-footer-support-intro{grid-column:1/-1}
+  body .days-footer-support-actions{align-self:center}
+}
+@media(max-width:700px){
+  body .days-footer-support{grid-template-columns:minmax(0,1fr);gap:24px}
+  body .days-footer-support-intro{grid-column:auto}
+  body .days-support-contacts{gap:18px}
+  body .days-footer-support-actions{flex-direction:row;align-items:stretch;flex-wrap:wrap}
+  body .days-support-contact-copy{font-size:13px}
+}
