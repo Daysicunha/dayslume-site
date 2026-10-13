@@ -412,7 +412,7 @@ body:not(.home-page) .commercial-diagnostic{
 }
 
 /* Responsivo */
-@media(min-width:1001px){
+@media(min-width:1181px){
   body:not(.home-page) .header .header-inner{
     display:grid;
     grid-template-columns:minmax(240px,1fr) auto minmax(240px,1fr);
@@ -421,7 +421,7 @@ body:not(.home-page) .commercial-diagnostic{
   body:not(.home-page) .header nav{justify-self:center}
   body:not(.home-page) .header .header-actions{justify-self:end}
 }
-@media(max-width:1000px){
+@media(max-width:1180px){
   body:not(.home-page) .container{width:calc(100% - 40px)}
   body:not(.home-page) .header .header-inner{
     min-height:82px;
@@ -541,4 +541,124 @@ body:not(.home-page) .case-credit .note{
 }
 @media(max-width:800px){
   body:not(.home-page) .case-credit{position:static}
+}
+
+
+/* Auditoria de 13/10 — paridade Home / páginas internas.
+   Uma única camada compartilhada: não muda arquitetura nem conteúdo editorial. */
+body:not(.home-page) {overflow-x:clip;}
+body:not(.home-page) .header {
+  padding:12px 0 10px;
+  border:0;
+  background:linear-gradient(180deg,rgba(32,37,50,.98),rgba(32,37,50,.88) 75%,rgba(32,37,50,.06));
+  backdrop-filter:none;
+}
+body:not(.home-page) .header .header-inner {
+  min-height:68px;
+  padding:0 clamp(15px,2vw,27px);
+  border:1px solid rgba(169,197,216,.35);
+  border-radius:22px;
+  background:linear-gradient(108deg,rgba(32,37,50,.97),rgba(32,37,50,.92) 68%,rgba(107,83,109,.54));
+  box-shadow:0 14px 38px rgba(20,25,37,.17),inset 0 1px 0 rgba(243,239,232,.08);
+}
+body:not(.home-page) .header .brand-lockup {width:clamp(162px,14.6vw,202px);}
+body:not(.home-page) .header nav {gap:clamp(10px,1.1vw,18px);}
+body:not(.home-page) .header nav>a {font-size:clamp(13px,.94vw,15px);}
+body:not(.home-page) .header .social-icon {width:36px;height:36px;border-radius:50%;}
+body:not(.home-page) .header .social-icon svg {width:17px;height:17px;}
+body:not(.home-page) .header .nav-cta {min-height:44px;padding:10px 17px;border-radius:999px;}
+
+/* Seção inicial: fundo mineral bipartido inspirado na Home; flor como textura
+   de fundo, evitando ocupar a área dos títulos e CTAs. */
+body:not(.home-page):not(.blog-index):not(.blog-article) .header~main>.hero {
+  padding:clamp(80px,7vw,116px) 0 clamp(82px,7.3vw,124px);
+  background:linear-gradient(90deg,#202532 0%,#202532 58%,#2C3448 58%,#485168 82%,#6B536D 100%);
+}
+body:not(.home-page):not(.blog-index):not(.blog-article) .header~main>.hero::before {
+  inset:0 0 0 58%;
+  width:auto;height:auto;aspect-ratio:auto;
+  border:0;border-radius:0;box-shadow:none;animation:none;
+  background:radial-gradient(ellipse 67% 72% at 72% 45%,rgba(169,197,216,.16),transparent 76%);
+}
+body:not(.home-page):not(.blog-index):not(.blog-article) .header~main>.hero::after {
+  top:50%;right:5%;width:min(29vw,390px);opacity:.19;
+  transform:translateY(-50%);
+}
+body:not(.home-page):not(.blog-index):not(.blog-article) .days-page-hero {max-width:var(--internal-container);}
+body:not(.home-page):not(.blog-index):not(.blog-article) .days-page-hero > :is(h1,.lead,.actions,.eyebrow) {
+  position:relative;z-index:2;max-width:min(100%,730px);
+}
+body:not(.home-page):not(.blog-index):not(.blog-article) .hero .lead {color:rgba(243,239,232,.84);}
+body:not(.home-page):not(.blog-index):not(.blog-article) main>.section .grid>.box.days-card {
+  min-width:0;border-radius:20px;
+}
+body:not(.home-page):not(.blog-index):not(.blog-article) main>.section .grid>.box.days-card :is(h2,h3,p,a) {
+  overflow-wrap:break-word;
+}
+/* Editorial typography and atmosphere continue through Blog and case studies,
+   without replacing their approved magazine/product layouts. */
+body.blog-index .blog-hero::before {
+  background:radial-gradient(ellipse at 77% 34%,rgba(169,197,216,.15),transparent 42%),
+    linear-gradient(115deg,#202532,#30384c 68%,#6B536D 100%);
+}
+body.blog-article .blog-reading-hero {
+  background:linear-gradient(115deg,#202532,#30384c 68%,#6B536D 100%);
+}
+body:not(.home-page) :is(.article-body,.blog-story,.days-card,.callout,.days-page-hero) {min-width:0;}
+body:not(.home-page) :is(.article-body,.blog-story,.days-card,.callout) :is(h2,h3,p,a) {overflow-wrap:break-word;}
+body:not(.home-page) main :is(a,button,input,textarea,select):focus-visible,
+body:not(.home-page) .header :is(a,button):focus-visible {
+  outline:2px solid var(--mist-blue);outline-offset:4px;
+}
+body:not(.home-page) main :is(.section,.band,.blog-directory) {scroll-margin-top:110px;}
+body:not(.home-page) .footer {
+  border-top:1px solid rgba(169,197,216,.22);
+  background:var(--ink-deep);
+}
+@media(max-width:1180px) {
+  body:not(.home-page) .header {padding:10px 0;}
+  body:not(.home-page) .header.days-nav-ready .header-inner {
+    min-height:64px;padding:0 17px;
+    grid-template-columns:minmax(0,1fr) 46px;gap:12px;
+  }
+  body:not(.home-page) .header.days-nav-ready .days-menu-toggle {
+    display:flex;justify-self:end;
+  }
+  body:not(.home-page) .header.days-nav-ready .header-actions {display:none;}
+  body:not(.home-page) .header.days-nav-ready nav {
+    top:calc(100% + 10px);left:0;right:0;
+    padding:16px 20px 22px;
+    border:1px solid rgba(169,197,216,.28);
+    border-radius:18px;
+    box-shadow:0 20px 40px rgba(20,25,37,.25);
+    background:#202532;
+  }
+  body:not(.home-page) .header.days-nav-ready nav:not(.is-open) {display:none;}
+  body:not(.home-page) .header.days-nav-ready nav.is-open {display:flex;}
+  body:not(.home-page) .header nav>a::after {display:none;}
+}
+@media(max-width:800px) {
+  body:not(.home-page):not(.blog-index):not(.blog-article) .header~main>.hero {
+    padding:clamp(65px,10vw,86px) 0 76px;
+    background:linear-gradient(136deg,#202532 2%,#293347 69%,#6B536D 150%);
+  }
+  body:not(.home-page):not(.blog-index):not(.blog-article) .header~main>.hero::before {
+    inset:0;
+    background:radial-gradient(ellipse 55% 45% at 90% 70%,rgba(169,197,216,.11),transparent 78%);
+  }
+  body:not(.home-page):not(.blog-index):not(.blog-article) .header~main>.hero::after {
+    width:min(64vw,320px);right:-17%;opacity:.10;
+  }
+  body:not(.home-page):not(.blog-index):not(.blog-article) .hero h1 {
+    max-width:20ch;font-size:clamp(36px,8.4vw,54px);line-height:1.10;
+  }
+}
+@media(max-width:560px) {
+  body:not(.home-page) .header .brand-lockup {width:min(51vw,188px);}
+  body:not(.home-page):not(.blog-index):not(.blog-article) .days-page-hero > :is(h1,.lead,.actions,.eyebrow) {max-width:100%;}
+  body:not(.home-page):not(.blog-index):not(.blog-article) .hero .actions {gap:12px;}
+}
+@media(prefers-reduced-motion:reduce) {
+  body:not(.home-page) .header .nav-cta,
+  body:not(.home-page) .header .social-icon {transition:none!important;}
 }
