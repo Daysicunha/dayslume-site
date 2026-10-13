@@ -49,9 +49,10 @@ test('the three product/case/about heroes do not inherit oversized header paddin
 test('project mockups use actual images and transparent illustrative placeholders',()=>{
  assert.match(projectPage,/src="assets\/images\/tornearia-barbosa-case\.webp"/);
  assert.match(projectPage,/src="assets\/images\/new-rocket-play-home\.webp"/);
- assert.match(projectPage,/Interface conceitual · sem agendamentos reais/);
- assert.match(projectPage,/class="engreni-demo-slot"/);
- assert.match(projectPage,/aria-label="Representação conceitual do ENGRENI Agenda/);
+ assert.match(projectPage,/id="dayane-nails"/);
+ assert.match(projectPage,/id="loh-gourmet"/);
+ assert.match(projectPage,/herodayane\.webp/);
+ assert.match(projectPage,/hero-loh-gourmet\.avif/);
  assert.match(projects,/case-featured>\.case-media img\{/);
  assert.match(projects,/object-fit:contain/);
  assert.match(projects,/execution-proof__items>a:first-child\{/);
