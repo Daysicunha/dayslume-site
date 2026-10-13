@@ -8,9 +8,9 @@ const allHtml=(dir)=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>{
  const p=path.join(dir,e.name);
  return e.isDirectory() ? (e.name==='.git' ? []: allHtml(p)): e.name.endsWith('.html')?[p]:[];
 });
-test('all 18 internal pages load the Home editorial visual system',()=>{
+test('all 19 internal pages load the Home editorial visual system',()=>{
  const pages=allHtml(root);
- assert.equal(pages.length,19);
+ assert.equal(pages.length,20);
  for(const page of pages.filter(p=>path.basename(p)!=='index.html')){
   const source=fs.readFileSync(page,'utf8');
   assert.match(source,/internal-home-parity\.css/);
@@ -63,7 +63,7 @@ test('all interior pages share the complete Home flagship design system',()=>{
 
 
 test('logo do menu Home é o mesmo arquivo em todos os cabeçalhos e rodapés',()=>{
- const pages=allHtml(root);assert.equal(pages.length,19);
+ const pages=allHtml(root);assert.equal(pages.length,20);
  const canonical='logohorizontalbranca.png';
  for(const page of pages){
   const s=fs.readFileSync(page,'utf8');
