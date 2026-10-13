@@ -2211,3 +2211,155 @@ body:not(.home-page) > a.floating-whatsapp:focus-visible {
     transform:none;
   }
 }
+
+
+/* DAYSLUME / CENTRAL DE AJUDA + ATENDIMENTO + VOLTAR AO TOPO */
+.days-help-strip{
+  position:relative;
+  z-index:121;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:38px;
+  padding:8px clamp(14px,3vw,28px);
+  color:#F3EFE8;
+  background:linear-gradient(100deg,#6B536D,#574a65 60%,#202532);
+  border-bottom:1px solid rgba(169,197,216,.2);
+  text-align:center;
+  font:500 12px/1.5 'DM Sans',sans-serif;
+  letter-spacing:.005em;
+}
+.days-help-strip a{color:#F3EFE8;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.days-help-strip a:hover,.days-help-strip a:focus-visible{color:#A9C5D8}
+.days-help-strip a:focus-visible{outline:2px solid #A9C5D8;outline-offset:3px}
+body .footer.days-support-ready,body .site-footer.days-support-ready{padding-bottom:0!important}
+body .footer.days-support-ready .footer-inner{padding-bottom:clamp(34px,4vw,52px)}
+body .site-footer.days-support-ready .container{padding-bottom:clamp(18px,2vw,27px)}
+.days-footer-support{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:18px clamp(22px,3.5vw,60px);
+  align-items:center;
+  min-width:0;
+  margin-top:clamp(27px,3.2vw,44px);
+  padding:clamp(23px,2.7vw,35px);
+  border:1px solid rgba(169,197,216,.23);
+  border-radius:19px;
+  color:#F3EFE8;
+  background:linear-gradient(120deg,rgba(169,197,216,.1),rgba(107,83,109,.13));
+}
+.footer .days-footer-support{grid-column:1/-1;margin-top:clamp(14px,2vw,25px)}
+.days-footer-support-kicker{display:block;font:700 10px/1.45 'DM Sans',sans-serif;letter-spacing:.15em;color:#D8B6A5;margin-bottom:8px}
+.days-footer-support h2{margin:0 0 7px;color:#F3EFE8;font:500 clamp(21px,2vw,27px)/1.16 Manrope,sans-serif;letter-spacing:-.035em}
+.days-footer-support p{margin:0;color:rgba(243,239,232,.76);font-size:13px;line-height:1.65;max-width:56ch}
+.days-footer-support-actions{display:flex;align-items:center;justify-content:flex-end;gap:9px;flex-wrap:wrap}
+.days-footer-support-actions a{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:44px;
+  padding:9px 15px;
+  border:1px solid rgba(169,197,216,.38);
+  border-radius:999px;
+  color:#F3EFE8;text-decoration:none;
+  font:700 12px/1.3 Manrope,sans-serif;
+  white-space:nowrap;
+}
+.days-footer-support-actions a:first-child{background:#6B536D;border-color:#8C7594}
+.days-footer-support-actions a:hover,.days-footer-support-actions a:focus-visible{color:#202532;background:#F3EFE8;border-color:#F3EFE8}
+.days-back-top{
+  display:flex;align-items:center;justify-content:center;
+  min-height:54px;
+  background:linear-gradient(95deg,#6B536D,#59465d 73%,#202532);
+  border-top:1px solid rgba(169,197,216,.21);
+  color:#F3EFE8;
+}
+.days-back-top a{
+  display:inline-flex;align-items:center;justify-content:center;
+  gap:11px;min-height:54px;width:100%;
+  color:inherit;text-decoration:none;
+  font:700 13px/1.4 Manrope,sans-serif;
+  transition:background .2s ease;
+}
+.days-back-top a span{font-size:19px;line-height:1;transform:translateY(1px)}
+.days-back-top a:hover,.days-back-top a:focus-visible{color:#F3EFE8;background:rgba(32,37,50,.3)}
+.days-back-top a:focus-visible{outline:2px solid #A9C5D8;outline-offset:-4px}
+/* Help desk: self-service that remains usable with JS disabled. */
+.days-help-page main{overflow:hidden}
+.days-help-page .days-help-hero{
+  background:radial-gradient(ellipse 50% 90% at 87% 25%,rgba(169,197,216,.18),transparent 75%),linear-gradient(109deg,#202532 0%,#202532 49%,#363c50 78%,#6B536D);
+  color:#F3EFE8;
+  padding:clamp(138px,12vw,176px) 0 clamp(70px,7vw,106px);
+}
+.days-help-hero-grid{display:grid;grid-template-columns:minmax(0,1.03fr) minmax(0,.97fr);gap:clamp(30px,5vw,74px);align-items:center}
+.days-help-hero .eyebrow{color:#D8B6A5}
+.days-help-hero h1{max-width:14ch;font:400 clamp(43px,5vw,73px)/1.06 Manrope,sans-serif;letter-spacing:-.06em;margin:15px 0 23px;color:#F3EFE8}
+.days-help-hero h1 em{font-style:normal;color:#A9C5D8}
+.days-help-lead{font-size:clamp(15px,1.3vw,19px);line-height:1.72;color:rgba(243,239,232,.78);max-width:55ch}
+.days-help-hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.days-help-hero-actions .btn{min-height:49px;padding:12px 19px}
+.days-help-hero-panel{min-width:0;padding:clamp(22px,2.6vw,36px);border:1px solid rgba(169,197,216,.25);border-radius:25px;background:rgba(32,37,50,.53)}
+.days-help-overline{display:block;color:#D8B6A5;font:700 10px/1.5 'DM Sans',sans-serif;letter-spacing:.15em}
+.days-help-hero-panel h2{margin:11px 0 21px;color:#F3EFE8;font:500 clamp(25px,2.2vw,32px)/1.14 Manrope,sans-serif;letter-spacing:-.04em}
+.days-help-hero-panel>a{display:grid;grid-template-columns:110px minmax(0,1fr) auto;align-items:center;gap:12px;min-height:70px;padding:14px 10px;border-top:1px solid rgba(169,197,216,.23);color:#F3EFE8;text-decoration:none}
+.days-help-hero-panel>a>span:first-child{color:#A9C5D8;font-size:11px}
+.days-help-hero-panel>a strong{font:600 clamp(14px,1.3vw,17px)/1.4 Manrope,sans-serif}
+.days-help-hero-panel>a:hover,.days-help-hero-panel>a:focus-visible{color:#A9C5D8;background:rgba(169,197,216,.07)}
+.days-help-topics{padding:clamp(52px,5vw,80px) 0;background:#F3EFE8}
+.days-help-topics .days-help-overline{color:#6B536D;margin-bottom:19px}
+.days-help-topic-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.days-help-topic-grid>a{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:9px;min-height:185px;padding:clamp(22px,2.2vw,30px);border:1px solid rgba(102,117,143,.24);border-radius:20px;background:#F9F7F2;color:#202532;text-decoration:none}
+.days-help-topic-grid>a:hover,.days-help-topic-grid>a:focus-visible{border-color:#6B536D;background:#EDE7E9}
+.days-help-topic-grid>a span{color:#6B536D;letter-spacing:.16em;font-size:10px;font-weight:700}
+.days-help-topic-grid>a strong{font:500 clamp(21px,1.9vw,28px)/1.16 Manrope,sans-serif;letter-spacing:-.036em}
+.days-help-topic-grid>a small{color:#66758F;font-size:13px;line-height:1.6}
+.days-help-topic-grid>a b{position:absolute;right:22px;bottom:20px;color:#6B536D;font-size:17px}
+.days-help-questions{padding:clamp(75px,7vw,105px) 0;background:#EEEAE4;scroll-margin-top:115px}
+.days-help-questions-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(27px,5.5vw,88px);align-items:start}
+.days-help-intro h2{max-width:15ch;margin:12px 0 18px;font:400 clamp(35px,3.7vw,53px)/1.11 Manrope,sans-serif;letter-spacing:-.055em;color:#202532}
+.days-help-intro>p:last-child{max-width:48ch;color:#66758F;line-height:1.72}
+.days-help-faq-list{border-top:1px solid rgba(102,117,143,.35)}
+.days-help-faq{border-bottom:1px solid rgba(102,117,143,.3)}
+.days-help-faq summary{cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:20px 0;color:#202532;font:600 clamp(16px,1.5vw,19px)/1.45 Manrope,sans-serif;list-style:none}
+.days-help-faq summary::-webkit-details-marker{display:none}
+.days-help-faq summary span{flex:0 0 28px;font-size:22px;font-weight:400;color:#6B536D;text-align:center}
+.days-help-faq[open] summary span{transform:rotate(45deg)}
+.days-help-faq-answer{padding:0 35px 21px 0}
+.days-help-faq-answer p{margin:0;color:#66758F;font-size:14px;line-height:1.76}
+.days-help-faq summary:focus-visible{outline:2px solid #6B536D;outline-offset:3px}
+.days-help-end{padding:clamp(66px,6vw,88px) 0;background:#202532;color:#F3EFE8}
+.days-help-end-grid{display:grid;grid-template-columns:1fr auto;gap:25px 50px;align-items:center}
+.days-help-end h2{margin:12px 0 13px;color:#F3EFE8;max-width:20ch;font:400 clamp(32px,3.3vw,48px)/1.15 Manrope,sans-serif;letter-spacing:-.048em}
+.days-help-end p:last-child{color:rgba(243,239,232,.76);line-height:1.7}
+.days-help-end-actions{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.days-help-end-actions .btn{white-space:nowrap;min-height:46px}
+.days-help-end-actions>a:not(.btn){color:#A9C5D8;font-size:13px;font-weight:700;text-decoration:none}
+.days-help-teaser{padding:clamp(62px,6vw,86px) 0;background:#F3EFE8}
+.days-help-teaser-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:start;gap:clamp(24px,4vw,70px)}
+.days-help-teaser h2{margin:12px 0 14px;color:#202532;font:400 clamp(32px,3.25vw,45px)/1.14 Manrope,sans-serif;letter-spacing:-.046em}
+.days-help-teaser p{color:#66758F;line-height:1.72;max-width:48ch}
+.days-help-teaser .btn{margin-top:12px}
+.days-help-teaser .days-help-faq summary{font-size:clamp(15px,1.35vw,18px)}
+@media(max-width:940px){
+  .days-footer-support{grid-template-columns:1fr}
+  .days-footer-support-actions{justify-content:flex-start}
+  .days-help-hero-grid,.days-help-questions-grid,.days-help-teaser-grid{grid-template-columns:1fr}
+  .days-help-end-grid{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  .days-help-strip{font-size:11px;min-height:42px;line-height:1.45}
+  .days-help-page .days-help-hero{padding:clamp(126px,15vw,150px) 0 62px}
+  .days-help-hero h1{font-size:clamp(39px,10vw,53px)}
+  .days-help-hero-panel>a{grid-template-columns:1fr auto}
+  .days-help-hero-panel>a>span:first-child{grid-column:1/-1}
+  .days-help-topic-grid{grid-template-columns:1fr}
+  .days-help-topic-grid>a{min-height:139px}
+  .days-footer-support{margin-top:23px;padding:20px;border-radius:16px}
+  .days-footer-support-actions a{flex:1 1 135px}
+  .days-back-top,.days-back-top a{min-height:52px}
+}
+@media(max-width:440px){
+  .days-help-strip span{max-width:35ch}
+  .days-help-hero-actions .btn{width:100%;justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){
+ .days-back-top a{transition:none}
+}
