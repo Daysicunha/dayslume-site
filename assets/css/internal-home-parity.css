@@ -662,3 +662,31 @@ body:not(.home-page) .footer {
   body:not(.home-page) .header .nav-cta,
   body:not(.home-page) .header .social-icon {transition:none!important;}
 }
+
+
+/* Without JavaScript, keep every link reachable between tablet and desktop:
+   only collapse the menu after days-nav-ready has installed its handlers. */
+@media(min-width:1001px) and (max-width:1180px) {
+  body:not(.home-page) .header:not(.days-nav-ready) .header-inner {
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px 22px;
+    min-height:0;
+    padding:14px 20px;
+  }
+  body:not(.home-page) .header:not(.days-nav-ready) nav {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:8px 17px;
+    white-space:normal;
+    margin:0;
+  }
+  body:not(.home-page) .header:not(.days-nav-ready) .header-actions {
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+}
