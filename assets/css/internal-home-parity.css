@@ -1279,3 +1279,24 @@ body:not(.home-page) .header~main>.hero.products-hero::after{opacity:0}
   body:not(.home-page)>a.floating-whatsapp,
   body:not(.home-page)>a.floating-whatsapp:hover{transition:none;transform:none}
 }
+
+
+/* A sidebar-like stacked footer was too tall on desktop.
+   Compact three-column alignment follows the flagship navigation rhythm. */
+@media(min-width:981px){
+ body:not(.home-page) .footer-inner{
+   display:grid;grid-template-columns:minmax(210px,1fr) minmax(0,1.25fr) minmax(145px,.55fr);
+   gap:clamp(24px,3.3vw,56px);align-items:start;
+ }
+ body:not(.home-page) .footer-identity{width:auto;padding-bottom:0}
+ body:not(.home-page) .footer-links{
+   display:flex;flex-wrap:wrap;gap:9px 21px;
+   width:auto;padding:2px 0 0;border-bottom:0;
+ }
+ body:not(.home-page) .footer-socials{padding-top:2px;justify-content:flex-end}
+}
+body.projects-page .header~main>.hero.projects-hero::after,
+body.about-page .header~main>.hero.about-hero::after,
+body:not(.home-page) .header~main>.hero.products-hero::after{
+  content:none;display:none;
+}
