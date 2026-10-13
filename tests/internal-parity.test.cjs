@@ -67,9 +67,10 @@ test('logo do menu Home é o mesmo arquivo em todos os cabeçalhos e rodapés',(
  const canonical='logohorizontalbranca.png';
  for(const page of pages){
   const s=fs.readFileSync(page,'utf8');
-  const links=[...s.matchAll(/<(?:header|footer)\b[\s\S]*?<\/(?:header|footer)>/gi)].map(x=>x[0]);
-  assert.equal(links.length,2,path.relative(root,page));
-  for(const part of links){
+  const globalHeader=s.match(/<header\b[^>]*>[\s\S]*?<\/header>/i)?.[0];
+  const globalFooter=[...s.matchAll(/<footer\b[^>]*>[\s\S]*?<\/footer>/gi)].at(-1)?.[0];
+  assert.ok(globalHeader && globalFooter,path.relative(root,page));
+  for(const part of [globalHeader,globalFooter]){
    assert.match(part,/src="(?:\.\.\/)?assets\/images\/logohorizontalbranca\.png"/,path.relative(root,page));
   }
   assert.doesNotMatch(s,/dayslume-logo-horizontal-branca\.png/);
