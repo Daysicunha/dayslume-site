@@ -231,13 +231,16 @@ body:not(.home-page) .sites-demo-aside {
 body:not(.home-page) .sites-demo-art {
   position:relative;width:min(52%,165px);aspect-ratio:1;transform:rotate(-12deg);
 }
+/* Abstract interface cards, not an alternative flower/logomark. */
 body:not(.home-page) .sites-demo-art span {
-  position:absolute;width:60%;height:46%;border-radius:70% 0 70% 0;
-  background:linear-gradient(135deg,#A9C5D8,#6B536D);
+  position:absolute;width:65%;height:59%;border-radius:12px;
+  background:linear-gradient(140deg,#A9C5D8,#6B536D);
+  border:1px solid rgba(243,239,232,.22);
+  box-shadow:0 10px 25px rgba(32,37,50,.14);
 }
-body:not(.home-page) .sites-demo-art span:nth-child(1) {top:4%;left:2%;transform:rotate(-27deg);}
-body:not(.home-page) .sites-demo-art span:nth-child(2) {top:25%;left:43%;transform:rotate(48deg);background:#D8B6A5;}
-body:not(.home-page) .sites-demo-art span:nth-child(3) {top:56%;left:3%;transform:rotate(135deg);background:#66758F;}
+body:not(.home-page) .sites-demo-art span:nth-child(1) {top:0;left:0;transform:rotate(-11deg);}
+body:not(.home-page) .sites-demo-art span:nth-child(2) {top:21%;left:36%;transform:rotate(9deg);background:linear-gradient(140deg,#D8B6A5,#6B536D);}
+body:not(.home-page) .sites-demo-art span:nth-child(3) {top:41%;left:7%;transform:rotate(-5deg);background:linear-gradient(140deg,#66758F,#202532);}
 body:not(.home-page) .sites-demo-art-caption {
   position:absolute;bottom:13px;left:10px;right:10px;
   color:rgba(243,239,232,.78);
@@ -331,7 +334,18 @@ body:not(.home-page) .sites-real-case-secondary {
   body:not(.home-page) .sites-device-tools {width:100%;justify-content:space-between;}
   body:not(.home-page) .sites-device-button {flex:1;}
   body:not(.home-page) .sites-experience-stage {padding:13px;}
-  body:not(.home-page) .sites-demo-content {
+  /* Retain a compact two-column desktop preview on real narrow phones.
+     The explicit Mobile option below remains stacked and noticeably different. */
+  body:not(.home-page) .sites-browser-wrap[data-device="desktop"] .sites-demo-content {
+    display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.75fr);
+    min-height:265px;gap:11px;padding:19px 14px;
+  }
+  body:not(.home-page) .sites-browser-wrap[data-device="desktop"] .sites-demo-panel h3 {
+    font-size:clamp(18px,5.1vw,24px);
+  }
+  body:not(.home-page) .sites-browser-wrap[data-device="desktop"] .sites-demo-panel p {font-size:11px;}
+  body:not(.home-page) .sites-browser-wrap[data-device="desktop"] .sites-demo-aside {min-height:145px;}
+  body:not(.home-page) .sites-browser-wrap[data-device="mobile"] .sites-demo-content {
     display:flex;flex-direction:column;min-height:420px;gap:17px;padding:21px 17px;
   }
   body:not(.home-page) .sites-demo-panel h3 {font-size:30px;}
