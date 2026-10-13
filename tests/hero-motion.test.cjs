@@ -154,10 +154,10 @@ test('mobile scroll hero keeps the desktop visual language with safe fallbacks',
  assert.match(js,/const mobile = mobileHeroEnabled/);
  assert.match(js,/mobileHero: Object\.freeze/);
  assert.match(js,/hero\.classList\.toggle\('hero-mobile-scroll-ready',mobileHeroEnabled\)/);
- assert.match(js,/flower\.style\.opacity=\(\.08\+\.92\*range/);
+ assert.match(js,/const bloom=\.08\+\.92\*range/);
  assert.match(css,/max-width:800px\) and \(min-height:700px\) and \(prefers-reduced-motion:no-preference/);
  assert.match(css,/\.hero--scroll-invasion\.hero-mobile-scroll-ready \.hero-scroll-stage\s*\{\s*position:sticky/);
- assert.match(css,/height:158svh/);
+ assert.match(css,/height:148svh/);
  assert.match(css,/\.hero--scroll-invasion\.hero-mobile-scroll-ready \.hero__split-panel/);
  assert.match(css,/\.hero--scroll-invasion\.hero-mobile-scroll-ready \.hero-visual-composition/);
  assert.match(css,/max-height:699px/);
@@ -175,6 +175,21 @@ test('Android mobile first fold keeps hero copy readable while flower follows sc
  assert.match(css,/\.hero--scroll-invasion\.hero-mobile-scroll-ready \.hero-visual-composition\s*\{\s*bottom:clamp/);
  assert.match(css,/\.hero--scroll-invasion\.hero-mobile-scroll-ready \.hero-scroll-hint\s*\{\s*display:block/);
  assert.match(js,/mobile\?68:52/);
- assert.match(js,/range\(p,\.48,\.94\)/);
+ assert.match(js,/range\(p,\.22,\.68\)/);
  assert.match(css,/max-width:359px/);
+});
+
+
+test('Android video: mobile flower dissolves before sticky section exits',()=>{
+ const css=read('assets/css/hero-prism-scroll.css');
+ const js=read('assets/js/hero-prism-scroll.js');
+ assert.match(js,/flowerStart:\.06, flowerEnd:\.76, panelStart:\.08, panelEnd:\.88/);
+ assert.match(js,/textStart:\.22, textEnd:\.69/);
+ assert.match(js,/const exit=1-range\(p,\.82,1\)/);
+ assert.match(js,/const bloom=\.08\+\.92\*range\(p,\.22,\.68\)/);
+ assert.match(js,/--hero-boundary-opacity/);
+ assert.match(css,/height:148svh/);
+ assert.match(css,/hero-scroll-stage::after/);
+ assert.match(css,/background:linear-gradient\(180deg,rgba\(243,239,232,0\)/);
+ assert.doesNotMatch(css,/height:158svh/);
 });

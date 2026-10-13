@@ -35,8 +35,10 @@
       textStart:.32, textEnd:.95, hintStart:.03, hintEnd:.18
     }),
     mobileHero: Object.freeze({
-      flowerStart:.07, flowerEnd:.92, panelStart:.09, panelEnd:.94,
-      textStart:.42, textEnd:.97, hintStart:.03, hintEnd:.16
+      // Short scroll sequence: copy yields to the flower, then the scene
+      // fades into the warm first section before the sticky stage releases.
+      flowerStart:.06, flowerEnd:.76, panelStart:.08, panelEnd:.88,
+      textStart:.22, textEnd:.69, hintStart:.03, hintEnd:.16
     }),
     cards: Object.freeze({ start:.93, distance:.58, stagger:.11, duration:.88 }),
     process: Object.freeze({ start:.91, distance:.69, stagger:.11, duration:.53 })
@@ -105,7 +107,7 @@
     const panel=range(p,cues.panelStart,cues.panelEnd);
     const move=mobile ? -Math.min(innerWidth*.32,160)*invasion :
       -Math.min(innerWidth*.35,510)*invasion;
-    const lift=mobile ? -Math.min(innerHeight*.11,95)*invasion : -12*invasion;
+    const lift=mobile ? -Math.min(innerHeight*.055,46)*invasion : -12*invasion;
     const growth=1+invasion*(mobile ? .14 : .46);
     const copyX=(mobile ? -16 : -50)*fade;
     const copyFocused=copy.contains(document.activeElement);
@@ -116,7 +118,14 @@
     copy.inert=!canInteract;
     flower.style.transform='translate3d('+move.toFixed(2)+'px,'+
       lift.toFixed(2)+'px,0) scale('+growth.toFixed(4)+')';
-    if(mobile) flower.style.opacity=(.08+.92*range(p,.48,.94)).toFixed(3);
+    if(mobile) {
+      // Bloom early, then dissolve before the flower can be clipped when
+      // the sticky viewport slides away into the first editorial section.
+      const bloom=.08+.92*range(p,.22,.68);
+      const exit=1-range(p,.82,1);
+      flower.style.opacity=(bloom*exit).toFixed(3);
+      hero.style.setProperty('--hero-boundary-opacity',range(p,.78,1).toFixed(3));
+    }
     else flower.style.removeProperty('opacity');
     hero.style.setProperty('--hero-meter-progress',p.toFixed(4));
     hero.style.setProperty('--hero-split-x',((mobile?68:52)*(1-panel)).toFixed(2)+'%');
@@ -266,6 +275,7 @@
     hero.style.removeProperty('--hero-meter-progress');
     hero.style.removeProperty('--hero-rays-shift');
     hero.style.removeProperty('--hero-light-focus');
+    hero.style.removeProperty('--hero-boundary-opacity');
     hero.style.removeProperty('--hero-split-x');
     hero.querySelector('.hero-scroll-hint')?.style.removeProperty('opacity');
     for(const key of ['--spot-x','--spot-y','--glint-x','--glint-y'])hero.style.removeProperty(key);

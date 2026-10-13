@@ -498,7 +498,7 @@ body.home-page main > #processo-home .home-process-list[data-process-scroll].pro
    JavaScript-disabled users always see the original static hero. */
 @media (max-width:800px) and (min-height:700px) and (prefers-reduced-motion:no-preference) {
   .hero.hero--interactive-flower.hero--motion-lab.hero--scroll-invasion.hero-mobile-scroll-ready {
-    height:158svh;
+    height:148svh;
     min-height:0;
     overflow:visible;
   }
@@ -714,5 +714,27 @@ body.home-page main > #processo-home .home-process-list[data-process-scroll].pro
   }
   .hero--scroll-invasion.hero-mobile-scroll-ready .hero-lead {
     font-size:13px;
+  }
+}
+
+
+/* Android video review — quieter and shorter closing transition.
+   The stage graduates into the warm ivory of section 01 rather than cutting
+   a fully opaque six-petal flower at its upper boundary. */
+@media (max-width:800px) and (min-height:700px) and (prefers-reduced-motion:no-preference) {
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-scroll-stage::after {
+    content:"";
+    position:absolute;
+    z-index:7;
+    left:0;
+    right:0;
+    bottom:0;
+    height:clamp(55px,11svh,110px);
+    pointer-events:none;
+    opacity:var(--hero-boundary-opacity,0);
+    background:linear-gradient(180deg,rgba(243,239,232,0) 0%,rgba(243,239,232,.92) 100%);
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-visual-composition {
+    will-change:transform,opacity;
   }
 }
