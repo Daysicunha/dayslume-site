@@ -2447,3 +2447,151 @@ body .days-footer-support-actions a{
   body .days-footer-support-actions{flex-direction:row;align-items:stretch;flex-wrap:wrap}
   body .days-support-contact-copy{font-size:13px}
 }
+
+/* 13/10 — Header and first-screen mobile usability: no banner/menu collision.
+   Help is already available in the navigation/footer. Preserve #topo as a
+   zero-height in-flow anchor for every existing "Voltar ao topo" link. */
+body .days-help-strip {
+  position:relative!important;
+  z-index:0!important;
+  display:block!important;
+  width:100%;
+  height:0!important;
+  min-height:0!important;
+  padding:0!important;
+  margin:0!important;
+  border:0!important;
+  overflow:hidden!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+
+/* Mobile is now content-first: the visitor reads the offer without needing to
+   scroll through a full-screen flower. Desktop's pinned animation is unchanged. */
+@media(max-width:800px){
+  body.home-page .hero.hero--scroll-invasion {
+    height:auto;
+    min-height:0;
+    padding:0;
+    overflow:hidden;
+  }
+  body.home-page .hero--scroll-invasion .hero-scroll-stage {
+    position:relative;
+    top:auto;
+    height:auto;
+    min-height:0;
+    display:block;
+    /* Clearance for the floating glass header and browser safe areas. */
+    padding:clamp(128px,15svh,151px) 0 clamp(25px,4svh,39px);
+    overflow:hidden;
+  }
+  body.home-page .hero--scroll-invasion .hero-grid {
+    position:relative;
+    inset:auto;
+    z-index:5;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:0;
+    width:calc(100% - 40px);
+    max-width:560px;
+    height:auto;
+    margin:auto;
+    transform:none;
+  }
+  body.home-page .hero--scroll-invasion .hero-content {
+    position:relative;
+    z-index:8;
+    display:block;
+    opacity:1!important;
+    transform:none!important;
+    translate:none!important;
+    width:100%;
+    max-width:100%;
+    margin:0;
+    padding:0;
+    text-align:center;
+    pointer-events:auto!important;
+    will-change:auto;
+  }
+  body.home-page .hero--scroll-invasion .hero-eyebrow {
+    justify-content:center;
+    gap:8px;
+    font-size:clamp(9px,2.45vw,11px);
+    letter-spacing:.10em;
+    line-height:1.5;
+    margin:0 0 14px;
+  }
+  body.home-page .hero--scroll-invasion .hero-content h1 {
+    max-width:13ch;
+    margin:0 auto 16px;
+    font-size:clamp(33px,8.6vw,45px);
+    line-height:1.12;
+    letter-spacing:-.052em;
+    text-wrap:balance;
+  }
+  body.home-page .hero--scroll-invasion .hero-title-last{
+    white-space:normal;
+  }
+  body.home-page .hero--scroll-invasion .hero-lead{
+    margin:0 auto 22px;
+    max-width:41ch;
+    font-size:clamp(13px,3.55vw,15px);
+    line-height:1.58;
+  }
+  body.home-page .hero--scroll-invasion .hero-rotator{
+    display:none;
+  }
+  body.home-page .hero--scroll-invasion .hero-actions{
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:8px 16px;
+    margin:0;
+  }
+  body.home-page .hero--scroll-invasion .hero-actions .btn-light{
+    min-height:48px;
+    padding:12px 19px;
+    font-size:13px;
+  }
+  body.home-page .hero--scroll-invasion .hero-actions .text-link{
+    padding:11px 5px;
+    font-size:13px;
+  }
+  body.home-page .hero--scroll-invasion:not(.hero-mobile-scroll-ready) .hero-visual-composition{
+    position:relative;
+    display:block!important;
+    z-index:6;
+    grid-row:auto;
+    flex:0 0 auto;
+    left:auto;
+    top:auto;
+    width:min(52vw,224px);
+    max-width:224px;
+    height:auto;
+    margin:19px auto 0;
+    translate:none!important;
+    transform:none!important;
+    filter:none;
+    opacity:.91;
+    pointer-events:none;
+    will-change:auto;
+  }
+  body.home-page .hero--scroll-invasion .hero__split-panel{
+    opacity:.22;
+    transform:none!important;
+    will-change:auto;
+  }
+  body.home-page .hero--scroll-invasion .hero__bg-image{
+    background:linear-gradient(140deg,#202532 0%,#2C3448 72%,#36405A 100%);
+    transform:none;
+  }
+  body.home-page .hero--scroll-invasion .hero-scroll-hint,
+  body.home-page .hero--scroll-invasion .hero-scroll-meter{
+    display:none!important;
+  }
+}
+@media(max-width:380px){
+  body.home-page .hero--scroll-invasion .hero-grid{width:calc(100% - 32px);}
+  body.home-page .hero--scroll-invasion .hero-content h1{font-size:clamp(30px,8.4vw,35px);}
+  body.home-page .hero--scroll-invasion .hero-visual-composition{width:min(49vw,188px);}
+}
