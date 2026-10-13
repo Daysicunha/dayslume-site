@@ -88,8 +88,9 @@
   // Mobile uses the same scroll narrative but no extra card/process observers.
   // Compact-height devices retain the readable, non-pinned layout.
   function allowMobileHero() {
-    return !reduced.matches && !saveData &&
-      innerWidth>=320 && mobileViewport.matches;
+    // Mobile prioritizes the commercial message and CTAs on first paint.
+    // Keep the editorial scroll scene exclusive to desktop.
+    return false;
   }
   function allowPointer() {
     return enabled && precise.matches && !document.hidden &&
