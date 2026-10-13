@@ -40,3 +40,23 @@ test('interior hero adopts the mineral split without pinning scroll',()=>{
  assert.match(parity,/body\.blog-article \.blog-reading-hero/);
  assert.match(parity,/prefers-reduced-motion:reduce/);
 });
+
+
+test('all interior pages share the complete Home flagship design system',()=>{
+ const parity=read('assets/css/internal-home-parity.css');
+ for(const signature of [
+  'PARIDADE FLAGSHIP INTEGRAL','--internal-container:1320px',
+  'Capsule header matches the Home','Editorial hero: mineral split',
+  'Home rhythm','Cards, contextual calls','Footer: same spacing',
+  '@media(max-width:1180px)','@media(prefers-reduced-motion:reduce)'
+ ])assert.ok(parity.includes(signature),signature);
+ assert.match(parity,/body:not\(\.home-page\) \.footer-inner\s*\{\s*display:grid/);
+ assert.match(parity,/body:not\(\.home-page\) main \.grid>\.box\.days-card/);
+ assert.match(parity,/body\.blog-index \.blog-hero/);
+ assert.match(parity,/body\.vl-page \.vl-page-hero/);
+ assert.match(parity,/\.header~main>\.hero\s*\{\s*position:relative/);
+ for(const page of allHtml(root).filter(p=>path.basename(p)!=='index.html')){
+  const source=fs.readFileSync(page,'utf8');
+  assert.match(source,/internal-home-parity\.css/,path.relative(root,page));
+ }
+});
