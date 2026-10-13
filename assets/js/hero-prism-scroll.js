@@ -26,11 +26,11 @@
   const easing = value => { const p=clamp(value);return p*p*(3-2*p); };
   const range = (p,start,end)=>easing((p-start)/(end-start));
   // One shared scroll choreography; all cues use normalized viewport progress.
-  // The headline remains readable until the flower and color panel have moved.
+  // Retain readable text through most of the scroll to avoid an empty full-screen flower hold.
   const MOTION_CUES = Object.freeze({
     hero: Object.freeze({
-      flowerStart:.08, flowerEnd:.80, panelStart:.07, panelEnd:.78,
-      textStart:.18, textEnd:.76, hintStart:.03, hintEnd:.18
+      flowerStart:.08, flowerEnd:.93, panelStart:.07, panelEnd:.92,
+      textStart:.32, textEnd:.95, hintStart:.03, hintEnd:.18
     }),
     cards: Object.freeze({ start:.93, distance:.58, stagger:.11, duration:.88 }),
     process: Object.freeze({ start:.91, distance:.69, stagger:.11, duration:.53 })

@@ -91,13 +91,13 @@ test('shared normalized choreography keeps hero panel/flower/text in sync',()=>{
  const js=read('assets/js/hero-prism-scroll.js');
  const css=read('assets/css/hero-prism-scroll.css');
  assert.match(js,/const MOTION_CUES = Object\.freeze/);
- assert.match(js,/flowerEnd:\.80/);
- assert.match(js,/panelEnd:\.78/);
- assert.match(js,/textEnd:\.76/);
+ assert.match(js,/flowerEnd:\.93/);
+ assert.match(js,/panelEnd:\.92/);
+ assert.match(js,/textEnd:\.95/);
  assert.match(js,/const scrollRange =/);
  assert.match(js,/const entry=scrollRange\(gridRect\.top,cues\)/);
  assert.match(js,/const progress=scrollRange\(rect\.top,cues\)/);
- assert.match(css,/height:185svh/);
+ assert.match(css,/height:168svh/);
 });
 test('all later sections use one-shot editorial reveal rather than competing observers',()=>{
  const js=read('assets/js/hero-prism-scroll.js');
@@ -135,4 +135,11 @@ test('section 08 has readable, wrapping copy and isolated two-column layout',()=
  assert.match(palette,/main > #contato #contact-title > span\s*\{[\s\S]*?white-space:normal/);
  assert.match(palette,/main > #contato \.contact-grid > div:first-child/);
  assert.match(html,/<form class="contact-form" id="contact-form"/);
+});
+
+test('shorter hero never enters a prolonged empty pinned frame',()=>{
+ const css=read('assets/css/hero-prism-scroll.css'), js=read('assets/js/hero-prism-scroll.js');
+ assert.equal((css.match(/height:168svh/g)||[]).length,1);
+ assert.doesNotMatch(css,/height:\s*(185|195|215)svh/);
+ assert.match(js,/textStart:\.32, textEnd:\.95/);
 });

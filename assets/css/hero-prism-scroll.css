@@ -164,7 +164,7 @@
 /* Enable pinning only when JavaScript has activated scroll tracking. */
 @media (min-width: 801px) and (prefers-reduced-motion: no-preference) {
   .hero.hero--scroll-invasion.hero-scroll-ready {
-    height: 215svh;
+    /* Height is defined in the final motion rhythm. */
     min-height:0;
     overflow:visible;
     padding:0;
@@ -306,7 +306,7 @@
 @media (min-width:801px) and (prefers-reduced-motion:no-preference) {
   .hero.hero--scroll-invasion.hero-scroll-ready {
     display: block;
-    height: 195svh;
+    /* No competing pin height. */
     align-items: initial;
   }
   .hero--scroll-invasion.hero-scroll-ready .hero-scroll-stage {
@@ -420,7 +420,7 @@ body.home-page main > #processo-home .home-process-list[data-process-scroll].pro
 @media (min-width:801px) and (prefers-reduced-motion:no-preference) {
   /* Hero duration ≈ 0.85 viewport of scroll, rather than a long empty hold. */
   .hero.hero--scroll-invasion.hero-scroll-ready {
-    height:185svh;
+    height:168svh;
   }
   body.home-page main > :is(#produtos,#projetos,#conteudos,#sobre,#contato) .motion-story-item {
     --motion-x:0px;
