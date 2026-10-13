@@ -31,11 +31,11 @@ body:not(.home-page):not(.blog-index):not(.blog-article):not(.vl-page)
  .header~main>.hero.contact-hero-flagship .contact-hero-grid {
   position:relative;z-index:2;
   display:grid;grid-template-columns:minmax(0,1.02fr) minmax(390px,.98fr);
-  align-items:start;gap:clamp(27px,4.2vw,72px);
+  align-items:center;gap:clamp(27px,4.2vw,72px);
   width:min(calc(100% - clamp(40px,7.5vw,96px)),1320px);
   max-width:1320px;margin-inline:auto;
 }
-body:not(.home-page) .contact-hero-copy {min-width:0;align-self:start;padding-top:clamp(5px,1.15vw,17px);}
+body:not(.home-page) .contact-hero-copy {min-width:0;align-self:center;}
 body:not(.home-page):not(.blog-index):not(.blog-article):not(.vl-page)
  .hero.contact-hero-flagship .contact-hero-copy h1 {
   max-width:17ch;margin:clamp(17px,1.65vw,22px) 0 19px;
@@ -73,6 +73,10 @@ body:not(.home-page) .contact-hero-footnote span {
 /* Form card — official mineral tones, no duplicate CTA or decorative flower. */
 body:not(.home-page) .contact-briefing {
   position:relative;z-index:2;min-width:0;
+  width:min(100%,660px);
+  margin-inline:auto;
+  justify-self:center;
+  align-self:center;
   padding:clamp(22px,2.1vw,29px);
   border:1px solid rgba(169,197,216,.4);
   border-radius:25px;
@@ -275,6 +279,13 @@ body:not(.home-page) .contact-process-note p {
    .header~main>.hero.contact-hero-flagship .contact-hero-grid {
     grid-template-columns:minmax(0,1fr);max-width:660px;
     width:calc(100% - 38px);gap:clamp(26px,4.2vw,41px);
+    align-items:stretch;
+  }
+  body:not(.home-page) .contact-hero-copy {align-self:start;}
+  body:not(.home-page) .contact-briefing {
+    align-self:start;
+    justify-self:stretch;
+    width:100%;
   }
   body:not(.home-page):not(.blog-index):not(.blog-article):not(.vl-page)
    .hero.contact-hero-flagship .contact-hero-copy h1 {

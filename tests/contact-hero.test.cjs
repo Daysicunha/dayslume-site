@@ -63,14 +63,18 @@ test('Below the hero the steps are Understand, Propose, Develop; shared visual r
   assert.equal(sheets.at(-2),'assets/css/contact-flagship.css');
 });
 
-test('Desktop contact hero is top-aligned and compact without shrinking touch targets',()=>{
+test('Desktop contact hero centers form and copy without shrinking touch targets',()=>{
   const hero=css.match(/\.header~main>\.hero\.contact-hero-flagship\s*\{([^}]*)\}/)?.[1];
   const grid=css.match(/\.header~main>\.hero\.contact-hero-flagship \.contact-hero-grid\s*\{([^}]*)\}/)?.[1];
   const card=css.match(/body:not\(\.home-page\) \.contact-briefing\s*\{([^}]*)\}/)?.[1];
   assert.ok(hero && grid && card);
   assert.match(hero,/padding:clamp\(116px,9vw,146px\)/);
-  assert.match(grid,/align-items:start/);
-  assert.match(css,/\.contact-hero-copy \{min-width:0;align-self:start/);
+  assert.match(grid,/align-items:center/);
+  assert.match(css,/\.contact-hero-copy \{min-width:0;align-self:center/);
+  assert.match(card,/width:min\(100%,660px\)/);
+  assert.match(card,/margin-inline:auto/);
+  assert.match(card,/justify-self:center/);
+  assert.match(card,/align-self:center/);
   assert.match(card,/padding:clamp\(22px,2\.1vw,29px\)/);
   assert.match(css,/\.contact-hero-form \{[\s\S]*?display:grid;gap:10px/);
   assert.match(css,/min-height:46px;padding:12px 13px/);
@@ -78,4 +82,7 @@ test('Desktop contact hero is top-aligned and compact without shrinking touch ta
   assert.match(css,/@media\(max-width:900px\)/);
   assert.match(css,/@media\(max-width:560px\)/);
   assert.match(css,/\.contact-form-row \{grid-template-columns:1fr/);
+  assert.match(css,/grid-template-columns:minmax\(0,1fr\);max-width:660px;[\s\S]*?align-items:stretch/);
+  assert.match(css,/\.contact-hero-copy \{align-self:start;\}/);
+  assert.match(css,/\.contact-briefing \{\s*align-self:start;\s*justify-self:stretch;\s*width:100%;/);
 });
