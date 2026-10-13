@@ -22,7 +22,7 @@ test('RITMO lives between products and cases with a real beta destination',()=>{
 test('QR code is a local SVG asset without third-party QR APIs',()=>{
  const qr=read('assets/images/ritmo-qr.svg');
  assert.match(qr,/<svg/);
- assert.match(qr,/viewBox="0 0 35 35"/);
+ assert.match(qr,/viewBox="0 0 37 37"/);
  assert.match(qr,/<path /);
  assert.match(home,/src="assets\/images\/ritmo-qr\.svg"/);
 });
