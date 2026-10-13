@@ -149,7 +149,8 @@ test('mobile scroll hero keeps the desktop visual language with safe fallbacks',
  const css=read('assets/css/hero-prism-scroll.css');
  const js=read('assets/js/hero-prism-scroll.js');
  assert.match(js,/function allowMobileHero\(\)/);
- assert.match(js,/innerWidth>=320 && innerWidth<=800 && innerHeight>=700/);
+ assert.match(js,/innerWidth>=320 && mobileViewport\.matches/);
+ assert.match(js,/mobileViewport\.addEventListener\('change',sync\)/);
  assert.match(js,/const mobile = mobileHeroEnabled/);
  assert.match(js,/mobileHero: Object\.freeze/);
  assert.match(js,/hero\.classList\.toggle\('hero-mobile-scroll-ready',mobileHeroEnabled\)/);

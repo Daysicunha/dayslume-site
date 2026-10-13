@@ -22,6 +22,7 @@
 
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const precise = matchMedia('(hover: hover) and (pointer: fine)');
+  const mobileViewport = matchMedia('(max-width: 800px) and (min-height: 700px)');
   const saveData = Boolean(navigator.connection && navigator.connection.saveData);
   const clamp = (value, min=0, max=1) => Math.max(min, Math.min(max,value));
   const easing = value => { const p=clamp(value);return p*p*(3-2*p); };
@@ -85,7 +86,7 @@
   // Compact-height devices retain the readable, non-pinned layout.
   function allowMobileHero() {
     return !reduced.matches && !saveData &&
-      innerWidth>=320 && innerWidth<=800 && innerHeight>=700;
+      innerWidth>=320 && mobileViewport.matches;
   }
   function allowPointer() {
     return enabled && precise.matches && !document.hidden &&
@@ -303,6 +304,7 @@
   addEventListener('resize',sync,{passive:true});
   reduced.addEventListener('change',sync);
   precise.addEventListener('change',sync);
+  mobileViewport.addEventListener('change',sync);
   document.addEventListener('visibilitychange',sync);
   document.addEventListener('dayslume:motion',schedule);
   sync();
