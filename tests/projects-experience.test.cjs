@@ -24,13 +24,15 @@ test('projects hero uses real case previews and contextual CTAs',()=>{
 });
 
 test('existing filters and authentic case statuses are preserved',()=>{
- for(const kind of ['web','experience','product']){
+ for(const kind of ['web','experience']){
   assert.match(page,new RegExp('data-project-kind="'+kind+'"'));
  }
  assert.match(page,/class="days-filterbar"/);
  assert.match(page,/class="[^"]*days-filter-grid[^"]*projects-case-grid/);
  assert.match(page,/CLIENTE REAL/);
- assert.match(page,/PRODUTO PRÓPRIO/);
+ assert.match(page,/Dayane Cunha Nails/);
+ assert.match(page,/Loh Gourmet/);
+ assert.match(page,/4 projetos exibidos/);
  assert.match(page,/Sem estatísticas inventadas/);
  assert.match(page,/href="solucoes.html#engreni-agenda"/);
 });
