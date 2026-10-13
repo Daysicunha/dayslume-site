@@ -40,7 +40,7 @@ body.blog-index .blog-editorial-cover::before,body.blog-index .blog-editorial-co
 body.blog-index .blog-editorial-cover .blog-cover-head {display:flex;justify-content:space-between;align-items:flex-start;gap:10px;position:relative;z-index:2}
 body.blog-index .blog-editorial-cover .blog-cover-head span {font:700 10px/1.5 'DM Sans',sans-serif;letter-spacing:.17em;color:#d8b6a5}
 body.blog-index .blog-editorial-cover .blog-cover-head small{font-size:11px;color:#b6c8db;white-space:nowrap}
-body.blog-index .blog-editorial-cover .dayslume-home-flower-art.blog-cover-flower {
+body.blog-index .blog-editorial-cover .dayslume-home-flower-art {
   position:absolute;inset:auto clamp(-48px,-3vw,-24px) 28px auto;
   display:block;width:min(66%,360px);height:auto;max-height:none;opacity:.3;
   filter:drop-shadow(0 2px 20px rgba(169,197,216,.1));animation:none;transform:rotate(-12deg);
@@ -119,7 +119,7 @@ body.blog-index .blog-directory--flagship .blog-search{min-width:220px}
  body.blog-index .blog-hero--flagship .blog-hero-art.blog-editorial-cover{min-height:345px;padding:22px}
  body.blog-index .blog-editorial-cover .blog-cover-copy{padding-top:90px}
  body.blog-index .blog-editorial-cover h2{font-size:clamp(23px,7vw,32px)}
- body.blog-index .blog-editorial-cover .dayslume-home-flower-art.blog-cover-flower{width:64%;right:-33px;opacity:.23}
+ body.blog-index .blog-editorial-cover .dayslume-home-flower-art{width:64%;right:-33px;opacity:.23}
  body.blog-index .blog-reading-routes{padding:31px 0}
  body.blog-index .blog-routes-buttons button{min-height:59px;padding:12px}
  body.blog-index .blog-directory--flagship .blog-list>.blog-story,
