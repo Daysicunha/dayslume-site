@@ -144,52 +144,33 @@ test('shorter hero never enters a prolonged empty pinned frame',()=>{
  assert.match(js,/textStart:\.32, textEnd:\.95/);
 });
 
-
-test('mobile scroll hero keeps the desktop visual language with safe fallbacks',()=>{
+test('mobile hero has two discrete scenes: copy first, then full centered flower',()=>{
  const css=read('assets/css/hero-prism-scroll.css');
  const js=read('assets/js/hero-prism-scroll.js');
  assert.match(js,/function allowMobileHero\(\)/);
  assert.match(js,/innerWidth>=320 && mobileViewport\.matches/);
  assert.match(js,/mobileViewport\.addEventListener\('change',sync\)/);
- assert.match(js,/const mobile = mobileHeroEnabled/);
- assert.match(js,/mobileHero: Object\.freeze/);
  assert.match(js,/hero\.classList\.toggle\('hero-mobile-scroll-ready',mobileHeroEnabled\)/);
- assert.match(js,/const bloom=\.08\+\.92\*range/);
- assert.match(css,/max-width:800px\) and \(min-height:700px\) and \(prefers-reduced-motion:no-preference/);
- assert.match(css,/\.hero--scroll-invasion\.hero-mobile-scroll-ready \.hero-scroll-stage\s*\{\s*position:sticky/);
- assert.match(css,/height:148svh/);
- assert.match(css,/\.hero--scroll-invasion\.hero-mobile-scroll-ready \.hero__split-panel/);
- assert.match(css,/\.hero--scroll-invasion\.hero-mobile-scroll-ready \.hero-visual-composition/);
+ assert.match(js,/textStart:\.09, textEnd:\.32/);
+ assert.match(js,/flowerStart:\.34, flowerEnd:\.57/);
+ assert.match(js,/const bloom=range\(p,cues\.flowerStart,cues\.flowerEnd\)/);
+ assert.match(js,/const exit=1-range\(p,\.88,1\)/);
+ assert.match(js,/const mobileFlower=copyFocused \? 0 : bloom\*exit/);
+ assert.match(js,/--hero-mobile-panel-opacity/);
+ assert.match(css,/height:174svh/);
+ assert.match(css,/\.hero-scroll-stage\s*\{\s*position:sticky/);
+ assert.match(css,/\.hero-mobile-scroll-ready \.hero-visual-composition\s*\{\s*position:absolute/);
+ assert.match(css,/left:50%;\s*top:47%;[\s\S]*?translate:-50% -50%/);
+ assert.match(css,/\.hero-mobile-scroll-ready \.flower-glow \{display:none;\}/);
+ assert.match(css,/\.hero-mobile-scroll-ready \.hero__split-panel\s*\{\s*opacity:var\(--hero-mobile-panel-opacity,0\)/);
+ assert.match(css,/\.hero-mobile-scroll-ready \.hero-scroll-stage::after \{content:none;\}/);
+});
+test('compact-height/reduced-motion/save-data users have an accessible static hero',()=>{
+ const css=read('assets/css/hero-prism-scroll.css');
+ const js=read('assets/js/hero-prism-scroll.js');
+ assert.match(css,/\.hero--scroll-invasion:not\(\.hero-mobile-scroll-ready\) \.hero-visual-composition\s*\{\s*display:none/);
+ assert.match(js,/!reduced\.matches && !saveData/);
  assert.match(css,/max-height:699px/);
- assert.match(js,/saveData/);
- assert.match(js,/copyFocused/);
-});
-
-
-test('Android mobile first fold keeps hero copy readable while flower follows scroll',()=>{
- const css=read('assets/css/hero-prism-scroll.css');
- const js=read('assets/js/hero-prism-scroll.js');
- assert.match(css,/mobile QA from real Android screenshot/);
- assert.match(css,/\.hero--scroll-invasion\.hero-mobile-scroll-ready \.hero-grid\s*\{\s*position:absolute;\s*top:clamp/);
- assert.match(css,/\.hero--scroll-invasion\.hero-mobile-scroll-ready \.hero-title-last\s*\{\s*display:inline;\s*white-space:normal;/);
- assert.match(css,/\.hero--scroll-invasion\.hero-mobile-scroll-ready \.hero-visual-composition\s*\{\s*bottom:clamp/);
- assert.match(css,/\.hero--scroll-invasion\.hero-mobile-scroll-ready \.hero-scroll-hint\s*\{\s*display:block/);
- assert.match(js,/mobile\?68:52/);
- assert.match(js,/range\(p,\.22,\.68\)/);
- assert.match(css,/max-width:359px/);
-});
-
-
-test('Android video: mobile flower dissolves before sticky section exits',()=>{
- const css=read('assets/css/hero-prism-scroll.css');
- const js=read('assets/js/hero-prism-scroll.js');
- assert.match(js,/flowerStart:\.06, flowerEnd:\.76, panelStart:\.08, panelEnd:\.88/);
- assert.match(js,/textStart:\.22, textEnd:\.69/);
- assert.match(js,/const exit=1-range\(p,\.82,1\)/);
- assert.match(js,/const bloom=\.08\+\.92\*range\(p,\.22,\.68\)/);
- assert.match(js,/--hero-boundary-opacity/);
- assert.match(css,/height:148svh/);
- assert.match(css,/hero-scroll-stage::after/);
- assert.match(css,/background:linear-gradient\(180deg,rgba\(243,239,232,0\)/);
- assert.doesNotMatch(css,/height:158svh/);
+ assert.match(css,/prefers-reduced-motion:no-preference/);
+ assert.match(js,/copy\.inert=!canInteract/);
 });

@@ -491,15 +491,23 @@ body.home-page main > #processo-home .home-process-list[data-process-scroll].pro
   }
 }
 
-
-/* Mobile scroll hero (700px+ viewport heights): the same six-petal and
-   mineral-panel choreography as desktop, composed for portrait displays.
-   Activated only by JS, so reduced-motion, Save-Data, short screens and
-   JavaScript-disabled users always see the original static hero. */
+/* DAYSLUME mobile — two distinct scroll scenes.
+   01 full copy/CTAs on a clean mineral field.
+   02 full centered flower after the text has disappeared.
+   03 flower exits; only then does the sticky stage release section 01.
+   Motion is opt-in via JS class; compact screens/reduced motion stay static. */
+@media (max-width:800px) {
+  /* Static fallback keeps the message clean too (no ghost flower below text). */
+  .hero--scroll-invasion:not(.hero-mobile-scroll-ready) .hero-visual-composition {
+    display:none;
+  }
+}
 @media (max-width:800px) and (min-height:700px) and (prefers-reduced-motion:no-preference) {
   .hero.hero--interactive-flower.hero--motion-lab.hero--scroll-invasion.hero-mobile-scroll-ready {
-    height:148svh;
+    display:block;
+    height:174svh;
     min-height:0;
+    padding:0;
     overflow:visible;
   }
   .hero--scroll-invasion.hero-mobile-scroll-ready .hero-scroll-stage {
@@ -507,133 +515,32 @@ body.home-page main > #processo-home .home-process-list[data-process-scroll].pro
     top:0;
     height:100svh;
     min-height:0;
+    padding:0;
+    display:block;
     overflow:hidden;
-    display:flex;
-    align-items:flex-start;
-    padding:clamp(96px,11.8svh,123px) 0 24px;
+    background:#202532;
   }
   .hero--scroll-invasion.hero-mobile-scroll-ready .hero-grid {
-    display:block;
-    position:relative;
+    position:absolute;
     z-index:5;
-    width:calc(100% - 34px);
+    top:clamp(86px,11.7svh,108px);
+    left:50%;
+    transform:translateX(-50%);
+    width:calc(100% - 36px);
     max-width:620px;
+    height:calc(100svh - clamp(86px,11.7svh,108px));
+    margin:0;
+    display:block;
   }
   .hero--scroll-invasion.hero-mobile-scroll-ready .hero-content {
     position:relative;
     z-index:7;
     width:100%;
-    min-width:0;
-    max-width:620px;
-    will-change:opacity,transform;
-  }
-  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-content h1 {
-    font-size:clamp(36px,9.2vw,52px);
-    line-height:1.07;
-    margin-bottom:clamp(12px,1.8svh,18px);
-  }
-  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-lead {
-    font-size:clamp(13px,3.5vw,15px);
-    line-height:1.48;
-    max-width:44ch;
-  }
-  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-foot {margin-top:11px;}
-  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-visual-composition {
-    position:absolute;
-    grid-row:auto;
-    top:auto;
-    left:auto;
-    right:-20%;
-    bottom:13%;
-    width:min(75vw,348px);
-    margin:0;
-    opacity:.32;
-    z-index:6;
-    will-change:transform,opacity;
-    transform-origin:50% 50%;
-  }
-  .hero--scroll-invasion.hero-mobile-scroll-ready .hero__split-panel {
-    opacity:.83;
-    transform:translate3d(var(--hero-split-x,52%),0,0);
-    will-change:transform;
-    background:
-      radial-gradient(ellipse 80% 67% at 78% 30%,rgba(169,197,216,.16),transparent 80%),
-      linear-gradient(130deg,#2C3448 0%,#485168 48%,#6B536D 100%);
-  }
-  .hero--scroll-invasion.hero-mobile-scroll-ready .hero__bg-overlay {
-    background:
-      linear-gradient(90deg,rgba(32,37,50,.58),rgba(32,37,50,.18) 60%,transparent),
-      linear-gradient(180deg,rgba(32,37,50,.26),transparent 44%,rgba(32,37,50,.24));
-  }
-  .hero--scroll-invasion.hero-mobile-scroll-ready .hero__beam {
-    animation:none;
-  }
-  .hero--scroll-invasion.hero-mobile-scroll-ready .hero__spotlight,
-  .hero--scroll-invasion.hero-mobile-scroll-ready .hero__prism-orbit,
-  .hero--scroll-invasion.hero-mobile-scroll-ready .flower-prism-glint {
-    display:none;
-  }
-  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-scroll-meter {
-    position:absolute;
-    z-index:8;
-    bottom:16px;
-    left:20px;
-    display:block;
-    width:68px;
-    height:1px;
-    background:rgba(169,197,216,.25);
-  }
-  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-scroll-meter span {
-    display:block;
-    width:100%;
-    height:100%;
-    transform:scaleX(var(--hero-meter-progress));
-    transform-origin:left;
-    background:#A9C5D8;
-  }
-}
-@media (max-width:440px) and (min-height:700px) and (prefers-reduced-motion:no-preference) {
-  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-scroll-stage {
-    padding-top:clamp(87px,10.8svh,109px);
-  }
-  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-content h1 {
-    font-size:clamp(35px,9.2vw,43px);
-  }
-  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-visual-composition {
-    right:-22%;
-    bottom:12%;
-    width:76vw;
-  }
-}
-@media (max-width:800px) and (max-height:699px) {
-  .hero--scroll-invasion .hero-content,
-  .hero--scroll-invasion .hero-visual-composition {opacity:1;}
-}
-
-
-/* 13/10: mobile QA from real Android screenshot — compact first fold,
-   readable commercial copy, flower grows only after scrolling.
-   Applies solely when mobile scroll choreography is active. */
-@media (max-width:800px) and (min-height:700px) and (prefers-reduced-motion:no-preference) {
-  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-scroll-stage {
-    padding:0;
-    align-items:initial;
-  }
-  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-grid {
-    position:absolute;
-    top:clamp(87px,12svh,115px);
-    left:50%;
-    transform:translateX(-50%);
-    height:calc(100svh - clamp(87px,12svh,115px));
-    width:calc(100% - 38px);
-    margin:0;
-    display:block;
-  }
-  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-content {
-    margin:0;
-    padding:0;
     max-width:100%;
+    margin:0;
+    padding:0;
     transform-origin:left center;
+    will-change:opacity,transform;
   }
   .hero--scroll-invasion.hero-mobile-scroll-ready .hero-content h1 {
     margin-top:0;
@@ -653,6 +560,7 @@ body.home-page main > #processo-home .home-process-list[data-process-scroll].pro
   }
   .hero--scroll-invasion.hero-mobile-scroll-ready .hero-lead {
     max-width:40ch;
+    font-size:clamp(13px,3.5vw,15px);
     line-height:1.53;
     margin-bottom:clamp(12px,1.9svh,18px);
   }
@@ -660,26 +568,57 @@ body.home-page main > #processo-home .home-process-list[data-process-scroll].pro
     min-height:30px;
     margin-bottom:clamp(14px,2svh,20px);
   }
-  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-actions {
-    gap:clamp(12px,1.8svh,17px);
-  }
-  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-actions .btn-light {
-    min-height:49px;
-  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-actions {gap:clamp(12px,1.8svh,17px);}
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-actions .btn-light {min-height:49px;}
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-foot {margin-top:11px;}
   .hero--scroll-invasion.hero-mobile-scroll-ready .hero-visual-composition {
-    bottom:clamp(44px,9svh,85px);
-    right:-7%;
-    width:min(70vw,324px);
-    opacity:.08;
+    position:absolute;
+    z-index:6;
+    display:block;
+    left:50%;
+    top:47%;
+    right:auto;
+    bottom:auto;
+    grid-row:auto;
+    justify-self:auto;
+    align-self:auto;
+    width:min(73vw,335px);
+    max-width:calc(100vw - 44px);
+    margin:0;
+    translate:-50% -50%;
+    transform-origin:center;
+    opacity:0;
+    will-change:transform,opacity;
+    pointer-events:none;
+    filter:none;
   }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .flower-scene {
+    filter:none;
+    animation:none;
+    --flower-glow-opacity:0;
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .flower-glow {display:none;}
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero__bg-image {
+    opacity:1;
+    background:linear-gradient(126deg,#202532 0%,#273044 72%,#30384c 100%);
+    transform:none;
+    filter:none;
+  }
+  /* The mineral color shift belongs to the flower scene, not the copy scene. */
   .hero--scroll-invasion.hero-mobile-scroll-ready .hero__split-panel {
-    opacity:.74;
+    opacity:var(--hero-mobile-panel-opacity,0);
+    background:linear-gradient(130deg,#2C3448 0%,#485168 48%,#6B536D 100%);
+    transform:translate3d(var(--hero-split-x,68%),0,0);
+    will-change:transform,opacity;
   }
   .hero--scroll-invasion.hero-mobile-scroll-ready .hero__bg-overlay {
-    background:
-      linear-gradient(90deg,rgba(32,37,50,.64),rgba(32,37,50,.19) 68%,transparent),
-      linear-gradient(180deg,rgba(32,37,50,.12),transparent 42%,rgba(32,37,50,.19));
+    background:linear-gradient(90deg,rgba(32,37,50,.28),rgba(32,37,50,.06) 65%,transparent);
   }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero__beam-field,
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero__spotlight,
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero__prism-orbit,
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-ambient-light,
+  .hero--scroll-invasion.hero-mobile-scroll-ready .flower-prism-glint {display:none;}
   .hero--scroll-invasion.hero-mobile-scroll-ready .hero-scroll-hint {
     display:block;
     bottom:clamp(18px,3.2svh,32px);
@@ -689,9 +628,27 @@ body.home-page main > #processo-home .home-process-list[data-process-scroll].pro
     letter-spacing:.14em;
     color:rgba(243,239,232,.7);
   }
-  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-scroll-hint span {
-    font-size:14px;
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-scroll-hint span {font-size:14px;}
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-scroll-meter {
+    position:absolute;
+    z-index:8;
+    bottom:16px;
+    left:20px;
+    display:block;
+    width:68px;
+    height:1px;
+    background:rgba(169,197,216,.25);
   }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-scroll-meter span {
+    display:block;
+    width:100%;
+    height:100%;
+    transform:scaleX(var(--hero-meter-progress));
+    transform-origin:left;
+    background:#A9C5D8;
+  }
+  /* No ivory overlay before the flower has completed its exit. */
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-scroll-stage::after {content:none;}
 }
 @media (max-width:440px) and (min-height:700px) and (prefers-reduced-motion:no-preference) {
   .hero--scroll-invasion.hero-mobile-scroll-ready .hero-grid {
@@ -703,38 +660,16 @@ body.home-page main > #processo-home .home-process-list[data-process-scroll].pro
     font-size:clamp(33px,8.85vw,41px);
   }
   .hero--scroll-invasion.hero-mobile-scroll-ready .hero-visual-composition {
-    right:-10%;
-    width:70vw;
+    top:46%;
+    width:min(75vw,318px);
   }
 }
-/* On narrower displays prioritize legible text over the visual flourish. */
 @media (max-width:359px) and (min-height:700px) and (prefers-reduced-motion:no-preference) {
   .hero--scroll-invasion.hero-mobile-scroll-ready .hero-content h1 {
     font-size:clamp(30px,8.6vw,34px);
   }
-  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-lead {
-    font-size:13px;
-  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-lead {font-size:13px;}
 }
-
-
-/* Android video review — quieter and shorter closing transition.
-   The stage graduates into the warm ivory of section 01 rather than cutting
-   a fully opaque six-petal flower at its upper boundary. */
-@media (max-width:800px) and (min-height:700px) and (prefers-reduced-motion:no-preference) {
-  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-scroll-stage::after {
-    content:"";
-    position:absolute;
-    z-index:7;
-    left:0;
-    right:0;
-    bottom:0;
-    height:clamp(55px,11svh,110px);
-    pointer-events:none;
-    opacity:var(--hero-boundary-opacity,0);
-    background:linear-gradient(180deg,rgba(243,239,232,0) 0%,rgba(243,239,232,.92) 100%);
-  }
-  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-visual-composition {
-    will-change:transform,opacity;
-  }
+@media (max-width:800px) and (max-height:699px) {
+  .hero--scroll-invasion .hero-content {opacity:1;}
 }

@@ -1,5 +1,5 @@
-/* DAYSLUME experimental motion.
- * Hero: text left → independent six-petal flower moves left and grows on scroll.
+/* DAYSLUME scroll choreography.
+ * Desktop: split editorial hero; mobile: commercial copy first, then centered six-petal flower.
  * #modelo: two editorial cards roll into place as visitors scroll.
  * Scroll progression follows document position, and reverses on scroll up.
  * Progressive: desktop + supported mobile scroll scenes; reduced-motion,
@@ -35,10 +35,10 @@
       textStart:.32, textEnd:.95, hintStart:.03, hintEnd:.18
     }),
     mobileHero: Object.freeze({
-      // Short scroll sequence: copy yields to the flower, then the scene
-      // fades into the warm first section before the sticky stage releases.
-      flowerStart:.06, flowerEnd:.76, panelStart:.08, panelEnd:.88,
-      textStart:.22, textEnd:.69, hintStart:.03, hintEnd:.16
+      // Two separate scenes. No petal, shadow or split overlay during copy.
+      // The second scene completes before the sticky hero releases section 01.
+      flowerStart:.34, flowerEnd:.57, panelStart:.35, panelEnd:.62,
+      textStart:.09, textEnd:.32, hintStart:.03, hintEnd:.18
     }),
     cards: Object.freeze({ start:.93, distance:.58, stagger:.11, duration:.88 }),
     process: Object.freeze({ start:.91, distance:.69, stagger:.11, duration:.53 })
@@ -105,11 +105,10 @@
     const invasion=range(p,cues.flowerStart,cues.flowerEnd);
     const fade=range(p,cues.textStart,cues.textEnd);
     const panel=range(p,cues.panelStart,cues.panelEnd);
-    const move=mobile ? -Math.min(innerWidth*.32,160)*invasion :
-      -Math.min(innerWidth*.35,510)*invasion;
-    const lift=mobile ? -Math.min(innerHeight*.055,46)*invasion : -12*invasion;
-    const growth=1+invasion*(mobile ? .14 : .46);
-    const copyX=(mobile ? -16 : -50)*fade;
+    const move=mobile ? 0 : -Math.min(innerWidth*.35,510)*invasion;
+    const lift=mobile ? 0 : -12*invasion;
+    const growth=mobile ? (.86+.18*invasion) : (1+invasion*.46);
+    const copyX=(mobile ? -14 : -50)*fade;
     const copyFocused=copy.contains(document.activeElement);
     copy.style.opacity=copyFocused ? '1' : (1-fade).toFixed(3);
     copy.style.transform=copyFocused ? 'none' :
@@ -119,14 +118,18 @@
     flower.style.transform='translate3d('+move.toFixed(2)+'px,'+
       lift.toFixed(2)+'px,0) scale('+growth.toFixed(4)+')';
     if(mobile) {
-      // Bloom early, then dissolve before the flower can be clipped when
-      // the sticky viewport slides away into the first editorial section.
-      const bloom=.08+.92*range(p,.22,.68);
-      const exit=1-range(p,.82,1);
-      flower.style.opacity=(bloom*exit).toFixed(3);
-      hero.style.setProperty('--hero-boundary-opacity',range(p,.78,1).toFixed(3));
+      // Deliberate zero overlap: copy opacity reaches zero at p=.32;
+      // flower and panel start only at p=.34+. No blurred petals behind copy.
+      const bloom=range(p,cues.flowerStart,cues.flowerEnd);
+      const exit=1-range(p,.88,1);
+      const mobileFlower=copyFocused ? 0 : bloom*exit;
+      flower.style.opacity=mobileFlower.toFixed(3);
+      hero.style.setProperty('--hero-mobile-panel-opacity',
+        (copyFocused ? 0 : range(p,.36,.65)*exit).toFixed(3));
+    } else {
+      flower.style.removeProperty('opacity');
+      hero.style.removeProperty('--hero-mobile-panel-opacity');
     }
-    else flower.style.removeProperty('opacity');
     hero.style.setProperty('--hero-meter-progress',p.toFixed(4));
     hero.style.setProperty('--hero-split-x',((mobile?68:52)*(1-panel)).toFixed(2)+'%');
     hero.style.setProperty('--hero-rays-shift',(-innerWidth*(mobile ? .05 : .12)*invasion).toFixed(2)+'px');
@@ -276,6 +279,7 @@
     hero.style.removeProperty('--hero-rays-shift');
     hero.style.removeProperty('--hero-light-focus');
     hero.style.removeProperty('--hero-boundary-opacity');
+    hero.style.removeProperty('--hero-mobile-panel-opacity');
     hero.style.removeProperty('--hero-split-x');
     hero.querySelector('.hero-scroll-hint')?.style.removeProperty('opacity');
     for(const key of ['--spot-x','--spot-y','--glint-x','--glint-y'])hero.style.removeProperty(key);
