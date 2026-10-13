@@ -490,3 +490,122 @@ body.home-page main > #processo-home .home-process-list[data-process-scroll].pro
     transition:none!important;
   }
 }
+
+
+/* Mobile scroll hero (700px+ viewport heights): the same six-petal and
+   mineral-panel choreography as desktop, composed for portrait displays.
+   Activated only by JS, so reduced-motion, Save-Data, short screens and
+   JavaScript-disabled users always see the original static hero. */
+@media (max-width:800px) and (min-height:700px) and (prefers-reduced-motion:no-preference) {
+  .hero.hero--interactive-flower.hero--motion-lab.hero--scroll-invasion.hero-mobile-scroll-ready {
+    height:158svh;
+    min-height:0;
+    overflow:visible;
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-scroll-stage {
+    position:sticky;
+    top:0;
+    height:100svh;
+    min-height:0;
+    overflow:hidden;
+    display:flex;
+    align-items:flex-start;
+    padding:clamp(96px,11.8svh,123px) 0 24px;
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-grid {
+    display:block;
+    position:relative;
+    z-index:5;
+    width:calc(100% - 34px);
+    max-width:620px;
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-content {
+    position:relative;
+    z-index:7;
+    width:100%;
+    min-width:0;
+    max-width:620px;
+    will-change:opacity,transform;
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-content h1 {
+    font-size:clamp(36px,9.2vw,52px);
+    line-height:1.07;
+    margin-bottom:clamp(12px,1.8svh,18px);
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-lead {
+    font-size:clamp(13px,3.5vw,15px);
+    line-height:1.48;
+    max-width:44ch;
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-foot {margin-top:11px;}
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-visual-composition {
+    position:absolute;
+    grid-row:auto;
+    top:auto;
+    left:auto;
+    right:-20%;
+    bottom:13%;
+    width:min(75vw,348px);
+    margin:0;
+    opacity:.32;
+    z-index:6;
+    will-change:transform,opacity;
+    transform-origin:50% 50%;
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero__split-panel {
+    opacity:.83;
+    transform:translate3d(var(--hero-split-x,52%),0,0);
+    will-change:transform;
+    background:
+      radial-gradient(ellipse 80% 67% at 78% 30%,rgba(169,197,216,.16),transparent 80%),
+      linear-gradient(130deg,#2C3448 0%,#485168 48%,#6B536D 100%);
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero__bg-overlay {
+    background:
+      linear-gradient(90deg,rgba(32,37,50,.58),rgba(32,37,50,.18) 60%,transparent),
+      linear-gradient(180deg,rgba(32,37,50,.26),transparent 44%,rgba(32,37,50,.24));
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero__beam {
+    animation:none;
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero__spotlight,
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero__prism-orbit,
+  .hero--scroll-invasion.hero-mobile-scroll-ready .flower-prism-glint {
+    display:none;
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-scroll-meter {
+    position:absolute;
+    z-index:8;
+    bottom:16px;
+    left:20px;
+    display:block;
+    width:68px;
+    height:1px;
+    background:rgba(169,197,216,.25);
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-scroll-meter span {
+    display:block;
+    width:100%;
+    height:100%;
+    transform:scaleX(var(--hero-meter-progress));
+    transform-origin:left;
+    background:#A9C5D8;
+  }
+}
+@media (max-width:440px) and (min-height:700px) and (prefers-reduced-motion:no-preference) {
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-scroll-stage {
+    padding-top:clamp(87px,10.8svh,109px);
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-content h1 {
+    font-size:clamp(35px,9.2vw,43px);
+  }
+  .hero--scroll-invasion.hero-mobile-scroll-ready .hero-visual-composition {
+    right:-22%;
+    bottom:12%;
+    width:76vw;
+  }
+}
+@media (max-width:800px) and (max-height:699px) {
+  .hero--scroll-invasion .hero-content,
+  .hero--scroll-invasion .hero-visual-composition {opacity:1;}
+}

@@ -143,3 +143,23 @@ test('shorter hero never enters a prolonged empty pinned frame',()=>{
  assert.doesNotMatch(css,/height:\s*(185|195|215)svh/);
  assert.match(js,/textStart:\.32, textEnd:\.95/);
 });
+
+
+test('mobile scroll hero keeps the desktop visual language with safe fallbacks',()=>{
+ const css=read('assets/css/hero-prism-scroll.css');
+ const js=read('assets/js/hero-prism-scroll.js');
+ assert.match(js,/function allowMobileHero\(\)/);
+ assert.match(js,/innerWidth>=320 && innerWidth<=800 && innerHeight>=700/);
+ assert.match(js,/const mobile = mobileHeroEnabled/);
+ assert.match(js,/mobileHero: Object\.freeze/);
+ assert.match(js,/hero\.classList\.toggle\('hero-mobile-scroll-ready',mobileHeroEnabled\)/);
+ assert.match(js,/flower\.style\.opacity=\(\.32\+\.68\*range/);
+ assert.match(css,/max-width:800px\) and \(min-height:700px\) and \(prefers-reduced-motion:no-preference/);
+ assert.match(css,/\.hero--scroll-invasion\.hero-mobile-scroll-ready \.hero-scroll-stage\s*\{\s*position:sticky/);
+ assert.match(css,/height:158svh/);
+ assert.match(css,/\.hero--scroll-invasion\.hero-mobile-scroll-ready \.hero__split-panel/);
+ assert.match(css,/\.hero--scroll-invasion\.hero-mobile-scroll-ready \.hero-visual-composition/);
+ assert.match(css,/max-height:699px/);
+ assert.match(js,/saveData/);
+ assert.match(js,/copyFocused/);
+});
