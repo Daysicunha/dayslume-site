@@ -7,7 +7,7 @@ const source = fs.readFileSync(require('node:path').join(__dirname, '../assets/j
 function setup() {
   const listeners = {};
   const fields = ['nome', 'email', 'empresa', 'necessidade'].map(name => ({
-    name, value: '', required: name !== 'empresa', minLength: name === 'necessidade' ? 10 : -1,
+    name, value: '', required: name === 'nome' || name === 'necessidade', minLength: name === 'necessidade' ? 10 : -1,
     disabled: true, error: '', setCustomValidity(message) { this.error = message; }
   }));
   const status = { textContent: '' };
@@ -66,4 +66,18 @@ test('Editing or resetting removes the prepared message and its personal data', 
   f.listeners.reset();
   assert.equal(f.link.hidden, true);
   assert.equal(f.link.href, undefined);
+});
+
+test('Optional e-mail is omitted entirely from WhatsApp message, while company is retained', () => {
+  const f=setup();
+  assert.equal(f.fields.find(field=>field.name==='email').required,false);
+  f.fill({nome:'Lia',empresa:'Ateliê M',necessidade:'Preciso apresentar meus serviços com clareza.'});
+  f.submit();
+  const url=new URL(f.link.href);
+  const text=url.searchParams.get('text');
+  assert.match(text,/Nome: Lia/);
+  assert.match(text,/Empresa\/projeto: Ateliê M/);
+  assert.doesNotMatch(text,/E-mail:/);
+  assert.match(text,/apresentar meus serviços/);
+  assert.equal(f.link.hidden,false);
 });

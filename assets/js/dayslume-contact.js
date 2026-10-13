@@ -37,8 +37,9 @@
       return;
     }
     const value = name => form.elements.namedItem(name).value.trim();
-    const lines = ['Olá! Vim pelo site da DAYSLUME.', '', `Nome: ${value('nome')}`, `E-mail: ${value('email')}`];
+    const lines = ['Olá! Vim pelo site da DAYSLUME.', '', `Nome: ${value('nome')}`];
     if (value('empresa')) lines.push(`Empresa/projeto: ${value('empresa')}`);
+    if (value('email')) lines.push(`E-mail: ${value('email')}`);
     lines.push('', `Gostaria de conversar sobre: ${value('necessidade')}`);
     continuation.href = `https://wa.me/${form.dataset.whatsapp}?text=${encodeURIComponent(lines.join('\n'))}`;
     continuation.hidden = false;
