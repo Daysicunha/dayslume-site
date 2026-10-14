@@ -51,3 +51,20 @@ test('the same existing contact action remains accessible on all main pages',()=
   assert.match(cssLinks.at(-1)||'',/brand-palette\.css$/,file);
  }
 });
+
+test('mobile footer intersection hides the floating shortcut on every main page',()=>{
+ const shared=fs.readFileSync(path.join(root,'assets/js/dayslume-motion.js'),'utf8');
+ assert.match(shared,/const mobileFooter = matchMedia\('\(max-width: 800px\)'\)/);
+ assert.match(shared,/footerBounds\.top < innerHeight && footerBounds\.bottom > 0/);
+ assert.match(shared,/new IntersectionObserver\(requestUpdate/);
+ assert.match(shared,/action\.classList\.toggle\('is-hidden-near-footer', nearMobileFooter\)/);
+ assert.match(shared,/mobileFooter\.addEventListener\('change', requestUpdate\)/);
+ assert.match(shared,/action\.tabIndex = -1/);
+ assert.match(css,/@media\(max-width:800px\)\{[\s\S]*?a\.floating-whatsapp\.is-hidden-near-footer/);
+ assert.match(css,/opacity:0!important;[\s\S]*?visibility:hidden!important;[\s\S]*?pointer-events:none!important/);
+ for (const file of [...pages,'central-de-ajuda.html','blog/ia-negocios-com-criterio.html']) {
+   const html=fs.readFileSync(path.join(root,file),'utf8');
+   const prefix=file.includes('/')?'../':'';
+   assert.ok(html.includes('src="'+prefix+'assets/js/dayslume-motion.js"'),file);
+ }
+});
