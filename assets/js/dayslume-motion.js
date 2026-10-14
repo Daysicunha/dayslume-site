@@ -39,6 +39,8 @@
       'main a.btn, main button.btn, .contact-note a, .projects-portfolio-cta, .content-archive'
     )];
     const initialTabindex = action.getAttribute('tabindex');
+    const mobileFooter = matchMedia('(max-width: 800px)');
+    const footer = document.querySelector('footer');
     let frame = 0;
 
     const overlaps = (left, right) => (
@@ -48,7 +50,8 @@
       left.left < right.right - 6
     );
 
-    const setHidden = hidden => {
+    const setHidden = (hidden, nearMobileFooter) => {
+      action.classList.toggle('is-hidden-near-footer', nearMobileFooter);
       action.classList.toggle('is-context-hidden', hidden);
       action.classList.toggle('days-overlaps-hero', hidden);
       if (hidden && document.activeElement !== action) {
@@ -64,6 +67,11 @@
     const update = () => {
       frame = 0;
       const actionBounds = action.getBoundingClientRect();
+      const footerBounds = footer?.getBoundingClientRect();
+      const nearMobileFooter = Boolean(mobileFooter.matches && footerBounds &&
+        footerBounds.top < innerHeight && footerBounds.bottom > 0);
+      // Never leave a keyboard-focusable invisible control over the footer.
+      if (nearMobileFooter && document.activeElement === action) action.blur();
       const nearContactContext = contextTargets.some(target => {
         const bounds = target.getBoundingClientRect();
         return bounds.top < innerHeight - 24 && bounds.bottom > actionBounds.top;
@@ -71,7 +79,8 @@
       const coveringAction = overlapTargets.some(target => overlaps(
         target.getBoundingClientRect(), actionBounds
       ));
-      setHidden((nearContactContext || coveringAction) && document.activeElement !== action);
+      setHidden((nearMobileFooter || nearContactContext || coveringAction) &&
+        document.activeElement !== action, nearMobileFooter);
     };
 
     const requestUpdate = () => {
@@ -82,6 +91,11 @@
     addEventListener('resize', requestUpdate, { passive: true });
     addEventListener('orientationchange', requestUpdate, { passive: true });
     action.addEventListener('blur', requestUpdate);
+    mobileFooter.addEventListener('change', requestUpdate);
+    // Observer provides an entry/exit cue; scroll/resize geometry is the fallback.
+    if (footer && 'IntersectionObserver' in window) {
+      new IntersectionObserver(requestUpdate, { threshold: 0 }).observe(footer);
+    }
     requestUpdate();
   };
 
