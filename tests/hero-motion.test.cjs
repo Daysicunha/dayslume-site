@@ -151,9 +151,9 @@ test('mobile hero puts a compact flower above readable copy and CTAs',()=>{
  assert.match(js,/function allowMobileHero\(\) \{[\s\S]*?return false;/);
  assert.match(palette,/Mobile flower-first layout/);
  assert.ok(palette.includes('order:-1;'));
- assert.ok(palette.includes('width:min(48vw,190px)'));
- assert.ok(palette.includes('margin:0 auto clamp(14px,3svh,23px)'));
- assert.ok(palette.includes('padding:clamp(121px,14svh,144px)'));
+ assert.ok(palette.includes('width:min(44vw,168px)'));
+ assert.ok(palette.includes('margin:0 auto clamp(12px,2svh,18px)'));
+ assert.ok(palette.includes('padding:clamp(94px,10svh,112px)'));
  assert.match(palette,/body\.home-page \.hero--scroll-invasion \.hero-content\s*\{[\s\S]*?opacity:1!important/);
  assert.match(palette,/body\.home-page \.hero--scroll-invasion:not\(\.hero-mobile-scroll-ready\) \.hero-visual-composition\s*\{[\s\S]*?display:block!important/);
  assert.match(palette,/body\.home-page \.hero--scroll-invasion \.hero-scroll-stage\s*\{[\s\S]*?height:auto/);
