@@ -86,8 +86,8 @@ test('mobile WhatsApp uses a compact icon and respects overlapping links',()=>{
  assert.match(closing,/width:48px;/);
  assert.match(closing,/height:48px;/);
  assert.match(closing,/content:none!important;/);
- assert.match(closing,/whatsapp-brand-mark\\.svg/);
- assert.match(closing,/a\\.floating-whatsapp\\.is-context-hidden/);
- assert.match(closing,/a\\.floating-whatsapp\\.is-hidden-near-footer/);
+ assert.match(closing,/whatsapp-brand-mark\.svg/);
+ assert.match(closing,/a\.floating-whatsapp\.is-context-hidden/);
+ assert.match(closing,/a\.floating-whatsapp\.is-hidden-near-footer/);
  assert.match(closing,/pointer-events:none!important;/);
 });
