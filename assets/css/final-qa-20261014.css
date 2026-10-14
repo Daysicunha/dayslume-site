@@ -1,0 +1,329 @@
+/* DAYSLUME — QA final 14/10/2026
+   Escopo intencional: Home, Serviços/Soluções, Projetos e Sobre.
+   Carregado depois de brand-palette.css para corrigir a cascata sem alterar a IDV. */
+
+/* 01 — Prova real: três cartões com a mesma linguagem e hierarquia. */
+body.home-page .execution-proof__items {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  align-items:stretch;
+}
+body.home-page .execution-proof__items > a,
+body.home-page .execution-proof__items > a:first-child {
+  box-sizing:border-box;
+  width:100%;
+  min-width:0;
+  min-height:122px;
+  padding:16px 17px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+  gap:12px;
+  border:1px solid rgba(169,197,216,.14);
+  border-radius:15px;
+  background:#202532;
+  color:#f3efe8;
+  text-decoration:none;
+  transition:border-color .2s ease, transform .2s ease, background-color .2s ease;
+}
+body.home-page .execution-proof__items > a:hover,
+body.home-page .execution-proof__items > a:focus-visible {
+  border-color:#a9c5d8;
+  background:#2b3040;
+  transform:translateY(-2px);
+}
+body.home-page .execution-proof__items > a .proof-brand {
+  display:flex;
+  align-items:center;
+  width:100%;
+  height:50px;
+  min-height:50px;
+  margin:0;
+  opacity:1;
+  overflow:hidden;
+  letter-spacing:normal;
+  text-transform:none;
+}
+body.home-page .execution-proof__items .proof-brand img {
+  display:block;
+  width:auto;
+  height:auto;
+  max-height:49px;
+  max-width:min(100%,205px);
+  object-fit:contain;
+  object-position:left center;
+  filter:none;
+}
+body.home-page .execution-proof__items .proof-wordmark {
+  display:block;
+  max-width:100%;
+  color:#f3efe8;
+  font-family:Manrope,"DM Sans",sans-serif;
+  font-size:clamp(14px,1.2vw,18px);
+  line-height:1.2;
+  letter-spacing:-.025em;
+  font-weight:750;
+  text-wrap:balance;
+}
+body.home-page .execution-proof__items .proof-wordmark--rocket {letter-spacing:.015em;}
+body.home-page .execution-proof__items .proof-wordmark--dayane {letter-spacing:.13em;font-weight:600;}
+body.home-page .execution-proof__items > a .proof-label,
+body.home-page .execution-proof__items > a:first-child .proof-label {
+  display:block;
+  width:100%;
+  margin:0;
+  color:rgba(243,239,232,.79);
+  font:600 10px/1.45 "DM Sans",sans-serif;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  opacity:1;
+}
+
+/* 02 — Evidência visual dos cases: uma janela de visualização consistente. */
+body.home-page .flagship-cases .project-image {
+  overflow:hidden;
+  background:#17202c;
+  border-radius:14px;
+  isolation:isolate;
+}
+body.home-page .flagship-cases .project-image img,
+body.home-page .flagship-cases .project-image picture {
+  max-width:100%;
+}
+body.home-page .flagship-cases .project-image img {
+  object-fit:cover;
+  object-position:center 22%;
+}
+body.home-page .flagship-cases .nrp-project img {
+  object-position:center top;
+}
+body.home-page .flagship-cases .case-preview--dayane img {
+  object-position:center 25%;
+}
+body.home-page .flagship-cases .project-card .case-story {
+  min-width:0;
+}
+body.home-page .flagship-cases .project-card .case-actions {
+  margin-top:auto;
+}
+body.home-page .flagship-cases .project-card .case-actions a {
+  overflow-wrap:anywhere;
+}
+body.home-page .flagship-cases .project-card .project-image:focus-visible {
+  outline:3px solid #6b536d;
+  outline-offset:3px;
+}
+
+/* 03 — Imagens dos artigos: identidade, processo e interface, respectivamente. */
+body.home-page .content-magazine .content-featured__media,
+body.home-page .content-magazine .content-secondary__media {
+  overflow:hidden;
+  background:#e0e6e9;
+}
+body.home-page .content-magazine .content-featured__media img,
+body.home-page .content-magazine .content-secondary__media img {
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+body.home-page .content-magazine .content-image-note {
+  border:1px solid rgba(243,239,232,.44);
+  border-radius:9px;
+  padding:12px 15px;
+  background:rgba(32,37,50,.78);
+  color:#f3efe8;
+  box-shadow:0 8px 24px rgba(32,37,50,.14);
+}
+
+/* 04 — Soluções: cada ação pertence ao seu card. */
+body:not(.home-page) #sistemas-aplicacoes .systems-cta-grid {
+  align-items:stretch;
+  gap:clamp(14px,1.7vw,25px);
+}
+body:not(.home-page) #sistemas-aplicacoes .systems-cta-grid > .days-card {
+  display:flex;
+  flex-direction:column;
+  box-sizing:border-box;
+  min-width:0;
+  min-height:375px;
+}
+body:not(.home-page) #sistemas-aplicacoes .systems-cta-grid > .days-card p {
+  margin-bottom:25px;
+}
+body:not(.home-page) #sistemas-aplicacoes .systems-cta-grid > .days-card .btn {
+  margin:auto 0 0;
+  align-self:flex-start;
+  box-sizing:border-box;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  max-width:100%;
+  padding:11px 18px;
+  font-size:clamp(11px,.82vw,13px);
+  line-height:1.35;
+  white-space:normal;
+  text-align:center;
+  text-wrap:balance;
+}
+
+/* 05 — Projetos: showcase alinhado ao texto e imagens reais sem falsos dispositivos. */
+body.projects-page .projects-hero .container.days-page-hero.projects-hero-grid {
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(26px,4.6vw,66px);
+  align-items:center;
+}
+body.projects-page .projects-hero .projects-hero-copy {min-width:0;}
+body.projects-page .projects-hero .projects-hero-visual {
+  box-sizing:border-box;
+  width:min(100%,550px);
+  max-width:100%;
+  justify-self:end;
+  align-self:center;
+  margin:0;
+  transform:translateY(22px);
+}
+body.projects-page .projects-hero .projects-hero-stage--tornearia {
+  min-height:0;
+  aspect-ratio:1.72;
+  padding:0;
+  background:#e9e9e9;
+}
+body.projects-page .projects-hero .projects-hero-stage--tornearia::after {display:none!important;content:none!important;}
+body.projects-page .header~main > .hero.projects-hero .projects-hero-stage--tornearia img {
+  display:block;
+  box-sizing:border-box;
+  width:100%;
+  height:100%;
+  max-width:none;
+  max-height:none;
+  margin:0;
+  padding:0;
+  border:0;
+  border-radius:0;
+  object-fit:cover;
+  object-position:center;
+  box-shadow:none;
+  transform:none;
+}
+body.projects-page .projects-gallery .projects-case-card .case-media {
+  overflow:hidden;
+  background:#e9eaed;
+}
+body.projects-page .projects-gallery .projects-case-card .case-media img {
+  display:block;
+  width:100%;
+  max-width:100%;
+  height:auto;
+  object-fit:contain;
+  object-position:center;
+}
+body.projects-page .projects-gallery .nrp-portfolio-media {
+  display:block;
+  width:100%;
+  overflow:hidden;
+  background:#202532;
+}
+body.projects-page .projects-gallery .nrp-portfolio-media .case-site-capture {
+  display:block;
+  width:100%;
+  max-width:none;
+  height:auto;
+  aspect-ratio:16/9;
+  object-fit:cover;
+  object-position:center top;
+}
+body.projects-page .projects-gallery .dayane-media img {
+  max-height:440px;
+  object-fit:cover;
+  object-position:center 20%;
+}
+
+/* 06 — Sobre: card à direita equilibrado e mesma fotografia editorial da Home. */
+body.about-page .about-hero .container.days-page-hero.about-hero-grid {
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(26px,4.6vw,68px);
+  align-items:center;
+}
+body.about-page .about-hero .about-hero-copy {min-width:0;}
+body.about-page .about-hero .about-decision {
+  box-sizing:border-box;
+  width:min(100%,550px);
+  max-width:100%;
+  justify-self:end;
+  align-self:center;
+  margin:0;
+  transform:translateY(18px);
+}
+body.about-page .about-founder-figure img {
+  width:100%;
+  height:auto;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  object-position:center 18%;
+}
+
+/* Responsividade: desktop pequeno/tablet => coluna única, sem deslocamento artificial. */
+@media(max-width:1100px){
+  body.projects-page .projects-hero .container.days-page-hero.projects-hero-grid,
+  body.about-page .about-hero .container.days-page-hero.about-hero-grid {
+    grid-template-columns:minmax(0,1fr);
+    max-width:780px;
+    gap:clamp(24px,4vw,38px);
+  }
+  body.projects-page .projects-hero .projects-hero-visual,
+  body.about-page .about-hero .about-decision {
+    justify-self:center;
+    transform:none;
+  }
+  body:not(.home-page) #sistemas-aplicacoes .systems-cta-grid {grid-template-columns:repeat(2,minmax(0,1fr));}
+  body:not(.home-page) #sistemas-aplicacoes .systems-cta-grid > .days-card {min-height:335px;}
+}
+@media(max-width:760px){
+  body.home-page .execution-proof {
+    grid-template-columns:minmax(0,1fr);
+    gap:20px;
+  }
+  body.home-page .execution-proof__items {grid-template-columns:minmax(0,1fr);gap:10px;}
+  body.home-page .execution-proof__items>a,
+  body.home-page .execution-proof__items>a:first-child {
+    min-height:92px;
+    padding:13px 16px;
+    gap:8px;
+  }
+  body.home-page .execution-proof__items>a .proof-brand {height:35px;min-height:35px;}
+  body.home-page .execution-proof__items .proof-brand img {max-height:35px;}
+  body.home-page .execution-proof__items .proof-wordmark {font-size:16px;}
+  body.home-page .content-magazine .content-featured__media {min-height:235px;aspect-ratio:1.65;}
+  body.home-page .content-magazine .content-secondary__media {min-height:185px;aspect-ratio:1.85;}
+  body:not(.home-page) #sistemas-aplicacoes .systems-cta-grid {grid-template-columns:minmax(0,1fr);}
+  body:not(.home-page) #sistemas-aplicacoes .systems-cta-grid > .days-card {min-height:0;gap:0;}
+  body:not(.home-page) #sistemas-aplicacoes .systems-cta-grid > .days-card p {margin-bottom:20px;}
+  body:not(.home-page) #sistemas-aplicacoes .systems-cta-grid > .days-card .btn {
+    width:100%;
+    align-self:stretch;
+    margin-top:8px;
+    font-size:13px;
+  }
+  body.projects-page .projects-hero .projects-hero-visual,
+  body.about-page .about-hero .about-decision {width:100%;max-width:100%;}
+  body.projects-page .projects-hero .projects-hero-stage--tornearia {aspect-ratio:1.45;}
+  body.projects-page .projects-gallery .nrp-portfolio-media .case-site-capture {aspect-ratio:1.55;}
+}
+@media(max-width:480px){
+  body.home-page .execution-proof {padding:17px;}
+  body.home-page .execution-proof__intro strong {font-size:clamp(19px,6vw,24px);}
+  body.home-page .content-magazine .content-image-note {font-size:9px;letter-spacing:.08em;padding:8px;}
+  body.projects-page .projects-hero .projects-hero-stage--tornearia {aspect-ratio:1.28;}
+  body.projects-page .projects-hero .projects-hero-visual {padding:12px;border-radius:19px;}
+  body.about-page .about-hero .about-decision {padding:16px;}
+  body.projects-page .projects-gallery .projects-case-card .case-media img {max-height:330px;}
+}
+@media(prefers-reduced-motion:reduce){
+  body.home-page .execution-proof__items>a {transition:none;}
+  body.home-page .execution-proof__items>a:hover {transform:none;}
+}
