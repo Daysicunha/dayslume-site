@@ -1,6 +1,6 @@
 /* DAYSLUME — QA final 14/10/2026
    Escopo intencional: Home, Serviços/Soluções, Projetos e Sobre.
-   Carregado depois de brand-palette.css para corrigir a cascata sem alterar a IDV. */
+   Carregado antes de brand-palette.css; seletores locais preservam a IDV canônica. */
 
 /* 01 — Prova real: três cartões com a mesma linguagem e hierarquia. */
 body.home-page .execution-proof__items {
