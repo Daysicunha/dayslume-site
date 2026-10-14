@@ -2216,7 +2216,8 @@ body:not(.home-page) > a.floating-whatsapp:focus-visible {
 /* DAYSLUME / CENTRAL DE AJUDA + ATENDIMENTO + VOLTAR AO TOPO */
 .days-help-strip{
   position:relative;
-  z-index:121;
+  /* Faixa em fluxo normal, abaixo da navegação sticky em desktop e mobile. */
+  z-index:1;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -2446,4 +2447,539 @@ body .days-footer-support-actions a{
   body .days-support-contacts{gap:18px}
   body .days-footer-support-actions{flex-direction:row;align-items:stretch;flex-wrap:wrap}
   body .days-support-contact-copy{font-size:13px}
+}
+
+/* 13/10 — Header and first-screen mobile usability: no banner/menu collision.
+   Help is already available in the navigation/footer. Preserve #topo as a
+   zero-height in-flow anchor for every existing "Voltar ao topo" link. */
+body .days-help-strip {
+  position:relative!important;
+  z-index:0!important;
+  display:block!important;
+  width:100%;
+  height:0!important;
+  min-height:0!important;
+  padding:0!important;
+  margin:0!important;
+  border:0!important;
+  overflow:hidden!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+
+/* Mobile flower-first layout: a compact decorative mark introduces the offer,
+   followed by readable copy and accessible CTAs. Desktop scroll motion unchanged. */
+@media(max-width:800px){
+  body.home-page .hero.hero--scroll-invasion {
+    height:auto;
+    min-height:0;
+    padding:0;
+    overflow:hidden;
+  }
+  body.home-page .hero--scroll-invasion .hero-scroll-stage {
+    position:relative;
+    top:auto;
+    height:auto;
+    min-height:0;
+    display:block;
+    /* Clearance for the floating glass header and browser safe areas. */
+    padding:clamp(94px,10svh,112px) 0 clamp(24px,3.5svh,36px);
+    overflow:hidden;
+  }
+  body.home-page .hero--scroll-invasion .hero-grid {
+    position:relative;
+    inset:auto;
+    z-index:5;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:0;
+    width:calc(100% - 40px);
+    max-width:560px;
+    height:auto;
+    margin:auto;
+    transform:none;
+  }
+  body.home-page .hero--scroll-invasion .hero-content {
+    position:relative;
+    z-index:8;
+    display:block;
+    opacity:1!important;
+    transform:none!important;
+    translate:none!important;
+    width:100%;
+    max-width:100%;
+    margin:0;
+    padding:0;
+    text-align:center;
+    pointer-events:auto!important;
+    will-change:auto;
+  }
+  body.home-page .hero--scroll-invasion .hero-eyebrow {
+    justify-content:center;
+    gap:8px;
+    font-size:clamp(9px,2.45vw,11px);
+    letter-spacing:.10em;
+    line-height:1.5;
+    margin:0 0 14px;
+  }
+  body.home-page .hero--scroll-invasion .hero-content h1 {
+    max-width:13ch;
+    margin:0 auto 16px;
+    font-size:clamp(33px,8.6vw,45px);
+    line-height:1.12;
+    letter-spacing:-.052em;
+    text-wrap:balance;
+  }
+  body.home-page .hero--scroll-invasion .hero-title-last{
+    white-space:normal;
+  }
+  body.home-page .hero--scroll-invasion .hero-lead{
+    margin:0 auto 22px;
+    max-width:41ch;
+    font-size:clamp(13px,3.55vw,15px);
+    line-height:1.58;
+  }
+  body.home-page .hero--scroll-invasion .hero-rotator{
+    display:none;
+  }
+  body.home-page .hero--scroll-invasion .hero-actions{
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:8px 16px;
+    margin:0;
+  }
+  body.home-page .hero--scroll-invasion .hero-actions .btn-light{
+    min-height:48px;
+    padding:12px 19px;
+    font-size:13px;
+  }
+  body.home-page .hero--scroll-invasion .hero-actions .text-link{
+    padding:11px 5px;
+    font-size:13px;
+  }
+  body.home-page .hero--scroll-invasion:not(.hero-mobile-scroll-ready) .hero-visual-composition{
+    position:relative;
+    display:block!important;
+    z-index:6;
+    grid-row:auto;
+    order:-1;
+    flex:0 0 auto;
+    left:auto;
+    top:auto;
+    width:min(44vw,168px);
+    max-width:168px;
+    height:auto;
+    margin:0 auto clamp(12px,2svh,18px);
+    translate:none!important;
+    transform:none!important;
+    filter:none;
+    opacity:.91;
+    pointer-events:none;
+    will-change:auto;
+  }
+  body.home-page .hero--scroll-invasion .hero__split-panel{
+    opacity:.22;
+    transform:none!important;
+    will-change:auto;
+  }
+  body.home-page .hero--scroll-invasion .hero__bg-image{
+    background:linear-gradient(140deg,#202532 0%,#2C3448 72%,#36405A 100%);
+    transform:none;
+  }
+  body.home-page .hero--scroll-invasion .hero-scroll-hint,
+  body.home-page .hero--scroll-invasion .hero-scroll-meter{
+    display:none!important;
+  }
+}
+@media(max-width:380px){
+  body.home-page .hero--scroll-invasion .hero-grid{width:calc(100% - 32px);}
+  body.home-page .hero--scroll-invasion .hero-content h1{font-size:clamp(30px,8.4vw,35px);}
+  body.home-page .hero--scroll-invasion .hero-visual-composition{width:min(44vw,150px);}
+}
+
+/* 14/10 — FINALIZACAO DO RODAPE + ABA VERTICAL DO WHATSAPP
+   Shared by the Home and all internal pages. Loaded after the legacy styles. */
+body.home-page > a.floating-whatsapp,
+body:not(.home-page) > a.floating-whatsapp {
+  top:auto;
+  right:clamp(10px,1vw,18px);
+  bottom:clamp(58px,9vh,96px);
+  width:52px;
+  min-width:52px;
+  height:168px;
+  min-height:168px;
+  max-height:none;
+  box-sizing:border-box;
+  padding:15px 9px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:11px;
+  border:1px solid rgba(169,197,216,.5);
+  border-radius:20px;
+  background:#6B536D;
+  background-image:linear-gradient(180deg,#765F7A 0%,#6B536D 100%);
+  color:#F3EFE8;
+  box-shadow:0 12px 30px rgba(32,37,50,.24);
+  opacity:1;
+  transform:none;
+}
+body.home-page > a.floating-whatsapp::before,
+body:not(.home-page) > a.floating-whatsapp::before {
+  content:"WhatsApp";
+  order:1;
+  display:block;
+  font:700 13px/1 Manrope,'DM Sans',sans-serif;
+  letter-spacing:.035em;
+  white-space:nowrap;
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+}
+body.home-page > a.floating-whatsapp svg,
+body:not(.home-page) > a.floating-whatsapp svg {
+  display:none;
+}
+body.home-page > a.floating-whatsapp::after,
+body:not(.home-page) > a.floating-whatsapp::after {
+  content:"";
+  order:0;
+  display:block;
+  flex:none;
+  width:24px;
+  height:24px;
+  background-color:currentColor;
+  -webkit-mask:url('../images/whatsapp-brand-mark.svg') center/contain no-repeat;
+  mask:url('../images/whatsapp-brand-mark.svg') center/contain no-repeat;
+  transform:rotate(-90deg);
+}
+body.home-page > a.floating-whatsapp:hover,
+body.home-page > a.floating-whatsapp:focus-visible,
+body:not(.home-page) > a.floating-whatsapp:hover,
+body:not(.home-page) > a.floating-whatsapp:focus-visible {
+  border:1px solid #A9C5D8;
+  color:#F3EFE8;
+  background:#202532;
+  background-image:linear-gradient(180deg,#303A4C,#202532);
+  transform:translateY(-2px);
+}
+body.home-page > a.floating-whatsapp:focus-visible,
+body:not(.home-page) > a.floating-whatsapp:focus-visible{
+  outline:3px solid #A9C5D8;
+  outline-offset:3px;
+}
+
+/* Footer: same horizontal grid and full-width contact card everywhere. */
+body .site-footer.days-support-ready > .container,
+body:not(.home-page) .footer.days-support-ready .footer-inner {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(230px,.52fr);
+  column-gap:clamp(24px,4vw,70px);
+  row-gap:0;
+  align-items:start;
+}
+body .site-footer.days-support-ready .footer-main {
+  grid-column:1/-1;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(230px,.52fr);
+  gap:clamp(24px,4vw,70px);
+  align-items:center;
+  width:100%;
+  padding-bottom:clamp(19px,2.1vw,28px);
+}
+body .site-footer.days-support-ready .footer-main .footer-brand {justify-self:start}
+body .site-footer.days-support-ready .footer-main p {
+  justify-self:end;
+  max-width:36ch;
+  margin:0;
+  text-align:right;
+}
+body .site-footer.days-support-ready .footer-nav,
+body:not(.home-page) .footer.days-support-ready .footer-links {
+  grid-column:1;
+  display:flex;
+  flex-wrap:wrap;
+  align-content:start;
+  align-items:center;
+  justify-content:flex-start;
+  gap:10px clamp(15px,1.7vw,25px);
+  width:100%;
+  min-width:0;
+  margin:0;
+  padding:10px 0 clamp(23px,2.3vw,30px);
+}
+body .site-footer.days-support-ready .footer-socials,
+body:not(.home-page) .footer.days-support-ready .footer-socials {
+  grid-column:2;
+  display:flex;
+  align-self:start;
+  align-items:center;
+  justify-content:flex-end;
+  flex-wrap:wrap;
+  gap:9px;
+  width:100%;
+  min-width:0;
+  padding:10px 0 clamp(23px,2.3vw,30px);
+}
+body:not(.home-page) .footer.days-support-ready .footer-identity {
+  grid-column:1/-1;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+  min-width:0;
+  width:100%;
+  padding:0 0 clamp(19px,2.1vw,28px);
+}
+body:not(.home-page) .footer.days-support-ready .footer-identity small{
+  margin-left:auto;
+  max-width:36ch;
+  text-align:right;
+}
+body .site-footer.days-support-ready .days-footer-support,
+body:not(.home-page) .footer.days-support-ready .days-footer-support {
+  grid-column:1/-1;
+  display:grid;
+  grid-template-columns:minmax(0,.95fr) minmax(0,1.35fr) minmax(180px,.75fr);
+  align-items:center;
+  gap:clamp(20px,2.6vw,42px);
+  box-sizing:border-box;
+  width:100%;
+  max-width:none;
+  min-width:0;
+  margin:clamp(14px,2.4vw,31px) 0 0;
+  padding:clamp(24px,2.7vw,36px);
+}
+body .days-footer-support-intro,
+body .days-support-contacts,
+body .days-footer-support-actions{min-width:0}
+body .days-footer-support-actions a{width:100%;box-sizing:border-box}
+body .site-footer.days-support-ready .footer-bottom{
+  grid-column:1/-1;
+  width:100%;
+  box-sizing:border-box;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:16px 32px;
+  margin-top:0;
+  padding:18px 0 25px;
+  border-top:1px solid rgba(169,197,216,.18);
+}
+body .site-footer.days-support-ready .footer-utility-links{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  flex-wrap:wrap;
+  gap:12px 24px;
+}
+body .site-footer.days-support-ready .footer-utility-links a{
+  color:rgba(243,239,232,.83);
+  text-decoration:none;
+  font:500 12px/1.5 'DM Sans',sans-serif;
+}
+body .site-footer.days-support-ready .footer-utility-links a:hover,
+body .site-footer.days-support-ready .footer-utility-links a:focus-visible{
+  color:#A9C5D8;
+  text-decoration:underline;
+}
+body .site-footer.days-support-ready .footer-bottom>span{margin:0}
+
+@media(max-width:1100px){
+  body .site-footer.days-support-ready .days-footer-support,
+  body:not(.home-page) .footer.days-support-ready .days-footer-support{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  body .days-footer-support-intro {grid-column:1/-1}
+  body .days-footer-support-actions {align-self:stretch}
+}
+@media(max-width:760px){
+  body .site-footer.days-support-ready > .container,
+  body:not(.home-page) .footer.days-support-ready .footer-inner,
+  body .site-footer.days-support-ready .footer-main{
+    grid-template-columns:minmax(0,1fr);
+    gap:0;
+  }
+  body .site-footer.days-support-ready .footer-main{
+    justify-items:center;
+    padding-bottom:19px;
+  }
+  body .site-footer.days-support-ready .footer-main .footer-brand {justify-self:center}
+  body .site-footer.days-support-ready .footer-main p{
+    justify-self:center;
+    text-align:center;
+    margin-top:15px;
+  }
+  body:not(.home-page) .footer.days-support-ready .footer-identity{
+    flex-direction:column;
+    justify-content:center;
+    gap:13px;
+    text-align:center;
+  }
+  body:not(.home-page) .footer.days-support-ready .footer-identity small{
+    margin:0;
+    text-align:center;
+  }
+  body .site-footer.days-support-ready .footer-nav,
+  body .site-footer.days-support-ready .footer-socials,
+  body:not(.home-page) .footer.days-support-ready .footer-links,
+  body:not(.home-page) .footer.days-support-ready .footer-socials{
+    grid-column:1;
+    justify-content:center;
+    padding:13px 0;
+    text-align:center;
+    border:0;
+  }
+  body .site-footer.days-support-ready .days-footer-support,
+  body:not(.home-page) .footer.days-support-ready .days-footer-support{
+    grid-template-columns:minmax(0,1fr);
+    gap:24px;
+    padding:clamp(20px,5vw,26px);
+  }
+  body .days-footer-support-intro{grid-column:1}
+  body .days-footer-support-intro{text-align:center}
+  body .days-footer-support-intro p{margin-inline:auto}
+  body .days-footer-support-actions{flex-direction:column}
+  body .site-footer.days-support-ready .footer-bottom{
+    justify-content:center;
+    text-align:center;
+    gap:12px;
+  }
+  body .site-footer.days-support-ready .footer-utility-links{justify-content:center}
+  body.home-page > a.floating-whatsapp,
+  body:not(.home-page) > a.floating-whatsapp{
+    right:10px;
+    bottom:calc(70px + env(safe-area-inset-bottom,0px));
+    width:46px;
+    min-width:46px;
+    height:142px;
+    min-height:142px;
+    padding:12px 7px;
+    border-radius:18px;
+    gap:9px;
+  }
+  body.home-page > a.floating-whatsapp::before,
+  body:not(.home-page) > a.floating-whatsapp::before{font-size:11px}
+  body.home-page > a.floating-whatsapp::after,
+  body:not(.home-page) > a.floating-whatsapp::after{width:21px;height:21px}
+}
+@media(prefers-reduced-motion:reduce){
+  body.home-page > a.floating-whatsapp:hover,
+  body:not(.home-page) > a.floating-whatsapp:hover{transform:none}
+}
+
+/* Mobile: hide the floating shortcut as soon as the footer is visible.
+   The footer already contains an accessible, non-floating WhatsApp link. */
+@media(max-width:800px){
+  body.home-page > a.floating-whatsapp.is-hidden-near-footer,
+  body:not(.home-page) > a.floating-whatsapp.is-hidden-near-footer{
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+    transform:translateX(12px)!important;
+  }
+}
+
+/* 14/10 — mobile closeout: compact CTAs and an unobtrusive floating action.
+   High-specificity hidden state takes priority over the legacy visible tab. */
+body.home-page > a.floating-whatsapp.is-context-hidden,
+body.home-page > a.floating-whatsapp.days-overlaps-hero,
+body:not(.home-page) > a.floating-whatsapp.is-context-hidden,
+body:not(.home-page) > a.floating-whatsapp.days-overlaps-hero {
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+  transform:translateY(8px)!important;
+}
+@media(max-width:800px){
+  /* On small viewports the vertical label obscures articles and hero actions. */
+  body.home-page > a.floating-whatsapp,
+  body:not(.home-page) > a.floating-whatsapp {
+    position:fixed;
+    right:calc(14px + env(safe-area-inset-right,0px));
+    bottom:calc(18px + env(safe-area-inset-bottom,0px));
+    width:48px;
+    min-width:48px;
+    max-width:48px;
+    height:48px;
+    min-height:48px;
+    max-height:48px;
+    padding:0;
+    border:1px solid rgba(169,197,216,.5);
+    border-radius:50%;
+    background:#6B536D;
+    background-image:none;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:0;
+    box-shadow:0 6px 20px rgba(32,37,50,.25);
+  }
+  body.home-page > a.floating-whatsapp::before,
+  body:not(.home-page) > a.floating-whatsapp::before {
+    content:none!important;
+    display:none!important;
+  }
+  body.home-page > a.floating-whatsapp::after,
+  body:not(.home-page) > a.floating-whatsapp::after {
+    content:"";
+    display:block;
+    order:0;
+    flex:none;
+    width:24px;
+    height:24px;
+    background-color:currentColor;
+    -webkit-mask:url('../images/whatsapp-brand-mark.svg') center/contain no-repeat;
+    mask:url('../images/whatsapp-brand-mark.svg') center/contain no-repeat;
+    transform:none;
+  }
+  body.home-page > a.floating-whatsapp:hover,
+  body:not(.home-page) > a.floating-whatsapp:hover {
+    transform:none;
+  }
+  /* A focused/hid tab is not permitted to obscure a footer or CTA. */
+  body.home-page > a.floating-whatsapp.is-hidden-near-footer,
+  body:not(.home-page) > a.floating-whatsapp.is-hidden-near-footer {
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+    transform:translateY(8px)!important;
+  }
+}
+@media(max-width:760px){
+  body .site-footer.days-support-ready .days-footer-support-actions,
+  body:not(.home-page) .footer.days-support-ready .days-footer-support-actions {
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    justify-content:center;
+    gap:10px;
+    width:100%;
+    min-width:0;
+    max-width:100%;
+  }
+  body .site-footer.days-support-ready .days-footer-support-actions a,
+  body:not(.home-page) .footer.days-support-ready .days-footer-support-actions a {
+    display:inline-flex;
+    flex:0 0 46px;
+    width:100%;
+    min-width:0;
+    height:46px;
+    min-height:46px;
+    max-height:46px;
+    box-sizing:border-box;
+    padding:10px 16px;
+    margin:0;
+    border-radius:999px;
+    align-items:center;
+    justify-content:center;
+    line-height:1.3;
+    font-size:12px;
+    white-space:normal;
+    text-align:center;
+  }
 }

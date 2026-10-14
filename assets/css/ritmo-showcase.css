@@ -1,0 +1,97 @@
+
+/* RITMO / app beta showcase, deliberately isolated from the existing product and case layouts. */
+.ritmo-feature{position:relative;isolation:isolate;overflow:hidden;background:#f3efe8;color:#202532;padding:clamp(76px,8vw,124px) 0;border-block:1px solid rgba(107,83,109,.15)}
+.ritmo-feature:before{content:"";position:absolute;pointer-events:none;inset:0;background:radial-gradient(ellipse 45% 77% at 52% 44%,rgba(169,197,216,.28),transparent 77%),radial-gradient(ellipse 45% 72% at 100% 0%,rgba(216,182,165,.18),transparent 75%);z-index:-1}
+.ritmo-feature-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(230px,.87fr) minmax(210px,.70fr);gap:clamp(25px,4vw,75px);align-items:center;max-width:1260px}
+.ritmo-copy{min-width:0}
+.ritmo-kicker{margin:0 0 15px;font:700 11px/1.5 Manrope,sans-serif;letter-spacing:.19em;color:#6b536d;text-transform:uppercase}
+.ritmo-copy h2{font:400 clamp(43px,5.3vw,77px)/1.02 Manrope,sans-serif;letter-spacing:-.065em;margin:0 0 21px;color:#202532;text-wrap:balance}
+.ritmo-copy h2 em{font-style:normal;color:#6b536d}
+.ritmo-lead{color:#47536b;font-size:clamp(15px,1.3vw,18px);line-height:1.7;max-width:39ch;margin:0 0 27px}
+.ritmo-benefits{list-style:none;display:grid;gap:12px;padding:0;margin:0 0 29px}
+.ritmo-benefits li{display:flex;gap:11px;align-items:flex-start;color:#293243;font:600 14px/1.5 Manrope,sans-serif}
+.ritmo-benefits li:before{content:"✓";display:grid;place-items:center;width:22px;height:22px;flex:none;border-radius:50%;background:#e6dce9;color:#6b536d;font-weight:800}
+.ritmo-actions{display:flex;flex-wrap:wrap;align-items:center;gap:13px}
+.ritmo-feature a.ritmo-primary,.ritmo-feature a.ritmo-secondary,.products-ritmo-actions a.ritmo-primary{display:inline-flex;align-items:center;justify-content:center;min-height:49px;padding:13px 21px;border-radius:999px;font:700 13px/1.3 Manrope,sans-serif;text-decoration:none;transition:transform .2s,background .2s,border-color .2s}
+.ritmo-feature a.ritmo-primary,.products-ritmo-actions a.ritmo-primary{color:#fff;background:#6b536d;border:1px solid #6b536d}
+.ritmo-feature a.ritmo-secondary{color:#202532;background:transparent;border:1px solid rgba(32,37,50,.28)}
+.ritmo-feature a:is(.ritmo-primary,.ritmo-secondary):hover,.products-ritmo-actions a.ritmo-primary:hover{transform:translateY(-2px)}
+.ritmo-beta-note{font-size:12px;line-height:1.5;color:#66758f;max-width:51ch;margin:16px 0 0}
+.ritmo-phone-wrap{display:flex;justify-content:center;align-self:stretch;align-items:center;min-width:0}
+.ritmo-phone{position:relative;width:min(100%,292px);padding:12px;border:5px solid #202532;border-radius:43px;background:#202532;box-shadow:0 33px 62px rgba(32,37,50,.23),0 0 0 2px #798092;transform:rotate(-2deg);overflow:hidden}
+.ritmo-phone:before{content:"";position:absolute;z-index:2;top:12px;left:50%;transform:translateX(-50%);width:32%;height:19px;border-radius:999px;background:#202532}
+.ritmo-screen{min-height:480px;border-radius:30px;padding:43px 17px 22px;background:#f8f6f3;color:#202532;overflow:hidden}
+.ritmo-screen-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.ritmo-screen-brand{font:800 27px/1 Manrope,sans-serif;letter-spacing:-.08em;color:#705776}
+.ritmo-screen-dot{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#eee5ef;color:#705776;font-weight:800}
+.ritmo-screen-overline{font:700 10px/1.4 Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#66758f;margin:27px 0 8px}
+.ritmo-screen h3{font:600 23px/1.18 Manrope,sans-serif;letter-spacing:-.055em;margin:0 0 18px}
+.ritmo-streak{display:flex;align-items:center;gap:11px;background:#f0e4ee;padding:15px;border-radius:16px;margin-bottom:12px}
+.ritmo-streak-icon{font-size:23px;line-height:1}
+.ritmo-streak strong{display:block;font:750 24px/1.1 Manrope,sans-serif;color:#705776}
+.ritmo-streak small{display:block;color:#655d6e;font-size:10px;line-height:1.5}
+.ritmo-activity{background:#fff;border:1px solid #ede5eb;border-radius:15px;padding:13px 13px 12px;margin-bottom:10px}
+.ritmo-activity-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
+.ritmo-activity-row strong{font-size:12px;letter-spacing:-.02em}
+.ritmo-activity-row span{font-size:10px;color:#66758f}
+.ritmo-activity-track{height:7px;border-radius:999px;background:#ece6e9;overflow:hidden}
+.ritmo-activity-track>span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#6b536d,#a9c5d8)}
+.ritmo-activity-water{display:flex;gap:5px;align-items:center}
+.ritmo-activity-water span{height:17px;width:12px;border:1px solid #91b2c6;background:#d6e6f0;border-radius:2px 2px 5px 5px}
+.ritmo-activity-water span:last-child{background:#fff}
+.ritmo-phone-caption{margin:13px 0 0;text-align:center;color:#66758f;font:500 11px/1.5 Manrope,sans-serif}
+.ritmo-install-panel{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:15px}
+.ritmo-install-panel h3{font:600 clamp(21px,2vw,28px)/1.2 Manrope,sans-serif;letter-spacing:-.04em;margin:0}
+.ritmo-install-panel>p{font:400 14px/1.65 Manrope,sans-serif;color:#66758f;margin:0}
+.ritmo-qr-link{display:inline-flex;padding:12px;background:#fff;border:1px solid #e0d6e2;border-radius:18px;box-shadow:0 12px 35px rgba(32,37,50,.08)}
+.ritmo-qr-link img{display:block;width:150px;height:150px;image-rendering:pixelated}
+.ritmo-install-panel .ritmo-qr-cta{font:700 13px/1.6 Manrope,sans-serif;color:#6b536d;text-underline-offset:4px}
+.ritmo-install-panel small{font:400 11px/1.55 Manrope,sans-serif;color:#66758f}
+.products-apps-rail{margin-top:30px;display:grid;grid-template-columns:1fr;gap:16px}
+.products-app-card{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:center;padding:clamp(20px,3vw,35px);background:rgba(243,239,232,.085);border:1px solid rgba(169,197,216,.3);border-radius:21px}
+.products-app-card h3{font:500 clamp(24px,3vw,34px)/1.15 Manrope,sans-serif;letter-spacing:-.045em;color:#f3efe8;margin:9px 0 12px}
+.products-app-card p{font:400 14px/1.7 Manrope,sans-serif;color:#d3dbe5;max-width:60ch;margin:0}
+.products-app-card .products-app-label{font:700 10px/1.6 Manrope,sans-serif;letter-spacing:.15em;color:#a9c5d8}
+.products-app-card a{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;min-height:46px;border:1px solid rgba(169,197,216,.55);border-radius:999px;color:#f3efe8;padding:10px 20px;font:700 12px/1.4 Manrope,sans-serif}
+.products-app-card a:hover{background:#f3efe8;color:#202532}
+.products-ritmo-intro{margin:0 auto;max-width:900px;text-align:center}
+.products-ritmo-intro .ritmo-kicker{margin-bottom:13px}
+.products-ritmo-intro h2{font:400 clamp(35px,5vw,58px)/1.1 Manrope,sans-serif;color:#202532;letter-spacing:-.06em;margin:0 0 15px}
+.products-ritmo-intro p{font:400 16px/1.7 Manrope,sans-serif;color:#66758f;margin:0 auto;max-width:680px}
+.products-ritmo-actions{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:23px}
+.products-ritmo-actions .ritmo-link{font:700 13px/1.5 Manrope,sans-serif;color:#6b536d;text-underline-offset:4px}
+.products-ritmo-benefits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;max-width:1070px;margin:35px auto 0}
+.products-ritmo-benefits article{padding:24px;border:1px solid #e2d8de;border-radius:18px;background:#fff}
+.products-ritmo-benefits span{display:block;color:#6b536d;font:700 10px/1.3 Manrope,sans-serif;letter-spacing:.14em;margin-bottom:14px}
+.products-ritmo-benefits h3{font:650 21px/1.3 Manrope,sans-serif;color:#202532;letter-spacing:-.035em;margin:0 0 8px}
+.products-ritmo-benefits p{font-size:13px;line-height:1.65;margin:0;color:#66758f}
+.days-client-media{position:relative;overflow:hidden;background:linear-gradient(135deg,#f3efe8,#e9dce7)}
+.days-client-media a{display:block;height:100%;min-height:260px}
+.days-client-media img{display:block;width:100%;height:100%;min-height:260px;max-height:380px;object-fit:cover;object-position:center}
+.days-client-media.dayane-media img{object-position:center 36%}
+.days-client-media.loh-media img{object-position:center 45%}
+.days-client-media figcaption{position:absolute;bottom:10px;left:12px;right:12px;display:inline-block;width:max-content;max-width:calc(100% - 24px);border-radius:50px;padding:6px 12px;background:rgba(32,37,50,.85);color:#fff;font:600 10px/1.4 Manrope,sans-serif}
+.home-case-dayane .project-image{display:block;overflow:hidden;border-radius:18px;background:#eee4ed}
+.home-case-dayane .project-image img{width:100%;height:100%;min-height:250px;max-height:400px;object-fit:cover;object-position:center 36%;display:block}
+@media(max-width:1060px){
+ .ritmo-feature-grid{grid-template-columns:minmax(0,1fr) minmax(240px,.9fr);gap:35px}
+ .ritmo-install-panel{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr;gap:10px 22px;align-items:center;justify-content:start}
+ .ritmo-install-panel .ritmo-qr-link{grid-row:1/5;grid-column:1}
+}
+@media(max-width:680px){
+ .ritmo-feature{padding:67px 0}
+ .ritmo-feature-grid{grid-template-columns:1fr;gap:34px}
+ .ritmo-copy{text-align:center}
+ .ritmo-copy h2{font-size:clamp(43px,12vw,64px)}
+ .ritmo-lead{margin-inline:auto}
+ .ritmo-benefits{justify-content:center;text-align:left;max-width:320px;margin-inline:auto}
+ .ritmo-actions{justify-content:center}
+ .ritmo-beta-note{margin-inline:auto}
+ .ritmo-phone{transform:none;width:min(100%,280px)}
+ .ritmo-install-panel{display:flex;align-items:center;text-align:center}
+ .products-app-card{grid-template-columns:1fr}
+ .products-app-card a{width:fit-content}
+ .products-ritmo-benefits{grid-template-columns:1fr}
+ .days-client-media a,.days-client-media img{min-height:230px}
+}
+@media(prefers-reduced-motion:reduce){.ritmo-feature a.ritmo-primary,.ritmo-feature a.ritmo-secondary,.products-ritmo-actions a.ritmo-primary{transition:none}}

@@ -123,7 +123,7 @@ test('new mineral hero gradient and concise case stories keep brand identity',()
  assert.match(css,/#2C3448 0%,#485168 48%,#6B536D 100%/);
  assert.match(html,/Site próprio que reúne especialidades/);
  assert.match(html,/Landing page com hierarquia visual/);
- assert.match(html,/Agenda digital mais clara/);
+ assert.match(html,/Página autoral com fluxo de atendimento conectado ao ENGRENI Agenda/);
  assert.match(palette,/main > #projetos \.projects-grid\.projects-grid--launch \.case-story/);
  assert.match(palette,/main > #projetos \.projects-grid\.projects-grid--launch \.project-card-head\s*\{\s*min-height:0;/);
 });
@@ -144,35 +144,29 @@ test('shorter hero never enters a prolonged empty pinned frame',()=>{
  assert.match(js,/textStart:\.32, textEnd:\.95/);
 });
 
-test('mobile hero begins with full centered flower and reveals text only afterward',()=>{
- const css=read('assets/css/hero-prism-scroll.css');
+test('mobile hero puts a compact flower above readable copy and CTAs',()=>{
+ const palette=read('assets/css/brand-palette.css');
  const js=read('assets/js/hero-prism-scroll.js');
- assert.match(js,/function allowMobileHero\(\)/);
- assert.match(js,/innerWidth>=320 && mobileViewport\.matches/);
- assert.match(js,/mobileViewport\.addEventListener\('change',sync\)/);
- assert.match(js,/hero\.classList\.toggle\('hero-mobile-scroll-ready',mobileHeroEnabled\)/);
- assert.match(js,/flowerExitStart:\.12, flowerExitEnd:\.34/);
- assert.match(js,/textEnterStart:\.36, textEnterEnd:\.56/);
- assert.match(js,/const leaving=range\(p,cues\.flowerExitStart,cues\.flowerExitEnd\)/);
- assert.match(js,/const entering=range\(p,cues\.textEnterStart,cues\.textEnterEnd\)/);
- assert.match(js,/const showFlower=copyFocused \? 0 : 1-leaving/);
- assert.match(js,/const showCopy=copyFocused \? 1 : entering/);
- assert.match(js,/\.58\*showFlower/);
- assert.match(js,/copy\.style\.pointerEvents=/);
- assert.match(js,/copy\.inert=false/);
- assert.match(js,/copy\.addEventListener\('focusin',schedule\)/);
- assert.match(css,/height:174svh/);
- assert.match(css,/\.hero-scroll-stage\s*\{\s*position:sticky/);
- assert.match(css,/\.hero-mobile-scroll-ready \.hero-content\s*\{[\s\S]*?opacity:0/);
- assert.match(css,/\.hero-mobile-scroll-ready \.hero-visual-composition\s*\{[\s\S]*?opacity:1/);
- assert.match(css,/left:50%;\s*top:47%;[\s\S]*?translate:-50% -50%/);
- assert.match(css,/\.hero-mobile-scroll-ready \.flower-glow \{display:none;\}/);
- assert.match(css,/\.hero-mobile-scroll-ready \.hero__split-panel\s*\{\s*opacity:var\(--hero-mobile-panel-opacity,\.58\)/);
+ const html=read('index.html');
+ assert.match(js,/function allowMobileHero\(\) \{[\s\S]*?return false;/);
+ assert.match(palette,/Mobile flower-first layout/);
+ assert.ok(palette.includes('order:-1;'));
+ assert.ok(palette.includes('width:min(44vw,168px)'));
+ assert.ok(palette.includes('margin:0 auto clamp(12px,2svh,18px)'));
+ assert.ok(palette.includes('padding:clamp(94px,10svh,112px)'));
+ assert.match(palette,/body\.home-page \.hero--scroll-invasion \.hero-content\s*\{[\s\S]*?opacity:1!important/);
+ assert.match(palette,/body\.home-page \.hero--scroll-invasion:not\(\.hero-mobile-scroll-ready\) \.hero-visual-composition\s*\{[\s\S]*?display:block!important/);
+ assert.match(palette,/body\.home-page \.hero--scroll-invasion \.hero-scroll-stage\s*\{[\s\S]*?height:auto/);
+ assert.match(palette,/body\.home-page \.hero--scroll-invasion \.hero-actions\s*\{[\s\S]*?justify-content:center/);
+ assert.match(palette,/body\.home-page \.hero--scroll-invasion \.hero-scroll-hint,/);
+ assert.match(html,/href="#problemas"/);
+ assert.match(html,/href="#projetos"/);
 });
+
 test('compact-height/reduced-motion/save-data users have an accessible static hero',()=>{
  const css=read('assets/css/hero-prism-scroll.css');
  const js=read('assets/js/hero-prism-scroll.js');
- assert.match(css,/\.hero--scroll-invasion:not\(\.hero-mobile-scroll-ready\) \.hero-visual-composition\s*\{\s*display:none/);
+ assert.match(read('assets/css/brand-palette.css'),/\.hero--scroll-invasion:not\(\.hero-mobile-scroll-ready\) \.hero-visual-composition\s*\{[\s\S]*?display:block!important/);
  assert.match(js,/!reduced\.matches && !saveData/);
  assert.match(css,/max-height:699px/);
  assert.match(css,/prefers-reduced-motion:no-preference/);

@@ -82,3 +82,9 @@ test('footer service details show only verified contact options',()=>{
   assert.equal((html.match(/class="days-support-contact-icon"/g)||[]).length,3,page);
  }
 });
+
+test('help strip remains below the sticky navigation stacking context',()=>{
+ const css=read('assets/css/brand-palette.css');
+ assert.match(css,/\.days-help-strip\{\s*position:relative;[\s\S]*?z-index:1;/);
+ assert.doesNotMatch(css,/\.days-help-strip\{\s*position:relative;\s*z-index:121;/);
+});
