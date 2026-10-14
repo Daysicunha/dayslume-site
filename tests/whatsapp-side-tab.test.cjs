@@ -68,3 +68,26 @@ test('mobile footer intersection hides the floating shortcut on every main page'
    assert.ok(html.includes('src="'+prefix+'assets/js/dayslume-motion.js"'),file);
  }
 });
+
+test('mobile support CTA sizes never inherit a vertical flex-basis of 135px',()=>{
+ const closing=css.split('14/10 — mobile closeout: compact CTAs')[1];
+ assert.ok(closing,'missing final mobile refinements');
+ assert.match(closing,/\.days-footer-support-actions a/);
+ assert.match(closing,/flex:0 0 46px;/);
+ assert.match(closing,/height:46px;/);
+ assert.match(closing,/min-height:46px;/);
+ assert.match(closing,/max-height:46px;/);
+ assert.match(closing,/border-radius:999px;/);
+});
+
+test('mobile WhatsApp uses a compact icon and respects overlapping links',()=>{
+ const closing=css.split('14/10 — mobile closeout: compact CTAs')[1];
+ assert.ok(closing);
+ assert.match(closing,/width:48px;/);
+ assert.match(closing,/height:48px;/);
+ assert.match(closing,/content:none!important;/);
+ assert.match(closing,/whatsapp-brand-mark\\.svg/);
+ assert.match(closing,/a\\.floating-whatsapp\\.is-context-hidden/);
+ assert.match(closing,/a\\.floating-whatsapp\\.is-hidden-near-footer/);
+ assert.match(closing,/pointer-events:none!important;/);
+});
