@@ -2596,3 +2596,276 @@ body .days-help-strip {
   body.home-page .hero--scroll-invasion .hero-content h1{font-size:clamp(30px,8.4vw,35px);}
   body.home-page .hero--scroll-invasion .hero-visual-composition{width:min(49vw,188px);}
 }
+
+/* 14/10 — FINALIZACAO DO RODAPE + ABA VERTICAL DO WHATSAPP
+   Shared by the Home and all internal pages. Loaded after the legacy styles. */
+body.home-page > a.floating-whatsapp,
+body:not(.home-page) > a.floating-whatsapp {
+  top:auto;
+  right:clamp(10px,1vw,18px);
+  bottom:clamp(58px,9vh,96px);
+  width:52px;
+  min-width:52px;
+  height:168px;
+  min-height:168px;
+  max-height:none;
+  box-sizing:border-box;
+  padding:15px 9px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:11px;
+  border:1px solid rgba(169,197,216,.5);
+  border-radius:20px;
+  background:#6B536D;
+  background-image:linear-gradient(180deg,#765F7A 0%,#6B536D 100%);
+  color:#F3EFE8;
+  box-shadow:0 12px 30px rgba(32,37,50,.24);
+  opacity:1;
+  transform:none;
+}
+body.home-page > a.floating-whatsapp::before,
+body:not(.home-page) > a.floating-whatsapp::before {
+  content:"WhatsApp";
+  order:1;
+  display:block;
+  font:700 13px/1 Manrope,'DM Sans',sans-serif;
+  letter-spacing:.035em;
+  white-space:nowrap;
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+}
+body.home-page > a.floating-whatsapp svg,
+body:not(.home-page) > a.floating-whatsapp svg {
+  display:none;
+}
+body.home-page > a.floating-whatsapp::after,
+body:not(.home-page) > a.floating-whatsapp::after {
+  content:"";
+  order:0;
+  display:block;
+  flex:none;
+  width:24px;
+  height:24px;
+  background-color:currentColor;
+  -webkit-mask:url('../images/whatsapp-brand-mark.svg') center/contain no-repeat;
+  mask:url('../images/whatsapp-brand-mark.svg') center/contain no-repeat;
+  transform:rotate(-90deg);
+}
+body.home-page > a.floating-whatsapp:hover,
+body.home-page > a.floating-whatsapp:focus-visible,
+body:not(.home-page) > a.floating-whatsapp:hover,
+body:not(.home-page) > a.floating-whatsapp:focus-visible {
+  border:1px solid #A9C5D8;
+  color:#F3EFE8;
+  background:#202532;
+  background-image:linear-gradient(180deg,#303A4C,#202532);
+  transform:translateY(-2px);
+}
+body.home-page > a.floating-whatsapp:focus-visible,
+body:not(.home-page) > a.floating-whatsapp:focus-visible{
+  outline:3px solid #A9C5D8;
+  outline-offset:3px;
+}
+
+/* Footer: same horizontal grid and full-width contact card everywhere. */
+body .site-footer.days-support-ready > .container,
+body:not(.home-page) .footer.days-support-ready .footer-inner {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(230px,.52fr);
+  column-gap:clamp(24px,4vw,70px);
+  row-gap:0;
+  align-items:start;
+}
+body .site-footer.days-support-ready .footer-main {
+  grid-column:1/-1;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(230px,.52fr);
+  gap:clamp(24px,4vw,70px);
+  align-items:center;
+  width:100%;
+  padding-bottom:clamp(19px,2.1vw,28px);
+}
+body .site-footer.days-support-ready .footer-main .footer-brand {justify-self:start}
+body .site-footer.days-support-ready .footer-main p {
+  justify-self:end;
+  max-width:36ch;
+  margin:0;
+  text-align:right;
+}
+body .site-footer.days-support-ready .footer-nav,
+body:not(.home-page) .footer.days-support-ready .footer-links {
+  grid-column:1;
+  display:flex;
+  flex-wrap:wrap;
+  align-content:start;
+  align-items:center;
+  justify-content:flex-start;
+  gap:10px clamp(15px,1.7vw,25px);
+  width:100%;
+  min-width:0;
+  margin:0;
+  padding:10px 0 clamp(23px,2.3vw,30px);
+}
+body .site-footer.days-support-ready .footer-socials,
+body:not(.home-page) .footer.days-support-ready .footer-socials {
+  grid-column:2;
+  display:flex;
+  align-self:start;
+  align-items:center;
+  justify-content:flex-end;
+  flex-wrap:wrap;
+  gap:9px;
+  width:100%;
+  min-width:0;
+  padding:10px 0 clamp(23px,2.3vw,30px);
+}
+body:not(.home-page) .footer.days-support-ready .footer-identity {
+  grid-column:1/-1;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+  min-width:0;
+  width:100%;
+  padding:0 0 clamp(19px,2.1vw,28px);
+}
+body:not(.home-page) .footer.days-support-ready .footer-identity small{
+  margin-left:auto;
+  max-width:36ch;
+  text-align:right;
+}
+body .site-footer.days-support-ready .days-footer-support,
+body:not(.home-page) .footer.days-support-ready .days-footer-support {
+  grid-column:1/-1;
+  display:grid;
+  grid-template-columns:minmax(0,.95fr) minmax(0,1.35fr) minmax(180px,.75fr);
+  align-items:center;
+  gap:clamp(20px,2.6vw,42px);
+  box-sizing:border-box;
+  width:100%;
+  max-width:none;
+  min-width:0;
+  margin:clamp(14px,2.4vw,31px) 0 0;
+  padding:clamp(24px,2.7vw,36px);
+}
+body .days-footer-support-intro,
+body .days-support-contacts,
+body .days-footer-support-actions{min-width:0}
+body .days-footer-support-actions a{width:100%;box-sizing:border-box}
+body .site-footer.days-support-ready .footer-bottom{
+  grid-column:1/-1;
+  width:100%;
+  box-sizing:border-box;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:16px 32px;
+  margin-top:0;
+  padding:18px 0 25px;
+  border-top:1px solid rgba(169,197,216,.18);
+}
+body .site-footer.days-support-ready .footer-utility-links{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  flex-wrap:wrap;
+  gap:12px 24px;
+}
+body .site-footer.days-support-ready .footer-utility-links a{
+  color:rgba(243,239,232,.83);
+  text-decoration:none;
+  font:500 12px/1.5 'DM Sans',sans-serif;
+}
+body .site-footer.days-support-ready .footer-utility-links a:hover,
+body .site-footer.days-support-ready .footer-utility-links a:focus-visible{
+  color:#A9C5D8;
+  text-decoration:underline;
+}
+body .site-footer.days-support-ready .footer-bottom>span{margin:0}
+
+@media(max-width:1100px){
+  body .site-footer.days-support-ready .days-footer-support,
+  body:not(.home-page) .footer.days-support-ready .days-footer-support{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  body .days-footer-support-intro {grid-column:1/-1}
+  body .days-footer-support-actions {align-self:stretch}
+}
+@media(max-width:760px){
+  body .site-footer.days-support-ready > .container,
+  body:not(.home-page) .footer.days-support-ready .footer-inner,
+  body .site-footer.days-support-ready .footer-main{
+    grid-template-columns:minmax(0,1fr);
+    gap:0;
+  }
+  body .site-footer.days-support-ready .footer-main{
+    justify-items:center;
+    padding-bottom:19px;
+  }
+  body .site-footer.days-support-ready .footer-main .footer-brand {justify-self:center}
+  body .site-footer.days-support-ready .footer-main p{
+    justify-self:center;
+    text-align:center;
+    margin-top:15px;
+  }
+  body:not(.home-page) .footer.days-support-ready .footer-identity{
+    flex-direction:column;
+    justify-content:center;
+    gap:13px;
+    text-align:center;
+  }
+  body:not(.home-page) .footer.days-support-ready .footer-identity small{
+    margin:0;
+    text-align:center;
+  }
+  body .site-footer.days-support-ready .footer-nav,
+  body .site-footer.days-support-ready .footer-socials,
+  body:not(.home-page) .footer.days-support-ready .footer-links,
+  body:not(.home-page) .footer.days-support-ready .footer-socials{
+    grid-column:1;
+    justify-content:center;
+    padding:13px 0;
+    text-align:center;
+    border:0;
+  }
+  body .site-footer.days-support-ready .days-footer-support,
+  body:not(.home-page) .footer.days-support-ready .days-footer-support{
+    grid-template-columns:minmax(0,1fr);
+    gap:24px;
+    padding:clamp(20px,5vw,26px);
+  }
+  body .days-footer-support-intro{grid-column:1}
+  body .days-footer-support-intro{text-align:center}
+  body .days-footer-support-intro p{margin-inline:auto}
+  body .days-footer-support-actions{flex-direction:column}
+  body .site-footer.days-support-ready .footer-bottom{
+    justify-content:center;
+    text-align:center;
+    gap:12px;
+  }
+  body .site-footer.days-support-ready .footer-utility-links{justify-content:center}
+  body.home-page > a.floating-whatsapp,
+  body:not(.home-page) > a.floating-whatsapp{
+    right:10px;
+    bottom:calc(70px + env(safe-area-inset-bottom,0px));
+    width:46px;
+    min-width:46px;
+    height:142px;
+    min-height:142px;
+    padding:12px 7px;
+    border-radius:18px;
+    gap:9px;
+  }
+  body.home-page > a.floating-whatsapp::before,
+  body:not(.home-page) > a.floating-whatsapp::before{font-size:11px}
+  body.home-page > a.floating-whatsapp::after,
+  body:not(.home-page) > a.floating-whatsapp::after{width:21px;height:21px}
+}
+@media(prefers-reduced-motion:reduce){
+  body.home-page > a.floating-whatsapp:hover,
+  body:not(.home-page) > a.floating-whatsapp:hover{transform:none}
+}
