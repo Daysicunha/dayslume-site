@@ -2467,8 +2467,8 @@ body .days-help-strip {
   pointer-events:none!important;
 }
 
-/* Mobile is now content-first: the visitor reads the offer without needing to
-   scroll through a full-screen flower. Desktop's pinned animation is unchanged. */
+/* Mobile flower-first layout: a compact decorative mark introduces the offer,
+   followed by readable copy and accessible CTAs. Desktop scroll motion unchanged. */
 @media(max-width:800px){
   body.home-page .hero.hero--scroll-invasion {
     height:auto;
@@ -2483,7 +2483,7 @@ body .days-help-strip {
     min-height:0;
     display:block;
     /* Clearance for the floating glass header and browser safe areas. */
-    padding:clamp(128px,15svh,151px) 0 clamp(25px,4svh,39px);
+    padding:clamp(121px,14svh,144px) 0 clamp(25px,4svh,39px);
     overflow:hidden;
   }
   body.home-page .hero--scroll-invasion .hero-grid {
@@ -2563,13 +2563,14 @@ body .days-help-strip {
     display:block!important;
     z-index:6;
     grid-row:auto;
+    order:-1;
     flex:0 0 auto;
     left:auto;
     top:auto;
-    width:min(52vw,224px);
-    max-width:224px;
+    width:min(48vw,190px);
+    max-width:190px;
     height:auto;
-    margin:19px auto 0;
+    margin:0 auto clamp(14px,3svh,23px);
     translate:none!important;
     transform:none!important;
     filter:none;
@@ -2868,4 +2869,16 @@ body .site-footer.days-support-ready .footer-bottom>span{margin:0}
 @media(prefers-reduced-motion:reduce){
   body.home-page > a.floating-whatsapp:hover,
   body:not(.home-page) > a.floating-whatsapp:hover{transform:none}
+}
+
+/* Mobile: hide the floating shortcut as soon as the footer is visible.
+   The footer already contains an accessible, non-floating WhatsApp link. */
+@media(max-width:800px){
+  body.home-page > a.floating-whatsapp.is-hidden-near-footer,
+  body:not(.home-page) > a.floating-whatsapp.is-hidden-near-footer{
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+    transform:translateX(12px)!important;
+  }
 }
