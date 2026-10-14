@@ -144,12 +144,16 @@ test('shorter hero never enters a prolonged empty pinned frame',()=>{
  assert.match(js,/textStart:\.32, textEnd:\.95/);
 });
 
-test('mobile hero shows commercial copy and CTAs immediately, with flower secondary',()=>{
+test('mobile hero puts a compact flower above readable copy and CTAs',()=>{
  const palette=read('assets/css/brand-palette.css');
  const js=read('assets/js/hero-prism-scroll.js');
  const html=read('index.html');
  assert.match(js,/function allowMobileHero\(\) \{[\s\S]*?return false;/);
- assert.match(palette,/Mobile is now content-first/);
+ assert.match(palette,/Mobile flower-first layout/);
+ assert.match(palette,/body\\.home-page \\.hero--scroll-invasion:not\\(\\.hero-mobile-scroll-ready\\) \\.hero-visual-composition\\s*\\{[\\s\\S]*?order:-1;/);
+ assert.match(palette,/width:min\\(48vw,190px\\)/);
+ assert.match(palette,/margin:0 auto clamp\\(14px,3svh,23px\\)/);
+ assert.match(palette,/padding:clamp\\(121px,14svh,144px\\)/);
  assert.match(palette,/body\.home-page \.hero--scroll-invasion \.hero-content\s*\{[\s\S]*?opacity:1!important/);
  assert.match(palette,/body\.home-page \.hero--scroll-invasion:not\(\.hero-mobile-scroll-ready\) \.hero-visual-composition\s*\{[\s\S]*?display:block!important/);
  assert.match(palette,/body\.home-page \.hero--scroll-invasion \.hero-scroll-stage\s*\{[\s\S]*?height:auto/);
