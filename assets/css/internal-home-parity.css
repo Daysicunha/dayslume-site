@@ -1179,3 +1179,124 @@ body.vl-page .vl-page-hero::before {
     transform:none!important;
   }
 }
+
+
+/* AUDITORIA 13.10 / shell de todas as páginas internas.
+   Precedência explícita sobre as regras históricas de header e primeira dobra.
+   Mantém a paleta oficial como último stylesheet. */
+body:not(.home-page) .header .brand-lockup {
+  width:clamp(145px,10.45vw,176px);
+  max-width:100%;height:auto;object-fit:contain;
+}
+body:not(.home-page) .header .header-inner {
+  min-height:64px;
+  align-items:center;
+}
+body:not(.home-page) .footer-identity .brand-lockup {
+  width:clamp(165px,16vw,207px);
+  max-width:100%;height:auto;
+}
+body:not(.home-page) .footer {
+  padding-block:clamp(42px,4.5vw,58px) clamp(48px,5vw,68px);
+}
+body:not(.home-page) .footer-identity {gap:7px;padding-bottom:clamp(18px,2vw,25px)}
+body:not(.home-page) .footer-links {padding-bottom:clamp(17px,2vw,25px)}
+body:not(.home-page) .footer-socials {padding-top:clamp(13px,1.6vw,20px)}
+/* CTA flutuante: 46px, toque acessível e sem tooltip ornamental. */
+body:not(.home-page) > a.floating-whatsapp {
+  position:fixed;
+  z-index:80;
+  width:46px;min-width:46px;height:46px;
+  padding:0;border-radius:50%;
+  right:clamp(17px,2vw,29px);
+  bottom:clamp(17px,2vw,29px);
+  display:grid;place-items:center;gap:0;
+  border:1px solid rgba(169,197,216,.6);
+  background:#293547;color:#f3efe8;
+  box-shadow:0 6px 20px rgba(32,37,50,.17);
+  opacity:.94;
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+}
+body:not(.home-page) > a.floating-whatsapp svg {width:20px;height:20px}
+body:not(.home-page) > a.floating-whatsapp::before,
+body:not(.home-page) > a.floating-whatsapp::after {display:none}
+body:not(.home-page) > a.floating-whatsapp:hover,
+body:not(.home-page) > a.floating-whatsapp:focus-visible {
+  background:#6b536d;opacity:1;transform:translateY(-2px);
+  box-shadow:0 9px 21px rgba(32,37,50,.2);
+}
+/* Resolve hero gigante e conteúdo atrás da janela. A abertura visual permanece,
+   com 50px+ de separação do header fixo. */
+body:not(.home-page):not(.blog-index):not(.blog-article):not(.vl-page) .header~main>.hero:is(.products-hero,.projects-hero,.about-hero) {
+  padding:clamp(132px,9.3vw,151px) 0 clamp(56px,5.3vw,76px);
+  min-height:0;
+}
+body.projects-page:not(.home-page):not(.blog-index):not(.blog-article):not(.vl-page) .header~main>.hero.projects-hero .projects-hero-copy h1,
+body.about-page:not(.home-page):not(.blog-index):not(.blog-article):not(.vl-page) .header~main>.hero.about-hero .about-hero-copy h1 {
+  font-size:clamp(42px,4.2vw,62px);
+  line-height:1.08;
+  letter-spacing:-.058em;
+  max-width:16ch;
+  margin:14px 0 21px;
+  text-wrap:balance;
+}
+body.about-page .header~main>.hero.about-hero .about-hero-grid,
+body.projects-page .header~main>.hero.projects-hero .projects-hero-grid {
+  gap:clamp(28px,4.1vw,60px);
+  align-items:center;
+}
+body.projects-page .header~main>.hero.projects-hero .projects-hero-copy .actions,
+body.about-page .header~main>.hero.about-hero .about-hero-copy .actions{margin-top:25px}
+body.projects-page .header~main>.hero.projects-hero::after,
+body.about-page .header~main>.hero.about-hero::after,
+body:not(.home-page) .header~main>.hero.products-hero::after{opacity:0}
+@media(max-width:1180px){
+  body:not(.home-page) .header .brand-lockup{width:min(45vw,164px)}
+}
+@media(max-width:800px){
+  body:not(.home-page):not(.blog-index):not(.blog-article):not(.vl-page) .header~main>.hero:is(.products-hero,.projects-hero,.about-hero){
+    padding:135px 0 57px;
+  }
+  body:not(.home-page) .footer-identity .brand-lockup{width:185px}
+  body:not(.home-page)>a.floating-whatsapp{
+    right:16px;
+    bottom:calc(16px + env(safe-area-inset-bottom,0px));
+  }
+}
+@media(max-width:560px){
+  body:not(.home-page) .header .brand-lockup{width:min(44vw,155px)}
+  body.projects-page:not(.home-page):not(.blog-index):not(.blog-article):not(.vl-page) .header~main>.hero.projects-hero .projects-hero-copy h1,
+  body.about-page:not(.home-page):not(.blog-index):not(.blog-article):not(.vl-page) .header~main>.hero.about-hero .about-hero-copy h1{
+    font-size:clamp(37px,9.6vw,49px);
+    max-width:20ch;
+    line-height:1.09;
+  }
+  body:not(.home-page):not(.blog-index):not(.blog-article):not(.vl-page) .header~main>.hero:is(.products-hero,.projects-hero,.about-hero) {
+    padding:124px 0 54px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  body:not(.home-page)>a.floating-whatsapp,
+  body:not(.home-page)>a.floating-whatsapp:hover{transition:none;transform:none}
+}
+
+
+/* A sidebar-like stacked footer was too tall on desktop.
+   Compact three-column alignment follows the flagship navigation rhythm. */
+@media(min-width:981px){
+ body:not(.home-page) .footer-inner{
+   display:grid;grid-template-columns:minmax(210px,1fr) minmax(0,1.25fr) minmax(145px,.55fr);
+   gap:clamp(24px,3.3vw,56px);align-items:start;
+ }
+ body:not(.home-page) .footer-identity{width:auto;padding-bottom:0}
+ body:not(.home-page) .footer-links{
+   display:flex;flex-wrap:wrap;gap:9px 21px;
+   width:auto;padding:2px 0 0;border-bottom:0;
+ }
+ body:not(.home-page) .footer-socials{padding-top:2px;justify-content:flex-end}
+}
+body.projects-page .header~main>.hero.projects-hero::after,
+body.about-page .header~main>.hero.about-hero::after,
+body:not(.home-page) .header~main>.hero.products-hero::after{
+  content:none;display:none;
+}

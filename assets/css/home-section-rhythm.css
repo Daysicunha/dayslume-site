@@ -211,3 +211,38 @@ body.home-page main > .contact-section {
 @media (prefers-reduced-motion: reduce) {
   .home-page main > .section { scroll-margin-top: 0; }
 }
+
+
+/* Auditoria visual transversal — Home usa o mesmo acabamento do shell interno,
+   sem alterar flor, animação hero ou hierarquia aprovada. */
+body.home-page .site-header .brand-logo-img {
+  display:block;width:clamp(145px,10.8vw,181px);max-width:100%;height:auto;object-fit:contain;
+}
+body.home-page .site-footer .footer-main .footer-logo-img {
+  display:block;width:clamp(167px,17vw,205px);max-width:100%;height:auto;object-fit:contain;
+}
+body.home-page > a.floating-whatsapp {
+  z-index:80;width:46px;min-width:46px;height:46px;right:clamp(17px,2vw,29px);bottom:clamp(17px,2vw,29px);
+  padding:0;border:1px solid rgba(169,197,216,.6);border-radius:50%;
+  display:grid;place-items:center;gap:0;background:#293547;color:#f3efe8;
+  box-shadow:0 6px 20px rgba(32,37,50,.17);opacity:.94;
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+}
+body.home-page > a.floating-whatsapp svg{width:20px;height:20px}
+body.home-page > a.floating-whatsapp::before,
+body.home-page > a.floating-whatsapp::after{display:none}
+body.home-page > a.floating-whatsapp:hover,
+body.home-page > a.floating-whatsapp:focus-visible{
+  background:#6b536d;color:#f3efe8;opacity:1;transform:translateY(-2px);
+  box-shadow:0 9px 21px rgba(32,37,50,.2);
+}
+@media(max-width:800px){
+ body.home-page .site-header .brand-logo-img{width:min(43vw,159px)}
+ body.home-page .site-footer .footer-main .footer-logo-img{width:184px}
+ body.home-page > a.floating-whatsapp{
+  right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ body.home-page>a.floating-whatsapp:hover{transition:none;transform:none}
+}
