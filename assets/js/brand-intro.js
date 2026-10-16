@@ -27,7 +27,7 @@
 
   function release(focus = false) {
     clearTimeout(window.__dlIntroFailsafe);
-    root.classList.remove('dl-intro-running','dl-intro-finishing','dl-intro-handoff');
+    root.classList.remove('dl-intro-running','dl-intro-finishing','dl-intro-handoff','dl-intro-landed');
     if (intro) intro.hidden = true;
     if (focus) {
       const heading = document.getElementById('hero-title');
@@ -110,11 +110,14 @@
   }
   function measureHeroTarget() {
     const target = document.querySelector('.hero--interactive-flower .hero-visual-composition .flower-scene');
-    if (!target || innerWidth<=800 || innerHeight<600) return false;
+    if (!target || innerHeight<375) return false;
     const sourceRect=flower.getBoundingClientRect();
     const targetRect=target.getBoundingClientRect();
     if (sourceRect.width===0 || targetRect.width===0 || !Number.isFinite(targetRect.left)) return false;
-    const visible=targetRect.top>=0 && targetRect.bottom<=innerHeight*1.08;
+    const visible = innerWidth<=800
+      ? targetRect.top>=0 && targetRect.top<innerHeight*.78 &&
+        targetRect.left>=-10 && targetRect.right<=innerWidth+10
+      : targetRect.top>=0 && targetRect.bottom<=innerHeight*1.08;
     const scale=targetRect.width/sourceRect.width;
     if (!visible || scale<.55 || scale>4.5) return false;
     const dx=(targetRect.left+targetRect.width/2)-(sourceRect.left+sourceRect.width/2);
@@ -144,7 +147,10 @@
     if(!measureHeroTarget()) intro.classList.add('is-morph-fallback');
     root.classList.add('dl-intro-handoff');
     intro.classList.add('is-morphing');
-    await wait(785); if(cancelled)return;
+    await wait(710); if(cancelled)return;
+    // When both official six-petal scenes overlap, crossfade only at the landing.
+    root.classList.add('dl-intro-landed');
+    await wait(110); if(cancelled)return;
     closing=true;
     cancelled=true;
     remember();
