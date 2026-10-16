@@ -1,127 +1,152 @@
-/* DAYSLUME | Brand intro 2.0 — abertura cinematográfica sem dependências.
-   Ponto > digitação > frase editorial > seis pétalas oficiais > Hero (FLIP).
-   Preview: ?intro=1 força replay; visitas normais tocam uma vez por sessão. */
+/* DAYSLUME — Intro 3.0 | ponto→cursor→palavras→seis pétalas→Hero.
+ * Progressive enhancement, replay via ?intro=1, once per tab/session otherwise.
+ * Works without an animation library; never changes the real Hero layout. */
 (() => {
   'use strict';
   const root = document.documentElement;
   if (!root.classList.contains('dl-intro-running')) return;
 
   const intro = document.getElementById('dayslume-brand-intro');
+  const stage = intro?.querySelector('.dl-intro__stage');
   const skip = intro?.querySelector('[data-intro-skip]');
+  const point = intro?.querySelector('.dl-intro__point');
   const name = intro?.querySelector('[data-intro-name]');
   const lineOne = intro?.querySelector('[data-intro-line-one]');
   const lineTwo = intro?.querySelector('[data-intro-line-two]');
   const flower = intro?.querySelector('.dl-intro__flower');
-  const petals = [...(intro?.querySelectorAll('.dl-intro__petal') || [])];
+  const petals = [...(intro?.querySelectorAll('.dl-intro__petal') ?? [])];
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const saveData = Boolean(navigator.connection?.saveData);
-
   let cancelled = false;
   let closing = false;
-  const pause = ms => new Promise(resolve => setTimeout(resolve,ms));
+  let focusOnRelease = false;
+  const wait = duration => new Promise(resolve => setTimeout(resolve, duration));
   const remember = () => {
-    try { sessionStorage.setItem('dayslume-brand-intro-v3','played'); } catch (_) {}
+    try { sessionStorage.setItem('dayslume-brand-intro-v4', 'played'); } catch (_) {}
   };
-  function release(focusAfter = false) {
+
+  function release(focus = false) {
     clearTimeout(window.__dlIntroFailsafe);
-    root.classList.remove('dl-intro-running','dl-intro-finishing');
+    root.classList.remove('dl-intro-running','dl-intro-finishing','dl-intro-handoff');
     if (intro) intro.hidden = true;
-    if (focusAfter) {
-      const h1 = document.getElementById('hero-title');
-      if (h1) {
-        h1.tabIndex = -1;
-        h1.focus({preventScroll:true});
-        h1.addEventListener('blur',()=>h1.removeAttribute('tabindex'),{once:true});
+    if (focus) {
+      const heading = document.getElementById('hero-title');
+      if (heading) {
+        heading.tabIndex = -1;
+        heading.focus({preventScroll:true});
+        heading.addEventListener('blur',()=>heading.removeAttribute('tabindex'),{once:true});
       }
     }
   }
-  function close({instant=false,focusAfter=false}={}) {
+  function close({instant=false,focus=false}={}) {
     if (closing) return;
-    cancelled = true;
     closing = true;
+    cancelled = true;
+    focusOnRelease ||= focus;
     remember();
-    if (instant) return release(focusAfter);
-    root.classList.add('dl-intro-finishing');
-    setTimeout(()=>release(focusAfter),410);
+    if (instant) { release(focusOnRelease); return; }
+    root.classList.add('dl-intro-finishing','dl-intro-handoff');
+    setTimeout(()=>release(focusOnRelease),420);
   }
-
-  if (!intro || !skip || !name || !lineOne || !lineTwo || !flower ||
-      petals.length!==6 || reduced.matches || saveData) {
+  if (!intro || !stage || !skip || !point || !name || !lineOne ||
+      !lineTwo || !flower || petals.length!==6 || reduced.matches || saveData) {
     close({instant:true});
     return;
   }
 
-  skip.addEventListener('click',()=>close({focusAfter:true}));
+  skip.addEventListener('click',()=>close({focus:true}));
   const onKeyDown = event => {
     if (closing) return;
-    if (event.key === 'Escape') {
+    if (event.key==='Escape') {
       event.preventDefault();
-      close({focusAfter:true});
-    } else if (event.key === 'Tab') {
-      // A única ação do overlay é pular a abertura.
+      close({focus:true});
+    } else if (event.key==='Tab') {
+      // Não deixa o foco sair para links ocultos sob o overlay.
       event.preventDefault();
       skip.focus({preventScroll:true});
     }
   };
   addEventListener('keydown',onKeyDown);
-  const onReduced = () => {if(reduced.matches)close({instant:true});};
-  reduced.addEventListener('change',onReduced);
+  reduced.addEventListener('change',()=>{if(reduced.matches)close({instant:true});});
   addEventListener('pagehide',()=>close({instant:true}),{once:true});
 
-  async function typeInto(node,phrase,pace) {
-    node.textContent = '';
-    node.classList.add('dl-intro__cursor');
-    for(const letter of Array.from(phrase)) {
-      if(cancelled)return;
-      node.textContent += letter;
-      await pause(pace);
+  const caretPosition = () => {
+    const a = stage.getBoundingClientRect();
+    const b = name.getBoundingClientRect();
+    const x = Math.max(0, Math.min(a.width, b.right-a.left));
+    const y = Math.max(0, Math.min(a.height, b.top+b.height*.52-a.top));
+    intro.style.setProperty('--dl-caret-x', x.toFixed(1)+'px');
+    intro.style.setProperty('--dl-caret-y', y.toFixed(1)+'px');
+  };
+  async function typeBrand() {
+    name.textContent='';
+    caretPosition();
+    intro.classList.add('is-writing');
+    await wait(280);
+    if(cancelled) return;
+    for(const char of Array.from('DAYSLUME')) {
+      if(cancelled) return;
+      name.textContent+=char;
+      caretPosition();
+      await wait(54);
     }
-    node.classList.remove('dl-intro__cursor');
+    intro.classList.add('is-name-complete');
   }
 
-  function morphToHero() {
-    if(cancelled) return false;
+  async function showWords(textValue) {
+    lineOne.textContent='';
+    const words = textValue.split(' ');
+    for(let index=0; index<words.length; index++) {
+      if(cancelled)return;
+      const span = document.createElement('span');
+      span.className='dl-intro__word';
+      span.textContent=words[index]+(index<words.length-1 ? ' ' : '');
+      lineOne.appendChild(span);
+      // Two frames guarantee transition from the hidden initial state.
+      await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+      span.classList.add('is-revealed');
+      await wait(135);
+    }
+  }
+  function measureHeroTarget() {
     const target = document.querySelector('.hero--interactive-flower .hero-visual-composition .flower-scene');
-    // A flor de destino já é o conjunto oficial das mesmas seis pétalas PNG.
-    if (!target) return false;
-    const sourceRect = flower.getBoundingClientRect();
-    const targetRect = target.getBoundingClientRect();
-    if (!sourceRect.width || !targetRect.width || !isFinite(targetRect.left))return false;
-    const isVisible = targetRect.top < innerHeight * .85 && targetRect.bottom > innerHeight * .12;
-    const scale = targetRect.width / sourceRect.width;
-    if (!isVisible || scale < .5 || scale > 4.5) return false;
-    const x = (targetRect.left+targetRect.width/2)-(sourceRect.left+sourceRect.width/2);
-    const y = (targetRect.top+targetRect.height/2)-(sourceRect.top+sourceRect.height/2);
-    flower.style.setProperty('--dl-target-x',x.toFixed(2)+'px');
-    flower.style.setProperty('--dl-target-y',y.toFixed(2)+'px');
+    if (!target || innerWidth<=800 || innerHeight<600) return false;
+    const sourceRect=flower.getBoundingClientRect();
+    const targetRect=target.getBoundingClientRect();
+    if (sourceRect.width===0 || targetRect.width===0 || !Number.isFinite(targetRect.left)) return false;
+    const visible=targetRect.top>=0 && targetRect.bottom<=innerHeight*1.08;
+    const scale=targetRect.width/sourceRect.width;
+    if (!visible || scale<.55 || scale>4.5) return false;
+    const dx=(targetRect.left+targetRect.width/2)-(sourceRect.left+sourceRect.width/2);
+    const dy=(targetRect.top+targetRect.height/2)-(sourceRect.top+sourceRect.height/2);
+    flower.style.setProperty('--dl-target-x',dx.toFixed(2)+'px');
+    flower.style.setProperty('--dl-target-y',dy.toFixed(2)+'px');
     flower.style.setProperty('--dl-target-scale',scale.toFixed(5));
     return true;
   }
 
   async function play() {
-    await pause(180); if(cancelled)return;
+    await wait(170); if(cancelled)return;
     intro.classList.add('is-dot');
-    await pause(300); if(cancelled)return;
-    intro.classList.add('is-writing');
-    await pause(120); if(cancelled)return;
-    await typeInto(name,'DAYSLUME',64); if(cancelled)return;
-    await pause(90); if(cancelled)return;
-    await typeInto(lineOne,'Ideias ganham forma.',30); if(cancelled)return;
-    await pause(80); if(cancelled)return;
-    lineTwo.textContent = 'Experiências ganham vida.';
+    await wait(320); if(cancelled)return;
+    await typeBrand(); if(cancelled)return;
+    await wait(60); if(cancelled)return;
+    await showWords('Ideias ganham forma.'); if(cancelled)return;
+    await wait(40); if(cancelled)return;
+    lineTwo.textContent='Experiências ganham vida.';
     intro.classList.add('is-second-line');
-    await pause(320); if(cancelled)return;
+    await wait(230); if(cancelled)return;
     intro.classList.add('is-assembling');
-    // Última pétala termina após 550ms de escalonamento + 520ms de encaixe.
-    await pause(1080); if(cancelled)return;
+    // 500ms escalonamento + 510ms de encaixe + 90ms para estabilizar.
+    await wait(1100); if(cancelled)return;
     intro.classList.add('is-assembled');
-    await pause(80); if(cancelled)return;
-    if(!morphToHero()) intro.classList.add('is-morph-fallback');
+    await wait(165); if(cancelled)return;
+    if(!measureHeroTarget()) intro.classList.add('is-morph-fallback');
+    root.classList.add('dl-intro-handoff');
     intro.classList.add('is-morphing');
-    await pause(860); if(cancelled)return;
-    // O overlay entrega a flor à Hero no mesmo quadro visual.
-    cancelled = true;
-    closing = true;
+    await wait(785); if(cancelled)return;
+    closing=true;
+    cancelled=true;
     remember();
     release(false);
   }
