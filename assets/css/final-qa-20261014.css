@@ -412,7 +412,7 @@ body.projects-page .projects-gallery .dayane-media .case-dayane-snapshot {
   .case-dayane-snapshot .case-dayane-action {font-size:9px;}
 }
 @media(max-width:420px){
-  .case-dayane-snapshot {grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);}
+  .case-dayane-snapshot {grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);}
   .case-dayane-snapshot .case-dayane-copy {gap:6px;padding:10px;}
   .case-dayane-snapshot .case-dayane-copy strong {font-size:15px;}
   .case-dayane-snapshot .case-dayane-copy small {font-size:9px;}
@@ -437,27 +437,14 @@ body.home-page .flagship-cases .project-image.has-home-mockup img {
   object-fit: contain;
   object-position: center;
 }
-body.home-page .solution-engreni .engreni-graphic.has-home-mockup {
-  position: relative;
-  isolation: isolate;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background: #202532;
-}
-body.home-page .solution-engreni .engreni-graphic .engreni-agenda-case-image {
-  position: absolute;
-  z-index: 5;
-  inset: 0;
+body.home-page .flagship-cases .case-preview--dayane .case-dayane-snapshot .case-dayane-mockup {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
   object-position: center;
-  background: #202532;
+  background: #fcf9f6;
 }
 @media (max-width: 760px) {
   body.home-page .flagship-cases .project-image.has-home-mockup { aspect-ratio: 16 / 9; }
-  body.home-page .solution-engreni .engreni-graphic .engreni-agenda-case-image { object-fit: contain; }
 }

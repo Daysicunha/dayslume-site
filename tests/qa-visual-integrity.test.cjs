@@ -63,19 +63,18 @@ test('project mockups use actual images and transparent illustrative placeholder
  assert.match(projects,/@media\(max-width:540px\)/);
 });
 
-test('home uses the three approved 16:9 mockups with centered responsive framing',()=>{
- for(const file of ['case-tornearia-barbosa-1600x900.webp','case-new-rocket-play-1600x900.webp','case-engreni-agenda-1600x900.webp']){
+test('home keeps each approved mockup in its intended card with centered responsive framing',()=>{
+ for(const file of ['case-tornearia-barbosa-1600x900.webp','case-new-rocket-play-1600x900.webp']){
   assert.match(index,new RegExp(`data-home-mockup="assets/images/${file}"`));
   assert.ok(fs.existsSync(path.join(root,'assets/images',file)),file);
  }
- assert.match(index,/class="solution-graphic product-interface engreni-graphic"[^>]*data-home-mockup="assets\/images\/case-engreni-agenda-1600x900\.webp"/);
- assert.doesNotMatch(index,/class="project-image case-preview--dayane"[^>]*data-home-mockup=/);
+ assert.ok(fs.existsSync(path.join(root,'assets/images/case-engreni-agenda-1600x900.webp')));
+ assert.match(index,/class="case-dayane-mockup" src="assets\/images\/case-engreni-agenda-1600x900\.webp"/);
+ assert.doesNotMatch(index,/class="solution-graphic product-interface engreni-graphic"[^>]*data-home-mockup=/);
  assert.match(homeMockups,/naturalWidth/);
- assert.match(homeMockups,/classList\.contains\('engreni-graphic'\)/);
  assert.match(homeMockups,/classList\.add\('has-home-mockup'\)/);
  assert.match(finalQa,/flagship-cases \.project-image\.has-home-mockup\s*\{[\s\S]*?aspect-ratio:\s*16 \/ 9/);
- assert.match(finalQa,/solution-engreni \.engreni-graphic\.has-home-mockup\s*\{[\s\S]*?aspect-ratio:\s*16 \/ 9/);
- assert.match(finalQa,/engreni-agenda-case-image\s*\{[\s\S]*?object-position:\s*center/);
+ assert.match(finalQa,/case-dayane-mockup\s*\{[\s\S]*?object-fit:\s*contain;[\s\S]*?object-position:\s*center/);
 });
 
 test('shared style loads ahead of official palette, preserving canonical brand tokens',()=>{
