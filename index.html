@@ -9,13 +9,13 @@
   try {
     const forced = new URLSearchParams(location.search).get('intro') === '1';
     let played = false;
-    try { played = !!sessionStorage.getItem('dayslume-brand-intro-v3'); } catch (_) {}
+    try { played = !!sessionStorage.getItem('dayslume-brand-intro-v4'); } catch (_) {}
     const normalMotion = matchMedia('(prefers-reduced-motion: no-preference)').matches;
     if ((forced || !played) && !location.hash && normalMotion && !navigator.connection?.saveData) {
       document.documentElement.classList.add('dl-intro-running');
       window.__dlIntroFailsafe = setTimeout(() => {
         document.documentElement.classList.remove('dl-intro-running','dl-intro-finishing');
-      }, 7800);
+      }, 7600);
     }
   } catch (_) {}
 })();
