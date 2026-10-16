@@ -1,0 +1,216 @@
+/* DAYSLUME | Abertura autoral (preview): ponto -> digitação -> seis pétalas oficiais.
+ * Todos os seletores são locais. A Home permanece utilizável sem JavaScript. */
+.dl-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 2147482000;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: clamp(24px,5vw,60px);
+  overflow: hidden;
+  background: #202532;
+  color: #F3EFE8;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 640ms cubic-bezier(.22,1,.36,1), visibility 640ms;
+  font-family: Manrope, sans-serif;
+}
+html.dl-intro-running { overflow: hidden; }
+html.dl-intro-running .dl-intro {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+html.dl-intro-finishing .dl-intro {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.dl-intro__skip {
+  position: absolute;
+  top: clamp(20px,4vh,43px);
+  right: clamp(20px,4vw,64px);
+  z-index: 2;
+  border: 1px solid rgba(243,239,232,.36);
+  border-radius: 99px;
+  background: transparent;
+  padding: 11px 19px;
+  color: #F3EFE8;
+  font: 600 11px/1.4 'DM Sans', sans-serif;
+  letter-spacing: .065em;
+  cursor: pointer;
+  transition: background .2s, border-color .2s;
+}
+.dl-intro__skip:hover,.dl-intro__skip:focus-visible {
+  background: #6B536D;
+  border-color: #A9C5D8;
+}
+.dl-intro__skip:focus-visible {
+  outline: 2px solid #A9C5D8;
+  outline-offset: 4px;
+}
+.dl-intro__stage {
+  position: relative;
+  width: min(100%, 960px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: clamp(20px,4vh,43px);
+}
+.dl-intro__point {
+  position: absolute;
+  z-index: 1;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%,-50%) scale(.6);
+  opacity: 0;
+  color: #A9C5D8;
+  font: 500 clamp(65px,11vw,108px)/1 Manrope,sans-serif;
+  transition: opacity 240ms ease, transform 380ms cubic-bezier(.22,1,.36,1);
+}
+.dl-intro.is-dot .dl-intro__point {
+  opacity: 1;
+  transform: translate(-50%,-50%) scale(1);
+}
+.dl-intro.is-writing .dl-intro__point {
+  opacity: 0;
+  transform: translate(-50%,-55%) scale(.75);
+}
+.dl-intro__copy {
+  width: 100%;
+  min-height: clamp(154px,25vh,224px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 380ms, transform 600ms cubic-bezier(.22,1,.36,1);
+}
+.dl-intro.is-writing .dl-intro__copy {
+  opacity: 1;
+  transform: none;
+}
+.dl-intro__name {
+  margin: 0;
+  min-height: 1.17em;
+  max-width: 100%;
+  font: 500 clamp(42px,8vw,105px)/1.13 Manrope,sans-serif;
+  letter-spacing: -.075em;
+  color: #F3EFE8;
+  text-wrap: nowrap;
+}
+.dl-intro__name [data-intro-name] { white-space: pre; }
+.dl-intro__taglines {
+  width: 100%;
+  min-height: 3.5em;
+  margin-top: clamp(13px,2.5vw,28px);
+  font: 400 clamp(16px,2.4vw,25px)/1.65 Manrope,sans-serif;
+  letter-spacing: -.025em;
+  color: #A9C5D8;
+}
+.dl-intro__taglines > span {
+  display: block;
+  min-height: 1.5em;
+}
+.dl-intro__taglines > span + span { color: #F3EFE8; }
+.dl-intro__cursor::after {
+  content: "";
+  display: inline-block;
+  width: .055em;
+  height: .8em;
+  margin-left: .085em;
+  vertical-align: -.08em;
+  background: #A9C5D8;
+  animation: dl-intro-cursor .72s steps(1,end) infinite;
+}
+.dl-intro__flower {
+  position: relative;
+  width: min(32vw, 28vh, 238px);
+  aspect-ratio: 1682 / 1672;
+  flex: 0 0 auto;
+  visibility: hidden;
+  isolation: isolate;
+  opacity: 0;
+}
+.dl-intro.is-assembling .dl-intro__flower,
+.dl-intro.is-assembled .dl-intro__flower {
+  visibility: visible;
+  opacity: 1;
+}
+.dl-intro__flower .flower-petal {
+  position: absolute;
+  display: block;
+  height: auto;
+  max-width: none;
+  opacity: 0;
+  animation: none !important;
+  will-change: auto;
+  pointer-events: none;
+}
+.dl-intro.is-assembling .dl-intro__flower .flower-petal,
+.dl-intro.is-assembled .dl-intro__flower .flower-petal {
+  animation: dl-intro-assemble 610ms cubic-bezier(.16,1,.3,1) var(--dl-delay) both !important;
+}
+.dl-intro__flower .flower-petal--01 { --dl-from-x:0px;--dl-from-y:-70px;--dl-from-r:-26deg;--dl-delay:0ms; }
+.dl-intro__flower .flower-petal--02 { --dl-from-x:70px;--dl-from-y:-45px;--dl-from-r:26deg;--dl-delay:135ms; }
+.dl-intro__flower .flower-petal--03 { --dl-from-x:82px;--dl-from-y:30px;--dl-from-r:-21deg;--dl-delay:270ms; }
+.dl-intro__flower .flower-petal--04 { --dl-from-x:0px;--dl-from-y:70px;--dl-from-r:24deg;--dl-delay:405ms; }
+.dl-intro__flower .flower-petal--05 { --dl-from-x:-80px;--dl-from-y:36px;--dl-from-r:-22deg;--dl-delay:540ms; }
+.dl-intro__flower .flower-petal--06 { --dl-from-x:-70px;--dl-from-y:-38px;--dl-from-r:25deg;--dl-delay:675ms; }
+.dl-intro__signature {
+  min-height: 1.7em;
+  font: 600 10px/1.6 'DM Sans',sans-serif;
+  letter-spacing: .25em;
+  color: rgba(243,239,232,.78);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 390ms,transform 390ms;
+}
+.dl-intro.is-assembled .dl-intro__signature {
+  opacity: 1;
+  transform: none;
+}
+@keyframes dl-intro-cursor {
+  0%,45% { opacity:1; }
+  46%,100% { opacity:0; }
+}
+@keyframes dl-intro-assemble {
+  0% {
+    opacity: 0;
+    transform: translate3d(var(--dl-from-x),var(--dl-from-y),0)
+      rotate(var(--dl-from-r)) scale(.72);
+    filter: blur(3px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0,0,0) rotate(0) scale(1);
+    filter: blur(0);
+  }
+}
+@media (max-width:600px) {
+  .dl-intro { padding: 24px 16px 30px; }
+  .dl-intro__skip { top: 19px;right: 18px;padding: 9px 14px;font-size: 10px; }
+  .dl-intro__stage { gap: 14px; }
+  .dl-intro__copy { min-height: 170px; }
+  .dl-intro__name { font-size: clamp(39px, 12vw, 65px); letter-spacing: -.07em; }
+  .dl-intro__taglines { font-size: clamp(14px,4.1vw,19px);line-height: 1.65;margin-top:15px; }
+  .dl-intro__flower { width: min(50vw,25vh,195px); }
+  .dl-intro__signature { font-size: 9px;letter-spacing: .17em; }
+}
+@media (max-height:610px) {
+  .dl-intro__stage {gap:8px;}
+  .dl-intro__copy { min-height: 130px; }
+  .dl-intro__taglines {margin-top: 5px;}
+  .dl-intro__flower {width:min(23vh,142px);}
+}
+@media (prefers-reduced-motion:reduce) {
+  .dl-intro { display: none !important; }
+  html.dl-intro-running { overflow:auto; }
+}
