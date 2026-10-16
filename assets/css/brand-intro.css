@@ -214,3 +214,72 @@ html.dl-intro-finishing .dl-intro {
   .dl-intro { display: none !important; }
   html.dl-intro-running { overflow:auto; }
 }
+
+/* Intro 2.0 — ponto-pulso, mensagem em duas cadências e FLIP até a flor real da Hero. */
+.dl-intro[hidden] { display:none !important; }
+.dl-intro {
+  transition: background-color 820ms cubic-bezier(.22,1,.36,1),
+              opacity 400ms cubic-bezier(.22,1,.36,1),
+              visibility 400ms;
+}
+.dl-intro.is-dot:not(.is-writing) .dl-intro__point {
+  animation: dl-intro-dot-pulse 390ms cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes dl-intro-dot-pulse {
+  0% { transform: translate(-50%,-50%) scale(.65); }
+  52% { transform: translate(-50%,-50%) scale(1.11); }
+  100% { transform: translate(-50%,-50%) scale(1); }
+}
+.dl-intro__taglines > [data-intro-line-two] {
+  opacity: 0;
+  transform: translate3d(0,9px,0);
+  filter: blur(3px);
+  transition: opacity 370ms ease, transform 450ms cubic-bezier(.22,1,.36,1),filter 400ms ease;
+}
+.dl-intro.is-second-line [data-intro-line-two] {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+.dl-intro.is-assembling .dl-intro__flower .flower-petal,
+.dl-intro.is-assembled .dl-intro__flower .flower-petal {
+  animation-duration: 520ms !important;
+}
+.dl-intro__flower .flower-petal--01 { --dl-delay:0ms; }
+.dl-intro__flower .flower-petal--02 { --dl-delay:110ms; }
+.dl-intro__flower .flower-petal--03 { --dl-delay:220ms; }
+.dl-intro__flower .flower-petal--04 { --dl-delay:330ms; }
+.dl-intro__flower .flower-petal--05 { --dl-delay:440ms; }
+.dl-intro__flower .flower-petal--06 { --dl-delay:550ms; }
+/* Até a conclusão, esconde só a flor duplicada atrás da tela de abertura. */
+html.dl-intro-running .home-page .hero-visual-composition {
+  opacity:0 !important;
+}
+.dl-intro.is-morphing {
+  background-color: transparent;
+}
+.dl-intro.is-morphing .dl-intro__copy,
+.dl-intro.is-morphing .dl-intro__signature,
+.dl-intro.is-morphing .dl-intro__skip,
+.dl-intro.is-morphing .dl-intro__point {
+  opacity:0 !important;
+  pointer-events:none;
+  transition:opacity 250ms ease !important;
+}
+.dl-intro.is-morphing .dl-intro__flower {
+  transform: translate3d(var(--dl-target-x,0px),var(--dl-target-y,0px),0)
+             scale(var(--dl-target-scale,1));
+  transform-origin:center center;
+  transition:transform 820ms cubic-bezier(.22,1,.36,1),opacity 700ms ease;
+  will-change:transform;
+}
+.dl-intro.is-morphing.is-morph-fallback .dl-intro__flower {
+  opacity:0;
+  transform: translate3d(0,10px,0) scale(1.06);
+}
+@media (prefers-reduced-motion:reduce) {
+  .dl-intro.is-morphing .dl-intro__flower {
+    transform:none !important;
+    transition:none !important;
+  }
+}
