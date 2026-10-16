@@ -1,0 +1,322 @@
+/* DAYSLUME / Mobile Experience 2.0
+   Editorial first fold: compact header, official six-petal flower, legible headline.
+   Preview branch ONLY. This stylesheet intentionally does not touch desktop. */
+.hero-title-mobile,.hero-lead--mobile,.days-mobile-hero-cta{display:none;}
+@media (max-width:800px) {
+  /* Calm, polished navigation. Keep the hamburger's existing JS behavior. */
+  body.home-page .site-header {
+    position:sticky;
+    top:0;
+    z-index:110;
+    height:auto;
+    margin:0;
+    padding:9px 0 5px;
+    background:#202532;
+    border:0;
+    border-radius:0;
+    box-shadow:none;
+    -webkit-backdrop-filter:none;
+    backdrop-filter:none;
+  }
+  body.home-page .site-header::before {content:none;display:none;}
+  body.home-page .site-header .header-inner {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width:calc(100% - 28px);
+    max-width:560px;
+    height:64px;
+    min-height:64px;
+    margin:0 auto;
+    padding:0 10px 0 15px;
+    gap:8px;
+    border:1px solid rgba(169,197,216,.27);
+    border-radius:19px;
+    background:linear-gradient(100deg,rgba(40,47,65,.89),rgba(55,58,77,.83));
+    box-shadow:0 6px 24px rgba(12,18,28,.13),inset 0 1px 0 rgba(243,239,232,.045);
+    box-sizing:border-box;
+  }
+  body.home-page .site-header .brand,
+  body.home-page .site-header .brand-logo{
+    flex:0 1 auto;
+    min-width:0;
+    max-width:calc(100% - 62px);
+  }
+  body.home-page .site-header .brand-logo-img {
+    display:block;
+    width:min(42vw,157px);
+    max-width:100%;
+    max-height:46px;
+    height:auto;
+    object-fit:contain;
+    object-position:left center;
+  }
+  body.home-page .site-header .menu-toggle {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    flex:none;
+    width:44px;
+    height:44px;
+    min-width:44px;
+    min-height:44px;
+    gap:6px;
+    margin:0;
+    padding:0;
+    border:1px solid rgba(169,197,216,.3);
+    border-radius:50%;
+    background:rgba(243,239,232,.035);
+    box-shadow:none;
+    cursor:pointer;
+  }
+  body.home-page .site-header .menu-toggle span{
+    width:19px;
+    height:1.25px;
+    background:#F3EFE8;
+  }
+  body.home-page .site-header .menu-toggle:focus-visible,
+  body.home-page .site-header .brand-logo:focus-visible {
+    outline:2px solid #A9C5D8;
+    outline-offset:3px;
+  }
+  body.home-page .site-header .menu{
+    top:calc(100% - 2px);
+    left:14px;
+    right:14px;
+    width:auto;
+    max-height:calc(100dvh - 90px);
+    padding:13px 18px 23px;
+    border:1px solid rgba(169,197,216,.26);
+    border-radius:0 0 18px 18px;
+    background:#283246;
+    box-shadow:0 14px 28px rgba(9,14,25,.25);
+  }
+  body.home-page .site-header .menu:not(.open){display:none;}
+  body.home-page .site-header .menu.open{display:flex;}
+  body.home-page .site-header .menu > a{
+    min-height:47px;
+    display:flex;
+    align-items:center;
+    padding:10px 6px;
+    border-bottom:1px solid rgba(169,197,216,.12);
+    font-size:15px;
+  }
+
+  /* The mobile version gets its own copy; all desktop messages stay intact. */
+  body.home-page .hero--scroll-invasion .hero-title-desktop,
+  body.home-page .hero--scroll-invasion .hero-lead--desktop{
+    display:none;
+  }
+  body.home-page .hero--scroll-invasion .hero-title-mobile,
+  body.home-page .hero--scroll-invasion .hero-lead--mobile {
+    display:block;
+  }
+  body.home-page .hero--scroll-invasion .hero-scroll-stage{
+    box-sizing:border-box;
+    display:block;
+    height:auto;
+    min-height:0;
+    padding:clamp(8px,1.35svh,16px) 0 clamp(26px,3svh,37px);
+    background:#202532;
+  }
+  body.home-page .hero--scroll-invasion .hero-grid {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    width:calc(100% - 40px);
+    max-width:490px;
+    margin:0 auto;
+    gap:0;
+  }
+  body.home-page .hero--scroll-invasion:not(.hero-mobile-scroll-ready) .hero-visual-composition {
+    position:relative;
+    display:block !important;
+    order:-1;
+    flex:0 0 auto;
+    width:clamp(110px,30vw,148px);
+    max-width:148px;
+    height:auto;
+    margin:0 auto clamp(13px,2.3svh,21px);
+    opacity:1;
+    translate:none!important;
+    transform:none!important;
+    filter:none;
+  }
+  body.home-page .hero--scroll-invasion .flower-scene{
+    filter:drop-shadow(0 8px 18px rgba(17,22,35,.12));
+  }
+  body.home-page .hero--scroll-invasion .flower-glow{
+    opacity:.28;
+    filter:blur(18px);
+  }
+  body.home-page .hero--scroll-invasion .hero-content {
+    box-sizing:border-box;
+    display:block;
+    width:100%;
+    max-width:100%;
+    margin:0;
+    padding:0;
+    text-align:center;
+    opacity:1!important;
+    transform:none!important;
+    translate:none!important;
+  }
+  body.home-page .hero--scroll-invasion .hero-eyebrow {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:7px;
+    margin:0 0 13px;
+    font-size:clamp(9px,2.5vw,10px);
+    line-height:1.5;
+    letter-spacing:.095em;
+    color:#D8B6A5;
+  }
+  body.home-page .hero--scroll-invasion .hero-eyebrow .signal {
+    width:6px;
+    height:6px;
+    flex:none;
+    box-shadow:none;
+  }
+  body.home-page .hero--scroll-invasion .hero-content h1 {
+    max-width:16ch;
+    margin:0 auto clamp(12px,2svh,18px);
+    font-size:clamp(32px,8.4vw,43px);
+    line-height:1.13;
+    letter-spacing:-.052em;
+    font-weight:500;
+    text-wrap:balance;
+    color:#F3EFE8;
+  }
+  body.home-page .hero--scroll-invasion .hero-content h1 em {
+    color:#A9C5D8;
+    font-weight:inherit;
+    font-style:normal;
+  }
+  body.home-page .hero--scroll-invasion .hero-lead--mobile {
+    max-width:36ch;
+    margin:0 auto clamp(19px,2.8svh,25px);
+    color:rgba(243,239,232,.82);
+    font:400 clamp(14px,3.55vw,15px)/1.62 'DM Sans',sans-serif;
+    letter-spacing:-.005em;
+    text-wrap:pretty;
+  }
+  body.home-page .hero--scroll-invasion .days-mobile-hero-promise,
+  body.home-page .hero--scroll-invasion .hero-rotator,
+  body.home-page .hero--scroll-invasion .hero-foot,
+  body.home-page .hero--scroll-invasion .hero-scroll-meter,
+  body.home-page .hero--scroll-invasion .hero-scroll-hint {
+    display:none!important;
+  }
+  body.home-page .hero--scroll-invasion .hero-actions {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    max-width:340px;
+    gap:8px;
+    margin:0 auto;
+  }
+  body.home-page .hero--scroll-invasion .hero-actions > .btn-light{
+    display:none!important;
+  }
+  body.home-page .hero--scroll-invasion .hero-actions .days-mobile-hero-cta{
+    box-sizing:border-box;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:50px;
+    width:100%;
+    gap:11px;
+    padding:12px 18px;
+    border:1px solid rgba(243,239,232,.8);
+    border-radius:12px;
+    background:#F3EFE8;
+    background-image:none;
+    color:#202532;
+    box-shadow:none;
+    text-decoration:none;
+    font:700 13px/1.4 'DM Sans',sans-serif;
+    transition:background-color 180ms ease,transform 180ms ease;
+  }
+  body.home-page .hero--scroll-invasion .days-mobile-hero-cta span{
+    font-size:17px;line-height:1;font-weight:400;
+  }
+  body.home-page .hero--scroll-invasion .days-mobile-hero-cta:active {
+    transform:scale(.987);
+  }
+  body.home-page .hero--scroll-invasion .hero-actions .text-link{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:auto;
+    min-height:44px;
+    margin:0;
+    padding:10px 12px;
+    color:#C7DAE6;
+    font:600 13px/1.35 'DM Sans',sans-serif;
+    text-decoration:none;
+    border:0;
+  }
+  body.home-page .hero--scroll-invasion .hero-actions a:focus-visible{
+    outline:2px solid #A9C5D8;
+    outline-offset:4px;
+  }
+  /* Calm, uncluttered atmosphere: the real flower provides the color. */
+  body.home-page .hero--scroll-invasion .hero__bg-image{
+    background:linear-gradient(145deg,#202532 0%,#283043 68%,#303246 100%);
+    opacity:1;
+    filter:none;
+  }
+  body.home-page .hero--scroll-invasion .hero__bg-overlay{
+    background:linear-gradient(180deg,rgba(32,37,50,.08),rgba(32,37,50,.05) 60%,rgba(32,37,50,.08));
+  }
+  body.home-page .hero--scroll-invasion .hero__split-panel{
+    opacity:.09;
+  }
+  body.home-page .hero--scroll-invasion .hero__spotlight,
+  body.home-page .hero--scroll-invasion .hero__prism-orbit,
+  body.home-page .hero--scroll-invasion .hero__beam-field{
+    display:none;
+  }
+  /* Float only where it cannot compete with the important conversion actions.
+     Existing script controls context visibility, and the footer retains contact. */
+  body.home-page > a.floating-whatsapp{
+    width:46px;
+    min-width:46px;
+    max-width:46px;
+    height:46px;
+    min-height:46px;
+    max-height:46px;
+    right:calc(13px + env(safe-area-inset-right,0px));
+    bottom:calc(13px + env(safe-area-inset-bottom,0px));
+    box-shadow:0 4px 17px rgba(32,37,50,.19);
+  }
+}
+@media (max-width:380px) {
+  body.home-page .site-header .header-inner{width:calc(100% - 20px);padding-left:12px;}
+  body.home-page .site-header .brand-logo-img{width:min(42vw,142px);}
+  body.home-page .hero--scroll-invasion .hero-grid{width:calc(100% - 30px);}
+  body.home-page .hero--scroll-invasion .hero-content h1{font-size:clamp(31px,8.3vw,35px);line-height:1.14;}
+  body.home-page .hero--scroll-invasion .hero-lead--mobile{font-size:13.5px;}
+  body.home-page .hero--scroll-invasion:not(.hero-mobile-scroll-ready) .hero-visual-composition{
+    width:clamp(106px,29vw,125px);
+    margin-bottom:13px;
+  }
+}
+@media (max-width:800px) and (max-height:680px) {
+  body.home-page .hero--scroll-invasion .hero-scroll-stage{padding-top:6px;padding-bottom:22px;}
+  body.home-page .hero--scroll-invasion:not(.hero-mobile-scroll-ready) .hero-visual-composition{
+    width:clamp(96px,23vw,115px);
+    margin-bottom:11px;
+  }
+  body.home-page .hero--scroll-invasion .hero-eyebrow{margin-bottom:9px;}
+  body.home-page .hero--scroll-invasion .hero-content h1{margin-bottom:10px;}
+  body.home-page .hero--scroll-invasion .hero-lead--mobile{margin-bottom:12px;}
+}
+@media (max-width:800px) and (prefers-reduced-motion:reduce) {
+  body.home-page .hero--scroll-invasion .days-mobile-hero-cta{transition:none;}
+}
