@@ -43,7 +43,7 @@
     const left=cards[target].getBoundingClientRect().left-
       cards[0].getBoundingClientRect().left;
     // Relative to the first card; one concise native scroll, no dependency.
-    track.scrollTo({left,behavior:reduced.matches?'instant':'smooth'});
+    track.scrollTo({left,behavior:reduced.matches?'auto':'smooth'});
     current=target;
     previous.disabled=target===0;
     next.disabled=target===cards.length-1;
