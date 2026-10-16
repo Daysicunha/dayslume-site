@@ -3,6 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script>
+/* Ativa a abertura antes da primeira renderização e libera a página em caso de falha. */
+(() => {
+  try {
+    const forced = new URLSearchParams(location.search).get('intro') === '1';
+    let played = false;
+    try { played = !!sessionStorage.getItem('dayslume-brand-intro-v2'); } catch (_) {}
+    const normalMotion = matchMedia('(prefers-reduced-motion: no-preference)').matches;
+    if ((forced || !played) && !location.hash && normalMotion && !navigator.connection?.saveData) {
+      document.documentElement.classList.add('dl-intro-running');
+      window.__dlIntroFailsafe = setTimeout(() => {
+        document.documentElement.classList.remove('dl-intro-running','dl-intro-finishing');
+      }, 9500);
+    }
+  } catch (_) {}
+})();
+</script>
+
   <title>DAYSLUME — Sites, sistemas e produtos digitais para negócios</title>
   <meta name="description" content="A DAYSLUME transforma problemas reais de negócios em sites, produtos digitais e sistemas claros, úteis e prontos para evoluir.">
   <meta name="robots" content="index, follow"><meta name="theme-color" content="#202532">
@@ -65,9 +83,32 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/home-base.css"><link rel="stylesheet" href="assets/css/home-premium.css"><link rel="stylesheet" href="assets/css/hero-tech.css"><link rel="stylesheet" href="assets/css/hero-flower-interactive.css"><link rel="stylesheet" href="assets/css/visual-system.css"><link rel="stylesheet" href="assets/css/action-system.css"><link rel="stylesheet" href="assets/css/editorial-refinement.css"><link rel="stylesheet" href="assets/css/tornearia-mockup.css"><link rel="stylesheet" href="assets/css/projects-editorial.css"><link rel="stylesheet" href="assets/css/contents-editorial.css"><link rel="stylesheet" href="assets/css/about-reference.css"><link rel="stylesheet" href="assets/css/home-section-rhythm.css">
-<link rel="stylesheet" href="assets/css/flagship-conversion.css"><link rel="stylesheet" href="assets/css/hero-prism-scroll.css"><link rel="stylesheet" href="assets/css/ritmo-showcase.css"><link rel="stylesheet" href="assets/css/brand-palette.css"><link rel="stylesheet" href="assets/css/motion-editorial-preview.css">
+<link rel="stylesheet" href="assets/css/flagship-conversion.css"><link rel="stylesheet" href="assets/css/hero-prism-scroll.css"><link rel="stylesheet" href="assets/css/ritmo-showcase.css"><link rel="stylesheet" href="assets/css/brand-palette.css"><link rel="stylesheet" href="assets/css/brand-intro.css">
 </head>
 <body class="home-page">
+<div class="dl-intro" id="dayslume-brand-intro" role="region" aria-label="Animação de abertura da DAYSLUME">
+  <button type="button" class="dl-intro__skip" data-intro-skip>Pular abertura ↗</button>
+  <div class="dl-intro__stage">
+    <div class="dl-intro__point" aria-hidden="true">.</div>
+    <div class="dl-intro__copy" aria-label="DAYSLUME: Ideias ganham forma. Experiências ganham vida.">
+      <div class="dl-intro__name"><span data-intro-name aria-hidden="true"></span></div>
+      <div class="dl-intro__taglines" aria-hidden="true">
+        <span data-intro-line-one></span>
+        <span data-intro-line-two></span>
+      </div>
+    </div>
+    <div class="dl-intro__flower" aria-hidden="true">
+      <img class="dl-intro__petal flower-petal flower-petal--01" src="assets/images/hero-flower-petals/petal-01.png" width="592" height="836" alt="" decoding="async" draggable="false">
+      <img class="dl-intro__petal flower-petal flower-petal--02" src="assets/images/hero-flower-petals/petal-02.png" width="801" height="450" alt="" decoding="async" draggable="false">
+      <img class="dl-intro__petal flower-petal flower-petal--03" src="assets/images/hero-flower-petals/petal-03.png" width="744" height="603" alt="" decoding="async" draggable="false">
+      <img class="dl-intro__petal flower-petal flower-petal--04" src="assets/images/hero-flower-petals/petal-04.png" width="544" height="852" alt="" decoding="async" draggable="false">
+      <img class="dl-intro__petal flower-petal flower-petal--05" src="assets/images/hero-flower-petals/petal-05.png" width="848" height="699" alt="" decoding="async" draggable="false">
+      <img class="dl-intro__petal flower-petal flower-petal--06" src="assets/images/hero-flower-petals/petal-06.png" width="751" height="613" alt="" decoding="async" draggable="false">
+    </div>
+    <div class="dl-intro__signature">ESTÚDIO DE DESENVOLVIMENTO DIGITAL</div>
+  </div>
+</div>
+
 <a class="skip" href="#principal">Ir para o conteúdo</a>
 <div class="days-help-strip" id="topo"><span>Precisa de ajuda com serviços ou produtos? <a href="central-de-ajuda.html">Acesse nossa Central de Ajuda ↗</a></span></div>
 <header class="site-header">
@@ -116,28 +157,6 @@
       </div>
       <div class="hero-scroll-hint" aria-hidden="true">ROLE PARA EXPLORAR <span>↓</span></div>
       <div class="hero-scroll-meter" aria-hidden="true"><span data-scroll-meter></span></div>
-    </div>
-  </section>
-  <!-- Assinatura motion editorial: experimento exclusivo desta branch. -->
-  <section class="dm-motion-bridge" data-dm-bridge aria-label="DAYSLUME: design em movimento">
-    <div class="container dm-motion-bridge__inner">
-      <div class="dm-motion-bridge__eyebrow"><span>DAYSLUME / ESTÚDIO DIGITAL</span><span class="dm-motion-bridge__rule" aria-hidden="true"></span><span>MOVIMENTO COM PROPÓSITO</span></div>
-      <div class="dm-motion-bridge__body">
-        <p class="dm-motion-bridge__statement"><span>Ideias ganham forma.</span><span><em>Experiências ganham vida.</em></span></p>
-        <div class="dm-motion-bridge__brand" aria-hidden="true">
-          <svg class="dm-motion-bridge__flower" viewBox="0 0 100 100" focusable="false" aria-hidden="true">
-            <ellipse class="dm-petal" cx="50" cy="24" rx="12" ry="19"/>
-            <ellipse class="dm-petal" cx="50" cy="24" rx="12" ry="19" transform="rotate(60 50 50)"/>
-            <ellipse class="dm-petal" cx="50" cy="24" rx="12" ry="19" transform="rotate(120 50 50)"/>
-            <ellipse class="dm-petal" cx="50" cy="24" rx="12" ry="19" transform="rotate(180 50 50)"/>
-            <ellipse class="dm-petal" cx="50" cy="24" rx="12" ry="19" transform="rotate(240 50 50)"/>
-            <ellipse class="dm-petal" cx="50" cy="24" rx="12" ry="19" transform="rotate(300 50 50)"/>
-            <circle class="dm-center" cx="50" cy="50" r="10"/>
-          </svg>
-          <span class="dm-motion-bridge__orbital"></span>
-        </div>
-      </div>
-      <div class="dm-motion-bridge__base"><span>ESTRATÉGIA · DESIGN · TECNOLOGIA</span><span class="dm-motion-bridge__pulse" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
     </div>
   </section>
   <section class="section launch-manifest section-shell section-atmosphere section-atmosphere--manifest" id="problemas" aria-labelledby="manifesto-title">
@@ -414,7 +433,7 @@
   <section class="section contact-section section-shell section-atmosphere section-atmosphere--contact" id="contato" aria-labelledby="contact-title"><div class="container contact-grid"><div><p class="eyebrow section-eyebrow"><span class="section-eyebrow__number">08</span><span class="section-eyebrow__label">PRÓXIMO PASSO</span></p><h2 id="contact-title" class="section-title"><span>O que precisa funcionar</span><span><em>melhor no digital?</em></span></h2><p>Conte o que está travando seu negócio. Avaliamos o contexto e indicamos o melhor caminho: um projeto sob medida, um produto DAYSLUME ou uma solução mais simples.</p><div class="contact-note"><a class="migration-link" href="https://wa.me/5531994492474?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20DAYSLUME.%20Quero%20contar%20um%20problema%20do%20meu%20neg%C3%B3cio%20e%20entender%20qual%20solu%C3%A7%C3%A3o%20digital%20faz%20sentido." target="_blank" rel="noopener noreferrer">Contar o que está travando meu negócio ↗</a></div></div><form class="contact-form" id="contact-form" hidden data-whatsapp="5531994492474" aria-describedby="contact-privacy"><div class="form-row"><div class="form-field"><label for="nome">Seu nome <span>*</span></label><input disabled id="nome" name="nome" maxlength="100" autocomplete="name" required placeholder="Como podemos chamar você?"></div><div class="form-field"><label for="email">Seu e-mail <span>*</span></label><input disabled id="email" name="email" maxlength="254" type="email" autocomplete="email" required placeholder="voce@empresa.com.br"></div></div><div class="form-field"><label for="empresa">Empresa ou projeto</label><input disabled id="empresa" name="empresa" autocomplete="organization" maxlength="150" placeholder="Nome do negócio (opcional)"></div><div class="form-field"><label for="necessidade">O que hoje está difícil, confuso ou manual? <span>*</span></label><textarea disabled id="necessidade" name="necessidade" maxlength="2000" required minlength="10" rows="4" placeholder="Conte a situação atual e o que você gostaria que funcionasse melhor."></textarea></div><button class="btn btn-navy" type="button" disabled>Preparar diagnóstico inicial <span aria-hidden="true">↗</span></button><p class="form-status" id="form-status" role="status" aria-live="polite">Preencha os campos para preparar sua mensagem.</p><p id="contact-privacy" class="contact-privacy">Os dados são usados apenas para montar sua mensagem neste navegador. Você revisa e confirma o envio no WhatsApp.</p><a class="btn btn-navy whatsapp-submit" id="whatsapp-submit" hidden target="_blank" rel="noopener noreferrer">Continuar no WhatsApp <span aria-hidden="true">↗</span></a></form><noscript><p>Para enviar sua solicitação, utilize o link de WhatsApp acima.</p></noscript></div></section>
 </main>
 <footer class="site-footer days-support-ready"><div class="container"><div class="footer-main"><a href="index.html" class="footer-brand footer-logo" aria-label="DAYSLUME, início"><img src="assets/images/logohorizontalbranca.png" alt="DAYSLUME — Estúdio de desenvolvimento digital" class="footer-logo-img" width="320" height="73" loading="lazy"></a><p><strong>Estúdio de desenvolvimento digital.</strong><span>Estratégia, design e tecnologia para negócios.</span></p></div><nav class="footer-nav" aria-label="Navegação do rodapé"><a href="servicos.html">Soluções</a><a href="solucoes.html">Produtos</a><a href="projetos.html">Projetos</a><a href="blog.html">Conteúdos</a><a href="sobre.html">Sobre</a><a href="contato.html">Contato</a><a href="central-de-ajuda.html">Central de Ajuda</a></nav><nav class="footer-socials" aria-label="Redes sociais"><a href="https://www.instagram.com/dayslume/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.linkedin.com/company/dayslume/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.tiktok.com/@dayslume" target="_blank" rel="noopener noreferrer">TikTok</a></nav><section class="days-footer-support" aria-labelledby="days-footer-support-title"><div class="days-footer-support-intro"><span class="days-footer-support-kicker">ATENDIMENTO / DAYSLUME</span><h2 id="days-footer-support-title">Podemos ajudar?</h2><p>Dúvidas sobre serviços, produtos ou projetos? Encontre respostas ou converse com a gente.</p></div><div class="days-support-contacts" aria-label="Dados e canais de atendimento"><div class="days-support-contact"><svg class="days-support-contact-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 0 1-11.8 7L4 20l1.1-4A8 8 0 1 1 20 12Z"/><path d="M9 9c.8 3 3 5 6 6"/></svg><div class="days-support-contact-copy"><strong>WhatsApp: </strong><a href="https://wa.me/5531994492474?text=Ol%C3%A1!%20Preciso%20de%20atendimento%20DAYSLUME." target="_blank" rel="noopener noreferrer">+55 (31) 99449-2474</a><small>Atendimento por mensagem · retorno conforme disponibilidade.</small></div></div><div class="days-support-contact"><svg class="days-support-contact-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19 19 0 0 1-8.6-3.1 19 19 0 0 1-6-6 19 19 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.5 3a2 2 0 0 1-.6 1.7L7.7 9.7a15.2 15.2 0 0 0 6.6 6.6l1.3-1.3a2 2 0 0 1 1.7-.6l3 .5a2 2 0 0 1 1.7 2Z"/></svg><div class="days-support-contact-copy"><strong>Telefone: </strong><a href="https://wa.me/5531994492474?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20liga%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer">Solicitar uma ligação</a><small>Combine o contato por mensagem.</small></div></div><div class="days-support-contact"><svg class="days-support-contact-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><div class="days-support-contact-copy"><strong>Mensagem: </strong><a href="contato.html">Clique aqui e fale conosco.</a><small>Prepare sua mensagem pelo site.</small></div></div></div><div class="days-footer-support-actions"><a href="https://wa.me/5531994492474?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20DAYSLUME%20e%20preciso%20de%20ajuda." target="_blank" rel="noopener noreferrer">WhatsApp ↗</a><a href="central-de-ajuda.html">Central de Ajuda ↗</a><a href="contato.html">Contato ↗</a></div></section><div class="footer-bottom"><span>© <span id="year"></span> DAYSLUME</span><nav class="footer-utility-links" aria-label="Links úteis do rodapé"><a href="central-de-ajuda.html">Central de Ajuda ↗</a><a href="contato.html">Contato ↗</a></nav></div></div><div class="days-back-top"><a href="#topo"><span aria-hidden="true">↑</span> Voltar ao topo</a></div></footer>
-<script src="assets/js/dayslume-motion.js" defer></script><script src="assets/js/dayslume-contact.js" defer></script><script src="assets/js/home-premium.js" defer></script><script src="assets/js/hero-flower.js" defer></script><script src="assets/js/hero-prism-scroll.js" defer></script><script src="assets/js/motion-editorial-preview.js" defer></script>
+<script src="assets/js/dayslume-motion.js" defer></script><script src="assets/js/dayslume-contact.js" defer></script><script src="assets/js/home-premium.js" defer></script><script src="assets/js/hero-flower.js" defer></script><script src="assets/js/hero-prism-scroll.js" defer></script><script src="assets/js/brand-intro.js" defer></script>
 <a class="floating-whatsapp" href="https://wa.me/5531994492474?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20DAYSLUME%20e%20gostaria%20de%20falar%20sobre%20um%20projeto." target="_blank" rel="noopener noreferrer" aria-label="Falar com a DAYSLUME pelo WhatsApp" title="Fale com a DAYSLUME pelo WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 11.6a8.4 8.4 0 0 1-12.4 7.3L3.4 20l1.2-4.4a8.4 8.4 0 1 1 15.8-4z"/><path d="M8.4 8.5c.2-.4.5-.4.8-.4l.5.1c.1 0 .3.2.4.5l.5 1.3c.1.3.1.5-.1.8l-.5.6c.7 1.4 1.7 2.4 3.1 3.1l.6-.6c.2-.2.5-.2.8-.1l1.3.5c.3.1.5.3.5.5.1.7-.2 1.2-.8 1.5-1.5.6-3.4-.3-5.1-2s-2.7-3.7-2-5.1z"/></svg></a>
 </body>
 </html>
