@@ -1,4 +1,4 @@
-/* DAYSLUME — mockups reais da Home.
+/* DAYSLUME — mockups reais dos cases da Home.
    Mantém a mídia atual como fallback até os novos arquivos estarem no deploy. */
 (() => {
   const applyMockup = (host) => {
@@ -7,27 +7,15 @@
     const preload = new Image();
     preload.onload = () => {
       if (!preload.naturalWidth) return;
-      if (host.classList.contains('engreni-graphic')) {
-        if (host.querySelector('.engreni-agenda-case-image')) return;
-        const image = document.createElement('img');
-        image.src = file;
-        image.alt = '';
-        image.className = 'engreni-agenda-case-image';
-        image.decoding = 'async';
-        image.width = 1600;
-        image.height = 900;
-        host.appendChild(image);
-      } else {
-        const picture = host.querySelector('picture');
-        const img = host.querySelector('img');
-        if (!img) return;
-        if (picture) picture.querySelectorAll('source').forEach((item) => item.remove());
-        img.src = file;
-        img.width = 1600;
-        img.height = 900;
-        img.decoding = 'async';
-        img.alt = host.getAttribute('data-home-mockup-alt') || img.alt;
-      }
+      const picture = host.querySelector('picture');
+      const img = host.querySelector('img');
+      if (!img) return;
+      if (picture) picture.querySelectorAll('source').forEach((item) => item.remove());
+      img.src = file;
+      img.width = 1600;
+      img.height = 900;
+      img.decoding = 'async';
+      img.alt = host.getAttribute('data-home-mockup-alt') || img.alt;
       host.classList.add('has-home-mockup');
     };
     preload.onerror = () => { /* preserva o layout atual se o arquivo não existir */ };
