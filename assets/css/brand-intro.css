@@ -420,3 +420,25 @@ html.dl-intro-handoff .dl-intro.is-morphing {
   html.dl-intro-handoff .home-page .site-header,
   html.dl-intro-handoff .home-page .days-help-strip {transition:none!important;}
 }
+
+/* Mobile Experience 1.0 — a mesma flor oficial passa da intro à primeira dobra.
+   A cópia da Hero só aparece quando as seis pétalas chegam ao destino. */
+html.dl-intro-handoff .home-page .hero-visual-composition {
+  opacity:0 !important;
+}
+html.dl-intro-landed .home-page .hero-visual-composition {
+  opacity:1 !important;
+  transition:none !important;
+}
+html.dl-intro-landed .dl-intro.is-morphing .dl-intro__flower {
+  opacity:0 !important;
+  transition:opacity 110ms ease !important;
+}
+@media(max-width:800px) and (prefers-reduced-motion:no-preference) {
+  .dl-intro.is-morphing:not(.is-morph-fallback) .dl-intro__flower{
+    transform:translate3d(var(--dl-target-x,0px),var(--dl-target-y,0px),0)
+              scale(var(--dl-target-scale,1));
+    transition:transform 760ms cubic-bezier(.2,.82,.16,1),
+               opacity 110ms ease;
+  }
+}
