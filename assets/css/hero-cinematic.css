@@ -544,3 +544,34 @@
   .cinema-phone,
   .cinema-service { filter: none !important; }
 }
+
+
+/* Homologação de proporções: manter as interfaces completas dentro dos frames. */
+@media (min-width: 901px) {
+  .cinema-browser { height: 71%; min-height: 330px; }
+  .cinema-browser-screen { padding: clamp(20px,2vw,27px); }
+  .cinema-browser-studio { margin-bottom: 9px; }
+  .cinema-browser-title { margin-top: 17px; font-size: clamp(21px,2.25vw,32px); }
+  .cinema-browser-desc { margin-bottom: 12px; }
+  .cinema-category { min-height: 66px; }
+}
+@media (min-width: 561px) and (max-width: 900px) {
+  .cinema-browser { height: 70%; min-height: 315px; }
+  .cinema-browser-screen { padding: 21px; }
+  .cinema-browser-studio { margin-bottom: 8px; }
+  .cinema-browser-title { font-size: 29px; margin-top: 17px; }
+  .cinema-browser-desc { margin-bottom: 11px; }
+  .cinema-category { min-height: 63px; }
+}
+@media (max-width: 560px) {
+  .cinema-browser-screen { padding: 12px 10px; }
+  .cinema-browser-studio { margin-bottom: 4px; }
+  .cinema-browser-title { margin-top: 11px; margin-bottom: 4px; line-height: 1.11; }
+  .cinema-browser-desc { margin-bottom: 8px; line-height: 1.35; }
+  .cinema-category { min-height: 44px; }
+}
+@media (max-width: 360px) {
+  .cinema-browser-screen { padding: 10px 9px; }
+  .cinema-browser-title { margin-top: 8px; font-size: 17px; }
+  .cinema-category { min-height: 39px; }
+}
