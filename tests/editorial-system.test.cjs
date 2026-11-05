@@ -7,7 +7,8 @@ const root = path.resolve(__dirname, '..');
 const home = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const palette = fs.readFileSync(path.join(root, 'assets', 'css', 'brand-palette.css'), 'utf8');
 const sharedMotion = fs.readFileSync(path.join(root, 'assets', 'js', 'dayslume-motion.js'), 'utf8');
-const heroMotion = fs.readFileSync(path.join(root, 'assets', 'js', 'hero-flower.js'), 'utf8');
+const cinematicCss = fs.readFileSync(path.join(root, 'assets', 'css', 'hero-cinematic.css'), 'utf8');
+const cinematicMotion = fs.readFileSync(path.join(root, 'assets', 'js', 'hero-cinematic.js'), 'utf8');
 
 function htmlFiles(directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -56,10 +57,15 @@ test('floating contact control retracts near contact and footer content on every
   assert.match(palette, /@media\s*\(max-width:\s*620px\)[\s\S]*\.floating-whatsapp::after\s*\{\s*display:\s*none/);
 });
 
-test('hero uses the lightweight prism and keeps the original flower safeguards', () => {
-  assert.match(home, /hero--motion-lab/);
-  assert.match(home, /hero__spotlight/);
-  assert.match(home, /hero__beam-field/);
-  assert.doesNotMatch(home, /data-hero-video|<video\b[^>]*autoplay/i);
-  assert.match(heroMotion, /navigator\.connection\?\.saveData/);
+test('hero foregrounds digital products with cinematic, accessible motion', () => {
+  assert.match(home, /class="hero hero--cinematic"/);
+  for (const element of ['cinema-browser','cinema-phone','cinema-service']) {
+    assert.match(home, new RegExp(element));
+  }
+  assert.match(home, /dayslume-flor-oficial\.webp/);
+  assert.doesNotMatch(home, /data-flower-petal|data-scroll-hero|data-hero-video|<video\b[^>]*autoplay/i);
+  assert.match(cinematicCss, /@media \(prefers-reduced-motion: reduce\)/);
+  assert.match(cinematicCss, /\.hero--cinematic \.hero-visual-composition/);
+  assert.match(cinematicMotion, /prefers-reduced-motion: reduce/);
+  assert.match(cinematicMotion, /pointer\.matches/);
 });
