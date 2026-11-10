@@ -204,7 +204,9 @@ test('3D is restored on separated product cells without merging the QA cases and
  const tilt=css.split('/* DAYSLUME 3.2 — Perspectiva 3D aprovada')[1];
  assert.ok(tilt,'the approved 3D treatment exists');
  for(const element of ['cinema-browser','cinema-phone','cinema-service']){
-   assert.match(tilt,new RegExp('\\\\.hero--cinematic \\\\.'+element+'\\\\s*\\\\{[\\\\s\\\\S]*?transform:\\\\s*perspective\\\\('));
+   const declaration=tilt.split('.hero--cinematic .'+element+' {')[1];
+   assert.ok(declaration,element+' missing 3D rule');
+   assert.match(declaration.split('}')[0],/transform:\s*perspective\(/);
  }
  assert.match(css,/grid-template-columns:\s*minmax\(0,\s*1fr\)/);
  assert.match(html,/assets\/css\/final-qa-20261014\.css/);
