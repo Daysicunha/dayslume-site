@@ -157,23 +157,22 @@ test('official brand tokens and primary text pairs keep accessible contrast', ()
   }
 });
 
-test('home hero uses the six official independent petals with motion safeguards', () => {
+test('home hero showcases product screens and keeps the official flower secondary', () => {
   const home = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-  const heroCss = fs.readFileSync(path.join(root, 'assets', 'css', 'hero-flower-interactive.css'), 'utf8');
-  const heroJs = fs.readFileSync(path.join(root, 'assets', 'js', 'hero-flower.js'), 'utf8');
-  const petals = [...home.matchAll(/<img\b[^>]*data-flower-petal[^>]*src=["']([^"']+)["'][^>]*>/gi)];
-
-  assert.equal(petals.length, 6);
-  assert.deepEqual(
-    petals.map((match) => path.basename(match[1])).sort(),
-    ['petal-01.png', 'petal-02.png', 'petal-03.png', 'petal-04.png', 'petal-05.png', 'petal-06.png']
-  );
+  const heroCss = fs.readFileSync(path.join(root, 'assets', 'css', 'hero-cinematic.css'), 'utf8');
+  const heroJs = fs.readFileSync(path.join(root, 'assets', 'js', 'hero-cinematic.js'), 'utf8');
+  const petals = [...home.matchAll(/data-flower-petal\b/gi)];
+  assert.equal(petals.length, 0);
+  assert.match(home, /hero--cinematic/);
+  assert.match(home, /cinema-browser/);
+  assert.match(home, /cinema-phone/);
+  assert.match(home, /cinema-service/);
+  assert.match(home, /dayslume-flor-oficial\.webp/);
   assert.doesNotMatch(home, /class=["']hero-background-image["']/i);
   assert.match(heroJs, /requestAnimationFrame/);
-  assert.match(heroJs, /translate3d\(/);
   assert.match(heroJs, /prefers-reduced-motion:\s*reduce/);
   assert.match(heroCss, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
-  assert.match(heroCss, /@media\s*\(max-width:\s*800px\)/);
+  assert.match(heroCss, /@media\s*\(max-width:\s*560px\)/);
 });
 
 test('home static content is not exposed as a fake control or viewport-height section', () => {
