@@ -575,3 +575,291 @@
   .cinema-browser-title { margin-top: 8px; font-size: 17px; }
   .cinema-category { min-height: 39px; }
 }
+
+/* FIX 2026-11-10 — composição em grade sem oclusão entre VITRINI, ENGRENI e serviços. */
+/* Elementos de produto ocupam células próprias; profundidade fica só na luz e nas bordas. */
+.hero--cinematic .hero-visual-composition.cinema-stage {
+  aspect-ratio: auto;
+  min-height: 0;
+  max-width: 790px;
+  overflow: visible;
+}
+.hero--cinematic .cinema-cluster {
+  position: relative;
+  inset: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 2.25fr) minmax(160px, .9fr);
+  grid-template-rows: repeat(5, auto);
+  gap: 12px clamp(14px, 1.5vw, 24px);
+  align-items: start;
+  transform: translate3d(var(--cinema-shift-x, 0px), var(--cinema-shift-y, 0px), 0);
+  transform-style: flat;
+}
+.hero--cinematic .cinema-overline {
+  position: static;
+  grid-column: 1 / -1;
+  grid-row: 1;
+  justify-self: end;
+  color: rgba(243,239,232,.65);
+}
+.hero--cinematic .cinema-stage-caption {
+  position: static;
+  align-self: end;
+  white-space: normal;
+}
+.hero--cinematic .cinema-stage-caption--vitrini {
+  grid-column: 1;
+  grid-row: 2;
+}
+.hero--cinematic .cinema-stage-caption--engreni {
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: start;
+}
+.hero--cinematic .cinema-browser {
+  position: relative;
+  grid-column: 1;
+  grid-row: 3;
+  top: auto;
+  left: auto;
+  width: 100%;
+  height: 344px;
+  min-height: 0;
+  transform: none;
+  align-self: stretch;
+}
+.hero--cinematic .cinema-browser-screen {
+  padding: clamp(16px, 1.8vw, 24px);
+}
+.hero--cinematic .cinema-browser-studio {
+  margin-bottom: 8px;
+}
+.hero--cinematic .cinema-browser-title {
+  font-size: clamp(22px, 2vw, 29px);
+  margin-top: 17px;
+  margin-bottom: 7px;
+}
+.hero--cinematic .cinema-browser-desc {
+  margin-bottom: 13px;
+}
+.hero--cinematic .cinema-category {
+  min-height: 64px;
+}
+.hero--cinematic .cinema-phone {
+  position: relative;
+  grid-column: 2;
+  grid-row: 3;
+  top: auto;
+  right: auto;
+  justify-self: stretch;
+  align-self: stretch;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  height: 344px;
+  min-height: 0;
+  transform: none;
+}
+.hero--cinematic .cinema-phone-head {
+  padding-inline: 10px;
+}
+.hero--cinematic .cinema-phone-head strong {
+  font-size: clamp(14px, 1.25vw, 18px);
+}
+.hero--cinematic .cinema-phone-body {
+  padding-inline: 9px;
+}
+.hero--cinematic .cinema-service {
+  position: relative;
+  grid-column: 1 / -1;
+  grid-row: 4;
+  left: auto;
+  bottom: auto;
+  width: 100%;
+  min-height: 70px;
+  transform: none;
+}
+.hero--cinematic .cinema-art-foot {
+  position: static;
+  grid-column: 1;
+  grid-row: 5;
+  align-self: center;
+  max-width: none;
+}
+.hero--cinematic .cinema-signature {
+  position: static;
+  grid-column: 2;
+  grid-row: 5;
+  justify-self: end;
+  align-self: center;
+}
+/* Em tablets, a coluna visual recebe largura suficiente para duas telas legíveis. */
+@media (max-width: 1180px) {
+  .hero--cinematic .hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+    width: min(calc(100% - 64px), 820px);
+    gap: 32px;
+  }
+  .hero--cinematic .hero-visual-composition.cinema-stage {
+    width: min(100%, 790px);
+    min-height: 0;
+  }
+  .hero--cinematic .cinema-browser,
+  .hero--cinematic .cinema-phone {
+    height: 340px;
+    min-height: 0;
+  }
+}
+@media (max-width: 900px) {
+  .hero--cinematic .hero-grid {
+    width: min(calc(100% - 42px), 740px);
+    gap: 28px;
+  }
+  .hero--cinematic .hero-visual-composition.cinema-stage {
+    aspect-ratio: auto;
+    min-height: 0;
+  }
+  .hero--cinematic .cinema-cluster {
+    grid-template-columns: minmax(0, 2.2fr) minmax(155px, .9fr);
+  }
+}
+@media (max-width: 560px) {
+  /* No celular, as interfaces ficam uma abaixo da outra — nunca uma sobre a outra. */
+  .hero--cinematic .hero-grid {
+    width: calc(100% - 34px);
+    gap: 18px;
+  }
+  .hero--cinematic .hero-visual-composition.cinema-stage {
+    min-height: 0;
+    aspect-ratio: auto;
+    margin-top: 0;
+  }
+  .hero--cinematic .cinema-cluster {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: repeat(8, auto);
+    row-gap: 12px;
+  }
+  .hero--cinematic .cinema-overline {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    white-space: normal;
+    font-size: 8px;
+  }
+  .hero--cinematic .cinema-stage-caption--vitrini {
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 9px;
+  }
+  .hero--cinematic .cinema-browser {
+    grid-column: 1;
+    grid-row: 3;
+    width: 100%;
+    height: 264px;
+    min-height: 0;
+  }
+  .hero--cinematic .cinema-browser-screen {
+    padding: 12px;
+  }
+  .hero--cinematic .cinema-browser-title {
+    font-size: clamp(20px, 5.8vw, 26px);
+    margin-top: 12px;
+    margin-bottom: 5px;
+  }
+  .hero--cinematic .cinema-browser-desc {
+    margin-bottom: 12px;
+    font-size: 9px;
+  }
+  .hero--cinematic .cinema-category {
+    min-height: 46px;
+  }
+  .hero--cinematic .cinema-stage-caption--engreni {
+    grid-column: 1;
+    grid-row: 4;
+    font-size: 9px;
+  }
+  .hero--cinematic .cinema-phone {
+    grid-column: 1;
+    grid-row: 5;
+    justify-self: center;
+    width: min(69%, 232px);
+    height: 330px;
+    min-height: 0;
+    border-radius: 28px;
+    padding: 7px;
+  }
+  .hero--cinematic .cinema-phone-screen {
+    border-radius: 21px;
+  }
+  .hero--cinematic .cinema-phone-head {
+    padding: 26px 13px 15px;
+  }
+  .hero--cinematic .cinema-phone-brand {
+    font-size: 9px;
+  }
+  .hero--cinematic .cinema-phone-head strong {
+    font-size: 19px;
+  }
+  .hero--cinematic .cinema-phone-week span {
+    font-size: 9px;
+    padding: 5px 0;
+  }
+  .hero--cinematic .cinema-phone-body {
+    padding: 12px 10px;
+  }
+  .hero--cinematic .cinema-phone-subtitle {
+    font-size: 10px;
+  }
+  .hero--cinematic .cinema-appointment {
+    padding: 9px 3px;
+    gap: 7px;
+  }
+  .hero--cinematic .cinema-appointment time,
+  .hero--cinematic .cinema-appointment span {
+    font-size: 9px;
+  }
+  .hero--cinematic .cinema-appointment small {
+    font-size: 8px;
+  }
+  .hero--cinematic .cinema-service {
+    grid-column: 1;
+    grid-row: 6;
+    width: 100%;
+    min-height: 65px;
+  }
+  .hero--cinematic .cinema-service-copy strong {
+    font-size: 11px;
+  }
+  .hero--cinematic .cinema-service-copy small {
+    font-size: 9px;
+    display: block;
+  }
+  .hero--cinematic .cinema-art-foot {
+    grid-column: 1;
+    grid-row: 7;
+    font-size: 8px;
+    max-width: none;
+  }
+  .hero--cinematic .cinema-signature {
+    grid-column: 1;
+    grid-row: 8;
+    font-size: 8px;
+  }
+}
+@media (max-width: 360px) {
+  .hero--cinematic .hero-visual-composition.cinema-stage {
+    min-height: 0;
+    margin-top: 0;
+  }
+  .hero--cinematic .cinema-browser {
+    height: 250px;
+  }
+  .hero--cinematic .cinema-browser-title {
+    font-size: 19px;
+  }
+  .hero--cinematic .cinema-phone {
+    width: min(73%, 225px);
+    height: 315px;
+    min-height: 0;
+  }
+}
