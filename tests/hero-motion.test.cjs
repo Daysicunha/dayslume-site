@@ -181,3 +181,19 @@ test('new cinematic hero styles load before the official palette',()=>{
  assert.match(css,/min-height: min\(850px, 94svh\)/);
  assert.match(css,/@media \(prefers-reduced-motion: reduce\)/);
 });
+
+test('cinematic product composition keeps every card in an independent grid cell', () => {
+  const css = read('assets/css/hero-cinematic.css');
+  const patch = css.split('/* FIX 2026-11-10')[1];
+  assert.ok(patch, 'non-overlap patch must exist');
+  assert.match(patch, /\.hero--cinematic \.cinema-cluster\s*\{[\s\S]*?display:\s*grid;/);
+  assert.match(patch, /\.hero--cinematic \.cinema-browser\s*\{[\s\S]*?grid-column:\s*1;[\s\S]*?grid-row:\s*3;/);
+  assert.match(patch, /\.hero--cinematic \.cinema-phone\s*\{[\s\S]*?grid-column:\s*2;[\s\S]*?grid-row:\s*3;/);
+  assert.match(patch, /\.hero--cinematic \.cinema-service\s*\{[\s\S]*?grid-column:\s*1\s*\/\s*-1;[\s\S]*?grid-row:\s*4;/);
+  const mobile = patch.split('@media (max-width: 560px)')[1];
+  assert.ok(mobile, 'mobile layout must exist');
+  assert.match(mobile, /\.hero--cinematic \.cinema-browser\s*\{[\s\S]*?grid-row:\s*3;/);
+  assert.match(mobile, /\.hero--cinematic \.cinema-phone\s*\{[\s\S]*?grid-row:\s*5;/);
+  assert.match(mobile, /\.hero--cinematic \.cinema-service\s*\{[\s\S]*?grid-row:\s*6;/);
+  assert.match(mobile, /grid-template-columns:\s*minmax\(0,\s*1fr\);/);
+});
