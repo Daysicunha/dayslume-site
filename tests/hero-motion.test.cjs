@@ -197,3 +197,24 @@ test('cinematic product composition keeps every card in an independent grid cell
   assert.match(mobile, /\.hero--cinematic \.cinema-service\s*\{[\s\S]*?grid-row:\s*6;/);
   assert.match(mobile, /grid-template-columns:\s*minmax\(0,\s*1fr\);/);
 });
+
+test('3D is restored on separated product cells without merging the QA cases and content', () => {
+ const css=read('assets/css/hero-cinematic.css');
+ const html=read('index.html');
+ const tilt=css.split('/* DAYSLUME 3.2 — Perspectiva 3D aprovada')[1];
+ assert.ok(tilt,'the approved 3D treatment exists');
+ for(const element of ['cinema-browser','cinema-phone','cinema-service']){
+   assert.match(tilt,new RegExp('\\\\.hero--cinematic \\\\.'+element+'\\\\s*\\\\{[\\\\s\\\\S]*?transform:\\\\s*perspective\\\\('));
+ }
+ assert.match(css,/grid-template-columns:\s*minmax\(0,\s*1fr\)/);
+ assert.match(html,/assets\/css\/final-qa-20261014\.css/);
+ assert.match(html,/assets\/js\/home-case-mockups\.js/);
+ for(const name of ['case-tornearia-barbosa-1600x900.webp','case-new-rocket-play-1600x900.webp','case-engreni-agenda-1600x900.webp']){
+   assert.match(html,new RegExp(name));
+ }
+ for(const name of ['content-design-process.svg','content-strategy-editorial.svg','content-technology-experience.svg']){
+   assert.match(html,new RegExp(name));
+ }
+ const styles=[...html.matchAll(/href="(assets\/css\/[^"]+\.css)"/g)].map(m=>m[1]);
+ assert.equal(styles.at(-1),'assets/css/brand-palette.css');
+});

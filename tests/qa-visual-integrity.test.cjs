@@ -8,6 +8,9 @@ const internal=read('assets/css/internal-home-parity.css');
 const home=read('assets/css/home-section-rhythm.css');
 const projects=read('assets/css/projects-experience.css');
 const projectPage=read('projetos.html');
+const index=read('index.html');
+const finalQa=read('assets/css/final-qa-20261014.css');
+const homeMockups=read('assets/js/home-case-mockups.js');
 const interior=['servicos.html','solucoes.html','projetos.html','blog.html','sobre.html','contato.html','sites-completos.html','landing-pages.html','vitrini.html','vitrini-link.html'];
 
 test('header and footer share consistent, smaller DAYSLUME logo on eleven main pages',()=>{
@@ -60,6 +63,20 @@ test('project mockups use actual images and transparent illustrative placeholder
  assert.match(projects,/@media\(max-width:540px\)/);
 });
 
+test('home keeps each approved mockup in its intended card with centered responsive framing',()=>{
+ for(const file of ['case-tornearia-barbosa-1600x900.webp','case-new-rocket-play-1600x900.webp']){
+  assert.match(index,new RegExp(`data-home-mockup="assets/images/${file}"`));
+  assert.ok(fs.existsSync(path.join(root,'assets/images',file)),file);
+ }
+ assert.ok(fs.existsSync(path.join(root,'assets/images/case-engreni-agenda-1600x900.webp')));
+ assert.match(index,/class="case-dayane-mockup" src="assets\/images\/case-engreni-agenda-1600x900\.webp"/);
+ assert.doesNotMatch(index,/class="solution-graphic product-interface engreni-graphic"[^>]*data-home-mockup=/);
+ assert.match(homeMockups,/naturalWidth/);
+ assert.match(homeMockups,/classList\.add\('has-home-mockup'\)/);
+ assert.match(finalQa,/flagship-cases \.project-image\.has-home-mockup\s*\{[\s\S]*?aspect-ratio:\s*16 \/ 9/);
+ assert.match(finalQa,/case-dayane-mockup\s*\{[\s\S]*?object-fit:\s*contain;[\s\S]*?object-position:\s*center/);
+});
+
 test('shared style loads ahead of official palette, preserving canonical brand tokens',()=>{
  for(const p of interior){
   const html=read(p);
@@ -67,7 +84,6 @@ test('shared style loads ahead of official palette, preserving canonical brand t
   assert.ok(links.includes('assets/css/internal-home-parity.css'),p);
   assert.equal(links.at(-1),'assets/css/brand-palette.css',p);
  }
- const index=read('index.html');
  const links=[...index.matchAll(/href="(assets\/css\/[^"]+\.css)"/g)].map(m=>m[1]);
  assert.equal(links.at(-1),'assets/css/brand-palette.css');
 });
