@@ -13,8 +13,6 @@
   const hint = film.querySelector('[data-c33-hint]');
   const labels = [film.querySelector('[data-c33-vitrini]'), film.querySelector('[data-c33-engreni]')];
   const lines = [...film.querySelectorAll('[data-c33-caption]')];
-  const scene = film.querySelector('[data-c33-scene]');
-  const time = film.querySelector('[data-c33-time]');
   const header = document.querySelector('.site-header');
   const helpStrip = document.querySelector('.days-help-strip');
   const floatingWhatsApp = document.querySelector('.floating-whatsapp');
@@ -97,13 +95,12 @@
           line.classList.toggle('is-active',show);
           line.inert=!show;
         });
-        scene.textContent='CENA '+(current+1)+' · '+names[current];
+        film.dataset.currentScene=names[current].toLowerCase();
         lastScene=current;
       }
-      const seconds=Math.round(p*102);
-      const stamp='00:'+String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0');
-      if (time.textContent !== stamp) time.textContent=stamp;
       film.classList.toggle('c33-reveal',b>.55);
+      // Controlled tonal dissolve into the existing 3D hero at the final frame.
+      pin.style.setProperty('--c33-exit-progress',ease((p-.92)/.08).toFixed(3));
       lastProgress = p;
     }
     if (force || mx !== lastMx || my !== lastMy) {
@@ -139,8 +136,7 @@
         line.inert=i!==0;
         line.classList.toggle('is-active',i===0);
       });
-      scene.textContent='DAYSLUME · APRESENTAÇÃO';
-      time.textContent='00:00:00';
+      film.dataset.currentScene='abertura';
       film.classList.remove('c33-reveal');
       title.style.removeProperty('opacity');
       title.style.removeProperty('transform');
@@ -162,21 +158,21 @@
   function isFilmInForeground() {
     const rect = film.getBoundingClientRect();
     const midpoint = window.innerHeight * .5;
-    return rect.top <= midpoint && rect.bottom > midpoint;
+    return rect.top <= window.innerHeight && rect.bottom > Math.max(64, header?.offsetHeight || 0);
   }
   function setFilmChrome(isVisible) {
     if (chromeState === isVisible) return;
     chromeState = isVisible;
     document.body.classList.toggle('c33-intro-active', isVisible);
+    // One accessible, fixed menu remains available throughout the film.
+    // A phase change closes a previously opened mobile drawer.
     if (header) {
-      header.inert = isVisible;
-      if (isVisible) {
-        header.querySelector('.menu.open')?.classList.remove('open');
-        const toggle = header.querySelector('.menu-toggle');
-        if (toggle) {
-          toggle.setAttribute('aria-expanded','false');
-          toggle.setAttribute('aria-label','Abrir menu');
-        }
+      header.inert = false;
+      header.querySelector('.menu.open')?.classList.remove('open');
+      const toggle = header.querySelector('.menu-toggle');
+      if (toggle) {
+        toggle.setAttribute('aria-expanded','false');
+        toggle.setAttribute('aria-label','Abrir menu');
       }
     }
     if (helpStrip) helpStrip.inert = isVisible;

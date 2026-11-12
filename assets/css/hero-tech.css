@@ -366,8 +366,6 @@
   .hero-ambient-light,.hero-light-lines span{animation:none!important}
 }
 
-/* O menu pertence à abertura e sai de cena quando a página é rolada. */
-.site-header{position:absolute;left:50%;right:auto;margin:0;transform:translateX(-50%)}
 
 /* Mantém uma distância previsível entre "Sobre" e o Instagram. */
 @media(min-width:1181px){

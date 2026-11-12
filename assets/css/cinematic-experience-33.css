@@ -228,3 +228,6 @@
   .home-page .cinema33-showroom__choices button,
   .home-page .cinema33-ledger__link { transition: none; }
 }
+
+/* LOTE E — retain product exploration link without a second scene counter. */
+.home-page .cinema33-ledger { justify-content: flex-end; }
