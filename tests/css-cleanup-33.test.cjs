@@ -18,7 +18,7 @@ test('CSS cleanup removes only abandoned files while keeping all referenced styl
  const loaded=new Set();
  for(const p of pages){
   const source=fs.readFileSync(p,'utf8');
-  const hrefs=[...source.matchAll(/<link\\b[^>]*rel=["']stylesheet["'][^>]*href=["']([^"']+)["']/gi)].map(m=>m[1]);
+  const hrefs=[...source.matchAll(/<link\b[^>]*rel=["']stylesheet["'][^>]*href=["']([^"']+)["']/gi)].map(m=>m[1]);
   const local=hrefs.filter(x=>!/^https?:/i.test(x)).map(x=>path.resolve(path.dirname(p),x));
   assert.equal(new Set(local).size,local.length,'Duplicate link in '+p);
   for(const target of local){
