@@ -48,28 +48,21 @@ test('cinematic entrance hides the floating header while restoring it afterwards
   assert.match(css, /c33-intro-active \.site-header/);
   assert.match(css, /c33-intro-active \.floating-whatsapp/);
 });
-test('each scene transition gets a luminous animated line, with responsive reduced motion',()=>{
-  const html=read('index.html');
-  const js=read('assets/js/cinematic-film-intro-33.js');
-  const css=read('assets/css/cinematic-film-intro-33.css');
-  assert.match(html, /data-c33-scene-flash/);
-  assert.match(js, /sceneFlash\.classList\.add\('is-playing'\)/);
-  assert.match(js, /c33-section-line/);
-  assert.match(css, /@keyframes c33-film-cut/);
-  assert.match(css, /@keyframes c33-film-shine/);
-  assert.match(css, /@keyframes c33-section-line-in/);
-  assert.match(css, /prefers-reduced-motion:reduce/);
+test('luminous line applies at SECTION boundaries, never inside the intro', () => {
+  const html=read('index.html'), css=read('assets/css/cinematic-film-intro-33.css'), js=read('assets/js/cinematic-film-intro-33.js');
+  assert.doesNotMatch(html,/data-c33-scene-flash/);
+  assert.doesNotMatch(js,/sceneFlash/);
+  assert.doesNotMatch(css,/c33-scene-flash/);
+  assert.match(js,/c33-section-line/);
+  assert.match(css,/c33-section-line.is-lit/);
+  assert.match(css,/@keyframes c33-section-shine/);
 });
-test('Claude-inspired cinematic outro completes the original functioning footer',()=>{
-  const html=read('index.html');
-  const css=read('assets/css/cinematic-film-intro-33.css');
-  assert.match(html, /id="cinema33-credits"/);
-  assert.match(html, /CENA FINAL · ASSINATURA DAYSLUME/);
-  assert.match(html, /class="c33-credits-wordmark" id="c33-credits-title">DAYSLUME/);
-  assert.match(html, /class="c33-credits-cta" href="contato.html"/);
-  assert.match(html, /class="footer-nav"/);
-  assert.match(html, /class="footer-socials"/);
-  assert.match(html, /class="days-footer-support"/);
-  assert.match(html, /class="days-back-top"/);
-  assert.match(css, /#cinema33-credits/);
+test('original functional footer is last — no extra cinematic credits', () => {
+  const html=read('index.html'), css=read('assets/css/cinematic-film-intro-33.css');
+  assert.doesNotMatch(html,/id="cinema33-credits"/);
+  assert.doesNotMatch(css,/#cinema33-credits/);
+  assert.match(html,/class="footer-nav"/);
+  assert.match(html,/class="footer-socials"/);
+  assert.match(html,/class="days-footer-support"/);
+  assert.match(html,/class="days-back-top"/);
 });

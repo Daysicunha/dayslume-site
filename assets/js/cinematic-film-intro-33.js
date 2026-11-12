@@ -15,7 +15,6 @@
   const lines = [...film.querySelectorAll('[data-c33-caption]')];
   const scene = film.querySelector('[data-c33-scene]');
   const time = film.querySelector('[data-c33-time]');
-  const sceneFlash = film.querySelector('[data-c33-scene-flash]');
   const header = document.querySelector('.site-header');
   const floatingWhatsApp = document.querySelector('.floating-whatsapp');
   if (!windowEl || !beam || !glow || !title || lines.length !== 5 || labels.some(label => !label)) return;
@@ -89,11 +88,6 @@
     hint.style.opacity=p<.02?'1':'0';
     const current = p<.13 ? 0 : p<.33 ? 1 : p<.57 ? 2 : p<.84 ? 3 : 4;
     if (current!==lastScene) {
-      if (sceneFlash && lastScene !== -1 && !reduce.matches) {
-        sceneFlash.classList.remove('is-playing');
-        void sceneFlash.offsetWidth; // replay the transition at each scene change
-        sceneFlash.classList.add('is-playing');
-      }
       lines.forEach((line,i) => {
         const show=i===current;
         line.classList.toggle('is-active',show);
