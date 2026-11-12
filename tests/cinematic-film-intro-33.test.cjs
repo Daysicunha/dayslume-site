@@ -40,10 +40,13 @@ test('cinematic entrance hides the floating header while restoring it afterwards
   const html=read('index.html');
   const js=read('assets/js/cinematic-film-intro-33.js');
   const css=read('assets/css/cinematic-film-intro-33.css');
-  assert.match(html, /class="home-page c33-intro-active"/);
+  assert.match(html, /<body class="home-page">/);
+  assert.doesNotMatch(html, /<body class="home-page c33-intro-active">/);
+  assert.match(js, /document\.documentElement\.classList\.add\(\x27c33-film-ready\x27\)/);
   assert.match(js, /function setFilmChrome\(isVisible\)/);
   assert.match(js, /header\.inert = isVisible/);
-  assert.match(js, /setFilmChrome\(active\)/);
+  assert.match(js, /setFilmChrome\(isFilmInForeground\(\)\)/);
+  assert.match(js, /helpStrip\.inert = isVisible/);
   assert.match(js, /floatingWhatsApp\.inert = isVisible/);
   assert.match(css, /c33-intro-active \.site-header/);
   assert.match(css, /c33-intro-active \.floating-whatsapp/);
@@ -65,4 +68,23 @@ test('original functional footer is last — no extra cinematic credits', () => 
   assert.match(html,/class="footer-socials"/);
   assert.match(html,/class="days-footer-support"/);
   assert.match(html,/class="days-back-top"/);
+});
+
+test('LOTE A starts the film at page top and never reserves an invisible sticky header',()=>{
+  const html=read('index.html');
+  const css=read('assets/css/cinematic-film-intro-33.css');
+  assert.match(css,/body\.home-page > \.site-header\s*\{\s*position:\s*fixed/);
+  assert.match(css,/body\.home-page > \.days-help-strip\s*\{\s*position:\s*fixed/);
+  assert.match(css,/html:not\(\.c33-film-ready\) #cinema33-film/);
+  assert.match(css,/height:\s*100svh/);
+  assert.match(html,/class="skip" href="#apresentacao"/);
+  assert.match(html,/id="apresentacao" aria-labelledby="hero-title" tabindex="-1"/);
+});
+test('LOTE A keeps film captions inert until their scene and does not alter first-child layout',()=>{
+  const html=read('index.html'), js=read('assets/js/cinematic-film-intro-33.js');
+  assert.equal((html.match(/data-c33-caption inert/g)||[]).length,4);
+  assert.match(js,/line\.inert=!show/);
+  assert.match(js,/section\.append\(line\)/);
+  assert.doesNotMatch(js,/section\.prepend\(line\)/);
+  assert.match(js,/section\.querySelector\(':scope > \.c33-section-line'\)/);
 });

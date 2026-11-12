@@ -16,6 +16,7 @@
   const scene = film.querySelector('[data-c33-scene]');
   const time = film.querySelector('[data-c33-time]');
   const header = document.querySelector('.site-header');
+  const helpStrip = document.querySelector('.days-help-strip');
   const floatingWhatsApp = document.querySelector('.floating-whatsapp');
   if (!windowEl || !beam || !glow || !title || lines.length !== 5 || labels.some(label => !label)) return;
   const names = ['ABERTURA', 'NECESSIDADE', 'PRESENÇA', 'OPERAÇÃO', 'CONTATO'];
@@ -134,24 +135,36 @@
   updateSize();
   lines.forEach((line,i) => { line.inert=i!==0; });
   if (reduce.matches) updateReduce();
-  // The standard navigation is intentionally not part of the film.
-  // It returns as soon as the opening is no longer in the viewport.
+  // Progressive enhancement: header is visible by default without JS.
+  // The cinematic controller hides it only once every required listener exists.
+  // The hand-off uses the viewport midpoint, not a 1px intersection at the end.
+  let chromeState = null;
+  function isFilmInForeground() {
+    const rect = film.getBoundingClientRect();
+    const midpoint = window.innerHeight * .5;
+    return rect.top <= midpoint && rect.bottom > midpoint;
+  }
   function setFilmChrome(isVisible) {
+    if (chromeState === isVisible) return;
+    chromeState = isVisible;
     document.body.classList.toggle('c33-intro-active', isVisible);
     if (header) {
       header.inert = isVisible;
       if (isVisible) {
         header.querySelector('.menu.open')?.classList.remove('open');
         const toggle = header.querySelector('.menu-toggle');
-        if (toggle) toggle.setAttribute('aria-expanded','false');
+        if (toggle) {
+          toggle.setAttribute('aria-expanded','false');
+          toggle.setAttribute('aria-label','Abrir menu');
+        }
       }
     }
+    if (helpStrip) helpStrip.inert = isVisible;
     if (floatingWhatsApp) floatingWhatsApp.inert = isVisible;
   }
-  setFilmChrome(film.getBoundingClientRect().bottom > 0 && film.getBoundingClientRect().top < window.innerHeight);
   const observer = new IntersectionObserver(entries => {
     active=entries[0].isIntersecting;
-    setFilmChrome(active);
+    setFilmChrome(isFilmInForeground());
     if (active) start(); else stop();
   },{threshold:0});
   observer.observe(film);
@@ -167,10 +180,12 @@
     });
   }, { threshold: .06 });
   cuts.forEach(section => {
+    if (section.querySelector(':scope > .c33-section-line')) return;
     const line = document.createElement('span');
     line.className = 'c33-section-line';
     line.setAttribute('aria-hidden', 'true');
-    section.prepend(line);
+    // Absolute decoration appended at the end preserves :first-child layout rules.
+    section.append(line);
     section.setAttribute('data-c33-seamed','');
     if (reduce.matches) line.classList.add('is-lit');
     else cutObserver.observe(line);
@@ -184,4 +199,11 @@
   window.addEventListener('resize',()=>{updateSize(); if(active&&!reduce.matches)draw(performance.now());},{passive:true});
   reduce.addEventListener('change',updateReduce);
   document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();else start();});
+  // Chrome must also recover at the end of the film for reduced-motion visitors
+  // and during direct #apresentacao navigation, even if the film intersects by 1px.
+  window.addEventListener('scroll', () => setFilmChrome(isFilmInForeground()), { passive: true });
+  window.addEventListener('resize', () => setFilmChrome(isFilmInForeground()), { passive: true });
+  window.addEventListener('hashchange', () => setFilmChrome(isFilmInForeground()));
+  setFilmChrome(isFilmInForeground());
+  document.documentElement.classList.add('c33-film-ready');
 })();

@@ -296,3 +296,37 @@ body.home-page.c33-intro-active .site-header { transform: translateY(-15px); }
   }
   .home-page main > section .c33-section-line::after { display: none; }
 }
+
+/* LOTE A / progressive enhancement: by default no JS -> navigation stays visible.
+   The film occupies the top of the document, not space after the old sticky header. */
+body.home-page > .days-help-strip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 120;
+}
+body.home-page > .site-header {
+  position: fixed;
+  top: 38px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 110;
+}
+body.home-page #apresentacao { scroll-margin-top: 146px; }
+html:not(.c33-film-ready) #cinema33-film {
+  height: 100svh;
+  min-height: 500px;
+}
+html:not(.c33-film-ready) #cinema33-film .c33-hint {
+  display: none;
+}
+/* An absolute divider must be anchored to each section, not a grandparent. */
+body.home-page main > section[data-c33-seamed] {
+  position: relative;
+}
+@media (max-width: 600px) {
+  body.home-page #apresentacao { scroll-margin-top: 134px; }
+}
