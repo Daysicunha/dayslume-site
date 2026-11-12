@@ -40,7 +40,7 @@ test('cinematic entrance hides the floating header while restoring it afterwards
   const html=read('index.html');
   const js=read('assets/js/cinematic-film-intro-33.js');
   const css=read('assets/css/cinematic-film-intro-33.css');
-  assert.match(html, /<body class="home-page">/);
+  assert.match(html, /<body class="home-page"(?:\s[^>]*)?>/);
   assert.doesNotMatch(html, /<body class="home-page c33-intro-active">/);
   assert.match(js, /document\.documentElement\.classList\.add\(\x27c33-film-ready\x27\)/);
   assert.match(js, /function setFilmChrome\(isVisible\)/);

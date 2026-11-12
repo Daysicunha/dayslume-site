@@ -44,3 +44,10 @@ test('Lote C does not override layout geometry or add a new font',()=>{
   assert.doesNotMatch(css,/height:\s*760svh/);
   assert.doesNotMatch(css,/\.cinema-stage\s*\{[^}]*transform:/);
 });
+
+test('Lote C can re-enable one-shot cuts after reduced-motion changes',()=>{
+  const js=read('assets/js/cinematic-editorial-33.js');
+  assert.match(js,/reduced\.addEventListener\('change'/);
+  assert.match(js,/line\.classList\.remove\('is-lit'\)/);
+  assert.match(js,/observer\.observe\(line\)/);
+});

@@ -42,8 +42,11 @@
       observer.disconnect();
       renderStatic();
     } else {
+      // Returning from reduced-motion mode re-enables one-shot lines.
+      // They never become a continuous or scroll-bound animation loop.
       lines.forEach(line=>{
-        if (!line.classList.contains('is-lit')) observer.observe(line);
+        line.classList.remove('is-lit');
+        observer.observe(line);
       });
     }
   });
