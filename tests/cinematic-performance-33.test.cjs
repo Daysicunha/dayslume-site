@@ -25,7 +25,8 @@ test('LOTE B: reduced motion remains static, and the five scenes are untouched',
   assert.match(css,/height:\s*600svh/);
   assert.match(css,/height:\s*390svh/);
   assert.equal((html.match(/data-c33-caption/g)||[]).length,5);
-  assert.match(html,/href="#apresentacao">PULAR ABERTURA/);
+  assert.match(html,/class="skip" href="#apresentacao"/);
+  assert.doesNotMatch(html,/PULAR ABERTURA/);
   assert.match(html,/id="cinema33-film"/);
   assert.match(html,/data-cinema33-home/);
 });

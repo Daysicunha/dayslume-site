@@ -19,6 +19,9 @@ test('Lote D does not hide the whole navigation by default',()=>{
  assert.doesNotMatch(html,/<body class="home-page c33-intro-active"/);
  assert.match(css,/html:not\(\.c33-film-ready\) #cinema33-film/);
  assert.match(css,/top: var\(--c33-help-height, 38px\)/);
+ const palette=read('assets/css/brand-palette.css');
+ assert.match(palette,/top: 0 !important/);
+ assert.match(palette,/body\.home-page\.c33-intro-active > header\.site-header/);
 });
 test('Lote D has no perpetual cinema loop and no second hero pointer handler',()=>{
  const film=read('assets/js/cinematic-film-intro-33.js');

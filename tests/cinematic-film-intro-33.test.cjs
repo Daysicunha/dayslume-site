@@ -10,8 +10,9 @@ test('Claude cinematic film appears before the existing 3D hero on first load', 
   assert.match(html, /data-c33-window/);
   assert.match(html, /data-c33-title/);
   assert.ok(html.indexOf('id="cinema33-film"') < html.indexOf('data-cinema33-home'));
-  for (const label of ['VITRINI','ENGRENI','CENA 1 · ABERTURA','ROLE PARA ASSISTIR']) assert.ok(html.includes(label));
-  assert.match(html, /href="#apresentacao">PULAR ABERTURA/);
+  for (const label of ['VITRINI','ENGRENI','ROLE PARA EXPLORAR','Tecnologia que começa no problema']) assert.ok(html.includes(label));
+  assert.match(html, /class="skip" href="#apresentacao"/);
+  assert.doesNotMatch(html, /DAYSLUME \/ FILME INTERATIVO|PULAR ABERTURA|CENA 1 · ABERTURA/);
 });
 test('film has exactly five captions, the split interface shapes and scene mapping',()=>{
   const html=read('index.html');
@@ -36,7 +37,7 @@ test('film uses scoped styles with reduced-motion and mobile variants',()=>{
  assert.match(css,/position:\s*sticky/);
 });
 
-test('cinematic entrance hides the floating header while restoring it afterwards',()=>{
+test('cinematic entrance keeps a single accessible header, changing its visual phase',()=>{
   const html=read('index.html');
   const js=read('assets/js/cinematic-film-intro-33.js');
   const css=read('assets/css/cinematic-film-intro-33.css');
@@ -44,11 +45,13 @@ test('cinematic entrance hides the floating header while restoring it afterwards
   assert.doesNotMatch(html, /<body class="home-page c33-intro-active">/);
   assert.match(js, /document\.documentElement\.classList\.add\(\x27c33-film-ready\x27\)/);
   assert.match(js, /function setFilmChrome\(isVisible\)/);
-  assert.match(js, /header\.inert = isVisible/);
+  assert.match(js, /header\.inert = false/);
   assert.match(js, /setFilmChrome\(isFilmInForeground\(\)\)/);
   assert.match(js, /helpStrip\.inert = isVisible/);
   assert.match(js, /floatingWhatsApp\.inert = isVisible/);
-  assert.match(css, /c33-intro-active \.site-header/);
+  const palette=read('assets/css/brand-palette.css');
+  assert.match(palette, /body\.home-page\.c33-intro-active > header\.site-header/);
+  assert.match(palette, /position: fixed !important/);
   assert.match(css, /c33-intro-active \.floating-whatsapp/);
 });
 test('luminous line applies at SECTION boundaries, never inside the intro', () => {
