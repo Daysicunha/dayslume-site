@@ -88,3 +88,20 @@ test('LOTE A keeps film captions inert until their scene and does not alter firs
   assert.doesNotMatch(js,/section\.prepend\(line\)/);
   assert.match(js,/section\.querySelector\(':scope > \.c33-section-line'\)/);
 });
+
+test('Lote D keeps film and dividers working without IntersectionObserver',()=>{
+ const js=read('assets/js/cinematic-film-intro-33.js');
+ assert.match(js,/const supportsObserver=typeof IntersectionObserver === 'function'/);
+ assert.match(js,/observer\?\.observe\(film\)/);
+ assert.match(js,/if \(typeof IntersectionObserver !== 'function'\)/);
+ assert.match(js,/if \(reduce\.matches \|\| !cutObserver\)/);
+});
+test('Lote D keeps the fixed home header below the actual help strip height',()=>{
+ const js=read('assets/js/cinematic-film-intro-33.js');
+ const css=read('assets/css/cinematic-film-intro-33.css');
+ assert.match(js,/function syncHelpOffset\(\)/);
+ assert.match(js,/Math\.ceil\(helpStrip\.getBoundingClientRect\(\)\.height\)/);
+ assert.match(js,/new ResizeObserver\(syncHelpOffset\)/);
+ assert.match(css,/top: var\(--c33-help-height, 38px\)/);
+ assert.match(css,/scroll-margin-top: calc\(var\(--c33-help-height, 38px\) \+ 108px\)/);
+});

@@ -22,32 +22,36 @@
     lines.push(line);
   });
 
-  function renderStatic() {
-    lines.forEach(line=>line.classList.toggle('is-lit',reduced.matches));
-  }
-  if (!('IntersectionObserver' in window) || reduced.matches) {
-    renderStatic();
-    return;
-  }
-  const observer=new IntersectionObserver(entries=>{
+  // Keep a single observer with a permanent preference-change listener.
+  // Starting in reduced-motion mode must not disable later transitions.
+  const seen=new WeakSet();
+  const supportsObserver=typeof IntersectionObserver === 'function';
+  const observer=supportsObserver ? new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
       if (!entry.isIntersecting) return;
+      seen.add(entry.target);
       entry.target.classList.add('is-lit');
       observer.unobserve(entry.target);
     });
-  },{rootMargin:'0px 0px -10% 0px',threshold:0});
-  lines.forEach(line=>observer.observe(line));
-  reduced.addEventListener('change',()=>{
+  },{rootMargin:'0px 0px -10% 0px',threshold:0}) : null;
+
+  function syncMotion() {
+    if (!observer) {
+      // Legacy-browser fallback: a visible static seam, not an invisible one.
+      lines.forEach(line=>line.classList.add('c33-editorial-static','is-lit'));
+      return;
+    }
     if (reduced.matches) {
       observer.disconnect();
-      renderStatic();
-    } else {
-      // Returning from reduced-motion mode re-enables one-shot lines.
-      // They never become a continuous or scroll-bound animation loop.
-      lines.forEach(line=>{
-        line.classList.remove('is-lit');
-        observer.observe(line);
-      });
+      lines.forEach(line=>line.classList.add('is-lit'));
+      return;
     }
-  });
+    lines.forEach(line=>{
+      if (seen.has(line)) return;
+      line.classList.remove('is-lit');
+      observer.observe(line);
+    });
+  }
+  reduced.addEventListener('change',syncMotion);
+  syncMotion();
 })();

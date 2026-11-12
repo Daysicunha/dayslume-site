@@ -125,3 +125,15 @@ body[data-c33-editorial]:not(.home-page) main > section[id] {
     display: none;
   }
 }
+
+/* LOTE D: no IntersectionObserver -> static visible separator. */
+body[data-c33-editorial]:not(.home-page) main > section > .c33-editorial-line.c33-editorial-static,
+body[data-c33-editorial]:not(.home-page) main > section > .c33-editorial-line.c33-editorial-static.is-lit {
+  animation: none !important;
+  opacity: .55;
+  transform: none;
+}
+body[data-c33-editorial]:not(.home-page) main > section > .c33-editorial-line.c33-editorial-static::after {
+  animation: none !important;
+  display: none;
+}

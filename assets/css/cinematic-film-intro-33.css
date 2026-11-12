@@ -309,13 +309,13 @@ body.home-page > .days-help-strip {
 }
 body.home-page > .site-header {
   position: fixed;
-  top: 38px;
+  top: var(--c33-help-height, 38px);
   left: 0;
   right: 0;
   width: 100%;
   z-index: 110;
 }
-body.home-page #apresentacao { scroll-margin-top: 146px; }
+body.home-page #apresentacao { scroll-margin-top: calc(var(--c33-help-height, 38px) + 108px); }
 html:not(.c33-film-ready) #cinema33-film {
   height: 100svh;
   min-height: 500px;
@@ -328,5 +328,5 @@ body.home-page main > section[data-c33-seamed] {
   position: relative;
 }
 @media (max-width: 600px) {
-  body.home-page #apresentacao { scroll-margin-top: 134px; }
+  body.home-page #apresentacao { scroll-margin-top: calc(var(--c33-help-height, 38px) + 96px); }
 }

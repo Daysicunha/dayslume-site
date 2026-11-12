@@ -115,6 +115,10 @@
   function paint() {
     raf = 0;
     if (document.hidden) return;
+    if (typeof IntersectionObserver !== 'function') {
+      const bounds=film.getBoundingClientRect();
+      active=bounds.bottom>0 && bounds.top<window.innerHeight;
+    }
     setFilmChrome(isFilmInForeground());
     if (active && !reduce.matches && !document.documentElement.classList.contains('motion-paused')) {
       draw();
@@ -178,23 +182,27 @@
     if (helpStrip) helpStrip.inert = isVisible;
     if (floatingWhatsApp) floatingWhatsApp.inert = isVisible;
   }
-  const observer = new IntersectionObserver(entries => {
+  // IntersectionObserver is an optimization, not a requirement to run the film.
+  const supportsObserver=typeof IntersectionObserver === 'function';
+  const observer=supportsObserver ? new IntersectionObserver(entries => {
     active=entries[0].isIntersecting;
     if (active) start(); else stop();
     requestPaint();
-  },{threshold:0});
-  observer.observe(film);
+  },{threshold:0}) : null;
+  observer?.observe(film);
 
   // Claude-style luminous separators at the beginning of each main section,
   // without replacing any existing layouts or section content.
   const cuts = [...document.querySelectorAll('body.home-page main > section:not(#cinema33-film)')];
-  const cutObserver = new IntersectionObserver(entries => {
+  const cutObserver=supportsObserver ? new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       entry.target.classList.add('is-lit');
+      cutSeen.add(entry.target);
       cutObserver.unobserve(entry.target);
     });
-  }, { threshold: .06 });
+  }, { threshold: .06 }) : null;
+  const cutSeen=new WeakSet();
   cuts.forEach(section => {
     if (section.querySelector(':scope > .c33-section-line')) return;
     const line = document.createElement('span');
@@ -203,7 +211,7 @@
     // Absolute decoration appended at the end preserves :first-child layout rules.
     section.append(line);
     section.setAttribute('data-c33-seamed','');
-    if (reduce.matches) line.classList.add('is-lit');
+    if (reduce.matches || !cutObserver) line.classList.add('is-lit');
     else cutObserver.observe(line);
   });
 
@@ -220,16 +228,42 @@
   window.addEventListener('resize',()=>{
     updateSize();
     lastProgress=-1; // geometry changed even if normalized scroll has not
+    syncHelpOffset();
     requestPaint();
   },{passive:true});
   window.addEventListener('scroll',requestPaint,{passive:true});
   window.addEventListener('hashchange',requestPaint);
-  reduce.addEventListener('change',updateReduce);
+  reduce.addEventListener('change',()=>{
+    updateReduce();
+    if (cutObserver) {
+      if (reduce.matches) cutObserver.disconnect();
+      cuts.forEach(section=>{
+        const line=section.querySelector(':scope > .c33-section-line');
+        if (!line) return;
+        if (reduce.matches) line.classList.add('is-lit');
+        else if (!cutSeen.has(line)) {
+          line.classList.remove('is-lit');
+          cutObserver.observe(line);
+        }
+      });
+    }
+  });
   document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();else requestPaint();});
   document.addEventListener('dayslume:motion',()=>{
     if(document.documentElement.classList.contains('motion-paused'))stop();
     else requestPaint();
   });
+  // Adapt to help-strip wrapping at narrow viewport widths.
+  // Header must not overlap the strip when its height exceeds 38px.
+  function syncHelpOffset() {
+    if (!helpStrip) return;
+    const height=Math.ceil(helpStrip.getBoundingClientRect().height);
+    if (height>0) document.documentElement.style.setProperty('--c33-help-height',height+'px');
+  }
+  if (helpStrip && typeof ResizeObserver === 'function') {
+    new ResizeObserver(syncHelpOffset).observe(helpStrip);
+  }
+  syncHelpOffset();
   setFilmChrome(isFilmInForeground());
   // Handled by one scroll-driven controller; never request a frame continuously.
   document.documentElement.classList.add('c33-film-ready');

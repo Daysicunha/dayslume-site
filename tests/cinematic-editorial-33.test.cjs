@@ -51,3 +51,12 @@ test('Lote C can re-enable one-shot cuts after reduced-motion changes',()=>{
   assert.match(js,/line\.classList\.remove\('is-lit'\)/);
   assert.match(js,/observer\.observe\(line\)/);
 });
+
+test('Lote D does not lose media-change listener when the initial preference is reduced',()=>{
+ const js=read('assets/js/cinematic-editorial-33.js');
+ assert.doesNotMatch(js,/if \(!\('IntersectionObserver' in window\) \|\| reduced\.matches\) \{[\s\S]*?return;/);
+ assert.match(js,/const supportsObserver=typeof IntersectionObserver === 'function'/);
+ assert.match(js,/reduced\.addEventListener\('change',syncMotion\)/);
+ assert.match(js,/seen\.has\(line\)/);
+ assert.match(js,/c33-editorial-static/);
+});
