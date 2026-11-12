@@ -133,13 +133,11 @@
 .hero--cinematic .hero-visual-composition.cinema-stage {
   position: relative;
   width: 100%;
-  max-width: 790px;
   min-width: 0;
   min-height: 510px;
   aspect-ratio: 1.12 / 1;
   align-self: center;
   justify-self: center;
-  overflow: visible;
   opacity: 1;
   transform: none;
   transition: none;
@@ -300,7 +298,7 @@
 .cinema-service-copy { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
 .cinema-service-copy strong { font-size: 12px; font-weight: 650; color: #f4f0ed; }
 .cinema-service-copy small { font-size: 9px; letter-spacing: .03em; color: #c9c4ce; line-height: 1.4; }
-.cinema-art-foot { position: absolute; bottom: 1%; left: 10%; z-index: 5; color: rgba(243,239,232,.55); font-size: 9px; letter-spacing: .14em; }
+.cinema-art-foot { position: absolute; left: 10%; z-index: 5; color: rgba(243,239,232,.55); font-size: 9px; letter-spacing: .14em; }
 .cinema-signature { position: absolute; bottom: 2%; right: 2%; z-index: 5; display: flex; align-items: center; gap: 8px; color: rgba(243,239,232,.56); font-size: 9px; letter-spacing: .16em; }
 .cinema-signature img { display: block; width: 28px; height: 28px; object-fit: contain; opacity: .7; }
 
@@ -322,7 +320,7 @@
 }
 @media (max-width: 900px) {
   .hero.hero--cinematic { padding: 70px 0 55px; }
-  .hero--cinematic .hero-grid { width: min(calc(100% - 42px), 740px); grid-template-columns: minmax(0,1fr); gap: 20px; }
+  .hero--cinematic .hero-grid { grid-template-columns: minmax(0,1fr); gap: 20px; }
   .hero--cinematic .hero-content { max-width: 660px; }
   .hero--cinematic .hero-content h1 { max-width: 15ch; font-size: clamp(43px, 8.3vw, 65px); }
   .hero--cinematic .hero-lead { max-width: 56ch; }
@@ -333,7 +331,7 @@
 }
 @media (max-width: 560px) {
   .hero.hero--cinematic { padding: 44px 0 40px; }
-  .hero--cinematic .hero-grid { width: calc(100% - 34px); gap: 10px; }
+  .hero--cinematic .hero-grid { gap: 10px; }
   .hero--cinematic .hero-eyebrow { font-size: 10px; margin-bottom: 15px; }
   .hero--cinematic .hero-content h1 { font-size: clamp(36px, 9vw, 49px); line-height: 1.08; margin-bottom: 17px; max-width: none; }
   .hero--cinematic .hero-lead { font-size: 14px; line-height: 1.58; margin-bottom: 18px; }
@@ -347,8 +345,8 @@
   .cinema-browser-top { height: 28px; padding: 0 9px; }
   .cinema-browser-url { font-size: 7px; padding: 2px 12px; }
   .cinema-browser-screen { padding: 16px 13px; }
-  .cinema-vitrini-logo { font-size: 12px; }
-  .cinema-vitrini-logo small { font-size: 7px; }
+  
+  
   .cinema-nav-tags { gap: 7px; font-size: 7px; }
   .cinema-nav-tags span:first-child { display: none; }
   .cinema-nav-tags span:last-child { padding: 4px 6px; }
@@ -378,7 +376,7 @@
   .cinema-service-copy small { font-size: 7px; }
   .cinema-overline { font-size: 7px; }
   .cinema-art-foot { font-size: 7px; left: 5%; }
-  .cinema-signature { font-size: 7px; right: 0; }
+  .cinema-signature { font-size: 7px; }
   .cinema-signature img { width: 20px; height: 20px; }
 }
 @media (prefers-reduced-motion: reduce) {
