@@ -15,6 +15,9 @@
   const lines = [...film.querySelectorAll('[data-c33-caption]')];
   const scene = film.querySelector('[data-c33-scene]');
   const time = film.querySelector('[data-c33-time]');
+  const sceneFlash = film.querySelector('[data-c33-scene-flash]');
+  const header = document.querySelector('.site-header');
+  const floatingWhatsApp = document.querySelector('.floating-whatsapp');
   if (!windowEl || !beam || !glow || !title || lines.length !== 5 || labels.some(label => !label)) return;
   const names = ['ABERTURA', 'NECESSIDADE', 'PRESENÇA', 'OPERAÇÃO', 'CONTATO'];
   // Source storyboard parameters: assembled rect (x,y,w,h),
@@ -86,6 +89,11 @@
     hint.style.opacity=p<.02?'1':'0';
     const current = p<.13 ? 0 : p<.33 ? 1 : p<.57 ? 2 : p<.84 ? 3 : 4;
     if (current!==lastScene) {
+      if (sceneFlash && lastScene !== -1 && !reduce.matches) {
+        sceneFlash.classList.remove('is-playing');
+        void sceneFlash.offsetWidth; // replay the transition at each scene change
+        sceneFlash.classList.add('is-playing');
+      }
       lines.forEach((line,i) => {
         const show=i===current;
         line.classList.toggle('is-active',show);
@@ -132,11 +140,48 @@
   updateSize();
   lines.forEach((line,i) => { line.inert=i!==0; });
   if (reduce.matches) updateReduce();
+  // The standard navigation is intentionally not part of the film.
+  // It returns as soon as the opening is no longer in the viewport.
+  function setFilmChrome(isVisible) {
+    document.body.classList.toggle('c33-intro-active', isVisible);
+    if (header) {
+      header.inert = isVisible;
+      if (isVisible) {
+        header.querySelector('.menu.open')?.classList.remove('open');
+        const toggle = header.querySelector('.menu-toggle');
+        if (toggle) toggle.setAttribute('aria-expanded','false');
+      }
+    }
+    if (floatingWhatsApp) floatingWhatsApp.inert = isVisible;
+  }
+  setFilmChrome(film.getBoundingClientRect().bottom > 0 && film.getBoundingClientRect().top < window.innerHeight);
   const observer = new IntersectionObserver(entries => {
     active=entries[0].isIntersecting;
+    setFilmChrome(active);
     if (active) start(); else stop();
   },{threshold:0});
   observer.observe(film);
+
+  // Claude-style luminous separators at the beginning of each main section,
+  // without replacing any existing layouts or section content.
+  const cuts = [...document.querySelectorAll('body.home-page main > section:not(#cinema33-film)')];
+  const cutObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-lit');
+      cutObserver.unobserve(entry.target);
+    });
+  }, { threshold: .06 });
+  cuts.forEach(section => {
+    const line = document.createElement('span');
+    line.className = 'c33-section-line';
+    line.setAttribute('aria-hidden', 'true');
+    section.prepend(line);
+    section.setAttribute('data-c33-seamed','');
+    if (reduce.matches) line.classList.add('is-lit');
+    else cutObserver.observe(line);
+  });
+
   window.addEventListener('pointermove',event=>{
     if (reduce.matches || !active) return;
     mx=event.clientX/window.innerWidth*100;
