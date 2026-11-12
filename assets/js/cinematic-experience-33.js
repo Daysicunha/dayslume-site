@@ -1,7 +1,7 @@
 /* DAYSLUME 3.3 — cinematic home integration. No scroll pinning or hidden CTAs. */
 (() => {
   'use strict';
-  const hero = document.querySelector('.hero--cinematic.cinema33-home');
+  const hero = document.querySelector('.hero--cinematic[data-cinema33-home]');
   const section = document.querySelector('#produtos');
   const showroom = section?.querySelector('[data-cinema33-showroom]');
   if (!hero || !section || !showroom) return;
