@@ -67,19 +67,6 @@
   letter-spacing: .13em;
   color: rgba(236,238,241,.70);
 }
-.home-page .cinema33-ledger__scene {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-}
-.home-page .cinema33-ledger__scene::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #D8B6A5;
-  box-shadow: 0 0 12px rgba(216,182,165,.70);
-}
 .home-page .cinema33-ledger__link {
   display: inline-flex;
   align-items: center;

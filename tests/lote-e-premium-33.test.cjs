@@ -58,3 +58,14 @@ test('Lote E avoids old repeated film headlines and false prices while preservin
  assert.match(html,/id="contact-title"/);
  assert.match(html,/class="site-footer days-support-ready"/);
 });
+
+test('Lote E 3D layout has no empty rows reserved for removed signature or captions',()=>{
+ const css=read('assets/css/hero-cinematic.css');
+ const html=read('index.html');
+ assert.match(css,/grid-template-rows: repeat\(4, auto\)/);
+ assert.match(css,/grid-template-rows: repeat\(6, auto\)/);
+ assert.doesNotMatch(css,/\.cinema-art-foot|\.cinema-signature/);
+ assert.doesNotMatch(html,/class="cinema-art-foot"|class="cinema-signature"/);
+ const exp=read('assets/css/cinematic-experience-33.css');
+ assert.doesNotMatch(exp,/\.cinema33-ledger__scene/);
+});
