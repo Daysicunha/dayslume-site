@@ -35,3 +35,41 @@ test('film uses scoped styles with reduced-motion and mobile variants',()=>{
  assert.match(css,/prefers-reduced-motion: reduce/);
  assert.match(css,/position:\s*sticky/);
 });
+
+test('cinematic entrance hides the floating header while restoring it afterwards',()=>{
+  const html=read('index.html');
+  const js=read('assets/js/cinematic-film-intro-33.js');
+  const css=read('assets/css/cinematic-film-intro-33.css');
+  assert.match(html, /class="home-page c33-intro-active"/);
+  assert.match(js, /function setFilmChrome\(isVisible\)/);
+  assert.match(js, /header\.inert = isVisible/);
+  assert.match(js, /setFilmChrome\(active\)/);
+  assert.match(js, /floatingWhatsApp\.inert = isVisible/);
+  assert.match(css, /c33-intro-active \.site-header/);
+  assert.match(css, /c33-intro-active \.floating-whatsapp/);
+});
+test('each scene transition gets a luminous animated line, with responsive reduced motion',()=>{
+  const html=read('index.html');
+  const js=read('assets/js/cinematic-film-intro-33.js');
+  const css=read('assets/css/cinematic-film-intro-33.css');
+  assert.match(html, /data-c33-scene-flash/);
+  assert.match(js, /sceneFlash\.classList\.add\('is-playing'\)/);
+  assert.match(js, /c33-section-line/);
+  assert.match(css, /@keyframes c33-film-cut/);
+  assert.match(css, /@keyframes c33-film-shine/);
+  assert.match(css, /@keyframes c33-section-line-in/);
+  assert.match(css, /prefers-reduced-motion:reduce/);
+});
+test('Claude-inspired cinematic outro completes the original functioning footer',()=>{
+  const html=read('index.html');
+  const css=read('assets/css/cinematic-film-intro-33.css');
+  assert.match(html, /id="cinema33-credits"/);
+  assert.match(html, /CENA FINAL · ASSINATURA DAYSLUME/);
+  assert.match(html, /class="c33-credits-wordmark" id="c33-credits-title">DAYSLUME/);
+  assert.match(html, /class="c33-credits-cta" href="contato.html"/);
+  assert.match(html, /class="footer-nav"/);
+  assert.match(html, /class="footer-socials"/);
+  assert.match(html, /class="days-footer-support"/);
+  assert.match(html, /class="days-back-top"/);
+  assert.match(css, /#cinema33-credits/);
+});
