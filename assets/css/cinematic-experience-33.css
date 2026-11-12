@@ -3,7 +3,7 @@
    Intentionally leaves all primary typography, brand colors, cases and pages intact.
    Uses no 760svh pinned scroll scene, blocks no navigation, and honors reduced motion.
 */
-.home-page .hero--cinematic.cinema33-home {
+.home-page .hero--cinematic[data-cinema33-home] {
   isolation: isolate;
   background:
     radial-gradient(ellipse 52% 62% at 73% 49%, rgba(150,177,207,.19), transparent 72%),
@@ -44,10 +44,10 @@
   background-image: repeating-linear-gradient(0deg, rgba(235,236,238,.055) 0 1px, transparent 1px 5px);
   mask-image: linear-gradient(90deg, transparent, #000 55%, transparent);
 }
-.home-page .hero--cinematic.cinema33-home .hero-grid {
+.home-page .hero--cinematic[data-cinema33-home] .hero-grid {
   z-index: 2;
 }
-.home-page .hero--cinematic.cinema33-home .cinema-stage {
+.home-page .hero--cinematic[data-cinema33-home] .cinema-stage {
   filter: drop-shadow(0 26px 48px rgba(3,9,20,.23));
 }
 .home-page .cinema33-ledger {
