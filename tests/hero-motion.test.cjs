@@ -13,7 +13,8 @@ test('cinematic hero puts commercial message and product interfaces on the first
   assert.match(html,/href="#problemas"/);
   assert.match(html,/href="#projetos"/);
   assert.match(html,/aria-label="Composição ilustrativa de produtos digitais DAYSLUME/);
-  assert.match(html,/INTERFACES ILUSTRATIVAS · SEM DADOS REAIS/);
+  assert.doesNotMatch(html,/INTERFACES ILUSTRATIVAS · SEM DADOS REAIS/);
+  assert.match(html,/aria-label="Composição ilustrativa de produtos digitais DAYSLUME/);
   assert.doesNotMatch(html,/data-flower-petal|data-scroll-hero|data-kiru-word|hero-kiru-keyword|data-hero-video/);
 });
 test('Kiru rolling cards are limited to the two commercial paths',()=>{
@@ -56,7 +57,8 @@ test('hero layers three product stories, preserving the mineral palette and mobi
   const html=read('index.html'),css=read('assets/css/hero-cinematic.css');
   assert.match(html,/cinema-stage-caption--vitrini/);
   assert.match(html,/cinema-stage-caption--engreni/);
-  assert.match(html,/assets\/images\/dayslume-flor-oficial\.webp/);
+  assert.doesNotMatch(html,/class="cinema-signature"/);
+  assert.match(html,/logohorizontalbranca\.png/);
   assert.match(css,/background:\s*radial-gradient/);
   assert.match(css,/var\(--peach\)/);
   assert.match(css,/var\(--warm-ivory\)/);
@@ -127,9 +129,9 @@ test('new mineral hero gradient and concise case stories keep brand identity',()
 });
 test('section 08 has readable, wrapping copy and isolated two-column layout',()=>{
  const html=read('index.html'),palette=read('assets/css/brand-palette.css');
- assert.match(html,/O que precisa funcionar/);
- assert.match(html,/melhor no digital\?/);
- assert.match(html,/Conte o que está travando seu negócio/);
+ assert.match(html,/Conte o desafio\./);
+ assert.match(html,/A solução vem depois\./);
+ assert.match(html,/Descreva o que deseja mudar\./);
  assert.match(palette,/main > #contato #contact-title > span\s*\{[\s\S]*?white-space:normal/);
  assert.match(palette,/main > #contato \.contact-grid > div:first-child/);
  assert.match(html,/<form class="contact-form" id="contact-form"/);

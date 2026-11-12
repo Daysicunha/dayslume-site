@@ -62,7 +62,9 @@ test('hero foregrounds digital products with cinematic, accessible motion', () =
   for (const element of ['cinema-browser','cinema-phone','cinema-service']) {
     assert.match(home, new RegExp(element));
   }
-  assert.match(home, /dayslume-flor-oficial\.webp/);
+  // The redundant flower signature was removed from the product mockup in Lote E.
+  assert.match(home, /logohorizontalbranca\.png/);
+  assert.doesNotMatch(home, /class="cinema-signature"/);
   assert.doesNotMatch(home, /data-flower-petal|data-scroll-hero|data-hero-video|<video\b[^>]*autoplay/i);
   assert.match(cinematicCss, /@media \(prefers-reduced-motion: reduce\)/);
   assert.match(cinematicCss, /\.hero--cinematic \.hero-visual-composition/);
