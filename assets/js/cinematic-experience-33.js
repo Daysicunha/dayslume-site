@@ -11,36 +11,8 @@
   };
   if (!cards.vitrini || !cards.engreni) return;
 
-  const media = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const pointer = window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 901px)');
-  const atmosphere = hero.querySelector('.cinema33-atmosphere');
-  let frame = 0;
-  let x = 72;
-  let y = 45;
-
-  function paintPointer() {
-    frame = 0;
-    if (!atmosphere || media.matches || !pointer.matches || document.hidden) return;
-    atmosphere.style.setProperty('--cinema33-pointer-x', x.toFixed(1) + '%');
-    atmosphere.style.setProperty('--cinema33-pointer-y', y.toFixed(1) + '%');
-  }
-  function move(event) {
-    if (media.matches || !pointer.matches || !atmosphere) return;
-    const b = hero.getBoundingClientRect();
-    x = Math.min(100, Math.max(0, ((event.clientX - b.left) / Math.max(1, b.width)) * 100));
-    y = Math.min(100, Math.max(0, ((event.clientY - b.top) / Math.max(1, b.height)) * 100));
-    if (!frame) frame = requestAnimationFrame(paintPointer);
-  }
-  function resetPointer() {
-    if (frame) cancelAnimationFrame(frame);
-    frame = 0;
-    atmosphere?.style.removeProperty('--cinema33-pointer-x');
-    atmosphere?.style.removeProperty('--cinema33-pointer-y');
-  }
-  hero.addEventListener('pointermove', move, {passive:true});
-  hero.addEventListener('pointerleave', resetPointer);
-  media.addEventListener('change', resetPointer);
-  pointer.addEventListener('change', resetPointer);
+  // Pointer lighting is now owned by hero-cinematic.js.
+  // This module only owns accessible showroom selection.
 
   const messages = {
     all: 'Duas famílias de produtos. Explore a apresentação e as interfaces de cada uma.',
@@ -66,7 +38,4 @@
   showroom.hidden = false;
 
   // No scroll-triggered invisibility: content and anchors always remain available.
-  window.addEventListener('pagehide', () => {
-    resetPointer();
-  }, {once:true});
 })();

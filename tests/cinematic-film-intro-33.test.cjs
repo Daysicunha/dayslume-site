@@ -30,7 +30,7 @@ test('film uses scoped styles with reduced-motion and mobile variants',()=>{
  assert.match(html,/cinematic-film-intro-33\.js/);
  assert.ok(html.indexOf('cinematic-film-intro-33.css')<html.indexOf('brand-palette.css'));
  assert.match(css,/#cinema33-film/);
- assert.match(css,/height:\s*760svh/);
+ assert.match(css,/height:\s*600svh/);
  assert.match(css,/@media \(max-width: 820px\)/);
  assert.match(css,/prefers-reduced-motion: reduce/);
  assert.match(css,/position:\s*sticky/);

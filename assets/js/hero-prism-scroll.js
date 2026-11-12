@@ -11,6 +11,7 @@
   const section = document.querySelector('[data-kiru-cards]');
   if (!hero) return;
   const cinematic = hero.classList.contains('hero--cinematic');
+  const openingFilm = cinematic ? document.getElementById('cinema33-film') : null;
   const stage = hero.querySelector('[data-hero-scroll-stage]') || hero;
   const copy = hero.querySelector('.hero-content');
   const flower = hero.querySelector('.hero-visual-composition');
@@ -264,6 +265,9 @@
   }
   function tick(){
     frame=0;
+    // Do not recompute downstream cards/process while the full-screen film
+    // owns the viewport; animations resume normally as the real site appears.
+    if (openingFilm && openingFilm.getBoundingClientRect().bottom > innerHeight + 1) return;
     scrollHero();
     scrollCards();
     scrollProcess();

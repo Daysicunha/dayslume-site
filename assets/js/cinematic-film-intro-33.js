@@ -37,11 +37,13 @@
     return e;
   });
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const precisePointer = matchMedia('(hover: hover) and (pointer: fine)');
+  const saveData = Boolean(navigator.connection?.saveData);
   const clamp = n => Math.max(0, Math.min(1,n));
   const ease = n => { const t = clamp(n); return t*t*(3-2*t); };
   const lerp = (a,b,p) => a+(b-a)*p;
   let W = 0, H = 0, mx = 50, my = 50, active = false, raf = 0;
-  let lastScene = -1;
+  let lastScene = -1, lastProgress = -1, lastMx = NaN, lastMy = NaN;
   const updateSize = () => {
     const vw = window.innerWidth, vh = window.innerHeight;
     const portrait = vw < vh;
@@ -54,63 +56,74 @@
     labels[1].style.left = W*.55+'px';
     labels[1].style.top = H*.30+'px';
   };
-  function draw(ts) {
+  /* One frame per meaningful event; no perpetual rAF loop while the film is idle.
+     The drifting fragments still move smoothly as scroll progresses. */
+  function draw(force = false) {
     if (reduce.matches) return;
     const rect = film.getBoundingClientRect();
     const p = clamp(-rect.top / Math.max(1, film.offsetHeight - pin.offsetHeight));
-    const a = ease((p-.27)/.17);
-    const b = ease((p-.57)/.15);
-    const visible = ease((p-.07)/.10) * (1 - ease((p-.9)/.07)*.85);
-    shapes.forEach((e,i) => {
-      const d = D[i];
-      const scatterX=d[8]*W*.5, scatterY=d[9]*H*.8;
-      const float = Math.sin(ts/1400+i*1.7)*10*(1-a);
-      const mergedX=(d[0]+d[2]/2-.5)*W;
-      const mergedY=(d[1]+d[3]/2-.5)*H;
-      const splitX=(d[4]+d[6]/2-.5)*W;
-      const splitY=(d[5]+d[7]/2-.5)*H;
-      const x=lerp(lerp(scatterX,mergedX,a),splitX,b);
-      const y=lerp(lerp(scatterY,mergedY,a),splitY,b)+float;
-      const rotation=d[10]*(1-a);
-      const scale=lerp(d[11],1,a);
-      const width=lerp(lerp(d[2]*W*.6,d[2]*W,a),d[6]*W,b);
-      const height=lerp(lerp(d[3]*H*.6,d[3]*H,a),d[7]*H,b);
-      e.style.width=width+'px';
-      e.style.height=height+'px';
-      e.style.opacity=visible.toFixed(3);
-      e.style.transform='translate('+(x-width/2+W/2)+'px,'+(y-height/2+H/2)+'px) rotate('+rotation+'deg) scale('+scale+')';
-    });
-    beam.style.transform='translateX('+lerp(-70,70,p)+'vw) rotate('+lerp(22,-14,p)+'deg)';
-    beam.style.opacity=(.55+.45*Math.sin(p*Math.PI)).toFixed(3);
-    glow.style.setProperty('--c33-mx',mx+'%');
-    glow.style.setProperty('--c33-my',my+'%');
-    title.style.opacity=(1-ease(p/.1)).toFixed(3);
-    title.style.transform='translateY('+(-p*160)+'px) scale('+(1+p*.4)+')';
-    hint.style.opacity=p<.02?'1':'0';
-    const current = p<.13 ? 0 : p<.33 ? 1 : p<.57 ? 2 : p<.84 ? 3 : 4;
-    if (current!==lastScene) {
-      lines.forEach((line,i) => {
-        const show=i===current;
-        line.classList.toggle('is-active',show);
-        line.inert=!show;
+    if (force || Math.abs(p - lastProgress) > .00015) {
+      const a = ease((p-.27)/.17);
+      const b = ease((p-.57)/.15);
+      const visible = ease((p-.07)/.10) * (1 - ease((p-.9)/.07)*.85);
+      shapes.forEach((e,i) => {
+        const d = D[i];
+        const scatterX=d[8]*W*.5, scatterY=d[9]*H*.8;
+        const float = Math.sin(p*12+i*1.7)*8*(1-a);
+        const mergedX=(d[0]+d[2]/2-.5)*W;
+        const mergedY=(d[1]+d[3]/2-.5)*H;
+        const splitX=(d[4]+d[6]/2-.5)*W;
+        const splitY=(d[5]+d[7]/2-.5)*H;
+        const x=lerp(lerp(scatterX,mergedX,a),splitX,b);
+        const y=lerp(lerp(scatterY,mergedY,a),splitY,b)+float;
+        const rotation=d[10]*(1-a);
+        const scale=lerp(d[11],1,a);
+        const width=lerp(lerp(d[2]*W*.6,d[2]*W,a),d[6]*W,b);
+        const height=lerp(lerp(d[3]*H*.6,d[3]*H,a),d[7]*H,b);
+        e.style.width=width+'px';
+        e.style.height=height+'px';
+        e.style.opacity=visible.toFixed(3);
+        e.style.transform='translate('+(x-width/2+W/2)+'px,'+(y-height/2+H/2)+'px) rotate('+rotation+'deg) scale('+scale+')';
       });
-      scene.textContent='CENA '+(current+1)+' · '+names[current];
-      lastScene=current;
+      beam.style.transform='translateX('+lerp(-70,70,p)+'vw) rotate('+lerp(22,-14,p)+'deg)';
+      beam.style.opacity=(.55+.45*Math.sin(p*Math.PI)).toFixed(3);
+      title.style.opacity=(1-ease(p/.1)).toFixed(3);
+      title.style.transform='translateY('+(-p*160)+'px) scale('+(1+p*.4)+')';
+      hint.style.opacity=p<.02?'1':'0';
+      const current = p<.13 ? 0 : p<.33 ? 1 : p<.57 ? 2 : p<.84 ? 3 : 4;
+      if (current !== lastScene) {
+        lines.forEach((line,i) => {
+          const show=i===current;
+          line.classList.toggle('is-active',show);
+          line.inert=!show;
+        });
+        scene.textContent='CENA '+(current+1)+' · '+names[current];
+        lastScene=current;
+      }
+      const seconds=Math.round(p*102);
+      const stamp='00:'+String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0');
+      if (time.textContent !== stamp) time.textContent=stamp;
+      film.classList.toggle('c33-reveal',b>.55);
+      lastProgress = p;
     }
-    const seconds=Math.round(p*102);
-    time.textContent='00:'+String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0');
-    film.classList.toggle('c33-reveal',b>.55);
+    if (force || mx !== lastMx || my !== lastMy) {
+      glow.style.setProperty('--c33-mx',mx.toFixed(2)+'%');
+      glow.style.setProperty('--c33-my',my.toFixed(2)+'%');
+      lastMx=mx; lastMy=my;
+    }
   }
-  function loop(ts) {
-    raf=0;
-    if (!active || reduce.matches || document.hidden) return;
-    draw(ts);
-    raf=requestAnimationFrame(loop);
+  function paint() {
+    raf = 0;
+    if (document.hidden) return;
+    setFilmChrome(isFilmInForeground());
+    if (active && !reduce.matches && !document.documentElement.classList.contains('motion-paused')) {
+      draw();
+    }
   }
-  function start() {
-    if (raf || reduce.matches || document.hidden || !active) return;
-    raf=requestAnimationFrame(loop);
+  function requestPaint() {
+    if (!raf && !document.hidden) raf=requestAnimationFrame(paint);
   }
+  function start() { if (active) requestPaint(); }
   function stop() {
     if (raf) cancelAnimationFrame(raf);
     raf=0;
@@ -129,8 +142,11 @@
       title.style.removeProperty('transform');
     } else {
       lastScene=-1;
+      lastProgress=-1;
+      lastMx=NaN; lastMy=NaN;
       start();
     }
+    requestPaint();
   }
   updateSize();
   lines.forEach((line,i) => { line.inert=i!==0; });
@@ -164,8 +180,8 @@
   }
   const observer = new IntersectionObserver(entries => {
     active=entries[0].isIntersecting;
-    setFilmChrome(isFilmInForeground());
     if (active) start(); else stop();
+    requestPaint();
   },{threshold:0});
   observer.observe(film);
 
@@ -191,19 +207,31 @@
     else cutObserver.observe(line);
   });
 
-  window.addEventListener('pointermove',event=>{
-    if (reduce.matches || !active) return;
+  film.addEventListener('pointermove',event=>{
+    if (!active || reduce.matches || saveData || !precisePointer.matches) return;
     mx=event.clientX/window.innerWidth*100;
     my=event.clientY/window.innerHeight*100;
+    requestPaint();
   },{passive:true});
-  window.addEventListener('resize',()=>{updateSize(); if(active&&!reduce.matches)draw(performance.now());},{passive:true});
+  film.addEventListener('pointerleave',()=>{
+    mx=50; my=50;
+    requestPaint();
+  },{passive:true});
+  window.addEventListener('resize',()=>{
+    updateSize();
+    lastProgress=-1; // geometry changed even if normalized scroll has not
+    requestPaint();
+  },{passive:true});
+  window.addEventListener('scroll',requestPaint,{passive:true});
+  window.addEventListener('hashchange',requestPaint);
   reduce.addEventListener('change',updateReduce);
-  document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();else start();});
-  // Chrome must also recover at the end of the film for reduced-motion visitors
-  // and during direct #apresentacao navigation, even if the film intersects by 1px.
-  window.addEventListener('scroll', () => setFilmChrome(isFilmInForeground()), { passive: true });
-  window.addEventListener('resize', () => setFilmChrome(isFilmInForeground()), { passive: true });
-  window.addEventListener('hashchange', () => setFilmChrome(isFilmInForeground()));
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();else requestPaint();});
+  document.addEventListener('dayslume:motion',()=>{
+    if(document.documentElement.classList.contains('motion-paused'))stop();
+    else requestPaint();
+  });
   setFilmChrome(isFilmInForeground());
+  // Handled by one scroll-driven controller; never request a frame continuously.
   document.documentElement.classList.add('c33-film-ready');
+  requestPaint();
 })();

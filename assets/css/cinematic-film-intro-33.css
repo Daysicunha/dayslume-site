@@ -7,7 +7,7 @@
   --c33-sky: #9BB8CE;
   --c33-sand: #D8B6A5;
   position: relative;
-  height: 760svh;
+  height: 600svh;
   color: var(--c33-off);
   font-family: Manrope, sans-serif;
   background: var(--c33-ink);
@@ -197,7 +197,7 @@
 }
 #cinema33-film .c33-time { white-space: nowrap; }
 @media (max-width: 820px) {
-  #cinema33-film { height: 480svh; }
+  #cinema33-film { height: 390svh; }
   #cinema33-film .c33-beam { width: 70vmax; filter: blur(13px); }
   #cinema33-film .c33-wordmark { font-size: clamp(35px,9.5vw,85px); letter-spacing: .14em; padding-left: .14em; }
   #cinema33-film .c33-caption { font-size: clamp(26px,7.8vw,42px); }
