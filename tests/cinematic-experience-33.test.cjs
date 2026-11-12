@@ -37,7 +37,9 @@ test('3.3 offers keyboard-accessible showroom controls without hiding products',
   assert.match(html, /data-cinema33-caption aria-live="polite"/);
   assert.match(js, /setAttribute\('aria-pressed'/);
   assert.match(js, /showroom\.hidden = false/);
-  assert.match(js, /reduced-motion: reduce/);
+  // Reduced-motion handling moved to the single hero pointer controller in Lote B.
+  const heroMotion = read('assets/js/hero-cinematic.js');
+  assert.match(heroMotion, /prefers-reduced-motion: reduce/);
   assert.doesNotMatch(js, /\.hidden\s*=\s*true/);
 });
 

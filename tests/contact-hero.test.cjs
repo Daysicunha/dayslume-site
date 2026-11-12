@@ -60,7 +60,8 @@ test('Below the hero the steps are Understand, Propose, Develop; shared visual r
   assert.match(css, /:focus-visible/);
   const sheets=[...html.matchAll(/<link\b[^>]*rel="stylesheet"[^>]*href="([^"]+)"/g)].map(m=>m[1]);
   assert.equal(sheets.at(-1),'assets/css/brand-palette.css');
-  assert.equal(sheets.at(-2),'assets/css/contact-flagship.css');
+  assert.equal(sheets.at(-2),'assets/css/cinematic-editorial-33.css');
+  assert.equal(sheets.at(-3),'assets/css/contact-flagship.css');
 });
 
 test('Desktop contact hero centers form and copy without shrinking touch targets',()=>{
