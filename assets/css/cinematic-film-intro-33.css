@@ -226,3 +226,196 @@
   #cinema33-film .c33-caption:not(:first-child) { display: none; }
   #cinema33-film .c33-caption:first-child { opacity: 1; pointer-events: auto; }
 }
+
+/* 3.3 refinement — uninterrupted film, luminous scene cuts and final credits.
+   The standard header returns after the film; no global navigation is removed. */
+body.home-page .site-header,
+body.home-page .floating-whatsapp {
+  transition: opacity .32s ease, visibility .32s ease, transform .32s ease;
+}
+body.home-page.c33-intro-active .site-header,
+body.home-page.c33-intro-active .days-help-strip,
+body.home-page.c33-intro-active .floating-whatsapp {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+body.home-page.c33-intro-active .site-header { transform: translateY(-15px); }
+#cinema33-film .c33-scene-flash {
+  position: absolute;
+  z-index: 3;
+  left: clamp(24px,6vw,100px);
+  right: clamp(24px,6vw,100px);
+  bottom: 36%;
+  height: 1px;
+  opacity: 0;
+  transform: scaleX(.1);
+  transform-origin: center;
+  background: linear-gradient(90deg, transparent 0%, rgba(155,184,206,.55) 22%, #F2F0EB 50%, rgba(216,182,165,.63) 78%, transparent 100%);
+  box-shadow: 0 0 8px rgba(155,184,206,.7), 0 0 28px rgba(242,240,235,.32);
+  pointer-events: none;
+}
+#cinema33-film .c33-scene-flash::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: 0;
+  width: 18%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.98), transparent);
+  filter: blur(3px);
+  transform: translateX(-120%);
+}
+#cinema33-film .c33-scene-flash.is-playing {
+  animation: c33-film-cut 1.25s cubic-bezier(.2,.8,.2,1) both;
+}
+#cinema33-film .c33-scene-flash.is-playing::after {
+  animation: c33-film-shine 1.25s ease-out both;
+}
+@keyframes c33-film-cut {
+  0% { opacity: 0; transform: scaleX(.1); }
+  23% { opacity: .92; transform: scaleX(.92); }
+  48% { opacity: 1; transform: scaleX(1); }
+  100% { opacity: 0; transform: scaleX(1); }
+}
+@keyframes c33-film-shine {
+  0%,10% { transform: translateX(-120%); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateX(620%); opacity: 0; }
+}
+.home-page main > section .c33-section-line {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: clamp(18px,4vw,72px);
+  right: clamp(18px,4vw,72px);
+  height: 1px;
+  opacity: 0;
+  transform: scaleX(.05);
+  transform-origin: 50% 50%;
+  background: linear-gradient(90deg, transparent, rgba(155,184,206,.8) 28%, rgba(242,240,235,.9) 50%, rgba(216,182,165,.6) 75%, transparent);
+  box-shadow: 0 0 15px rgba(155,184,206,.42), 0 0 36px rgba(155,184,206,.17);
+  pointer-events: none;
+}
+.home-page main > section .c33-section-line::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: 0;
+  width: 16%;
+  height: 7px;
+  background: linear-gradient(90deg, transparent, rgba(242,240,235,.9), transparent);
+  filter: blur(3px);
+  transform: translateX(-150%);
+}
+.home-page main > section .c33-section-line.is-lit {
+  animation: c33-section-line-in 1.8s cubic-bezier(.2,.8,.2,1) both;
+}
+.home-page main > section .c33-section-line.is-lit::after {
+  animation: c33-film-shine 1.8s ease-out both;
+}
+@keyframes c33-section-line-in {
+  0% { opacity: 0; transform: scaleX(.05); }
+  25% { opacity: 1; transform: scaleX(.85); }
+  65% { opacity: .85; transform: scaleX(1); }
+  100% { opacity: .3; transform: scaleX(1); }
+}
+/* The existing functional footer (support, legal links, social, back-to-top)
+   remains, followed by the Claude-inspired signature credits. */
+body.home-page .site-footer {
+  background: linear-gradient(180deg,#22283C 0%,#0F121B 62%,#050608 100%);
+}
+body.home-page .site-footer #cinema33-credits {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin-top: clamp(38px,6vw,84px);
+  padding: clamp(105px,20svh,215px) clamp(18px,5vw,80px) clamp(72px,10svh,105px);
+  min-height: 60svh;
+  text-align: center;
+  color: #F2F0EB;
+  background: radial-gradient(ellipse 50% 45% at 50% 26%,rgba(155,184,206,.13),transparent 78%),linear-gradient(180deg,#0F121B,#030405 88%);
+}
+body.home-page .site-footer #cinema33-credits::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 4%;
+  right: 4%;
+  height: 1px;
+  background: linear-gradient(90deg,transparent,#9BB8CE,#F2F0EB,#D8B6A5,transparent);
+  opacity: .8;
+  box-shadow: 0 0 20px rgba(155,184,206,.5);
+}
+#cinema33-credits .c33-credits-kicker {
+  display: block;
+  color: #9BB8CE;
+  font: 600 11px/1.5 Manrope,sans-serif;
+  letter-spacing: .22em;
+}
+#cinema33-credits .c33-credits-wordmark {
+  margin: clamp(20px,3vw,38px) auto 20px;
+  padding-left: .20em;
+  max-width: 100%;
+  overflow-wrap: normal;
+  font: 300 clamp(38px,8vw,150px)/1.1 Manrope,sans-serif;
+  letter-spacing: .20em;
+}
+#cinema33-credits .c33-credits-description {
+  margin: 0 auto 28px;
+  max-width: 45ch;
+  color: #9BB8CE;
+  font: 400 clamp(15px,1.5vw,19px)/1.7 Manrope,sans-serif;
+}
+#cinema33-credits .c33-credits-description strong {
+  display: block;
+  color: #F2F0EB;
+  font-weight: 500;
+}
+#cinema33-credits .c33-credits-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 15px 27px;
+  border-radius: 999px;
+  color: #22283C;
+  background: #F2F0EB;
+  font: 600 14px/1.4 Manrope,sans-serif;
+  text-decoration: none;
+  transition: background .2s ease, transform .2s ease;
+}
+#cinema33-credits .c33-credits-cta:hover,
+#cinema33-credits .c33-credits-cta:focus-visible { background: #D8B6A5; transform: translateY(-2px); }
+#cinema33-credits .c33-credits-outro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin: clamp(52px,9svh,90px) auto 0;
+  font: 500 10px/1.5 Manrope,sans-serif;
+  color: rgba(155,184,206,.75);
+  letter-spacing: .15em;
+}
+#cinema33-credits .c33-credits-outro::before,
+#cinema33-credits .c33-credits-outro::after {
+  content: '';
+  width: clamp(20px,8vw,80px);
+  height: 1px;
+  background: linear-gradient(90deg,transparent,rgba(155,184,206,.45));
+}
+#cinema33-credits .c33-credits-outro::after { transform: rotate(180deg); }
+@media(max-width:600px) {
+  #cinema33-film .c33-scene-flash { bottom: 40%; left: 18px; right: 18px; }
+  #cinema33-credits .c33-credits-wordmark { font-size: clamp(34px,9.6vw,60px); letter-spacing: .09em; padding-left: .09em; }
+  #cinema33-credits .c33-credits-outro { letter-spacing: .06em; font-size: 9px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  body.home-page .site-header,
+  body.home-page .floating-whatsapp { transition: none; }
+  #cinema33-film .c33-scene-flash { display: none; }
+  .home-page main > section .c33-section-line,
+  .home-page main > section .c33-section-line.is-lit { animation: none; opacity: .4; transform: none; }
+  .home-page main > section .c33-section-line::after { display: none; }
+  #cinema33-credits .c33-credits-cta { transition: none; }
+}
