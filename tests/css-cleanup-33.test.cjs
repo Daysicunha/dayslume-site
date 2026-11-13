@@ -48,6 +48,6 @@ test('CSS cleanup does not disturb the approved cinematic hero or official palet
  assert.doesNotMatch(html,/hero--interactive-flower|class="flower-petal"/);
  for(const marker of ['id="cinema33-film"','data-cinema33-home','class="cinema-cluster"','class="cinema-browser"','class="cinema-phone cinema-agenda-panel"','class="cinema-service"'])assert.ok(html.includes(marker));
  const styles=[...html.matchAll(/<link\b[^>]*rel=["']stylesheet["'][^>]*href=["']([^"']+)["']/gi)].map(m=>m[1]);
- assert.equal(styles.length,20);
+ assert.equal(styles.length,22);
  assert.equal(styles.at(-1),'assets/css/brand-palette.css');
 });
