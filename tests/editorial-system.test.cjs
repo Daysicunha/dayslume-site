@@ -20,11 +20,11 @@ function htmlFiles(directory) {
 
 test('home uses one ordered editorial eyebrow for each internal section', () => {
   const numbers = [...home.matchAll(/section-eyebrow__number["'][^>]*>(\d{2})</g)].map((match) => match[1]);
-  assert.deepEqual(numbers, ['01', '02', '03', '04', '05', '06', '07', '08']);
+  assert.deepEqual(numbers, ['01', '02', '03', '04', '05', '06', '07']);
 });
 
 test('home sections use distinct atmosphere variants', () => {
-  for (const variant of ['manifest', 'structure', 'network', 'frame', 'path', 'editorial', 'about', 'contact']) {
+  for (const variant of ['manifest', 'structure', 'network', 'frame', 'about', 'editorial', 'contact']) {
     assert.match(home, new RegExp(`section-atmosphere--${variant}`));
     assert.match(palette, new RegExp(`section-atmosphere--${variant}`));
   }
@@ -35,7 +35,7 @@ test('shared system includes responsive and reduced-motion safeguards', () => {
   assert.match(palette, /overflow:\s*clip/);
   assert.match(palette, /env\(safe-area-inset-bottom\)/);
   assert.match(palette, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
-  assert.equal((home.match(/editorial-divider/g) || []).length, 3);
+  assert.equal((home.match(/editorial-divider/g) || []).length, 2);
 });
 
 test('floating contact control uses the DAYSLUME text treatment', () => {

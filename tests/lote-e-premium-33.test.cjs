@@ -50,8 +50,8 @@ test('Lote E reserves reading area and dissolves scene five into original 3D her
 test('Lote E avoids old repeated film headlines and false prices while preserving contact',()=>{
  const html=read('index.html');
  assert.match(html,/Tecnologia que começa no problema/);
- assert.match(html,/Criamos sites, experiências e sistemas/);
- assert.match(html,/Conte o desafio\./);
+ assert.match(html,/Criamos sites, experiências digitais e sistemas/);
+ assert.match(html,/Vamos entender o que/);
  assert.doesNotMatch(html,/R\$ 00,00/);
  assert.equal((html.match(/<h1\b/g)||[]).length,1);
  assert.match(html,/class="c33-film-cta" href="contato.html"/);
