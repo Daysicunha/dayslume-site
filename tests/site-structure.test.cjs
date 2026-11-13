@@ -167,7 +167,7 @@ test('home hero showcases product screens and keeps the official flower secondar
   assert.match(home, /cinema-browser/);
   assert.match(home, /cinema-phone/);
   assert.match(home, /cinema-service/);
-  assert.match(home, /dayslume-flor-oficial\.webp/);
+  assert.match(home, /assets\/images\/logohorizontalbranca\.png/);
   assert.doesNotMatch(home, /class=["']hero-background-image["']/i);
   assert.match(heroJs, /requestAnimationFrame/);
   assert.match(heroJs, /prefers-reduced-motion:\s*reduce/);
