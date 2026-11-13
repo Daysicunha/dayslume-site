@@ -28,7 +28,7 @@ test('CSS fase 2 retains balanced blocks and canonical stylesheet precedence',()
 });
 
 test('CSS fase 2 does not introduce new files or remove the approved hero',()=>{
- assert.equal(fs.readdirSync(path.join(root,'assets','css')).filter(x=>x.endsWith('.css')).length,35);
+ assert.equal(fs.readdirSync(path.join(root,'assets','css')).filter(x=>x.endsWith('.css')).length,37);
  const index=fs.readFileSync(path.join(root,'index.html'),'utf8');
- for(const anchor of ['id="cinema33-film"','class="hero hero--cinematic"','class="cinema-browser"','class="cinema-phone"','class="cinema-service"','class="site-footer days-support-ready"'])assert.ok(index.includes(anchor),anchor);
+ for(const anchor of ['id="cinema33-film"','class="hero hero--cinematic hero--floating-panels"','class="cinema-browser"','class="cinema-phone cinema-agenda-panel"','class="cinema-service"','class="site-footer days-support-ready"'])assert.ok(index.includes(anchor),anchor);
 });

@@ -58,14 +58,14 @@ test('floating contact control retracts near contact and footer content on every
 });
 
 test('hero foregrounds digital products with cinematic, accessible motion', () => {
-  assert.match(home, /class="hero hero--cinematic"/);
+  assert.match(home, /class="hero hero--cinematic hero--floating-panels"/);
   for (const element of ['cinema-browser','cinema-phone','cinema-service']) {
     assert.match(home, new RegExp(element));
   }
-  assert.match(home, /dayslume-flor-oficial\.webp/);
+  assert.match(home, /assets\/images\/logohorizontalbranca\.png/);
   assert.doesNotMatch(home, /data-flower-petal|data-scroll-hero|data-hero-video|<video\b[^>]*autoplay/i);
   assert.match(cinematicCss, /@media \(prefers-reduced-motion: reduce\)/);
   assert.match(cinematicCss, /\.hero--cinematic \.hero-visual-composition/);
   assert.match(cinematicMotion, /prefers-reduced-motion: reduce/);
-  assert.match(cinematicMotion, /pointer\.matches/);
+  assert.match(cinematicMotion, /precise\.matches/);
 });

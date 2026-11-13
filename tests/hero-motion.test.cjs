@@ -6,14 +6,14 @@ const root=path.resolve(__dirname,'..');
 const read=(name)=>fs.readFileSync(path.join(root,name),'utf8');
 test('cinematic hero puts commercial message and product interfaces on the first fold',()=>{
   const html=read('index.html');
-  assert.match(html,/class="hero hero--cinematic"/);
+  assert.match(html,/class="hero hero--cinematic hero--floating-panels"/);
   assert.match(html,/<div class="container hero-grid">[\s\S]*<div class="hero-content">[\s\S]*<h1 id="hero-title">Faça o digital/);
   assert.match(html,/class="hero-visual-composition cinema-stage"/);
   for(const element of ['cinema-browser','cinema-phone','cinema-service']) assert.match(html,new RegExp(element));
   assert.match(html,/href="#problemas"/);
   assert.match(html,/href="#projetos"/);
-  assert.match(html,/aria-label="Composição ilustrativa de produtos digitais DAYSLUME/);
-  assert.match(html,/INTERFACES ILUSTRATIVAS · SEM DADOS REAIS/);
+  assert.match(html,/aria-label="Painéis de interfaces digitais flutuantes/);
+  assert.match(html,/VITRINI LOCAL · experiência ilustrativa/);
   assert.doesNotMatch(html,/data-flower-petal|data-scroll-hero|data-kiru-word|hero-kiru-keyword|data-hero-video/);
 });
 test('Kiru rolling cards are limited to the two commercial paths',()=>{
@@ -35,7 +35,7 @@ test('hero uses lightweight motion without pinning or hiding accessible actions'
   assert.match(css,/@media \(max-width: 560px\)/);
   assert.match(css,/prefers-reduced-motion: reduce/);
   assert.match(motion,/requestAnimationFrame/);
-  assert.match(motion,/pointer\.matches/);
+  assert.match(motion,/precise\.matches/);
   assert.match(motion,/reduced\.matches/);
   assert.match(editorial,/if \(cinematic \|\|/);
   assert.match(editorial,/function scrollCards\(/);
@@ -56,7 +56,7 @@ test('hero layers three product stories, preserving the mineral palette and mobi
   const html=read('index.html'),css=read('assets/css/hero-cinematic.css');
   assert.match(html,/cinema-stage-caption--vitrini/);
   assert.match(html,/cinema-stage-caption--engreni/);
-  assert.match(html,/assets\/images\/dayslume-flor-oficial\.webp/);
+  assert.match(html,/assets\/images\/logohorizontalbranca\.png/);
   assert.match(css,/background:\s*radial-gradient/);
   assert.match(css,/var\(--peach\)/);
   assert.match(css,/var\(--warm-ivory\)/);
@@ -127,9 +127,9 @@ test('new mineral hero gradient and concise case stories keep brand identity',()
 });
 test('section 08 has readable, wrapping copy and isolated two-column layout',()=>{
  const html=read('index.html'),palette=read('assets/css/brand-palette.css');
- assert.match(html,/O que precisa funcionar/);
- assert.match(html,/melhor no digital\?/);
- assert.match(html,/Conte o que está travando seu negócio/);
+ assert.match(html,/Conte o desafio\./);
+ assert.match(html,/A solução vem depois\./);
+ assert.match(html,/Contar o que está travando meu negócio/);
  assert.match(palette,/main > #contato #contact-title > span\s*\{[\s\S]*?white-space:normal/);
  assert.match(palette,/main > #contato \.contact-grid > div:first-child/);
  assert.match(html,/<form class="contact-form" id="contact-form"/);
