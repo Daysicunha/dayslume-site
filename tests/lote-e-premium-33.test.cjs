@@ -41,9 +41,9 @@ test('Lote E reserves reading area and dissolves scene five into original 3D her
  assert.match(css,/text-wrap: balance/);
  assert.match(css,/--c33-exit-progress/);
  assert.match(js,/pin\.style\.setProperty\('--c33-exit-progress'/);
- assert.match(html,/class="hero hero--cinematic"/);
+ assert.match(html,/class="hero hero--cinematic hero--floating-panels"/);
  assert.match(html,/class="cinema-cluster"/);
- for(const x of ['class="cinema-browser"','class="cinema-phone"','class="cinema-service"'])assert.ok(html.includes(x));
+ for(const x of ['class="cinema-browser"','class="cinema-phone cinema-agenda-panel"','class="cinema-service"'])assert.ok(html.includes(x));
  assert.match(css,/@media \(prefers-reduced-motion: reduce\)/);
 });
 
