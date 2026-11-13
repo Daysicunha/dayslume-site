@@ -18,4 +18,4 @@ Base: 731f5247184173e918ad22d76522f9b8269313a5 (commit preparado após Lote E). 
 ## Testes e pendências
 - Atualizar os testes que pressupõem oito seções editoriais, o bloco de cinco etapas e três cards de artigos.
 - Verificar a prévia em navegador e confirmar que a página de Produtos deixa claros os estágios disponíveis.
-- Considerar padronização do rótulo **Serviços** nas páginas internas em rodada dedicada para não misturar a reorganização da home com navegação de outros documentos.
+- O rótulo **Serviços** foi padronizado em todas as 20 páginas HTML (cabeçalhos e rodapés), preservando os destinos de links e distinguindo Serviços de Produtos. Conteúdos e headlines internas não foram reescritos nesta etapa.

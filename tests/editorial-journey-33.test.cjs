@@ -49,3 +49,27 @@ test('Founders method is concise and there are seven numbered editorial sections
  assert.deepEqual(nums,['01','02','03','04','05','06','07']);
  assert.equal((html.match(/<h1\b/g)||[]).length,1);
 });
+
+test('Services and Products navigation use consistent terms across all 20 pages',()=>{
+ const pages=[
+  'index.html','servicos.html','solucoes.html','projetos.html','blog.html',
+  'sobre.html','contato.html','central-de-ajuda.html','sites-completos.html',
+  'landing-pages.html','processo.html','vitrini.html','vitrini-link.html',
+  'projetos/tornearia-barbosa.html',
+  'blog/da-ideia-a-interface.html',
+  'blog/depender-apenas-do-instagram-riscos.html',
+  'blog/ia-negocios-com-criterio.html',
+  'blog/presenca-digital-estrategica.html',
+  'blog/site-bonito-precisa-funcionar.html',
+  'blog/tecnologia-com-intencao.html'
+ ];
+ assert.equal(pages.length,20);
+ for(const p of pages){
+  const body=read(p),base=p.includes('/')?'../':'';
+  const service='href="'+base+'servicos.html">Serviços</a>';
+  const product='href="'+base+'solucoes.html">Produtos</a>';
+  assert.ok(body.includes(service),p+' must link to Services');
+  assert.ok(body.includes(product),p+' must link to Products');
+  assert.ok(!body.includes('href="'+base+'servicos.html">Soluções</a>'),p+' has obsolete navigation label');
+ }
+});
