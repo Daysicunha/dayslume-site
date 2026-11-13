@@ -33,11 +33,11 @@ test('LOTE B: reduced motion remains static, and the five scenes are untouched',
 test('LOTE B: one pointer controller drives hero depth and atmosphere',()=>{
   const threeD=read('assets/js/hero-cinematic.js');
   const showroom=read('assets/js/cinematic-experience-33.js');
-  assert.match(threeD,/--cinema-shift-x/);
-  assert.match(threeD,/--cinema-shift-y/);
+  assert.match(threeD,/--cinema-panel-x/);
+  assert.match(threeD,/--cinema-panel-y/);
   assert.match(threeD,/--cinema33-pointer-x/);
   assert.match(threeD,/--cinema33-pointer-y/);
-  assert.match(threeD,/requestAnimationFrame\(paint\)/);
+  assert.match(threeD,/requestAnimationFrame\(applyFrame\)/);
   assert.doesNotMatch(showroom,/addEventListener\('pointermove'/);
   assert.match(showroom,/data-cinema33-choice/);
   assert.match(showroom,/aria-pressed/);
