@@ -10,10 +10,11 @@ test('cinematic hero puts commercial message and product interfaces on the first
   assert.match(html,/<div class="container hero-grid">[\s\S]*<div class="hero-content">[\s\S]*<h1 id="hero-title">Faça o digital/);
   assert.match(html,/class="hero-visual-composition cinema-stage"/);
   for(const element of ['cinema-browser','cinema-phone','cinema-service']) assert.match(html,new RegExp(element));
-  assert.match(html,/href="#problemas"/);
+  assert.match(html,/href="#contato">Conversar sobre meu projeto/);
   assert.match(html,/href="#projetos"/);
   assert.match(html,/aria-label="Composição ilustrativa de produtos digitais DAYSLUME/);
-  assert.match(html,/INTERFACES ILUSTRATIVAS · SEM DADOS REAIS/);
+  assert.doesNotMatch(html,/INTERFACES ILUSTRATIVAS · SEM DADOS REAIS/);
+  assert.match(html,/aria-label="Composição ilustrativa de produtos digitais DAYSLUME/);
   assert.doesNotMatch(html,/data-flower-petal|data-scroll-hero|data-kiru-word|hero-kiru-keyword|data-hero-video/);
 });
 test('Kiru rolling cards are limited to the two commercial paths',()=>{
@@ -56,7 +57,8 @@ test('hero layers three product stories, preserving the mineral palette and mobi
   const html=read('index.html'),css=read('assets/css/hero-cinematic.css');
   assert.match(html,/cinema-stage-caption--vitrini/);
   assert.match(html,/cinema-stage-caption--engreni/);
-  assert.match(html,/assets\/images\/dayslume-flor-oficial\.webp/);
+  assert.doesNotMatch(html,/class="cinema-signature"/);
+  assert.match(html,/logohorizontalbranca\.png/);
   assert.match(css,/background:\s*radial-gradient/);
   assert.match(css,/var\(--peach\)/);
   assert.match(css,/var\(--warm-ivory\)/);
@@ -67,25 +69,21 @@ test('hero layers three product stories, preserving the mineral palette and mobi
 });
 test('manifest title wraps only within left column, and the semicircle is disabled',()=>{
  const html=read('index.html'),css=read('assets/css/hero-prism-scroll.css');
- assert.match(html,/manifest-title-line">Onde o digital/);
- assert.match(html,/manifest-title-line">está travando/);
- assert.match(html,/manifest-title-line">o seu negócio\?/);
+ assert.match(html,/manifest-title-line">O que precisa/);
+ assert.match(html,/manifest-title-line">funcionar melhor/);
+ assert.match(html,/manifest-title-line">no seu negócio\?/);
  assert.match(css,/body\.home-page main > #problemas \.manifest-concept::after\s*\{\s*content:none;/);
  assert.match(css,/body\.home-page main > #problemas \.manifest-title \.manifest-title-line\s*\{[\s\S]*?white-space:normal;/);
 });
-test('section 05 scrolls its five cards individually without old reveal collisions',()=>{
- const html=read('index.html'),css=read('assets/css/hero-prism-scroll.css'),js=read('assets/js/hero-prism-scroll.js');
- const homeJs=read('assets/js/home-premium.js');
- assert.match(html,/home-process-list" data-process-scroll/);
- assert.equal((html.match(/<li><span>0[1-5]<\/span>/g)||[]).length,5);
- assert.match(js,/function scrollProcess\(/);
- assert.match(js,/progress-i\*cues\.stagger/);
- assert.match(js,/processCards\.forEach/);
- assert.match(css,/\.process-scroll-ready li/);
- assert.match(homeJs,/home-process-list:not\(\[data-process-scroll\]\) li/);
- assert.match(css,/prefers-reduced-motion:reduce/);
+test('founder presentation condenses the old five-step process into three readable stages',()=>{
+ const html=read('index.html');
+ assert.match(html,/id="processo-home"/);
+ assert.doesNotMatch(html,/class="section home-process-section/);
+ for(const label of ['01 · Entender','02 · Construir','03 · Evoluir'])assert.ok(html.includes(label),label);
+ assert.match(html,/href="processo.html">Conhecer nosso processo completo/);
+ const js=read('assets/js/hero-prism-scroll.js');
+ assert.match(js,/if\(!enabled \|\| !process \|\| processCards\.length!==5\) return/);
 });
-
 
 test('section choreography remains available while old hero transition is disabled',()=>{
   const js=read('assets/js/hero-prism-scroll.js');
@@ -127,9 +125,9 @@ test('new mineral hero gradient and concise case stories keep brand identity',()
 });
 test('section 08 has readable, wrapping copy and isolated two-column layout',()=>{
  const html=read('index.html'),palette=read('assets/css/brand-palette.css');
- assert.match(html,/O que precisa funcionar/);
- assert.match(html,/melhor no digital\?/);
- assert.match(html,/Conte o que está travando seu negócio/);
+ assert.match(html,/Vamos entender o que/);
+ assert.match(html,/seu negócio precisa\?/);
+ assert.match(html,/Respondemos pelo WhatsApp/);
  assert.match(palette,/main > #contato #contact-title > span\s*\{[\s\S]*?white-space:normal/);
  assert.match(palette,/main > #contato \.contact-grid > div:first-child/);
  assert.match(html,/<form class="contact-form" id="contact-form"/);
@@ -157,7 +155,7 @@ test('mobile hero puts a compact flower above readable copy and CTAs',()=>{
  assert.match(palette,/body\.home-page \.hero--scroll-invasion \.hero-scroll-stage\s*\{[\s\S]*?height:auto/);
  assert.match(palette,/body\.home-page \.hero--scroll-invasion \.hero-actions\s*\{[\s\S]*?justify-content:center/);
  assert.match(palette,/body\.home-page \.hero--scroll-invasion \.hero-scroll-hint,/);
- assert.match(html,/href="#problemas"/);
+ assert.match(html,/href="#contato">Conversar sobre meu projeto/);
  assert.match(html,/href="#projetos"/);
 });
 
@@ -214,7 +212,7 @@ test('3D is restored on separated product cells without merging the QA cases and
  for(const name of ['case-tornearia-barbosa-1600x900.webp','case-new-rocket-play-1600x900.webp','case-engreni-agenda-1600x900.webp']){
    assert.match(html,new RegExp(name));
  }
- for(const name of ['content-design-process.svg','content-strategy-editorial.svg','content-technology-experience.svg']){
+ for(const name of ['content-design-process.svg','content-strategy-editorial.svg']){
    assert.match(html,new RegExp(name));
  }
  const styles=[...html.matchAll(/href="(assets\/css\/[^"]+\.css)"/g)].map(m=>m[1]);

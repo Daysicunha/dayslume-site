@@ -14,7 +14,6 @@
 }
 
 body:not(.home-page){
-  font-family:"DM Sans",sans-serif;
   line-height:1.65;
   text-rendering:optimizeLegibility;
 }
@@ -29,9 +28,7 @@ body:not(.home-page) .container{
 
 /* Header — mesma escala e comportamento da Home */
 body:not(.home-page) .header{
-  position:sticky;
   top:0;
-  z-index:120;
   background:rgba(32,37,50,.96);
   backdrop-filter:blur(16px);
   border-bottom:1px solid rgba(169,197,216,.18);
@@ -57,17 +54,11 @@ body:not(.home-page) .header nav>a{
   text-decoration:none;
 }
 body:not(.home-page) .header nav>a:not(.days-mobile-contact)::after{
-  content:"";
-  position:absolute;
-  left:0;
   bottom:5px;
-  width:0;
   height:1px;
   background:linear-gradient(90deg,var(--mist-blue),var(--plum-mineral));
-  transition:width .25s ease;
 }
-body:not(.home-page) .header nav>a:hover::after,
-body:not(.home-page) .header nav>a[aria-current="page"]::after{width:100%}
+
 body:not(.home-page) .header nav>a[aria-current="page"]{
   color:var(--warm-ivory);
   text-decoration:none;
@@ -75,24 +66,17 @@ body:not(.home-page) .header nav>a[aria-current="page"]{
 body:not(.home-page) .header .social-icon{
   width:44px;
   height:44px;
-  border-radius:50%;
 }
 body:not(.home-page) .header .social-icon svg{width:21px;height:21px}
 body:not(.home-page) .header .nav-cta{
   min-height:48px;
   padding:12px 20px;
-  border-radius:999px;
   font-size:15px;
   font-weight:600;
   background:rgba(169,197,216,.08);
-  color:var(--warm-ivory);
   border:1px solid rgba(169,197,216,.55);
 }
-body:not(.home-page) .header .nav-cta:hover{
-  background:var(--plum-mineral);
-  color:var(--warm-ivory);
-  border-color:var(--plum-mineral);
-}
+
 
 /* Hero interna — mesma família visual, sem copiar o vídeo da Home */
 body:not(.home-page):not(.blog-index):not(.blog-article) .header~main>.hero{
@@ -374,7 +358,6 @@ body.blog-article main>.section{
 /* Footer */
 body:not(.home-page) .footer{
   padding:48px 0 88px;
-  background:var(--ink-deep);
 }
 body:not(.home-page) .footer-inner{
   gap:32px;
@@ -414,12 +397,11 @@ body:not(.home-page) .commercial-diagnostic{
 /* Responsivo */
 @media(min-width:1181px){
   body:not(.home-page) .header .header-inner{
-    display:grid;
     grid-template-columns:minmax(240px,1fr) auto minmax(240px,1fr);
   }
   body:not(.home-page) .header .brand{justify-self:start}
-  body:not(.home-page) .header nav{justify-self:center}
-  body:not(.home-page) .header .header-actions{justify-self:end}
+  
+  
 }
 @media(max-width:1180px){
   body:not(.home-page) .container{width:calc(100% - 40px)}
@@ -429,7 +411,6 @@ body:not(.home-page) .commercial-diagnostic{
   }
   body:not(.home-page) .header .brand-lockup{width:min(56vw,228px)}
   body:not(.home-page) .header.days-nav-ready .header-inner{
-    display:grid;
     grid-template-columns:1fr auto;
     align-items:center;
   }
@@ -448,7 +429,6 @@ body:not(.home-page) .commercial-diagnostic{
 }
 @media(max-width:800px){
   body:not(.home-page):not(.blog-index):not(.blog-article) .hero h1{
-    max-width:20ch;
     font-size:clamp(38px,9vw,54px);
   }
   body:not(.home-page):not(.blog-index):not(.blog-article) main>.section h2{
@@ -564,9 +544,9 @@ body:not(.home-page) .header .header-inner {
 body:not(.home-page) .header .brand-lockup {width:clamp(162px,14.6vw,202px);}
 body:not(.home-page) .header nav {gap:clamp(10px,1.1vw,18px);}
 body:not(.home-page) .header nav>a {font-size:clamp(13px,.94vw,15px);}
-body:not(.home-page) .header .social-icon {width:36px;height:36px;border-radius:50%;}
-body:not(.home-page) .header .social-icon svg {width:17px;height:17px;}
-body:not(.home-page) .header .nav-cta {min-height:44px;padding:10px 17px;border-radius:999px;}
+
+
+body:not(.home-page) .header .nav-cta {padding:10px 17px;}
 
 /* Seção inicial: fundo mineral bipartido inspirado na Home; flor como textura
    de fundo, evitando ocupar a área dos títulos e CTAs. */
@@ -613,28 +593,25 @@ body:not(.home-page) .header :is(a,button):focus-visible {
 body:not(.home-page) main :is(.section,.band,.blog-directory) {scroll-margin-top:110px;}
 body:not(.home-page) .footer {
   border-top:1px solid rgba(169,197,216,.22);
-  background:var(--ink-deep);
 }
 @media(max-width:1180px) {
   body:not(.home-page) .header {padding:10px 0;}
   body:not(.home-page) .header.days-nav-ready .header-inner {
     min-height:64px;padding:0 17px;
-    grid-template-columns:minmax(0,1fr) 46px;gap:12px;
   }
-  body:not(.home-page) .header.days-nav-ready .days-menu-toggle {
-    display:flex;justify-self:end;
+  body:not(.home-page) .header.days-nav-ready .days-menu-toggle {justify-self:end;
   }
-  body:not(.home-page) .header.days-nav-ready .header-actions {display:none;}
+  
   body:not(.home-page) .header.days-nav-ready nav {
-    top:calc(100% + 10px);left:0;right:0;
+    top:calc(100% + 10px);
     padding:16px 20px 22px;
     border:1px solid rgba(169,197,216,.28);
     border-radius:18px;
     box-shadow:0 20px 40px rgba(20,25,37,.25);
     background:#202532;
   }
-  body:not(.home-page) .header.days-nav-ready nav:not(.is-open) {display:none;}
-  body:not(.home-page) .header.days-nav-ready nav.is-open {display:flex;}
+  
+  
   body:not(.home-page) .header nav>a::after {display:none;}
 }
 @media(max-width:800px) {
@@ -740,7 +717,6 @@ body:not(.home-page) .header {
 body:not(.home-page) .header .header-inner {
   width:100%;
   max-width:none;
-  min-height:64px;
   padding:0 clamp(17px,2.65vw,40px);
   gap:clamp(12px,1.5vw,25px);
   border:0;border-radius:inherit;
@@ -748,8 +724,7 @@ body:not(.home-page) .header .header-inner {
 }
 body:not(.home-page) .header .brand {display:flex;align-items:center;min-width:0;}
 body:not(.home-page) .header .brand-lockup {
-  display:block;width:clamp(156px,12vw,205px);max-width:100%;
-  height:auto;object-fit:contain;
+  display:block;width:clamp(156px,12vw,205px);
 }
 body:not(.home-page) .header nav {align-items:center;gap:clamp(12px,1.4vw,22px);}
 body:not(.home-page) .header nav>a:not(.days-mobile-contact) {
@@ -996,7 +971,7 @@ body:not(.home-page) .footer-identity {
   display:flex;flex-direction:column;gap:10px;width:100%;
   padding-bottom:clamp(20px,2.7vw,30px);
 }
-body:not(.home-page) .footer-identity .brand-lockup {width:min(280px,72vw);height:auto;}
+body:not(.home-page) .footer-identity .brand-lockup {width:min(280px,72vw);}
 body:not(.home-page) .footer-identity small {
   font:400 13px/1.6 "DM Sans",sans-serif;
   letter-spacing:0;color:rgba(var(--warm-ivory-rgb),.7);

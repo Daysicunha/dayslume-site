@@ -9,22 +9,21 @@ const products=read('solucoes.html');
 const cases=read('projetos.html');
 const beta='https://ritmo-daysi-preview.vercel.app/';
 
-test('RITMO lives between products and cases with a real beta destination',()=>{
- assert.ok(home.indexOf('id="produtos"')<home.indexOf('id="ritmo"'));
- assert.ok(home.indexOf('id="ritmo"')<home.indexOf('id="projetos"'));
- assert.match(home,/aria-labelledby="ritmo-feature-title"/);
- assert.ok(home.includes('href="'+beta+'"'));
- assert.match(home,/id="ritmo".*?(?:[\s\S])*?ritmo-qr\.svg/);
- assert.match(home,/Versão de demonstração em testes/);
+test('RITMO is in the product catalogue, not in the commercial home flow',()=>{
+ assert.doesNotMatch(home,/id="ritmo"|class="section ritmo-feature"/);
+ assert.ok(home.indexOf('id="produtos"')<home.indexOf('id="projetos"'));
+ assert.match(home,/href="solucoes\.html#ritmo-produto"/);
+ assert.match(products,/id="ritmo-produto"/);
+ assert.ok(products.includes('href="'+beta+'"'));
  assert.doesNotMatch(home,/href="https:\/\/play\.google\.com\/store\/apps\/details[^"]*ritmo/i);
 });
 
-test('QR code is a local SVG asset without third-party QR APIs',()=>{
+test('RITMO QR asset and experience remain in the repository',()=>{
  const qr=read('assets/images/ritmo-qr.svg');
  assert.match(qr,/<svg/);
  assert.match(qr,/viewBox="0 0 37 37"/);
  assert.match(qr,/<path /);
- assert.match(home,/src="assets\/images\/ritmo-qr\.svg"/);
+ assert.doesNotMatch(home,/src="assets\/images\/ritmo-qr\.svg"/);
 });
 
 test('original VITRINI and ENGRENI demos remain alongside Nauta and RITMO',()=>{
@@ -46,6 +45,7 @@ test('official palette remains the final stylesheet on all three pages',()=>{
  for(const s of [home,products,cases]){
   const styles=[...s.matchAll(/href="(assets\/css\/[^"]+\.css)"/g)].map(x=>x[1]);
   assert.equal(styles.at(-1),'assets/css/brand-palette.css');
-  assert.ok(styles.includes('assets/css/ritmo-showcase.css'));
+  if(s===home)assert.ok(!styles.includes('assets/css/ritmo-showcase.css'));
+  else assert.ok(styles.includes('assets/css/ritmo-showcase.css'));
  }
 });
