@@ -65,11 +65,10 @@ test('Services and Products navigation use consistent terms across all 20 pages'
  ];
  assert.equal(pages.length,20);
  for(const p of pages){
-  const body=read(p),base=p.includes('/')?'../':'';
-  const service='href="'+base+'servicos.html">Serviços</a>';
-  const product='href="'+base+'solucoes.html">Produtos</a>';
-  assert.ok(body.includes(service),p+' must link to Services');
-  assert.ok(body.includes(product),p+' must link to Products');
-  assert.ok(!body.includes('href="'+base+'servicos.html">Soluções</a>'),p+' has obsolete navigation label');
+  const body=read(p);
+  // The active navigation entry may include aria-current="page".
+  assert.match(body,/<a\b[^>]*href="(?:\.\.\/)?servicos\.html"[^>]*>Serviços<\/a>/,p+' must link to Services');
+  assert.match(body,/<a\b[^>]*href="(?:\.\.\/)?solucoes\.html"[^>]*>Produtos<\/a>/,p+' must link to Products');
+  assert.doesNotMatch(body,/<a\b[^>]*href="(?:\.\.\/)?servicos\.html"[^>]*>Soluções<\/a>/,p+' has obsolete navigation label');
  }
 });
