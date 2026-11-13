@@ -7,7 +7,7 @@ const read = name => fs.readFileSync(path.join(root, name), 'utf8');
 
 test('3.3 retains approved hero composition and direct business CTAs', () => {
   const html = read('index.html');
-  assert.match(html, /class="hero hero--cinematic" data-cinema33-home/);
+  assert.match(html, /class="hero hero--cinematic hero--floating-panels" data-cinema33-home/);
   for (const name of ['cinema-browser', 'cinema-phone', 'cinema-service']) {
     assert.match(html, new RegExp(name));
   }
