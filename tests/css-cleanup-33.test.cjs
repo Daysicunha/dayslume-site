@@ -27,12 +27,12 @@ test('CSS cleanup removes only abandoned files while keeping all referenced styl
   }
  }
  for(const deadFile of dead)assert.equal(fs.existsSync(path.join(cssDir,deadFile)),false,deadFile);
- assert.equal(loaded.size,35);
+ assert.equal(loaded.size,37);
 });
 
 test('CSS cleanup resolves every local @import and preserves the shared visual system',()=>{
  const css=fs.readdirSync(cssDir).filter(file=>file.endsWith('.css'));
- assert.equal(css.length,35);
+ assert.equal(css.length,37);
  for(const file of css){
   const s=fs.readFileSync(path.join(cssDir,file),'utf8');
   for(const m of s.matchAll(/@import\s+(?:url\()?["']?(\.\/?[^"'\s\)]+\.css)["']?/g)){
@@ -46,7 +46,7 @@ test('CSS cleanup does not disturb the approved cinematic hero or official palet
  const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
  assert.doesNotMatch(html,/href="assets\/css\/hero-flower-interactive\.css"/);
  assert.doesNotMatch(html,/hero--interactive-flower|class="flower-petal"/);
- for(const marker of ['id="cinema33-film"','data-cinema33-home','class="cinema-cluster"','class="cinema-browser"','class="cinema-phone"','class="cinema-service"'])assert.ok(html.includes(marker));
+ for(const marker of ['id="cinema33-film"','data-cinema33-home','class="cinema-cluster"','class="cinema-browser"','class="cinema-phone cinema-agenda-panel"','class="cinema-service"'])assert.ok(html.includes(marker));
  const styles=[...html.matchAll(/<link\b[^>]*rel=["']stylesheet["'][^>]*href=["']([^"']+)["']/gi)].map(m=>m[1]);
  assert.equal(styles.length,20);
  assert.equal(styles.at(-1),'assets/css/brand-palette.css');
