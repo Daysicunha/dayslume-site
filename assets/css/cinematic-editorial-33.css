@@ -239,14 +239,24 @@ body.home-page[data-c33-editorial] main > section#modelo.section {
     color-mix(in srgb, var(--warm-ivory) 92%, var(--plum-mineral)));
 }
 
-/* 03 / Products: the cool tint signifies digital interfaces, not blue neon. */
+/* 03 / Products: a second deep-ink technological scene.
+   The VITRINI and ENGRENI interfaces remain untouched and functional. */
 body.home-page[data-c33-editorial] main > section#produtos.section {
-  --c33-section-accent: var(--slate-mineral);
-  background: var(--warm-ivory);
+  --c33-section-accent: var(--mist-blue);
+  --section-rule-soft: rgba(var(--mist-blue-rgb), .115);
+  --section-grid-opacity: .42;
+  background: var(--ink-deep);
   background:
-    radial-gradient(ellipse 42% 55% at 95% 12%,
-      rgba(var(--mist-blue-rgb), .10), transparent 78%),
-    color-mix(in srgb, var(--warm-ivory) 73%, var(--mist-blue));
+    radial-gradient(ellipse 48% 50% at 85% 18%,
+      rgba(var(--plum-mineral-rgb), .22), transparent 76%),
+    radial-gradient(ellipse 44% 55% at 8% 92%,
+      rgba(var(--mist-blue-rgb), .11), transparent 76%),
+    linear-gradient(135deg,
+      color-mix(in srgb, var(--ink-deep) 92%, var(--slate-mineral)),
+      var(--ink-deep) 50%,
+      color-mix(in srgb, var(--ink-deep) 85%, var(--plum-mineral)));
+  color: var(--warm-ivory);
+  border-block: 1px solid rgba(var(--mist-blue-rgb), .18);
 }
 
 /* 04 / Projects: the brightest paper stage gives case imagery priority. */
@@ -322,4 +332,134 @@ body.home-page[data-c33-editorial] main > section.section:not(.about-section)
 body.home-page[data-c33-editorial] main > section.section:not(.about-section)
   :is(a.migration-link, a.projects-portfolio-cta, a.content-archive, a.btn, button.btn)::before {
   background: none;
+}
+
+
+/* TECH × EDITORIAL — selective reinforcement of the Home's product scene.
+   Scope deliberately excludes the 5-scene film, cinematic Hero and all internals.
+   The product demos, showroom behavior, layout and article cards are preserved. */
+body.home-page[data-c33-editorial] main > section#produtos.section
+  :is(.section-heading h2, .section-heading .section-title) {
+  color: var(--warm-ivory);
+}
+body.home-page[data-c33-editorial] main > section#produtos.section
+  #produtos-title > span:last-child {
+  color: var(--mist-blue);
+}
+body.home-page[data-c33-editorial] main > section#produtos.section
+  .section-heading p:not(.section-eyebrow) {
+  color: rgba(var(--warm-ivory-rgb), .83);
+}
+body.home-page[data-c33-editorial] main > section#produtos.section
+  .section-eyebrow {
+  color: rgba(var(--warm-ivory-rgb), .82);
+}
+body.home-page[data-c33-editorial] main > section#produtos.section
+  .section-eyebrow__number {
+  color: var(--peach);
+}
+body.home-page[data-c33-editorial] main > section#produtos.section
+  .section-eyebrow__number::after {
+  color: rgba(var(--warm-ivory-rgb), .64);
+}
+body.home-page[data-c33-editorial] main > section#produtos.section
+  .section-eyebrow::before {
+  background: linear-gradient(90deg, var(--mist-blue), var(--peach));
+}
+
+/* In-scene exploration: legible selections, hint text and focus indication. */
+body.home-page[data-c33-editorial] main > section#produtos.section
+  .cinema33-showroom {
+  border-block-color: rgba(var(--mist-blue-rgb), .34);
+}
+body.home-page[data-c33-editorial] main > section#produtos.section
+  .cinema33-showroom__intro {
+  color: var(--peach);
+}
+body.home-page[data-c33-editorial] main > section#produtos.section
+  :is(.cinema33-showroom__caption, .cinema33-view-ritmo) {
+  color: rgba(var(--warm-ivory-rgb), .82);
+}
+body.home-page[data-c33-editorial] main > section#produtos.section
+  .cinema33-showroom__choices button {
+  background: rgba(var(--mist-blue-rgb), .05);
+  border-color: rgba(var(--mist-blue-rgb), .42);
+  color: var(--warm-ivory);
+}
+body.home-page[data-c33-editorial] main > section#produtos.section
+  .cinema33-showroom__choices button:hover {
+  background: rgba(var(--mist-blue-rgb), .13);
+  border-color: rgba(var(--mist-blue-rgb), .72);
+}
+body.home-page[data-c33-editorial] main > section#produtos.section
+  .cinema33-showroom__choices button[aria-pressed="true"] {
+  background: var(--mist-blue);
+  border-color: var(--mist-blue);
+  color: var(--ink-deep);
+}
+body.home-page[data-c33-editorial] main > section#produtos.section
+  .cinema33-showroom__choices button:focus-visible {
+  outline: 2px solid var(--peach);
+  outline-offset: 3px;
+}
+body.home-page[data-c33-editorial] main > section#produtos.section
+  .cinema33-view-ritmo:is(:hover, :focus-visible) {
+  color: var(--warm-ivory);
+  text-decoration-thickness: 2px;
+}
+
+/* The two ecosystem cards remain deliberately different:
+   VITRINI = light digital surface; ENGRENI = darker operational interface. */
+body.home-page[data-c33-editorial] main > section#produtos.section
+  .solution-vitrini {
+  background: linear-gradient(148deg,
+    color-mix(in srgb, var(--warm-ivory) 82%, var(--mist-blue)),
+    color-mix(in srgb, var(--warm-ivory) 94%, var(--slate-mineral)));
+  color: var(--ink-deep);
+  border-color: rgba(var(--mist-blue-rgb), .70);
+}
+body.home-page[data-c33-editorial] main > section#produtos.section
+  .solution-engreni {
+  background: linear-gradient(148deg,
+    color-mix(in srgb, var(--ink-deep) 75%, var(--slate-mineral)),
+    color-mix(in srgb, var(--ink-deep) 80%, var(--plum-mineral)));
+  color: var(--warm-ivory);
+  border-color: rgba(var(--mist-blue-rgb), .48);
+}
+body.home-page[data-c33-editorial] main > section#produtos.section
+  .solution-engreni .solution-copy h3,
+body.home-page[data-c33-editorial] main > section#produtos.section
+  .solution-engreni .solution-copy h3 a {
+  color: var(--warm-ivory);
+}
+body.home-page[data-c33-editorial] main > section#produtos.section
+  .solution-vitrini .product-stage-note {
+  color: color-mix(in srgb, var(--ink-deep) 78%, var(--slate-mineral));
+}
+body.home-page[data-c33-editorial] main > section#produtos.section
+  .solution-engreni .product-stage-note {
+  color: rgba(var(--warm-ivory-rgb), .82);
+}
+body.home-page[data-c33-editorial] main > section#produtos.section
+  .solution-card:focus-within {
+  border-color: var(--peach);
+}
+
+/* Contact closes the editorial arc with a strong, accessible action.
+   Do not make the currently disabled form button look enabled. */
+body.home-page[data-c33-editorial] main > section#contato.section
+  :is(.contact-note a.migration-link, .contact-form a.btn:not([hidden]),
+      .contact-form button.btn:not(:disabled)) {
+  color: var(--warm-ivory);
+  background: var(--ink-deep);
+  border-color: var(--ink-deep);
+  box-shadow: 0 12px 26px rgba(var(--ink-deep-rgb), .16);
+}
+body.home-page[data-c33-editorial] main > section#contato.section
+  :is(.contact-note a.migration-link, .contact-form a.btn:not([hidden]),
+      .contact-form button.btn:not(:disabled)):is(:hover, :focus-visible) {
+  color: var(--warm-ivory);
+  background: var(--plum-mineral);
+  border-color: var(--plum-mineral);
+  box-shadow: 0 13px 28px rgba(var(--ink-deep-rgb), .20);
 }
