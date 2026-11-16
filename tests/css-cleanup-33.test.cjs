@@ -48,6 +48,14 @@ test('CSS cleanup does not disturb the approved cinematic hero or official palet
  assert.doesNotMatch(html,/hero--interactive-flower|class="flower-petal"/);
  for(const marker of ['id="cinema33-film"','data-cinema33-home','class="cinema-cluster"','class="cinema-browser"','class="cinema-phone"','class="cinema-service"'])assert.ok(html.includes(marker));
  const styles=[...html.matchAll(/<link\b[^>]*rel=["']stylesheet["'][^>]*href=["']([^"']+)["']/gi)].map(m=>m[1]);
- assert.equal(styles.length,20);
+ // Do not freeze a global count: the RITMO home layer was intentionally removed.
+ assert.equal(new Set(styles).size,styles.length,'Home stylesheets must be unique');
+ for (const required of [
+  'assets/css/hero-cinematic.css',
+  'assets/css/cinematic-experience-33.css',
+  'assets/css/cinematic-film-intro-33.css',
+  'assets/css/cinematic-editorial-33.css'
+ ]) assert.ok(styles.includes(required),'Missing approved layer '+required);
+ assert.ok(!styles.includes('assets/css/ritmo-showcase.css'),'RITMO styles belong outside Home');
  assert.equal(styles.at(-1),'assets/css/brand-palette.css');
 });
