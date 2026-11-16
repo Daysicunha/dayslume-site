@@ -1,0 +1,498 @@
+/* DAYSLUME / Hero 3D — painéis reais, não dispositivos.
+ * Camada aditiva exclusiva de #apresentacao. Nunca altera intro, outras
+ * seções, tokens globais ou componentes de outras páginas. 13/11/2026. */
+
+.home-page #apresentacao.hero--floating-panels {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse 44% 59% at 77% 39%, rgba(110, 82, 137, .34), transparent 79%),
+    radial-gradient(ellipse 26% 43% at 69% 75%, rgba(223, 141, 126, .14), transparent 82%),
+    radial-gradient(ellipse 45% 57% at 8% 3%, rgba(86, 112, 159, .19), transparent 77%),
+    linear-gradient(116deg, #111827 0%, #192032 51%, #171a2a 100%);
+}
+.home-page #apresentacao.hero--floating-panels::before {
+  background-size: 96px 96px;
+  opacity: .7;
+  mask-image: linear-gradient(90deg, transparent, rgba(0,0,0,.5) 38%, #000 86%);
+}
+.home-page #apresentacao .cinema33-atmosphere__beam {
+  opacity: .5;
+  background: linear-gradient(90deg, transparent, rgba(188, 154, 206, .035) 26%, rgba(220, 190, 206, .15) 50%, rgba(216,182,165,.05) 68%, transparent);
+}
+.home-page #apresentacao .cinema33-atmosphere__glow {
+  background: radial-gradient(circle 290px at var(--cinema33-pointer-x,75%) var(--cinema33-pointer-y,43%), rgba(199,165,218,.14), transparent 75%);
+}
+.home-page #apresentacao .hero-grid {
+  width: min(calc(100% - 104px), 1390px);
+  max-width: 1390px;
+  grid-template-columns: minmax(0, .94fr) minmax(0, 1.06fr);
+  gap: clamp(36px, 4vw, 64px);
+  align-items: center;
+}
+.home-page #apresentacao .hero-content { max-width: 630px; }
+.home-page #apresentacao .hero-content h1 {
+  max-width: none;
+  font-size: clamp(48px, 4vw, 69px);
+  line-height: 1.08;
+  letter-spacing: -.055em;
+  text-wrap: initial;
+}
+.home-page #apresentacao .hero-content h1 em {
+  color: #e4baa9;
+  -webkit-text-fill-color: #e4baa9;
+  font-weight: 520;
+}
+.home-page #apresentacao .hero-lead { max-width: 51ch; }
+.home-page #apresentacao .hero-service-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+}
+.home-page #apresentacao .hero-service-list li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 7px 11px;
+  border-radius: 999px;
+  border: 1px solid rgba(199, 190, 212, .22);
+  background: rgba(231, 227, 241, .045);
+  color: rgba(242, 240, 235, .82);
+  font: 550 10px/1.35 Manrope,sans-serif;
+  letter-spacing: .01em;
+  white-space: nowrap;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.045);
+}
+.home-page #apresentacao .hero-service-list li::before {
+  content: "";
+  flex: 0 0 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #dcb5a9;
+  box-shadow: 0 0 9px rgba(220,181,169,.39);
+}
+.home-page #apresentacao .hero-service-list li:nth-child(2)::before { background: #bcb0d1; box-shadow: 0 0 9px rgba(188,176,209,.28); }
+.home-page #apresentacao .hero-service-list li:nth-child(3)::before { background: #a9c5d8; box-shadow: 0 0 9px rgba(169,197,216,.22); }
+.home-page #apresentacao .hero-actions .btn-light { box-shadow: 0 14px 35px rgba(4, 5, 15, .3), inset 0 1px 0 rgba(255,255,255,.65); }
+.home-page #apresentacao .hero-visual-composition.cinema-stage {
+  position: relative;
+  width: 100%;
+  max-width: 790px;
+  min-height: 0;
+  aspect-ratio: auto;
+  overflow: visible;
+  filter: none;
+  perspective: 1500px;
+  contain: layout style;
+}
+.home-page #apresentacao .cinema-stage::before {
+  inset: 7% -6% 2%;
+  filter: blur(30px);
+  background: radial-gradient(ellipse at 61% 51%, rgba(177, 136, 201, .25), rgba(223, 156, 139, .1) 34%, transparent 71%);
+}
+.home-page #apresentacao .cinema-stage::after {
+  inset: 16% 7% 14%;
+  opacity: .5;
+  border-color: rgba(197, 187, 226, .14);
+  transform: rotate(-18deg) scale(1.05,.75);
+}
+.home-page #apresentacao .cinema-cluster {
+  position: relative;
+  inset: auto;
+  display: block;
+  width: 100%;
+  height: clamp(505px, 41vw, 570px);
+  min-height: 0;
+  perspective: 1600px;
+  perspective-origin: 47% 43%;
+  transform: none;
+  transform-style: preserve-3d;
+  transition: none;
+}
+.home-page #apresentacao .cinema-depth {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  transform-style: preserve-3d;
+  border-radius: 24px;
+  border: 1px solid rgba(218,204,240,.24);
+  background: linear-gradient(135deg, rgba(173,155,214,.075), rgba(135,121,178,.025) 58%, rgba(216,182,165,.065));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 30px 65px rgba(6,9,25,.25);
+  backdrop-filter: blur(3px);
+  transform: translate3d(var(--cinema-panel-x,0px), var(--cinema-panel-y,0px), -35px) rotateY(-11deg) rotateZ(-9deg);
+  transition: transform .45s ease;
+}
+.home-page #apresentacao .cinema-depth--violet {
+  z-index: 0;
+  width: 68%;
+  height: 64%;
+  left: 11%;
+  top: 10%;
+}
+.home-page #apresentacao .cinema-depth--peach {
+  z-index: 1;
+  width: 45%;
+  height: 42%;
+  right: 0;
+  top: 31%;
+  border-color: rgba(224,168,154,.18);
+  background: linear-gradient(135deg, rgba(228,161,141,.08), rgba(197,177,226,.035) 72%);
+  transform: translate3d(var(--cinema-panel-x,0px),var(--cinema-panel-y,0px),-18px) rotateY(7deg) rotateZ(9deg);
+}
+.home-page #apresentacao .cinema-float {
+  position: absolute;
+  inset: auto;
+  display: block;
+  margin: 0;
+  padding: 0;
+  transform: translate3d(var(--cinema-panel-x,0px),var(--cinema-panel-y,0px),0);
+  transition: transform .42s cubic-bezier(.2,.7,.25,1);
+  will-change: auto;
+}
+.home-page #apresentacao .cinema-float--vitrini {
+  z-index: 5;
+  width: 73%;
+  height: 352px;
+  left: .5%;
+  top: 22%;
+}
+.home-page #apresentacao .cinema-float--engreni {
+  z-index: 4;
+  width: 29%;
+  height: 355px;
+  right: .5%;
+  top: 11%;
+}
+.home-page #apresentacao .cinema-float--service {
+  z-index: 6;
+  left: 19%;
+  bottom: 4%;
+  width: 61%;
+  height: 78px;
+}
+.home-page #apresentacao .cinema-browser,
+.home-page #apresentacao .cinema-phone,
+.home-page #apresentacao .cinema-service {
+  position: relative;
+  display: block;
+  inset: auto;
+  grid-area: auto;
+  align-self: auto;
+  justify-self: auto;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  max-width: none;
+  min-height: 0;
+  margin: 0;
+  animation: none;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: transform .5s cubic-bezier(.22,.75,.25,1), box-shadow .5s ease, border-color .5s ease;
+}
+.home-page #apresentacao .cinema-browser {
+  border-radius: 18px;
+  border: 1px solid rgba(248,239,246,.62);
+  overflow: hidden;
+  background: #f3efe8;
+  transform: perspective(1550px) rotateY(-8deg) rotateX(3deg) rotateZ(-1.8deg);
+  box-shadow:
+    17px 34px 75px rgba(2,5,19,.54),
+    0 0 0 1px rgba(255,255,255,.12),
+    0 0 42px rgba(210,171,217,.17),
+    inset 0 1px 0 rgba(255,255,255,.85);
+}
+.home-page #apresentacao .cinema-browser::before {
+  content: "";
+  position: absolute;
+  z-index: 9;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow: inset 3px 0 0 rgba(255,255,255,.1);
+}
+.home-page #apresentacao .cinema-browser-top { height: 37px; }
+.home-page #apresentacao .cinema-browser-screen {
+  height: calc(100% - 37px);
+  padding: clamp(17px, 1.65vw, 25px);
+  background: linear-gradient(137deg,#fbf8f4,#f0eced 70%,#e9e5ef);
+}
+.home-page #apresentacao .cinema-browser-title {
+  font-size: clamp(21px, 1.85vw, 29px);
+  margin-top: clamp(14px, 1.65vw, 23px);
+  line-height: 1.16;
+}
+.home-page #apresentacao .cinema-browser-desc { margin-bottom: 14px; }
+.home-page #apresentacao .cinema-category { min-height: 65px; }
+.home-page #apresentacao .cinema-stage-caption {
+  position: absolute;
+  display: block;
+  z-index: 8;
+  width: auto;
+  max-width: 45%;
+  font-size: 9px;
+  font-weight: 750;
+  line-height: 1.4;
+  letter-spacing: .14em;
+  color: rgba(242,240,235,.77);
+  text-shadow: 0 3px 16px rgba(4,4,13,.45);
+  pointer-events: none;
+}
+.home-page #apresentacao .cinema-stage-caption--vitrini {
+  top: 15%;
+  left: 1%;
+}
+.home-page #apresentacao .cinema-stage-caption--engreni {
+  top: 4%;
+  right: 2%;
+}
+/* ENGRENI é um painel de SOFTWARE vertical, não um telefone.
+ * Neutraliza fisicamente aro, padding de carcaça, notch e formatos de aparelho. */
+.home-page #apresentacao .cinema-agenda-panel {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid rgba(210,205,238,.73);
+  background: #f5f2f0;
+  transform: perspective(1350px) rotateY(9deg) rotateX(2deg) rotateZ(3.2deg);
+  box-shadow:
+    -12px 30px 68px rgba(4,5,22,.58),
+    0 0 0 1px rgba(248,244,252,.14),
+    -2px 0 34px rgba(187,167,229,.2),
+    inset 0 1px 0 rgba(255,255,255,.4);
+}
+.home-page #apresentacao .cinema-agenda-panel .cinema-phone-notch { display:none !important; }
+.home-page #apresentacao .cinema-agenda-panel .cinema-phone-screen {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: #f6f2f0;
+  overflow: hidden;
+}
+.home-page #apresentacao .cinema-agenda-panel .cinema-phone-head {
+  padding: 25px 13px 19px 19px;
+  background: linear-gradient(138deg, #515d78, #696887 61%, #84758f);
+}
+.home-page #apresentacao .cinema-agenda-panel .cinema-phone-brand {
+  font-size: 8px;
+  letter-spacing: .12em;
+}
+.home-page #apresentacao .cinema-agenda-panel .cinema-phone-head strong {
+  font-size: clamp(16px, 1.4vw, 20px);
+  margin-top: 9px;
+}
+.home-page #apresentacao .cinema-agenda-panel .cinema-phone-week {
+  gap: 4px;
+  margin-top: 16px;
+}
+.home-page #apresentacao .cinema-agenda-panel .cinema-phone-week span {
+  font-size: 9px;
+  padding: 5px 0;
+}
+.home-page #apresentacao .cinema-agenda-panel .cinema-phone-body {
+  padding: 17px 10px 14px 19px;
+}
+.home-page #apresentacao .cinema-agenda-panel .cinema-appointment { padding: 11px 0; gap: 7px; }
+.home-page #apresentacao .cinema-agenda-panel .cinema-appointment time { font-size: 8px; }
+.home-page #apresentacao .cinema-agenda-panel .cinema-appointment span { font-size: 10px; }
+.home-page #apresentacao .cinema-agenda-panel .cinema-appointment small { font-size: 8px; }
+.home-page #apresentacao .cinema-service {
+  display: flex;
+  align-items: center;
+  padding: 14px 17px;
+  width: 100%;
+  min-height: 0;
+  background: linear-gradient(114deg, rgba(82,70,99,.84), rgba(44,48,76,.86));
+  border: 1px solid rgba(223,201,231,.3);
+  border-radius: 17px;
+  backdrop-filter: blur(16px);
+  transform: perspective(950px) rotateY(-4deg) rotateX(3deg) rotateZ(-.8deg);
+  box-shadow: 0 22px 47px rgba(4,5,18,.5), 0 0 30px rgba(172,140,199,.13), inset 0 1px 0 rgba(255,255,255,.1);
+}
+.home-page #apresentacao .cinema-service-icon { flex-basis: 42px; height: 42px; }
+.home-page #apresentacao .cinema-service-copy strong { font-size: 12px; line-height: 1.35; }
+.home-page #apresentacao .cinema-service-copy small { font-size: 9px; }
+.home-page #apresentacao .cinema-service-spark {
+  width: 4px;
+  height: 4px;
+  margin-left: auto;
+  border-radius: 50%;
+  background: rgba(239,207,194,.8);
+  box-shadow: 0 0 10px rgba(239,207,194,.5);
+}
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference) {
+  .home-page #apresentacao .cinema-float--vitrini:hover .cinema-browser {
+    transform: perspective(1550px) rotateY(-5deg) rotateX(1deg) rotateZ(-1deg) translateZ(10px);
+    box-shadow: 18px 42px 82px rgba(2,5,19,.6), 0 0 49px rgba(210,171,217,.2);
+    border-color: rgba(255,255,255,.8);
+  }
+  .home-page #apresentacao .cinema-float--engreni:hover .cinema-agenda-panel {
+    transform: perspective(1350px) rotateY(6deg) rotateX(1deg) rotateZ(2deg) translateZ(10px);
+    box-shadow: -14px 38px 76px rgba(4,5,22,.58), 0 0 42px rgba(187,167,229,.28);
+  }
+  .home-page #apresentacao .cinema-float--service:hover .cinema-service {
+    transform: perspective(950px) rotateY(-2deg) rotateX(2deg) rotateZ(-.2deg) translateZ(5px);
+  }
+}
+
+/* Movimento automático apenas enquanto o palco está visível. Motion começa
+ * com IntersectionObserver, portanto não acaba durante o filme anterior. */
+@keyframes c3d-drift-main { 0%,100% { translate: 0 0; } 50% { translate: 0 -7px; } }
+@keyframes c3d-drift-side { 0%,100% { translate: 0 0; } 50% { translate: 0 -10px; } }
+@keyframes c3d-drift-foot { 0%,100% { translate: 0 0; } 50% { translate: 0 -5px; } }
+@keyframes c3d-arrive {
+  0% { opacity: .4; filter: blur(6px); }
+  100% { opacity: 1; filter: none; }
+}
+.home-page #apresentacao.is-3d-visible .cinema-float--vitrini { animation: c3d-arrive .85s cubic-bezier(.2,.8,.3,1) both; }
+.home-page #apresentacao.is-3d-visible .cinema-float--engreni { animation: c3d-arrive 1s .13s cubic-bezier(.2,.8,.3,1) both; }
+.home-page #apresentacao.is-3d-visible .cinema-float--service { animation: c3d-arrive 1s .3s cubic-bezier(.2,.8,.3,1) both; }
+.home-page #apresentacao.is-3d-visible:not(.motion-paused) .cinema-browser {
+  animation: c3d-drift-main 7.6s ease-in-out infinite;
+}
+.home-page #apresentacao.is-3d-visible:not(.motion-paused) .cinema-agenda-panel {
+  animation: c3d-drift-side 8.7s ease-in-out -1.9s infinite;
+}
+.home-page #apresentacao.is-3d-visible:not(.motion-paused) .cinema-service {
+  animation: c3d-drift-foot 9.2s ease-in-out -3s infinite;
+}
+
+/* Tablet: palco horizontal integral abaixo do texto. */
+@media (max-width: 1180px) {
+  .home-page #apresentacao .hero-grid {
+    width: min(calc(100% - 64px), 830px);
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+  .home-page #apresentacao .hero-content { max-width: 690px; }
+  .home-page #apresentacao .hero-content h1 { font-size: clamp(44px, 6vw, 66px); }
+  .home-page #apresentacao .cinema-cluster { height: 554px; }
+  .home-page #apresentacao .cinema-float--vitrini { width: 73%; height: 350px; }
+  .home-page #apresentacao .cinema-float--engreni { width: 28.5%; height: 355px; }
+  .home-page #apresentacao .cinema33-ledger { width: min(calc(100% - 64px), 830px); }
+}
+@media (max-width: 760px) {
+  .home-page #apresentacao .hero-grid,
+  .home-page #apresentacao .cinema33-ledger { width: min(calc(100% - 42px), 710px); }
+  .home-page #apresentacao .cinema-cluster { height: 520px; }
+  .home-page #apresentacao .cinema-float--vitrini { top: 20%; height: 325px; }
+  .home-page #apresentacao .cinema-float--engreni { top: 10%; height: 340px; }
+  .home-page #apresentacao .cinema-float--service { bottom: 2%; }
+  .home-page #apresentacao .cinema-browser-screen { padding: 16px; }
+  .home-page #apresentacao .cinema-browser-title { font-size: clamp(21px, 3.4vw, 26px); margin-top: 15px; }
+  .home-page #apresentacao .cinema-category { min-height: 57px; }
+}
+/* Celular: stack com as três superfícies inteiras e leitura priorizada.
+ * Sem scales minúsculos, overflow horizontal ou animação contínua. */
+@media (max-width: 600px) {
+  .home-page #apresentacao.hero--floating-panels { padding: 42px 0 29px; }
+  .home-page #apresentacao .hero-grid,
+  .home-page #apresentacao .cinema33-ledger { width: calc(100% - 34px); }
+  .home-page #apresentacao .hero-content h1 {
+    font-size: clamp(34px, 8.8vw, 46px);
+    margin-bottom: 16px;
+    line-height: 1.085;
+  }
+  .home-page #apresentacao .hero-service-list { gap: 7px; margin-bottom: 22px; }
+  .home-page #apresentacao .hero-service-list li {
+    padding: 7px 9px;
+    font-size: 9px;
+    white-space: normal;
+  }
+  .home-page #apresentacao .hero-actions .btn-light { width: 100%; justify-content: center; }
+  .home-page #apresentacao .hero-visual-composition.cinema-stage {
+    width: 100%;
+    overflow: visible;
+    perspective: none;
+  }
+  .home-page #apresentacao .cinema-cluster {
+    width: 100%;
+    height: 755px;
+    perspective: 1150px;
+  }
+  .home-page #apresentacao .cinema-depth--violet {
+    width: 83%; height: 35%; left: 8%; top: 2%;
+  }
+  .home-page #apresentacao .cinema-depth--peach {
+    width: 50%; height: 30%; right: 4%; top: 43%;
+  }
+  .home-page #apresentacao .cinema-stage-caption { font-size: 8px; letter-spacing: .11em; }
+  .home-page #apresentacao .cinema-stage-caption--vitrini { top: 0; left: 2%; }
+  .home-page #apresentacao .cinema-stage-caption--engreni { top: 43%; right: 6%; }
+  .home-page #apresentacao .cinema-float--vitrini {
+    width: 100%;
+    height: 271px;
+    left: 0; top: 5%;
+  }
+  .home-page #apresentacao .cinema-float--engreni {
+    width: min(67%, 238px);
+    height: 300px;
+    right: 11%;
+    top: 47%;
+  }
+  .home-page #apresentacao .cinema-float--service {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+  }
+  .home-page #apresentacao .cinema-browser {
+    transform: perspective(1000px) rotateY(-4deg) rotateX(2deg) rotateZ(-.65deg);
+  }
+  .home-page #apresentacao .cinema-browser-top { height: 30px; }
+  .home-page #apresentacao .cinema-browser-screen { height: calc(100% - 30px); padding: 12px 11px; }
+  .home-page #apresentacao .cinema-browser-studio { font-size: 6px; margin-bottom: 5px; }
+  .home-page #apresentacao .cinema-vitrini-logo { font-size: 14px; }
+  .home-page #apresentacao .cinema-vitrini-logo small { font-size: 7px; }
+  .home-page #apresentacao .cinema-browser-title { font-size: clamp(19px, 5.6vw, 25px); margin: 10px 0 5px; }
+  .home-page #apresentacao .cinema-browser-desc { font-size: 9px; margin-bottom: 8px; }
+  .home-page #apresentacao .cinema-categories { gap: 5px; }
+  .home-page #apresentacao .cinema-category { min-height: 45px; padding: 6px; }
+  .home-page #apresentacao .cinema-category strong { font-size: 8px; }
+  .home-page #apresentacao .cinema-agenda-panel {
+    transform: perspective(1000px) rotateY(7deg) rotateX(1.5deg) rotateZ(1.8deg);
+  }
+  .home-page #apresentacao .cinema-agenda-panel .cinema-phone-head { padding: 22px 13px 14px 18px; }
+  .home-page #apresentacao .cinema-agenda-panel .cinema-phone-head strong { font-size: 19px; }
+  .home-page #apresentacao .cinema-agenda-panel .cinema-phone-body { padding: 12px 12px 10px 19px; }
+  .home-page #apresentacao .cinema-agenda-panel .cinema-appointment { padding: 9px 0; }
+  .home-page #apresentacao .cinema-service { padding: 11px 13px; transform: perspective(950px) rotateY(-2deg) rotateX(2deg) rotateZ(-.4deg); }
+  .home-page #apresentacao .cinema-service-copy strong { font-size: 11px; }
+  .home-page #apresentacao .cinema-service-copy small { font-size: 9px; }
+  .home-page #apresentacao .cinema-service-icon { flex-basis: 37px; height: 37px; }
+  .home-page #apresentacao .cinema33-ledger { margin-top: 17px; }
+}
+@media (max-width: 380px) {
+  .home-page #apresentacao .cinema-cluster { height: 724px; }
+  .home-page #apresentacao .cinema-float--vitrini { height: 257px; }
+  .home-page #apresentacao .cinema-float--engreni { top: 46%; height: 285px; }
+  .home-page #apresentacao .cinema-stage-caption--engreni { top: 42%; }
+  .home-page #apresentacao .cinema-browser-title { font-size: 19px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .home-page #apresentacao .cinema-float,
+  .home-page #apresentacao .cinema-depth,
+  .home-page #apresentacao .cinema-browser,
+  .home-page #apresentacao .cinema-agenda-panel,
+  .home-page #apresentacao .cinema-service {
+    animation: none !important;
+    translate: none !important;
+    transition: none !important;
+    filter: none !important;
+  }
+  .home-page #apresentacao .cinema-float,
+  .home-page #apresentacao .cinema-depth { transform: none !important; }
+}
+html.motion-paused .home-page #apresentacao .cinema-float,
+html.motion-paused .home-page #apresentacao .cinema-browser,
+html.motion-paused .home-page #apresentacao .cinema-agenda-panel,
+html.motion-paused .home-page #apresentacao .cinema-service {
+  animation: none !important;
+  translate: none !important;
+}
