@@ -11,7 +11,7 @@ test('3.3 retains approved hero composition and direct business CTAs', () => {
   for (const name of ['cinema-browser', 'cinema-phone', 'cinema-service']) {
     assert.match(html, new RegExp(name));
   }
-  assert.match(html, /href="#problemas"/);
+  assert.match(html, /href="#contato">Conversar sobre meu projeto/);
   assert.match(html, /href="#projetos"/);
   assert.match(html, /cinema33-ledger__link" href="#produtos"/);
   assert.doesNotMatch(html, /class="film" id="film"/);
@@ -50,5 +50,8 @@ test('approved cases, contents and mobile navigation remain in the page', () => 
   }
   assert.match(html, /id="conteudos"/);
   assert.match(html, /class="menu-toggle"/);
-  assert.match(html, /id="ritmo"/);
+  // RITMO was intentionally moved from Home to the experimental product catalog.
+  assert.doesNotMatch(html, /id="ritmo"/);
+  assert.match(html, /href="solucoes\.html#ritmo-produto"/);
+  assert.match(read('solucoes.html'), /id="ritmo-produto"/);
 });
