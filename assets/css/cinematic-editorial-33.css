@@ -208,3 +208,118 @@ body.home-page #conteudos .content-insights--compact .content-insights__label {
   body.home-page #sobre .about-process-compact *,
   body.home-page #conteudos .content-insights--compact * { scroll-behavior:auto; }
 }
+
+
+/* DAYSLUME 3.3 — audit of sectional color rhythm, 16/11/2026.
+   Scope: only the seven editorial Home sections AFTER the approved film/hero.
+   Surfaces are mixtures of the six official brand tokens, not new brand colors.
+   Keep the brand-palette.css as the last stylesheet; selector specificity
+   disambiguates the legacy overlapping section backgrounds without !important. */
+body.home-page[data-c33-editorial] {
+  --c33-label-on-light: color-mix(in srgb, var(--slate-mineral) 60%, var(--ink-deep));
+  --c33-editorial-shadow: 0 10px 24px rgba(var(--ink-deep-rgb), .12);
+}
+
+/* 01 / Problem: warm, calm landing after the cinematic dark opening. */
+body.home-page[data-c33-editorial] main > section#problemas.section {
+  --c33-section-accent: var(--plum-mineral);
+  background: var(--warm-ivory);
+  background:
+    radial-gradient(ellipse 42% 48% at 90% 0%,
+      rgba(var(--plum-mineral-rgb), .045), transparent 78%),
+    var(--warm-ivory);
+}
+
+/* 02 / Model: subtly mineral-plum, distinct from the product area. */
+body.home-page[data-c33-editorial] main > section#modelo.section {
+  --c33-section-accent: var(--slate-mineral);
+  background: var(--warm-ivory);
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--warm-ivory) 97%, white),
+    color-mix(in srgb, var(--warm-ivory) 92%, var(--plum-mineral)));
+}
+
+/* 03 / Products: the cool tint signifies digital interfaces, not blue neon. */
+body.home-page[data-c33-editorial] main > section#produtos.section {
+  --c33-section-accent: var(--slate-mineral);
+  background: var(--warm-ivory);
+  background:
+    radial-gradient(ellipse 42% 55% at 95% 12%,
+      rgba(var(--mist-blue-rgb), .10), transparent 78%),
+    color-mix(in srgb, var(--warm-ivory) 73%, var(--mist-blue));
+}
+
+/* 04 / Projects: the brightest paper stage gives case imagery priority. */
+body.home-page[data-c33-editorial] main > section#projetos.section {
+  --c33-section-accent: var(--peach);
+  background: var(--warm-ivory);
+  background:
+    radial-gradient(ellipse 32% 52% at 100% 100%,
+      rgba(var(--peach-rgb), .075), transparent 80%),
+    color-mix(in srgb, var(--warm-ivory) 88%, white);
+}
+
+/* 05 / Founder: restrained lilac-gray, warm and human. */
+body.home-page[data-c33-editorial] main > section#sobre.section {
+  --c33-section-accent: var(--plum-mineral);
+  background: var(--warm-ivory);
+  background: linear-gradient(120deg,
+    color-mix(in srgb, var(--warm-ivory) 92%, var(--plum-mineral)),
+    color-mix(in srgb, var(--warm-ivory) 87%, var(--plum-mineral)));
+}
+
+/* 06 / Contents: cool-paper editorial surface, not another dark hero. */
+body.home-page[data-c33-editorial] main > section#conteudos.section {
+  --c33-section-accent: var(--slate-mineral);
+  background: var(--warm-ivory);
+  background:
+    radial-gradient(ellipse 35% 52% at 100% 0%,
+      rgba(var(--plum-mineral-rgb), .055), transparent 80%),
+    color-mix(in srgb, var(--warm-ivory) 84%, var(--mist-blue));
+}
+
+/* 07 / Contact: warm closing before the existing deep-ink footer. */
+body.home-page[data-c33-editorial] main > section#contato.section {
+  --c33-section-accent: var(--plum-mineral);
+  background: var(--warm-ivory);
+  background: linear-gradient(132deg,
+    color-mix(in srgb, var(--warm-ivory) 94%, var(--peach)),
+    color-mix(in srgb, var(--warm-ivory) 84%, var(--peach)));
+}
+
+/* Small editorial labels should meet AA text contrast on the tinted surfaces. */
+body.home-page[data-c33-editorial] main > section.section
+  .section-eyebrow {
+  color: var(--c33-label-on-light);
+}
+body.home-page[data-c33-editorial] main > section.section
+  .section-eyebrow::before {
+  background: var(--c33-section-accent, var(--plum-mineral));
+}
+
+/* Remove the bright blue/orange glow on non-Hero editorial CTAs.
+   Do not change geometry, wording, navigation, focus or disabled states. */
+body.home-page[data-c33-editorial] main > section.section:not(.about-section)
+  :is(a.migration-link, a.projects-portfolio-cta, a.content-archive, a.btn, button.btn) {
+  color: var(--ink-deep);
+  border-color: rgba(var(--slate-mineral-rgb), .30);
+  background: linear-gradient(112deg,
+    color-mix(in srgb, var(--warm-ivory) 82%, var(--mist-blue)),
+    var(--warm-ivory) 52%,
+    color-mix(in srgb, var(--warm-ivory) 84%, var(--peach)));
+  box-shadow: var(--c33-editorial-shadow);
+}
+body.home-page[data-c33-editorial] main > section.section:not(.about-section)
+  :is(a.migration-link, a.projects-portfolio-cta, a.content-archive, a.btn, button.btn):is(:hover, :focus-visible) {
+  color: var(--ink-deep);
+  border-color: rgba(var(--plum-mineral-rgb), .52);
+  background: linear-gradient(112deg,
+    color-mix(in srgb, var(--warm-ivory) 75%, var(--mist-blue)),
+    var(--warm-ivory) 52%,
+    color-mix(in srgb, var(--warm-ivory) 78%, var(--peach)));
+  box-shadow: 0 12px 28px rgba(var(--ink-deep-rgb), .17);
+}
+body.home-page[data-c33-editorial] main > section.section:not(.about-section)
+  :is(a.migration-link, a.projects-portfolio-cta, a.content-archive, a.btn, button.btn)::before {
+  background: none;
+}
