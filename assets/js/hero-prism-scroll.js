@@ -7,10 +7,12 @@
  */
 (() => {
   'use strict';
-  const hero = document.querySelector('[data-scroll-hero]');
+  const hero = document.querySelector('[data-scroll-hero], .hero--cinematic');
   const section = document.querySelector('[data-kiru-cards]');
   if (!hero) return;
-  const stage = hero.querySelector('[data-hero-scroll-stage]');
+  const cinematic = hero.classList.contains('hero--cinematic');
+  const openingFilm = cinematic ? document.getElementById('cinema33-film') : null;
+  const stage = hero.querySelector('[data-hero-scroll-stage]') || hero;
   const copy = hero.querySelector('.hero-content');
   const flower = hero.querySelector('.hero-visual-composition');
   const scene = hero.querySelector('[data-flower-scene]');
@@ -93,12 +95,13 @@
     return false;
   }
   function allowPointer() {
-    return enabled && precise.matches && !document.hidden &&
+    return !cinematic && enabled && precise.matches && !document.hidden &&
       !document.documentElement.classList.contains('motion-paused');
   }
 
   function scrollHero() {
-    if (!enabled && !mobileHeroEnabled) return;
+    // A nova hero tem narrativa própria; as animações editoriais abaixo continuam ativas.
+    if (cinematic || (!enabled && !mobileHeroEnabled)) return;
     const mobile=mobileHeroEnabled;
     const bounds=hero.getBoundingClientRect();
     const distance=Math.max(1,bounds.height-(mobile ? stage.offsetHeight : innerHeight));
@@ -262,6 +265,9 @@
   }
   function tick(){
     frame=0;
+    // Do not recompute downstream cards/process while the full-screen film
+    // owns the viewport; animations resume normally as the real site appears.
+    if (openingFilm && openingFilm.getBoundingClientRect().bottom > innerHeight + 1) return;
     scrollHero();
     scrollCards();
     scrollProcess();
@@ -323,8 +329,8 @@
     }
     enabled=next;
     mobileHeroEnabled=nextMobile;
-    hero.classList.toggle('hero-scroll-ready',enabled || mobileHeroEnabled);
-    hero.classList.toggle('hero-mobile-scroll-ready',mobileHeroEnabled);
+    hero.classList.toggle('hero-scroll-ready',!cinematic && (enabled || mobileHeroEnabled));
+    hero.classList.toggle('hero-mobile-scroll-ready',!cinematic && mobileHeroEnabled);
     section?.classList.toggle('kiru-cards-ready',enabled);
     process?.classList.toggle('process-scroll-ready',enabled);
     if(changed)setupEditorial();

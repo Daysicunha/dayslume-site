@@ -7,7 +7,8 @@ const root = path.resolve(__dirname, '..');
 const home = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const palette = fs.readFileSync(path.join(root, 'assets', 'css', 'brand-palette.css'), 'utf8');
 const sharedMotion = fs.readFileSync(path.join(root, 'assets', 'js', 'dayslume-motion.js'), 'utf8');
-const heroMotion = fs.readFileSync(path.join(root, 'assets', 'js', 'hero-flower.js'), 'utf8');
+const cinematicCss = fs.readFileSync(path.join(root, 'assets', 'css', 'hero-cinematic.css'), 'utf8');
+const cinematicMotion = fs.readFileSync(path.join(root, 'assets', 'js', 'hero-cinematic.js'), 'utf8');
 
 function htmlFiles(directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -19,11 +20,11 @@ function htmlFiles(directory) {
 
 test('home uses one ordered editorial eyebrow for each internal section', () => {
   const numbers = [...home.matchAll(/section-eyebrow__number["'][^>]*>(\d{2})</g)].map((match) => match[1]);
-  assert.deepEqual(numbers, ['01', '02', '03', '04', '05', '06', '07', '08']);
+  assert.deepEqual(numbers, ['01', '02', '03', '04', '05', '06', '07']);
 });
 
 test('home sections use distinct atmosphere variants', () => {
-  for (const variant of ['manifest', 'structure', 'network', 'frame', 'path', 'editorial', 'about', 'contact']) {
+  for (const variant of ['manifest', 'structure', 'network', 'frame', 'about', 'editorial', 'contact']) {
     assert.match(home, new RegExp(`section-atmosphere--${variant}`));
     assert.match(palette, new RegExp(`section-atmosphere--${variant}`));
   }
@@ -34,7 +35,10 @@ test('shared system includes responsive and reduced-motion safeguards', () => {
   assert.match(palette, /overflow:\s*clip/);
   assert.match(palette, /env\(safe-area-inset-bottom\)/);
   assert.match(palette, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
-  assert.equal((home.match(/editorial-divider/g) || []).length, 3);
+  // The article dividers were intentionally replaced by readable, framed CTA cards.
+  assert.equal((home.match(/editorial-divider/g) || []).length, 0);
+  assert.match(home, /class="content-featured__media content-channels-stage"/);
+  assert.match(home, /class="content-secondary__media content-compare-stage"/);
 });
 
 test('floating contact control uses the DAYSLUME text treatment', () => {
@@ -56,10 +60,17 @@ test('floating contact control retracts near contact and footer content on every
   assert.match(palette, /@media\s*\(max-width:\s*620px\)[\s\S]*\.floating-whatsapp::after\s*\{\s*display:\s*none/);
 });
 
-test('hero uses the lightweight prism and keeps the original flower safeguards', () => {
-  assert.match(home, /hero--motion-lab/);
-  assert.match(home, /hero__spotlight/);
-  assert.match(home, /hero__beam-field/);
-  assert.doesNotMatch(home, /data-hero-video|<video\b[^>]*autoplay/i);
-  assert.match(heroMotion, /navigator\.connection\?\.saveData/);
+test('hero foregrounds digital products with cinematic, accessible motion', () => {
+  assert.match(home, /class="hero hero--cinematic hero--floating-panels"/);
+  for (const element of ['cinema-browser','cinema-phone','cinema-service']) {
+    assert.match(home, new RegExp(element));
+  }
+  // The redundant flower signature was removed from the product mockup in Lote E.
+  assert.match(home, /logohorizontalbranca\.png/);
+  assert.doesNotMatch(home, /class="cinema-signature"/);
+  assert.doesNotMatch(home, /data-flower-petal|data-scroll-hero|data-hero-video|<video\b[^>]*autoplay/i);
+  assert.match(cinematicCss, /@media \(prefers-reduced-motion: reduce\)/);
+  assert.match(cinematicCss, /\.hero--cinematic \.hero-visual-composition/);
+  assert.match(cinematicMotion, /prefers-reduced-motion: reduce/);
+  assert.match(cinematicMotion, /pointer\.matches/);
 });

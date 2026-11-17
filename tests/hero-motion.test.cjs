@@ -4,16 +4,18 @@ const fs=require('node:fs');
 const path=require('node:path');
 const root=path.resolve(__dirname,'..');
 const read=(name)=>fs.readFileSync(path.join(root,name),'utf8');
-test('scroll hero places original text left and six original petals right',()=>{
+test('cinematic hero puts commercial message and product interfaces on the first fold',()=>{
   const html=read('index.html');
-  assert.match(html,/hero--interactive-flower hero--motion-lab hero--scroll-invasion/);
-  assert.match(html,/data-scroll-hero/);
+  assert.match(html,/class="hero hero--cinematic hero--floating-panels"/);
   assert.match(html,/<div class="container hero-grid">[\s\S]*<div class="hero-content">[\s\S]*<h1 id="hero-title">Faça o digital/);
-  assert.match(html,/<div class="hero-visual-composition"/);
-  assert.equal((html.match(/data-flower-petal\b/g)||[]).length,6);
-  assert.match(html,/href="#problemas"/);
+  assert.match(html,/class="hero-visual-composition cinema-stage"/);
+  for(const element of ['cinema-browser','cinema-phone','cinema-service']) assert.match(html,new RegExp(element));
+  assert.match(html,/href="#contato">Conversar sobre meu projeto/);
   assert.match(html,/href="#projetos"/);
-  assert.doesNotMatch(html,/data-kiru-word|hero-kiru-keyword|data-hero-video/);
+  assert.match(html,/aria-label="Painéis de interfaces digitais flutuantes/);
+  assert.doesNotMatch(html,/INTERFACES ILUSTRATIVAS · SEM DADOS REAIS/);
+  assert.match(html,/aria-label="Painéis de interfaces digitais flutuantes/);
+  assert.doesNotMatch(html,/data-flower-petal|data-scroll-hero|data-kiru-word|hero-kiru-keyword|data-hero-video/);
 });
 test('Kiru rolling cards are limited to the two commercial paths',()=>{
   const html=read('index.html');
@@ -25,25 +27,21 @@ test('Kiru rolling cards are limited to the two commercial paths',()=>{
   assert.match(js,/scrollCards/);
   assert.match(js,/kiru-cards-ready/);
 });
-test('pin and invasion use scroll progress, disable on small screens and reduced motion',()=>{
-  const css=read('assets/css/hero-prism-scroll.css');
-  const js=read('assets/js/hero-prism-scroll.js');
-  assert.match(css,/\.hero--scroll-invasion\.hero-scroll-ready \.hero-scroll-stage/);
-  assert.match(css,/position: sticky/);
-  assert.match(css,/\.hero--scroll-invasion \.hero__spotlight/);
-  assert.match(css,/\.hero--scroll-invasion \.flower-prism-glint/);
-  assert.match(css,/max-width: 800px/);
+test('hero uses lightweight motion without pinning or hiding accessible actions',()=>{
+  const css=read('assets/css/hero-cinematic.css');
+  const motion=read('assets/js/hero-cinematic.js');
+  const editorial=read('assets/js/hero-prism-scroll.js');
+  assert.match(css,/\.hero\.hero--cinematic/);
+  assert.match(css,/\.hero--cinematic \.hero-grid/);
+  assert.match(css,/@media \(max-width: 560px\)/);
   assert.match(css,/prefers-reduced-motion: reduce/);
-  assert.match(js,/requestAnimationFrame/);
-  assert.match(js,/invasion=range/);
-  assert.match(js,/copy\.style\.opacity/);
-  assert.match(js,/flower\.style\.transform/);
-  assert.match(js,/prefers-reduced-motion: reduce/);
-  assert.match(js,/saveData/);
-  assert.match(js,/\.inert/);
+  assert.match(motion,/requestAnimationFrame/);
+  assert.match(motion,/pointer\.matches/);
+  assert.match(motion,/reduced\.matches/);
+  assert.match(editorial,/if \(cinematic \|\|/);
+  assert.match(editorial,/function scrollCards\(/);
+  assert.match(editorial,/function scrollProcess\(/);
 });
-
-
 test('section 02 keeps the two real service cards without floating data graphics',()=>{
   const html=read('index.html'),css=read('assets/css/hero-prism-scroll.css');
   const js=read('assets/js/hero-prism-scroll.js');
@@ -55,49 +53,53 @@ test('section 02 keeps the two real service cards without floating data graphics
 });
 
 
-test('Hero first fold pins from top, and colored right panel travels with flower',()=>{
- const html=read('index.html'),css=read('assets/css/hero-prism-scroll.css'),js=read('assets/js/hero-prism-scroll.js');
- assert.match(html,/hero__split-panel/);
- assert.match(css,/\.hero\.hero--interactive-flower\.hero--motion-lab\.hero--scroll-invasion\s*\{\s*display:\s*block/);
- assert.match(css,/\.hero--scroll-invasion\.hero-scroll-ready \.hero-scroll-stage\s*\{\s*position:sticky;\s*top:0/);
- assert.match(css,/--hero-split-x/);
- assert.match(css,/#6B536D/);
- assert.match(css,/#485168/);
- assert.match(js,/hero\.style\.setProperty\('--hero-split-x'/);
+test('hero layers three product stories, preserving the mineral palette and mobile readability',()=>{
+  const html=read('index.html'),css=read('assets/css/hero-cinematic.css');
+  assert.match(html,/cinema-stage-caption--vitrini/);
+  assert.match(html,/cinema-stage-caption--engreni/);
+  assert.doesNotMatch(html,/class="cinema-signature"/);
+  assert.match(html,/logohorizontalbranca\.png/);
+  assert.match(css,/background:\s*radial-gradient/);
+  assert.match(css,/var\(--peach\)/);
+  assert.match(css,/var\(--warm-ivory\)/);
+  assert.match(css,/@media \(max-width: 360px\)/);
+  assert.match(css,/\.cinema-phone-screen/);
+  assert.match(css,/\.cinema-browser-screen/);
+  assert.doesNotMatch(html,/hero__split-panel/);
 });
-test('manifest title wraps only within left column, and the semicircle is disabled',()=>{
- const html=read('index.html'),css=read('assets/css/hero-prism-scroll.css');
- assert.match(html,/manifest-title-line">Onde o digital/);
- assert.match(html,/manifest-title-line">está travando/);
- assert.match(html,/manifest-title-line">o seu negócio\?/);
- assert.match(css,/body\.home-page main > #problemas \.manifest-concept::after\s*\{\s*content:none;/);
- assert.match(css,/body\.home-page main > #problemas \.manifest-title \.manifest-title-line\s*\{[\s\S]*?white-space:normal;/);
+test('manifest uses the approved three-line headline and luminous wave instead of the old semicircle',()=>{
+ const html=read('index.html');
+ const css=read('assets/css/cinematic-editorial-33.css');
+ const layout=css.split('17/11/2026 — ATO II / implementação fiel ao layout ilustrado aprovado')[1];
+ assert.ok(layout);
+ for (const title of ['Ser visto.','Ser escolhido.','Funcionar melhor.']) {
+  assert.ok(html.includes('manifest-title-line">' + title),title);
+ }
+ assert.match(html,/class="manifest-waves"/);
+ assert.match(layout,/\.manifest-concept::after\s*\{\s*display: none;/);
+ assert.match(layout,/\.manifest-title \.manifest-title-line[\s\S]*?white-space: nowrap;/);
+ assert.match(layout,/@media \(max-width: 600px\)/);
+ assert.match(layout,/\.manifest-title \.manifest-title-line\s*\{\s*white-space: normal;/);
 });
-test('section 05 scrolls its five cards individually without old reveal collisions',()=>{
- const html=read('index.html'),css=read('assets/css/hero-prism-scroll.css'),js=read('assets/js/hero-prism-scroll.js');
- const homeJs=read('assets/js/home-premium.js');
- assert.match(html,/home-process-list" data-process-scroll/);
- assert.equal((html.match(/<li><span>0[1-5]<\/span>/g)||[]).length,5);
- assert.match(js,/function scrollProcess\(/);
- assert.match(js,/progress-i\*cues\.stagger/);
- assert.match(js,/processCards\.forEach/);
- assert.match(css,/\.process-scroll-ready li/);
- assert.match(homeJs,/home-process-list:not\(\[data-process-scroll\]\) li/);
- assert.match(css,/prefers-reduced-motion:reduce/);
-});
-
-
-test('shared normalized choreography keeps hero panel/flower/text in sync',()=>{
+test('founder presentation condenses the old five-step process into three readable stages',()=>{
+ const html=read('index.html');
+ assert.match(html,/id="processo-home"/);
+ assert.doesNotMatch(html,/class="section home-process-section/);
+ for(const label of ['01 · Entender','02 · Construir','03 · Evoluir'])assert.ok(html.includes(label),label);
+ assert.match(html,/href="processo.html">Conhecer nosso processo completo/);
  const js=read('assets/js/hero-prism-scroll.js');
- const css=read('assets/css/hero-prism-scroll.css');
- assert.match(js,/const MOTION_CUES = Object\.freeze/);
- assert.match(js,/flowerEnd:\.93/);
- assert.match(js,/panelEnd:\.92/);
- assert.match(js,/textEnd:\.95/);
- assert.match(js,/const scrollRange =/);
- assert.match(js,/const entry=scrollRange\(gridRect\.top,cues\)/);
- assert.match(js,/const progress=scrollRange\(rect\.top,cues\)/);
- assert.match(css,/height:168svh/);
+ assert.match(js,/if\(!enabled \|\| !process \|\| processCards\.length!==5\) return/);
+});
+
+test('section choreography remains available while old hero transition is disabled',()=>{
+  const js=read('assets/js/hero-prism-scroll.js');
+  const css=read('assets/css/hero-prism-scroll.css');
+  assert.match(js,/const cinematic = hero\.classList\.contains\('hero--cinematic'\)/);
+  assert.match(js,/if \(cinematic \|\|/);
+  assert.match(js,/const scrollRange =/);
+  assert.match(js,/const entry=scrollRange\(gridRect\.top,cues\)/);
+  assert.match(js,/const progress=scrollRange\(rect\.top,cues\)/);
+  assert.match(css,/\.home-page #modelo\[data-kiru-cards\]/);
 });
 test('all later sections use one-shot editorial reveal rather than competing observers',()=>{
  const js=read('assets/js/hero-prism-scroll.js');
@@ -129,9 +131,9 @@ test('new mineral hero gradient and concise case stories keep brand identity',()
 });
 test('section 08 has readable, wrapping copy and isolated two-column layout',()=>{
  const html=read('index.html'),palette=read('assets/css/brand-palette.css');
- assert.match(html,/O que precisa funcionar/);
- assert.match(html,/melhor no digital\?/);
- assert.match(html,/Conte o que está travando seu negócio/);
+ assert.match(html,/Vamos entender o que/);
+ assert.match(html,/seu negócio precisa\?/);
+ assert.match(html,/Respondemos pelo WhatsApp/);
  assert.match(palette,/main > #contato #contact-title > span\s*\{[\s\S]*?white-space:normal/);
  assert.match(palette,/main > #contato \.contact-grid > div:first-child/);
  assert.match(html,/<form class="contact-form" id="contact-form"/);
@@ -159,7 +161,7 @@ test('mobile hero puts a compact flower above readable copy and CTAs',()=>{
  assert.match(palette,/body\.home-page \.hero--scroll-invasion \.hero-scroll-stage\s*\{[\s\S]*?height:auto/);
  assert.match(palette,/body\.home-page \.hero--scroll-invasion \.hero-actions\s*\{[\s\S]*?justify-content:center/);
  assert.match(palette,/body\.home-page \.hero--scroll-invasion \.hero-scroll-hint,/);
- assert.match(html,/href="#problemas"/);
+ assert.match(html,/href="#contato">Conversar sobre meu projeto/);
  assert.match(html,/href="#projetos"/);
 });
 
@@ -172,4 +174,54 @@ test('compact-height/reduced-motion/save-data users have an accessible static he
  assert.match(css,/prefers-reduced-motion:no-preference/);
  assert.match(js,/copy\.inert=false/);
  assert.match(js,/copy\.inert=!\(fade<\.76 \|\| copyFocused\)/);
+});
+
+test('new cinematic hero styles load before the official palette',()=>{
+ const html=read('index.html');
+ const styles=[...html.matchAll(/href="(assets\/css\/[^"]+\.css)"/g)].map(m=>m[1]);
+ assert.ok(styles.includes('assets/css/hero-cinematic.css'));
+ assert.equal(styles.at(-1),'assets/css/brand-palette.css');
+ const css=read('assets/css/hero-cinematic.css');
+ assert.match(css,/min-height: min\(850px, 94svh\)/);
+ assert.match(css,/@media \(prefers-reduced-motion: reduce\)/);
+});
+
+test('cinematic product composition keeps every card in an independent grid cell', () => {
+  const css = read('assets/css/hero-cinematic.css');
+  const patch = css.split('/* FIX 2026-11-10')[1];
+  assert.ok(patch, 'non-overlap patch must exist');
+  assert.match(patch, /\.hero--cinematic \.cinema-cluster\s*\{[\s\S]*?display:\s*grid;/);
+  assert.match(patch, /\.hero--cinematic \.cinema-browser\s*\{[\s\S]*?grid-column:\s*1;[\s\S]*?grid-row:\s*3;/);
+  assert.match(patch, /\.hero--cinematic \.cinema-phone\s*\{[\s\S]*?grid-column:\s*2;[\s\S]*?grid-row:\s*3;/);
+  assert.match(patch, /\.hero--cinematic \.cinema-service\s*\{[\s\S]*?grid-column:\s*1\s*\/\s*-1;[\s\S]*?grid-row:\s*4;/);
+  const mobile = patch.split('@media (max-width: 560px)')[1];
+  assert.ok(mobile, 'mobile layout must exist');
+  assert.match(mobile, /\.hero--cinematic \.cinema-browser\s*\{[\s\S]*?grid-row:\s*3;/);
+  assert.match(mobile, /\.hero--cinematic \.cinema-phone\s*\{[\s\S]*?grid-row:\s*5;/);
+  assert.match(mobile, /\.hero--cinematic \.cinema-service\s*\{[\s\S]*?grid-row:\s*6;/);
+  assert.match(mobile, /grid-template-columns:\s*minmax\(0,\s*1fr\);/);
+});
+
+test('3D is restored on separated product cells without merging the QA cases and content', () => {
+ const css=read('assets/css/hero-cinematic.css');
+ const html=read('index.html');
+ const tilt=css.split('/* DAYSLUME 3.2 — Perspectiva 3D aprovada')[1];
+ assert.ok(tilt,'the approved 3D treatment exists');
+ for(const element of ['cinema-browser','cinema-phone','cinema-service']){
+   const declaration=tilt.split('.hero--cinematic .'+element+' {')[1];
+   assert.ok(declaration,element+' missing 3D rule');
+   assert.match(declaration.split('}')[0],/transform:\s*perspective\(/);
+ }
+ assert.match(css,/grid-template-columns:\s*minmax\(0,\s*1fr\)/);
+ assert.match(html,/assets\/css\/final-qa-20261014\.css/);
+ assert.match(html,/assets\/js\/home-case-mockups\.js/);
+ for(const name of ['case-tornearia-barbosa-1600x900.webp','case-new-rocket-play-1600x900.webp','case-engreni-agenda-1600x900.webp']){
+   assert.match(html,new RegExp(name));
+ }
+ // The two articles now use semantic CSS/HTML illustrations instead of static SVG art.
+ assert.match(html,/class="content-featured__media content-channels-stage"/);
+ assert.match(html,/class="content-secondary__media content-compare-stage"/);
+ assert.match(html,/assets\/css\/contents-cinematic-33\.css/);
+ const styles=[...html.matchAll(/href="(assets\/css\/[^"]+\.css)"/g)].map(m=>m[1]);
+ assert.equal(styles.at(-1),'assets/css/brand-palette.css');
 });

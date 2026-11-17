@@ -40,7 +40,7 @@ test('studio, principles and founder are preserved with trustworthy claims',()=>
 });
 
 test('visual layer is isolated and official palette remains loaded last',()=>{
- assert.match(html,/<body class="about-page">/);
+ assert.match(html,/<body class="about-page"\s+data-c33-editorial>/);
  const styles=[...html.matchAll(/href="(assets\/css\/[^"]+\.css)"/g)].map(match=>match[1]);
  assert.equal(styles.at(-1),'assets/css/brand-palette.css');
  assert.ok(styles.includes('assets/css/about-experience.css'));

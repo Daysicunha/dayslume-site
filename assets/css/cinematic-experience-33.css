@@ -1,0 +1,220 @@
+/* DAYSLUME 3.3 — Cinematic Product Experience
+   Isolated enhancement layered over the approved 3.2 composition.
+   Intentionally leaves all primary typography, brand colors, cases and pages intact.
+   Uses no 760svh pinned scroll scene, blocks no navigation, and honors reduced motion.
+*/
+.home-page .hero--cinematic[data-cinema33-home] {
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse 52% 62% at 73% 49%, rgba(150,177,207,.19), transparent 72%),
+    radial-gradient(ellipse 38% 54% at 82% 69%, rgba(216,182,165,.12), transparent 77%),
+    radial-gradient(ellipse 52% 68% at 16% 11%, rgba(63,74,108,.28), transparent 85%),
+    linear-gradient(118deg, #121824 0%, #1B2030 52%, #161C29 100%);
+}
+.home-page .cinema33-atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.home-page .cinema33-atmosphere__beam {
+  position: absolute;
+  top: -27%;
+  left: 57%;
+  width: min(37vw, 560px);
+  height: 151%;
+  opacity: .62;
+  transform: rotate(17deg);
+  transform-origin: 50% 0;
+  background: linear-gradient(90deg, transparent 0, rgba(155,184,206,.035) 24%, rgba(220,232,242,.21) 49%, rgba(216,182,165,.09) 61%, transparent 100%);
+  filter: blur(23px);
+  mix-blend-mode: screen;
+}
+.home-page .cinema33-atmosphere__glow {
+  position: absolute;
+  inset: 0;
+  opacity: .72;
+  background: radial-gradient(circle 310px at var(--cinema33-pointer-x, 72%) var(--cinema33-pointer-y, 45%), rgba(155,184,206,.11), transparent 74%);
+}
+.home-page .cinema33-atmosphere__grain {
+  position: absolute;
+  inset: 0;
+  opacity: .11;
+  background-image: repeating-linear-gradient(0deg, rgba(235,236,238,.055) 0 1px, transparent 1px 5px);
+  mask-image: linear-gradient(90deg, transparent, #000 55%, transparent);
+}
+.home-page .hero--cinematic[data-cinema33-home] .hero-grid {
+  z-index: 2;
+}
+.home-page .hero--cinematic[data-cinema33-home] .cinema-stage {
+  filter: drop-shadow(0 26px 48px rgba(3,9,20,.23));
+}
+.home-page .cinema33-ledger {
+  width: min(calc(100% - 104px), 1460px);
+  margin: clamp(14px, 3vh, 36px) auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  position: relative;
+  z-index: 3;
+  padding: 17px 0 0;
+  border-top: 1px solid rgba(242,240,235,.20);
+  font-family: Manrope, sans-serif;
+  font-size: 10px;
+  line-height: 1.6;
+  letter-spacing: .13em;
+  color: rgba(236,238,241,.70);
+}
+.home-page .cinema33-ledger__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #F2F0EB;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+.home-page .cinema33-ledger__link:hover,
+.home-page .cinema33-ledger__link:focus-visible { color: #D8B6A5; }
+.home-page .cinema33-ledger__line {
+  display: inline-block;
+  width: 42px;
+  height: 1px;
+  background: rgba(242,240,235,.55);
+  position: relative;
+  overflow: hidden;
+}
+.home-page .cinema33-ledger__line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -60%;
+  width: 50%;
+  background: #D8B6A5;
+  animation: cinema33-sweep 4.8s ease-in-out infinite;
+}
+@keyframes cinema33-sweep { to { transform: translateX(320%); } }
+
+/* The original two ecosystems stay in the DOM and remain interactive.
+   Buttons only adjust emphasis; they do not hide links or prevent navigation. */
+.home-page #produtos .cinema33-showroom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 24px;
+  margin: 0 0 clamp(22px, 3vw, 36px);
+  padding: 17px 0;
+  border-top: 1px solid rgba(110,127,155,.30);
+  border-bottom: 1px solid rgba(110,127,155,.30);
+}
+.home-page #produtos .cinema33-showroom[hidden] { display: none !important; }
+.home-page .cinema33-showroom__intro {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #6E7F9B;
+  font: 600 11px/1.4 Manrope, sans-serif;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+.home-page .cinema33-showroom__intro::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 100%;
+  background: #D8B6A5;
+}
+.home-page .cinema33-showroom__choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.home-page .cinema33-showroom__choices button {
+  appearance: none;
+  cursor: pointer;
+  border: 1px solid rgba(110,127,155,.48);
+  border-radius: 999px;
+  background: transparent;
+  color: #46516A;
+  padding: 10px 17px;
+  min-height: 42px;
+  font: 600 12px/1.4 Manrope, sans-serif;
+  letter-spacing: .035em;
+  transition: background .24s ease, border-color .24s ease, color .24s ease, transform .24s ease;
+}
+.home-page .cinema33-showroom__choices button:hover { transform: translateY(-2px); border-color: #66758F; }
+.home-page .cinema33-showroom__choices button[aria-pressed="true"] {
+  background: #22283C;
+  color: #F2F0EB;
+  border-color: #22283C;
+}
+.home-page .cinema33-showroom__choices button:focus-visible {
+  outline: 2px solid #66758F;
+  outline-offset: 3px;
+}
+.home-page #produtos .cinema33-showroom__caption {
+  flex: 0 0 100%;
+  margin: 0;
+  font: 400 13px/1.6 Manrope, sans-serif;
+  color: #53647F;
+}
+.home-page #produtos .solutions-grid > .solution-card {
+  transition: filter .45s ease, opacity .45s ease, box-shadow .45s ease, transform .45s ease, border-color .45s ease;
+}
+.home-page #produtos.cinema33-focused .solution-card.cinema33-muted {
+  opacity: .68;
+  filter: saturate(.62);
+  transform: scale(.985);
+}
+.home-page #produtos.cinema33-focused .solution-card.cinema33-spotlight {
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 24px 65px rgba(23,35,55,.20);
+  transform: translateY(-5px);
+  border-color: rgba(110,127,155,.75);
+}
+.home-page #produtos.cinema33-focused .solution-card.cinema33-muted:hover,
+.home-page #produtos.cinema33-focused .solution-card.cinema33-muted:focus-within {
+  opacity: 1;
+  filter: none;
+  transform: none;
+}
+.home-page #produtos .solution-card.cinema33-spotlight .solution-graphic {
+  filter: drop-shadow(0 16px 18px rgba(10,23,49,.13));
+}
+.home-page #produtos .cinema33-view-ritmo {
+  font: 600 12px/1.4 Manrope, sans-serif;
+  color: #46516A;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@media (max-width: 1180px) {
+  .home-page .cinema33-ledger { width: min(calc(100% - 64px), 1040px); }
+}
+@media (max-width: 900px) {
+  .home-page .cinema33-ledger { width: min(calc(100% - 42px), 740px); }
+  .home-page .cinema33-atmosphere__beam { left: 50%; width: 65vw; opacity: .32; filter: blur(16px); }
+  .home-page #produtos .cinema33-showroom { align-items: flex-start; }
+}
+@media (max-width: 600px) {
+  .home-page .cinema33-ledger { margin-top: 12px; padding-top: 13px; gap: 10px; font-size: 9px; letter-spacing: .065em; }
+  .home-page .cinema33-ledger__line { display: none; }
+  .home-page .cinema33-ledger__link { text-align: right; }
+  .home-page .cinema33-showroom__choices { width: 100%; }
+  .home-page .cinema33-showroom__choices button { flex: 1 1 auto; }
+  .home-page #produtos.cinema33-focused .solution-card.cinema33-muted { opacity: .85; transform: none; }
+  .home-page #produtos.cinema33-focused .solution-card.cinema33-spotlight { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-page .cinema33-ledger__line::after { animation: none; left: 25%; }
+  .home-page #produtos .solutions-grid > .solution-card,
+  .home-page .cinema33-showroom__choices button,
+  .home-page .cinema33-ledger__link { transition: none; }
+}
+
+/* LOTE E — retain product exploration link without a second scene counter. */
+.home-page .cinema33-ledger { justify-content: flex-end; }
