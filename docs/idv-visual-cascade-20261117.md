@@ -38,3 +38,20 @@ As regras secundárias antigas de cor ainda devem ser inventariadas e inspeciona
 
 ## Harmonização cromática posterior
 Na mesma branch, os fundos principais dos atos **Problemas, Modelo, Produtos, Projetos, Fundadora e Contato**, assim como a iluminação-base da Hero, foram normalizados na origem, substituindo gradientes HEX não normativos por `color-mix()` e canais RGBA derivados dos seis tokens da DAYSLUME. A distinção entre seções claras e escuras e a estrutura 3D permanecem preservadas. A seção Conteúdos já utilizava tokens estruturais. Elementos internos de ilustração e cores dos cases reais não foram recoloridos indiscriminadamente.
+
+## Refinamento cromático de saturação (solicitação da fundadora — 17/11/2026)
+A fundadora questionou o lilás/roxo predominante. O documento-mestre de setembro registra **paleta de trabalho azul profundo, off-white, azul suave, azul acinzentado e areia rosada**, sem lilás; o QA de 16/11 documenta **Plum Mineral** como apoio, sem homologação normativa do kit final. O código evoluiu para neons externos à referência, incluindo `#C597D2`, `#9955AC` e ondas violetas.
+
+Nesta PR foram normalizados os **acentos roxo-lilás de alta saturação**, exclusivamente na Home: superfícies e microcomponentes de `cinematic-editorial-33.css`, `contents-cinematic-33.css`, `cinematic-floating-panels-20261113.css` e cores decorativas dos SVGs inline em `index.html`. A transformação conserva os efeitos e as geometrias mas transfere a luminosidade para **Mist Blue, Slate Mineral, Warm Ivory, Peach e Ink Deep**, com misturas sem HEX novos. O plum `#6B536D` fica reservado à assinatura discreta. Valores de estado de erro `#B04560` e `#8E3654` permanecem reconhecíveis.
+
+Contagem da intervenção por arquivo:
+- `assets/css/cinematic-editorial-33.css`: 85 HEX substituídos, 104 efeitos RGBA ajustados
+- `assets/css/contents-cinematic-33.css`: 41 HEX substituídos, 33 efeitos RGBA ajustados
+- `assets/css/cinematic-floating-panels-20261113.css`: 1 HEX substituídos, 35 efeitos RGBA ajustados
+- `index.html`: 86 HEX substituídos, 0 efeitos RGBA ajustados
+
+### Escopo e riscos
+- Fotografias originais e capturas reais de projetos **não** foram alteradas.
+- Nuances da cor corporativa do próprio cliente preservadas nos arquivos de imagem.
+- A decisão estética final da paleta deve ser validada pela fundadora em capturas de antes/depois; não se está afirmando que os novos efeitos são um kit oficial assinado.
+- Verificar contraste dos links nos cards claros, CTA no escuro, ondas e ilustrações em 320/390/768/1440 px.

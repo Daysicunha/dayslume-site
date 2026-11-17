@@ -35,6 +35,15 @@
   --warm-ivory-rgb: 243, 239, 232;
   --slate-mineral-rgb: 102, 117, 143;
   --peach-rgb: 216, 182, 165;
+
+  /* Refinamento cromático: tons minerais derivados EXCLUSIVAMENTE da paleta registrada.
+     Acentos violetas fluorescentes não constituem novos tokens de marca. */
+  --ds-depth-1: color-mix(in srgb, var(--ink-deep) 92%, var(--slate-mineral));
+  --ds-depth-2: color-mix(in srgb, var(--ink-deep) 78%, var(--slate-mineral));
+  --ds-depth-3: color-mix(in srgb, var(--ink-deep) 55%, var(--slate-mineral));
+  --ds-cool-accent: color-mix(in srgb, var(--slate-mineral) 68%, var(--mist-blue));
+  --ds-ice-tint: color-mix(in srgb, var(--warm-ivory) 38%, var(--mist-blue));
+  --ds-sand-tint: color-mix(in srgb, var(--warm-ivory) 38%, var(--peach));
   --text-secondary: rgba(var(--ink-deep-rgb), .68);
 
   /* Compatibilidade com os tokens históricos. */
@@ -3132,14 +3141,14 @@ body.home-page[data-c33-editorial] {
   --ds-home-plum: var(--plum-mineral);
   --ds-home-blue: var(--mist-blue);
   --ds-home-peach: var(--peach);
-  --ds-home-lilac: #C597D2;
-  --ds-home-copy-light: #EDE5EE;
-  --ds-home-copy-dark: #4D4659;
+  --ds-home-lilac: var(--mist-blue);
+  --ds-home-copy-light: var(--warm-ivory);
+  --ds-home-copy-dark: var(--ink-deep);
   --ds-home-font-display: "Manrope", sans-serif;
   --ds-home-font-body: "DM Sans", sans-serif;
   --ds-home-font-editorial: Georgia, "Iowan Old Style", "Baskerville", serif;
   --ds-home-card-radius: 24px;
-  --ds-home-focus: #9955AC;
+  --ds-home-focus: var(--plum-mineral);
   --ds-home-shadow: 0 16px 38px rgba(30,23,43,.17);
 }
 /* O scroll ancorado precisa respeitar o cabeçalho fixo. */
