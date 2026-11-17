@@ -7,6 +7,7 @@ on:
       - 'assets/js/**'
       - 'assets/images/**'
       - 'scripts/visual-qa.mjs'
+      - 'scripts/functional-qa.mjs'
       - '.github/workflows/visual-qa.yml'
 permissions:
   contents: read
@@ -43,5 +44,35 @@ jobs:
         with:
           name: dayslume-visual-qa-before-after
           path: visual-qa-results
+          if-no-files-found: warn
+          retention-days: 14
+
+  functional:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout proposed correction only
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium driver
+        run: npm install --no-save --no-package-lock puppeteer-core@24.19.0
+      - name: Functional browser checks (no external submission)
+        run: |
+          set -euo pipefail
+          CHROME_BIN="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
+          if [ -z "$CHROME_BIN" ]; then echo "Chrome unavailable"; exit 1; fi
+          python3 -m http.server 8766 --directory "$GITHUB_WORKSPACE" > "$RUNNER_TEMP/functional-qa.log" 2>&1 &
+          sleep 2
+          CHROME_BIN="$CHROME_BIN" node scripts/functional-qa.mjs
+      - name: Upload functional QA screenshots and results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dayslume-functional-qa
+          path: functional-qa-results
           if-no-files-found: warn
           retention-days: 14
