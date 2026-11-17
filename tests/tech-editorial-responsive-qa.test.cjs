@@ -128,3 +128,43 @@ test('Hero polish: desktop coordinates are isolated from mobile and reduce-motio
   assert.match(floating, /prefers-reduced-motion:\s*reduce/);
   assert.match(home, /href="#contato">Conversar sobre meu projeto/);
 });
+
+
+test('Act II: editorial diagnostic keeps the three real service pathways', () => {
+  assert.match(home, /id="problemas"/);
+  assert.match(home, /id="manifesto-title"/);
+  assert.match(home, /O que precisa/);
+  assert.match(home, /funcionar melhor/);
+  assert.match(home, /no seu negócio\?/);
+  assert.equal((home.match(/class="manifest-item(?: is-active)?"/g)||[]).length,3);
+  for (const href of [
+    'servicos.html#presenca-digital',
+    'servicos.html#experiencias-digitais',
+    'servicos.html#sistemas-aplicacoes'
+  ]) {
+    assert.ok(home.includes('href="' + href + '"'), href);
+  }
+  assert.match(home, /class="manifest-list" aria-label="Problemas que a DAYSLUME ajuda a resolver"/);
+});
+
+test('Act II: section is scoped to the diagnostic, with one featured path', () => {
+  const act = editorial.split('DAYSLUME 3.3 — ATO II / Diagnóstico editorial')[1];
+  assert.ok(act, 'Act II stylesheet must be present');
+  assert.match(act, /section#problemas\.section/);
+  assert.match(act, /\.manifest-title \.manifest-title-line:nth-child\(2\)/);
+  assert.match(act, /\.manifest-item\.is-active\s*\{/);
+  assert.match(act, /\.manifest-item:not\(\.is-active\):hover/);
+  assert.match(act, /\.manifest-item \.problem-link:focus-visible/);
+  assert.match(act, /box-shadow: none !important/);
+  assert.doesNotMatch(act, /\.hero--floating-panels|#apresentacao|#cinema33-film/);
+});
+
+test('Act II: diagnostic switches to one column on tablets and phones', () => {
+  const act = editorial.split('DAYSLUME 3.3 — ATO II / Diagnóstico editorial')[1];
+  assert.ok(act);
+  assert.match(act, /@media \(max-width: 1000px\)/);
+  assert.match(act, /@media \(max-width: 600px\)/);
+  assert.match(act, /grid-template-columns: minmax\(0, 1fr\)/);
+  assert.match(act, /@media \(prefers-reduced-motion: reduce\)/);
+  assert.match(act, /\.manifest-item \.problem-link/);
+});
