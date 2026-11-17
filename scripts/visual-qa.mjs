@@ -56,7 +56,17 @@ try {
        };
      },selector);
      row.sections[key]=layout;
-     if(captureWidths.has(width)) await page.screenshot({path:join(out,v.name+'-'+width+'-'+key+'.png')});
+     if(captureWidths.has(width)) {
+       await page.screenshot({path:join(out,v.name+'-'+width+'-'+key+'.png')});
+       const detailed={problemas:'#problemas .manifest-item:first-child',
+         modelo:'#modelo .modelo-path-card--bespoke',
+         produtos:'#produtos .solutions-grid',
+         dayane:'#projetos .home-case-dayane'}[key];
+       if(detailed) {
+         const element=await page.$(detailed);
+         if(element) await element.screenshot({path:join(out,v.name+'-'+width+'-'+key+'-detail.png')});
+       }
+     }
    }
    // Film: at 89% of its scroll storyboard, the final scene and CTA are displayed.
    await page.evaluate(()=>{
