@@ -133,9 +133,16 @@ test('Hero polish: desktop coordinates are isolated from mobile and reduce-motio
 test('Act II: editorial diagnostic keeps the three real service pathways', () => {
   assert.match(home, /id="problemas"/);
   assert.match(home, /id="manifesto-title"/);
-  assert.match(home, /O que precisa/);
-  assert.match(home, /funcionar melhor/);
-  assert.match(home, /no seu negócio\?/);
+  assert.match(home, /Ser visto\./);
+  assert.match(home, /Ser escolhido\./);
+  assert.match(home, /Funcionar melhor\./);
+  assert.match(home, /href="#modelo">Entenda como trabalhamos/);
+  assert.doesNotMatch(home, /<article class="manifest-item is-active"/);
+  for (const title of [
+    'Sua marca entrega mais do que mostra online.',
+    'O interesse existe. O próximo passo não está claro.',
+    'A rotina depende de tarefas manuais demais.'
+  ]) assert.ok(home.includes(title), title);
   assert.equal((home.match(/class="manifest-item(?: is-active)?"/g)||[]).length,3);
   for (const href of [
     'servicos.html#presenca-digital',
