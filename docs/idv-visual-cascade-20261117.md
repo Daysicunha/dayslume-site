@@ -98,3 +98,6 @@ Implementado na mesma branch de correção, **sem publicar em produção**.
 - Preservada a preferência `prefers-reduced-motion: reduce` nos efeitos de levitação.
 
 **Homologação:** baseline v4 `7a20572f58503bc6264298646c7c81023025cd95` versus head v5, capturas antes/depois do conjunto de cards em 1440, 390 e 320 px, medições em 320/360/390/768/1024/1440 px. QA estático e funcional exigidos. PR #29 segue rascunho, sem merge e sem produção.
+
+### Ajuste final de enquadramento do card Produtos Próprios
+A comparação real em 1440 px encontrou o bloco ENGRENI parcialmente cortado à direita, apesar do enquadramento mobile correto. Ajustados os valores no bloco proprietário de geometria: cartão flutuante ENGRENI `right:9%` e plataforma 3D `width:72%; right:8%` em desktop. Mantidos os overrides nativos abaixo de 800 px. Imagens e animações permanecem inalteradas.
