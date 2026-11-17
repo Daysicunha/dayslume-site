@@ -28,7 +28,8 @@ test('CSS fase 2 retains balanced blocks and canonical stylesheet precedence',()
 });
 
 test('CSS fase 2 includes the 13/11 floating hero and preserves the canonical palette',()=>{
- assert.equal(fs.readdirSync(path.join(root,'assets','css')).filter(x=>x.endsWith('.css')).length,37);
+ assert.equal(fs.readdirSync(path.join(root,'assets','css')).filter(x=>x.endsWith('.css')).length,38);
  const index=fs.readFileSync(path.join(root,'index.html'),'utf8');
+ assert.match(index,/assets\/css\/contents-cinematic-33\.css/);
  for(const anchor of ['id="cinema33-film"','class="hero hero--cinematic hero--floating-panels"','class="cinema-browser"','class="cinema-phone cinema-agenda-panel"','class="cinema-service"','class="site-footer days-support-ready"'])assert.ok(index.includes(anchor),anchor);
 });
