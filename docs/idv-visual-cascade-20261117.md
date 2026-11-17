@@ -55,3 +55,6 @@ Contagem da intervenção por arquivo:
 - Nuances da cor corporativa do próprio cliente preservadas nos arquivos de imagem.
 - A decisão estética final da paleta deve ser validada pela fundadora em capturas de antes/depois; não se está afirmando que os novos efeitos são um kit oficial assinado.
 - Verificar contraste dos links nos cards claros, CTA no escuro, ondas e ilustrações em 320/390/768/1440 px.
+
+### Segunda passagem seletiva
+Após comparar capturas reais de 1440 px, permaneceram lilases de baixa saturação nas superfícies (tons rosa não detectados pela primeira varredura por matiz). Foram ajustados na origem os títulos de Problemas, cards Problemas/Modelo/Produtos/Cases, CTA de Fundadora, botões de Conteúdos, formulário de Contato e aba lateral WhatsApp. As três ondas SVG (Fundadora, Conteúdos, Contato) agora usam cores da paleta documentada, preservando forma e animação. Nenhuma camada CSS extra foi acrescentada.

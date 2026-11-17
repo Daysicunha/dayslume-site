@@ -240,7 +240,7 @@ body.home-page[data-c33-editorial] main > section#conteudos.contents-cinematic .
   padding:10px 23px;
   border:1px solid rgba(255,209,247,.65);
   border-radius:999px;
-  background:linear-gradient(112deg,var(--ds-ice-tint),#F3B8EB);
+  background:linear-gradient(112deg,var(--mist-blue),var(--ds-ice-tint));
   box-shadow:0 11px 23px rgba(var(--ink-deep-rgb),.24),inset 0 1px 0 rgba(255,249,255,.5);
   color:var(--ds-depth-1);
   font-size:clamp(12px,.94vw,15px);

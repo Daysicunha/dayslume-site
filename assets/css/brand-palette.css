@@ -2125,7 +2125,7 @@ body:not(.home-page) > a.floating-whatsapp {
   border:1px solid rgba(169,197,216,.55);
   border-right:0;
   border-radius:15px 0 0 15px;
-  background-image:linear-gradient(180deg,#6B536D 0%,#59475E 100%);
+  background-image:linear-gradient(180deg,var(--ink-deep) 0%,var(--slate-mineral) 100%);
   background-position:center;
   background-size:100% 100%;
   font-family:Manrope,'DM Sans',sans-serif;
