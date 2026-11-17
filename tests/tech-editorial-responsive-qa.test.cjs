@@ -169,7 +169,9 @@ test('Act II: section uses technical/editorial contrast, with restrained selecti
   assert.match(act, /\.manifest-item\.is-active\s*\{/);
   assert.match(act, /\.manifest-item\.is-active:hover/);
   assert.match(act, /\.manifest-item \.problem-link:focus-visible/);
-  assert.match(act, /box-shadow: none !important/);
+  // A regra antiga com !important foi removida para permitir a sombra local em vidro.
+  assert.doesNotMatch(act, /box-shadow: none !important/);
+  assert.match(act, /backdrop-filter:blur\\(13px\\)/);
   assert.doesNotMatch(act, /\.hero--floating-panels|#apresentacao|#cinema33-film/);
 });
 
