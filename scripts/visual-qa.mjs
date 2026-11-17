@@ -39,6 +39,8 @@ try {
    for(const [key,selector] of sections) {
      await page.evaluate(sel=>document.querySelector(sel)?.scrollIntoView({block:'start',behavior:'instant'}),selector);
      await wait(320);
+     // Capturar cores e geometrias já estabilizadas, não o blur de entrada cinematográfica.
+     if(captureWidths.has(width) && (key==='hero'||key==='fundadora')) await wait(1100);
      const layout=await page.evaluate((sel)=>{
        const el=document.querySelector(sel);
        if(!el)return {missing:true};
