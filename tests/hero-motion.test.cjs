@@ -218,9 +218,10 @@ test('3D is restored on separated product cells without merging the QA cases and
  for(const name of ['case-tornearia-barbosa-1600x900.webp','case-new-rocket-play-1600x900.webp','case-engreni-agenda-1600x900.webp']){
    assert.match(html,new RegExp(name));
  }
- for(const name of ['content-design-process.svg','content-strategy-editorial.svg']){
-   assert.match(html,new RegExp(name));
- }
+ // The two articles now use semantic CSS/HTML illustrations instead of static SVG art.
+ assert.match(html,/class="content-featured__media content-channels-stage"/);
+ assert.match(html,/class="content-secondary__media content-compare-stage"/);
+ assert.match(html,/assets\/css\/contents-cinematic-33\.css/);
  const styles=[...html.matchAll(/href="(assets\/css\/[^"]+\.css)"/g)].map(m=>m[1]);
  assert.equal(styles.at(-1),'assets/css/brand-palette.css');
 });
