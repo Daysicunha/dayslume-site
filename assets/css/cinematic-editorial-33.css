@@ -617,7 +617,7 @@ body.home-page[data-c33-editorial] main > section#problemas.section
   border-bottom: 1px solid var(--c33-problem-rule);
   border-radius: 0;
   background: transparent;
-  box-shadow: none !important;
+  box-shadow: none;
   transform: none;
   cursor: default;
   color: var(--ink-deep);
@@ -732,7 +732,7 @@ body.home-page[data-c33-editorial] main > section#problemas.section
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-item.is-active:hover {
   background: rgba(var(--mist-blue-rgb), .19);
-  box-shadow: none !important;
+  box-shadow: none;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-item:is(:hover, :focus-within) .manifest-item-title {
@@ -847,6 +847,14 @@ body.home-page[data-c33-editorial] main > section#problemas.section
 
 
 
+/* Divisórias editoriais de um pixel, glow interno discreto. */
+body.home-page[data-c33-editorial] main > section.section-shell:is(#modelo,#produtos,#projetos,#sobre,#conteudos,#contato) {
+  box-shadow:inset 0 1px 0 rgba(var(--peach-rgb),.46),inset 0 2px 0 rgba(var(--mist-blue-rgb),.18),inset 0 13px 18px -16px rgba(var(--plum-mineral-rgb),.37);
+}
+body.home-page[data-c33-editorial] main > section.section-shell:is(#produtos,#sobre) {
+  box-shadow:inset 0 1px 0 rgba(var(--peach-rgb),.58),inset 0 2px 0 rgba(var(--mist-blue-rgb),.31),inset 0 15px 23px -16px rgba(var(--mist-blue-rgb),.24);
+}
+
 /* 17/11/2026 — ATO II / implementação fiel ao layout ilustrado aprovado.
    Lado escuro com ondas, sem mockup de notebook. Cards editoriais com arte SVG. 
    Isolado em #problemas; não modifica Hero, filme, outras seções ou tokens globais. */
@@ -928,8 +936,10 @@ body.home-page[data-c33-editorial] main > section#problemas.section
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-eyebrow::before {
-  width: 35px;
-  background: var(--peach);
+  width:35px;
+  height:1px;
+  background:linear-gradient(90deg,var(--peach),rgba(var(--mist-blue-rgb),.8));
+  box-shadow:0 0 8px rgba(var(--peach-rgb),.24);
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-eyebrow .section-eyebrow__number {
@@ -1011,15 +1021,19 @@ body.home-page[data-c33-editorial] main > section#problemas.section
   flex-shrink: 0;
   padding: 8px;
   border-radius: 11px;
-  background: linear-gradient(135deg, var(--ds-depth-3), var(--ds-depth-2));
-  color: #FFF8FC;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.16);
+  border:1px solid rgba(var(--mist-blue-rgb),.26);
+  background:linear-gradient(145deg,color-mix(in srgb,var(--ink-deep) 61%,var(--plum-mineral)),var(--ds-depth-2));
+  color:var(--warm-ivory);
+  box-shadow:0 7px 17px -11px rgba(var(--plum-mineral-rgb),.30),inset 0 1px 0 rgba(var(--warm-ivory-rgb),.18);
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-benefit-icon svg {
   display: block;
-  width: 100%;
-  height: 100%;
+  width:100%;
+  height:100%;
+  stroke-width:1.6;
+  stroke-linejoin:round;
+  stroke-linecap:round;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-waves {
@@ -1060,13 +1074,17 @@ body.home-page[data-c33-editorial] main > section#problemas.section
   min-height: clamp(214px, 14.8vw, 243px);
   margin: 0;
   padding: 0 clamp(19px, 2.1vw, 33px) 0 0;
-  border: 1px solid rgba(222,191,198,.38);
-  border-radius: 25px;
-  background: linear-gradient(117deg, var(--warm-ivory) 0%, color-mix(in srgb,var(--warm-ivory) 86%,var(--mist-blue)) 58%, var(--warm-ivory) 100%);
-  box-shadow: 0 12px 24px rgba(var(--ink-deep-rgb),.095), 0 2px 5px rgba(var(--ink-deep-rgb),.035);
-  color: var(--ink-deep);
-  transform: none;
-  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  border:1px solid rgba(var(--warm-ivory-rgb),.90);
+  outline:1px solid rgba(var(--plum-mineral-rgb),.18);
+  outline-offset:-2px;
+  border-radius:25px;
+  background:radial-gradient(ellipse 72% 95% at 3% 4%,rgba(255,255,255,.71),transparent 72%),linear-gradient(118deg,rgba(var(--warm-ivory-rgb),.93),rgba(var(--warm-ivory-rgb),.82) 53%,rgba(var(--mist-blue-rgb),.22));
+  -webkit-backdrop-filter:blur(13px) saturate(1.07);
+  backdrop-filter:blur(13px) saturate(1.07);
+  box-shadow:0 24px 48px -22px rgba(var(--ink-deep-rgb),.25),0 9px 20px -13px rgba(var(--plum-mineral-rgb),.22),inset 0 1px 0 rgba(255,255,255,.88);
+  color:var(--ink-deep);
+  transform:translateY(-2px);
+  transition:transform .38s cubic-bezier(.22,1,.36,1),box-shadow .38s ease,border-color .38s ease;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-item:hover,
@@ -1075,10 +1093,10 @@ body.home-page[data-c33-editorial] main > section#problemas.section
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-item.is-active:hover {
   padding-left: 0;
-  border-color: rgba(var(--slate-mineral-rgb),.48);
-  background: linear-gradient(117deg, var(--warm-ivory) 0%, color-mix(in srgb,var(--warm-ivory) 86%,var(--mist-blue)) 58%, var(--warm-ivory) 100%);
-  box-shadow: 0 16px 31px rgba(var(--ink-deep-rgb),.14);
-  transform: translateY(-2px);
+  border-color:rgba(var(--peach-rgb),.75);
+  background:radial-gradient(ellipse 60% 90% at 2% 3%,rgba(255,255,255,.79),transparent 76%),linear-gradient(118deg,rgba(var(--warm-ivory-rgb),.95),rgba(var(--warm-ivory-rgb),.86) 54%,rgba(var(--mist-blue-rgb),.24));
+  box-shadow:0 32px 62px -24px rgba(var(--ink-deep-rgb),.27),0 12px 24px -14px rgba(var(--plum-mineral-rgb),.28),inset 0 1px 0 rgba(255,255,255,.93);
+  transform:translateY(-5px);
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-item::before,
@@ -1108,7 +1126,7 @@ body.home-page[data-c33-editorial] main > section#problemas.section
   left: -13%;
   top: 11%;
   border-radius: 50%;
-  background: rgba(214,165,193,.15);
+  background:radial-gradient(circle at 40% 45%,rgba(var(--plum-mineral-rgb),.13),rgba(var(--peach-rgb),.07) 61%,transparent 85%);
   pointer-events: none;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
@@ -1442,8 +1460,12 @@ body.home-page[data-c33-editorial] main > section#problemas.section
 @media (prefers-reduced-motion: reduce) {
   body.home-page[data-c33-editorial] main > section#problemas.section
     :is(.manifest-item, .problem-link span) {
-    transform: none !important;
-    transition: none !important;
+    transform:none !important;
+    transition:none !important;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card {
+    translate:none !important;
+    transition:none !important;
   }
 }
 
@@ -1616,16 +1638,21 @@ body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-ca
   margin: 0;
   padding: 0;
   overflow: hidden;
-  border:1px solid rgba(var(--plum-mineral-rgb),.34);
+  border:1px solid rgba(var(--warm-ivory-rgb),.70);
+  outline:1px solid rgba(var(--plum-mineral-rgb),.29);
+  outline-offset:-2px;
   border-radius:27px;
-  background:radial-gradient(ellipse 58% 67% at 88% 62%,rgba(var(--plum-mineral-rgb),.18),transparent 79%),linear-gradient(116deg,color-mix(in srgb,var(--warm-ivory) 94%,var(--peach)) 0%,color-mix(in srgb,var(--warm-ivory) 79%,var(--peach)) 48%,color-mix(in srgb,var(--warm-ivory) 64%,var(--plum-mineral)) 100%);
+  background:radial-gradient(ellipse 55% 68% at 92% 59%,rgba(var(--plum-mineral-rgb),.21),transparent 79%),linear-gradient(116deg,rgba(var(--warm-ivory-rgb),.97) 0%,rgba(var(--warm-ivory-rgb),.90) 48%,color-mix(in srgb,var(--warm-ivory) 63%,var(--plum-mineral)) 100%);
+  -webkit-backdrop-filter:blur(14px) saturate(1.07);
+  backdrop-filter:blur(14px) saturate(1.07);
   color:var(--ink-deep);
-  box-shadow:0 20px 45px rgba(var(--ink-deep-rgb),.12),0 0 26px rgba(var(--plum-mineral-rgb),.12),inset 0 1px 0 rgba(255,255,255,.88);
-  transition: box-shadow .35s ease, border-color .35s ease;
+  box-shadow:0 29px 60px -24px rgba(var(--ink-deep-rgb),.24),0 12px 22px -15px rgba(var(--plum-mineral-rgb),.24),inset 0 1px 0 rgba(255,255,255,.92);
+  translate:0 -2px;
+  transition:translate .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease,border-color .35s ease;
 }
 body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--products,
 body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--products:last-child {
-  background:radial-gradient(ellipse 66% 76% at 86% 58%,rgba(var(--plum-mineral-rgb),.21),transparent 77%),linear-gradient(116deg,color-mix(in srgb,var(--warm-ivory) 94%,var(--plum-mineral)) 1%,color-mix(in srgb,var(--warm-ivory) 80%,var(--mist-blue)) 47%,color-mix(in srgb,var(--warm-ivory) 57%,var(--plum-mineral)) 100%);
+  background:radial-gradient(ellipse 58% 73% at 87% 59%,rgba(var(--plum-mineral-rgb),.23),transparent 78%),linear-gradient(116deg,rgba(var(--warm-ivory-rgb),.96) 1%,rgba(var(--warm-ivory-rgb),.87) 45%,color-mix(in srgb,var(--warm-ivory) 58%,var(--plum-mineral)) 100%);
 }
 body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card::before {
   content: "";
@@ -1653,7 +1680,8 @@ body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-ca
 }
 body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card:is(:hover,:focus-within) {
   border-color:rgba(var(--plum-mineral-rgb),.56);
-  box-shadow:0 28px 57px rgba(var(--ink-deep-rgb),.17),0 0 30px rgba(var(--plum-mineral-rgb),.14),inset 0 1px 0 rgba(255,255,255,.92);
+  translate:0 -5px;
+  box-shadow:0 34px 68px -23px rgba(var(--ink-deep-rgb),.27),0 13px 27px -16px rgba(var(--plum-mineral-rgb),.34),inset 0 1px 0 rgba(255,255,255,.95);
 }
 body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-copy {
   position: relative;
@@ -1829,9 +1857,12 @@ body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product
   text-align: center;
 }
 body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-tile svg {
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;
+  width:37px;
+  height:37px;
+  flex-shrink:0;
+  stroke-width:1.7;
+  stroke-linecap:round;
+  stroke-linejoin:round;
 }
 body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-tile strong {
   color: #FFF6F2;
