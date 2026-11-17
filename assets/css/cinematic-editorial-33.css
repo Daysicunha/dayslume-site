@@ -465,32 +465,39 @@ body.home-page[data-c33-editorial] main > section#contato.section
 }
 
 
-/* DAYSLUME 3.3 — ATO II / Diagnóstico editorial, 17/11/2026.
-   A tela escura de tecnologia abre para uma conversa clara sobre problemas
-   reais. Sem alterar copy, links, vídeo inicial, Hero ou JS.
-   Três caminhos legíveis; apenas o primeiro tem destaque permanente.
-   O antigo brand-palette.css continua sendo a última folha oficial. */
+/* DAYSLUME 3.3 — ATO II / Diagnóstico editorial — revisão Tech × Humano.
+ * 17/11/2026. A primeira versão ficou bege/ameixa e corporativa demais.
+ * Agora o azul profundo sustenta a mensagem; o marfim recebe as opções.
+ * Sem mexer em filme, Hero, outras seções, JS ou paleta global.
+ * CSS scoped exclusivamente a #problemas, antes de brand-palette.css. */
 body.home-page[data-c33-editorial] main > section#problemas.section {
-  --c33-problem-rule: rgba(var(--slate-mineral-rgb), .24);
+  --c33-problem-rule: rgba(var(--ink-deep-rgb), .16);
   position: relative;
-  padding-block: clamp(84px, 8.2vw, 136px) clamp(91px, 8vw, 131px);
-  border-top: 1px solid rgba(var(--plum-mineral-rgb), .12);
+  isolation: isolate;
+  padding-block: clamp(87px, 7vw, 122px);
+  border-top: 1px solid rgba(var(--mist-blue-rgb), .17);
   background: var(--warm-ivory);
-  background:
-    radial-gradient(ellipse 30% 47% at 94% 78%,
-      rgba(var(--mist-blue-rgb), .09), transparent 84%),
-    linear-gradient(120deg, var(--warm-ivory) 0%,
-      color-mix(in srgb, var(--warm-ivory) 96%, var(--plum-mineral)) 100%);
+  background: linear-gradient(90deg, #202532 0 46.5%, var(--warm-ivory) 46.5% 100%);
   color: var(--ink-deep);
 }
+/* Fine technical coordinate grid, not a decorative illustration. */
 body.home-page[data-c33-editorial] main > section#problemas.section::before {
-  opacity: .24;
-  background: repeating-linear-gradient(90deg, transparent 0,
-    transparent calc(25% - 1px), rgba(var(--slate-mineral-rgb), .13)
-    calc(25% - 1px), rgba(var(--slate-mineral-rgb), .13) 25%);
+  content: "";
+  position: absolute;
+  inset: 0 53.5% 0 0;
+  display: block;
+  z-index: 0;
+  opacity: .21;
   pointer-events: none;
+  background:
+    linear-gradient(rgba(var(--mist-blue-rgb), .13) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--mist-blue-rgb), .13) 1px, transparent 1px);
+  background-size: 82px 82px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 37%, rgba(0,0,0,.18));
+  mask-image: linear-gradient(90deg, transparent, #000 37%, rgba(0,0,0,.18));
 }
 body.home-page[data-c33-editorial] main > section#problemas.section::after {
+  content: none;
   display: none;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
@@ -498,36 +505,72 @@ body.home-page[data-c33-editorial] main > section#problemas.section
   width: min(calc(100% - 104px), 1360px);
   max-width: 1360px;
   display: grid;
-  grid-template-columns: minmax(0, .97fr) minmax(0, 1.03fr);
-  align-items: start;
-  gap: clamp(48px, 6vw, 106px);
+  grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+  gap: clamp(55px, 6.1vw, 106px);
+  align-items: center;
+  position: relative;
+  z-index: 1;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-concept {
-  max-width: 610px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  max-width: 630px;
   min-width: 0;
-  padding: 0;
+  padding: clamp(22px, 2.2vw, 37px) clamp(20px, 2vw, 30px)
+    clamp(36px, 3vw, 50px) 0;
+  color: var(--warm-ivory);
 }
+/* A quiet orbital line is the visual continuation of the cinematic Hero. */
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-concept::after {
-  display: none;
-  content: none;
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 0;
+  width: 62%;
+  aspect-ratio: 1;
+  left: 67%;
+  bottom: -33%;
+  border: 1px solid rgba(var(--mist-blue-rgb), .25);
+  border-radius: 50%;
+  box-shadow: -23px 31px 0 -1px rgba(var(--peach-rgb), .085);
+  transform: rotate(-21deg) scale(1.2, .73);
+  pointer-events: none;
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-concept > * {
+  position: relative;
+  z-index: 1;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-eyebrow {
-  margin-bottom: clamp(27px, 3vw, 42px);
-  color: color-mix(in srgb, var(--slate-mineral) 58%, var(--ink-deep));
+  margin-bottom: clamp(28px, 3vw, 40px);
+  color: rgba(var(--mist-blue-rgb), .92);
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-eyebrow .section-eyebrow__label {
+  color: rgba(var(--warm-ivory-rgb), .84);
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-eyebrow .section-eyebrow__number {
+  color: var(--peach);
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-eyebrow::before {
+  background: linear-gradient(90deg, var(--peach), var(--mist-blue));
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-title {
   max-width: 100%;
-  margin: 0 0 clamp(22px, 2.4vw, 35px);
-  font-size: clamp(42px, 4vw, 65px);
-  font-weight: 500;
-  line-height: 1.105;
-  letter-spacing: -.057em;
+  margin: 0 0 clamp(26px, 2.6vw, 38px);
+  color: var(--warm-ivory);
+  font-size: clamp(42px, 3.85vw, 63px);
+  font-weight: 510;
+  line-height: 1.095;
+  letter-spacing: -.058em;
   text-wrap: balance;
-  color: var(--ink-deep);
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-title .manifest-title-line {
@@ -537,38 +580,39 @@ body.home-page[data-c33-editorial] main > section#problemas.section
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-title .manifest-title-line:nth-child(2) {
-  color: var(--plum-mineral);
+  color: var(--peach);
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-intro {
   max-width: 44ch;
   margin: 0;
-  font-size: clamp(15px, 1.15vw, 17px);
-  line-height: 1.78;
-  color: color-mix(in srgb, var(--ink-deep) 82%, var(--slate-mineral));
+  color: rgba(var(--warm-ivory-rgb), .83);
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.75;
 }
-
-/* Right column: editorial rows, not three identical purple tiles.
-   Keep the existing article semantics and real service destinations. */
+/* Right panel is an information architecture, not an equal-card grid. */
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-list {
+  position: relative;
   min-width: 0;
-  padding: 0;
   display: grid;
   gap: 0;
+  padding: 0;
   border-top: 1px solid var(--c33-problem-rule);
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-item,
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-item.is-active {
+  position: relative;
   display: grid;
-  grid-template-columns: 42px minmax(0, 1fr);
+  grid-template-columns: 43px minmax(0, 1fr);
   align-items: start;
-  gap: clamp(15px, 1.4vw, 23px);
+  gap: clamp(16px, 1.5vw, 23px);
+  width: 100%;
   min-height: 0;
   margin: 0;
-  padding: clamp(23px, 2.2vw, 32px) clamp(12px, 1.4vw, 22px);
+  padding: clamp(24px, 2.1vw, 34px) clamp(12px, 1.5vw, 20px);
   border: 0;
   border-bottom: 1px solid var(--c33-problem-rule);
   border-radius: 0;
@@ -585,80 +629,94 @@ body.home-page[data-c33-editorial] main > section#problemas.section
   content: none;
   display: none;
 }
+/* All pathways are equally valid. Avoid an arbitrarily "selected" purple card. */
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-item.is-active {
-  margin: 7px 0;
-  border: 1px solid rgba(var(--plum-mineral-rgb), .22);
-  border-radius: 16px;
-  background: color-mix(in srgb, var(--warm-ivory) 89%, var(--plum-mineral));
-  box-shadow: 0 13px 28px rgba(var(--ink-deep-rgb), .055) !important;
+  background: rgba(var(--mist-blue-rgb), .12);
+  border-left: 2px solid var(--peach);
+  padding-left: clamp(10px, 1.5vw, 18px);
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
-  .manifest-number {
+  .manifest-number,
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-item.is-active .manifest-number {
   display: grid;
   place-items: center;
-  width: 42px;
-  height: 42px;
+  width: 43px;
+  height: 43px;
   aspect-ratio: 1;
   flex: none;
-  border: 1px solid rgba(var(--slate-mineral-rgb), .42);
-  border-radius: 13px;
-  background: transparent;
+  border: 1px solid rgba(var(--slate-mineral-rgb), .54);
+  border-radius: 12px;
+  background: rgba(var(--mist-blue-rgb), .16);
   color: var(--ink-deep);
   font-size: 11px;
   font-weight: 750;
-  letter-spacing: .08em;
+  letter-spacing: .07em;
   transform: none;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
-  .manifest-item.is-active .manifest-number {
-  border-color: var(--plum-mineral);
-  background: var(--plum-mineral);
-  color: var(--warm-ivory);
+  .manifest-item-copy {
+  min-width: 0;
+  display: block;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
-  .manifest-item .manifest-item-title {
-  max-width: 31ch;
-  color: var(--ink-deep);
-  font-size: clamp(20px, 1.75vw, 25px);
-  font-weight: 590;
-  line-height: 1.27;
-  letter-spacing: -.037em;
-  transform: none;
+  .manifest-topic {
+  display: block;
+  margin: 0 0 11px;
+  color: var(--plum-mineral);
+  font-size: 10px;
+  font-weight: 790;
+  line-height: 1.35;
+  letter-spacing: .16em;
 }
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-item .manifest-item-title,
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-item.is-active .manifest-item-title {
-  color: var(--plum-mineral);
+  display: block;
+  max-width: 31ch;
+  color: var(--ink-deep);
+  font-size: clamp(21px, 1.7vw, 25px);
+  font-weight: 640;
+  line-height: 1.28;
+  letter-spacing: -.038em;
+  transform: none;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
-  .manifest-item .manifest-item-description {
+  .manifest-item .manifest-item-description,
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-item.is-active .manifest-item-description {
+  display: block;
   max-width: 48ch;
   margin-top: 10px;
-  color: color-mix(in srgb, var(--ink-deep) 82%, var(--slate-mineral));
+  color: rgba(var(--ink-deep-rgb), .78);
   font-size: clamp(13px, 1vw, 15px);
-  line-height: 1.65;
+  line-height: 1.6;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-item .problem-link {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
   max-width: 100%;
-  margin-top: 16px;
-  padding: 0 0 5px;
-  border-bottom: 1px solid rgba(var(--plum-mineral-rgb), .42);
+  margin-top: 15px;
+  padding-bottom: 5px;
+  border: 0;
+  border-bottom: 1px solid rgba(var(--plum-mineral-rgb), .46);
   border-radius: 0;
-  background: transparent;
   color: var(--plum-mineral);
-  font-size: clamp(12px, .95vw, 14px);
-  font-weight: 720;
-  line-height: 1.5;
+  background: transparent;
+  font-size: clamp(12px, .9vw, 13px);
+  font-weight: 750;
+  line-height: 1.6;
   text-decoration: none;
+  text-transform: none;
+  letter-spacing: .005em;
   text-wrap: pretty;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-item .problem-link:hover {
-  border-bottom-color: var(--plum-mineral);
+  border-bottom-color: var(--ink-deep);
   color: var(--ink-deep);
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
@@ -668,86 +726,116 @@ body.home-page[data-c33-editorial] main > section#problemas.section
   border-radius: 2px;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
-  .manifest-item:not(.is-active):hover,
+  .manifest-item:hover,
 body.home-page[data-c33-editorial] main > section#problemas.section
-  .manifest-item:not(.is-active):focus-within {
-  background: rgba(var(--mist-blue-rgb), .12);
+  .manifest-item:focus-within,
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-item.is-active:hover {
+  background: rgba(var(--mist-blue-rgb), .19);
   box-shadow: none !important;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
-  .manifest-item:not(.is-active):is(:hover, :focus-within)
-  .manifest-item-title {
-  color: var(--plum-mineral);
+  .manifest-item:is(:hover, :focus-within) .manifest-item-title {
+  color: var(--ink-deep);
   transform: none;
 }
-body.home-page[data-c33-editorial] main > section#problemas.section
-  .manifest-item.is-active:focus-within {
-  border-color: rgba(var(--plum-mineral-rgb), .56);
-}
 
-@media (max-width: 1000px) {
+/* Tablet: convert the dark half into a deliberate inline ink panel. */
+@media (max-width: 1180px) {
+  body.home-page[data-c33-editorial] main > section#problemas.section {
+    padding-block: 66px 82px;
+    background: var(--warm-ivory);
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section::before {
+    display: none;
+  }
   body.home-page[data-c33-editorial] main > section#problemas.section
     .container.launch-manifest-grid {
-    width: min(calc(100% - 64px), 820px);
+    width: min(calc(100% - 60px), 830px);
     grid-template-columns: minmax(0, 1fr);
-    gap: 42px;
+    gap: 38px;
   }
   body.home-page[data-c33-editorial] main > section#problemas.section
     .manifest-concept {
-    max-width: 720px;
+    width: 100%;
+    max-width: none;
+    padding: clamp(35px, 5vw, 58px);
+    border: 1px solid rgba(var(--mist-blue-rgb), .15);
+    border-radius: 21px;
+    background:
+      radial-gradient(ellipse 55% 85% at 96% 100%, rgba(var(--plum-mineral-rgb), .23), transparent 85%),
+      var(--ink-deep);
   }
   body.home-page[data-c33-editorial] main > section#problemas.section
     .manifest-title {
-    font-size: clamp(40px, 6.5vw, 57px);
+    font-size: clamp(40px, 6.1vw, 59px);
   }
 }
+/* Mobile remains a true one-column narrative, not shrunken desktop panels. */
 @media (max-width: 600px) {
   body.home-page[data-c33-editorial] main > section#problemas.section {
-    padding-block: 72px 78px;
+    padding-block: 38px 64px;
   }
   body.home-page[data-c33-editorial] main > section#problemas.section
     .container.launch-manifest-grid {
-    width: calc(100% - 36px);
-    gap: 33px;
+    width: calc(100% - 32px);
+    gap: 26px;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-concept {
+    padding: 36px 24px 40px;
+    border-radius: 17px;
   }
   body.home-page[data-c33-editorial] main > section#problemas.section
     .manifest-eyebrow {
-    margin-bottom: 24px;
+    margin-bottom: 23px;
   }
   body.home-page[data-c33-editorial] main > section#problemas.section
     .manifest-title {
-    font-size: clamp(34px, 9vw, 46px);
-    line-height: 1.1;
-    margin-bottom: 19px;
+    font-size: clamp(33px, 8.8vw, 45px);
+    line-height: 1.09;
+    margin-bottom: 23px;
   }
   body.home-page[data-c33-editorial] main > section#problemas.section
     .manifest-intro {
     font-size: 14px;
-    line-height: 1.68;
+    line-height: 1.65;
   }
   body.home-page[data-c33-editorial] main > section#problemas.section
     .manifest-item,
   body.home-page[data-c33-editorial] main > section#problemas.section
     .manifest-item.is-active {
-    grid-template-columns: 35px minmax(0, 1fr);
-    gap: 12px;
-    padding: 21px 11px;
+    grid-template-columns: 36px minmax(0, 1fr);
+    gap: 13px;
+    padding: 23px 8px;
   }
   body.home-page[data-c33-editorial] main > section#problemas.section
-    .manifest-number {
-    width: 35px;
-    height: 35px;
-    border-radius: 11px;
+    .manifest-item.is-active {
+    padding-left: 11px;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-number,
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-item.is-active .manifest-number {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
     font-size: 10px;
   }
   body.home-page[data-c33-editorial] main > section#problemas.section
-    .manifest-item .manifest-item-title {
+    .manifest-topic {
+    font-size: 9px;
+    margin-bottom: 8px;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-item .manifest-item-title,
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-item.is-active .manifest-item-title {
     font-size: clamp(19px, 5.2vw, 23px);
   }
   body.home-page[data-c33-editorial] main > section#problemas.section
     .manifest-item .problem-link {
     font-size: 12px;
-    line-height: 1.5;
   }
 }
 @media (prefers-reduced-motion: reduce) {
