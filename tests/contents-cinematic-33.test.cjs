@@ -31,7 +31,7 @@ test('Ato VII: conserva os dois artigos e links existentes da home', () => {
 });
 
 test('Ato VII: ilustrações explicam a copy sem depender de imagens genéricas', () => {
-  assert.match(section, /class="content-channels-stage"/);
+  assert.match(section, /class="content-featured__media content-channels-stage"/);
   assert.equal((section.match(/class="channel-device channel-device--/g) || []).length, 3);
   assert.equal((section.match(/class="channel-callout channel-callout--/g) || []).length, 3);
   for (const term of [
