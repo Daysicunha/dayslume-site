@@ -44,3 +44,8 @@ test('last cinema scene hides only its decorative UI fragments',()=>{
  assert.match(html,/A próxima evolução começa com/);
  assert.match(html,/class="hero hero--cinematic hero--floating-panels"/);
 });
+
+test('hero anchor does not reserve the previous film scene under fixed navigation',()=>{
+ assert.match(palette,/body\.home-page #apresentacao \{ scroll-margin-top: 0; \}/);
+ assert.doesNotMatch(palette,/main > section:is\(#apresentacao,#problemas,#modelo/);
+});
