@@ -65,7 +65,8 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/home-base.css"><link rel="stylesheet" href="assets/css/home-premium.css"><link rel="stylesheet" href="assets/css/hero-tech.css"><link rel="stylesheet" href="assets/css/visual-system.css"><link rel="stylesheet" href="assets/css/action-system.css"><link rel="stylesheet" href="assets/css/editorial-refinement.css"><link rel="stylesheet" href="assets/css/tornearia-mockup.css"><link rel="stylesheet" href="assets/css/projects-editorial.css"><link rel="stylesheet" href="assets/css/contents-editorial.css"><link rel="stylesheet" href="assets/css/about-reference.css"><link rel="stylesheet" href="assets/css/home-section-rhythm.css">
-<link rel="stylesheet" href="assets/css/flagship-conversion.css"><link rel="stylesheet" href="assets/css/hero-prism-scroll.css"><link rel="stylesheet" href="assets/css/final-qa-20261014.css"><link rel="stylesheet" href="assets/css/hero-cinematic.css"><link rel="stylesheet" href="assets/css/cinematic-experience-33.css"><link rel="stylesheet" href="assets/css/cinematic-film-intro-33.css"><link rel="stylesheet" href="assets/css/cinematic-editorial-33.css"><link rel="stylesheet" href="assets/css/cinematic-hero-refinement-20261113.css"><link rel="stylesheet" href="assets/css/cinematic-floating-panels-20261113.css"><link rel="stylesheet" href="assets/css/brand-palette.css">
+<link rel="stylesheet" href="assets/css/flagship-conversion.css"><link rel="stylesheet" href="assets/css/hero-prism-scroll.css"><link rel="stylesheet" href="assets/css/final-qa-20261014.css"><link rel="stylesheet" href="assets/css/hero-cinematic.css"><link rel="stylesheet" href="assets/css/cinematic-experience-33.css"><link rel="stylesheet" href="assets/css/cinematic-film-intro-33.css"><link rel="stylesheet" href="assets/css/cinematic-editorial-33.css"><link rel="stylesheet" href="assets/css/cinematic-hero-refinement-20261113.css"><link rel="stylesheet" href="assets/css/cinematic-floating-panels-20261113.css"><link rel="stylesheet" href="assets/css/contents-cinematic-33.css">
+<link rel="stylesheet" href="assets/css/brand-palette.css">
   <script src="assets/js/home-case-mockups.js" defer></script>
 </head>
 <body class="home-page" data-c33-editorial>
@@ -525,7 +526,17 @@
       </div>
     </div>
   </section>
-  <section class="section migrated-blog content-magazine section-shell section-atmosphere section-atmosphere--editorial section-grid section-grid--editorial" id="conteudos" aria-labelledby="conteudos-title">
+  <section class="section migrated-blog content-magazine contents-cinematic section-shell section-atmosphere section-atmosphere--editorial section-grid section-grid--editorial" id="conteudos" aria-labelledby="conteudos-title">
+    <svg class="contents-neon-waves" viewBox="0 0 1600 135" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="contents-wave-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#9244B0" stop-opacity=".48"/><stop offset="1" stop-color="#331845" stop-opacity=".02"/></linearGradient>
+        <linearGradient id="contents-wave-stroke" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#C46CDF"/><stop offset=".52" stop-color="#EE8AF7"/><stop offset="1" stop-color="#AA58D2"/></linearGradient>
+        <filter id="contents-wave-glow" x="-20%" y="-90%" width="140%" height="280%"><feGaussianBlur stdDeviation="8"/></filter>
+      </defs>
+      <path d="M0 57C190 8 260 147 485 109S793 25 997 73 1377 162 1600 61V135H0Z" fill="url(#contents-wave-fill)"/>
+      <path d="M0 57C190 8 260 147 485 109S793 25 997 73 1377 162 1600 61" stroke="#CB65E6" stroke-width="13" opacity=".64" fill="none" filter="url(#contents-wave-glow)"/>
+      <path class="contents-neon-wave-line" d="M0 57C190 8 260 147 485 109S793 25 997 73 1377 162 1600 61" stroke="url(#contents-wave-stroke)" stroke-width="2" fill="none"/>
+    </svg>
     <div class="container">
       <header class="content-masthead">
         <p class="eyebrow section-eyebrow"><span class="section-eyebrow__number">06</span><span class="section-eyebrow__label">CONTEÚDOS</span></p>
@@ -538,45 +549,94 @@
 
       <article class="content-featured">
         <div class="content-featured__copy">
-          <div class="content-meta"><span>ESTRATÉGIA <i>·</i> DESIGN</span><span>05 min</span></div>
+          <div class="content-meta"><span>ESTRATÉGIA <i>·</i> DESIGN</span><span class="content-readtime"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 6v7l4 2"/></svg>05 min</span></div>
           <h3><a href="blog/presenca-digital-estrategica.html">Presença digital estratégica: como organizar seus canais</a></h3>
-          <span class="content-rule editorial-divider" aria-hidden="true"></span>
           <p>Instagram, WhatsApp e site têm papéis diferentes. Veja como combiná-los em uma presença mais clara.</p>
-          <a class="content-read content-read--featured" href="blog/presenca-digital-estrategica.html"><span class="content-read__circle" aria-hidden="true">→</span><span>LER ARTIGO</span></a>
+          <a class="content-read content-read--featured" href="blog/presenca-digital-estrategica.html"><span>Ler artigo</span><span aria-hidden="true">↗</span></a>
         </div>
-        <a class="content-featured__media" href="blog/presenca-digital-estrategica.html" aria-label="Ler: Presença digital estratégica: como organizar seus canais">
-          <img src="assets/images/content-strategy-editorial.svg" width="1440" height="720" loading="lazy" decoding="async" alt="Composição editorial de três sites com identidades distintas e direção estratégica">
-          <span class="content-image-note">IDENTIDADE<br>COM<br>INTENÇÃO.<i aria-hidden="true"></i></span>
+        <a class="content-featured__media content-channels-stage" href="blog/presenca-digital-estrategica.html" aria-label="Ler artigo: Presença digital estratégica: como organizar seus canais">
+          <span class="channels-orbit" aria-hidden="true"></span>
+          <span class="channels-connection channels-connection--left" aria-hidden="true"></span>
+          <span class="channels-connection channels-connection--right" aria-hidden="true"></span>
+          <span class="channel-device channel-device--instagram" aria-hidden="true">
+            <span class="channel-device-chrome"><i></i><i></i><i></i></span>
+            <span class="channel-social-heading"><span class="channel-social-avatar"></span><span class="channel-social-title"></span></span>
+            <span class="channel-social-story"><b></b><b></b><b></b></span>
+            <span class="channel-social-grid"><i></i><i></i><i></i><i></i></span>
+            <span class="channel-device-caption">Instagram</span>
+          </span>
+          <span class="channel-device channel-device--site" aria-hidden="true">
+            <span class="channel-device-chrome"><i></i><i></i><i></i><span class="channel-site-menu"></span></span>
+            <span class="channel-site-layout">
+              <span class="channel-site-eyebrow">PRESENÇA DIGITAL</span>
+              <strong>Sua marca<br>na internet.</strong>
+              <span class="channel-site-subheading"></span>
+              <span class="channel-site-button">Conhecer <span>↗</span></span>
+              <span class="channel-site-photo"><i></i></span>
+            </span>
+            <span class="channel-device-caption">Site</span>
+          </span>
+          <span class="channel-device channel-device--whatsapp" aria-hidden="true">
+            <span class="channel-device-chrome"><i></i><i></i><i></i></span>
+            <span class="channel-chat-header"><span class="channel-chat-avatar"></span><span>Atendimento</span></span>
+            <span class="channel-chat-bubbles"><b>Olá! 👋</b><b>Como posso ajudar?</b><b>Quero saber mais!</b></span>
+            <span class="channel-chat-send">Sua mensagem <span>➤</span></span>
+            <span class="channel-device-caption">WhatsApp</span>
+          </span>
+          <span class="channel-callout channel-callout--instagram" aria-hidden="true"><b>Instagram</b><span>Descoberta e<br>visibilidade</span></span>
+          <span class="channel-callout channel-callout--site" aria-hidden="true"><b>Site</b><span>Informações e<br>confiança</span></span>
+          <span class="channel-callout channel-callout--whatsapp" aria-hidden="true"><b>WhatsApp</b><span>Conversa e<br>atendimento</span></span>
+          <span class="channels-caption" aria-hidden="true">ESTRATÉGIA / IDENTIDADE / DIREÇÃO</span>
         </a>
       </article>
 
       <div class="content-secondary-grid">
         <article class="content-secondary">
-          <a class="content-secondary__link" href="blog/site-bonito-precisa-funcionar.html" aria-label="Ler: Um site bonito também precisa funcionar">
+          <a class="content-secondary__link" href="blog/site-bonito-precisa-funcionar.html" aria-label="Ler artigo: Um site bonito também precisa funcionar">
             <div class="content-secondary__copy">
-              <div class="content-meta"><span>PROCESSO <i>·</i> NEGÓCIO</span><span>05 min</span></div>
+              <div class="content-meta"><span>PROCESSO <i>·</i> NEGÓCIO</span><span class="content-readtime"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 6v7l4 2"/></svg>05 min</span></div>
               <h3>Um site bonito também precisa funcionar.</h3>
-              <span class="content-rule editorial-divider" aria-hidden="true"></span>
               <p>Além da aparência, navegação e clareza precisam ajudar o visitante a agir.</p>
-              <span class="content-read"><span>LER ARTIGO</span><span aria-hidden="true">→</span></span>
+              <span class="content-read"><span>Ler artigo</span><span aria-hidden="true">↗</span></span>
             </div>
-            <span class="content-secondary__media content-secondary__media--stone">
-              <img src="assets/images/content-design-process.svg" width="760" height="540" loading="lazy" decoding="async" alt="Comparação visual entre uma interface confusa e um fluxo organizado">
+            <span class="content-secondary__media content-compare-stage" aria-hidden="true">
+              <span class="compare-panel compare-panel--before">
+                <span class="compare-label">ANTES / ATRITO</span>
+                <span class="compare-browser">
+                  <span class="compare-browser-chrome"><i></i><i></i><i></i></span>
+                  <span class="compare-chaos"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                  <span class="compare-cross compare-cross--one"></span>
+                  <span class="compare-cross compare-cross--two"></span>
+                </span>
+                <span class="compare-note"><b>×</b> Muitas opções<br><b>×</b> Caminho confuso</span>
+              </span>
+              <span class="compare-direction">→</span>
+              <span class="compare-panel compare-panel--after">
+                <span class="compare-label">DEPOIS / CLAREZA</span>
+                <span class="compare-browser">
+                  <span class="compare-browser-chrome"><i></i><i></i><i></i></span>
+                  <span class="compare-good-title"></span>
+                  <span class="compare-good-line"></span>
+                  <span class="compare-good-line compare-good-line--short"></span>
+                  <span class="compare-good-visual"><i></i><i></i></span>
+                  <span class="compare-good-button">Falar com a marca <span>✓</span></span>
+                </span>
+                <span class="compare-note"><b>✓</b> Hierarquia clara<br><b>✓</b> Ação evidente</span>
+              </span>
+              <span class="compare-caption">EXPERIÊNCIA CENTRADA EM QUEM USA</span>
             </span>
           </a>
         </article>
-
-        
       </div>
 
-      <div class="content-insights content-insights--compact"><span class="content-insights__label">QUER EXPLORAR MAIS?</span><a class="content-archive" href="blog.html">VER TODOS OS ARTIGOS <span aria-hidden="true">→</span></a></div>
+      <div class="content-insights content-insights--compact"><span class="content-insights__label">QUER EXPLORAR MAIS?</span><a class="content-archive" href="blog.html">VER TODOS OS ARTIGOS <span aria-hidden="true">↗</span></a></div>
     </div>
   </section>
   <section class="section contact-section section-shell section-atmosphere section-atmosphere--contact" id="contato" aria-labelledby="contact-title"><div class="container contact-grid"><div><p class="eyebrow section-eyebrow"><span class="section-eyebrow__number">07</span><span class="section-eyebrow__label">PRÓXIMO PASSO</span></p><h2 id="contact-title" class="section-title"><span>Vamos entender o que</span><span><em>seu negócio precisa?</em></span></h2><p>Conte o que você quer melhorar. Respondemos pelo WhatsApp para entender o contexto e orientar o próximo passo.</p><div class="contact-note"><a class="migration-link" href="https://wa.me/5531994492474?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20DAYSLUME.%20Quero%20contar%20um%20problema%20do%20meu%20neg%C3%B3cio%20e%20entender%20qual%20solu%C3%A7%C3%A3o%20digital%20faz%20sentido." target="_blank" rel="noopener noreferrer">Conversar no WhatsApp ↗</a></div></div><form class="contact-form" id="contact-form" hidden data-whatsapp="5531994492474" aria-describedby="contact-privacy"><div class="form-row"><div class="form-field"><label for="nome">Seu nome <span>*</span></label><input disabled id="nome" name="nome" maxlength="100" autocomplete="name" required placeholder="Como podemos chamar você?"></div><div class="form-field"><label for="email">Seu e-mail <span>*</span></label><input disabled id="email" name="email" maxlength="254" type="email" autocomplete="email" required placeholder="voce@empresa.com.br"></div></div><div class="form-field"><label for="empresa">Empresa ou projeto</label><input disabled id="empresa" name="empresa" autocomplete="organization" maxlength="150" placeholder="Nome do negócio (opcional)"></div><div class="form-field"><label for="necessidade">O que hoje está difícil, confuso ou manual? <span>*</span></label><textarea disabled id="necessidade" name="necessidade" maxlength="2000" required minlength="10" rows="4" placeholder="Conte a situação atual e o que você gostaria que funcionasse melhor."></textarea></div><button class="btn btn-navy" type="button" disabled>Preparar diagnóstico inicial <span aria-hidden="true">↗</span></button><p class="form-status" id="form-status" role="status" aria-live="polite">Preencha os campos para preparar sua mensagem.</p><p id="contact-privacy" class="contact-privacy">Os dados são usados apenas para montar sua mensagem neste navegador. Você revisa e confirma o envio no WhatsApp.</p><a class="btn btn-navy whatsapp-submit" id="whatsapp-submit" hidden target="_blank" rel="noopener noreferrer">Continuar no WhatsApp <span aria-hidden="true">↗</span></a></form><noscript><p>Para enviar sua solicitação, utilize o link de WhatsApp acima.</p></noscript></div></section>
 </main>
 <footer class="site-footer days-support-ready"><div class="container"><div class="footer-main"><a href="index.html" class="footer-brand footer-logo" aria-label="DAYSLUME, início"><img src="assets/images/logohorizontalbranca.png" alt="DAYSLUME — Estúdio de desenvolvimento digital" class="footer-logo-img" width="320" height="73" loading="lazy"></a><p><strong>Estúdio de desenvolvimento digital.</strong><span>Estratégia, design e tecnologia para negócios.</span></p></div><nav class="footer-nav" aria-label="Navegação do rodapé"><a href="servicos.html">Serviços</a><a href="solucoes.html">Produtos</a><a href="projetos.html">Projetos</a><a href="blog.html">Conteúdos</a><a href="sobre.html">Sobre</a><a href="contato.html">Contato</a><a href="central-de-ajuda.html">Central de Ajuda</a></nav><nav class="footer-socials" aria-label="Redes sociais"><a href="https://www.instagram.com/dayslume/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.linkedin.com/company/dayslume/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.tiktok.com/@dayslume" target="_blank" rel="noopener noreferrer">TikTok</a></nav><section class="days-footer-support" aria-labelledby="days-footer-support-title"><div class="days-footer-support-intro"><span class="days-footer-support-kicker">ATENDIMENTO / DAYSLUME</span><h2 id="days-footer-support-title">Podemos ajudar?</h2><p>Dúvidas sobre serviços, produtos ou projetos? Encontre respostas ou converse com a gente.</p></div><div class="days-support-contacts" aria-label="Dados e canais de atendimento"><div class="days-support-contact"><svg class="days-support-contact-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 0 1-11.8 7L4 20l1.1-4A8 8 0 1 1 20 12Z"/><path d="M9 9c.8 3 3 5 6 6"/></svg><div class="days-support-contact-copy"><strong>WhatsApp: </strong><a href="https://wa.me/5531994492474?text=Ol%C3%A1!%20Preciso%20de%20atendimento%20DAYSLUME." target="_blank" rel="noopener noreferrer">+55 (31) 99449-2474</a><small>Atendimento por mensagem · retorno conforme disponibilidade.</small></div></div><div class="days-support-contact"><svg class="days-support-contact-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19 19 0 0 1-8.6-3.1 19 19 0 0 1-6-6 19 19 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.5 3a2 2 0 0 1-.6 1.7L7.7 9.7a15.2 15.2 0 0 0 6.6 6.6l1.3-1.3a2 2 0 0 1 1.7-.6l3 .5a2 2 0 0 1 1.7 2Z"/></svg><div class="days-support-contact-copy"><strong>Telefone: </strong><a href="https://wa.me/5531994492474?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20liga%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer">Solicitar uma ligação</a><small>Combine o contato por mensagem.</small></div></div><div class="days-support-contact"><svg class="days-support-contact-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><div class="days-support-contact-copy"><strong>Mensagem: </strong><a href="contato.html">Clique aqui e fale conosco.</a><small>Prepare sua mensagem pelo site.</small></div></div></div><div class="days-footer-support-actions"><a href="https://wa.me/5531994492474?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20DAYSLUME%20e%20preciso%20de%20ajuda." target="_blank" rel="noopener noreferrer">WhatsApp ↗</a><a href="central-de-ajuda.html">Central de Ajuda ↗</a><a href="contato.html">Contato ↗</a></div></section><div class="footer-bottom"><span>© <span id="year"></span> DAYSLUME</span><nav class="footer-utility-links" aria-label="Links úteis do rodapé"><a href="central-de-ajuda.html">Central de Ajuda ↗</a><a href="contato.html">Contato ↗</a></nav></div></div><div class="days-back-top"><a href="#topo"><span aria-hidden="true">↑</span> Voltar ao topo</a></div>
 </footer>
-<script src="assets/js/dayslume-motion.js" defer></script><script src="assets/js/dayslume-contact.js" defer></script><script src="assets/js/home-premium.js" defer></script><script src="assets/js/hero-prism-scroll.js" defer></script><script src="assets/js/modelo-motion.js" defer></script><script src="assets/js/hero-cinematic.js" defer></script><script src="assets/js/cinematic-experience-33.js" defer></script><script src="assets/js/products-showroom-motion.js" defer></script><script src="assets/js/cases-showroom-motion.js" defer></script><script src="assets/js/founder-cinematic-motion.js" defer></script><script src="assets/js/cinematic-film-intro-33.js" defer></script>
+<script src="assets/js/dayslume-motion.js" defer></script><script src="assets/js/dayslume-contact.js" defer></script><script src="assets/js/home-premium.js" defer></script><script src="assets/js/hero-prism-scroll.js" defer></script><script src="assets/js/modelo-motion.js" defer></script><script src="assets/js/hero-cinematic.js" defer></script><script src="assets/js/cinematic-experience-33.js" defer></script><script src="assets/js/products-showroom-motion.js" defer></script><script src="assets/js/cases-showroom-motion.js" defer></script><script src="assets/js/founder-cinematic-motion.js" defer></script><script src="assets/js/contents-cinematic-motion.js" defer></script><script src="assets/js/cinematic-film-intro-33.js" defer></script>
 <a class="floating-whatsapp" href="https://wa.me/5531994492474?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20DAYSLUME%20e%20gostaria%20de%20falar%20sobre%20um%20projeto." target="_blank" rel="noopener noreferrer" aria-label="Falar com a DAYSLUME pelo WhatsApp" title="Fale com a DAYSLUME pelo WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 11.6a8.4 8.4 0 0 1-12.4 7.3L3.4 20l1.2-4.4a8.4 8.4 0 1 1 15.8-4z"/><path d="M8.4 8.5c.2-.4.5-.4.8-.4l.5.1c.1 0 .3.2.4.5l.5 1.3c.1.3.1.5-.1.8l-.5.6c.7 1.4 1.7 2.4 3.1 3.1l.6-.6c.2-.2.5-.2.8-.1l1.3.5c.3.1.5.3.5.5.1.7-.2 1.2-.8 1.5-1.5.6-3.4-.3-5.1-2s-2.7-3.7-2-5.1z"/></svg></a>
 </body>
 </html>
