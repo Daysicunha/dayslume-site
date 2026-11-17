@@ -463,19 +463,42 @@
       <div class="case-conversion"><p>Reconheceu algo parecido com o seu desafio?</p><a class="btn btn-navy" href="#contato">Quero algo assim para meu negócio <span aria-hidden="true">↗</span></a></div>
     </div>
   </section>
-  <section class="section about-section section-shell section-atmosphere section-atmosphere--about section-grid section-grid--full" id="sobre" aria-labelledby="about-title">
+  <section class="section about-section about-cinematic-reference section-shell section-atmosphere section-atmosphere--about section-grid section-grid--full" id="sobre" aria-labelledby="about-title">
+    <svg class="founder-neon-waves" viewBox="0 0 1600 185" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="founder-wave-line" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#A65FC7"/><stop offset=".35" stop-color="#DA81F0"/><stop offset=".67" stop-color="#CB66E6"/><stop offset="1" stop-color="#C577E9"/>
+        </linearGradient>
+        <linearGradient id="founder-wave-fill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#6A347C" stop-opacity=".51"/><stop offset="1" stop-color="#20172F" stop-opacity=".03"/>
+        </linearGradient>
+        <filter id="founder-wave-glow" x="-20%" y="-100%" width="140%" height="300%"><feGaussianBlur stdDeviation="8"/></filter>
+      </defs>
+      <path d="M0 95 C135 49 271 180 434 136 S705 70 881 129 S1162 178 1362 85 S1537 67 1600 80 L1600 185 L0 185Z" fill="url(#founder-wave-fill)"/>
+      <path d="M0 95 C135 49 271 180 434 136 S705 70 881 129 S1162 178 1362 85 S1537 67 1600 80" stroke="#CE71EC" stroke-width="15" opacity=".58" fill="none" filter="url(#founder-wave-glow)"/>
+      <path class="founder-wave-front" d="M0 95 C135 49 271 180 434 136 S705 70 881 129 S1162 178 1362 85 S1537 67 1600 80" stroke="url(#founder-wave-line)" stroke-width="2" fill="none"/>
+    </svg>
     <div class="container about-grid">
       <figure class="about-visual-card">
         <div class="about-visual-inner">
           <img src="assets/images/daysi-cunha-editorial.jpg" alt="Daysi Cunha, fundadora da DAYSLUME" width="1122" height="1402" loading="lazy" decoding="async">
+          <figcaption class="about-signature founder-photo-signature">
+            <a href="sobre.html" aria-label="Conhecer a DAYSLUME e a fundadora Daysi Cunha">
+              <strong>Daysi Cunha</strong>
+              <span>FUNDADORA DA DAYSLUME</span>
+            </a>
+            <svg class="founder-mark" viewBox="0 0 54 54" aria-hidden="true" focusable="false" fill="currentColor">
+              <path d="M27 25C20 17 20 9 27 3c7 6 7 14 0 22ZM29 27c8-7 16-7 22 0-6 7-14 7-22 0ZM27 29c7 8 7 16 0 22-7-6-7-14 0-22ZM25 27c-8 7-16 7-22 0 6-7 14-7 22 0ZM26 25C14 25 8 18 10 10c9-2 16 4 16 15ZM29 25c0-11 7-17 15-15 2 8-4 15-15 15ZM29 29c11 0 17 7 15 15-8 2-15-4-15-15ZM25 29c0 11-7 17-15 15-2-8 4-15 15-15Z"/>
+            </svg>
+          </figcaption>
         </div>
       </figure>
       <div class="about-copy">
         <p class="eyebrow section-eyebrow"><span class="section-eyebrow__number">05</span><span class="section-eyebrow__label">QUEM RESPONDE PELO TRABALHO</span></p>
         <h2 id="about-title" class="section-title section-title--long">
           <span>Um processo claro.</span>
-          <span>Uma fundadora</span>
-          <span>presente em cada decisão.</span>
+          <span class="founder-title-accent">Uma fundadora presente</span>
+          <span>em cada decisão.</span>
         </h2>
         <div class="about-intro">
           <p>A DAYSLUME é liderada por <strong>Daysi Cunha</strong>, que acompanha as decisões de estratégia, design e desenvolvimento.</p>
@@ -484,18 +507,25 @@
         <div class="about-process-compact" id="processo-home" aria-label="Como trabalhamos">
           <p class="about-process-label">DO CONTEXTO À ENTREGA</p>
           <ol>
-            <li><strong>01 · Entender</strong><span>Ouvir o desafio e definir prioridades.</span></li>
-            <li><strong>02 · Construir</strong><span>Desenhar e desenvolver a solução necessária.</span></li>
-            <li><strong>03 · Evoluir</strong><span>Testar, entregar e orientar os próximos passos.</span></li>
+            <li>
+              <span class="about-process-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="15" cy="17" r="11"/><circle cx="15" cy="17" r="6"/><circle cx="15" cy="17" r="1.5"/><path d="m19 13 9-9m-5 0h5v5"/></svg></span>
+              <strong>01 · Entender</strong><span>Ouvir o desafio e definir prioridades.</span>
+            </li>
+            <li>
+              <span class="about-process-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 12-8 12 8-12 8zM4 18l12 8 12-8M4 24l12 6 12-6"/></svg></span>
+              <strong>02 · Construir</strong><span>Desenhar e desenvolver a solução necessária.</span>
+            </li>
+            <li>
+              <span class="about-process-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 26 14 17l6 5 9-13M23 9h6v6"/></svg></span>
+              <strong>03 · Evoluir</strong><span>Testar, entregar e orientar os próximos passos.</span>
+            </li>
           </ol>
-          <a href="processo.html">Conhecer nosso processo completo ↗</a>
+          <a class="btn btn-navy about-cta" href="processo.html">Conhecer nosso processo completo <span aria-hidden="true">↗</span></a>
         </div>
-        <p class="about-signature"><strong>Daysi Cunha</strong><span>Fundadora &amp; direção estratégica</span></p>
-        <a class="btn btn-navy about-cta" href="sobre.html">Conhecer a DAYSLUME <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </section>
-    <section class="section migrated-blog content-magazine section-shell section-atmosphere section-atmosphere--editorial section-grid section-grid--editorial" id="conteudos" aria-labelledby="conteudos-title">
+  <section class="section migrated-blog content-magazine section-shell section-atmosphere section-atmosphere--editorial section-grid section-grid--editorial" id="conteudos" aria-labelledby="conteudos-title">
     <div class="container">
       <header class="content-masthead">
         <p class="eyebrow section-eyebrow"><span class="section-eyebrow__number">06</span><span class="section-eyebrow__label">CONTEÚDOS</span></p>
@@ -546,7 +576,7 @@
 </main>
 <footer class="site-footer days-support-ready"><div class="container"><div class="footer-main"><a href="index.html" class="footer-brand footer-logo" aria-label="DAYSLUME, início"><img src="assets/images/logohorizontalbranca.png" alt="DAYSLUME — Estúdio de desenvolvimento digital" class="footer-logo-img" width="320" height="73" loading="lazy"></a><p><strong>Estúdio de desenvolvimento digital.</strong><span>Estratégia, design e tecnologia para negócios.</span></p></div><nav class="footer-nav" aria-label="Navegação do rodapé"><a href="servicos.html">Serviços</a><a href="solucoes.html">Produtos</a><a href="projetos.html">Projetos</a><a href="blog.html">Conteúdos</a><a href="sobre.html">Sobre</a><a href="contato.html">Contato</a><a href="central-de-ajuda.html">Central de Ajuda</a></nav><nav class="footer-socials" aria-label="Redes sociais"><a href="https://www.instagram.com/dayslume/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.linkedin.com/company/dayslume/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.tiktok.com/@dayslume" target="_blank" rel="noopener noreferrer">TikTok</a></nav><section class="days-footer-support" aria-labelledby="days-footer-support-title"><div class="days-footer-support-intro"><span class="days-footer-support-kicker">ATENDIMENTO / DAYSLUME</span><h2 id="days-footer-support-title">Podemos ajudar?</h2><p>Dúvidas sobre serviços, produtos ou projetos? Encontre respostas ou converse com a gente.</p></div><div class="days-support-contacts" aria-label="Dados e canais de atendimento"><div class="days-support-contact"><svg class="days-support-contact-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 0 1-11.8 7L4 20l1.1-4A8 8 0 1 1 20 12Z"/><path d="M9 9c.8 3 3 5 6 6"/></svg><div class="days-support-contact-copy"><strong>WhatsApp: </strong><a href="https://wa.me/5531994492474?text=Ol%C3%A1!%20Preciso%20de%20atendimento%20DAYSLUME." target="_blank" rel="noopener noreferrer">+55 (31) 99449-2474</a><small>Atendimento por mensagem · retorno conforme disponibilidade.</small></div></div><div class="days-support-contact"><svg class="days-support-contact-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19 19 0 0 1-8.6-3.1 19 19 0 0 1-6-6 19 19 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.5 3a2 2 0 0 1-.6 1.7L7.7 9.7a15.2 15.2 0 0 0 6.6 6.6l1.3-1.3a2 2 0 0 1 1.7-.6l3 .5a2 2 0 0 1 1.7 2Z"/></svg><div class="days-support-contact-copy"><strong>Telefone: </strong><a href="https://wa.me/5531994492474?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20liga%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer">Solicitar uma ligação</a><small>Combine o contato por mensagem.</small></div></div><div class="days-support-contact"><svg class="days-support-contact-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><div class="days-support-contact-copy"><strong>Mensagem: </strong><a href="contato.html">Clique aqui e fale conosco.</a><small>Prepare sua mensagem pelo site.</small></div></div></div><div class="days-footer-support-actions"><a href="https://wa.me/5531994492474?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20DAYSLUME%20e%20preciso%20de%20ajuda." target="_blank" rel="noopener noreferrer">WhatsApp ↗</a><a href="central-de-ajuda.html">Central de Ajuda ↗</a><a href="contato.html">Contato ↗</a></div></section><div class="footer-bottom"><span>© <span id="year"></span> DAYSLUME</span><nav class="footer-utility-links" aria-label="Links úteis do rodapé"><a href="central-de-ajuda.html">Central de Ajuda ↗</a><a href="contato.html">Contato ↗</a></nav></div></div><div class="days-back-top"><a href="#topo"><span aria-hidden="true">↑</span> Voltar ao topo</a></div>
 </footer>
-<script src="assets/js/dayslume-motion.js" defer></script><script src="assets/js/dayslume-contact.js" defer></script><script src="assets/js/home-premium.js" defer></script><script src="assets/js/hero-prism-scroll.js" defer></script><script src="assets/js/modelo-motion.js" defer></script><script src="assets/js/hero-cinematic.js" defer></script><script src="assets/js/cinematic-experience-33.js" defer></script><script src="assets/js/products-showroom-motion.js" defer></script><script src="assets/js/cases-showroom-motion.js" defer></script><script src="assets/js/cinematic-film-intro-33.js" defer></script>
+<script src="assets/js/dayslume-motion.js" defer></script><script src="assets/js/dayslume-contact.js" defer></script><script src="assets/js/home-premium.js" defer></script><script src="assets/js/hero-prism-scroll.js" defer></script><script src="assets/js/modelo-motion.js" defer></script><script src="assets/js/hero-cinematic.js" defer></script><script src="assets/js/cinematic-experience-33.js" defer></script><script src="assets/js/products-showroom-motion.js" defer></script><script src="assets/js/cases-showroom-motion.js" defer></script><script src="assets/js/founder-cinematic-motion.js" defer></script><script src="assets/js/cinematic-film-intro-33.js" defer></script>
 <a class="floating-whatsapp" href="https://wa.me/5531994492474?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20DAYSLUME%20e%20gostaria%20de%20falar%20sobre%20um%20projeto." target="_blank" rel="noopener noreferrer" aria-label="Falar com a DAYSLUME pelo WhatsApp" title="Fale com a DAYSLUME pelo WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 11.6a8.4 8.4 0 0 1-12.4 7.3L3.4 20l1.2-4.4a8.4 8.4 0 1 1 15.8-4z"/><path d="M8.4 8.5c.2-.4.5-.4.8-.4l.5.1c.1 0 .3.2.4.5l.5 1.3c.1.3.1.5-.1.8l-.5.6c.7 1.4 1.7 2.4 3.1 3.1l.6-.6c.2-.2.5-.2.8-.1l1.3.5c.3.1.5.3.5.5.1.7-.2 1.2-.8 1.5-1.5.6-3.4-.3-5.1-2s-2.7-3.7-2-5.1z"/></svg></a>
 </body>
 </html>
