@@ -846,201 +846,581 @@ body.home-page[data-c33-editorial] main > section#problemas.section
 }
 
 
-/* 17/11/2026 — Ato II / conteúdos orientados à jornada e equilíbrio editorial. */
+
+/* 17/11/2026 — ATO II / implementação fiel ao layout ilustrado aprovado.
+   Lado escuro com ondas, sem mockup de notebook. Cards editoriais com arte SVG. 
+   Isolado em #problemas; não modifica Hero, filme, outras seções ou tokens globais. */
+body.home-page[data-c33-editorial] main > section#problemas.section {
+  position: relative;
+  isolation: isolate;
+  min-height: 0;
+  min-block-size: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: linear-gradient(90deg, #191925 0 42.2%, #FAEEE9 42.2% 100%);
+  color: var(--ink-deep);
+}
+body.home-page[data-c33-editorial] main > section#problemas.section::before,
+body.home-page[data-c33-editorial] main > section#problemas.section::after {
+  display: none;
+  content: none;
+}
 body.home-page[data-c33-editorial] main > section#problemas.section
   .container.launch-manifest-grid {
-  align-items: start;
-  gap: clamp(52px, 6vw, 104px);
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+  padding: 0;
+  grid-template-columns: minmax(0, 42.2fr) minmax(0, 57.8fr);
+  gap: 0;
+  align-items: stretch;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-concept {
-  padding-top: clamp(42px, 5.2vw, 76px);
-  padding-bottom: clamp(52px, 6vw, 82px);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  max-width: none;
+  min-height: 820px;
+  margin: 0;
+  padding: clamp(65px, 4.7vw, 82px) clamp(30px, 3.5vw, 64px) 185px clamp(55px, 6.7vw, 113px);
+  border: 0;
+  border-radius: 0;
+  background:
+    radial-gradient(ellipse 85% 45% at 59% 95%, rgba(125,61,140,.25), transparent 75%),
+    linear-gradient(155deg, #181B28 0%, #1B1B2B 55%, #221D30 100%);
+  color: #F7F1F3;
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-concept::after {
+  display: none;
+  content: none;
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-concept > *:not(.manifest-waves) {
+  position: relative;
+  z-index: 2;
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 clamp(30px, 3vw, 42px);
+  color: rgba(247,241,243,.8);
+  font-size: 11px;
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-eyebrow::before {
+  width: 35px;
+  background: var(--peach);
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-eyebrow .section-eyebrow__number {
+  color: var(--peach);
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-eyebrow .section-eyebrow__label {
+  color: #F3EDF0;
+  letter-spacing: .15em;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-title {
-  max-width: 100%;
-  margin-bottom: 28px;
-  font-size: clamp(43px, 3.85vw, 61px);
-  line-height: 1.1;
+  max-width: none;
+  margin: 0 0 25px;
+  color: #F9F5F4;
+  font-size: clamp(40px, 3.78vw, 64px);
+  font-weight: 650;
+  line-height: 1.095;
   letter-spacing: -.055em;
+  text-wrap: initial;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-title .manifest-title-line {
   display: block;
-  max-width: 100%;
-  white-space: normal;
+  max-width: none;
+  white-space: nowrap;
   background: none;
-  color: var(--warm-ivory);
-  -webkit-text-fill-color: var(--warm-ivory);
+  color: #F9F5F4;
+  -webkit-text-fill-color: #F9F5F4;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-title .manifest-title-line:nth-child(2) {
-  color: var(--peach);
-  -webkit-text-fill-color: var(--peach);
+  color: #EDBFB8;
+  -webkit-text-fill-color: #EDBFB8;
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-title .manifest-title-line:nth-child(3) {
+  color: #C494C9;
+  -webkit-text-fill-color: #C494C9;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-intro {
-  max-width: 46ch;
-  color: rgba(var(--warm-ivory-rgb), .9);
-  font-size: clamp(15px, 1.04vw, 17px);
-  line-height: 1.68;
+  max-width: 51ch;
+  margin: 0;
+  color: rgba(247,241,243,.9);
+  font-size: clamp(15px, 1.07vw, 18px);
+  line-height: 1.65;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
-  .manifest-explore {
-  display: inline-flex;
+  .manifest-benefits {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(8px, 1.4vw, 20px);
+  max-width: 570px;
+  margin-top: clamp(29px, 3.2vw, 43px);
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-benefit {
+  display: flex;
   align-items: center;
-  gap: 12px;
-  margin-top: clamp(26px, 2.9vw, 38px);
-  padding-bottom: 7px;
-  border-bottom: 1px solid rgba(var(--peach-rgb), .65);
-  color: var(--warm-ivory);
-  font-size: 13px;
+  gap: 11px;
+  min-width: 0;
+  color: #FBF4F7;
+  font-size: clamp(11px, .91vw, 14px);
   font-weight: 700;
-  line-height: 1.5;
-  letter-spacing: .01em;
-  text-decoration: none;
-  transition: color .2s ease, border-color .2s ease;
+  line-height: 1.34;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
-  .manifest-explore span {
-  color: var(--peach);
-  font-size: 17px;
-  line-height: 1;
+  .manifest-benefit + .manifest-benefit {
+  border-left: 1px solid rgba(206,164,208,.29);
+  padding-left: clamp(8px, 1.1vw, 17px);
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
-  .manifest-explore:hover {
-  color: var(--peach);
-  border-bottom-color: var(--peach);
+  .manifest-benefit-icon {
+  display: grid;
+  place-items: center;
+  width: clamp(34px, 3vw, 45px);
+  height: clamp(34px, 3vw, 45px);
+  flex-shrink: 0;
+  padding: 8px;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #81577E, #654366);
+  color: #FFF8FC;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.16);
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
-  .manifest-explore:focus-visible {
-  outline: 2px solid var(--peach);
-  outline-offset: 5px;
+  .manifest-benefit-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-waves {
+  position: absolute;
+  z-index: 0;
+  inset: auto 0 0 0;
+  display: block;
+  width: 100%;
+  height: clamp(205px, 22vw, 320px);
+  max-width: none;
+  pointer-events: none;
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-list {
+  display: grid;
+  align-content: center;
+  gap: clamp(13px, 1.2vw, 19px);
+  min-width: 0;
+  min-height: 820px;
+  margin: 0;
+  padding: clamp(32px, 2.7vw, 46px) clamp(28px, 3.85vw, 70px) clamp(32px, 2.7vw, 46px) clamp(30px, 2.7vw, 48px);
+  border: 0;
+  border-radius: 0;
+  background: #FAEEE9;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-item,
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-item.is-active {
-  align-items: start;
-  padding: clamp(25px, 2.2vw, 34px) clamp(12px, 1.5vw, 20px);
-  border-left: 2px solid transparent;
-  background: transparent;
-  box-shadow: none !important;
-  transition: background-color .24s ease, border-color .24s ease;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 32%) minmax(0, 1fr);
+  align-items: stretch;
+  gap: clamp(13px, 1.35vw, 22px);
+  width: 100%;
+  min-height: clamp(214px, 14.8vw, 243px);
+  margin: 0;
+  padding: 0 clamp(19px, 2.1vw, 33px) 0 0;
+  border: 1px solid rgba(222,191,198,.38);
+  border-radius: 25px;
+  background: linear-gradient(117deg, #F9E7E6 0%, #FFF5F3 58%, #FFF7F5 100%);
+  box-shadow: 0 12px 24px rgba(83,49,70,.095), 0 2px 5px rgba(83,49,70,.035);
+  color: var(--ink-deep);
+  transform: none;
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-item:hover,
 body.home-page[data-c33-editorial] main > section#problemas.section
-  .manifest-item:focus-within {
-  padding-left: clamp(12px, 1.5vw, 20px);
-  border-left-color: var(--peach);
-  background: rgba(var(--mist-blue-rgb), .12);
+  .manifest-item:focus-within,
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-item.is-active:hover {
+  padding-left: 0;
+  border-color: rgba(163,109,154,.48);
+  background: linear-gradient(117deg, #F9E7E6 0%, #FFF5F3 58%, #FFF7F5 100%);
+  box-shadow: 0 16px 31px rgba(83,49,70,.14);
+  transform: translateY(-2px);
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
-  .manifest-number {
-  border-radius: 10px;
-  background: rgba(var(--mist-blue-rgb), .13);
+  .manifest-item::before,
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-item.is-active::before {
+  display: none;
+  content: none;
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-art {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+  padding: 12px 0 10px 0;
+  overflow: hidden;
+  border-radius: 24px 0 0 24px;
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-art::before {
+  content: "";
+  position: absolute;
+  width: 91%;
+  aspect-ratio: 1;
+  left: -13%;
+  top: 11%;
+  border-radius: 50%;
+  background: rgba(214,165,193,.15);
+  pointer-events: none;
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-art-svg {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  filter: drop-shadow(0 7px 5px rgba(76,38,76,.09));
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-item-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-width: 0;
+  padding: 20px 0 22px;
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 11px;
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-number,
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-item.is-active .manifest-number {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 34px;
+  flex: none;
+  border: 0;
+  border-radius: 9px;
+  background: #563060;
+  color: white;
+  font-size: 15px;
+  font-weight: 750;
+  line-height: 1;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-topic {
-  margin-bottom: 10px;
-  letter-spacing: .145em;
+  display: block;
+  margin: 0;
+  padding-left: 15px;
+  border-left: 2px solid rgba(103,64,108,.6);
+  color: #693D67;
+  font-size: 11px;
+  font-weight: 790;
+  line-height: 1.5;
+  letter-spacing: .1em;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
-  .manifest-item .manifest-item-title {
-  max-width: 33ch;
+  .manifest-item .manifest-item-title,
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-item.is-active .manifest-item-title {
+  max-width: 31ch;
   margin: 0;
-  font-size: clamp(21px, 1.65vw, 25px);
-  line-height: 1.27;
+  color: #1F1D29;
+  font-size: clamp(20px, 1.52vw, 27px);
+  font-weight: 750;
+  line-height: 1.15;
+  letter-spacing: -.038em;
   text-wrap: pretty;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
-  .manifest-item .manifest-item-description {
-  max-width: 52ch;
-  margin: 11px 0 0;
-  color: rgba(var(--ink-deep-rgb), .79);
-  font-size: clamp(13px, 1vw, 15px);
-  line-height: 1.62;
+  .manifest-item .manifest-item-description,
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-item.is-active .manifest-item-description {
+  max-width: 53ch;
+  margin: 10px 0 0;
+  color: #4C4752;
+  font-size: clamp(13px, .97vw, 16px);
+  line-height: 1.5;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-item .problem-link {
-  gap: 5px;
-  margin-top: 16px;
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  max-width: 100%;
+  margin-top: 14px;
+  padding: 0 0 4px;
+  border: 0;
+  border-bottom: 2px solid rgba(100,55,105,.62);
+  border-radius: 0;
+  background: transparent;
+  color: #603362;
+  font-size: clamp(12px, .94vw, 15px);
+  font-weight: 750;
+  line-height: 1.3;
+  letter-spacing: -.005em;
+  text-decoration: none;
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-item .problem-link:hover {
+  color: #3D2047;
+  border-bottom-color: #3D2047;
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-item .problem-link:focus-visible {
+  outline: 2px solid #603362;
+  outline-offset: 4px;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-item .problem-link span {
-  display: inline-block;
   transition: transform .2s ease;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-item .problem-link:is(:hover, :focus-visible) span {
   transform: translate(2px, -2px);
 }
-@media (max-width: 1180px) {
-  body.home-page[data-c33-editorial] main > section#problemas.section
-    .container.launch-manifest-grid {
-    gap: 34px;
-  }
+@media (max-width: 1380px) and (min-width: 1181px) {
   body.home-page[data-c33-editorial] main > section#problemas.section
     .manifest-concept {
-    padding: clamp(36px, 5.5vw, 58px);
+    padding-left: clamp(48px, 5vw, 75px);
+    padding-right: 25px;
   }
   body.home-page[data-c33-editorial] main > section#problemas.section
     .manifest-title {
-    font-size: clamp(40px, 6.1vw, 59px);
+    font-size: clamp(38px, 3.45vw, 51px);
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-list {
+    padding-left: 25px;
+    padding-right: 28px;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-item {
+    grid-template-columns: minmax(0, 28%) minmax(0,1fr);
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-item .manifest-item-title {
+    font-size: clamp(19px, 1.55vw, 22px);
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 1180px) {
+  body.home-page[data-c33-editorial] main > section#problemas.section {
+    padding: 0;
+    background: #FAEEE9;
+  }
   body.home-page[data-c33-editorial] main > section#problemas.section
     .container.launch-manifest-grid {
-    gap: 24px;
+    width: 100%;
+    max-width: none;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
   }
   body.home-page[data-c33-editorial] main > section#problemas.section
     .manifest-concept {
-    padding: 34px 23px 38px;
+    width: 100%;
+    min-height: 0;
+    max-width: none;
+    padding: 64px clamp(32px, 7vw, 90px) 200px;
+    border: 0;
+    border-radius: 0;
   }
   body.home-page[data-c33-editorial] main > section#problemas.section
     .manifest-title {
-    margin-bottom: 22px;
-    font-size: clamp(32px, 8.4vw, 43px);
-    line-height: 1.12;
+    font-size: clamp(42px, 6vw, 68px);
   }
   body.home-page[data-c33-editorial] main > section#problemas.section
-    .manifest-title .manifest-title-line {
-    white-space: normal;
-    overflow-wrap: normal;
+    .manifest-benefits {
+    max-width: 600px;
   }
   body.home-page[data-c33-editorial] main > section#problemas.section
-    .manifest-intro {
-    font-size: 14px;
-    line-height: 1.65;
-  }
-  body.home-page[data-c33-editorial] main > section#problemas.section
-    .manifest-explore {
-    margin-top: 24px;
-    font-size: 12px;
+    .manifest-list {
+    min-height: 0;
+    padding: 34px clamp(24px, 7vw, 84px) 50px;
   }
   body.home-page[data-c33-editorial] main > section#problemas.section
     .manifest-item,
   body.home-page[data-c33-editorial] main > section#problemas.section
     .manifest-item.is-active {
-    padding: 23px 9px;
+    min-height: 225px;
+    grid-template-columns: minmax(0, 30%) minmax(0, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .container.launch-manifest-grid {
+    width: 100%;
+    gap: 0;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-concept {
+    padding: 49px 24px 163px;
+    border: 0;
+    border-radius: 0;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-eyebrow {
+    margin-bottom: 29px;
+    font-size: 9px;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-title {
+    margin-bottom: 22px;
+    font-size: clamp(32px, 8.25vw, 46px);
+    line-height: 1.12;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-title .manifest-title-line {
+    white-space: normal;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-intro {
+    font-size: 14px;
+    line-height: 1.64;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-benefits {
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 8px;
+    margin-top: 31px;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-benefit {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: clamp(10px, 2.8vw, 12px);
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-benefit + .manifest-benefit {
+    padding-left: 9px;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-benefit-icon {
+    width: 38px;
+    height: 38px;
+    padding: 8px;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-waves {
+    height: 169px;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-list {
+    gap: 15px;
+    padding: 25px 16px 44px;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-item,
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-item.is-active {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-height: 0;
+    padding: 0 21px 24px;
+    border-radius: 22px;
   }
   body.home-page[data-c33-editorial] main > section#problemas.section
     .manifest-item:hover,
   body.home-page[data-c33-editorial] main > section#problemas.section
-    .manifest-item:focus-within {
-    padding-left: 9px;
+    .manifest-item:focus-within,
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-item.is-active:hover {
+    padding-left: 21px;
   }
   body.home-page[data-c33-editorial] main > section#problemas.section
-    .manifest-item .manifest-item-title {
-    font-size: clamp(19px, 5.2vw, 23px);
+    .manifest-art {
+    width: calc(100% + 42px);
+    height: 158px;
+    min-height: 158px;
+    margin-left: -21px;
+    padding: 0;
+    border-radius: 22px 22px 0 0;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-art-svg {
+    width: min(80%, 222px);
+    max-width: 222px;
+    max-height: 158px;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-item-copy {
+    padding: 2px 0 0;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-meta {
+    margin-bottom: 12px;
+    gap: 10px;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-number {
+    width: 42px;
+    height: 31px;
+    font-size: 13px;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-topic {
+    padding-left: 10px;
+    font-size: 10px;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-item .manifest-item-title,
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-item.is-active .manifest-item-title {
+    font-size: clamp(21px, 5.25vw, 26px);
+    line-height: 1.22;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-item .manifest-item-description,
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-item.is-active .manifest-item-description {
+    font-size: 14px;
+    line-height: 1.56;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-item .problem-link {
+    font-size: 13px;
+    margin-top: 17px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
   body.home-page[data-c33-editorial] main > section#problemas.section
-    :is(.manifest-explore, .manifest-item, .problem-link span) {
+    :is(.manifest-item, .problem-link span) {
+    transform: none !important;
     transition: none !important;
   }
 }
