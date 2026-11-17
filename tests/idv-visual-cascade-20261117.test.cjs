@@ -8,6 +8,7 @@ const palette=read('assets/css/brand-palette.css');
 const editorial=read('assets/css/cinematic-editorial-33.css');
 const film=read('assets/css/cinematic-film-intro-33.css');
 const internal=read('assets/css/institucional.css');
+const homeBase=read('assets/css/home-premium.css');
 
 test('documented six color tokens and common typography stay consistent',()=>{
  for(const hex of ['#202532','#6B536D','#A9C5D8','#F3EFE8','#66758F','#D8B6A5'])assert.ok(palette.includes(hex),hex);
@@ -46,6 +47,8 @@ test('last cinema scene hides only its decorative UI fragments',()=>{
 });
 
 test('hero anchor does not reserve the previous film scene under fixed navigation',()=>{
- assert.match(palette,/body\.home-page #apresentacao \{ scroll-margin-top: 0; \}/);
+ assert.match(palette,/body\.home-page #apresentacao \{ scroll-margin-top: 70px; \}/);
+ assert.match(palette,/body\.home-page #apresentacao \{ scroll-margin-top: 64px; \}/);
  assert.doesNotMatch(palette,/main > section:is\(#apresentacao,#problemas,#modelo/);
+ assert.match(homeBase,/html\{scroll-padding-top:0\}/);
 });
