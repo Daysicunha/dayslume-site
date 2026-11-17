@@ -59,7 +59,7 @@ test('project mockups use actual images and transparent illustrative placeholder
  assert.match(projects,/case-featured>\.case-media img\{/);
  assert.match(projects,/object-fit:contain/);
  assert.match(projects,/execution-proof__items>a:first-child\{/);
- assert.match(projects,/background:#202532/);
+ assert.match(projects,/background:var\(--ink-deep\)/);
  assert.match(projects,/@media\(max-width:540px\)/);
 });
 
