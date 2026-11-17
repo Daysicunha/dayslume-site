@@ -551,7 +551,7 @@ body:not(.home-page) .header .nav-cta {padding:10px 17px;}
    de fundo, evitando ocupar a área dos títulos e CTAs. */
 body:not(.home-page):not(.blog-index):not(.blog-article) .header~main>.hero {
   padding:clamp(80px,7vw,116px) 0 clamp(82px,7.3vw,124px);
-  background:linear-gradient(90deg,#202532 0%,#202532 58%,#2C3448 58%,#485168 82%,#6B536D 100%);
+  background:linear-gradient(90deg,var(--ink-deep) 0%,var(--ink-deep) 58%,#2C3448 58%,#485168 82%,var(--plum-mineral) 100%);
 }
 body:not(.home-page):not(.blog-index):not(.blog-article) .header~main>.hero::before {
   inset:0 0 0 58%;
@@ -578,10 +578,10 @@ body:not(.home-page):not(.blog-index):not(.blog-article) main>.section .grid>.bo
    without replacing their approved magazine/product layouts. */
 body.blog-index .blog-hero::before {
   background:radial-gradient(ellipse at 77% 34%,rgba(169,197,216,.15),transparent 42%),
-    linear-gradient(115deg,#202532,#30384c 68%,#6B536D 100%);
+    linear-gradient(115deg,var(--ink-deep),#30384c 68%,var(--plum-mineral) 100%);
 }
 body.blog-article .blog-reading-hero {
-  background:linear-gradient(115deg,#202532,#30384c 68%,#6B536D 100%);
+  background:linear-gradient(115deg,var(--ink-deep),#30384c 68%,var(--plum-mineral) 100%);
 }
 body:not(.home-page) :is(.article-body,.blog-story,.days-card,.callout,.days-page-hero) {min-width:0;}
 body:not(.home-page) :is(.article-body,.blog-story,.days-card,.callout) :is(h2,h3,p,a) {overflow-wrap:break-word;}
@@ -607,7 +607,7 @@ body:not(.home-page) .footer {
     border:1px solid rgba(169,197,216,.28);
     border-radius:18px;
     box-shadow:0 20px 40px rgba(20,25,37,.25);
-    background:#202532;
+    background:var(--ink-deep);
   }
   
   
@@ -616,7 +616,7 @@ body:not(.home-page) .footer {
 @media(max-width:800px) {
   body:not(.home-page):not(.blog-index):not(.blog-article) .header~main>.hero {
     padding:clamp(65px,10vw,86px) 0 76px;
-    background:linear-gradient(136deg,#202532 2%,#293347 69%,#6B536D 150%);
+    background:linear-gradient(136deg,var(--ink-deep) 2%,#293347 69%,var(--plum-mineral) 150%);
   }
   body:not(.home-page):not(.blog-index):not(.blog-article) .header~main>.hero::before {
     inset:0;
@@ -778,7 +778,7 @@ body:not(.home-page) .header .nav-cta:hover {
 body:not(.home-page):not(.blog-index):not(.blog-article):not(.vl-page) .header~main>.hero {
   position:relative;isolation:isolate;overflow:hidden;
   padding:clamp(164px,13vw,202px) 0 clamp(80px,7.8vw,114px);
-  background:linear-gradient(90deg,#202532 0%,#202532 52%,#2C3448 52%,#485168 79%,#6B536D 100%);
+  background:linear-gradient(90deg,var(--ink-deep) 0%,var(--ink-deep) 52%,#2C3448 52%,#485168 79%,var(--plum-mineral) 100%);
   color:var(--warm-ivory);
 }
 body:not(.home-page):not(.blog-index):not(.blog-article):not(.vl-page) .header~main>.hero::before {
@@ -888,7 +888,7 @@ body:not(.home-page) main button.btn {
 body:not(.home-page) main .hero a.btn.light {
   color:var(--ink-deep);
   border:1px solid rgba(var(--warm-ivory-rgb),.7);
-  background:linear-gradient(102deg,#d5e8f6 0%,#f3efe8 58%,#f7c8a7 100%);
+  background:linear-gradient(102deg,#d5e8f6 0%,var(--warm-ivory) 58%,#f7c8a7 100%);
   box-shadow:0 0 27px rgba(var(--mist-blue-rgb),.16);
 }
 body:not(.home-page) main .hero a.btn.outline {
@@ -1034,7 +1034,7 @@ body:not(.home-page) .footer :is(a:hover,a[aria-current="page"]) {color:var(--pe
   body:not(.home-page) :is(.container,.blog-container) {width:calc(100% - 38px);}
   body:not(.home-page):not(.blog-index):not(.blog-article):not(.vl-page) .header~main>.hero {
     padding:clamp(146px,17vw,174px) 0 73px;
-    background:linear-gradient(128deg,#202532 0%,#293347 70%,#6B536D 155%);
+    background:linear-gradient(128deg,var(--ink-deep) 0%,#293347 70%,var(--plum-mineral) 155%);
   }
   body:not(.home-page):not(.blog-index):not(.blog-article):not(.vl-page) .header~main>.hero::before {
     inset:0;background:radial-gradient(ellipse 48% 58% at 95% 75%,rgba(var(--mist-blue-rgb),.12),transparent 77%);
@@ -1186,7 +1186,7 @@ body:not(.home-page) > a.floating-whatsapp {
   bottom:clamp(17px,2vw,29px);
   display:grid;place-items:center;gap:0;
   border:1px solid rgba(169,197,216,.6);
-  background:#293547;color:#f3efe8;
+  background:#293547;color:var(--warm-ivory);
   box-shadow:0 6px 20px rgba(32,37,50,.17);
   opacity:.94;
   -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
@@ -1196,7 +1196,7 @@ body:not(.home-page) > a.floating-whatsapp::before,
 body:not(.home-page) > a.floating-whatsapp::after {display:none}
 body:not(.home-page) > a.floating-whatsapp:hover,
 body:not(.home-page) > a.floating-whatsapp:focus-visible {
-  background:#6b536d;opacity:1;transform:translateY(-2px);
+  background:var(--plum-mineral);opacity:1;transform:translateY(-2px);
   box-shadow:0 9px 21px rgba(32,37,50,.2);
 }
 /* Resolve hero gigante e conteúdo atrás da janela. A abertura visual permanece,
