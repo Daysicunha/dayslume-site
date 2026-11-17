@@ -58,7 +58,7 @@ test('floating contact control retracts near contact and footer content on every
 });
 
 test('hero foregrounds digital products with cinematic, accessible motion', () => {
-  assert.match(home, /class="hero hero--cinematic"/);
+  assert.match(home, /class="hero hero--cinematic hero--floating-panels"/);
   for (const element of ['cinema-browser','cinema-phone','cinema-service']) {
     assert.match(home, new RegExp(element));
   }

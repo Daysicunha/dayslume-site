@@ -6,15 +6,15 @@ const root=path.resolve(__dirname,'..');
 const read=(name)=>fs.readFileSync(path.join(root,name),'utf8');
 test('cinematic hero puts commercial message and product interfaces on the first fold',()=>{
   const html=read('index.html');
-  assert.match(html,/class="hero hero--cinematic"/);
+  assert.match(html,/class="hero hero--cinematic hero--floating-panels"/);
   assert.match(html,/<div class="container hero-grid">[\s\S]*<div class="hero-content">[\s\S]*<h1 id="hero-title">Faça o digital/);
   assert.match(html,/class="hero-visual-composition cinema-stage"/);
   for(const element of ['cinema-browser','cinema-phone','cinema-service']) assert.match(html,new RegExp(element));
   assert.match(html,/href="#contato">Conversar sobre meu projeto/);
   assert.match(html,/href="#projetos"/);
-  assert.match(html,/aria-label="Composição ilustrativa de produtos digitais DAYSLUME/);
+  assert.match(html,/aria-label="Painéis de interfaces digitais flutuantes/);
   assert.doesNotMatch(html,/INTERFACES ILUSTRATIVAS · SEM DADOS REAIS/);
-  assert.match(html,/aria-label="Composição ilustrativa de produtos digitais DAYSLUME/);
+  assert.match(html,/aria-label="Painéis de interfaces digitais flutuantes/);
   assert.doesNotMatch(html,/data-flower-petal|data-scroll-hero|data-kiru-word|hero-kiru-keyword|data-hero-video/);
 });
 test('Kiru rolling cards are limited to the two commercial paths',()=>{

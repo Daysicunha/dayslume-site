@@ -37,7 +37,10 @@ test('Lote C lines decorate only boundaries of direct child sections',()=>{
   assert.match(css,/prefers-reduced-motion: reduce/);
 });
 test('Lote C does not override layout geometry or add a new font',()=>{
-  const css=read('assets/css/cinematic-editorial-33.css');
+  // The original Lote C base predates the isolated Home color and Act II layers.
+  // Only inspect that original layer: Act II intentionally owns its own geometry.
+  const css=read('assets/css/cinematic-editorial-33.css')
+    .split('/* DAYSLUME 3.3 — audit of sectional color rhythm')[0];
   assert.doesNotMatch(css,/@import/);
   assert.doesNotMatch(css,/font-family\s*:/);
   assert.doesNotMatch(css,/min-height\s*:/);

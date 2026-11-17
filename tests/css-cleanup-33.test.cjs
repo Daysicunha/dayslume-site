@@ -27,12 +27,12 @@ test('CSS cleanup removes only abandoned files while keeping all referenced styl
   }
  }
  for(const deadFile of dead)assert.equal(fs.existsSync(path.join(cssDir,deadFile)),false,deadFile);
- assert.equal(loaded.size,35);
+ assert.equal(loaded.size,37);
 });
 
 test('CSS cleanup resolves every local @import and preserves the shared visual system',()=>{
  const css=fs.readdirSync(cssDir).filter(file=>file.endsWith('.css'));
- assert.equal(css.length,35);
+ assert.equal(css.length,37);
  for(const file of css){
   const s=fs.readFileSync(path.join(cssDir,file),'utf8');
   for(const m of s.matchAll(/@import\s+(?:url\()?["']?(\.\/?[^"'\s\)]+\.css)["']?/g)){
@@ -46,7 +46,7 @@ test('CSS cleanup does not disturb the approved cinematic hero or official palet
  const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
  assert.doesNotMatch(html,/href="assets\/css\/hero-flower-interactive\.css"/);
  assert.doesNotMatch(html,/hero--interactive-flower|class="flower-petal"/);
- for(const marker of ['id="cinema33-film"','data-cinema33-home','class="cinema-cluster"','class="cinema-browser"','class="cinema-phone"','class="cinema-service"'])assert.ok(html.includes(marker));
+ for(const marker of ['id="cinema33-film"','data-cinema33-home','class="cinema-cluster"','class="cinema-browser"','class="cinema-phone cinema-agenda-panel"','class="cinema-service"'])assert.ok(html.includes(marker));
  const styles=[...html.matchAll(/<link\b[^>]*rel=["']stylesheet["'][^>]*href=["']([^"']+)["']/gi)].map(m=>m[1]);
  // Do not freeze a global count: the RITMO home layer was intentionally removed.
  assert.equal(new Set(styles).size,styles.length,'Home stylesheets must be unique');
@@ -54,7 +54,9 @@ test('CSS cleanup does not disturb the approved cinematic hero or official palet
   'assets/css/hero-cinematic.css',
   'assets/css/cinematic-experience-33.css',
   'assets/css/cinematic-film-intro-33.css',
-  'assets/css/cinematic-editorial-33.css'
+  'assets/css/cinematic-editorial-33.css',
+  'assets/css/cinematic-hero-refinement-20261113.css',
+  'assets/css/cinematic-floating-panels-20261113.css'
  ]) assert.ok(styles.includes(required),'Missing approved layer '+required);
  assert.ok(!styles.includes('assets/css/ritmo-showcase.css'),'RITMO styles belong outside Home');
  assert.equal(styles.at(-1),'assets/css/brand-palette.css');
