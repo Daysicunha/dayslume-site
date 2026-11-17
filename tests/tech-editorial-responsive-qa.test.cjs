@@ -130,19 +130,33 @@ test('Hero polish: desktop coordinates are isolated from mobile and reduce-motio
 });
 
 
-test('Act II: editorial diagnostic keeps the three real service pathways', () => {
+test('Act II: image-approved composition keeps three navigable service pathways', () => {
   assert.match(home, /id="problemas"/);
   assert.match(home, /id="manifesto-title"/);
-  assert.match(home, /O que precisa/);
-  assert.match(home, /funcionar melhor/);
-  assert.match(home, /no seu negócio\?/);
-  assert.equal((home.match(/class="manifest-item(?: is-active)?"/g)||[]).length,3);
+  for (const line of ['Ser visto.','Ser escolhido.','Funcionar melhor.']) {
+    assert.ok(home.includes(line),line);
+  }
+  for (const text of [
+    'Unimos estratégia, design e tecnologia',
+    'Presença<br>Digital',
+    'Sistemas<br>e Gestão',
+    'Resultados<br>e Crescimento',
+    'Seu negócio é melhor do que parece na internet.',
+    'O cliente chega, mas o caminho até a decisão é confuso.',
+    'A operação depende de tarefas manuais demais.'
+  ]) assert.ok(home.includes(text),text);
+  assert.match(home, /class="manifest-waves"/);
+  assert.match(home, /class="manifest-benefits"/);
+  assert.equal((home.match(/class="manifest-art-svg"/g)||[]).length,3);
+  assert.equal((home.match(/class="manifest-item"/g)||[]).length,3);
+  assert.equal((home.match(/class="problem-link"/g)||[]).length,3);
+  assert.doesNotMatch(home, /<article class="manifest-item is-active"/);
   for (const href of [
     'servicos.html#presenca-digital',
     'servicos.html#experiencias-digitais',
     'servicos.html#sistemas-aplicacoes'
   ]) {
-    assert.ok(home.includes('href="' + href + '"'), href);
+    assert.ok(home.includes('href="' + href + '"'),href);
   }
   assert.match(home, /class="manifest-list" aria-label="Problemas que a DAYSLUME ajuda a resolver"/);
 });
@@ -197,4 +211,18 @@ test('Act II: existing service links and every headline remain unchanged', () =>
     'servicos.html#sistemas-aplicacoes']) {
     assert.ok(section.includes('href="' + href + '"'), href);
   }
+});
+
+test('Act II: illustration layout is section-scoped, responsive and excludes removed laptop mockup', () => {
+  const source = editorial.split('17/11/2026 — ATO II / implementação fiel ao layout ilustrado aprovado')[1];
+  assert.ok(source);
+  assert.match(source, /grid-template-columns: minmax\(0, 42\.2fr\) minmax\(0, 57\.8fr\)/);
+  assert.match(source, /\.manifest-waves/);
+  assert.match(source, /\.manifest-art-svg/);
+  assert.match(source, /@media \(max-width: 1180px\)/);
+  assert.match(source, /@media \(max-width: 600px\)/);
+  assert.match(source, /@media \(prefers-reduced-motion: reduce\)/);
+  assert.doesNotMatch(source, /#apresentacao|\.cinema-stage|\.cinema-browser/);
+  const act = home.split('id="problemas"')[1].split('id="modelo"')[0];
+  assert.doesNotMatch(act, /class="cinema-browser"|class="cinema-phone"|manifest-laptop/);
 });

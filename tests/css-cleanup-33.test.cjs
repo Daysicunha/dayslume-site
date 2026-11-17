@@ -27,12 +27,13 @@ test('CSS cleanup removes only abandoned files while keeping all referenced styl
   }
  }
  for(const deadFile of dead)assert.equal(fs.existsSync(path.join(cssDir,deadFile)),false,deadFile);
- assert.equal(loaded.size,37);
+ assert.equal(loaded.size,38);
+ assert.ok(loaded.has(path.join(cssDir,'contents-cinematic-33.css')));
 });
 
 test('CSS cleanup resolves every local @import and preserves the shared visual system',()=>{
  const css=fs.readdirSync(cssDir).filter(file=>file.endsWith('.css'));
- assert.equal(css.length,37);
+ assert.equal(css.length,38);
  for(const file of css){
   const s=fs.readFileSync(path.join(cssDir,file),'utf8');
   for(const m of s.matchAll(/@import\s+(?:url\()?["']?(\.\/?[^"'\s\)]+\.css)["']?/g)){

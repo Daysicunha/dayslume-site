@@ -65,7 +65,8 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/home-base.css"><link rel="stylesheet" href="assets/css/home-premium.css"><link rel="stylesheet" href="assets/css/hero-tech.css"><link rel="stylesheet" href="assets/css/visual-system.css"><link rel="stylesheet" href="assets/css/action-system.css"><link rel="stylesheet" href="assets/css/editorial-refinement.css"><link rel="stylesheet" href="assets/css/tornearia-mockup.css"><link rel="stylesheet" href="assets/css/projects-editorial.css"><link rel="stylesheet" href="assets/css/contents-editorial.css"><link rel="stylesheet" href="assets/css/about-reference.css"><link rel="stylesheet" href="assets/css/home-section-rhythm.css">
-<link rel="stylesheet" href="assets/css/flagship-conversion.css"><link rel="stylesheet" href="assets/css/hero-prism-scroll.css"><link rel="stylesheet" href="assets/css/final-qa-20261014.css"><link rel="stylesheet" href="assets/css/hero-cinematic.css"><link rel="stylesheet" href="assets/css/cinematic-experience-33.css"><link rel="stylesheet" href="assets/css/cinematic-film-intro-33.css"><link rel="stylesheet" href="assets/css/cinematic-editorial-33.css"><link rel="stylesheet" href="assets/css/cinematic-hero-refinement-20261113.css"><link rel="stylesheet" href="assets/css/cinematic-floating-panels-20261113.css"><link rel="stylesheet" href="assets/css/brand-palette.css">
+<link rel="stylesheet" href="assets/css/flagship-conversion.css"><link rel="stylesheet" href="assets/css/hero-prism-scroll.css"><link rel="stylesheet" href="assets/css/final-qa-20261014.css"><link rel="stylesheet" href="assets/css/hero-cinematic.css"><link rel="stylesheet" href="assets/css/cinematic-experience-33.css"><link rel="stylesheet" href="assets/css/cinematic-film-intro-33.css"><link rel="stylesheet" href="assets/css/cinematic-editorial-33.css"><link rel="stylesheet" href="assets/css/cinematic-hero-refinement-20261113.css"><link rel="stylesheet" href="assets/css/cinematic-floating-panels-20261113.css"><link rel="stylesheet" href="assets/css/contents-cinematic-33.css">
+<link rel="stylesheet" href="assets/css/brand-palette.css">
   <script src="assets/js/home-case-mockups.js" defer></script>
 </head>
 <body class="home-page" data-c33-editorial>
@@ -104,7 +105,7 @@
       <div class="c33-hint" data-c33-hint aria-hidden="true">ROLE PARA EXPLORAR ↓</div>
     </div>
   </section>
-  <section class="hero hero--cinematic hero--floating-panels" data-cinema33-home id="apresentacao" aria-labelledby="hero-title" tabindex="-1">
+  <section class="hero hero--cinematic hero--floating-panels" data-cinema33-home data-hero-master="true" id="apresentacao" aria-labelledby="hero-title" tabindex="-1">
     <div class="cinema33-atmosphere" aria-hidden="true"><span class="cinema33-atmosphere__beam"></span><span class="cinema33-atmosphere__glow"></span><span class="cinema33-atmosphere__grain"></span></div>
     <div class="container hero-grid">
       <div class="hero-content">
@@ -116,6 +117,21 @@
         <div class="hero-foot"><span class="hero-line"></span> PROJETOS SOB MEDIDA + PRODUTOS PRÓPRIOS</div>
       </div>
       <div class="hero-visual-composition cinema-stage" role="img" aria-label="Painéis de interfaces digitais flutuantes em três dimensões: janela VITRINI Local, painel vertical ENGRENI Agenda e cartão de sites e experiências digitais; sem representação de aparelhos físicos.">
+        <div class="hero-master-lightfloor" aria-hidden="true"><span></span><span></span></div>
+        <svg class="hero-master-orbit" viewBox="0 0 900 640" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="master-orbit-gradient" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#D9A8DF" stop-opacity=".08"/>
+              <stop offset=".38" stop-color="#E0A5DF" stop-opacity=".51"/>
+              <stop offset=".73" stop-color="#E6B3F3" stop-opacity=".86"/>
+              <stop offset="1" stop-color="#A35EBF" stop-opacity=".10"/>
+            </linearGradient>
+            <filter id="master-orbit-blur" x="-30%" y="-80%" width="160%" height="260%"><feGaussianBlur stdDeviation="8"/></filter>
+          </defs>
+          <path class="hero-master-orbit-halo" d="M45 516C203 279 425 132 635 83S909 165 837 338 508 624 219 585" stroke="url(#master-orbit-gradient)" stroke-width="8" fill="none" filter="url(#master-orbit-blur)"/>
+          <path class="hero-master-orbit-line" d="M45 516C203 279 425 132 635 83S909 165 837 338 508 624 219 585" stroke="url(#master-orbit-gradient)" stroke-width="1.5" fill="none"/>
+          <circle class="hero-master-orbit-spark" cx="635" cy="83" r="3" fill="#FFD6F5"/>
+        </svg>
         <div class="cinema-cluster" aria-hidden="true">
           <span class="cinema-depth cinema-depth--violet"></span>
           <span class="cinema-depth cinema-depth--peach"></span>
@@ -149,63 +165,225 @@
     </div>
     <div class="cinema33-ledger"><a class="cinema33-ledger__link" href="#produtos">EXPLORAR PRODUTOS <span class="cinema33-ledger__line" aria-hidden="true"></span><span aria-hidden="true">↓</span></a></div>
   </section>
+
   <section class="section launch-manifest section-shell section-atmosphere section-atmosphere--manifest" id="problemas" aria-labelledby="manifesto-title">
     <div class="container launch-manifest-grid">
       <div class="manifest-concept">
         <p class="eyebrow manifest-eyebrow section-eyebrow"><span class="section-eyebrow__number">01</span><span class="section-eyebrow__label">PROBLEMAS QUE RESOLVEMOS</span></p>
-        <h2 id="manifesto-title" class="manifest-title"><span class="manifest-title-line">O que precisa</span> <span class="manifest-title-line">funcionar melhor</span> <span class="manifest-title-line">no seu negócio?</span></h2>
-        <p class="manifest-intro">Apresentar sua empresa, facilitar o atendimento ou organizar a rotina: cada desafio pede um caminho diferente.</p>
+        <h2 id="manifesto-title" class="manifest-title"><span class="manifest-title-line">Ser visto.</span> <span class="manifest-title-line">Ser escolhido.</span> <span class="manifest-title-line">Funcionar melhor.</span></h2>
+        <p class="manifest-intro">Unimos estratégia, design e tecnologia para transformar ideias em presença digital, organização e resultados reais para o seu negócio.</p>
+        <div class="manifest-benefits" aria-label="Nossas frentes de atuação">
+          <div class="manifest-benefit"><span class="manifest-benefit-icon" aria-hidden="true"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="20" height="15" rx="2"/><path d="M10 24h8M14 20v4"/></svg></span><span>Presença<br>Digital</span></div>
+          <div class="manifest-benefit"><span class="manifest-benefit-icon" aria-hidden="true"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m4 10 10-6 10 6-10 6zM4 15l10 6 10-6M4 20l10 6 10-6"/></svg></span><span>Sistemas<br>e Gestão</span></div>
+          <div class="manifest-benefit"><span class="manifest-benefit-icon" aria-hidden="true"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M6 23V15M12 23V10M18 23V6M24 23V3" stroke-width="3.5"/></svg></span><span>Resultados<br>e Crescimento</span></div>
+        </div>
+        <svg class="manifest-waves" viewBox="0 0 700 290" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="act-ii-wave-fill" x1="0" y1="0" x2="1" y2=".85"><stop offset="0" stop-color="#5B2C66" stop-opacity=".88"/><stop offset=".5" stop-color="#8B54A4" stop-opacity=".56"/><stop offset="1" stop-color="#5D3973" stop-opacity=".12"/></linearGradient>
+            <linearGradient id="act-ii-wave-line" x1="0" y1=".4" x2="1" y2=".7"><stop offset="0" stop-color="#B86AC7" stop-opacity=".26"/><stop offset=".56" stop-color="#D78CE7" stop-opacity=".97"/><stop offset="1" stop-color="#8A4BAB" stop-opacity=".55"/></linearGradient>
+            <filter id="act-ii-wave-glow" x="-35%" y="-90%" width="170%" height="280%"><feGaussianBlur stdDeviation="14"/></filter>
+          </defs>
+          <path d="M0 130 C95 82 135 242 265 239 S465 137 565 91 S675 100 700 102 L700 290 L0 290Z" fill="url(#act-ii-wave-fill)"/>
+          <path d="M0 176 C100 107 135 268 285 262 S486 179 576 150 S666 167 700 150 L700 290 L0 290Z" fill="#57336B" opacity=".48"/>
+          <path d="M0 130 C95 82 135 242 265 239 S465 137 565 91 S675 100 700 102" stroke="url(#act-ii-wave-line)" stroke-width="17" fill="none" filter="url(#act-ii-wave-glow)" opacity=".8"/>
+          <path d="M0 130 C95 82 135 242 265 239 S465 137 565 91 S675 100 700 102" stroke="url(#act-ii-wave-line)" stroke-width="2.6" fill="none"/>
+        </svg>
       </div>
       <div class="manifest-list" aria-label="Problemas que a DAYSLUME ajuda a resolver">
-        <article class="manifest-item is-active">
-          <span class="manifest-number" aria-hidden="true">01</span>
-          <span class="manifest-item-copy"><span class="manifest-topic" aria-hidden="true">PRESENÇA DIGITAL</span><span class="manifest-item-title">Seu negócio é melhor do que parece na internet.</span><span class="manifest-item-description">Organizamos seus serviços, diferenciais e contatos em uma presença digital própria.</span><a class="problem-link" href="servicos.html#presenca-digital">Quero melhorar minha presença digital ↗</a></span>
+        <article class="manifest-item">
+          <div class="manifest-art" aria-hidden="true">
+            <svg class="manifest-art-svg" viewBox="-20 -12 330 270" focusable="false">
+              <defs>
+                <linearGradient id="a2-l-screen" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#3D2747"/><stop offset="1" stop-color="#87566E"/></linearGradient>
+                <linearGradient id="a2-l-body" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#EFCCD3"/><stop offset=".55" stop-color="#B88BA8"/><stop offset="1" stop-color="#76576F"/></linearGradient>
+                <linearGradient id="a2-l-page" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#F9E1E9"/><stop offset="1" stop-color="#E5BCD8"/></linearGradient>
+                <filter id="a2-l-shadow" x="-50%" y="-70%" width="200%" height="250%"><feGaussianBlur stdDeviation="11"/></filter>
+              </defs>
+              <circle cx="88" cy="93" r="100" fill="#D6A5C1" opacity=".28"/>
+              <ellipse cx="141" cy="205" rx="118" ry="14" fill="#8C6178" opacity=".25" filter="url(#a2-l-shadow)"/>
+              <path d="M69 49 216 29 Q226 28 227 38 L227 172 70 188 Q64 188 64 181 L64 58 Q64 51 69 49Z" fill="url(#a2-l-screen)" stroke="#3B283C" stroke-width="5"/>
+              <path d="M75 57 216 39 216 163 75 177Z" fill="url(#a2-l-page)"/>
+              <path d="M75 57 216 39 216 61 75 78Z" fill="#D6A1C1"/>
+              <circle cx="83" cy="67" r="2.3" fill="#fff" opacity=".8"/><circle cx="91" cy="66" r="2.3" fill="#fff" opacity=".6"/>
+              <path d="M87 93 145 86 145 146 87 153Z" fill="#AE79AE" opacity=".86"/>
+              <path d="m96 137 16-21 9 9 12-17 12 18-1 11Z" fill="#916292" opacity=".9"/>
+              <circle cx="132" cy="99" r="5" fill="#EBD0DB"/>
+              <path d="m157 92 44-6M157 109l39-5M157 126l44-5M88 163l111-13" stroke="#B788B1" stroke-width="7" stroke-linecap="round" opacity=".72"/>
+              <path d="m66 188 163-17 38 23-174 22-59-17Z" fill="url(#a2-l-body)" stroke="#AD819B" stroke-width="2"/>
+              <path d="m34 199 59 17 174-22-5 9-167 22-57-18Z" fill="#86677D"/>
+              <path d="m94 194 102-12 24 9-109 12Z" fill="#9C7590" opacity=".56"/>
+            </svg>
+          </div>
+          <div class="manifest-item-copy">
+            <div class="manifest-meta"><span class="manifest-number" aria-hidden="true">01</span><span class="manifest-topic">PRESENÇA DIGITAL</span></div>
+            <h3 class="manifest-item-title">Seu negócio é melhor do que parece na internet.</h3>
+            <p class="manifest-item-description">Criamos sites, landing pages e vitrines que destacam o seu valor, aumentam sua credibilidade e geram mais oportunidades.</p>
+            <a class="problem-link" href="servicos.html#presenca-digital">Quero fortalecer minha presença digital <span aria-hidden="true">↗</span></a>
+          </div>
         </article>
         <article class="manifest-item">
-          <span class="manifest-number" aria-hidden="true">02</span>
-          <span class="manifest-item-copy"><span class="manifest-topic" aria-hidden="true">JORNADA DO CLIENTE</span><span class="manifest-item-title">O cliente chega, mas o caminho até a decisão é confuso.</span><span class="manifest-item-description">Simplificamos a navegação e o caminho entre o interesse e o contato.</span><a class="problem-link" href="servicos.html#experiencias-digitais">Quero simplificar a jornada do cliente ↗</a></span>
+          <div class="manifest-art" aria-hidden="true">
+            <svg class="manifest-art-svg" viewBox="0 0 290 230" focusable="false">
+              <defs><linearGradient id="a2-chart-bar" x1="0" x2=".8" y1="0" y2="1"><stop stop-color="#AF80BC"/><stop offset="1" stop-color="#5F437C"/></linearGradient><linearGradient id="a2-chart-arrow" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#E6A894"/><stop offset="1" stop-color="#C27C85"/></linearGradient></defs>
+              <circle cx="87" cy="108" r="101" fill="#D6A5C1" opacity=".29"/>
+              <ellipse cx="145" cy="207" rx="115" ry="11" fill="#A67499" opacity=".13"/>
+              <path d="M47 179h35v26H47Z" fill="#A07AAE"/><path d="m47 179 10-8h34l-9 8Z" fill="#D9ABCE"/><path d="m82 179 9-8v25l-9 9Z" fill="#765A94"/>
+              <path d="M98 146h35v59H98Z" fill="#BA8DAD"/><path d="m98 146 10-9h35l-10 9Z" fill="#E3B5C6"/><path d="m133 146 10-9v59l-10 9Z" fill="#976D9A"/>
+              <path d="M149 118h35v87h-35Z" fill="url(#a2-chart-bar)"/><path d="m149 118 10-9h35l-10 9Z" fill="#BC93BA"/><path d="m184 118 10-9v87l-10 9Z" fill="#684980"/>
+              <path d="M200 90h35v115h-35Z" fill="#8E658F"/><path d="m200 90 10-9h35l-10 9Z" fill="#C49AB3"/><path d="m235 90 10-9v115l-10 9Z" fill="#66486F"/>
+              <path d="M49 138 C91 128 127 111 160 84 S212 34 247 22" fill="none" stroke="#B27488" stroke-width="17" stroke-linecap="round" opacity=".35"/>
+              <path d="M49 132 C91 122 127 105 160 78 S212 28 247 16" fill="none" stroke="url(#a2-chart-arrow)" stroke-width="10" stroke-linecap="round"/>
+              <path d="m216 11 34 1-5 32" stroke="url(#a2-chart-arrow)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="11"/>
+            </svg>
+          </div>
+          <div class="manifest-item-copy">
+            <div class="manifest-meta"><span class="manifest-number" aria-hidden="true">02</span><span class="manifest-topic">JORNADA DO CLIENTE</span></div>
+            <h3 class="manifest-item-title">O cliente chega, mas o caminho até a decisão é confuso.</h3>
+            <p class="manifest-item-description">Organizamos a jornada do seu cliente com páginas estratégicas, conteúdos e automações que guiam, convencem e convertem.</p>
+            <a class="problem-link" href="servicos.html#experiencias-digitais">Quero simplificar a jornada do cliente <span aria-hidden="true">↗</span></a>
+          </div>
         </article>
         <article class="manifest-item">
-          <span class="manifest-number" aria-hidden="true">03</span>
-          <span class="manifest-item-copy"><span class="manifest-topic" aria-hidden="true">OPERAÇÃO DIGITAL</span><span class="manifest-item-title">A operação depende de tarefas manuais demais.</span><span class="manifest-item-description">Desenvolvemos ferramentas para organizar agendas, informações e tarefas repetitivas.</span><a class="problem-link" href="servicos.html#sistemas-aplicacoes">Quero organizar um processo ↗</a></span>
+          <div class="manifest-art" aria-hidden="true">
+            <svg class="manifest-art-svg" viewBox="0 0 290 230" focusable="false">
+              <defs><linearGradient id="a2-calendar-case" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#B782B8"/><stop offset=".65" stop-color="#7F597F"/><stop offset="1" stop-color="#594066"/></linearGradient><linearGradient id="a2-calendar-check" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#E8B5A4"/><stop offset="1" stop-color="#C58383"/></linearGradient><filter id="a2-calendar-shadow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="8"/></filter></defs>
+              <circle cx="90" cy="95" r="103" fill="#D6A5C1" opacity=".27"/>
+              <ellipse cx="146" cy="210" rx="104" ry="12" fill="#76536E" opacity=".2" filter="url(#a2-calendar-shadow)"/>
+              <rect x="66" y="50" width="165" height="150" rx="22" fill="url(#a2-calendar-case)" transform="rotate(4 66 50)"/>
+              <path d="M68 88 Q67 76 82 77l130 7q13 1 12 14l-6 81q0 13-13 12L79 183q-13-1-13-14Z" fill="#F6DEEA"/>
+              <path d="M67 90 226 99" stroke="#8B658C" stroke-width="3" opacity=".55"/>
+              <path d="M94 70v-24a9 9 0 0 1 18 0v28M176 76V52a9 9 0 0 1 18 0v28" stroke="#DFAE95" stroke-width="9" fill="none" stroke-linecap="round"/>
+              <g fill="#DCBBD5"><rect x="85" y="108" width="24" height="22" rx="4"/><rect x="118" y="110" width="24" height="22" rx="4"/><rect x="151" y="112" width="24" height="22" rx="4"/><rect x="184" y="114" width="24" height="22" rx="4"/><rect x="84" y="139" width="24" height="22" rx="4"/><rect x="117" y="141" width="24" height="22" rx="4"/><rect x="150" y="143" width="24" height="22" rx="4"/></g>
+              <circle cx="202" cy="177" r="49" fill="#80526C" opacity=".18"/>
+              <circle cx="197" cy="171" r="46" fill="url(#a2-calendar-check)" stroke="#E7BBA9" stroke-width="3"/>
+              <path d="m175 171 15 16 30-33" fill="none" stroke="#FFF4F1" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="manifest-item-copy">
+            <div class="manifest-meta"><span class="manifest-number" aria-hidden="true">03</span><span class="manifest-topic">OPERAÇÃO DIGITAL</span></div>
+            <h3 class="manifest-item-title">A operação depende de tarefas manuais demais.</h3>
+            <p class="manifest-item-description">Desenvolvemos sistemas e ferramentas que organizam agendamentos, pedidos, controle financeiro e rotinas, trazendo mais tempo e eficiência.</p>
+            <a class="problem-link" href="servicos.html#sistemas-aplicacoes">Quero organizar a operação do meu negócio <span aria-hidden="true">↗</span></a>
+          </div>
         </article>
       </div>
     </div>
   </section>
   <section class="section intro-section section-shell section-atmosphere section-atmosphere--structure section-grid section-grid--partial" data-kiru-cards id="modelo" aria-labelledby="solucoes-title">
-    <div class="container">
-      <div class="section-heading split-heading">
-        <div>
+    <div class="container modelo-container">
+      <div class="section-heading split-heading modelo-heading">
+        <div class="modelo-heading-main">
           <p class="eyebrow section-eyebrow"><span class="section-eyebrow__number">02</span><span class="section-eyebrow__label">COMO A DAYSLUME ENTREGA</span></p>
           <h2 id="solucoes-title" class="section-title section-title--long"><span>Projeto sob medida.</span><span>Ou uma solução própria.</span></h2>
         </div>
-        <div>
-          <p>Projetos personalizados para desafios específicos. Produtos próprios para necessidades que se repetem.</p>
-          <a class="migration-link" href="servicos.html">Conhecer nossos serviços <span aria-hidden="true">↗</span></a>
+        <div class="modelo-heading-aside">
+          <p>Projetos personalizados para desafios específicos.<br>Produtos próprios para necessidades que se repetem.</p>
+          <a class="migration-link modelo-main-cta" href="servicos.html">Conhecer nossos serviços <span aria-hidden="true">↗</span></a>
         </div>
       </div>
-      <div class="services-grid commercial-paths">
-        <article class="service-card days-service-card commercial-path-card" data-kiru-card>
-          <div class="service-card-top"><span class="service-number">01</span><a class="service-arrow" href="servicos.html" aria-label="Conhecer projetos sob medida">↗</a></div>
-          <p class="path-kicker">PROJETOS SOB MEDIDA</p>
-          <h3>Uma solução desenhada para seu negócio.</h3>
-          <p>Sites, landing pages e sistemas desenvolvidos conforme seu objetivo e sua operação.</p>
-          <a class="path-cta" href="contato.html">Conversar sobre meu projeto ↗</a>
+      <div class="services-grid commercial-paths modelo-paths">
+        <article class="service-card days-service-card commercial-path-card modelo-path-card modelo-path-card--bespoke" data-kiru-card>
+          <div class="modelo-path-copy">
+            <div class="service-card-top"><span class="service-number">01</span></div>
+            <p class="path-kicker">PROJETOS SOB MEDIDA</p>
+            <h3>Uma solução desenhada para seu negócio.</h3>
+            <p class="modelo-description">Sites, landing pages e sistemas desenvolvidos conforme seu objetivo e sua operação.</p>
+            <a class="path-cta" href="contato.html">Conversar sobre meu projeto <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="modelo-path-visual modelo-path-visual--bespoke" aria-hidden="true">
+            <svg class="modelo-project-art" viewBox="0 0 440 360" role="presentation" focusable="false">
+              <defs>
+                <linearGradient id="modelo-laptop-frame" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#4C304C"/><stop offset=".55" stop-color="#76506C"/><stop offset="1" stop-color="#372637"/></linearGradient>
+                <linearGradient id="modelo-laptop-page" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#F4D3DB"/><stop offset="1" stop-color="#D2A8C4"/></linearGradient>
+                <linearGradient id="modelo-laptop-body" x1="0" x2=".5" y1="0" y2="1"><stop stop-color="#FFE3DF"/><stop offset=".5" stop-color="#DDB6B9"/><stop offset="1" stop-color="#8D627F"/></linearGradient>
+                <linearGradient id="modelo-code-face" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#F7D4C5"/><stop offset="1" stop-color="#D99C9D"/></linearGradient>
+                <linearGradient id="modelo-paper" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#FFF0E6"/><stop offset="1" stop-color="#EED0CE"/></linearGradient>
+                <filter id="modelo-soft-shadow" x="-35%" y="-50%" width="170%" height="220%"><feGaussianBlur stdDeviation="8"/></filter>
+              </defs>
+              <ellipse cx="251" cy="322" rx="163" ry="18" fill="#876A86" opacity=".25" filter="url(#modelo-soft-shadow)"/>
+              <g class="modelo-art-clipboard">
+                <rect x="126" y="33" width="142" height="202" rx="15" fill="#BF869E" transform="rotate(12 126 33)" opacity=".37"/>
+                <rect x="125" y="25" width="138" height="198" rx="11" fill="url(#modelo-paper)" stroke="#E2B1B1" stroke-width="2" transform="rotate(12 125 25)"/>
+                <g fill="none" stroke="#C68FA1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" transform="rotate(12 125 25)">
+                  <rect x="182" y="12" width="30" height="18" rx="7" fill="#916481" stroke="#916481"/>
+                  <path d="M186 20v-7a11 11 0 0 1 22 0v7" stroke="#A27183" stroke-width="6"/>
+                  <rect x="172" y="62" width="34" height="23" rx="3"/><rect x="140" y="107" width="28" height="19" rx="3"/><rect x="198" y="106" width="27" height="20" rx="3"/><rect x="172" y="148" width="34" height="24" rx="3"/>
+                  <path d="M189 85v13M154 98h58M154 98v9M212 98v8M154 126v10h35v12M212 126v10h-23"/>
+                </g>
+              </g>
+              <g class="modelo-art-laptop">
+                <path d="M155 134 Q155 125 164 123 L388 107 Q399 106 399 118 L402 276 L158 291 Z" fill="url(#modelo-laptop-frame)" stroke="#553C55" stroke-width="4"/>
+                <path d="M168 143 387 126 389 262 170 278Z" fill="url(#modelo-laptop-page)"/>
+                <path d="M168 143 387 126 387 147 168 165Z" fill="#5C3B61"/><circle cx="181" cy="151" r="3" fill="#F3D0DC"/><circle cx="191" cy="150" r="3" fill="#F3D0DC"/>
+                <rect x="183" y="179" width="101" height="57" rx="7" fill="#BA87AF"/><circle cx="224" cy="192" r="8" fill="#E7B9D2"/><path d="m194 222 20-18 13 13 18-19 25 25" fill="#DDAFCB"/>
+                <g fill="#B17DAB"><rect x="295" y="180" width="72" height="9" rx="4"/><rect x="295" y="195" width="58" height="8" rx="4"/><rect x="295" y="208" width="68" height="8" rx="4"/><rect x="184" y="246" width="184" height="8" rx="4"/></g>
+                <path d="m155 292 246-16 32 31-268 22-73-25Z" fill="url(#modelo-laptop-body)" stroke="#C18C9B" stroke-width="2"/>
+                <path d="m92 304 73 25 268-22-9 10-255 22-77-26Z" fill="#A2778C"/>
+                <path d="m191 302 151-11 31 10-154 13Z" fill="#AE7F9B" opacity=".6"/>
+                <path d="M162 325 430 306" fill="none" stroke="#F7DDDD" stroke-width="3" opacity=".8"/>
+              </g>
+              <g class="modelo-art-code">
+                <rect x="295" y="259" width="100" height="85" rx="18" fill="#B57E90" opacity=".27"/>
+                <rect x="288" y="251" width="98" height="81" rx="17" fill="url(#modelo-code-face)" stroke="#E6B2A5" stroke-width="3"/>
+                <path d="m319 279-15 13 15 13m36-26 15 13-15 13m-15-35-16 45" fill="none" stroke="#8D587F" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+            </svg>
+          </div>
         </article>
-        <article class="service-card days-service-card commercial-path-card" data-kiru-card>
-          <div class="service-card-top"><span class="service-number">02</span><a class="service-arrow" href="solucoes.html" aria-label="Conhecer produtos próprios">↗</a></div>
-          <p class="path-kicker">PRODUTOS PRÓPRIOS</p>
-          <h3>Uma solução que já tem um caminho definido.</h3>
-          <p>VITRINI ajuda a apresentar. ENGRENI ajuda a organizar. Explore os formatos.</p>
-          <a class="path-cta" href="solucoes.html">Conhecer VITRINI e ENGRENI ↗</a>
+        <article class="service-card days-service-card commercial-path-card modelo-path-card modelo-path-card--products" data-kiru-card>
+          <div class="modelo-path-copy">
+            <div class="service-card-top"><span class="service-number">02</span></div>
+            <p class="path-kicker">PRODUTOS PRÓPRIOS</p>
+            <h3>Uma solução que já tem um caminho definido.</h3>
+            <p class="modelo-description">VITRINI ajuda a apresentar. ENGRENI ajuda a organizar. Explore os formatos.</p>
+            <a class="path-cta" href="solucoes.html">Conhecer VITRINI e ENGRENI <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="modelo-path-visual modelo-path-visual--products" aria-hidden="true">
+            <svg class="modelo-product-orbit" viewBox="0 0 420 330" focusable="false" role="presentation">
+              <ellipse cx="230" cy="161" rx="176" ry="67" transform="rotate(-26 230 161)" fill="none" stroke="#FFF4E6" stroke-width="1.6" opacity=".94"/>
+              <ellipse cx="230" cy="161" rx="170" ry="58" transform="rotate(-26 230 161)" fill="none" stroke="#DBA5C2" stroke-width="1" opacity=".6"/>
+              <circle class="modelo-orbit-dot modelo-orbit-dot--one" cx="82" cy="233" r="5" fill="#FFE1BC"/>
+              <circle class="modelo-orbit-dot modelo-orbit-dot--two" cx="371" cy="83" r="5" fill="#FFE1BC"/>
+            </svg>
+            <div class="modelo-product-platform"><span></span><span></span><span></span></div>
+            <div class="modelo-product-tile modelo-product-tile--vitrini">
+              <svg viewBox="0 0 50 50" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 18h26l-2 24H14Z"/><path d="M19 21v-8a6 6 0 0 1 12 0v8"/></svg>
+              <strong>VITRINI</strong>
+            </div>
+            <div class="modelo-product-tile modelo-product-tile--engreni">
+              <svg viewBox="0 0 50 50" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"><path d="m6 18 19-11 19 11-19 11Z"/><path d="m6 25 19 11 19-11M6 33l19 11 19-11"/></svg>
+              <strong>ENGRENI</strong>
+            </div>
+          </div>
         </article>
       </div>
-
     </div>
   </section>
-  <section class="section solutions-section launch-products section-shell section-atmosphere section-atmosphere--network section-grid section-grid--modules" id="produtos" aria-labelledby="produtos-title">
+  <section class="section solutions-section launch-products products-compact section-shell section-atmosphere section-atmosphere--network section-grid section-grid--modules" id="produtos" aria-labelledby="produtos-title">
 	    <div class="container">
-	      <div class="section-heading split-heading"><div><p class="eyebrow section-eyebrow"><span class="section-eyebrow__number">03</span><span class="section-eyebrow__label">PRODUTOS DAYSLUME</span></p><h2 id="produtos-title" class="section-title"><span>VITRINI apresenta.</span><span>ENGRENI organiza.</span></h2></div><div><p>Explore as interfaces e descubra como cada família pode ajudar.</p><a class="migration-link" href="solucoes.html">Conhecer os produtos <span aria-hidden="true">↗</span></a></div></div>
+	      <div class="section-heading split-heading products-editorial-heading">
+  <div class="products-editorial-title">
+    <p class="eyebrow section-eyebrow"><span class="section-eyebrow__number">03</span><span class="section-eyebrow__label">PRODUTOS DAYSLUME</span></p>
+    <h2 id="produtos-title" class="section-title"><span>VITRINI apresenta.</span><span>ENGRENI organiza.</span></h2>
+  </div>
+  <div class="products-heading-visual" aria-hidden="true">
+    <div class="products-heading-glow"></div>
+    <div class="products-heading-ring"></div>
+    <div class="products-heading-podium"></div>
+    <div class="products-heading-tile products-heading-tile--vitrini">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M9 19h30l-3 20H12Z"/><path d="M9 19l4-10h22l4 10M14 19v5a5 5 0 0 0 10 0v-5m0 0v5a5 5 0 0 0 10 0v-5"/></svg>
+      <strong>VITRINI</strong>
+    </div>
+    <div class="products-heading-tile products-heading-tile--engreni">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" focusable="false"><path d="m5 19 19-11 19 11-19 11ZM5 27l19 11 19-11M5 35l19 11 19-11"/></svg>
+      <strong>ENGRENI</strong>
+    </div>
+  </div>
+  <div class="products-editorial-side">
+    <p>Explore as interfaces e descubra como cada família pode ajudar no seu negócio.</p>
+    <a class="migration-link" href="solucoes.html">Conhecer os produtos <span aria-hidden="true">↗</span></a>
+  </div>
+</div>
 	      <div class="cinema33-showroom" data-cinema33-showroom hidden>
         <span class="cinema33-showroom__intro">SHOWROOM / EXPLORE OS ECOSSISTEMAS</span>
         <div class="cinema33-showroom__choices" role="group" aria-label="Destacar família de produtos">
@@ -220,7 +398,7 @@
 	        <article class="solution-card solution-vitrini">
 	          <div class="solution-top"><span>ECOSSISTEMA / 01</span><a class="solution-arrow" href="solucoes.html#vitrini" aria-label="Conhecer o ecossistema VITRINI">↗</a></div>
 	          <div class="solution-graphic product-interface vitrini-graphic" aria-hidden="true"><div class="vitrini-ui"><div class="vitrini-ui-bar"><i></i><b>VITRINI</b><small>CATÁLOGO</small></div><div class="vitrini-ui-nav"><span class="is-active">TODOS</span><span>NOVOS</span><span>DESTAQUES</span></div><div class="vitrini-ui-grid"><span><i></i><b>Exemplo 01</b><small>Ilustrativo</small></span><span><i></i><b>Exemplo 02</b><small>Ilustrativo</small></span><span><i></i><b>Exemplo 03</b><small>Ilustrativo</small></span></div></div></div>
-	          <div class="solution-copy"><p>APRESENTAÇÃO E CONTATO</p><h3><a href="solucoes.html#vitrini">VITRINI</a></h3><div>Catálogos, links e descoberta regional para mostrar o que seu negócio oferece.</div><nav class="product-mini-links" aria-label="Produtos do ecossistema VITRINI"><a href="vitrini.html">VITRINI</a><a href="vitrini-link.html">VITRINI Link</a><a href="solucoes.html#vitrini-local">VITRINI Local</a></nav><p class="product-stage-note">VITRINI Local: plataforma regional. Confira as opções no catálogo.</p></div>
+	          <div class="solution-copy"><p>APRESENTAÇÃO E CONTATO</p><h3><span class="ecosystem-logo" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M10 19h28l-3 20H13Z"/><path d="M10 19l4-10h20l4 10M15 19v4a5 5 0 0 0 10 0v-4m0 0v4a5 5 0 0 0 10 0v-4"/></svg></span><a href="solucoes.html#vitrini">VITRINI</a></h3><div>Catálogos, links e descoberta regional para mostrar o que seu negócio oferece.</div><nav class="product-mini-links" aria-label="Produtos do ecossistema VITRINI"><a href="vitrini.html">VITRINI</a><a href="vitrini-link.html">VITRINI Link</a><a href="solucoes.html#vitrini-local">VITRINI Local</a></nav><p class="product-stage-note">VITRINI Local: plataforma regional. Confira as opções no catálogo.</p></div>
 	        </article>
 	        <article class="solution-card solution-engreni">
 	          <div class="solution-top"><span>ECOSSISTEMA / 02</span><a class="solution-arrow" href="solucoes.html#engreni" aria-label="Conhecer o ecossistema ENGRENI">↗</a></div>
@@ -244,13 +422,24 @@
 	              </div>
 	            </div>
 	          </div>
-	          <div class="solution-copy"><p>ORGANIZAÇÃO E OPERAÇÃO</p><h3><a href="solucoes.html#engreni">ENGRENI</a></h3><div>Sistemas para atendimentos, agendas e processos que precisam funcionar com clareza.</div><nav class="product-mini-links product-mini-links--dark" aria-label="Produtos do ecossistema ENGRENI"><a href="solucoes.html#engreni-agenda">ENGRENI Agenda</a><a href="solucoes.html#engreni-nauta">ENGRENI Nauta</a></nav><p class="product-stage-note">Agenda em uso-piloto. Nauta em validação. Consulte as possibilidades.</p></div>
+	          <div class="solution-copy"><p>ORGANIZAÇÃO E OPERAÇÃO</p><h3><span class="ecosystem-logo" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" focusable="false"><path d="m5 18 19-10 19 10-19 11ZM5 27l19 11 19-11M5 35l19 10 19-10"/></svg></span><a href="solucoes.html#engreni">ENGRENI</a></h3><div>Sistemas para atendimentos, agendas e processos que precisam funcionar com clareza.</div><nav class="product-mini-links product-mini-links--dark" aria-label="Produtos do ecossistema ENGRENI"><a href="solucoes.html#engreni-agenda">ENGRENI Agenda</a><a href="solucoes.html#engreni-nauta">ENGRENI Nauta</a></nav><p class="product-stage-note">Agenda em uso-piloto. Nauta em validação. Consulte as possibilidades.</p></div>
 	        </article>
 	      </div>
 	    </div>
 	  </section>
 
-  <section class="section work-section section-shell section-atmosphere section-atmosphere--frame" id="projetos" aria-labelledby="projects-title">
+  <section class="section work-section cases-reference-compact section-shell section-atmosphere section-atmosphere--frame" id="projetos" aria-labelledby="projects-title">
+    <svg class="cases-neon-waves" viewBox="0 0 1600 200" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="cases-line-light" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9A51B1"/><stop offset=".26" stop-color="#DB7CF5"/><stop offset=".55" stop-color="#B75BD8"/><stop offset=".8" stop-color="#DC83EE"/><stop offset="1" stop-color="#C46ADE"/></linearGradient>
+    <linearGradient id="cases-wave-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#723883" stop-opacity=".43"/><stop offset="1" stop-color="#3B234E" stop-opacity=".02"/></linearGradient>
+    <filter id="cases-line-glow" x="-20%" y="-100%" width="140%" height="300%"><feGaussianBlur stdDeviation="8"/></filter>
+  </defs>
+  <path d="M0 122 C180 29 325 211 501 155 S770 50 969 100 S1295 198 1600 54 L1600 200 L0 200Z" fill="url(#cases-wave-fill)"/>
+  <path class="cases-wave-back" d="M0 138 C150 180 325 32 480 111 S771 202 952 112 S1292 47 1600 110" fill="none" stroke="#7F429C" stroke-width="2" opacity=".35"/>
+  <path d="M0 122 C180 29 325 211 501 155 S770 50 969 100 S1295 198 1600 54" fill="none" stroke="#BE59D1" stroke-width="15" opacity=".52" filter="url(#cases-line-glow)"/>
+  <path class="cases-wave-front" d="M0 122 C180 29 325 211 501 155 S770 50 969 100 S1295 198 1600 54" fill="none" stroke="url(#cases-line-light)" stroke-width="2"/>
+</svg>
     <div class="container">
       <div class="section-heading projects-heading">
         <div class="projects-heading-main">
@@ -263,19 +452,19 @@
         <article class="project-card flagship-case" data-project-kind="web">
           <div class="project-card-head"><div><p class="case-proof-label">CLIENTE REAL · SITE PUBLICADO</p><h3><a href="projetos/tornearia-barbosa.html">Tornearia Barbosa</a></h3><p class="project-type">PRESENÇA DIGITAL + SEO LOCAL</p></div><a class="project-arrow" href="projetos/tornearia-barbosa.html" aria-label="Ver estudo de caso Tornearia Barbosa">↗</a></div>
           <a class="project-image migrated-case-photo has-approved-mockup" data-home-mockup="assets/images/case-tornearia-barbosa-1600x900.webp" data-home-mockup-alt="Site Tornearia Barbosa em notebook e celular — apresentação editorial" href="projetos/tornearia-barbosa.html" aria-label="Ver estudo de caso Tornearia Barbosa"><picture><source srcset="assets/images/tornearia-barbosa-mockup.avif" type="image/avif"><img src="assets/images/tornearia-barbosa-case.webp" loading="lazy" decoding="async" width="1100" height="825" alt="Apresentação do site Tornearia Barbosa em desktop e celular"></picture></a>
-          <div class="case-story"><p><span>DESAFIO</span>Apresentar mais de 35 anos de experiência técnica em um site claro e fácil de encontrar.</p><p><span>RESPOSTA</span>Serviços organizados, SEO local, experiência responsiva e caminhos diretos para orçamento.</p><p><span>ENTREGA</span>Site próprio que reúne especialidades, credibilidade e contato em um só lugar.</p></div>
+          <div class="case-story"><p class="case-step"><svg class="case-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/><path d="M16 8l5-5m-4 0h4v4"/></svg><span class="case-step-label">DESAFIO</span><span class="case-step-description">Apresentar mais de 35 anos de experiência técnica em um site claro e fácil de encontrar.</span></p><p class="case-step"><svg class="case-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true" focusable="false"><path d="m3 9 9-6 9 6-9 6z"/><path d="m3 14 9 6 9-6M3 18l9 5 9-5"/></svg><span class="case-step-label">RESPOSTA</span><span class="case-step-description">Serviços organizados, SEO local, experiência responsiva e caminhos diretos para orçamento.</span></p><p class="case-step"><svg class="case-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true" focusable="false"><path d="M5 21V3m0 2c6-4 10 5 16 1v10c-6 4-10-5-16-1"/></svg><span class="case-step-label">ENTREGA</span><span class="case-step-description">Site próprio que reúne especialidades, credibilidade e contato em um só lugar.</span></p></div>
           <div class="case-actions"><a href="projetos/tornearia-barbosa.html">Ver estudo de caso ↗</a><a href="https://tornearia-barbosa.vercel.app/" target="_blank" rel="noopener noreferrer">Visitar projeto publicado ↗</a></div>
         </article>
         <article class="project-card flagship-case" data-project-kind="experience">
           <div class="project-card-head"><div><p class="case-proof-label">CLIENTE REAL · LANDING PAGE PUBLICADA</p><h3><a href="https://new-rocket-play.vercel.app/" target="_blank" rel="noopener noreferrer">New Rocket Play</a></h3><p class="project-type">LANDING PAGE + POSICIONAMENTO</p></div><a class="project-arrow" href="https://new-rocket-play.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Visitar New Rocket Play">↗</a></div>
           <a class="project-image real-project nrp-project" data-home-mockup="assets/images/case-new-rocket-play-1600x900.webp" data-home-mockup-alt="New Rocket Play — site em notebook e celular" href="https://new-rocket-play.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Visitar New Rocket Play"><img src="assets/images/new-rocket-play-home.webp" width="1868" height="863" loading="lazy" decoding="async" alt="Página inicial do projeto New Rocket Play"></a>
-          <div class="case-story"><p><span>DESAFIO</span>Transformar a proposta da marca em uma apresentação digital clara e confiável.</p><p><span>RESPOSTA</span>Landing page com hierarquia visual, conteúdo estratégico e navegação orientada ao contato.</p><p><span>ENTREGA</span>Página própria preparada para compartilhar em campanhas, redes e prospecção.</p></div>
+          <div class="case-story"><p class="case-step"><svg class="case-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/><path d="M16 8l5-5m-4 0h4v4"/></svg><span class="case-step-label">DESAFIO</span><span class="case-step-description">Transformar a proposta da marca em uma apresentação digital clara e confiável.</span></p><p class="case-step"><svg class="case-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true" focusable="false"><path d="m3 9 9-6 9 6-9 6z"/><path d="m3 14 9 6 9-6M3 18l9 5 9-5"/></svg><span class="case-step-label">RESPOSTA</span><span class="case-step-description">Landing page com hierarquia visual, conteúdo estratégico e navegação orientada ao contato.</span></p><p class="case-step"><svg class="case-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true" focusable="false"><path d="M5 21V3m0 2c6-4 10 5 16 1v10c-6 4-10-5-16-1"/></svg><span class="case-step-label">ENTREGA</span><span class="case-step-description">Página própria preparada para compartilhar em campanhas, redes e prospecção.</span></p></div>
           <div class="case-actions"><a href="https://new-rocket-play.vercel.app/" target="_blank" rel="noopener noreferrer">Visitar projeto publicado ↗</a></div>
         </article>
         <article class="project-card flagship-case home-case-dayane" data-project-kind="web">
           <div class="project-card-head"><div><p class="case-proof-label">CLIENTE REAL · SITE + AGENDAMENTO</p><h3><a href="https://dayane-cunha-nails.vercel.app/" target="_blank" rel="noopener noreferrer">Dayane Cunha Nails</a></h3><p class="project-type">BELEZA / EXPERIÊNCIA + FLUXO DIGITAL</p></div><a class="project-arrow" href="https://dayane-cunha-nails.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Abrir site Dayane Cunha Nails">↗</a></div>
-          <a class="project-image case-preview--dayane" href="https://dayane-cunha-nails.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Abrir projeto Dayane Cunha Nails"><div class="case-dayane-snapshot"><div class="case-dayane-copy"><span class="case-dayane-eyebrow">DAYANE CUNHA NAILS</span><strong>Manicure e pedicure com cuidado e técnica.</strong><small>Atendimento com horário marcado</small><span class="case-dayane-action" aria-hidden="true">Agendar horário ↗</span></div><img class="case-dayane-mockup" src="assets/images/case-engreni-agenda-1600x900.webp" alt="ENGRENI Agenda em notebook e celular para a operação Dayane Cunha Nails" width="1600" height="900" loading="lazy" decoding="async"></div></a>
-          <div class="case-story"><p><span>PROBLEMA</span>Apresentar serviços e facilitar o caminho do interesse ao agendamento.</p><p><span>RESPOSTA</span>Página autoral com fluxo de atendimento conectado ao ENGRENI Agenda.</p><p><span>VALOR</span>Uma experiência clara para conhecer o trabalho e solicitar horários.</p></div>
+          <a class="project-image case-preview--dayane" href="https://dayane-cunha-nails.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Abrir projeto Dayane Cunha Nails"><div class="case-dayane-snapshot"><img class="case-dayane-mockup" src="assets/images/case-engreni-agenda-1600x900.webp" alt="Apresentação limpa da interface ENGRENI Agenda em notebook e celular no projeto Dayane Cunha Nails" width="1600" height="900" loading="lazy" decoding="async"></div></a>
+          <div class="case-story"><p class="case-step"><svg class="case-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/><path d="M16 8l5-5m-4 0h4v4"/></svg><span class="case-step-label">PROBLEMA</span><span class="case-step-description">Apresentar serviços e facilitar o caminho do interesse ao agendamento.</span></p><p class="case-step"><svg class="case-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true" focusable="false"><path d="m3 9 9-6 9 6-9 6z"/><path d="m3 14 9 6 9-6M3 18l9 5 9-5"/></svg><span class="case-step-label">RESPOSTA</span><span class="case-step-description">Página autoral com fluxo de atendimento conectado ao ENGRENI Agenda.</span></p><p class="case-step"><svg class="case-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true" focusable="false"><path d="M5 21V3m0 2c6-4 10 5 16 1v10c-6 4-10-5-16-1"/></svg><span class="case-step-label">VALOR</span><span class="case-step-description">Uma experiência clara para conhecer o trabalho e solicitar horários.</span></p></div>
           <div class="case-actions"><a href="https://dayane-cunha-nails.vercel.app/" target="_blank" rel="noopener noreferrer">Visitar site ↗</a><a href="projetos.html#dayane-nails">Ver o case ↗</a></div>
         </article>
       </div>
@@ -290,19 +479,40 @@
       <div class="case-conversion"><p>Reconheceu algo parecido com o seu desafio?</p><a class="btn btn-navy" href="#contato">Quero algo assim para meu negócio <span aria-hidden="true">↗</span></a></div>
     </div>
   </section>
-  <section class="section about-section section-shell section-atmosphere section-atmosphere--about section-grid section-grid--full" id="sobre" aria-labelledby="about-title">
+  <section class="section about-section about-cinematic-reference section-shell section-atmosphere section-atmosphere--about section-grid section-grid--full" id="sobre" aria-labelledby="about-title">
+    <svg class="founder-neon-waves" viewBox="0 0 1600 185" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="founder-wave-line" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#A65FC7"/><stop offset=".35" stop-color="#DA81F0"/><stop offset=".67" stop-color="#CB66E6"/><stop offset="1" stop-color="#C577E9"/>
+        </linearGradient>
+        <linearGradient id="founder-wave-fill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#6A347C" stop-opacity=".51"/><stop offset="1" stop-color="#20172F" stop-opacity=".03"/>
+        </linearGradient>
+        <filter id="founder-wave-glow" x="-20%" y="-100%" width="140%" height="300%"><feGaussianBlur stdDeviation="8"/></filter>
+      </defs>
+      <path d="M0 95 C135 49 271 180 434 136 S705 70 881 129 S1162 178 1362 85 S1537 67 1600 80 L1600 185 L0 185Z" fill="url(#founder-wave-fill)"/>
+      <path d="M0 95 C135 49 271 180 434 136 S705 70 881 129 S1162 178 1362 85 S1537 67 1600 80" stroke="#CE71EC" stroke-width="15" opacity=".58" fill="none" filter="url(#founder-wave-glow)"/>
+      <path class="founder-wave-front" d="M0 95 C135 49 271 180 434 136 S705 70 881 129 S1162 178 1362 85 S1537 67 1600 80" stroke="url(#founder-wave-line)" stroke-width="2" fill="none"/>
+    </svg>
     <div class="container about-grid">
       <figure class="about-visual-card">
         <div class="about-visual-inner">
           <img src="assets/images/daysi-cunha-editorial.jpg" alt="Daysi Cunha, fundadora da DAYSLUME" width="1122" height="1402" loading="lazy" decoding="async">
         </div>
+        <figcaption class="about-signature founder-photo-signature">
+            <a href="sobre.html" aria-label="Conhecer a DAYSLUME e a fundadora Daysi Cunha">
+              <strong>Daysi Cunha</strong>
+              <span>FUNDADORA DA DAYSLUME</span>
+            </a>
+            
+        </figcaption>
       </figure>
       <div class="about-copy">
         <p class="eyebrow section-eyebrow"><span class="section-eyebrow__number">05</span><span class="section-eyebrow__label">QUEM RESPONDE PELO TRABALHO</span></p>
         <h2 id="about-title" class="section-title section-title--long">
           <span>Um processo claro.</span>
-          <span>Uma fundadora</span>
-          <span>presente em cada decisão.</span>
+          <span class="founder-title-accent">Uma fundadora presente</span>
+          <span>em cada decisão.</span>
         </h2>
         <div class="about-intro">
           <p>A DAYSLUME é liderada por <strong>Daysi Cunha</strong>, que acompanha as decisões de estratégia, design e desenvolvimento.</p>
@@ -311,18 +521,35 @@
         <div class="about-process-compact" id="processo-home" aria-label="Como trabalhamos">
           <p class="about-process-label">DO CONTEXTO À ENTREGA</p>
           <ol>
-            <li><strong>01 · Entender</strong><span>Ouvir o desafio e definir prioridades.</span></li>
-            <li><strong>02 · Construir</strong><span>Desenhar e desenvolver a solução necessária.</span></li>
-            <li><strong>03 · Evoluir</strong><span>Testar, entregar e orientar os próximos passos.</span></li>
+            <li>
+              <span class="about-process-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="15" cy="17" r="11"/><circle cx="15" cy="17" r="6"/><circle cx="15" cy="17" r="1.5"/><path d="m19 13 9-9m-5 0h5v5"/></svg></span>
+              <strong>01 · Entender</strong><span>Ouvir o desafio e definir prioridades.</span>
+            </li>
+            <li>
+              <span class="about-process-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 12-8 12 8-12 8zM4 18l12 8 12-8M4 24l12 6 12-6"/></svg></span>
+              <strong>02 · Construir</strong><span>Desenhar e desenvolver a solução necessária.</span>
+            </li>
+            <li>
+              <span class="about-process-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 26 14 17l6 5 9-13M23 9h6v6"/></svg></span>
+              <strong>03 · Evoluir</strong><span>Testar, entregar e orientar os próximos passos.</span>
+            </li>
           </ol>
-          <a href="processo.html">Conhecer nosso processo completo ↗</a>
+          <a class="btn btn-navy about-cta" href="processo.html">Conhecer nosso processo completo <span aria-hidden="true">↗</span></a>
         </div>
-        <p class="about-signature"><strong>Daysi Cunha</strong><span>Fundadora &amp; direção estratégica</span></p>
-        <a class="btn btn-navy about-cta" href="sobre.html">Conhecer a DAYSLUME <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </section>
-    <section class="section migrated-blog content-magazine section-shell section-atmosphere section-atmosphere--editorial section-grid section-grid--editorial" id="conteudos" aria-labelledby="conteudos-title">
+  <section class="section migrated-blog content-magazine contents-cinematic section-shell section-atmosphere section-atmosphere--editorial section-grid section-grid--editorial" id="conteudos" aria-labelledby="conteudos-title">
+    <svg class="contents-neon-waves" viewBox="0 0 1600 135" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="contents-wave-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#9244B0" stop-opacity=".48"/><stop offset="1" stop-color="#331845" stop-opacity=".02"/></linearGradient>
+        <linearGradient id="contents-wave-stroke" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#C46CDF"/><stop offset=".52" stop-color="#EE8AF7"/><stop offset="1" stop-color="#AA58D2"/></linearGradient>
+        <filter id="contents-wave-glow" x="-20%" y="-90%" width="140%" height="280%"><feGaussianBlur stdDeviation="8"/></filter>
+      </defs>
+      <path d="M0 57C190 8 260 147 485 109S793 25 997 73 1377 162 1600 61V135H0Z" fill="url(#contents-wave-fill)"/>
+      <path d="M0 57C190 8 260 147 485 109S793 25 997 73 1377 162 1600 61" stroke="#CB65E6" stroke-width="13" opacity=".64" fill="none" filter="url(#contents-wave-glow)"/>
+      <path class="contents-neon-wave-line" d="M0 57C190 8 260 147 485 109S793 25 997 73 1377 162 1600 61" stroke="url(#contents-wave-stroke)" stroke-width="2" fill="none"/>
+    </svg>
     <div class="container">
       <header class="content-masthead">
         <p class="eyebrow section-eyebrow"><span class="section-eyebrow__number">06</span><span class="section-eyebrow__label">CONTEÚDOS</span></p>
@@ -335,45 +562,120 @@
 
       <article class="content-featured">
         <div class="content-featured__copy">
-          <div class="content-meta"><span>ESTRATÉGIA <i>·</i> DESIGN</span><span>05 min</span></div>
+          <div class="content-meta"><span>ESTRATÉGIA <i>·</i> DESIGN</span><span class="content-readtime"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 6v7l4 2"/></svg>05 min</span></div>
           <h3><a href="blog/presenca-digital-estrategica.html">Presença digital estratégica: como organizar seus canais</a></h3>
-          <span class="content-rule editorial-divider" aria-hidden="true"></span>
           <p>Instagram, WhatsApp e site têm papéis diferentes. Veja como combiná-los em uma presença mais clara.</p>
-          <a class="content-read content-read--featured" href="blog/presenca-digital-estrategica.html"><span class="content-read__circle" aria-hidden="true">→</span><span>LER ARTIGO</span></a>
+          <a class="content-read content-read--featured" href="blog/presenca-digital-estrategica.html"><span>Ler artigo</span><span aria-hidden="true">↗</span></a>
         </div>
-        <a class="content-featured__media" href="blog/presenca-digital-estrategica.html" aria-label="Ler: Presença digital estratégica: como organizar seus canais">
-          <img src="assets/images/content-strategy-editorial.svg" width="1440" height="720" loading="lazy" decoding="async" alt="Composição editorial de três sites com identidades distintas e direção estratégica">
-          <span class="content-image-note">IDENTIDADE<br>COM<br>INTENÇÃO.<i aria-hidden="true"></i></span>
+        <a class="content-featured__media content-channels-stage" href="blog/presenca-digital-estrategica.html" aria-label="Ler artigo: Presença digital estratégica: como organizar seus canais">
+          <span class="channels-orbit" aria-hidden="true"></span>
+          <span class="channels-connection channels-connection--left" aria-hidden="true"></span>
+          <span class="channels-connection channels-connection--right" aria-hidden="true"></span>
+          <span class="channel-device channel-device--instagram" aria-hidden="true">
+            <span class="channel-device-chrome"><i></i><i></i><i></i></span>
+            <span class="channel-social-heading"><span class="channel-social-avatar"></span><span class="channel-social-title"></span></span>
+            <span class="channel-social-story"><b></b><b></b><b></b></span>
+            <span class="channel-social-grid"><i></i><i></i><i></i><i></i></span>
+            <span class="channel-device-caption">Instagram</span>
+          </span>
+          <span class="channel-device channel-device--site" aria-hidden="true">
+            <span class="channel-device-chrome"><i></i><i></i><i></i><span class="channel-site-menu"></span></span>
+            <span class="channel-site-layout">
+              <span class="channel-site-eyebrow">PRESENÇA DIGITAL</span>
+              <strong>Sua marca<br>na internet.</strong>
+              <span class="channel-site-subheading"></span>
+              <span class="channel-site-button">Conhecer <span>↗</span></span>
+              <span class="channel-site-photo"><i></i></span>
+            </span>
+            <span class="channel-device-caption">Site</span>
+          </span>
+          <span class="channel-device channel-device--whatsapp" aria-hidden="true">
+            <span class="channel-device-chrome"><i></i><i></i><i></i></span>
+            <span class="channel-chat-header"><span class="channel-chat-avatar"></span><span>Atendimento</span></span>
+            <span class="channel-chat-bubbles"><b>Olá! 👋</b><b>Como posso ajudar?</b><b>Quero saber mais!</b></span>
+            <span class="channel-chat-send">Sua mensagem <span>➤</span></span>
+            <span class="channel-device-caption">WhatsApp</span>
+          </span>
+          <span class="channel-callout channel-callout--instagram" aria-hidden="true"><b>Instagram</b><span>Descoberta e<br>visibilidade</span></span>
+          <span class="channel-callout channel-callout--site" aria-hidden="true"><b>Site</b><span>Informações e<br>confiança</span></span>
+          <span class="channel-callout channel-callout--whatsapp" aria-hidden="true"><b>WhatsApp</b><span>Conversa e<br>atendimento</span></span>
+          <span class="channels-caption" aria-hidden="true">ESTRATÉGIA / IDENTIDADE / DIREÇÃO</span>
         </a>
       </article>
 
       <div class="content-secondary-grid">
         <article class="content-secondary">
-          <a class="content-secondary__link" href="blog/site-bonito-precisa-funcionar.html" aria-label="Ler: Um site bonito também precisa funcionar">
+          <a class="content-secondary__link" href="blog/site-bonito-precisa-funcionar.html" aria-label="Ler artigo: Um site bonito também precisa funcionar">
             <div class="content-secondary__copy">
-              <div class="content-meta"><span>PROCESSO <i>·</i> NEGÓCIO</span><span>05 min</span></div>
+              <div class="content-meta"><span>PROCESSO <i>·</i> NEGÓCIO</span><span class="content-readtime"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 6v7l4 2"/></svg>05 min</span></div>
               <h3>Um site bonito também precisa funcionar.</h3>
-              <span class="content-rule editorial-divider" aria-hidden="true"></span>
               <p>Além da aparência, navegação e clareza precisam ajudar o visitante a agir.</p>
-              <span class="content-read"><span>LER ARTIGO</span><span aria-hidden="true">→</span></span>
+              <span class="content-read"><span>Ler artigo</span><span aria-hidden="true">↗</span></span>
             </div>
-            <span class="content-secondary__media content-secondary__media--stone">
-              <img src="assets/images/content-design-process.svg" width="760" height="540" loading="lazy" decoding="async" alt="Comparação visual entre uma interface confusa e um fluxo organizado">
+            <span class="content-secondary__media content-compare-stage" aria-hidden="true">
+              <span class="compare-panel compare-panel--before">
+                <span class="compare-label">ANTES / ATRITO</span>
+                <span class="compare-browser">
+                  <span class="compare-browser-chrome"><i></i><i></i><i></i></span>
+                  <span class="compare-chaos"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                  <span class="compare-cross compare-cross--one"></span>
+                  <span class="compare-cross compare-cross--two"></span>
+                </span>
+                <span class="compare-note"><b>×</b> Muitas opções<br><b>×</b> Caminho confuso</span>
+              </span>
+              <span class="compare-direction">→</span>
+              <span class="compare-panel compare-panel--after">
+                <span class="compare-label">DEPOIS / CLAREZA</span>
+                <span class="compare-browser">
+                  <span class="compare-browser-chrome"><i></i><i></i><i></i></span>
+                  <span class="compare-good-title"></span>
+                  <span class="compare-good-line"></span>
+                  <span class="compare-good-line compare-good-line--short"></span>
+                  <span class="compare-good-visual"><i></i><i></i></span>
+                  <span class="compare-good-button">Falar com a marca <span>✓</span></span>
+                </span>
+                <span class="compare-note"><b>✓</b> Hierarquia clara<br><b>✓</b> Ação evidente</span>
+              </span>
+              <span class="compare-caption">EXPERIÊNCIA CENTRADA EM QUEM USA</span>
             </span>
           </a>
         </article>
-
-        
       </div>
 
-      <div class="content-insights content-insights--compact"><span class="content-insights__label">QUER EXPLORAR MAIS?</span><a class="content-archive" href="blog.html">VER TODOS OS ARTIGOS <span aria-hidden="true">→</span></a></div>
+      <div class="content-insights content-insights--compact"><span class="content-insights__label">QUER EXPLORAR MAIS?</span><a class="content-archive" href="blog.html">VER TODOS OS ARTIGOS <span aria-hidden="true">↗</span></a></div>
     </div>
   </section>
-  <section class="section contact-section section-shell section-atmosphere section-atmosphere--contact" id="contato" aria-labelledby="contact-title"><div class="container contact-grid"><div><p class="eyebrow section-eyebrow"><span class="section-eyebrow__number">07</span><span class="section-eyebrow__label">PRÓXIMO PASSO</span></p><h2 id="contact-title" class="section-title"><span>Vamos entender o que</span><span><em>seu negócio precisa?</em></span></h2><p>Conte o que você quer melhorar. Respondemos pelo WhatsApp para entender o contexto e orientar o próximo passo.</p><div class="contact-note"><a class="migration-link" href="https://wa.me/5531994492474?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20DAYSLUME.%20Quero%20contar%20um%20problema%20do%20meu%20neg%C3%B3cio%20e%20entender%20qual%20solu%C3%A7%C3%A3o%20digital%20faz%20sentido." target="_blank" rel="noopener noreferrer">Conversar no WhatsApp ↗</a></div></div><form class="contact-form" id="contact-form" hidden data-whatsapp="5531994492474" aria-describedby="contact-privacy"><div class="form-row"><div class="form-field"><label for="nome">Seu nome <span>*</span></label><input disabled id="nome" name="nome" maxlength="100" autocomplete="name" required placeholder="Como podemos chamar você?"></div><div class="form-field"><label for="email">Seu e-mail <span>*</span></label><input disabled id="email" name="email" maxlength="254" type="email" autocomplete="email" required placeholder="voce@empresa.com.br"></div></div><div class="form-field"><label for="empresa">Empresa ou projeto</label><input disabled id="empresa" name="empresa" autocomplete="organization" maxlength="150" placeholder="Nome do negócio (opcional)"></div><div class="form-field"><label for="necessidade">O que hoje está difícil, confuso ou manual? <span>*</span></label><textarea disabled id="necessidade" name="necessidade" maxlength="2000" required minlength="10" rows="4" placeholder="Conte a situação atual e o que você gostaria que funcionasse melhor."></textarea></div><button class="btn btn-navy" type="button" disabled>Preparar diagnóstico inicial <span aria-hidden="true">↗</span></button><p class="form-status" id="form-status" role="status" aria-live="polite">Preencha os campos para preparar sua mensagem.</p><p id="contact-privacy" class="contact-privacy">Os dados são usados apenas para montar sua mensagem neste navegador. Você revisa e confirma o envio no WhatsApp.</p><a class="btn btn-navy whatsapp-submit" id="whatsapp-submit" hidden target="_blank" rel="noopener noreferrer">Continuar no WhatsApp <span aria-hidden="true">↗</span></a></form><noscript><p>Para enviar sua solicitação, utilize o link de WhatsApp acima.</p></noscript></div></section>
+  <section class="section contact-section contact-cinematic-final section-shell section-atmosphere section-atmosphere--contact" id="contato" aria-labelledby="contact-title"><svg class="contact-neon-waves" viewBox="0 0 1640 230" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="closing-wave-fill-front" x1="0" x2=".8" y1="0" y2="1">
+          <stop offset="0" stop-color="#B06BC3" stop-opacity=".42"/>
+          <stop offset=".67" stop-color="#C9A6D7" stop-opacity=".33"/>
+          <stop offset="1" stop-color="#B76BBF" stop-opacity=".12"/>
+        </linearGradient>
+        <linearGradient id="closing-wave-fill-back" x1="0" x2="1" y1="0" y2=".9">
+          <stop offset="0" stop-color="#8A469F" stop-opacity=".29"/>
+          <stop offset="1" stop-color="#E4BBD2" stop-opacity=".12"/>
+        </linearGradient>
+        <linearGradient id="closing-wave-line" x1="0" x2="1" y1="0" y2=".5">
+          <stop offset="0" stop-color="#CE8EE2" stop-opacity=".48"/>
+          <stop offset=".45" stop-color="#F4BEEA" stop-opacity=".91"/>
+          <stop offset="1" stop-color="#BD7BD6" stop-opacity=".45"/>
+        </linearGradient>
+        <filter id="closing-wave-glow" x="-20%" y="-100%" width="140%" height="300%"><feGaussianBlur stdDeviation="9"/></filter>
+      </defs>
+      <path d="M0 50 C180 210 336 181 487 140 S722 65 851 141 S1120 220 1338 96 S1575 105 1640 102 L1640 230 L0 230Z" fill="url(#closing-wave-fill-back)"/>
+      <path d="M0 104 C170 174 303 226 458 191 S676 88 828 169 S1104 216 1270 146 S1472 130 1640 156 L1640 230 L0 230Z" fill="url(#closing-wave-fill-front)"/>
+      <path d="M0 104 C170 174 303 226 458 191 S676 88 828 169 S1104 216 1270 146 S1472 130 1640 156" stroke="url(#closing-wave-line)" stroke-width="15" fill="none" opacity=".57" filter="url(#closing-wave-glow)"/>
+      <path class="contact-wave-front" d="M0 104 C170 174 303 226 458 191 S676 88 828 169 S1104 216 1270 146 S1472 130 1640 156" stroke="url(#closing-wave-line)" stroke-width="2.2" fill="none"/>
+    </svg>
+    <div class="container contact-grid"><div class="contact-editorial-copy"><p class="eyebrow section-eyebrow"><span class="section-eyebrow__number">07</span><span class="section-eyebrow__label">PRÓXIMO PASSO</span></p><h2 id="contact-title" class="section-title"><span>Vamos entender o que</span><span><em>seu negócio precisa?</em></span></h2><p>Conte o que você quer melhorar. Respondemos pelo WhatsApp para entender o contexto e orientar o próximo passo.</p><div class="contact-note"><a class="migration-link" href="https://wa.me/5531994492474?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20DAYSLUME.%20Quero%20contar%20um%20problema%20do%20meu%20neg%C3%B3cio%20e%20entender%20qual%20solu%C3%A7%C3%A3o%20digital%20faz%20sentido." target="_blank" rel="noopener noreferrer"><svg class="contact-whatsapp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.4 11.6a8.4 8.4 0 0 1-12.4 7.3L3.4 20l1.2-4.4a8.4 8.4 0 1 1 15.8-4z"/><path d="M8.4 8.5c.2-.4.5-.4.8-.4l.5.1c.1 0 .3.2.4.5l.5 1.3c.1.3.1.5-.1.8l-.5.6c.7 1.4 1.7 2.4 3.1 3.1l.6-.6c.2-.2.5-.2.8-.1l1.3.5c.3.1.5.3.5.5.1.7-.2 1.2-.8 1.5-1.5.6-3.4-.3-5.1-2s-2.7-3.7-2-5.1z"/></svg><span>Conversar no WhatsApp</span><span class="contact-action-arrow" aria-hidden="true">↗</span></a></div></div><form class="contact-form" id="contact-form" hidden data-whatsapp="5531994492474" aria-describedby="contact-privacy"><div class="form-row"><div class="form-field"><label for="nome">Seu nome <span>*</span></label><input disabled id="nome" name="nome" maxlength="100" autocomplete="name" required placeholder="Como podemos chamar você?"></div><div class="form-field"><label for="email">Seu e-mail <span>*</span></label><input disabled id="email" name="email" maxlength="254" type="email" autocomplete="email" required placeholder="voce@empresa.com.br"></div></div><div class="form-field"><label for="empresa">Empresa ou projeto</label><input disabled id="empresa" name="empresa" autocomplete="organization" maxlength="150" placeholder="Nome do negócio (opcional)"></div><div class="form-field"><label for="necessidade">O que hoje está difícil, confuso ou manual? <span>*</span></label><textarea disabled id="necessidade" name="necessidade" maxlength="2000" required minlength="10" rows="4" placeholder="Conte a situação atual e o que você gostaria que funcionasse melhor."></textarea></div><button class="btn btn-navy" type="button" disabled>Preparar diagnóstico inicial <span aria-hidden="true">↗</span></button><p class="form-status" id="form-status" role="status" aria-live="polite">Preencha os campos para preparar sua mensagem.</p><p id="contact-privacy" class="contact-privacy">
+  <svg class="contact-privacy-shield" viewBox="0 0 32 32" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="m16 3 11 5v8c0 7-4.1 11.9-11 14C9.1 27.9 5 23 5 16V8Z"/><path d="m10.7 16 3.6 3.6 7-7"/></svg>
+  <span>Os dados são usados apenas para montar sua mensagem neste navegador.<br>Você revisa e confirma o envio no WhatsApp.</span>
+</p><a class="btn btn-navy whatsapp-submit" id="whatsapp-submit" hidden target="_blank" rel="noopener noreferrer">Continuar no WhatsApp <span aria-hidden="true">↗</span></a></form><noscript><p>Para enviar sua solicitação, utilize o link de WhatsApp acima.</p></noscript></div></section>
 </main>
 <footer class="site-footer days-support-ready"><div class="container"><div class="footer-main"><a href="index.html" class="footer-brand footer-logo" aria-label="DAYSLUME, início"><img src="assets/images/logohorizontalbranca.png" alt="DAYSLUME — Estúdio de desenvolvimento digital" class="footer-logo-img" width="320" height="73" loading="lazy"></a><p><strong>Estúdio de desenvolvimento digital.</strong><span>Estratégia, design e tecnologia para negócios.</span></p></div><nav class="footer-nav" aria-label="Navegação do rodapé"><a href="servicos.html">Serviços</a><a href="solucoes.html">Produtos</a><a href="projetos.html">Projetos</a><a href="blog.html">Conteúdos</a><a href="sobre.html">Sobre</a><a href="contato.html">Contato</a><a href="central-de-ajuda.html">Central de Ajuda</a></nav><nav class="footer-socials" aria-label="Redes sociais"><a href="https://www.instagram.com/dayslume/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.linkedin.com/company/dayslume/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.tiktok.com/@dayslume" target="_blank" rel="noopener noreferrer">TikTok</a></nav><section class="days-footer-support" aria-labelledby="days-footer-support-title"><div class="days-footer-support-intro"><span class="days-footer-support-kicker">ATENDIMENTO / DAYSLUME</span><h2 id="days-footer-support-title">Podemos ajudar?</h2><p>Dúvidas sobre serviços, produtos ou projetos? Encontre respostas ou converse com a gente.</p></div><div class="days-support-contacts" aria-label="Dados e canais de atendimento"><div class="days-support-contact"><svg class="days-support-contact-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 0 1-11.8 7L4 20l1.1-4A8 8 0 1 1 20 12Z"/><path d="M9 9c.8 3 3 5 6 6"/></svg><div class="days-support-contact-copy"><strong>WhatsApp: </strong><a href="https://wa.me/5531994492474?text=Ol%C3%A1!%20Preciso%20de%20atendimento%20DAYSLUME." target="_blank" rel="noopener noreferrer">+55 (31) 99449-2474</a><small>Atendimento por mensagem · retorno conforme disponibilidade.</small></div></div><div class="days-support-contact"><svg class="days-support-contact-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19 19 0 0 1-8.6-3.1 19 19 0 0 1-6-6 19 19 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.5 3a2 2 0 0 1-.6 1.7L7.7 9.7a15.2 15.2 0 0 0 6.6 6.6l1.3-1.3a2 2 0 0 1 1.7-.6l3 .5a2 2 0 0 1 1.7 2Z"/></svg><div class="days-support-contact-copy"><strong>Telefone: </strong><a href="https://wa.me/5531994492474?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20liga%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer">Solicitar uma ligação</a><small>Combine o contato por mensagem.</small></div></div><div class="days-support-contact"><svg class="days-support-contact-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><div class="days-support-contact-copy"><strong>Mensagem: </strong><a href="contato.html">Clique aqui e fale conosco.</a><small>Prepare sua mensagem pelo site.</small></div></div></div><div class="days-footer-support-actions"><a href="https://wa.me/5531994492474?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20DAYSLUME%20e%20preciso%20de%20ajuda." target="_blank" rel="noopener noreferrer">WhatsApp ↗</a><a href="central-de-ajuda.html">Central de Ajuda ↗</a><a href="contato.html">Contato ↗</a></div></section><div class="footer-bottom"><span>© <span id="year"></span> DAYSLUME</span><nav class="footer-utility-links" aria-label="Links úteis do rodapé"><a href="central-de-ajuda.html">Central de Ajuda ↗</a><a href="contato.html">Contato ↗</a></nav></div></div><div class="days-back-top"><a href="#topo"><span aria-hidden="true">↑</span> Voltar ao topo</a></div>
 </footer>
-<script src="assets/js/dayslume-motion.js" defer></script><script src="assets/js/dayslume-contact.js" defer></script><script src="assets/js/home-premium.js" defer></script><script src="assets/js/hero-prism-scroll.js" defer></script><script src="assets/js/hero-cinematic.js" defer></script><script src="assets/js/cinematic-experience-33.js" defer></script><script src="assets/js/cinematic-film-intro-33.js" defer></script>
+<script src="assets/js/dayslume-motion.js" defer></script><script src="assets/js/dayslume-contact.js" defer></script><script src="assets/js/home-premium.js" defer></script><script src="assets/js/hero-prism-scroll.js" defer></script><script src="assets/js/modelo-motion.js" defer></script><script src="assets/js/hero-cinematic.js" defer></script><script src="assets/js/hero-master-motion.js" defer></script><script src="assets/js/cinematic-experience-33.js" defer></script><script src="assets/js/products-showroom-motion.js" defer></script><script src="assets/js/cases-showroom-motion.js" defer></script><script src="assets/js/founder-cinematic-motion.js" defer></script><script src="assets/js/contents-cinematic-motion.js" defer></script><script src="assets/js/contact-cinematic-motion.js" defer></script><script src="assets/js/cinematic-film-intro-33.js" defer></script>
 <a class="floating-whatsapp" href="https://wa.me/5531994492474?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20DAYSLUME%20e%20gostaria%20de%20falar%20sobre%20um%20projeto." target="_blank" rel="noopener noreferrer" aria-label="Falar com a DAYSLUME pelo WhatsApp" title="Fale com a DAYSLUME pelo WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 11.6a8.4 8.4 0 0 1-12.4 7.3L3.4 20l1.2-4.4a8.4 8.4 0 1 1 15.8-4z"/><path d="M8.4 8.5c.2-.4.5-.4.8-.4l.5.1c.1 0 .3.2.4.5l.5 1.3c.1.3.1.5-.1.8l-.5.6c.7 1.4 1.7 2.4 3.1 3.1l.6-.6c.2-.2.5-.2.8-.1l1.3.5c.3.1.5.3.5.5.1.7-.2 1.2-.8 1.5-1.5.6-3.4-.3-5.1-2s-2.7-3.7-2-5.1z"/></svg></a>
 </body>
 </html>

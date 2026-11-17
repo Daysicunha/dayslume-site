@@ -67,13 +67,19 @@ test('hero layers three product stories, preserving the mineral palette and mobi
   assert.match(css,/\.cinema-browser-screen/);
   assert.doesNotMatch(html,/hero__split-panel/);
 });
-test('manifest title wraps only within left column, and the semicircle is disabled',()=>{
- const html=read('index.html'),css=read('assets/css/hero-prism-scroll.css');
- assert.match(html,/manifest-title-line">O que precisa/);
- assert.match(html,/manifest-title-line">funcionar melhor/);
- assert.match(html,/manifest-title-line">no seu negócio\?/);
- assert.match(css,/body\.home-page main > #problemas \.manifest-concept::after\s*\{\s*content:none;/);
- assert.match(css,/body\.home-page main > #problemas \.manifest-title \.manifest-title-line\s*\{[\s\S]*?white-space:normal;/);
+test('manifest uses the approved three-line headline and luminous wave instead of the old semicircle',()=>{
+ const html=read('index.html');
+ const css=read('assets/css/cinematic-editorial-33.css');
+ const layout=css.split('17/11/2026 — ATO II / implementação fiel ao layout ilustrado aprovado')[1];
+ assert.ok(layout);
+ for (const title of ['Ser visto.','Ser escolhido.','Funcionar melhor.']) {
+  assert.ok(html.includes('manifest-title-line">' + title),title);
+ }
+ assert.match(html,/class="manifest-waves"/);
+ assert.match(layout,/\.manifest-concept::after\s*\{\s*display: none;/);
+ assert.match(layout,/\.manifest-title \.manifest-title-line[\s\S]*?white-space: nowrap;/);
+ assert.match(layout,/@media \(max-width: 600px\)/);
+ assert.match(layout,/\.manifest-title \.manifest-title-line\s*\{\s*white-space: normal;/);
 });
 test('founder presentation condenses the old five-step process into three readable stages',()=>{
  const html=read('index.html');
@@ -212,9 +218,10 @@ test('3D is restored on separated product cells without merging the QA cases and
  for(const name of ['case-tornearia-barbosa-1600x900.webp','case-new-rocket-play-1600x900.webp','case-engreni-agenda-1600x900.webp']){
    assert.match(html,new RegExp(name));
  }
- for(const name of ['content-design-process.svg','content-strategy-editorial.svg']){
-   assert.match(html,new RegExp(name));
- }
+ // The two articles now use semantic CSS/HTML illustrations instead of static SVG art.
+ assert.match(html,/class="content-featured__media content-channels-stage"/);
+ assert.match(html,/class="content-secondary__media content-compare-stage"/);
+ assert.match(html,/assets\/css\/contents-cinematic-33\.css/);
  const styles=[...html.matchAll(/href="(assets\/css\/[^"]+\.css)"/g)].map(m=>m[1]);
  assert.equal(styles.at(-1),'assets/css/brand-palette.css');
 });

@@ -35,7 +35,10 @@ test('shared system includes responsive and reduced-motion safeguards', () => {
   assert.match(palette, /overflow:\s*clip/);
   assert.match(palette, /env\(safe-area-inset-bottom\)/);
   assert.match(palette, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
-  assert.equal((home.match(/editorial-divider/g) || []).length, 2);
+  // The article dividers were intentionally replaced by readable, framed CTA cards.
+  assert.equal((home.match(/editorial-divider/g) || []).length, 0);
+  assert.match(home, /class="content-featured__media content-channels-stage"/);
+  assert.match(home, /class="content-secondary__media content-compare-stage"/);
 });
 
 test('floating contact control uses the DAYSLUME text treatment', () => {
