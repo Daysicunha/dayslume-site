@@ -147,13 +147,13 @@ test('Act II: editorial diagnostic keeps the three real service pathways', () =>
   assert.match(home, /class="manifest-list" aria-label="Problemas que a DAYSLUME ajuda a resolver"/);
 });
 
-test('Act II: section is scoped to the diagnostic, with one featured path', () => {
+test('Act II: section uses technical/editorial contrast, with restrained selection', () => {
   const act = editorial.split('DAYSLUME 3.3 — ATO II / Diagnóstico editorial')[1];
   assert.ok(act, 'Act II stylesheet must be present');
   assert.match(act, /section#problemas\.section/);
   assert.match(act, /\.manifest-title \.manifest-title-line:nth-child\(2\)/);
   assert.match(act, /\.manifest-item\.is-active\s*\{/);
-  assert.match(act, /\.manifest-item:not\(\.is-active\):hover/);
+  assert.match(act, /\.manifest-item\.is-active:hover/);
   assert.match(act, /\.manifest-item \.problem-link:focus-visible/);
   assert.match(act, /box-shadow: none !important/);
   assert.doesNotMatch(act, /\.hero--floating-panels|#apresentacao|#cinema33-film/);
@@ -162,9 +162,39 @@ test('Act II: section is scoped to the diagnostic, with one featured path', () =
 test('Act II: diagnostic switches to one column on tablets and phones', () => {
   const act = editorial.split('DAYSLUME 3.3 — ATO II / Diagnóstico editorial')[1];
   assert.ok(act);
-  assert.match(act, /@media \(max-width: 1000px\)/);
+  assert.match(act, /@media \(max-width: 1180px\)/);
   assert.match(act, /@media \(max-width: 600px\)/);
   assert.match(act, /grid-template-columns: minmax\(0, 1fr\)/);
   assert.match(act, /@media \(prefers-reduced-motion: reduce\)/);
   assert.match(act, /\.manifest-item \.problem-link/);
+});
+
+
+test('Act II: brand hierarchy uses deep ink and ivory instead of an all-pastel wall', () => {
+  const act = editorial.split('DAYSLUME 3.3 — ATO II / Diagnóstico editorial')[1];
+  assert.ok(act);
+  assert.match(act, /linear-gradient\(90deg,\s*#202532 0 46\.5%,\s*var\(--warm-ivory\)/);
+  assert.match(act, /\.manifest-title \.manifest-title-line:nth-child\(2\)\s*\{[\s\S]*?var\(--peach\)/);
+  assert.match(act, /\.manifest-intro\s*\{[\s\S]*?var\(--warm-ivory-rgb\)/);
+  assert.match(act, /\.manifest-concept::after\s*\{[\s\S]*?border-radius:\s*50%/);
+  assert.match(act, /\.manifest-topic\s*\{/);
+  assert.match(act, /@media \(max-width: 1180px\)[\s\S]*?background:\s*var\(--warm-ivory\)/);
+  for(const label of ['PRESENÇA DIGITAL','JORNADA DO CLIENTE','OPERAÇÃO DIGITAL']) {
+    assert.ok(home.includes('>' + label + '</span>'), label);
+  }
+  assert.equal((home.match(/class="manifest-topic"/g)||[]).length,3);
+});
+
+test('Act II: existing service links and every headline remain unchanged', () => {
+  const section = home.split('id="problemas"')[1].split('id="modelo"')[0];
+  assert.ok(section);
+  for(const line of ['Seu negócio é melhor do que parece na internet.',
+   'O cliente chega, mas o caminho até a decisão é confuso.',
+   'A operação depende de tarefas manuais demais.']) {
+    assert.ok(section.includes(line), line);
+  }
+  for(const href of ['servicos.html#presenca-digital','servicos.html#experiencias-digitais',
+    'servicos.html#sistemas-aplicacoes']) {
+    assert.ok(section.includes('href="' + href + '"'), href);
+  }
 });
