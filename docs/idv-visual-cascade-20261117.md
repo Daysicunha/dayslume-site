@@ -35,3 +35,6 @@ Base auditada: `36d3ea2f3cc4c8ca0f473207ba8be7356033ea8a` (PR #28). Branch: `fix
 
 ## Pendências
 As regras secundárias antigas de cor ainda devem ser inventariadas e inspecionadas no navegador. Não se deve converter toda cor de ilustração em token sem antes distinguir material gráfico de superfície institucional.
+
+## Harmonização cromática posterior
+Na mesma branch, os fundos principais dos atos **Problemas, Modelo, Produtos, Projetos, Fundadora e Contato**, assim como a iluminação-base da Hero, foram normalizados na origem, substituindo gradientes HEX não normativos por `color-mix()` e canais RGBA derivados dos seis tokens da DAYSLUME. A distinção entre seções claras e escuras e a estrutura 3D permanecem preservadas. A seção Conteúdos já utilizava tokens estruturais. Elementos internos de ilustração e cores dos cases reais não foram recoloridos indiscriminadamente.

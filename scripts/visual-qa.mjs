@@ -58,13 +58,25 @@ try {
      row.sections[key]=layout;
      if(captureWidths.has(width)) {
        await page.screenshot({path:join(out,v.name+'-'+width+'-'+key+'.png')});
-       const detailed={problemas:'#problemas .manifest-item:first-child',
-         modelo:'#modelo .modelo-path-card--bespoke',
-         produtos:'#produtos .solutions-grid',
-         dayane:'#projetos .home-case-dayane'}[key];
-       if(detailed) {
-         const element=await page.$(detailed);
-         if(element) await element.screenshot({path:join(out,v.name+'-'+width+'-'+key+'-detail.png')});
+       // Screenshots de viewport no centro do card, sem artefatos da captura de elemento.
+       const details={
+         problemas:[['primeiro','#problemas .manifest-item:first-child']],
+         modelo:[['sob-medida','#modelo .modelo-path-card--bespoke']],
+         produtos:[['vitrini','#produtos .solution-vitrini'],['engreni','#produtos .solution-engreni']],
+         dayane:[['projeto','#projetos .home-case-dayane']]
+       }[key]||[];
+       for(const [tag,sel] of details) {
+         const exists=await page.evaluate(query=>{
+           const e=document.querySelector(query);
+           if(!e)return false;
+           const r=e.getBoundingClientRect();
+           window.scrollTo({top:Math.max(0,scrollY+r.top-95),behavior:'instant'});
+           return true;
+         },sel);
+         if(exists) {
+           await wait(340);
+           await page.screenshot({path:join(out,v.name+'-'+width+'-'+key+'-detail-'+tag+'.png')});
+         }
        }
      }
    }

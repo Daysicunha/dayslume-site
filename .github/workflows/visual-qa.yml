@@ -1,8 +1,5 @@
 name: Visual QA — DAYSLUME (before/after)
 on:
-  push:
-    branches:
-      - 'fix/dayslume-idv-visual-cascade-20261117'
   pull_request:
     paths:
       - 'index.html'
