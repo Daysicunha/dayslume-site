@@ -496,3 +496,177 @@ html.motion-paused .home-page #apresentacao .cinema-service {
   animation: none !important;
   translate: none !important;
 }
+
+
+/* DAYSLUME 3.3 — Hero polish / 17-11-2026
+   Refinamento visual aprovado a partir do screenshot da Home.
+   A composição continua feita de HTML e CSS (não de uma imagem estática).
+   Somente #apresentacao; sem alterações em filme, produtos ou páginas internas.
+
+   O antigo plano de vidro com backdrop-filter cruzava a vitrine e criava
+   uma faixa leitosa sobre as interfaces. A atmosfera agora fica ATRÁS
+   dos painéis, preservando a leitura das telas. */
+.home-page #apresentacao.hero--floating-panels {
+  background:
+    radial-gradient(ellipse 44% 53% at 78% 42%, rgba(123, 92, 145, .28), transparent 82%),
+    radial-gradient(ellipse 32% 45% at 67% 79%, rgba(216, 182, 165, .13), transparent 82%),
+    radial-gradient(ellipse 43% 58% at 9% 10%, rgba(78, 102, 147, .13), transparent 83%),
+    linear-gradient(114deg, #121a2c 0%, var(--ink-deep, #202532) 52%, #1a1c30 100%);
+}
+.home-page #apresentacao .cinema-stage::before {
+  inset: 6% -5% 0%;
+  z-index: 0;
+  opacity: .9;
+  filter: blur(34px);
+  background:
+    radial-gradient(ellipse 58% 42% at 46% 85%, rgba(174, 119, 178, .26), transparent 80%),
+    radial-gradient(ellipse 50% 60% at 65% 43%, rgba(145, 119, 190, .17), transparent 79%);
+}
+.home-page #apresentacao .cinema-stage::after {
+  inset: -4% -7% 7% 10%;
+  z-index: 0;
+  border: 1px solid rgba(211, 180, 218, .15);
+  border-radius: 50%;
+  opacity: .64;
+  background: none;
+  transform: rotate(-19deg) scale(1.04, .68);
+}
+/* Decorative depth layers may never blur or obscure the product UI. */
+.home-page #apresentacao .cinema-depth,
+.home-page #apresentacao .cinema-depth--peach {
+  opacity: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+/* Contrast and breathing room: the editorial message remains the focal point. */
+.home-page #apresentacao .hero-eyebrow {
+  letter-spacing: .14em;
+}
+.home-page #apresentacao .hero-lead {
+  max-width: 47ch;
+  line-height: 1.68;
+  color: rgba(243, 239, 232, .85);
+}
+.home-page #apresentacao .hero-actions {
+  column-gap: clamp(22px, 2.4vw, 36px);
+}
+.home-page #apresentacao .cinema-browser {
+  border-color: rgba(248, 239, 246, .68);
+  box-shadow:
+    17px 31px 69px rgba(2, 5, 19, .47),
+    0 0 0 1px rgba(255, 255, 255, .1),
+    -4px 0 27px rgba(216, 182, 165, .11),
+    inset 0 1px 0 rgba(255, 255, 255, .8);
+}
+.home-page #apresentacao .cinema-agenda-panel {
+  border-color: rgba(210, 205, 238, .75);
+  box-shadow:
+    -13px 29px 61px rgba(4, 5, 22, .53),
+    0 0 0 1px rgba(248, 244, 252, .09),
+    0 0 25px rgba(187, 167, 229, .12);
+}
+.home-page #apresentacao .cinema-service {
+  background: linear-gradient(110deg, rgba(91, 73, 106, .94), rgba(41, 47, 74, .95));
+  border-color: rgba(223, 201, 231, .4);
+  box-shadow:
+    0 19px 42px rgba(4, 5, 18, .43),
+    0 0 28px rgba(172, 140, 199, .12),
+    inset 0 1px 0 rgba(255, 255, 255, .11);
+}
+
+@media (min-width: 1181px) {
+  .home-page #apresentacao.hero.hero--cinematic {
+    padding-top: clamp(78px, 6.6vw, 106px);
+    padding-bottom: clamp(43px, 4.3vw, 65px);
+  }
+  .home-page #apresentacao .hero-grid {
+    width: min(calc(100% - 96px), 1400px);
+    max-width: 1400px;
+    grid-template-columns: minmax(0, .96fr) minmax(0, 1.04fr);
+    gap: clamp(30px, 3.1vw, 53px);
+  }
+  .home-page #apresentacao .hero-content {
+    margin-top: -12px;
+  }
+  .home-page #apresentacao .hero-content h1 {
+    font-size: clamp(48px, 4.02vw, 68px);
+    line-height: 1.08;
+    margin-bottom: 23px;
+  }
+  .home-page #apresentacao .hero-lead {
+    margin-bottom: 25px;
+  }
+  .home-page #apresentacao .hero-rotator {
+    margin-bottom: 30px;
+  }
+  .home-page #apresentacao .hero-visual-composition.cinema-stage {
+    max-width: 790px;
+  }
+  .home-page #apresentacao .cinema-cluster {
+    height: clamp(515px, 40vw, 565px);
+  }
+  /* VITRINI leads; ENGRENI peeks from behind, never on top of VITRINI copy. */
+  .home-page #apresentacao .cinema-float--vitrini {
+    left: -3%;
+    top: 13%;
+    width: 74%;
+    height: 368px;
+    z-index: 5;
+  }
+  .home-page #apresentacao .cinema-float--engreni {
+    right: -.5%;
+    top: 7%;
+    width: 31%;
+    height: 356px;
+    z-index: 4;
+  }
+  .home-page #apresentacao .cinema-float--service {
+    left: 9%;
+    bottom: 4%;
+    width: 63%;
+    height: 79px;
+    z-index: 6;
+  }
+  .home-page #apresentacao .cinema-browser {
+    transform: perspective(1550px) rotateY(-6deg) rotateX(2deg) rotateZ(-1.1deg);
+  }
+  .home-page #apresentacao .cinema-agenda-panel {
+    transform: perspective(1350px) rotateY(7deg) rotateX(1deg) rotateZ(2.1deg);
+  }
+  .home-page #apresentacao .cinema-browser-screen {
+    padding: clamp(17px, 1.5vw, 24px);
+  }
+  .home-page #apresentacao .cinema-browser-title {
+    margin-top: clamp(13px, 1.4vw, 20px);
+    font-size: clamp(23px, 1.8vw, 29px);
+  }
+  .home-page #apresentacao .cinema-stage-caption--vitrini {
+    top: 8%;
+    left: -2%;
+  }
+  .home-page #apresentacao .cinema-stage-caption--engreni {
+    top: auto;
+    bottom: 8%;
+    right: 1%;
+  }
+  .home-page #apresentacao .cinema33-ledger {
+    width: min(calc(100% - 96px), 1400px);
+    max-width: 1400px;
+    margin-top: clamp(20px, 2.4vw, 34px);
+  }
+}
+
+/* On tablets keep the one-column hierarchy and the original, tested
+   floating-panel geometry. On phones remove only the decorative blur. */
+@media (max-width: 600px) {
+  .home-page #apresentacao .cinema-stage::after {
+    opacity: .22;
+  }
+  .home-page #apresentacao .cinema-stage::before {
+    filter: blur(24px);
+    opacity: .6;
+  }
+}
