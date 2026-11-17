@@ -64,11 +64,12 @@ test('plum v3 expands signature selectively and retains existing color tokens',(
   assert.doesNotMatch(editorial,/#[A-Fa-f0-9]{6}\b.*plum-v3-neon/);
 });
 
-test('Ato 01 has a continuous mineral seam instead of a hard 42.2 percent split',()=>{
- assert.match(editorial,/--c33-seam-mid:color-mix/);
- assert.match(editorial,/var\(--c33-seam-mid\) 42\.2%/);
- assert.match(editorial,/mask-image:linear-gradient\(180deg,#000 0%,#000 53%,transparent 100%\)/);
- assert.doesNotMatch(editorial,/var\(--ink-deep\) 0 42\.2%/);
+test('Ato 01 has one-pixel luminous seam without desaturated gray corridor',()=>{
+ assert.doesNotMatch(editorial,/--c33-seam-mid:/);
+ assert.match(editorial,/--c33-problems-paper:color-mix/);
+ assert.match(editorial,/\.container\.launch-manifest-grid::after\s*\{[^}]*width:1px/s);
+ assert.match(editorial,/\.container\.launch-manifest-grid::after\s*\{[^}]*box-shadow:0 0 7px/s);
+ assert.match(editorial,/background:linear-gradient\(90deg,var\(--ink-deep\) 0 42\.2%,var\(--c33-problems-paper\) 42\.2% 100%\)/);
 });
 
 test('Ato 02 cards use plum accents and preserve their visual assets',()=>{
@@ -76,4 +77,19 @@ test('Ato 02 cards use plum accents and preserve their visual assets',()=>{
  assert.match(editorial,/border-bottom:1\.5px solid rgba\(var\(--plum-mineral-rgb\),\.74\)/);
  assert.match(html,/modelo-project-art/);
  assert.match(html,/modelo-product-tile--engreni/);
+});
+
+test('premium cards own their glass and shadow without global important overrides',()=>{
+ const paletteRules=palette.slice(palette.indexOf('/* Shared card depth'));
+ assert.doesNotMatch(paletteRules,/\.manifest-item,\n\.launch-pillars/);
+ assert.doesNotMatch(paletteRules,/\.manifest-item:hover,\n\.launch-pillars/);
+ assert.match(editorial,/backdrop-filter:blur\(13px\) saturate\(1\.07\)/);
+ assert.match(editorial,/backdrop-filter:blur\(14px\) saturate\(1\.07\)/);
+ assert.match(editorial,/stroke-width:1\.6/);
+ assert.match(editorial,/stroke-width:1\.7/);
+});
+test('chapter rules illuminate borders and preserve reduced-motion preferences',()=>{
+ assert.match(editorial,/\/\* Divisórias editoriais de um pixel/);
+ assert.match(editorial,/inset 0 1px 0 rgba\(var\(--peach-rgb\),\.46\)/);
+ assert.match(editorial,/translate:none !important/);
 });
