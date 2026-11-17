@@ -858,7 +858,7 @@ body.home-page[data-c33-editorial] main > section#problemas.section {
   padding: 0;
   overflow: hidden;
   border: 0;
-  background: linear-gradient(90deg, #191925 0 42.2%, #FAEEE9 42.2% 100%);
+  background:linear-gradient(90deg, var(--ink-deep) 0 42.2%, color-mix(in srgb,var(--warm-ivory) 94%,var(--peach)) 42.2% 100%);
   color: var(--ink-deep);
 }
 body.home-page[data-c33-editorial] main > section#problemas.section::before,
@@ -1032,7 +1032,7 @@ body.home-page[data-c33-editorial] main > section#problemas.section
   padding: clamp(32px, 2.7vw, 46px) clamp(28px, 3.85vw, 70px) clamp(32px, 2.7vw, 46px) clamp(30px, 2.7vw, 48px);
   border: 0;
   border-radius: 0;
-  background: #FAEEE9;
+  background:color-mix(in srgb,var(--warm-ivory) 94%,var(--peach));
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-item,
@@ -1240,7 +1240,7 @@ body.home-page[data-c33-editorial] main > section#problemas.section
 @media (max-width: 1180px) {
   body.home-page[data-c33-editorial] main > section#problemas.section {
     padding: 0;
-    background: #FAEEE9;
+    background:color-mix(in srgb,var(--warm-ivory) 94%,var(--peach));
   }
   body.home-page[data-c33-editorial] main > section#problemas.section
     .container.launch-manifest-grid {
@@ -1435,10 +1435,7 @@ body.home-page[data-c33-editorial] main > section#modelo.section {
   overflow: hidden;
   padding-block: clamp(72px, 7.4vw, 122px) clamp(77px, 8vw, 132px);
   border-top: 1px solid rgba(var(--peach-rgb), .17);
-  background:
-    radial-gradient(ellipse 49% 65% at 97% 24%, rgba(239,189,181,.35), transparent 74%),
-    radial-gradient(ellipse 70% 48% at 1% 100%, rgba(118,69,115,.15), transparent 78%),
-    #F8EFEA;
+  background:radial-gradient(ellipse 49% 65% at 97% 24%,rgba(var(--peach-rgb),.28),transparent 74%),radial-gradient(ellipse 70% 48% at 1% 100%,rgba(var(--plum-mineral-rgb),.13),transparent 78%),color-mix(in srgb,var(--warm-ivory) 93%,var(--peach));
   color: var(--ink-deep);
 }
 body.home-page[data-c33-editorial] main > section#modelo.section::before {
@@ -2057,11 +2054,8 @@ body.home-page[data-c33-editorial] main > section#produtos.section {
   min-block-size: 0;
   padding: clamp(44px,4.6vw,68px) 0 clamp(48px,5vw,72px);
   overflow: hidden;
-  border-block-color: rgba(199,137,203,.22);
-  background:
-    radial-gradient(ellipse 48% 56% at 48% 23%, rgba(125,60,131,.29),transparent 73%),
-    radial-gradient(ellipse 28% 39% at 99% 48%, rgba(127,55,153,.21),transparent 80%),
-    linear-gradient(126deg,#121322 0%,#1C1C30 64%,#201B30 100%);
+  border-block-color:var(--warm-ivory);
+  background:radial-gradient(ellipse 48% 56% at 48% 23%,rgba(var(--plum-mineral-rgb),.27),transparent 73%),radial-gradient(ellipse 28% 39% at 99% 48%,rgba(var(--mist-blue-rgb),.10),transparent 80%),linear-gradient(126deg,color-mix(in srgb,var(--ink-deep) 93%,black) 0%,var(--ink-deep) 64%,color-mix(in srgb,var(--ink-deep) 85%,var(--plum-mineral)) 100%);
   color: #FFF6F6;
 }
 body.home-page[data-c33-editorial] main > section#produtos.section::before {
@@ -2865,11 +2859,8 @@ body.home-page[data-c33-editorial] main > section#projetos.section {
   min-height:0;
   min-block-size:0;
   border-top:1px solid rgba(207,126,225,.28);
-  background:
-    radial-gradient(ellipse 62% 49% at 59% 18%,rgba(104,57,123,.23),transparent 72%),
-    radial-gradient(ellipse 40% 41% at 100% 54%,rgba(137,53,154,.17),transparent 73%),
-    linear-gradient(145deg,#141425 0%,#1C1A2D 57%,#21182F 100%);
-  color:#F9F2FB;
+  background:radial-gradient(ellipse 62% 49% at 59% 18%,rgba(var(--plum-mineral-rgb),.20),transparent 72%),radial-gradient(ellipse 40% 41% at 100% 54%,rgba(var(--mist-blue-rgb),.08),transparent 73%),linear-gradient(145deg,color-mix(in srgb,var(--ink-deep) 96%,black) 0%,var(--ink-deep) 57%,color-mix(in srgb,var(--ink-deep) 85%,var(--plum-mineral)) 100%);
+  color:var(--warm-ivory);
 }
 body.home-page[data-c33-editorial] main > section#projetos.section::before {
   display:block!important;
@@ -3496,11 +3487,8 @@ body.home-page[data-c33-editorial] main > section#sobre.section {
   overflow:hidden;
   padding:clamp(44px,4.25vw,69px) 0 clamp(76px,6.3vw,104px);
   border-top:1px solid rgba(211,135,216,.24);
-  background:
-    radial-gradient(ellipse 43% 61% at 31% 51%,rgba(113,41,129,.17),transparent 75%),
-    radial-gradient(ellipse 44% 38% at 78% 91%,rgba(110,48,139,.22),transparent 80%),
-    linear-gradient(125deg,#151426 0%,#1A172B 56%,#20182E 100%);
-  color:#FBF0FB;
+  background:radial-gradient(ellipse 43% 61% at 31% 51%,rgba(var(--plum-mineral-rgb),.17),transparent 75%),radial-gradient(ellipse 44% 38% at 78% 91%,rgba(var(--mist-blue-rgb),.08),transparent 80%),linear-gradient(125deg,color-mix(in srgb,var(--ink-deep) 96%,black) 0%,var(--ink-deep) 56%,color-mix(in srgb,var(--ink-deep) 85%,var(--plum-mineral)) 100%);
+  color:var(--warm-ivory);
 }
 body.home-page[data-c33-editorial] main > section#sobre.section::before {
   content:"";
@@ -4068,12 +4056,8 @@ body.home-page[data-c33-editorial] main > section#contato.section {
   overflow:hidden;
   padding:clamp(64px,6vw,104px) 0 clamp(101px,9.7vw,157px);
   border-top:1px solid rgba(158,83,179,.24);
-  background:
-    radial-gradient(ellipse 36% 45% at 91% 11%,rgba(184,94,197,.37),transparent 74%),
-    radial-gradient(ellipse 31% 25% at 94% 68%,rgba(206,114,214,.17),transparent 80%),
-    radial-gradient(ellipse 49% 40% at 4% 96%,rgba(155,80,179,.25),transparent 75%),
-    linear-gradient(109deg,#FFF0E9 0%,#F8E9E5 44%,#F3DDE7 100%);
-  color:#201A31;
+  background:radial-gradient(ellipse 36% 45% at 91% 11%,rgba(var(--plum-mineral-rgb),.16),transparent 74%),radial-gradient(ellipse 31% 25% at 94% 68%,rgba(var(--peach-rgb),.18),transparent 80%),radial-gradient(ellipse 49% 40% at 4% 96%,rgba(var(--mist-blue-rgb),.10),transparent 75%),linear-gradient(109deg,color-mix(in srgb,var(--warm-ivory) 93%,var(--peach)) 0%,var(--warm-ivory) 44%,color-mix(in srgb,var(--warm-ivory) 88%,var(--plum-mineral)) 100%);
+  color:var(--ink-deep);
 }
 body.home-page[data-c33-editorial] main > section#contato.section::before {
   content:"";
