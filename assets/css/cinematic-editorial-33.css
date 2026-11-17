@@ -858,9 +858,8 @@ body.home-page[data-c33-editorial] main > section#problemas.section {
   padding: 0;
   overflow: hidden;
   border: 0;
-  --c33-seam-mid:color-mix(in srgb,var(--ink-deep) 42%,var(--warm-ivory));
   --c33-problems-paper:color-mix(in srgb,var(--warm-ivory) 94%,var(--peach));
-  background:linear-gradient(90deg,var(--ink-deep) 0 38%,var(--c33-seam-mid) 42.2%,var(--c33-problems-paper) 54%,var(--c33-problems-paper) 100%);
+  background:linear-gradient(90deg,var(--ink-deep) 0 42.2%,var(--c33-problems-paper) 42.2% 100%);
   color: var(--ink-deep);
 }
 body.home-page[data-c33-editorial] main > section#problemas.section::before,
@@ -881,6 +880,18 @@ body.home-page[data-c33-editorial] main > section#problemas.section
   gap: 0;
   align-items: stretch;
 }
+/* Uma linha luminosa estreita conecta os planos sem misturar as cores. */
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .container.launch-manifest-grid::after {
+  content:"";
+  position:absolute;
+  inset:0 auto 0 42.2%;
+  z-index:5;
+  width:1px;
+  background:linear-gradient(180deg,transparent 2%,rgba(var(--peach-rgb),.62) 22%,rgba(var(--mist-blue-rgb),.68) 53%,rgba(var(--plum-mineral-rgb),.54) 80%,transparent 99%);
+  box-shadow:0 0 7px rgba(var(--mist-blue-rgb),.4),0 0 17px rgba(var(--plum-mineral-rgb),.23);
+  pointer-events:none;
+}
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-concept {
   position: relative;
@@ -893,10 +904,7 @@ body.home-page[data-c33-editorial] main > section#problemas.section
   padding: clamp(65px, 4.7vw, 82px) clamp(30px, 3.5vw, 64px) 185px clamp(55px, 6.7vw, 113px);
   border: 0;
   border-radius: 0;
-  background:
-    radial-gradient(ellipse 68% 48% at 59% 70%,rgba(var(--plum-mineral-rgb),.20),transparent 77%),
-    linear-gradient(180deg,transparent 0 77%,rgba(var(--plum-mineral-rgb),.16) 85%,color-mix(in srgb,var(--warm-ivory) 81%,var(--plum-mineral)) 100%),
-    linear-gradient(90deg,var(--ink-deep) 0 77%,color-mix(in srgb,var(--ink-deep) 79%,var(--plum-mineral)) 88%,var(--c33-seam-mid) 100%);
+  background:radial-gradient(ellipse 31% 52% at 98% 58%,rgba(var(--plum-mineral-rgb),.23),transparent 78%),radial-gradient(ellipse 58% 49% at 58% 87%,rgba(var(--slate-mineral-rgb),.13),transparent 80%),linear-gradient(160deg,var(--ink-deep) 0%,color-mix(in srgb,var(--ink-deep) 83%,var(--plum-mineral)) 100%);
   color: #F7F1F3;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
@@ -1037,7 +1045,7 @@ body.home-page[data-c33-editorial] main > section#problemas.section
   padding: clamp(32px, 2.7vw, 46px) clamp(28px, 3.85vw, 70px) clamp(32px, 2.7vw, 46px) clamp(30px, 2.7vw, 48px);
   border: 0;
   border-radius: 0;
-  background:linear-gradient(90deg,var(--c33-seam-mid) 0%,color-mix(in srgb,var(--warm-ivory) 70%,var(--plum-mineral)) 13%,var(--c33-problems-paper) 30%,var(--c33-problems-paper) 100%);
+  background:radial-gradient(ellipse 24% 69% at 0% 44%,rgba(var(--plum-mineral-rgb),.095),transparent 78%),var(--c33-problems-paper);
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-item,
@@ -1255,6 +1263,11 @@ body.home-page[data-c33-editorial] main > section#problemas.section
     gap: 0;
   }
   body.home-page[data-c33-editorial] main > section#problemas.section
+    .container.launch-manifest-grid::after {
+    display:none;
+    content:none;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
     .manifest-concept {
     width: 100%;
     min-height: 0;
@@ -1262,7 +1275,7 @@ body.home-page[data-c33-editorial] main > section#problemas.section
     padding: 64px clamp(32px, 7vw, 90px) 200px;
     border: 0;
     border-radius: 0;
-    background:radial-gradient(ellipse 66% 41% at 68% 79%,rgba(var(--plum-mineral-rgb),.20),transparent 78%),linear-gradient(180deg,var(--ink-deep) 0 73%,color-mix(in srgb,var(--ink-deep) 77%,var(--plum-mineral)) 85%,color-mix(in srgb,var(--warm-ivory) 81%,var(--plum-mineral)) 100%);
+    background:radial-gradient(ellipse 58% 45% at 67% 85%,rgba(var(--plum-mineral-rgb),.20),transparent 78%),linear-gradient(160deg,var(--ink-deep) 0%,color-mix(in srgb,var(--ink-deep) 79%,var(--plum-mineral)) 100%);
   }
   body.home-page[data-c33-editorial] main > section#problemas.section
     .manifest-title {
@@ -1276,7 +1289,9 @@ body.home-page[data-c33-editorial] main > section#problemas.section
     .manifest-list {
     min-height: 0;
     padding: 34px clamp(24px, 7vw, 84px) 50px;
-    background:linear-gradient(180deg,color-mix(in srgb,var(--warm-ivory) 81%,var(--plum-mineral)),color-mix(in srgb,var(--warm-ivory) 90%,var(--plum-mineral)) 11%,var(--c33-problems-paper) 27%,var(--c33-problems-paper) 100%);
+    border-top:1px solid rgba(var(--peach-rgb),.55);
+    box-shadow:inset 0 1px 0 rgba(var(--mist-blue-rgb),.38),inset 0 10px 18px -15px rgba(var(--plum-mineral-rgb),.34);
+    background:radial-gradient(ellipse 73% 25% at 50% 0%,rgba(var(--plum-mineral-rgb),.13),transparent 85%),var(--c33-problems-paper);
   }
   body.home-page[data-c33-editorial] main > section#problemas.section
     .manifest-item,
