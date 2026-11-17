@@ -16,7 +16,7 @@ test('Ato VI: mantém foto real, liderança identificada, três etapas e destino
   assert.ok(start>0&&end>start);
   assert.equal((section.match(/daysi-cunha-editorial\.jpg/g)||[]).length,1);
   assert.match(section,/alt="Daysi Cunha, fundadora da DAYSLUME"/);
-  assert.match(section,/class="founder-photo-signature"/);
+  assert.match(section,/class="about-signature founder-photo-signature"/);
   assert.match(section,/href="sobre\.html"/);
   assert.match(section,/href="processo\.html"/);
   assert.match(section,/A DAYSLUME é liderada por/);
