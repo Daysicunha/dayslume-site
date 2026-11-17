@@ -171,7 +171,7 @@ test('Act II: section uses technical/editorial contrast, with restrained selecti
   assert.match(act, /\.manifest-item \.problem-link:focus-visible/);
   // A regra antiga com !important foi removida para permitir a sombra local em vidro.
   assert.doesNotMatch(act, /box-shadow: none !important/);
-  assert.match(act, /backdrop-filter:blur\\(13px\\)/);
+  assert.ok(act.includes('backdrop-filter:blur(13px)'), 'Glass card needs backdrop filter');
   assert.doesNotMatch(act, /\.hero--floating-panels|#apresentacao|#cinema33-film/);
 });
 
