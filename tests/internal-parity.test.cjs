@@ -35,7 +35,7 @@ test('internal navigation uses the same 1180px breakpoint as the Home',()=>{
 test('interior hero adopts the mineral split without pinning scroll',()=>{
  const parity=read('assets/css/internal-home-parity.css');
  assert.match(parity,/Auditoria de 13\/10/);
- assert.match(parity,/#202532 0%,#202532 58%,#2C3448 58%,#485168 82%,#6B536D 100%/);
+ assert.match(parity,/var\(--ink-deep\) 0%,var\(--ink-deep\) 58%,#2C3448 58%,#485168 82%,var\(--plum-mineral\) 100%/);
  assert.match(parity,/body\.blog-index \.blog-hero::before/);
  assert.match(parity,/body\.blog-article \.blog-reading-hero/);
  assert.match(parity,/prefers-reduced-motion:reduce/);
