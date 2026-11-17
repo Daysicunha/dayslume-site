@@ -858,7 +858,9 @@ body.home-page[data-c33-editorial] main > section#problemas.section {
   padding: 0;
   overflow: hidden;
   border: 0;
-  background:linear-gradient(90deg, var(--ink-deep) 0 42.2%, color-mix(in srgb,var(--warm-ivory) 94%,var(--peach)) 42.2% 100%);
+  --c33-seam-mid:color-mix(in srgb,var(--ink-deep) 42%,var(--warm-ivory));
+  --c33-problems-paper:color-mix(in srgb,var(--warm-ivory) 94%,var(--peach));
+  background:linear-gradient(90deg,var(--ink-deep) 0 38%,var(--c33-seam-mid) 42.2%,var(--c33-problems-paper) 54%,var(--c33-problems-paper) 100%);
   color: var(--ink-deep);
 }
 body.home-page[data-c33-editorial] main > section#problemas.section::before,
@@ -892,8 +894,9 @@ body.home-page[data-c33-editorial] main > section#problemas.section
   border: 0;
   border-radius: 0;
   background:
-    radial-gradient(ellipse 85% 45% at 59% 95%, rgba(var(--slate-mineral-rgb),.25), transparent 75%),
-    linear-gradient(155deg, #181B28 0%, #1B1B2B 55%, #221D30 100%);
+    radial-gradient(ellipse 68% 48% at 59% 70%,rgba(var(--plum-mineral-rgb),.20),transparent 77%),
+    linear-gradient(180deg,transparent 0 77%,rgba(var(--plum-mineral-rgb),.16) 85%,color-mix(in srgb,var(--warm-ivory) 81%,var(--plum-mineral)) 100%),
+    linear-gradient(90deg,var(--ink-deep) 0 77%,color-mix(in srgb,var(--ink-deep) 79%,var(--plum-mineral)) 88%,var(--c33-seam-mid) 100%);
   color: #F7F1F3;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
@@ -1019,6 +1022,8 @@ body.home-page[data-c33-editorial] main > section#problemas.section
   width: 100%;
   height: clamp(205px, 22vw, 320px);
   max-width: none;
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 53%,transparent 100%);
+  mask-image:linear-gradient(180deg,#000 0%,#000 53%,transparent 100%);
   pointer-events: none;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
@@ -1032,7 +1037,7 @@ body.home-page[data-c33-editorial] main > section#problemas.section
   padding: clamp(32px, 2.7vw, 46px) clamp(28px, 3.85vw, 70px) clamp(32px, 2.7vw, 46px) clamp(30px, 2.7vw, 48px);
   border: 0;
   border-radius: 0;
-  background:color-mix(in srgb,var(--warm-ivory) 94%,var(--peach));
+  background:linear-gradient(90deg,var(--c33-seam-mid) 0%,color-mix(in srgb,var(--warm-ivory) 70%,var(--plum-mineral)) 13%,var(--c33-problems-paper) 30%,var(--c33-problems-paper) 100%);
 }
 body.home-page[data-c33-editorial] main > section#problemas.section
   .manifest-item,
@@ -1257,6 +1262,7 @@ body.home-page[data-c33-editorial] main > section#problemas.section
     padding: 64px clamp(32px, 7vw, 90px) 200px;
     border: 0;
     border-radius: 0;
+    background:radial-gradient(ellipse 66% 41% at 68% 79%,rgba(var(--plum-mineral-rgb),.20),transparent 78%),linear-gradient(180deg,var(--ink-deep) 0 73%,color-mix(in srgb,var(--ink-deep) 77%,var(--plum-mineral)) 85%,color-mix(in srgb,var(--warm-ivory) 81%,var(--plum-mineral)) 100%);
   }
   body.home-page[data-c33-editorial] main > section#problemas.section
     .manifest-title {
@@ -1270,6 +1276,7 @@ body.home-page[data-c33-editorial] main > section#problemas.section
     .manifest-list {
     min-height: 0;
     padding: 34px clamp(24px, 7vw, 84px) 50px;
+    background:linear-gradient(180deg,color-mix(in srgb,var(--warm-ivory) 81%,var(--plum-mineral)),color-mix(in srgb,var(--warm-ivory) 90%,var(--plum-mineral)) 11%,var(--c33-problems-paper) 27%,var(--c33-problems-paper) 100%);
   }
   body.home-page[data-c33-editorial] main > section#problemas.section
     .manifest-item,
@@ -1434,8 +1441,8 @@ body.home-page[data-c33-editorial] main > section#modelo.section {
   min-block-size: 0;
   overflow: hidden;
   padding-block: clamp(72px, 7.4vw, 122px) clamp(77px, 8vw, 132px);
-  border-top: 1px solid rgba(var(--peach-rgb), .17);
-  background:radial-gradient(ellipse 49% 65% at 97% 24%,rgba(var(--peach-rgb),.28),transparent 74%),radial-gradient(ellipse 70% 48% at 1% 100%,rgba(var(--plum-mineral-rgb),.13),transparent 78%),color-mix(in srgb,var(--warm-ivory) 93%,var(--peach));
+  border-top:1px solid rgba(var(--plum-mineral-rgb),.16);
+  background:linear-gradient(180deg,color-mix(in srgb,var(--warm-ivory) 82%,var(--plum-mineral)) 0%,transparent 17%),radial-gradient(ellipse 49% 65% at 97% 24%,rgba(var(--peach-rgb),.21),transparent 74%),radial-gradient(ellipse 70% 48% at 1% 100%,rgba(var(--plum-mineral-rgb),.15),transparent 78%),color-mix(in srgb,var(--warm-ivory) 93%,var(--peach));
   color: var(--ink-deep);
 }
 body.home-page[data-c33-editorial] main > section#modelo.section::before {
@@ -1594,16 +1601,16 @@ body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-ca
   margin: 0;
   padding: 0;
   overflow: hidden;
-  border: 1px solid rgba(223,186,194,.67);
-  border-radius: 27px;
-  background: linear-gradient(116deg,var(--warm-ivory) 0%,color-mix(in srgb,var(--warm-ivory) 75%,var(--peach)) 54%,color-mix(in srgb,var(--warm-ivory) 56%,var(--mist-blue)) 100%);
-  color: var(--ink-deep);
-  box-shadow: 0 20px 45px rgba(var(--ink-deep-rgb),.105), inset 0 1px 0 rgba(255,255,255,.85);
+  border:1px solid rgba(var(--plum-mineral-rgb),.34);
+  border-radius:27px;
+  background:radial-gradient(ellipse 58% 67% at 88% 62%,rgba(var(--plum-mineral-rgb),.18),transparent 79%),linear-gradient(116deg,color-mix(in srgb,var(--warm-ivory) 94%,var(--peach)) 0%,color-mix(in srgb,var(--warm-ivory) 79%,var(--peach)) 48%,color-mix(in srgb,var(--warm-ivory) 64%,var(--plum-mineral)) 100%);
+  color:var(--ink-deep);
+  box-shadow:0 20px 45px rgba(var(--ink-deep-rgb),.12),0 0 26px rgba(var(--plum-mineral-rgb),.12),inset 0 1px 0 rgba(255,255,255,.88);
   transition: box-shadow .35s ease, border-color .35s ease;
 }
 body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--products,
 body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--products:last-child {
-  background: linear-gradient(116deg,var(--warm-ivory) 1%,color-mix(in srgb,var(--warm-ivory) 80%,var(--mist-blue)) 47%,color-mix(in srgb,var(--warm-ivory) 48%,var(--mist-blue)) 100%);
+  background:radial-gradient(ellipse 66% 76% at 86% 58%,rgba(var(--plum-mineral-rgb),.21),transparent 77%),linear-gradient(116deg,color-mix(in srgb,var(--warm-ivory) 94%,var(--plum-mineral)) 1%,color-mix(in srgb,var(--warm-ivory) 80%,var(--mist-blue)) 47%,color-mix(in srgb,var(--warm-ivory) 57%,var(--plum-mineral)) 100%);
 }
 body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card::before {
   content: "";
@@ -1613,9 +1620,9 @@ body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-ca
   aspect-ratio: 1;
   left: 27%;
   top: 15%;
-  border: 1px solid rgba(255,252,248,.4);
-  border-radius: 50% 47% 53% 50%;
-  background: radial-gradient(circle at 40% 40%, rgba(255,247,242,.25), transparent 65%);
+  border:1px solid rgba(var(--warm-ivory-rgb),.45);
+  border-radius:50% 47% 53% 50%;
+  background:radial-gradient(circle at 40% 40%,rgba(var(--peach-rgb),.18),rgba(var(--plum-mineral-rgb),.06) 48%,transparent 70%);
   pointer-events: none;
 }
 body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card::after {
@@ -1625,13 +1632,13 @@ body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-ca
   inset: auto -5% -20% 13%;
   height: 30%;
   border-radius: 50%;
-  background: rgba(255,245,239,.4);
+  background:radial-gradient(ellipse at 52% 46%,rgba(var(--plum-mineral-rgb),.12),rgba(var(--peach-rgb),.06) 45%,transparent 80%);
   transform: rotate(-14deg);
   pointer-events: none;
 }
 body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card:is(:hover,:focus-within) {
-  border-color: rgba(var(--slate-mineral-rgb),.6);
-  box-shadow: 0 28px 57px rgba(var(--ink-deep-rgb),.18), inset 0 1px 0 rgba(255,255,255,.92);
+  border-color:rgba(var(--plum-mineral-rgb),.56);
+  box-shadow:0 28px 57px rgba(var(--ink-deep-rgb),.17),0 0 30px rgba(var(--plum-mineral-rgb),.14),inset 0 1px 0 rgba(255,255,255,.92);
 }
 body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-copy {
   position: relative;
@@ -1655,15 +1662,16 @@ body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-ca
   width: 49px;
   height: 35px;
   border-radius: 999px;
-  background: #F5CABF;
-  color: var(--ds-depth-2);
+  border:1px solid rgba(var(--plum-mineral-rgb),.25);
+  background:color-mix(in srgb,var(--peach) 76%,var(--warm-ivory));
+  color:var(--plum-mineral);
   font-size: 15px;
   font-weight: 750;
   letter-spacing: .04em;
 }
 body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card .path-kicker {
   margin: 0 0 17px;
-  color: var(--ds-depth-2);
+  color:var(--plum-mineral);
   font-size: clamp(12px, .96vw, 15px);
   font-weight: 800;
   line-height: 1.4;
@@ -1694,10 +1702,10 @@ body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-ca
   margin-top: auto;
   padding: 18px 0 6px;
   border: 0;
-  border-bottom: 1.5px solid rgba(var(--slate-mineral-rgb),.74);
-  border-radius: 0;
-  background: transparent;
-  color: var(--ds-depth-2);
+  border-bottom:1.5px solid rgba(var(--plum-mineral-rgb),.74);
+  border-radius:0;
+  background:transparent;
+  color:var(--plum-mineral);
   font-size: clamp(11px, .91vw, 14px);
   font-weight: 800;
   line-height: 1.3;
@@ -1729,7 +1737,7 @@ body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-vi
   z-index: -1;
   inset: 12% -50% 4% -45%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,234,229,.7), rgba(221,169,188,.17) 60%, transparent 70%);
+  background:radial-gradient(ellipse at 43% 52%,rgba(var(--peach-rgb),.30),rgba(var(--plum-mineral-rgb),.24) 46%,transparent 74%);
 }
 body.home-page[data-c33-editorial] main > section#modelo.section .modelo-project-art {
   position: absolute;
@@ -1782,8 +1790,8 @@ body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product
   inset: 0;
   border: 1px solid rgba(255,239,223,.74);
   border-radius: 26px;
-  background: linear-gradient(130deg, #FFEBE4, #D8ABC1 80%);
-  box-shadow: 0 18px 34px rgba(var(--ink-deep-rgb),.18), inset 0 3px 0 rgba(255,255,255,.72);
+  background:linear-gradient(130deg,color-mix(in srgb,var(--warm-ivory) 81%,var(--peach)),color-mix(in srgb,var(--peach) 64%,var(--plum-mineral)) 80%);
+  box-shadow:0 18px 34px rgba(var(--ink-deep-rgb),.18),0 0 22px rgba(var(--plum-mineral-rgb),.13),inset 0 3px 0 rgba(255,255,255,.72);
 }
 body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-platform span:nth-child(1) { transform: translateZ(-25px) translateY(30px); background:#A37B9F; }
 body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-platform span:nth-child(2) { transform: translateZ(-12px) translateY(13px); background:#CAA0B7; }
@@ -1828,7 +1836,7 @@ body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product
   right: -1%;
   top: 45%;
   color: #FFF5EC;
-  background: linear-gradient(145deg, #E9AFAB, #BF7C86 83%);
+  background:linear-gradient(145deg,color-mix(in srgb,var(--plum-mineral) 88%,var(--peach)),color-mix(in srgb,var(--ink-deep) 40%,var(--plum-mineral)) 83%);
   transform: translate3d(4%, 0, 85px) rotateY(-17deg) rotateZ(7deg);
 }
 body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card:is(:hover,:focus-within) .modelo-project-art {

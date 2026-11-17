@@ -63,3 +63,17 @@ test('plum v3 expands signature selectively and retains existing color tokens',(
   assert.match(palette,/--plum-mineral: #6B536D/);
   assert.doesNotMatch(editorial,/#[A-Fa-f0-9]{6}\b.*plum-v3-neon/);
 });
+
+test('Ato 01 has a continuous mineral seam instead of a hard 42.2 percent split',()=>{
+ assert.match(editorial,/--c33-seam-mid:color-mix/);
+ assert.match(editorial,/var\(--c33-seam-mid\) 42\.2%/);
+ assert.match(editorial,/mask-image:linear-gradient\(180deg,#000 0%,#000 53%,transparent 100%\)/);
+ assert.doesNotMatch(editorial,/var\(--ink-deep\) 0 42\.2%/);
+});
+
+test('Ato 02 cards use plum accents and preserve their visual assets',()=>{
+ assert.match(editorial,/rgba\(var\(--plum-mineral-rgb\),\.21\)/);
+ assert.match(editorial,/border-bottom:1\.5px solid rgba\(var\(--plum-mineral-rgb\),\.74\)/);
+ assert.match(html,/modelo-project-art/);
+ assert.match(html,/modelo-product-tile--engreni/);
+});

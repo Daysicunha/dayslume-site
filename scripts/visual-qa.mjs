@@ -12,8 +12,8 @@ const browser=await puppeteer.launch({
   executablePath:chrome,headless:true,
   args:['--no-sandbox','--disable-dev-shm-usage','--disable-gpu']
 });
-const versions=[{name:'before-color-v2',url:'http://127.0.0.1:8765/'},
-                {name:'after-plum-v3',url:'http://127.0.0.1:8766/'}];
+const versions=[{name:'before-plum-v3',url:'http://127.0.0.1:8765/'},
+                {name:'after-seams-v4',url:'http://127.0.0.1:8766/'}];
 const viewports=[320,360,390,768,1024,1440];
 const sections=[['hero','#apresentacao'],['problemas','#problemas'],
                 ['modelo','#modelo'],['produtos','#produtos'],['dayane','#projetos'],
@@ -71,7 +71,7 @@ try {
            scrollPadding:getComputedStyle(document.documentElement).scrollPaddingTop
          };
        });
-       if(v.name==='after-plum-v3' && row.heroAnchor.heroTop>row.heroAnchor.headerBottom+6)
+       if(v.name==='after-seams-v4' && row.heroAnchor.heroTop>row.heroAnchor.headerBottom+6)
          row.issues.push('hero anchor exposes preceding film: '+JSON.stringify(row.heroAnchor));
      }
      if(captureWidths.has(width)) {
@@ -109,7 +109,7 @@ try {
          const r=b?.getBoundingClientRect();
          return {expanded:b?.getAttribute('aria-expanded'),open:m?.classList.contains('open'),width:Math.round(r?.width??0),height:Math.round(r?.height??0)};
        });
-       if(v.name==='after-plum-v3' && (row.mobileNav.expanded!=='true'||!row.mobileNav.open||row.mobileNav.width<44||row.mobileNav.height<44))
+       if(v.name==='after-seams-v4' && (row.mobileNav.expanded!=='true'||!row.mobileNav.open||row.mobileNav.width<44||row.mobileNav.height<44))
          row.issues.push('mobile menu open/target: '+JSON.stringify(row.mobileNav));
        await btn.click();
      } else row.issues.push('mobile menu toggle missing');
@@ -125,7 +125,7 @@ try {
      return {scene:f?.dataset.currentScene,fragments:f?getComputedStyle(f.querySelector('.c33-window')).visibility:null};
    });
    if(captureWidths.has(width))await page.screenshot({path:join(out,v.name+'-'+width+'-cinema-final.png')});
-   if(v.name==='after-plum-v3' && [320,1440].includes(width)) {
+   if(v.name==='after-seams-v4' && [320,1440].includes(width)) {
      await page.emulateMediaFeatures([{name:'prefers-reduced-motion',value:'reduce'}]);
      await wait(90);
      row.reducedMotion=await page.evaluate(()=>{
@@ -140,7 +140,7 @@ try {
  }
 } finally {await browser.close();}
 await writeFile(join(out,'measurements.json'),JSON.stringify(results,null,2));
-const md=['# DAYSLUME visual QA — ameixa v2 vs ameixa iluminado v3','','Automated browser screenshots only; requires human aesthetic approval.','','| Version | Width | Document overflow | Film scene | Window visible |','|---|---:|---|---|---|'];
+const md=['# DAYSLUME visual QA — transições e cards: ameixa v3 vs refinamento v4','','Automated browser screenshots only; requires human aesthetic approval.','','| Version | Width | Document overflow | Film scene | Window visible |','|---|---:|---|---|---|'];
 for(const r of results)md.push('| '+r.version+' | '+r.width+'px | '+(r.issues.join(', ')||'none detected')+' | '+(r.film.scene||'n/a')+' | '+(r.film.fragments||'n/a')+' |');
 md.push('','## Anchor and mobile navigation checks');
 for(const r of results){

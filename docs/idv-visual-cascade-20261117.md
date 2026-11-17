@@ -73,3 +73,14 @@ Mudanças diretamente nas regras existentes, sem folha nova, classe ou component
 **Comparação controlada:** baseline v2 `adc0ee3253d1c68c606ef88da0ea26e00cf2de46` contra head v3 via `Visual QA`. O estudo comparativo não toma a `main` como 'antes' porque o objetivo desta etapa é avaliar só o ajuste pedido de ameixa e luz.
 
 **Critérios de aceite:** capturas 1440, 390 e 320 px, sem overflow horizontal, texto legível e sem glow sobre fotografia; execução funcional e QA estático. PR permanece rascunho e sem promoção em produção.
+
+## Refinamento v4 — transições entre atos e cards comerciais
+
+Implementado na mesma branch de correção, **sem publicar em produção**.
+
+- Ato 01: substituída a parada dura de 42,2% por uma costura visual compatível nas três superfícies: `#problemas`, `.manifest-concept` e `.manifest-list`; efeito horizontal em desktop e vertical no empilhamento abaixo de 1180 px.
+- Ato 01 → Ato 02: fundo escuro se dissolve em ameixa/marfim no rodapé; onda SVG original preservada e suavemente mascarada. A entrada de `#modelo` agora possui gradiente mineral curto que integra o tom do rodapé anterior.
+- Cards `#modelo`: fundo claro do sob medida recebe reflexo ameixa atrás do notebook; card Produtos Próprios recebe gradiente azul/mineral/ameixa, órbitas mais presentes, pilha ENGRENI com material ameixa profundo; bordas, hover/focus, badges e CTA harmonizados.
+- Ilustrações, links, conteúdo e animações preservados; nenhum CSS de override em folhas novas.
+
+**Comparação visual v4:** baseline v3 `89e4fd04cc4027531226c19d2a0dda16215d195e` versus branch atual, em 320/360/390/768/1024/1440 px. Evidências de navegador, além de testes estáticos, obrigatórias antes da homologação estética.
