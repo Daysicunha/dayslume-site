@@ -685,11 +685,11 @@ body.home-page #apresentacao[data-hero-master].hero.hero--cinematic {
   padding:clamp(64px,5.5vw,90px) 0 clamp(32px,3.3vw,55px);
   overflow:hidden;
   background:
-    radial-gradient(ellipse 52% 65% at 68% 45%,rgba(144,72,156,.24),transparent 77%),
-    radial-gradient(ellipse 39% 35% at 78% 91%,rgba(211,122,183,.16),transparent 78%),
-    radial-gradient(ellipse 54% 49% at 7% 8%,rgba(79,67,116,.13),transparent 73%),
-    linear-gradient(118deg,#101324 0%,#19172D 56%,#171328 100%);
-  color:#FFF6FB;
+    radial-gradient(ellipse 52% 65% at 68% 45%,rgba(var(--plum-mineral-rgb),.24),transparent 77%),
+    radial-gradient(ellipse 39% 35% at 78% 91%,rgba(var(--peach-rgb),.14),transparent 78%),
+    radial-gradient(ellipse 54% 49% at 7% 8%,rgba(var(--slate-mineral-rgb),.10),transparent 73%),
+    linear-gradient(118deg,color-mix(in srgb,var(--ink-deep) 95%,black) 0%,var(--ink-deep) 56%,color-mix(in srgb,var(--ink-deep) 88%,var(--plum-mineral)) 100%);
+  color:var(--warm-ivory);
 }
 body.home-page #apresentacao[data-hero-master]::before {
   content:"";
@@ -779,7 +779,7 @@ body.home-page #apresentacao[data-hero-master] .hero-content h1 {
   max-width:none;
   margin:0 0 clamp(17px,1.5vw,25px);
   padding:0;
-  color:#FFFBFE;
+  color:var(--warm-ivory);
   font-family:Georgia,"Iowan Old Style","Baskerville",serif;
   font-size:clamp(48px,4.33vw,75px);
   font-weight:400;
@@ -791,8 +791,8 @@ body.home-page #apresentacao[data-hero-master] .hero-content h1 {
 }
 body.home-page #apresentacao[data-hero-master] .hero-content h1 em {
   display:inline;
-  color:#E8B6B4;
-  -webkit-text-fill-color:#E8B6B4;
+  color:var(--peach);
+  -webkit-text-fill-color:var(--peach);
   background:none;
   font-family:inherit;
   font-style:normal;
@@ -808,8 +808,8 @@ body.home-page #apresentacao[data-hero-master] .hero-content h1 .hero-title-last
   -webkit-text-fill-color:#FCF7FC;
 }
 body.home-page #apresentacao[data-hero-master] .hero-content h1 .accent-point {
-  color:#E8B6B4;
-  -webkit-text-fill-color:#E8B6B4;
+  color:var(--peach);
+  -webkit-text-fill-color:var(--peach);
 }
 body.home-page #apresentacao[data-hero-master] .hero-lead {
   max-width:49ch;
