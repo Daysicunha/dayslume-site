@@ -84,3 +84,17 @@ Implementado na mesma branch de correção, **sem publicar em produção**.
 - Ilustrações, links, conteúdo e animações preservados; nenhum CSS de override em folhas novas.
 
 **Comparação visual v4:** baseline v3 `89e4fd04cc4027531226c19d2a0dda16215d195e` versus branch atual, em 320/360/390/768/1024/1440 px. Evidências de navegador, além de testes estáticos, obrigatórias antes da homologação estética.
+
+## Refinamento v5 — Card glass e costura autoral (após print da fundadora)
+
+**Diagnóstico confirmado no código:** a faixa cinza era produzida por três degradês simultâneos que interpolavam escuro e marfim em um intervalo de 16 pontos percentuais; a implementação anterior misturava `--c33-seam-mid` à cor de fundo de cada painel. Em paralelo, `brand-palette.css` continha regras globais `box-shadow:...!important` que concorriam com as sombras locais dos cards.
+
+**Correções na origem:**
+- Seção `#problemas`: dois planos cromáticos coerentes e **filete de 1px com glow limitado**, ancorado na coordenada do grid 42,2%, sem halo cinza difuso. Lado esquerdo permanece `Ink Deep`/ameixa; direita marfim com reflexo de ameixa local. Abaixo de 1180 px, costura passa a ser horizontal.
+- Três cards `manifest-item`: vidro translúcido `backdrop-filter:blur(13px)`, highlight perolado, borda dupla interna delicada, sombra de suspensão e hover discreto. Removida a participação deles na sombra global `!important` de `brand-palette.css`.
+- Cards `#modelo`: `backdrop-filter:blur(14px)`, reflexos discretos, sombras naturais e elevação independente (`translate`), sem interceptar a animação da própria ilustração.
+- Ícones funcionais: traços entre 1,6 e 1,7, sem redesenhar as ilustrações SVG reais nem mudar a copy.
+- Entre as seções: brilho fino e controlado nas bordas superiores via `box-shadow inset`; nenhum pseudo-elemento global novo que conflite com as órbitas já aprovadas.
+- Preservada a preferência `prefers-reduced-motion: reduce` nos efeitos de levitação.
+
+**Homologação:** baseline v4 `7a20572f58503bc6264298646c7c81023025cd95` versus head v5, capturas antes/depois do conjunto de cards em 1440, 390 e 320 px, medições em 320/360/390/768/1024/1440 px. QA estático e funcional exigidos. PR #29 segue rascunho, sem merge e sem produção.
