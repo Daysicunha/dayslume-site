@@ -4053,7 +4053,7 @@ body.home-page[data-c33-editorial] main > section#sobre.founder-motion-ready.fou
     gap:7px;
   }
   body.home-page[data-c33-editorial] main > section#sobre.section .about-visual-card {
-    width:min(100% - 26px,390px);
+    width:min(calc(100% - 26px),390px);
     max-width:390px;
   }
   body.home-page[data-c33-editorial] main > section#sobre.section .about-visual-inner {
@@ -4075,8 +4075,9 @@ body.home-page[data-c33-editorial] main > section#sobre.founder-motion-ready.fou
   }
 }
 @media (prefers-reduced-motion:reduce) {
-  body.home-page[data-c33-editorial] main > section#sobre.section :is(
-    .founder-wave-front,.about-visual-card::after,.about-process-compact li) {
+  body.home-page[data-c33-editorial] main > section#sobre.section .founder-wave-front,
+  body.home-page[data-c33-editorial] main > section#sobre.section .about-visual-card::after,
+  body.home-page[data-c33-editorial] main > section#sobre.section .about-process-compact li {
     animation:none!important;
     translate:none!important;
   }
