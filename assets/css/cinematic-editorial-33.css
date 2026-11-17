@@ -1082,7 +1082,7 @@ body.home-page[data-c33-editorial] main > section#problemas.section
   justify-content: center;
   min-width: 0;
   min-height: 0;
-  padding: 12px 0 10px 0;
+  padding: 12px 12px 10px;
   overflow: hidden;
   border-radius: 24px 0 0 24px;
 }
@@ -1737,13 +1737,14 @@ body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-vi
 body.home-page[data-c33-editorial] main > section#modelo.section .modelo-project-art {
   position: absolute;
   display: block;
-  width: 155%;
-  max-width: none;
+  width: min(100%, 440px);
+  max-width: 100%;
+  max-height: 90%;
   height: auto;
-  right: -6%;
+  right: 0;
   bottom: 6%;
   overflow: visible;
-  filter: drop-shadow(0 14px 16px rgba(91,45,80,.18));
+  filter: drop-shadow(0 14px 16px rgba(var(--plum-mineral-rgb),.18));
   transform: translateZ(0);
 }
 body.home-page[data-c33-editorial] main > section#modelo.section .modelo-project-art :is(.modelo-art-laptop,.modelo-art-clipboard,.modelo-art-code) {
@@ -2526,8 +2527,8 @@ body.home-page[data-c33-editorial] main > section#produtos.section .solution-car
   min-width:0;
   min-height:0;
   margin:0;
-  padding: 60px 9px 23px 0;
-  overflow: visible;
+  padding: 64px 16px 36px 10px;
+  overflow: hidden;
   perspective: 900px;
   transform: none;
 }
@@ -2540,42 +2541,47 @@ body.home-page[data-c33-editorial] main > section#produtos.section .solution-gra
   background: radial-gradient(ellipse at center,rgba(233,162,231,.43),rgba(217,129,216,.11) 56%,transparent 74%);
   pointer-events:none;
 }
-body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic::after {
-  content:"";
-  position:absolute;
-  z-index: 2;
-  width: 115%;
-  height: 18px;
-  left:-12%;
-  top: calc(50% + 79px);
-  border: 1px solid rgba(255,222,226,.65);
-  border-radius: 0 0 32px 32px;
-  background:linear-gradient(180deg,#E9C8CE,#AA85A4 84%,#7B587B);
-  box-shadow:0 11px 13px rgba(41,20,52,.27);
-  transform:perspective(510px) rotateX(53deg) rotate(-1.5deg);
-  pointer-events:none;
-}
-body.home-page[data-c33-editorial] main > section#produtos.section .solution-engreni .solution-graphic::after {
-  background:linear-gradient(180deg,#D6B0D8,#715582 84%,#4A385E);
-}
+/* As bases acompanham o mesmo transform e animação das telas. */
 body.home-page[data-c33-editorial] main > section#produtos.section .solution-graphic > :is(.vitrini-ui,.engreni-ui) {
   position:relative;
   z-index:1;
   display:block;
-  width:117%;
-  max-width:none;
-  margin:0;
-  border: 5px solid #443149;
-  border-bottom-width: 9px;
+  box-sizing:border-box;
+  width:95%;
+  max-width:min(100%,430px);
+  margin:0 auto;
+  overflow:visible;
+  border:4px solid var(--plum-mineral);
+  border-bottom-width:6px;
   border-radius:12px 12px 5px 5px;
-  box-shadow:0 20px 29px rgba(43,22,53,.36),0 0 0 1px rgba(255,225,244,.31);
-  transform:perspective(900px) rotateY(-10deg) rotateX(1deg) rotateZ(-2deg);
+  box-shadow:0 20px 29px rgba(var(--ink-deep-rgb),.26),0 0 0 1px rgba(var(--warm-ivory-rgb),.3);
+  transform:perspective(920px) rotateY(-3deg) rotateZ(-.7deg);
   transform-origin:center;
 }
 body.home-page[data-c33-editorial] main > section#produtos.section .solution-graphic > .engreni-ui {
-  height:184px;
-  border-color:#4F355E;
-  transform:perspective(900px) rotateY(-9deg) rotateX(2deg) rotateZ(2deg);
+  height:180px;
+  border-color:var(--plum-mineral);
+}
+body.home-page[data-c33-editorial] main > section#produtos.section .solution-graphic > :is(.vitrini-ui,.engreni-ui)::after {
+  content:"";
+  position:absolute;
+  z-index:2;
+  display:block;
+  left:-5%;
+  top:100%;
+  width:110%;
+  height:17px;
+  box-sizing:border-box;
+  border:1px solid rgba(var(--warm-ivory-rgb),.55);
+  border-radius:2px 2px 18px 18px;
+  background:linear-gradient(180deg,var(--peach),color-mix(in srgb,var(--plum-mineral) 70%,var(--peach)));
+  box-shadow:0 10px 12px rgba(var(--ink-deep-rgb),.22);
+  transform:perspective(500px) rotateX(55deg);
+  transform-origin:center top;
+  pointer-events:none;
+}
+body.home-page[data-c33-editorial] main > section#produtos.section .solution-engreni .engreni-ui::after {
+  background:linear-gradient(180deg,var(--slate-mineral),var(--plum-mineral));
 }
 body.home-page[data-c33-editorial] main > section#produtos.section .solution-card:is(:hover,:focus-within) .solution-graphic > .vitrini-ui {
   box-shadow:0 25px 38px rgba(43,22,53,.42),0 0 18px rgba(231,149,227,.19);
@@ -2603,12 +2609,12 @@ body.home-page[data-c33-editorial] main > section#produtos.section .products-edi
   50% {opacity:1;transform:rotate(-12deg) scale(1.03)}
 }
 @keyframes products-device-vitrini {
-  0%,100% {transform:perspective(900px) rotateY(-10deg) rotateX(1deg) rotateZ(-2deg) translateY(0)}
-  50% {transform:perspective(900px) rotateY(-8deg) rotateX(1deg) rotateZ(-1deg) translateY(-5px)}
+  0%,100% {transform:perspective(920px) rotateY(-3deg) rotateZ(-.7deg) translateY(0)}
+  50% {transform:perspective(920px) rotateY(-2deg) rotateZ(-.3deg) translateY(-4px)}
 }
 @keyframes products-device-engreni {
-  0%,100% {transform:perspective(900px) rotateY(-9deg) rotateX(2deg) rotateZ(2deg) translateY(0)}
-  50% {transform:perspective(900px) rotateY(-7deg) rotateX(1deg) rotateZ(1deg) translateY(-6px)}
+  0%,100% {transform:perspective(920px) rotateY(-3deg) rotateZ(-.7deg) translateY(0)}
+  50% {transform:perspective(920px) rotateY(-2deg) rotateZ(0deg) translateY(-4px)}
 }
 body.home-page[data-c33-editorial] main > section#produtos.products-motion-ready.products-is-visible .products-heading-tile--vitrini {
   animation: products-float-vitrini 7.4s ease-in-out infinite;
@@ -2663,7 +2669,6 @@ body.home-page[data-c33-editorial] main > section#produtos.products-motion-ready
   body.home-page[data-c33-editorial] main > section#produtos.section .solutions-grid {grid-template-columns:minmax(0,1fr);gap:19px;}
   body.home-page[data-c33-editorial] main > section#produtos.section .solutions-grid > .solution-card {min-height:320px;}
   body.home-page[data-c33-editorial] main > section#produtos.section .solution-graphic > :is(.vitrini-ui,.engreni-ui) {width:min(92%,430px);}
-  body.home-page[data-c33-editorial] main > section#produtos.section .solution-graphic::after {left:5%;width:92%;}
 }
 @media (max-width:700px) {
   body.home-page[data-c33-editorial] main > section#produtos.section {padding-block:45px 64px;}
@@ -2727,11 +2732,6 @@ body.home-page[data-c33-editorial] main > section#produtos.products-motion-ready
     transform:perspective(900px) rotateY(-7deg) rotateZ(-2deg);
   }
   body.home-page[data-c33-editorial] main > section#produtos.section .solution-graphic > .engreni-ui {height:180px;}
-  body.home-page[data-c33-editorial] main > section#produtos.section .solution-graphic::after {
-    top:calc(50% + 72px);
-    width:75%;
-    left:12%;
-  }
   body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .product-mini-links a {min-height:32px;}
   body.home-page[data-c33-editorial] main > section#produtos.section .solution-copy .product-stage-note {margin-top:5px;}
 }
@@ -2848,13 +2848,8 @@ body.home-page[data-c33-editorial] main > section#produtos.products-motion-ready
     padding:72px 3px 21px 0;
   }
   body.home-page[data-c33-editorial] main > section#produtos.section .solution-graphic > :is(.vitrini-ui,.engreni-ui) {
-    width:122%;
-    max-width:none;
-  }
-  body.home-page[data-c33-editorial] main > section#produtos.section .solution-graphic::after {
-    top:calc(50% + 79px);
-    left:-15%;
-    width:119%;
+    width:95%;
+    max-width:100%;
   }
 }
 
@@ -3134,62 +3129,34 @@ body.home-page[data-c33-editorial] main > section#projetos.section .projects-gri
 body.home-page[data-c33-editorial] main > section#projetos.section .projects-grid--launch .project-card:is(:hover,:focus-within) .project-image img {
   scale:1.025;
 }
-body.home-page[data-c33-editorial] main > section#projetos.section .projects-grid--launch .case-preview--dayane {
-  background:linear-gradient(127deg,#441D40,#4D244E 51%,#9E5682);
+/* Mídia real Dayane 1600x900: proporção da moldura não deve criar faixas. */
+body.home-page[data-c33-editorial] main > section#projetos.section .projects-grid--launch .home-case-dayane .project-image.case-preview--dayane {
+  aspect-ratio:16 / 9;
+  max-height:none;
+  background:var(--warm-ivory);
 }
 body.home-page[data-c33-editorial] main > section#projetos.section .case-dayane-snapshot {
   position:relative;
   display:grid;
-  grid-template-columns:44% 56%;
+  grid-template-columns:minmax(0,1fr);
+  place-items:center;
   width:100%;
   height:100%;
   overflow:hidden;
-  align-items:center;
-  background:linear-gradient(110deg,#421D3C,#6A3058 74%,#82467A);
-}
-body.home-page[data-c33-editorial] main > section#projetos.section .case-dayane-copy {
-  position:relative;
-  z-index:2;
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-  gap:7px;
-  min-width:0;
-  max-width:none;
-  padding:12px 0 12px 18px;
-  color:#FFF0ED;
-}
-body.home-page[data-c33-editorial] main > section#projetos.section .case-dayane-eyebrow {
-  margin:0;
-  color:#FFD4DF;
-  font-size:clamp(8px,.66vw,10px);
-  font-weight:750;
-  letter-spacing:.1em;
-}
-body.home-page[data-c33-editorial] main > section#projetos.section .case-dayane-copy strong {
-  display:block;
-  max-width:13ch;
-  color:#FFF0EE;
-  font-family:Georgia,serif;
-  font-size:clamp(17px,1.6vw,26px);
-  font-weight:650;
-  line-height:1.07;
-}
-body.home-page[data-c33-editorial] main > section#projetos.section .case-dayane-copy small,
-body.home-page[data-c33-editorial] main > section#projetos.section .case-dayane-action {
-  display:none;
+  background:var(--warm-ivory);
 }
 body.home-page[data-c33-editorial] main > section#projetos.section .case-dayane-mockup {
-  position:absolute;
+  position:static;
   z-index:1;
-  width:61%;
-  height:85%;
-  max-width:none;
-  max-height:none;
-  right:-4%;
-  bottom:2%;
-  object-fit:contain!important;
-  object-position:center bottom;
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:100%;
+  max-height:100%;
+  margin:0;
+  object-fit:cover;
+  object-position:center center;
+  transform:none;
 }
 body.home-page[data-c33-editorial] main > section#projetos.section .projects-grid--launch .case-story {
   display:grid;
