@@ -52,3 +52,14 @@ test('hero anchor does not reserve the previous film scene under fixed navigatio
  assert.doesNotMatch(palette,/main > section:is\(#apresentacao,#problemas,#modelo/);
  assert.match(homeBase,/html\{scroll-padding-top:0\}/);
 });
+
+
+test('plum v3 expands signature selectively and retains existing color tokens',()=>{
+  const hero=read('assets/css/cinematic-floating-panels-20261113.css');
+  assert.match(hero,/rgba\(var\(--plum-mineral-rgb\),\.38\)/);
+  assert.match(editorial,/rgba\(var\(--plum-mineral-rgb\),\.38\)/);
+  assert.match(editorial,/rgba\(var\(--plum-mineral-rgb\),\.30\)/);
+  assert.match(editorial,/outline:2px solid var\(--plum-mineral\)/);
+  assert.match(palette,/--plum-mineral: #6B536D/);
+  assert.doesNotMatch(editorial,/#[A-Fa-f0-9]{6}\b.*plum-v3-neon/);
+});

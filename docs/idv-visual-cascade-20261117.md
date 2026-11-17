@@ -58,3 +58,18 @@ Contagem da intervenção por arquivo:
 
 ### Segunda passagem seletiva
 Após comparar capturas reais de 1440 px, permaneceram lilases de baixa saturação nas superfícies (tons rosa não detectados pela primeira varredura por matiz). Foram ajustados na origem os títulos de Problemas, cards Problemas/Modelo/Produtos/Cases, CTA de Fundadora, botões de Conteúdos, formulário de Contato e aba lateral WhatsApp. As três ondas SVG (Fundadora, Conteúdos, Contato) agora usam cores da paleta documentada, preservando forma e animação. Nenhuma camada CSS extra foi acrescentada.
+
+## Refinamento cromático v3 — ameixa e pontos iluminados, 17/11/2026
+
+Decisão solicitada: **aumentar a presença de ameixa (mantendo #6B536D) e recuperar a iluminação cinematográfica localizada, sem voltar ao roxo neon/lilás saturado.**
+
+Mudanças diretamente nas regras existentes, sem folha nova, classe ou componente sobreposto:
+- **Hero:** halo ameixa mais presente ao redor das interfaces, reflexo perolado/pêssego no chão e filete de luz no mockup real.
+- **Produtos:** dois focos difusos ao redor da composição, ring light pêssego/azul, cards VITRINI com um leve ameixa na borda final e ENGRENI com profundidade mineral.
+- **Fundadora:** fundo ameixa mais perceptível nas bordas da cena, iluminação da moldura em volta (nunca sobre o retrato), ícones e CTA com brilho discreto.
+- **Contato:** dois pontos de iluminação no fundo, borda e vidro com ameixa desaturado, campo focado com outline visível e botão gradiente plum/ink.
+- **Preservados:** cores HEX documentadas da marca, fotos/cases reais, conteúdos, animações, geometrias e menu.
+
+**Comparação controlada:** baseline v2 `adc0ee3253d1c68c606ef88da0ea26e00cf2de46` contra head v3 via `Visual QA`. O estudo comparativo não toma a `main` como 'antes' porque o objetivo desta etapa é avaliar só o ajuste pedido de ameixa e luz.
+
+**Critérios de aceite:** capturas 1440, 390 e 320 px, sem overflow horizontal, texto legível e sem glow sobre fotografia; execução funcional e QA estático. PR permanece rascunho e sem promoção em produção.

@@ -2055,7 +2055,7 @@ body.home-page[data-c33-editorial] main > section#produtos.section {
   padding: clamp(44px,4.6vw,68px) 0 clamp(48px,5vw,72px);
   overflow: hidden;
   border-block-color:var(--warm-ivory);
-  background:radial-gradient(ellipse 48% 56% at 48% 23%,rgba(var(--plum-mineral-rgb),.27),transparent 73%),radial-gradient(ellipse 28% 39% at 99% 48%,rgba(var(--mist-blue-rgb),.10),transparent 80%),linear-gradient(126deg,color-mix(in srgb,var(--ink-deep) 93%,black) 0%,var(--ink-deep) 64%,color-mix(in srgb,var(--ink-deep) 85%,var(--plum-mineral)) 100%);
+  background:radial-gradient(ellipse 48% 56% at 48% 23%,rgba(var(--plum-mineral-rgb),.38),transparent 73%),radial-gradient(ellipse 19% 29% at 92% 28%,rgba(var(--plum-mineral-rgb),.19),transparent 75%),radial-gradient(ellipse 16% 20% at 82% 65%,rgba(var(--peach-rgb),.10),transparent 76%),radial-gradient(ellipse 28% 39% at 99% 48%,rgba(var(--mist-blue-rgb),.09),transparent 80%),linear-gradient(126deg,color-mix(in srgb,var(--ink-deep) 93%,black) 0%,var(--ink-deep) 64%,color-mix(in srgb,var(--ink-deep) 79%,var(--plum-mineral)) 100%);
   color: #FFF6F6;
 }
 body.home-page[data-c33-editorial] main > section#produtos.section::before {
@@ -2189,7 +2189,7 @@ body.home-page[data-c33-editorial] main > section#produtos.section .products-hea
   position: absolute;
   inset: 9% 8% 0;
   border-radius: 50%;
-  background: radial-gradient(ellipse at center,rgba(var(--mist-blue-rgb),.28),rgba(var(--mist-blue-rgb),.1) 48%,transparent 70%);
+  background:radial-gradient(ellipse 31% 47% at 28% 36%,rgba(var(--plum-mineral-rgb),.29),transparent 76%),radial-gradient(ellipse 19% 28% at 72% 64%,rgba(var(--peach-rgb),.14),transparent 74%),radial-gradient(ellipse at center,rgba(var(--mist-blue-rgb),.24),rgba(var(--mist-blue-rgb),.08) 48%,transparent 70%);
   filter: blur(15px);
   pointer-events: none;
 }
@@ -2203,7 +2203,7 @@ body.home-page[data-c33-editorial] main > section#produtos.section .products-hea
   border: 2px solid rgba(var(--mist-blue-rgb),.77);
   border-radius: 50%;
   transform: rotate(-14deg);
-  box-shadow: 0 0 12px rgba(var(--mist-blue-rgb),.55),0 0 25px rgba(var(--mist-blue-rgb),.22);
+  box-shadow:0 0 10px rgba(var(--peach-rgb),.30),0 0 28px rgba(var(--mist-blue-rgb),.23),0 0 35px rgba(var(--plum-mineral-rgb),.23);
   pointer-events: none;
 }
 body.home-page[data-c33-editorial] main > section#produtos.section .products-heading-podium {
@@ -2355,16 +2355,16 @@ body.home-page[data-c33-editorial] main > section#produtos.section .solutions-gr
   padding: 0;
   overflow: hidden;
   border-radius: 24px;
-  border: 1px solid rgba(233,176,229,.36);
-  box-shadow: 0 15px 36px rgba(6,6,17,.24), inset 0 1px 0 rgba(255,255,255,.2) !important;
+  border:1px solid rgba(var(--plum-mineral-rgb),.44);
+  box-shadow:0 15px 36px rgba(var(--ink-deep-rgb),.24),0 0 21px rgba(var(--plum-mineral-rgb),.12),inset 0 1px 0 rgba(255,255,255,.2) !important;
   transition: box-shadow .32s ease,border-color .32s ease,opacity .4s ease,filter .4s ease,transform .4s ease;
 }
 body.home-page[data-c33-editorial] main > section#produtos.section .solutions-grid > .solution-card.solution-vitrini {
-  background: linear-gradient(115deg,var(--warm-ivory) 0%,color-mix(in srgb,var(--warm-ivory) 84%,var(--mist-blue)) 54%,color-mix(in srgb,var(--warm-ivory) 60%,var(--mist-blue)) 100%);
+  background:linear-gradient(115deg,var(--warm-ivory) 0%,color-mix(in srgb,var(--warm-ivory) 84%,var(--mist-blue)) 48%,color-mix(in srgb,var(--warm-ivory) 75%,var(--plum-mineral)) 100%);
   color: #1E1C2A;
 }
 body.home-page[data-c33-editorial] main > section#produtos.section .solutions-grid > .solution-card.solution-engreni {
-  background: linear-gradient(117deg,var(--ink-deep) 1%,var(--ds-depth-1) 54%,var(--ds-depth-3) 100%);
+  background:linear-gradient(117deg,var(--ink-deep) 1%,color-mix(in srgb,var(--ink-deep) 84%,var(--plum-mineral)) 54%,color-mix(in srgb,var(--ink-deep) 61%,var(--plum-mineral)) 100%);
   color: #FFF6FA;
 }
 body.home-page[data-c33-editorial] main > section#produtos.section .solutions-grid > .solution-card:is(:hover,:focus-within) {
@@ -3487,7 +3487,7 @@ body.home-page[data-c33-editorial] main > section#sobre.section {
   overflow:hidden;
   padding:clamp(44px,4.25vw,69px) 0 clamp(76px,6.3vw,104px);
   border-top:1px solid rgba(var(--mist-blue-rgb),.24);
-  background:radial-gradient(ellipse 43% 61% at 31% 51%,rgba(var(--plum-mineral-rgb),.17),transparent 75%),radial-gradient(ellipse 44% 38% at 78% 91%,rgba(var(--mist-blue-rgb),.08),transparent 80%),linear-gradient(125deg,color-mix(in srgb,var(--ink-deep) 96%,black) 0%,var(--ink-deep) 56%,color-mix(in srgb,var(--ink-deep) 85%,var(--plum-mineral)) 100%);
+  background:radial-gradient(ellipse 42% 53% at 28% 49%,rgba(var(--plum-mineral-rgb),.30),transparent 75%),radial-gradient(ellipse 20% 31% at 24% 27%,rgba(var(--peach-rgb),.09),transparent 75%),radial-gradient(ellipse 36% 38% at 83% 73%,rgba(var(--plum-mineral-rgb),.14),transparent 80%),linear-gradient(125deg,color-mix(in srgb,var(--ink-deep) 96%,black) 0%,var(--ink-deep) 56%,color-mix(in srgb,var(--ink-deep) 76%,var(--plum-mineral)) 100%);
   color:var(--warm-ivory);
 }
 body.home-page[data-c33-editorial] main > section#sobre.section::before {
@@ -3550,7 +3550,7 @@ body.home-page[data-c33-editorial] main > section#sobre.section .about-visual-ca
   border:1px solid rgba(var(--mist-blue-rgb),.55);
   border-radius:33px;
   background:transparent;
-  box-shadow:0 0 19px rgba(var(--mist-blue-rgb),.37),0 0 41px rgba(var(--mist-blue-rgb),.15);
+  box-shadow:0 0 15px rgba(var(--peach-rgb),.17),0 0 29px rgba(var(--plum-mineral-rgb),.37),0 0 44px rgba(var(--mist-blue-rgb),.12);
   transform:none;
   pointer-events:none;
 }
@@ -3797,8 +3797,8 @@ body.home-page[data-c33-editorial] main > section#sobre.section .about-process-c
   padding:9px;
   border:1px solid rgba(var(--mist-blue-rgb),.32);
   border-radius:11px;
-  background:linear-gradient(125deg,var(--ds-depth-3),var(--ds-depth-2));
-  color:var(--ds-ice-tint);
+  background:linear-gradient(125deg,color-mix(in srgb,var(--ink-deep) 44%,var(--plum-mineral)),var(--ds-depth-2));
+  color:var(--warm-ivory);
   box-shadow:inset 0 1px 0 rgba(255,225,255,.13);
   transition:transform .27s ease,box-shadow .27s ease,background .27s ease;
 }
@@ -3842,9 +3842,9 @@ body.home-page[data-c33-editorial] main > section#sobre.section .about-process-c
   padding:13px clamp(19px,2.2vw,35px);
   border:1px solid rgba(255,213,246,.78);
   border-radius:999px;
-  background:linear-gradient(112deg,var(--ds-ice-tint) 0%,var(--ds-ice-tint) 52%,var(--ds-ice-tint) 100%);
+  background:linear-gradient(112deg,var(--ds-ice-tint) 0%,color-mix(in srgb,var(--ds-ice-tint) 83%,var(--plum-mineral)) 52%,var(--ds-ice-tint) 100%);
   color:var(--ds-depth-1);
-  box-shadow:0 13px 29px rgba(var(--ink-deep-rgb),.32),inset 0 1px 0 rgba(255,249,255,.38);
+  box-shadow:0 13px 29px rgba(var(--ink-deep-rgb),.32),0 0 22px rgba(var(--plum-mineral-rgb),.22),inset 0 1px 0 rgba(255,249,255,.38);
   font-size:clamp(12px,1vw,15px);
   font-weight:770;
   line-height:1.3;
@@ -4056,7 +4056,7 @@ body.home-page[data-c33-editorial] main > section#contato.section {
   overflow:hidden;
   padding:clamp(64px,6vw,104px) 0 clamp(101px,9.7vw,157px);
   border-top:1px solid rgba(var(--mist-blue-rgb),.24);
-  background:radial-gradient(ellipse 36% 45% at 91% 11%,rgba(var(--plum-mineral-rgb),.16),transparent 74%),radial-gradient(ellipse 31% 25% at 94% 68%,rgba(var(--peach-rgb),.18),transparent 80%),radial-gradient(ellipse 49% 40% at 4% 96%,rgba(var(--mist-blue-rgb),.10),transparent 75%),linear-gradient(109deg,color-mix(in srgb,var(--warm-ivory) 93%,var(--peach)) 0%,var(--warm-ivory) 44%,color-mix(in srgb,var(--warm-ivory) 88%,var(--plum-mineral)) 100%);
+  background:radial-gradient(ellipse 29% 32% at 86% 24%,rgba(var(--plum-mineral-rgb),.20),transparent 74%),radial-gradient(ellipse 14% 19% at 93% 58%,rgba(var(--peach-rgb),.15),transparent 78%),radial-gradient(ellipse 38% 28% at 4% 87%,rgba(var(--mist-blue-rgb),.11),transparent 75%),linear-gradient(109deg,color-mix(in srgb,var(--warm-ivory) 93%,var(--peach)) 0%,var(--warm-ivory) 44%,color-mix(in srgb,var(--warm-ivory) 85%,var(--plum-mineral)) 100%);
   color:var(--ink-deep);
 }
 body.home-page[data-c33-editorial] main > section#contato.section::before {
@@ -4284,15 +4284,16 @@ body.home-page[data-c33-editorial] main > section#contato.section form.contact-f
   margin:0;
   padding:clamp(25px,2.8vw,43px);
   overflow:hidden;
-  border:1px solid rgba(var(--slate-mineral-rgb),.38);
+  border:1px solid rgba(var(--plum-mineral-rgb),.35);
   border-radius:clamp(23px,2.4vw,36px);
   background:
-    radial-gradient(ellipse 58% 47% at 100% 0%,rgba(var(--mist-blue-rgb),.22),transparent 79%),
+    radial-gradient(ellipse 27% 33% at 96% 8%,rgba(var(--plum-mineral-rgb),.10),transparent 76%),
+    radial-gradient(ellipse 17% 28% at 79% 25%,rgba(var(--mist-blue-rgb),.17),transparent 76%),
     linear-gradient(138deg,rgba(var(--warm-ivory-rgb),.95),rgba(var(--warm-ivory-rgb),.87));
   -webkit-backdrop-filter:blur(8px);
   backdrop-filter:blur(8px);
   color:#1D1A32;
-  box-shadow:0 22px 48px rgba(var(--slate-mineral-rgb),.2),0 0 31px rgba(var(--mist-blue-rgb),.14),inset 0 1px 0 rgba(255,255,255,.87)!important;
+  box-shadow:0 22px 48px rgba(var(--slate-mineral-rgb),.20),0 0 24px rgba(var(--plum-mineral-rgb),.12),0 0 34px rgba(var(--mist-blue-rgb),.08),inset 0 1px 0 rgba(255,255,255,.87)!important;
 }
 body.home-page[data-c33-editorial] main > section#contato.section form.contact-form::before {
   content:"";
@@ -4366,9 +4367,9 @@ body.home-page[data-c33-editorial] main > section#contato.section .contact-form 
   background:rgba(255,253,251,.94);
 }
 body.home-page[data-c33-editorial] main > section#contato.section .contact-form :is(input,textarea):focus-visible {
-  outline:2px solid var(--slate-mineral);
+  outline:2px solid var(--plum-mineral);
   outline-offset:2px;
-  box-shadow:0 0 0 4px rgba(var(--mist-blue-rgb),.12);
+  box-shadow:0 0 0 4px rgba(var(--plum-mineral-rgb),.13),0 0 15px rgba(var(--mist-blue-rgb),.11);
 }
 body.home-page[data-c33-editorial] main > section#contato.section .contact-form :is(input,textarea)[aria-invalid="true"] {
   border-color:#B04560;
@@ -4389,10 +4390,10 @@ body.home-page[data-c33-editorial] main > section#contato.section .contact-form 
   overflow:hidden;
   border:1px solid rgba(var(--slate-mineral-rgb),.54);
   border-radius:999px;
-  background:linear-gradient(109deg,#1E1B32 0%,#281B43 45%,var(--ds-depth-2) 75%,var(--slate-mineral) 100%);
+  background:linear-gradient(109deg,var(--ink-deep) 0%,color-mix(in srgb,var(--ink-deep) 73%,var(--plum-mineral)) 45%,var(--plum-mineral) 82%,var(--ds-depth-2) 100%);
   background-size:130% 100%;
   color:#FFF8FD;
-  box-shadow:0 13px 25px rgba(var(--slate-mineral-rgb),.26),0 0 17px rgba(var(--mist-blue-rgb),.16),inset 0 1px 0 rgba(255,227,247,.17);
+  box-shadow:0 13px 25px rgba(var(--ink-deep-rgb),.26),0 0 20px rgba(var(--plum-mineral-rgb),.19),0 0 9px rgba(var(--peach-rgb),.12),inset 0 1px 0 rgba(var(--warm-ivory-rgb),.18);
   font-size:clamp(13px,1.08vw,17px);
   font-weight:780;
   line-height:1.3;
