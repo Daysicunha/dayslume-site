@@ -93,3 +93,10 @@ test('chapter rules illuminate borders and preserve reduced-motion preferences',
  assert.match(editorial,/inset 0 1px 0 rgba\(var\(--peach-rgb\),\.46\)/);
  assert.match(editorial,/translate:none !important/);
 });
+
+test('modelo floating Engreni has desktop breathing room and preserves mobile layout',()=>{
+ assert.match(editorial,/\.modelo-product-tile--engreni\s*\{\s*right:9%;/);
+ assert.match(editorial,/\.modelo-product-platform\s*\{[^}]*width:72%;/s);
+ assert.match(editorial,/@media \(max-width: 800px\)/);
+ assert.match(editorial,/\.modelo-product-tile--engreni\s*\{\s*right: 13%;/);
+});
