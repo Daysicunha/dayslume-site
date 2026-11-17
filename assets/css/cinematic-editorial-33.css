@@ -1424,3 +1424,623 @@ body.home-page[data-c33-editorial] main > section#problemas.section
     transition: none !important;
   }
 }
+
+
+/* DAYSLUME ATO III — referência editorial ilustrada / 17.11.2026 */
+body.home-page[data-c33-editorial] main > section#modelo.section {
+  position: relative;
+  isolation: isolate;
+  display: block;
+  min-block-size: 0;
+  overflow: hidden;
+  padding-block: clamp(72px, 7.4vw, 122px) clamp(77px, 8vw, 132px);
+  border-top: 1px solid rgba(var(--peach-rgb), .17);
+  background:
+    radial-gradient(ellipse 49% 65% at 97% 24%, rgba(239,189,181,.35), transparent 74%),
+    radial-gradient(ellipse 70% 48% at 1% 100%, rgba(118,69,115,.15), transparent 78%),
+    #F8EFEA;
+  color: var(--ink-deep);
+}
+body.home-page[data-c33-editorial] main > section#modelo.section::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  display: block;
+  top: 17%;
+  left: auto;
+  right: -12%;
+  width: 59%;
+  height: 38%;
+  inset: auto -12% 45% auto;
+  border: 1px solid rgba(255,255,255,.64);
+  border-radius: 48% 52% 61% 39%;
+  background: linear-gradient(128deg, transparent 35%, rgba(239,182,171,.21));
+  transform: rotate(-18deg);
+  opacity: 1;
+  pointer-events: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  display: block;
+  width: 72%;
+  height: 250px;
+  top: auto;
+  right: auto;
+  left: -24%;
+  bottom: -145px;
+  border: 1px solid rgba(255,234,222,.6);
+  border-radius: 50% 60% 40% 40%;
+  background: linear-gradient(13deg, rgba(97,48,98,.81), rgba(154,89,123,.41) 56%, rgba(240,197,177,.12));
+  transform: rotate(15deg);
+  opacity: 1;
+  pointer-events: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section > .modelo-container {
+  position: relative;
+  z-index: 1;
+  width: min(calc(100% - clamp(40px, 8.7vw, 172px)), 1420px);
+  max-width: 1420px;
+  margin-inline: auto;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr);
+  gap: clamp(35px, 5.4vw, 86px);
+  align-items: end;
+  width: 100%;
+  max-width: none;
+  margin: 0 0 clamp(48px, 5.1vw, 79px);
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-heading-main {
+  min-width: 0;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .section-eyebrow {
+  margin-bottom: 23px;
+  font-size: 11px;
+  letter-spacing: .125em;
+  color: var(--plum-mineral);
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .section-eyebrow::before {
+  width: 32px;
+  height: 2px;
+  background: #65426D;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-heading h2 {
+  max-width: none;
+  margin: 0;
+  font-size: clamp(42px, 3.65vw, 66px);
+  font-weight: 480;
+  line-height: 1.08;
+  letter-spacing: -.065em;
+  color: var(--ink-deep);
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-heading h2 span {
+  display: block;
+  max-width: none;
+  white-space: normal;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-heading-aside {
+  position: relative;
+  align-self: end;
+  justify-self: stretch;
+  min-width: 0;
+  padding: 2px 0 0 clamp(34px, 4.8vw, 72px);
+  border-left: 1px solid rgba(var(--plum-mineral-rgb), .24);
+  text-align: left;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-heading-aside p {
+  max-width: none;
+  margin: 0 0 21px;
+  color: rgba(var(--ink-deep-rgb), .78);
+  font-size: clamp(15px, 1.13vw, 18px);
+  line-height: 1.57;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-main-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 52px;
+  padding: 13px 26px;
+  border: 1px solid rgba(109,59,109,.2);
+  border-radius: 999px;
+  background: linear-gradient(110deg, #65386A, #4B2958);
+  box-shadow: 0 12px 28px rgba(90,44,83,.18);
+  color: #FFF6F6;
+  font-size: 14px;
+  font-weight: 730;
+  line-height: 1.25;
+  letter-spacing: .005em;
+  text-decoration: none;
+  transition: transform .28s ease, box-shadow .28s ease, background .28s ease;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-main-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 17px 31px rgba(90,44,83,.25);
+  color: #FFF8F8;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-main-cta:focus-visible,
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card a:focus-visible {
+  outline: 3px solid #8B4F94;
+  outline-offset: 5px;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-paths {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 1.4vw, 24px);
+  width: 100%;
+  max-width: none;
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card,
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card:first-child,
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card:last-child {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 55%) minmax(0, 45%);
+  align-items: stretch;
+  gap: 0;
+  min-height: clamp(395px, 26.4vw, 465px);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(223,186,194,.67);
+  border-radius: 27px;
+  background: linear-gradient(116deg, #FFF7F1 0%, #F9DFD9 54%, #DDB0BF 100%);
+  color: var(--ink-deep);
+  box-shadow: 0 20px 45px rgba(88,50,79,.105), inset 0 1px 0 rgba(255,255,255,.85);
+  transition: box-shadow .35s ease, border-color .35s ease;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--products,
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--products:last-child {
+  background: linear-gradient(116deg, #FFF7F4 1%, #F9E2E8 47%, #B494BF 100%);
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 74%;
+  aspect-ratio: 1;
+  left: 27%;
+  top: 15%;
+  border: 1px solid rgba(255,252,248,.4);
+  border-radius: 50% 47% 53% 50%;
+  background: radial-gradient(circle at 40% 40%, rgba(255,247,242,.25), transparent 65%);
+  pointer-events: none;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: auto -5% -20% 13%;
+  height: 30%;
+  border-radius: 50%;
+  background: rgba(255,245,239,.4);
+  transform: rotate(-14deg);
+  pointer-events: none;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card:is(:hover,:focus-within) {
+  border-color: rgba(158,96,147,.6);
+  box-shadow: 0 28px 57px rgba(88,50,79,.18), inset 0 1px 0 rgba(255,255,255,.92);
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-copy {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  height: 100%;
+  padding: clamp(29px, 2.55vw, 46px) 0 clamp(29px, 2.55vw, 46px) clamp(28px, 2.65vw, 48px);
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card .service-card-top {
+  display: block;
+  min-height: 0;
+  margin: 0 0 clamp(21px, 1.9vw, 30px);
+  line-height: 1;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card .service-number {
+  display: grid;
+  place-items: center;
+  width: 49px;
+  height: 35px;
+  border-radius: 999px;
+  background: #F5CABF;
+  color: #58345E;
+  font-size: 15px;
+  font-weight: 750;
+  letter-spacing: .04em;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card .path-kicker {
+  margin: 0 0 17px;
+  color: #58325F;
+  font-size: clamp(12px, .96vw, 15px);
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: .135em;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card h3 {
+  max-width: 22ch;
+  margin: 0 0 14px;
+  color: #1F2533;
+  font-size: clamp(23px, 2.05vw, 32px);
+  font-weight: 660;
+  line-height: 1.18;
+  letter-spacing: -.055em;
+  text-wrap: pretty;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card .modelo-description {
+  max-width: 30ch;
+  margin: 0;
+  color: #56545E;
+  font-size: clamp(14px, 1.11vw, 17px);
+  line-height: 1.56;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card .path-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  margin-top: auto;
+  padding: 18px 0 6px;
+  border: 0;
+  border-bottom: 1.5px solid rgba(98,46,96,.74);
+  border-radius: 0;
+  background: transparent;
+  color: #603464;
+  font-size: clamp(11px, .91vw, 14px);
+  font-weight: 800;
+  line-height: 1.3;
+  text-align: left;
+  letter-spacing: .015em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card .path-cta span {
+  display: inline-block;
+  transition: transform .25s ease;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card .path-cta:is(:hover,:focus-visible) span {
+  transform: translate(3px,-3px);
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-visual {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  height: 100%;
+  align-self: stretch;
+  overflow: visible;
+  pointer-events: none;
+  perspective: 780px;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-visual--bespoke::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 12% -50% 4% -45%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,234,229,.7), rgba(221,169,188,.17) 60%, transparent 70%);
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-project-art {
+  position: absolute;
+  display: block;
+  width: 155%;
+  max-width: none;
+  height: auto;
+  right: -6%;
+  bottom: 6%;
+  overflow: visible;
+  filter: drop-shadow(0 14px 16px rgba(91,45,80,.18));
+  transform: translateZ(0);
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-project-art :is(.modelo-art-laptop,.modelo-art-clipboard,.modelo-art-code) {
+  transform-origin: center;
+  transform-box: fill-box;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-visual--products {
+  perspective: 850px;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-orbit {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  width: 148%;
+  height: auto;
+  right: -17%;
+  top: 10%;
+  opacity: .91;
+  overflow: visible;
+  transform-origin: 53% 51%;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-orbit :is(.modelo-orbit-dot) {
+  filter: drop-shadow(0 0 6px rgba(255,229,188,.9));
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-platform {
+  position: absolute;
+  z-index: 0;
+  width: 76%;
+  height: 30%;
+  right: 3%;
+  bottom: 7%;
+  transform: perspective(600px) rotateX(56deg) rotateZ(-1deg);
+  transform-style: preserve-3d;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-platform span {
+  position: absolute;
+  display: block;
+  inset: 0;
+  border: 1px solid rgba(255,239,223,.74);
+  border-radius: 26px;
+  background: linear-gradient(130deg, #FFEBE4, #D8ABC1 80%);
+  box-shadow: 0 18px 34px rgba(88,46,88,.18), inset 0 3px 0 rgba(255,255,255,.72);
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-platform span:nth-child(1) { transform: translateZ(-25px) translateY(30px); background:#A37B9F; }
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-platform span:nth-child(2) { transform: translateZ(-12px) translateY(13px); background:#CAA0B7; }
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-platform span:nth-child(3) { transform: translateZ(0); }
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-tile {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 66%;
+  aspect-ratio: 1.34;
+  border: 1px solid rgba(255,237,235,.4);
+  border-radius: 25px;
+  box-shadow: 0 16px 25px rgba(82,43,83,.21), inset 0 2px 0 rgba(255,255,255,.18);
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  text-align: center;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-tile svg {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-tile strong {
+  color: #FFF6F2;
+  font-size: clamp(12px, 1.08vw, 16px);
+  font-weight: 790;
+  line-height: 1;
+  letter-spacing: .14em;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-tile--vitrini {
+  right: 13%;
+  top: 14%;
+  color: #FFF3EA;
+  background: linear-gradient(144deg, #855280, #442846 86%);
+  transform: translate3d(-13%, 0, 45px) rotateY(-20deg) rotateZ(-5deg);
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-tile--engreni {
+  right: -1%;
+  top: 45%;
+  color: #FFF5EC;
+  background: linear-gradient(145deg, #E9AFAB, #BF7C86 83%);
+  transform: translate3d(4%, 0, 85px) rotateY(-17deg) rotateZ(7deg);
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card:is(:hover,:focus-within) .modelo-project-art {
+  filter: drop-shadow(0 21px 20px rgba(91,45,80,.22));
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card:is(:hover,:focus-within) .modelo-path-visual {
+  filter: saturate(1.08);
+}
+/* Native two-card Kiru scroll remains responsible for card entrance.
+   Independent illustration movement runs only while section is visible. */
+@keyframes modelo-art-laptop-float {
+  0%,100% { transform: translate3d(0,0,0) rotate(0deg); }
+  50% { transform: translate3d(0,-7px,0) rotate(-.7deg); }
+}
+@keyframes modelo-art-clipboard-float {
+  0%,100% { transform: translate3d(0,0,0); }
+  50% { transform: translate3d(0,5px,0); }
+}
+@keyframes modelo-art-code-float {
+  0%,100% { transform: translate3d(0,0,0); }
+  50% { transform: translate3d(-2px,-9px,0); }
+}
+@keyframes modelo-tile-vitrini-float {
+  0%,100% { transform: translate3d(-13%,0,45px) rotateY(-20deg) rotateZ(-5deg); }
+  50% { transform: translate3d(-13%,-11px,45px) rotateY(-18deg) rotateZ(-3deg); }
+}
+@keyframes modelo-tile-engreni-float {
+  0%,100% { transform: translate3d(4%,0,85px) rotateY(-17deg) rotateZ(7deg); }
+  50% { transform: translate3d(4%,8px,85px) rotateY(-15deg) rotateZ(5deg); }
+}
+@keyframes modelo-orbit-breathe {
+  0%,100% { opacity: .7; transform: rotate(-2deg) scale(.98); }
+  50% { opacity: 1; transform: rotate(2deg) scale(1.025); }
+}
+@keyframes modelo-dots-shimmer {
+  0%,100% { opacity: .42; }
+  50% { opacity: 1; }
+}
+body.home-page[data-c33-editorial] main > section#modelo.modelo-motion-ready.is-modelo-visible .modelo-art-laptop {
+  animation: modelo-art-laptop-float 6.8s ease-in-out infinite;
+}
+body.home-page[data-c33-editorial] main > section#modelo.modelo-motion-ready.is-modelo-visible .modelo-art-clipboard {
+  animation: modelo-art-clipboard-float 8.2s ease-in-out infinite;
+}
+body.home-page[data-c33-editorial] main > section#modelo.modelo-motion-ready.is-modelo-visible .modelo-art-code {
+  animation: modelo-art-code-float 5.4s ease-in-out infinite;
+}
+body.home-page[data-c33-editorial] main > section#modelo.modelo-motion-ready.is-modelo-visible .modelo-product-orbit {
+  animation: modelo-orbit-breathe 10s ease-in-out infinite;
+}
+body.home-page[data-c33-editorial] main > section#modelo.modelo-motion-ready.is-modelo-visible .modelo-orbit-dot {
+  animation: modelo-dots-shimmer 2.8s ease-in-out infinite;
+}
+body.home-page[data-c33-editorial] main > section#modelo.modelo-motion-ready.is-modelo-visible .modelo-orbit-dot--two { animation-delay: -1.4s; }
+body.home-page[data-c33-editorial] main > section#modelo.modelo-motion-ready.is-modelo-visible .modelo-product-tile--vitrini {
+  animation: modelo-tile-vitrini-float 7.3s ease-in-out infinite;
+}
+body.home-page[data-c33-editorial] main > section#modelo.modelo-motion-ready.is-modelo-visible .modelo-product-tile--engreni {
+  animation: modelo-tile-engreni-float 6.4s ease-in-out infinite;
+}
+@media (min-width: 801px) and (max-width: 1260px) {
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card,
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card:first-child,
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card:last-child {
+    grid-template-columns: minmax(0, 60%) minmax(0, 40%);
+    min-height: 440px;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-copy {
+    padding-left: 27px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-project-art { width: 170%; right: -18%; bottom: 12%; }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card h3 { font-size: clamp(21px, 2vw, 26px); }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card .path-cta { font-size: 11px; }
+}
+@media (max-width: 800px) {
+  body.home-page[data-c33-editorial] main > section#modelo.section {
+    padding-block: 71px 85px;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section > .modelo-container {
+    width: min(calc(100% - 42px), 680px);
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-heading {
+    grid-template-columns: minmax(0,1fr);
+    gap: 26px;
+    margin-bottom: 34px;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-heading h2 {
+    font-size: clamp(39px, 6.2vw, 56px);
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-heading-aside {
+    padding: 0 0 0 20px;
+    border-left: 2px solid rgba(var(--plum-mineral-rgb), .35);
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-paths {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 19px;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card,
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card:first-child,
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card:last-child {
+    min-height: 389px;
+    grid-template-columns: minmax(0, 54%) minmax(0, 46%);
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-project-art { width: 140%; right: -5%; bottom: 4%; }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card h3 { font-size: clamp(24px, 4vw, 30px); }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card .modelo-description { font-size: 15px; }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card .path-cta { font-size: 12px; }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-tile strong { font-size: 14px; }
+}
+@media (max-width: 540px) {
+  body.home-page[data-c33-editorial] main > section#modelo.section {
+    padding-block: 57px 76px;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section > .modelo-container {
+    width: calc(100% - 32px);
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .section-eyebrow { font-size: 10px; margin-bottom: 18px; }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-heading h2 {
+    font-size: clamp(33px, 8.5vw, 44px);
+    letter-spacing: -.052em;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-heading-aside p {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-main-cta {
+    min-height: 48px;
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card,
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card:first-child,
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card:last-child {
+    grid-template-columns: minmax(0,1fr);
+    min-height: 0;
+    border-radius: 22px;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-copy {
+    min-height: 288px;
+    padding: 28px 25px 16px;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card .service-card-top {
+    margin-bottom: 17px;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card .path-kicker {
+    margin-bottom: 12px;
+    font-size: 12px;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card h3 {
+    font-size: 27px;
+    line-height: 1.18;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card .modelo-description {
+    max-width: 35ch;
+    font-size: 14px;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card .path-cta {
+    font-size: 11px;
+    margin-top: 19px;
+    padding-top: 6px;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-visual {
+    height: 240px;
+    min-height: 240px;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-project-art {
+    width: min(94%, 320px);
+    right: 10%;
+    bottom: -3%;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-orbit {
+    width: min(94%, 340px);
+    right: 0;
+    top: -15%;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-platform {
+    width: 52%;
+    height: 38%;
+    right: 19%;
+    bottom: 10%;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-tile {
+    width: 40%;
+    max-width: 176px;
+    aspect-ratio: 1.38;
+    gap: 7px;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-tile svg { width: 29px; height: 29px; }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-tile strong { font-size: 12px; }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-tile--vitrini {
+    right: 29%;
+    top: -1%;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-tile--engreni {
+    right: 13%;
+    top: 37%;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card::after { bottom: -9%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.home-page[data-c33-editorial] main > section#modelo.section
+    :is(.modelo-art-laptop,.modelo-art-clipboard,.modelo-art-code,
+        .modelo-product-tile,.modelo-product-orbit,.modelo-orbit-dot) {
+    animation: none !important;
+    transition: none !important;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section
+    :is(.modelo-main-cta,.path-cta span,.modelo-path-card) {
+    transition: none !important;
+  }
+}
