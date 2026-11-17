@@ -53,7 +53,7 @@ test('Tech Editorial: approved 13/11 3D panels and newer conversion CTAs coexist
 });
 
 test('Tech Editorial: CSS order keeps official palette canonical and both 3D layers active', () => {
-  const urls = [...home.matchAll(/href="(assets\\/css\\/[^"]+\\.css)"/g)].map(x=>x[1]);
+  const urls = [...home.matchAll(new RegExp('href="(assets/css/[^"]+[.]css)"','g'))].map(x=>x[1]);
   assert.equal(new Set(urls).size, urls.length);
   assert.equal(urls.at(-1),'assets/css/brand-palette.css');
   for (const name of ['cinematic-hero-refinement-20261113.css','cinematic-floating-panels-20261113.css']) {
