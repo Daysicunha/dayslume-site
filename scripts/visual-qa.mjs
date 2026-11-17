@@ -12,8 +12,8 @@ const browser=await puppeteer.launch({
   executablePath:chrome,headless:true,
   args:['--no-sandbox','--disable-dev-shm-usage','--disable-gpu']
 });
-const versions=[{name:'before-plum-v3',url:'http://127.0.0.1:8765/'},
-                {name:'after-seams-v4',url:'http://127.0.0.1:8766/'}];
+const versions=[{name:'before-seams-v4',url:'http://127.0.0.1:8765/'},
+                {name:'after-glass-v5',url:'http://127.0.0.1:8766/'}];
 const viewports=[320,360,390,768,1024,1440];
 const sections=[['hero','#apresentacao'],['problemas','#problemas'],
                 ['modelo','#modelo'],['produtos','#produtos'],['dayane','#projetos'],
@@ -59,6 +59,25 @@ try {
        };
      },selector);
      row.sections[key]=layout;
+     if(key==='problemas'||key==='modelo') {
+       const detail=await page.evaluate((kind)=>{
+         const section=document.querySelector('#'+kind),select=x=>document.querySelector(x);
+         const container=select('#problemas .launch-manifest-grid');
+         const keyCard=select(kind==='problemas'?'#problemas .manifest-item':'#modelo .modelo-path-card');
+         const styles=keyCard?getComputedStyle(keyCard):null;
+         const seam=container?getComputedStyle(container,'::after'):null;
+         return {
+           seam:kind==='problemas'?{width:seam?.width,display:seam?.display,background:seam?.backgroundImage}:null,
+           card:{background:styles?.backgroundImage,border:styles?.borderTopWidth,shadow:styles?.boxShadow,blur:styles?.backdropFilter},
+           chapterTopGlow:section?getComputedStyle(section).boxShadow:null
+         };
+       },key);
+       row.sections[key].premium=detail;
+       if(v.name==='after-glass-v5'&&key==='problemas'&&width>1180&&detail.seam.width!=='1px')
+         row.issues.push('seam not a 1px luminous rule: '+JSON.stringify(detail.seam));
+       if(v.name==='after-glass-v5'&&key==='problemas'&&(!detail.card.blur||detail.card.blur==='none'))
+         row.issues.push('glass card backdrop-filter not active');
+     }
      if(key==='hero') {
        row.heroAnchor=await page.evaluate(()=>{
          const h=document.querySelector('.site-header')?.getBoundingClientRect();
@@ -71,15 +90,15 @@ try {
            scrollPadding:getComputedStyle(document.documentElement).scrollPaddingTop
          };
        });
-       if(v.name==='after-seams-v4' && row.heroAnchor.heroTop>row.heroAnchor.headerBottom+6)
+       if(v.name==='after-glass-v5' && row.heroAnchor.heroTop>row.heroAnchor.headerBottom+6)
          row.issues.push('hero anchor exposes preceding film: '+JSON.stringify(row.heroAnchor));
      }
      if(captureWidths.has(width)) {
        await page.screenshot({path:join(out,v.name+'-'+width+'-'+key+'.png')});
        // Screenshots de viewport no centro do card, sem artefatos da captura de elemento.
        const details={
-         problemas:[['primeiro','#problemas .manifest-item:first-child']],
-         modelo:[['sob-medida','#modelo .modelo-path-card--bespoke']],
+         problemas:[['primeiro','#problemas .manifest-item:first-child'],['segundo','#problemas .manifest-item:nth-child(2)'],['terceiro','#problemas .manifest-item:nth-child(3)']],
+         modelo:[['sob-medida','#modelo .modelo-path-card--bespoke'],['produtos-proprios','#modelo .modelo-path-card--products']],
          produtos:[['vitrini','#produtos .solution-vitrini'],['engreni','#produtos .solution-engreni']],
          dayane:[['projeto','#projetos .home-case-dayane']]
        }[key]||[];
@@ -109,7 +128,7 @@ try {
          const r=b?.getBoundingClientRect();
          return {expanded:b?.getAttribute('aria-expanded'),open:m?.classList.contains('open'),width:Math.round(r?.width??0),height:Math.round(r?.height??0)};
        });
-       if(v.name==='after-seams-v4' && (row.mobileNav.expanded!=='true'||!row.mobileNav.open||row.mobileNav.width<44||row.mobileNav.height<44))
+       if(v.name==='after-glass-v5' && (row.mobileNav.expanded!=='true'||!row.mobileNav.open||row.mobileNav.width<44||row.mobileNav.height<44))
          row.issues.push('mobile menu open/target: '+JSON.stringify(row.mobileNav));
        await btn.click();
      } else row.issues.push('mobile menu toggle missing');
@@ -125,7 +144,7 @@ try {
      return {scene:f?.dataset.currentScene,fragments:f?getComputedStyle(f.querySelector('.c33-window')).visibility:null};
    });
    if(captureWidths.has(width))await page.screenshot({path:join(out,v.name+'-'+width+'-cinema-final.png')});
-   if(v.name==='after-seams-v4' && [320,1440].includes(width)) {
+   if(v.name==='after-glass-v5' && [320,1440].includes(width)) {
      await page.emulateMediaFeatures([{name:'prefers-reduced-motion',value:'reduce'}]);
      await wait(90);
      row.reducedMotion=await page.evaluate(()=>{
@@ -140,7 +159,7 @@ try {
  }
 } finally {await browser.close();}
 await writeFile(join(out,'measurements.json'),JSON.stringify(results,null,2));
-const md=['# DAYSLUME visual QA — transições e cards: ameixa v3 vs refinamento v4','','Automated browser screenshots only; requires human aesthetic approval.','','| Version | Width | Document overflow | Film scene | Window visible |','|---|---:|---|---|---|'];
+const md=['# DAYSLUME visual QA — costura e glass: v4 vs v5','','Automated browser screenshots only; requires human aesthetic approval.','','| Version | Width | Document overflow | Film scene | Window visible |','|---|---:|---|---|---|'];
 for(const r of results)md.push('| '+r.version+' | '+r.width+'px | '+(r.issues.join(', ')||'none detected')+' | '+(r.film.scene||'n/a')+' | '+(r.film.fragments||'n/a')+' |');
 md.push('','## Anchor and mobile navigation checks');
 for(const r of results){
