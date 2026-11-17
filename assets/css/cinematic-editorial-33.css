@@ -844,3 +844,203 @@ body.home-page[data-c33-editorial] main > section#problemas.section
     transition: none !important;
   }
 }
+
+
+/* 17/11/2026 — Ato II / conteúdos orientados à jornada e equilíbrio editorial. */
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .container.launch-manifest-grid {
+  align-items: start;
+  gap: clamp(52px, 6vw, 104px);
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-concept {
+  padding-top: clamp(42px, 5.2vw, 76px);
+  padding-bottom: clamp(52px, 6vw, 82px);
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-title {
+  max-width: 100%;
+  margin-bottom: 28px;
+  font-size: clamp(43px, 3.85vw, 61px);
+  line-height: 1.1;
+  letter-spacing: -.055em;
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-title .manifest-title-line {
+  display: block;
+  max-width: 100%;
+  white-space: normal;
+  background: none;
+  color: var(--warm-ivory);
+  -webkit-text-fill-color: var(--warm-ivory);
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-title .manifest-title-line:nth-child(2) {
+  color: var(--peach);
+  -webkit-text-fill-color: var(--peach);
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-intro {
+  max-width: 46ch;
+  color: rgba(var(--warm-ivory-rgb), .9);
+  font-size: clamp(15px, 1.04vw, 17px);
+  line-height: 1.68;
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: clamp(26px, 2.9vw, 38px);
+  padding-bottom: 7px;
+  border-bottom: 1px solid rgba(var(--peach-rgb), .65);
+  color: var(--warm-ivory);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: .01em;
+  text-decoration: none;
+  transition: color .2s ease, border-color .2s ease;
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-explore span {
+  color: var(--peach);
+  font-size: 17px;
+  line-height: 1;
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-explore:hover {
+  color: var(--peach);
+  border-bottom-color: var(--peach);
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-explore:focus-visible {
+  outline: 2px solid var(--peach);
+  outline-offset: 5px;
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-item,
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-item.is-active {
+  align-items: start;
+  padding: clamp(25px, 2.2vw, 34px) clamp(12px, 1.5vw, 20px);
+  border-left: 2px solid transparent;
+  background: transparent;
+  box-shadow: none !important;
+  transition: background-color .24s ease, border-color .24s ease;
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-item:hover,
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-item:focus-within {
+  padding-left: clamp(12px, 1.5vw, 20px);
+  border-left-color: var(--peach);
+  background: rgba(var(--mist-blue-rgb), .12);
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-number {
+  border-radius: 10px;
+  background: rgba(var(--mist-blue-rgb), .13);
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-topic {
+  margin-bottom: 10px;
+  letter-spacing: .145em;
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-item .manifest-item-title {
+  max-width: 33ch;
+  margin: 0;
+  font-size: clamp(21px, 1.65vw, 25px);
+  line-height: 1.27;
+  text-wrap: pretty;
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-item .manifest-item-description {
+  max-width: 52ch;
+  margin: 11px 0 0;
+  color: rgba(var(--ink-deep-rgb), .79);
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.62;
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-item .problem-link {
+  gap: 5px;
+  margin-top: 16px;
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-item .problem-link span {
+  display: inline-block;
+  transition: transform .2s ease;
+}
+body.home-page[data-c33-editorial] main > section#problemas.section
+  .manifest-item .problem-link:is(:hover, :focus-visible) span {
+  transform: translate(2px, -2px);
+}
+@media (max-width: 1180px) {
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .container.launch-manifest-grid {
+    gap: 34px;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-concept {
+    padding: clamp(36px, 5.5vw, 58px);
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-title {
+    font-size: clamp(40px, 6.1vw, 59px);
+  }
+}
+@media (max-width: 600px) {
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .container.launch-manifest-grid {
+    gap: 24px;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-concept {
+    padding: 34px 23px 38px;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-title {
+    margin-bottom: 22px;
+    font-size: clamp(32px, 8.4vw, 43px);
+    line-height: 1.12;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-title .manifest-title-line {
+    white-space: normal;
+    overflow-wrap: normal;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-intro {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-explore {
+    margin-top: 24px;
+    font-size: 12px;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-item,
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-item.is-active {
+    padding: 23px 9px;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-item:hover,
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-item:focus-within {
+    padding-left: 9px;
+  }
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    .manifest-item .manifest-item-title {
+    font-size: clamp(19px, 5.2vw, 23px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.home-page[data-c33-editorial] main > section#problemas.section
+    :is(.manifest-explore, .manifest-item, .problem-link span) {
+    transition: none !important;
+  }
+}
