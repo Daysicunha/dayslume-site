@@ -1620,7 +1620,6 @@ body.home-page main > .contact-section { background: rgba(var(--peach-rgb), .2);
 }
 
 /* Shared card depth — deliberately restrained to retain the editorial look. */
-.manifest-item,
 .launch-pillars .service-card,
 .launch-products .solution-card,
 .content-featured,
@@ -1639,7 +1638,6 @@ body.home-page main > .contact-section { background: rgba(var(--peach-rgb), .2);
 .project-card .project-image {
   box-shadow: 0 18px 42px rgba(var(--ink-deep-rgb), .15), 0 4px 12px rgba(var(--ink-deep-rgb), .07) !important;
 }
-.manifest-item:hover,
 .launch-pillars .service-card:hover,
 .launch-products .solution-card:hover,
 .content-featured:has(a:hover),
