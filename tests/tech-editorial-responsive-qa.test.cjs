@@ -108,3 +108,23 @@ test('Tech Editorial: contact stays navigable; disabled form is not activated by
   assert.match(home, /class="contact-note"><a class="migration-link" href="https:\/\/wa\.me\//);
   assert.match(editorial, /\.contact-form button\.btn:not\(:disabled\)/);
 });
+
+test('Hero polish: translucent depth layers cannot blur or cover product interfaces', () => {
+  assert.match(floating, /DAYSLUME 3\.3 — Hero polish \/ 17-11-2026/);
+  assert.match(floating, /\.cinema-depth,[\s\S]*?\.cinema-depth--peach\s*\{[\s\S]*?backdrop-filter:\s*none;/);
+  assert.match(floating, /\.cinema-depth,[\s\S]*?\.cinema-depth--peach\s*\{[\s\S]*?opacity:\s*0;/);
+  assert.match(floating, /\.cinema-stage::after\s*\{[\s\S]*?border-radius:\s*50%/);
+  assert.match(floating, /\.cinema-float--vitrini\s*\{[\s\S]*?z-index:\s*5;/);
+  assert.match(floating, /\.cinema-float--engreni\s*\{[\s\S]*?z-index:\s*4;/);
+});
+
+test('Hero polish: desktop coordinates are isolated from mobile and reduce-motion stays intact', () => {
+  const polish = floating.split('/* DAYSLUME 3.3 — Hero polish / 17-11-2026')[1];
+  assert.ok(polish);
+  assert.match(polish, /@media \(min-width:\s*1181px\)/);
+  assert.match(polish, /\.cinema-float--vitrini\s*\{[\s\S]*?left:\s*-3%/);
+  assert.match(polish, /\.cinema-float--service\s*\{[\s\S]*?left:\s*9%/);
+  assert.match(polish, /@media \(max-width:\s*600px\)/);
+  assert.match(floating, /prefers-reduced-motion:\s*reduce/);
+  assert.match(home, /href="#contato">Conversar sobre meu projeto/);
+});
