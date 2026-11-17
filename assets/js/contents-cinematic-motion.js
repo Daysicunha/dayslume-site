@@ -1,7 +1,7 @@
 /* DAYSLUME — Ato VII / Conteúdos: contextual illustrations.
  * The existing hero-prism-scroll.js already handles article entrance stagger.
  * This module only gates ambient CSS animation while the section is visible.
- * No requestAnimationFrame, setInterval or hidden-content dependency.
+ * No continuous JavaScript animation loops or hidden-content dependency.
  */
 (() => {
   'use strict';
