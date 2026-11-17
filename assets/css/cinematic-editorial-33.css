@@ -4087,3 +4087,612 @@ body.home-page[data-c33-editorial] main > section#sobre.founder-motion-ready.fou
     transition:none!important;
   }
 }
+
+
+/* DAYSLUME — ATO VIII / próximo passo / 17.11.2026 / visual aprovado. */
+/* Scope #contato only. All form input names, constraints, WhatsApp handoff
+   and progressive enhancement remain managed by dayslume-contact.js. */
+body.home-page[data-c33-editorial] main > section#contato.section {
+  position:relative;
+  isolation:isolate;
+  display:block;
+  min-height:0;
+  min-block-size:0;
+  overflow:hidden;
+  padding:clamp(64px,6vw,104px) 0 clamp(101px,9.7vw,157px);
+  border-top:1px solid rgba(158,83,179,.24);
+  background:
+    radial-gradient(ellipse 36% 45% at 91% 11%,rgba(184,94,197,.37),transparent 74%),
+    radial-gradient(ellipse 31% 25% at 94% 68%,rgba(206,114,214,.17),transparent 80%),
+    radial-gradient(ellipse 49% 40% at 4% 96%,rgba(155,80,179,.25),transparent 75%),
+    linear-gradient(109deg,#FFF0E9 0%,#F8E9E5 44%,#F3DDE7 100%);
+  color:#201A31;
+}
+body.home-page[data-c33-editorial] main > section#contato.section::before {
+  content:"";
+  position:absolute;
+  z-index:0;
+  display:block;
+  width:55%;
+  height:85%;
+  top:-13%;
+  right:-17%;
+  left:auto;
+  bottom:auto;
+  border:0;
+  border-radius:50%;
+  opacity:.78;
+  background:radial-gradient(ellipse at center,rgba(187,106,203,.23),transparent 67%);
+  filter:blur(16px);
+  pointer-events:none;
+  -webkit-mask-image:none;
+  mask-image:none;
+}
+body.home-page[data-c33-editorial] main > section#contato.section::after {
+  content:"";
+  position:absolute;
+  z-index:0;
+  display:block;
+  inset:-32% 16% 25% auto;
+  width:39%;
+  height:102%;
+  border-left:1px solid rgba(210,149,210,.30);
+  border-radius:50%;
+  background:transparent;
+  transform:rotate(44deg);
+  opacity:.7;
+  pointer-events:none;
+  -webkit-mask-image:none;
+  mask-image:none;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-neon-waves {
+  position:absolute;
+  z-index:1;
+  left:0;
+  right:0;
+  bottom:0;
+  display:block;
+  width:100%;
+  max-width:none;
+  height:clamp(128px,16.5vw,240px);
+  opacity:.95;
+  pointer-events:none;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .container.contact-grid {
+  position:relative;
+  z-index:2;
+  display:grid;
+  width:min(calc(100% - clamp(40px,7.5vw,148px)),1440px);
+  max-width:1440px;
+  margin:0 auto;
+  padding:0;
+  grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);
+  column-gap:clamp(36px,4.8vw,85px);
+  align-items:center;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-editorial-copy {
+  min-width:0;
+  width:100%;
+  max-width:none;
+  padding:0;
+  margin:0;
+  align-self:center;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-editorial-copy .section-eyebrow {
+  display:flex;
+  align-items:center;
+  gap:13px;
+  margin:0 0 clamp(27px,3vw,44px);
+  color:#553465;
+  font-size:clamp(10px,.81vw,13px);
+  font-weight:820;
+  letter-spacing:.16em;
+  line-height:1.4;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-editorial-copy .section-eyebrow::before {
+  content:"";
+  display:block;
+  width:38px;
+  height:2px;
+  flex:none;
+  background:#7F428E;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-editorial-copy .section-eyebrow__number,
+body.home-page[data-c33-editorial] main > section#contato.section .contact-editorial-copy .section-eyebrow__label {
+  color:#49315E;
+}
+body.home-page[data-c33-editorial] main > section#contato.section h2#contact-title {
+  display:block;
+  max-width:100%;
+  width:100%;
+  margin:0;
+  padding:0;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(42px,4.05vw,68px);
+  font-weight:400;
+  line-height:1.08;
+  letter-spacing:-.057em;
+  color:#1F1B31;
+  overflow-wrap:normal;
+  text-wrap:initial;
+}
+body.home-page[data-c33-editorial] main > section#contato.section h2#contact-title > span {
+  display:block;
+  max-width:100%;
+  white-space:normal;
+  text-wrap:initial;
+  color:#1F1B31;
+}
+body.home-page[data-c33-editorial] main > section#contato.section h2#contact-title em {
+  display:inline;
+  color:#627EA9;
+  -webkit-text-fill-color:#627EA9;
+  font-family:Georgia,"Times New Roman",serif;
+  font-style:italic;
+  font-weight:400;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-editorial-copy > p:not(.eyebrow) {
+  display:block;
+  max-width:57ch;
+  margin:clamp(23px,2.8vw,40px) 0 0;
+  color:#4D465D;
+  font-family:"DM Sans",sans-serif;
+  font-size:clamp(15px,1.1vw,19px);
+  line-height:1.65;
+  font-weight:420;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-note {
+  display:block;
+  width:max-content;
+  max-width:100%;
+  margin:clamp(30px,3.8vw,55px) 0 0;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-note a.migration-link {
+  position:relative;
+  isolation:isolate;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(9px,.95vw,14px);
+  min-width:0;
+  max-width:100%;
+  min-height:clamp(58px,4.4vw,74px);
+  margin:0;
+  padding:15px clamp(22px,2.7vw,41px);
+  overflow:hidden;
+  border:1px solid rgba(121,65,140,.68);
+  border-radius:999px;
+  background:linear-gradient(107deg,#1C1A31 0%,#2B204A 54%,#74328E 100%);
+  background-position:0 0;
+  box-shadow:0 18px 34px rgba(110,47,126,.27),0 0 22px rgba(184,77,212,.12),inset 0 1px 0 rgba(255,234,255,.19);
+  color:#FFF7FE;
+  font-size:clamp(13px,1.08vw,17px);
+  font-weight:750;
+  line-height:1.3;
+  text-decoration:none;
+  text-transform:none;
+  white-space:normal;
+  transition:transform .28s ease,box-shadow .28s ease,filter .28s ease;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-note a.migration-link::before {
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0;
+  border-radius:inherit;
+  background:linear-gradient(110deg,transparent 35%,rgba(231,114,245,.21) 65%,rgba(241,146,255,.37) 100%);
+  opacity:1;
+  pointer-events:none;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-note a.migration-link:is(:hover,:focus-visible) {
+  color:#FFF7FE;
+  background:linear-gradient(107deg,#242038,#403058 58%,#85319C);
+  border-color:#B76CCD;
+  filter:saturate(1.08);
+  transform:translateY(-3px);
+  box-shadow:0 23px 40px rgba(103,39,128,.32),0 0 24px rgba(198,82,226,.25);
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-whatsapp-icon {
+  display:block;
+  flex:none;
+  width:clamp(23px,2.2vw,32px);
+  height:clamp(23px,2.2vw,32px);
+  color:#FFF3FE;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-action-arrow {
+  display:inline-block;
+  flex:none;
+  font-size:clamp(19px,1.5vw,25px);
+  line-height:1;
+  transition:transform .27s ease;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-note a.migration-link:is(:hover,:focus-visible) .contact-action-arrow {
+  transform:translate(3px,-3px);
+}
+/* Keep no-JS progressive enhancement: disabled form remains hidden until
+   dayslume-contact.js installs submit interception and enables controls. */
+body.home-page[data-c33-editorial] main > section#contato.section form.contact-form[hidden],
+body.home-page[data-c33-editorial] main > section#contato.section form.contact-form .whatsapp-submit[hidden] {
+  display:none!important;
+}
+body.home-page[data-c33-editorial] main > section#contato.section form.contact-form {
+  position:relative;
+  isolation:isolate;
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  align-content:start;
+  gap:clamp(12px,1.05vw,17px);
+  min-width:0;
+  width:100%;
+  max-width:none;
+  margin:0;
+  padding:clamp(25px,2.8vw,43px);
+  overflow:hidden;
+  border:1px solid rgba(237,186,232,.8);
+  border-radius:clamp(23px,2.4vw,36px);
+  background:
+    radial-gradient(ellipse 58% 47% at 100% 0%,rgba(253,225,251,.61),transparent 79%),
+    linear-gradient(138deg,rgba(255,249,246,.84),rgba(255,243,244,.88));
+  -webkit-backdrop-filter:blur(8px);
+  backdrop-filter:blur(8px);
+  color:#1D1A32;
+  box-shadow:0 22px 48px rgba(84,42,100,.2),0 0 31px rgba(214,109,221,.14),inset 0 1px 0 rgba(255,255,255,.87)!important;
+}
+body.home-page[data-c33-editorial] main > section#contato.section form.contact-form::before {
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:-32% -20% auto auto;
+  width:52%;
+  height:74%;
+  border-radius:50%;
+  background:radial-gradient(ellipse,rgba(232,151,227,.16),transparent 68%);
+  pointer-events:none;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-form .form-row {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(10px,1.2vw,20px);
+  margin:0;
+  padding:0;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-form .form-field {
+  display:grid;
+  gap:8px;
+  min-width:0;
+  margin:0;
+  padding:0;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-form label {
+  display:block;
+  margin:0;
+  color:#26233F;
+  font-family:"DM Sans",sans-serif;
+  font-size:clamp(12px,.91vw,15px);
+  font-weight:740;
+  line-height:1.4;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-form label span {
+  color:#A73C55;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-form input,
+body.home-page[data-c33-editorial] main > section#contato.section .contact-form textarea {
+  display:block;
+  width:100%;
+  min-width:0;
+  min-height:clamp(44px,3.3vw,54px);
+  margin:0;
+  padding:clamp(10px,.92vw,15px) clamp(12px,1.15vw,19px);
+  border:1px solid rgba(127,112,167,.44);
+  border-radius:12px;
+  outline:0;
+  background:rgba(255,250,248,.51);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.39);
+  color:#28203D;
+  font-family:"DM Sans",sans-serif;
+  font-size:clamp(13px,1vw,16px);
+  font-weight:420;
+  line-height:1.45;
+  transition:border-color .25s ease,background .25s ease,box-shadow .25s ease;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-form textarea {
+  display:block;
+  min-height:clamp(95px,7.2vw,123px);
+  max-height:280px;
+  resize:vertical;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-form :is(input,textarea)::placeholder {
+  color:#746C89;
+  opacity:1;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-form :is(input,textarea):is(:hover,:focus-visible) {
+  border-color:#8E59AE;
+  background:rgba(255,253,251,.94);
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-form :is(input,textarea):focus-visible {
+  outline:2px solid #7A4EA1;
+  outline-offset:2px;
+  box-shadow:0 0 0 4px rgba(138,71,172,.12);
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-form :is(input,textarea)[aria-invalid="true"] {
+  border-color:#B04560;
+  box-shadow:0 0 0 3px rgba(178,67,89,.13);
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-form > button.btn:not(:disabled),
+body.home-page[data-c33-editorial] main > section#contato.section .contact-form > a.whatsapp-submit:not([hidden]) {
+  position:relative;
+  isolation:isolate;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  width:100%;
+  min-height:clamp(52px,4.1vw,65px);
+  margin:clamp(5px,.8vw,11px) 0 0;
+  padding:12px 20px;
+  overflow:hidden;
+  border:1px solid rgba(107,49,132,.54);
+  border-radius:999px;
+  background:linear-gradient(109deg,#1E1B32 0%,#281B43 45%,#4C2467 75%,#8B3A9C 100%);
+  background-size:130% 100%;
+  color:#FFF8FD;
+  box-shadow:0 13px 25px rgba(82,35,101,.26),0 0 17px rgba(176,82,213,.16),inset 0 1px 0 rgba(255,227,247,.17);
+  font-size:clamp(13px,1.08vw,17px);
+  font-weight:780;
+  line-height:1.3;
+  text-transform:none;
+  letter-spacing:-.005em;
+  text-decoration:none;
+  transition:transform .27s ease,box-shadow .27s ease,background-position .3s ease;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-form > button.btn:not(:disabled)::before,
+body.home-page[data-c33-editorial] main > section#contato.section .contact-form > a.whatsapp-submit:not([hidden])::before {
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:auto -8% -110% 46%;
+  width:67%;
+  aspect-ratio:1;
+  border:1px solid rgba(240,144,248,.57);
+  border-radius:50%;
+  background:linear-gradient(35deg,transparent,rgba(232,130,244,.11));
+  transform:rotate(-14deg);
+  pointer-events:none;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-form > button.btn:not(:disabled):is(:hover,:focus-visible),
+body.home-page[data-c33-editorial] main > section#contato.section .contact-form > a.whatsapp-submit:not([hidden]):is(:hover,:focus-visible) {
+  background-position:100% 0;
+  transform:translateY(-2px);
+  color:#FFF8FD;
+  box-shadow:0 18px 31px rgba(79,30,101,.34),0 0 23px rgba(176,82,213,.28);
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-form > button.btn:disabled {
+  opacity:.68;
+  cursor:not-allowed;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-form > .form-status {
+  display:block;
+  min-height:0;
+  margin:0;
+  padding:0;
+  color:#686077;
+  font-size:clamp(11px,.88vw,14px);
+  line-height:1.45;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-form .form-status.is-error {
+  color:#8E3654!important;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-form .form-status.is-success {
+  color:#294E42!important;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-form > .contact-privacy {
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:clamp(12px,1.2vw,20px);
+  width:100%;
+  margin:0;
+  padding:0;
+  border:0;
+  color:#3E3552;
+  font-size:clamp(12px,.95vw,15px);
+  line-height:1.47;
+  font-weight:450;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-privacy-shield {
+  display:block;
+  width:clamp(24px,2.3vw,34px);
+  height:clamp(24px,2.3vw,34px);
+  min-width:clamp(24px,2.3vw,34px);
+  flex:none;
+  margin:0;
+  color:#8C45A9;
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-privacy > span {
+  display:block;
+  flex:1;
+  min-width:0;
+  padding-left:clamp(12px,1.2vw,19px);
+  border-left:1px solid rgba(136,89,165,.57);
+}
+body.home-page[data-c33-editorial] main > section#contato.section :is(a,button):focus-visible {
+  outline:2px solid #79389B;
+  outline-offset:5px;
+}
+/* Entry: existing editorial scroll choreography handles copy. This ambient
+   enhancement only runs when #contato is on screen and the user permits motion. */
+@keyframes contact-wave-shine {
+  0%,100% {opacity:.48;stroke-dasharray:900 1800;stroke-dashoffset:0}
+  50% {opacity:1;stroke-dasharray:1200 1500;stroke-dashoffset:-320}
+}
+@keyframes contact-form-glow {
+  0%,100% {box-shadow:0 22px 48px rgba(84,42,100,.2),0 0 30px rgba(214,109,221,.13),inset 0 1px 0 rgba(255,255,255,.87)}
+  50% {box-shadow:0 23px 49px rgba(84,42,100,.22),0 0 43px rgba(214,109,221,.23),inset 0 1px 0 rgba(255,255,255,.9)}
+}
+@keyframes contact-form-appear {
+  from {opacity:.72;translate:0 13px}
+  to {opacity:1;translate:0 0}
+}
+body.home-page[data-c33-editorial] main > section#contato.contact-motion-ready.contact-is-visible .contact-wave-front {
+  animation:contact-wave-shine 11s ease-in-out infinite;
+}
+body.home-page[data-c33-editorial] main > section#contato.contact-motion-ready.contact-is-visible form.contact-form:not([hidden]) {
+  animation:contact-form-glow 7.8s ease-in-out infinite;
+}
+body.home-page[data-c33-editorial] main > section#contato.contact-motion-ready.contact-has-entered form.contact-form:not([hidden]) {
+  animation:contact-form-appear .8s cubic-bezier(.22,1,.36,1) both, contact-form-glow 7.8s ease-in-out .8s infinite;
+}
+/* Desktop 900–1260 keeps balanced columns and legible button labels. */
+@media (min-width:901px) and (max-width:1260px) {
+  body.home-page[data-c33-editorial] main > section#contato.section {
+    padding-block:70px 121px;
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section .container.contact-grid {
+    grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);
+    column-gap:clamp(23px,3vw,43px);
+    width:calc(100% - 66px);
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section h2#contact-title {
+    font-size:clamp(38px,3.65vw,53px);
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section form.contact-form {
+    padding:clamp(22px,2.6vw,32px);
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section .contact-form .form-row {
+    gap:10px;
+  }
+}
+/* Stack on tablet, copy first. */
+@media (max-width:900px) {
+  body.home-page[data-c33-editorial] main > section#contato.section {
+    padding:70px 0 125px;
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section .container.contact-grid {
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+    gap:clamp(29px,5vw,54px);
+    width:min(calc(100% - 50px),690px);
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section h2#contact-title {
+    max-width:18ch;
+    font-size:clamp(42px,6.5vw,57px);
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section .contact-editorial-copy .section-eyebrow {
+    margin-bottom:22px;
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section .contact-note {
+    margin-top:27px;
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section form.contact-form {
+    width:100%;
+    max-width:none;
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section .contact-neon-waves {
+    height:190px;
+  }
+}
+@media (max-width:560px) {
+  body.home-page[data-c33-editorial] main > section#contato.section {
+    padding:51px 0 101px;
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section .container.contact-grid {
+    width:calc(100% - 30px);
+    gap:30px;
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section h2#contact-title {
+    max-width:none;
+    font-size:clamp(33px,8.5vw,44px);
+    line-height:1.12;
+    letter-spacing:-.057em;
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section .contact-editorial-copy .section-eyebrow {
+    gap:9px;
+    font-size:10px;
+    margin-bottom:18px;
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section .contact-editorial-copy > p:not(.eyebrow) {
+    max-width:51ch;
+    margin-top:18px;
+    font-size:14px;
+    line-height:1.6;
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section .contact-note a.migration-link {
+    width:100%;
+    min-height:56px;
+    padding:13px 20px;
+    font-size:13px;
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section .contact-note {
+    width:100%;
+    margin-top:24px;
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section form.contact-form {
+    padding:23px 18px 25px;
+    border-radius:22px;
+    gap:13px;
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section .contact-form .form-row {
+    grid-template-columns:minmax(0,1fr);
+    gap:13px;
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section .contact-form label {
+    font-size:13px;
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section .contact-form :is(input,textarea) {
+    min-height:46px;
+    font-size:16px;
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section .contact-form textarea {
+    min-height:109px;
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section .contact-form > button.btn:not(:disabled),
+  body.home-page[data-c33-editorial] main > section#contato.section .contact-form > a.whatsapp-submit:not([hidden]) {
+    min-height:54px;
+    padding:12px;
+    font-size:13px;
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section .contact-form > .form-status,
+  body.home-page[data-c33-editorial] main > section#contato.section .contact-form > .contact-privacy {
+    font-size:12px;
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section .contact-privacy-shield {
+    width:26px;
+    height:26px;
+    min-width:26px;
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section .contact-neon-waves {
+    height:129px;
+  }
+}
+@media (max-width:360px) {
+  body.home-page[data-c33-editorial] main > section#contato.section h2#contact-title {
+    font-size:31px;
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section .contact-editorial-copy .section-eyebrow {
+    font-size:9px;
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section form.contact-form {
+    padding-inline:14px;
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section .contact-note a.migration-link {
+    padding-inline:14px;
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  body.home-page[data-c33-editorial] main > section#contato.section .contact-wave-front,
+  body.home-page[data-c33-editorial] main > section#contato.section form.contact-form {
+    animation:none!important;
+    translate:none!important;
+  }
+  body.home-page[data-c33-editorial] main > section#contato.section :is(
+    .contact-note a.migration-link,.contact-form button.btn,.contact-form a.btn,
+    .contact-action-arrow,.contact-form input,.contact-form textarea) {
+    transform:none!important;
+    transition:none!important;
+  }
+}
