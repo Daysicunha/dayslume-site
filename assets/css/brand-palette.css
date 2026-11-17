@@ -3100,3 +3100,255 @@ body.home-page > .skip:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   body.home-page > header.site-header { transition: none; }
 }
+
+
+/* DAYSLUME · HOMOLOGAÇÃO FINAL 17.11.2026 — IDV + enquadramentos */
+/* Mapeamento explícito para a paleta canônica. Aplicar somente à home
+   cinematográfica, sem alterar a identidade das páginas internas ou apps. */
+body.home-page[data-c33-editorial] {
+  --ds-home-ink: var(--ink-deep);
+  --ds-home-night: #1A192B;
+  --ds-home-cream: var(--warm-ivory);
+  --ds-home-plum: var(--plum-mineral);
+  --ds-home-blue: var(--mist-blue);
+  --ds-home-peach: var(--peach);
+  --ds-home-lilac: #C597D2;
+  --ds-home-copy-light: #EDE5EE;
+  --ds-home-copy-dark: #4D4659;
+  --ds-home-font-display: "Manrope", sans-serif;
+  --ds-home-font-body: "DM Sans", sans-serif;
+  --ds-home-font-editorial: Georgia, "Iowan Old Style", "Baskerville", serif;
+  --ds-home-card-radius: 24px;
+  --ds-home-focus: #9955AC;
+  --ds-home-shadow: 0 16px 38px rgba(30,23,43,.17);
+}
+/* O scroll ancorado precisa respeitar o cabeçalho fixo. */
+body.home-page[data-c33-editorial] main > section:is(#apresentacao,#problemas,#modelo,#produtos,#projetos,#sobre,#conteudos,#contato) {
+  scroll-margin-top: 94px;
+}
+/* Manrope nos títulos de seção, DM Sans no texto de apoio.
+   Manter o serif editorial APROVADO na Hero e no encerramento. */
+body.home-page[data-c33-editorial] main > section#problemas .manifest-title,
+body.home-page[data-c33-editorial] main > section#modelo .modelo-heading h2,
+body.home-page[data-c33-editorial] main > section#produtos .products-editorial-heading h2,
+body.home-page[data-c33-editorial] main > section#projetos .projects-heading h2,
+body.home-page[data-c33-editorial] main > section#sobre h2#about-title,
+body.home-page[data-c33-editorial] main > section#conteudos h2#conteudos-title {
+  font-family: var(--ds-home-font-display);
+  font-optical-sizing: auto;
+  text-wrap: balance;
+}
+body.home-page[data-c33-editorial] main > section#apresentacao .hero-content h1,
+body.home-page[data-c33-editorial] main > section#contato h2#contact-title {
+  font-family: var(--ds-home-font-editorial);
+  font-optical-sizing: auto;
+}
+body.home-page[data-c33-editorial] main > section:is(#problemas,#modelo,#produtos,#projetos,#sobre,#conteudos,#contato) :is(
+  .manifest-intro,.manifest-item-description,.modelo-description,.modelo-heading-aside p,
+  .products-editorial-side p,.projects-heading-side p,.about-intro p,
+  .content-deck,.content-featured__copy > p,.content-secondary__copy > p,
+  .contact-editorial-copy > p:not(.eyebrow)) {
+  font-family: var(--ds-home-font-body);
+  font-weight: 400;
+  line-height: 1.55;
+}
+body.home-page[data-c33-editorial] main > section#projetos .projects-grid--launch .case-step-description {
+  font-family: var(--ds-home-font-body);
+  line-height: 1.42;
+}
+body.home-page[data-c33-editorial] main > section#modelo .modelo-heading-aside p,
+body.home-page[data-c33-editorial] main > section#contato .contact-editorial-copy > p:not(.eyebrow) {
+  color: var(--ds-home-copy-dark);
+}
+body.home-page[data-c33-editorial] main > section#produtos .products-editorial-side p,
+body.home-page[data-c33-editorial] main > section#projetos .projects-heading-side p,
+body.home-page[data-c33-editorial] main > section#sobre .about-intro p,
+body.home-page[data-c33-editorial] main > section#conteudos .content-deck {
+  color: var(--ds-home-copy-light);
+}
+/* Consistência dos componentes, preservando seus fundos claro/escuro. */
+body.home-page[data-c33-editorial] main > section#modelo .modelo-path-card,
+body.home-page[data-c33-editorial] main > section#produtos .solutions-grid > .solution-card,
+body.home-page[data-c33-editorial] main > section#projetos .projects-grid--launch > .flagship-case {
+  border-radius: var(--ds-home-card-radius);
+}
+body.home-page[data-c33-editorial] main > section:is(#modelo,#produtos,#projetos,#sobre,#conteudos,#contato) :is(a,button):focus-visible {
+  outline: 2px solid var(--ds-home-focus);
+  outline-offset: 4px;
+}
+/* ATO II — O notebook inteiro deve caber no espaço da ilustração, sem 
+   a base ou a borda circular cortadas. O SVG ganhou viewBox com margem. */
+body.home-page[data-c33-editorial] main > section#problemas.section .manifest-item:first-child .manifest-art {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 12px;
+}
+body.home-page[data-c33-editorial] main > section#problemas.section .manifest-item:first-child .manifest-art-svg {
+  display: block;
+  width: min(95%,260px);
+  max-width: 260px;
+  max-height: 94%;
+  height: auto;
+  margin: 0 auto;
+  object-fit: contain;
+  transform: translateX(0);
+  transform-origin: center;
+}
+/* ATO III — Redimensionar a composição do notebook/clipboard sem truncar. */
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--bespoke .modelo-path-visual {
+  overflow: hidden;
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--bespoke .modelo-project-art {
+  width: min(113%, 440px);
+  max-width: none;
+  max-height: 89%;
+  height: auto;
+  right: -1.5%;
+  bottom: 5%;
+  object-fit: contain;
+}
+/* ATO IV — Mockups como um par: mesma escala, alinhamento e ângulo discreto.
+   Os painéis pertencem à área visual, não extrapolam a borda externa. */
+body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic.product-interface {
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  overflow: hidden;
+  padding: 68px clamp(10px,1.2vw,19px) 22px 4px;
+}
+body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic > :is(.vitrini-ui,.engreni-ui) {
+  box-sizing: border-box;
+  display: block;
+  width: 96%;
+  max-width: 100%;
+  margin: 0 auto;
+  transform: perspective(920px) rotateY(-3deg) rotateZ(-.7deg);
+  transform-origin: center;
+}
+body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic > .engreni-ui {
+  width: 96%;
+  max-width: 100%;
+  height: 180px;
+}
+body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic::after {
+  left: 2%;
+  width: 96%;
+  max-width: 96%;
+  top: calc(50% + 75px);
+}
+/* Flutuação com amplitude contida para nunca recortar as telas. */
+@keyframes ds-final-vitrini-float {
+  0%,100% {transform:perspective(920px) rotateY(-3deg) rotateZ(-.7deg) translateY(0)}
+  50% {transform:perspective(920px) rotateY(-2deg) rotateZ(-.3deg) translateY(-4px)}
+}
+@keyframes ds-final-engreni-float {
+  0%,100% {transform:perspective(920px) rotateY(-3deg) rotateZ(-.7deg) translateY(0)}
+  50% {transform:perspective(920px) rotateY(-2deg) rotateZ(0deg) translateY(-4px)}
+}
+body.home-page[data-c33-editorial] main > section#produtos.products-motion-ready.products-is-visible .solution-vitrini .vitrini-ui {
+  animation: ds-final-vitrini-float 8.2s ease-in-out infinite;
+}
+body.home-page[data-c33-editorial] main > section#produtos.products-motion-ready.products-is-visible .solution-engreni .engreni-ui {
+  animation: ds-final-engreni-float 8.8s ease-in-out infinite;
+}
+/* ATO V — Mockup Dayane sem texto aplicado sobre ele.
+   É uma única mídia centralizada, íntegra e com fundo de apoio. */
+body.home-page[data-c33-editorial] main > section#projetos.section .case-preview--dayane,
+body.home-page[data-c33-editorial] main > section#projetos.section .case-dayane-snapshot {
+  background: linear-gradient(126deg,#3B243C,#271C2F 72%,#4D2B4A);
+}
+body.home-page[data-c33-editorial] main > section#projetos.section .case-dayane-snapshot {
+  display: grid;
+  grid-template-columns: minmax(0,1fr);
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+body.home-page[data-c33-editorial] main > section#projetos.section .case-dayane-mockup {
+  position: static;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+  padding: 0;
+  object-fit: contain !important;
+  object-position: center center !important;
+  transform: none;
+}
+/* ATO VI — A fotografia e a assinatura permanecem; a flor foi removida do HTML. */
+body.home-page[data-c33-editorial] main > section#sobre.section .founder-photo-signature {
+  justify-content: flex-start;
+}
+body.home-page[data-c33-editorial] main > section#sobre.section .founder-photo-signature a {
+  min-width: 0;
+}
+/* Telas intermediárias: o espaço do produto não deve crescer além do card. */
+@media (min-width: 850px) and (max-width: 1100px) {
+  body.home-page[data-c33-editorial] main > section#produtos.section .solutions-grid > .solution-card {
+    grid-template-columns: minmax(0,55%) minmax(0,45%);
+  }
+  body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic.product-interface {
+    padding: 65px 7px 22px 0;
+  }
+  body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic > :is(.vitrini-ui,.engreni-ui) {
+    width: 94%;
+  }
+}
+@media (max-width: 800px) {
+  body.home-page[data-c33-editorial] main > section#problemas.section .manifest-item:first-child .manifest-art-svg {
+    width: min(86%,235px);
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--bespoke .modelo-project-art {
+    width: min(108%, 400px);
+    max-height: 90%;
+    right: 0;
+    bottom: 5%;
+  }
+}
+@media (max-width: 700px) {
+  body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic.product-interface {
+    padding: 6px 17px 22px;
+    min-height: 212px;
+  }
+  body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic > :is(.vitrini-ui,.engreni-ui) {
+    width: min(90%,360px);
+    max-width: 100%;
+  }
+  body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic::after {
+    left: 10%;
+    width: 80%;
+    max-width: 80%;
+    top: calc(50% + 68px);
+  }
+}
+@media (max-width: 540px) {
+  body.home-page[data-c33-editorial] main > section#problemas.section .manifest-item:first-child .manifest-art-svg {
+    width: min(83%,205px);
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--bespoke .modelo-project-art {
+    width: min(94%,320px);
+    max-height: 90%;
+    right: 3%;
+    bottom: 2%;
+  }
+  body.home-page[data-c33-editorial] main > section#projetos.section .case-dayane-mockup {
+    object-fit: contain !important;
+  }
+  body.home-page[data-c33-editorial] main > section:is(#apresentacao,#problemas,#modelo,#produtos,#projetos,#sobre,#conteudos,#contato) {
+    scroll-margin-top: 79px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic > :is(.vitrini-ui,.engreni-ui) {
+    animation: none !important;
+    transform: none !important;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--bespoke .modelo-project-art {
+    animation: none !important;
+  }
+}
