@@ -17,6 +17,38 @@
   --peach-rgb: 216, 182, 165;
   --text-secondary: rgba(var(--ink-deep-rgb), .68);
 
+
+  /* Design System DAYSLUME 3.4 — tipografia, contraste e componentes.
+     O site institucional mantém duas fontes: Manrope (display/UI) e
+     DM Sans (corpo). Logotipo oficial permanece arquivo de marca. */
+  --ds-font-display: "Manrope", sans-serif;
+  --ds-font-body: "DM Sans", "Manrope", sans-serif;
+  --ds-font-ui: "Manrope", sans-serif;
+  --ds-type-display: clamp(2.875rem, 4.7vw, 4.5rem);
+  --ds-type-section: clamp(2.125rem, 3.7vw, 3.7rem);
+  --ds-type-card: clamp(1.25rem, 1.9vw, 1.875rem);
+  --ds-type-body: clamp(.9375rem, 1.05vw, 1.0625rem);
+  --ds-type-label: .75rem;
+  --ds-type-control: .8125rem;
+  --ds-leading-heading: 1.1;
+  --ds-leading-body: 1.68;
+  --ds-tracking-heading: -.052em;
+  --ds-tracking-label: .115em;
+
+  /* Slate Mineral continua na paleta como COR, não como texto miúdo
+     sobre marfim: contraste de 4.07:1 não passa WCAG AA para texto comum. */
+  --ds-text-muted-on-light: #536076;
+  --ds-text-muted-on-dark: rgba(var(--warm-ivory-rgb), .83);
+  --ds-surface-paper: var(--warm-ivory);
+  --ds-surface-tech: var(--ink-deep);
+  --ds-surface-mist: color-mix(in srgb, var(--warm-ivory) 83%, var(--mist-blue));
+  --ds-surface-human: color-mix(in srgb, var(--warm-ivory) 90%, var(--plum-mineral));
+  --ds-rule-subtle: rgba(var(--slate-mineral-rgb), .22);
+  --ds-control-min-height: 44px;
+  --ds-control-radius: 999px;
+  --ds-focus-on-light: var(--plum-mineral);
+  --ds-focus-on-dark: var(--mist-blue);
+
   /* Compatibilidade com os tokens históricos. */
   --navy: var(--ink-deep);
   --navy2: var(--ink-deep);
@@ -3099,4 +3131,96 @@ body.home-page > .skip:focus-visible {
 }
 @media (prefers-reduced-motion: reduce) {
   body.home-page > header.site-header { transition: none; }
+}
+
+
+/* DAYSLUME 3.4 — harmonização de tipografia e componentes após PR #16.
+   Não modifica dimensões da abertura, da Hero 3D, cards do mockup,
+   branding do logo, ou a animação das experiências interativas. */
+body:not(.home-page) {
+  font-family: var(--ds-font-body);
+}
+body:not(.home-page) :is(h1, h2, h3) {
+  font-family: var(--ds-font-display);
+}
+
+/* Textos institucionais reais recebem contraste adequado sem tingir
+   o design das aplicações exibidas em mockups e navegadores ilustrativos. */
+body[data-c33-editorial] :is(
+  .products-browser-chrome,
+  .products-browser-footer,
+  .products-browser-copy > p,
+  .projects-hero-frame-top,
+  .projects-hero-figcaption > span
+) {
+  color: var(--ds-text-muted-on-light);
+}
+
+/* Rótulos narrativos e indicadores externos aos mockups:
+   12px legíveis, contraste e tracking consistente. */
+body[data-c33-editorial] :is(
+  .products-hero-note,
+  .projects-hero-footnote,
+  .about-hero-footnote,
+  .blog-hero-index,
+  .blog-cover-eyebrow,
+  .products-mock-label
+) {
+  font-family: var(--ds-font-body);
+  font-size: var(--ds-type-label);
+  line-height: 1.55;
+  letter-spacing: var(--ds-tracking-label);
+}
+
+/* Controles funcionais da PR #16: área mínima de toque e foco visível.
+   Não mexer nas micro-telas de demonstração nem em sua composição. */
+body[data-c33-editorial] :is(
+  .products-switch button,
+  .products-tabs button,
+  .products-device-switch button,
+  .projects-hero-selector button,
+  .about-decision-tabs button
+) {
+  min-height: var(--ds-control-min-height);
+  font-family: var(--ds-font-ui);
+  font-size: var(--ds-type-control);
+  line-height: 1.35;
+}
+body[data-c33-editorial] :is(
+  .products-switch button,
+  .products-tabs button,
+  .products-device-switch button,
+  .projects-hero-selector button,
+  .about-decision-tabs button
+):focus-visible {
+  outline: 3px solid var(--ds-focus-on-dark);
+  outline-offset: 3px;
+}
+body[data-c33-editorial] :is(
+  .products-browser-footer a,
+  .products-hero a,
+  .projects-hero-figcaption a,
+  .about-decision-panel a
+):focus-visible {
+  outline: 3px solid var(--ds-focus-on-dark);
+  outline-offset: 3px;
+}
+body[data-c33-editorial] :is(
+  .projects-hero-figcaption a,
+  .about-decision-panel a
+):focus-visible {
+  outline-color: var(--ds-focus-on-light);
+}
+
+/* O modo reduzido não deve depender do hover para indicar estado. */
+@media (prefers-reduced-motion: reduce) {
+  body[data-c33-editorial] :is(
+    .products-switch button,
+    .products-tabs button,
+    .products-device-switch button,
+    .projects-hero-selector button,
+    .about-decision-tabs button
+  ) {
+    transition: none;
+  }
 }
