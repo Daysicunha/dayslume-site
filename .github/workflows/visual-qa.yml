@@ -1,5 +1,8 @@
 name: Visual QA — DAYSLUME (before/after)
 on:
+  push:
+    branches:
+      - 'fix/dayslume-idv-visual-cascade-20261117'
   pull_request:
     paths:
       - 'index.html'
@@ -18,7 +21,7 @@ jobs:
       - name: Checkout correction (without touching main)
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
@@ -27,7 +30,7 @@ jobs:
         run: npm install --no-save --no-package-lock puppeteer-core@24.19.0
       - name: Render baseline and correction locally
         env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha || '36d3ea2f3cc4c8ca0f473207ba8be7356033ea8a' }}
         run: |
           set -euo pipefail
           CHROME_BIN="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
