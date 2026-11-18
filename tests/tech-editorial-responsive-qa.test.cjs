@@ -162,7 +162,7 @@ test('Act II: image-approved composition keeps three navigable service pathways'
 });
 
 test('Act II: section uses technical/editorial contrast, with restrained selection', () => {
-  const act = editorial.split('DAYSLUME 3.3 — ATO II / Diagnóstico editorial')[1];
+  const act = editorial.split('18/11/2026 — ATO II / refino compacto editorial')[1];
   assert.ok(act, 'Act II stylesheet must be present');
   assert.match(act, /section#problemas\.section/);
   assert.match(act, /\.manifest-title \.manifest-title-line:nth-child\(2\)/);
@@ -176,7 +176,7 @@ test('Act II: section uses technical/editorial contrast, with restrained selecti
 });
 
 test('Act II: diagnostic switches to one column on tablets and phones', () => {
-  const act = editorial.split('DAYSLUME 3.3 — ATO II / Diagnóstico editorial')[1];
+  const act = editorial.split('18/11/2026 — ATO II / refino compacto editorial')[1];
   assert.ok(act);
   assert.match(act, /@media \(max-width:1180px\)/);
   assert.match(act, /@media \(max-width:600px\)/);
@@ -187,7 +187,7 @@ test('Act II: diagnostic switches to one column on tablets and phones', () => {
 
 
 test('Act II: dark mineral-plum composition follows the updated image direction', () => {
-  const act = editorial.split('DAYSLUME 3.3 — ATO II / Diagnóstico editorial')[1];
+  const act = editorial.split('18/11/2026 — ATO II / refino compacto editorial')[1];
   assert.ok(act);
   assert.match(act, /radial-gradient\(ellipse 47% 70% at 79% 38%,rgba\(var\(--plum-mineral-rgb\),\.32\)/);
   assert.match(act, /\.manifest-title \.manifest-title-line:nth-child\(2\)\s*\{[\s\S]*?var\(--peach\)/);
