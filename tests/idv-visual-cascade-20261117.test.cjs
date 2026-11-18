@@ -64,12 +64,14 @@ test('plum signature v7 increases section atmosphere while retaining color token
   assert.doesNotMatch(editorial,/#[A-Fa-f0-9]{6}\b.*plum-v3-neon/);
 });
 
-test('Ato 01 has one-pixel luminous seam without desaturated gray corridor',()=>{
- assert.doesNotMatch(editorial,/--c33-seam-mid:/);
- assert.match(editorial,/--c33-problems-paper:color-mix/);
- assert.match(editorial,/\.container\.launch-manifest-grid::after\s*\{[^}]*width:1px/s);
- assert.match(editorial,/\.container\.launch-manifest-grid::after\s*\{[^}]*box-shadow:0 0 7px/s);
- assert.match(editorial,/background:linear-gradient\(90deg,var\(--ink-deep\) 0 42\.2%,var\(--c33-problems-paper\) 42\.2% 100%\)/);
+test('Ato 01 uses mineral-plum atmosphere, a one-pixel chapter divider and compact cards',()=>{
+  assert.doesNotMatch(editorial,/--c33-seam-mid:|--c33-problems-paper:/);
+  assert.match(editorial,/section#problemas\.section \{[^}]*radial-gradient\(ellipse 47% 70% at 79% 38%,rgba\(var\(--plum-mineral-rgb\),\.32\)/s);
+  assert.match(editorial,/section#problemas\.section::after \{[^}]*height:1px;/s);
+  assert.match(editorial,/\.manifest-concept \{[^}]*min-height:530px;/s);
+  assert.match(editorial,/\.manifest-item\.is-active \{[^}]*min-height:171px;/s);
+  assert.match(editorial,/grid-template-columns:minmax\(0,42\.2fr\) minmax\(0,57\.8fr\)/);
+  assert.match(editorial,/@media \(max-width:600px\)/);
 });
 
 test('Ato 02 cards use plum accents and preserve their visual assets',()=>{
@@ -105,7 +107,7 @@ test('modelo floating Engreni and 3D base preserve desktop and mobile framing',(
 
 test('thin iconography and mineral-plum signature remain coherent across acts',()=>{
  const section=(name,following)=>editorial.slice(editorial.indexOf('/* '+name),editorial.indexOf('/* '+following));
- assert.match(editorial,/width: clamp\(32px, 2\.65vw, 40px\)/);
+ assert.match(editorial,/section#problemas\.section \.manifest-benefit-icon \{[^}]*width:30px;/s);
  assert.match(editorial,/\.manifest-benefit-icon svg \{[^}]*stroke-width:1\.35;/s);
  assert.match(editorial,/\.modelo-product-tile svg \{[^}]*width:32px;[^}]*stroke-width:1\.4;/s);
  assert.match(editorial,/\.products-heading-tile svg \{[^}]*stroke-width:1\.4;/s);
