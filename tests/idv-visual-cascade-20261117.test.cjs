@@ -119,3 +119,9 @@ test('thin iconography and mineral-plum signature remain coherent across acts',(
  assert.match(editorial,/\.container\.launch-manifest-grid::after\s*\{[^}]*width:1px/s);
  assert.match(editorial,/@media \(prefers-reduced-motion:reduce\)/);
 });
+
+test('selected showroom control uses mineral plum, not historical lilac',()=>{
+ assert.match(editorial,/\.cinema33-showroom__choices button\[aria-pressed="true"\] \{[^}]*background: var\(--plum-mineral\);[^}]*color: var\(--warm-ivory\);/s);
+ assert.doesNotMatch(editorial,/#D9A3DD|#E6B8E9|#E1A9DF|#E7B3E6/);
+ assert.match(palette,/--plum-mineral: #6B536D/);
+});

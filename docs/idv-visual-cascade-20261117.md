@@ -111,3 +111,6 @@ A comparação real em 1440 px encontrou o bloco ENGRENI parcialmente cortado à
 - Ato II Problemas mantém a costura de 1 px e separação escuro/marfim; ameixa sutilmente reforçada no plano escuro.
 - Atos III, V e VI recebem reflexos minerais e sombras com ameixa controlada. Sem novo lilás/neon ou nova folha CSS corretiva.
 - A presença ameixa em Fundadora continua atrás da moldura, não sobre a fotografia. Tudo permanece em branch Draft, sem merge/publicação.
+
+### Correção de QA visual — estados selecionados
+As capturas do navegador revelaram lilás antigo no botão ativo do showroom. O botão `[aria-pressed="true"]` agora usa ameixa mineral oficial e texto marfim, com borda e hover pêssego controlados. Nenhum estado de navegação ou JavaScript foi modificado.

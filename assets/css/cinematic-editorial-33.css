@@ -2355,7 +2355,7 @@ body.home-page[data-c33-editorial] main > section#produtos.section .cinema33-sho
   flex: none;
   min-height: 40px;
   padding: 9px 18px;
-  border: 1px solid rgba(225,174,226,.64);
+  border: 1px solid rgba(var(--peach-rgb),.46);
   border-radius: 999px;
   background: transparent;
   color: #FFF4F9;
@@ -2365,16 +2365,16 @@ body.home-page[data-c33-editorial] main > section#produtos.section .cinema33-sho
   transition: background .25s ease,border-color .25s ease,color .25s ease,transform .25s ease;
 }
 body.home-page[data-c33-editorial] main > section#produtos.section .cinema33-showroom__choices button[aria-pressed="true"] {
-  border-color: #E1A9DF;
-  background: #D9A3DD;
-  color: var(--ds-depth-1);
+  border-color: rgba(var(--peach-rgb),.78);
+  background: var(--plum-mineral);
+  color: var(--warm-ivory);
 }
 body.home-page[data-c33-editorial] main > section#produtos.section .cinema33-showroom__choices button:hover {
   background: rgba(var(--mist-blue-rgb),.2);
-  border-color: #E7B3E6;
+  border-color: var(--peach);
 }
 body.home-page[data-c33-editorial] main > section#produtos.section .cinema33-showroom__choices button[aria-pressed="true"]:hover {
-  background: #E6B8E9;
+  background: color-mix(in srgb,var(--plum-mineral) 86%,var(--peach));
 }
 body.home-page[data-c33-editorial] main > section#produtos.section .cinema33-showroom__caption {
   grid-area: caption;
