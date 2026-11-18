@@ -13,7 +13,7 @@ const browser=await puppeteer.launch({
   args:['--no-sandbox','--disable-dev-shm-usage','--disable-gpu']
 });
 const versions=[{name:'before-seams-v4',url:'http://127.0.0.1:8765/'},
-                {name:'after-glass-v5',url:'http://127.0.0.1:8766/'}];
+                {name:'after-framing-v6',url:'http://127.0.0.1:8766/'}];
 const viewports=[320,360,390,768,1024,1440];
 const sections=[['hero','#apresentacao'],['problemas','#problemas'],
                 ['modelo','#modelo'],['produtos','#produtos'],['dayane','#projetos'],
@@ -73,10 +73,26 @@ try {
          };
        },key);
        row.sections[key].premium=detail;
-       if(v.name==='after-glass-v5'&&key==='problemas'&&width>1180&&detail.seam.width!=='1px')
+       if(v.name==='after-framing-v6'&&key==='problemas'&&width>1180&&detail.seam.width!=='1px')
          row.issues.push('seam not a 1px luminous rule: '+JSON.stringify(detail.seam));
-       if(v.name==='after-glass-v5'&&key==='problemas'&&(!detail.card.blur||detail.card.blur==='none'))
+       if(v.name==='after-framing-v6'&&key==='problemas'&&(!detail.card.blur||detail.card.blur==='none'))
          row.issues.push('glass card backdrop-filter not active');
+     }
+     if(key==='modelo') {
+       const framing=await page.evaluate(()=>{
+         const card=document.querySelector('#modelo .modelo-path-card--products');
+         const base=document.querySelector('#modelo .modelo-product-platform');
+         const tile=document.querySelector('#modelo .modelo-product-tile--engreni');
+         const box=e=>{if(!e)return null;const b=e.getBoundingClientRect();return {left:+b.left.toFixed(1),right:+b.right.toFixed(1),top:+b.top.toFixed(1),bottom:+b.bottom.toFixed(1)};};
+         return {card:box(card),baseLayers:[...(base?.querySelectorAll('span')||[])].map(box),tile:box(tile)};
+       });
+       row.sections[key].framing=framing;
+       if(v.name==='after-framing-v6' && framing.card) {
+         if(framing.baseLayers.some(b=>b.bottom>framing.card.bottom-5 || b.right>framing.card.right+1))
+           row.issues.push('modelo platform layer clipped by card: '+JSON.stringify(framing));
+         if(framing.tile && (framing.tile.bottom>framing.card.bottom-5 || framing.tile.right>framing.card.right-5))
+           row.issues.push('ENGRENI tile too close to card boundary: '+JSON.stringify(framing));
+       }
      }
      if(key==='hero') {
        row.heroAnchor=await page.evaluate(()=>{
@@ -90,7 +106,7 @@ try {
            scrollPadding:getComputedStyle(document.documentElement).scrollPaddingTop
          };
        });
-       if(v.name==='after-glass-v5' && row.heroAnchor.heroTop>row.heroAnchor.headerBottom+6)
+       if(v.name==='after-framing-v6' && row.heroAnchor.heroTop>row.heroAnchor.headerBottom+6)
          row.issues.push('hero anchor exposes preceding film: '+JSON.stringify(row.heroAnchor));
      }
      if(captureWidths.has(width)) {
@@ -128,7 +144,7 @@ try {
          const r=b?.getBoundingClientRect();
          return {expanded:b?.getAttribute('aria-expanded'),open:m?.classList.contains('open'),width:Math.round(r?.width??0),height:Math.round(r?.height??0)};
        });
-       if(v.name==='after-glass-v5' && (row.mobileNav.expanded!=='true'||!row.mobileNav.open||row.mobileNav.width<44||row.mobileNav.height<44))
+       if(v.name==='after-framing-v6' && (row.mobileNav.expanded!=='true'||!row.mobileNav.open||row.mobileNav.width<44||row.mobileNav.height<44))
          row.issues.push('mobile menu open/target: '+JSON.stringify(row.mobileNav));
        await btn.click();
      } else row.issues.push('mobile menu toggle missing');
@@ -144,7 +160,7 @@ try {
      return {scene:f?.dataset.currentScene,fragments:f?getComputedStyle(f.querySelector('.c33-window')).visibility:null};
    });
    if(captureWidths.has(width))await page.screenshot({path:join(out,v.name+'-'+width+'-cinema-final.png')});
-   if(v.name==='after-glass-v5' && [320,1440].includes(width)) {
+   if(v.name==='after-framing-v6' && [320,1440].includes(width)) {
      await page.emulateMediaFeatures([{name:'prefers-reduced-motion',value:'reduce'}]);
      await wait(90);
      row.reducedMotion=await page.evaluate(()=>{
@@ -159,7 +175,7 @@ try {
  }
 } finally {await browser.close();}
 await writeFile(join(out,'measurements.json'),JSON.stringify(results,null,2));
-const md=['# DAYSLUME visual QA — costura e glass: v4 vs v5','','Automated browser screenshots only; requires human aesthetic approval.','','| Version | Width | Document overflow | Film scene | Window visible |','|---|---:|---|---|---|'];
+const md=['# DAYSLUME visual QA — costura e enquadramentos: v4 vs v6','','Automated browser screenshots only; requires human aesthetic approval.','','| Version | Width | Document overflow | Film scene | Window visible |','|---|---:|---|---|---|'];
 for(const r of results)md.push('| '+r.version+' | '+r.width+'px | '+(r.issues.join(', ')||'none detected')+' | '+(r.film.scene||'n/a')+' | '+(r.film.fragments||'n/a')+' |');
 md.push('','## Anchor and mobile navigation checks');
 for(const r of results){
