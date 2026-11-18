@@ -6,6 +6,7 @@
   const film = document.getElementById('cinema33-film');
   if (!film) return;
   const pin = film.querySelector('.c33-pin');
+  const hero = document.querySelector('body.home-page #apresentacao[data-hero-master]');
   const windowEl = film.querySelector('[data-c33-window]');
   const beam = film.querySelector('[data-c33-beam]');
   const glow = film.querySelector('[data-c33-glow]');
@@ -42,6 +43,7 @@
   const lerp = (a,b,p) => a+(b-a)*p;
   let W = 0, H = 0, mx = 50, my = 50, active = false, raf = 0;
   let lastScene = -1, lastProgress = -1, lastMx = NaN, lastMy = NaN;
+  let lastHandoff = -1, lastSeam = -1, lastMotionOff = null;
   const updateSize = () => {
     const vw = window.innerWidth, vh = window.innerHeight;
     const portrait = vw < vh;
@@ -87,7 +89,11 @@
       beam.style.opacity=(.55+.45*Math.sin(p*Math.PI)).toFixed(3);
       title.style.opacity=(1-ease(p/.1)).toFixed(3);
       title.style.transform='translateY('+(-p*160)+'px) scale('+(1+p*.4)+')';
-      hint.style.opacity=p<.02?'1':'0';
+      // A ultima cena continua orientando o visitante para o conteudo real.
+      const continuing = p > .86;
+      hint.textContent = continuing ? 'CONTINUE PARA CONHECER ↓' : 'ROLE PARA EXPLORAR ↓';
+      hint.style.opacity = p < .02 ? '1' : continuing
+        ? (ease((p-.86)/.04) * (1-ease((p-.975)/.025))).toFixed(3) : '0';
       const current = p<.13 ? 0 : p<.33 ? 1 : p<.57 ? 2 : p<.84 ? 3 : 4;
       if (current !== lastScene) {
         lines.forEach((line,i) => {
@@ -100,13 +106,46 @@
       }
       film.classList.toggle('c33-reveal',b>.55);
       // Controlled tonal dissolve into the existing 3D hero at the final frame.
-      pin.style.setProperty('--c33-exit-progress',ease((p-.92)/.08).toFixed(3));
+      pin.style.setProperty('--c33-exit-progress',(ease((p-.955)/.045)*.56).toFixed(3));
       lastProgress = p;
     }
     if (force || mx !== lastMx || my !== lastMy) {
       glow.style.setProperty('--c33-mx',mx.toFixed(2)+'%');
       glow.style.setProperty('--c33-my',my.toFixed(2)+'%');
       lastMx=mx; lastMy=my;
+    }
+  }
+  /* One scroll controller orchestrates the film-to-Hero boundary.
+     The hero is never hidden without JS, for reduced motion, or with Data Saver.
+     Direct anchor navigation already computes an entered state. */
+  function updateHandoff(force = false) {
+    if (!hero) return;
+    const vh = Math.max(1, window.innerHeight);
+    const bounds = film.getBoundingClientRect();
+    const motionOff = reduce.matches || saveData ||
+      document.documentElement.classList.contains('motion-paused');
+    // The Hero starts entering as the last pinned film frame scrolls away.
+    const entry = clamp((vh - bounds.bottom) / (vh * .74));
+    const panels = motionOff ? 1 : ease((entry - .06) / .64);
+    const copy = motionOff ? 1 : ease((entry - .16) / .66);
+    const filmProgress = clamp(-bounds.top / Math.max(1, film.offsetHeight - pin.offsetHeight));
+    const seam = motionOff ? 0 : ease((filmProgress - .945) / .055);
+    // The film seam dims as the existing Hero section-line takes over.
+    const seamOpacity = seam * (1 - ease(entry / .26));
+    if (force || Math.abs(entry - lastHandoff) > .0005 ||
+        Math.abs(seamOpacity - lastSeam) > .0005 || motionOff !== lastMotionOff) {
+      const mobile = window.innerWidth <= 820;
+      hero.style.setProperty('--c33-handoff-panels', panels.toFixed(3));
+      hero.style.setProperty('--c33-handoff-copy', copy.toFixed(3));
+      hero.style.setProperty('--c33-handoff-panel-offset',
+        ((1 - panels) * (mobile ? 12 : 20)).toFixed(1) + 'px');
+      hero.style.setProperty('--c33-handoff-copy-offset',
+        ((1 - copy) * (mobile ? 10 : 18)).toFixed(1) + 'px');
+      pin.style.setProperty('--c33-seam-opacity', seamOpacity.toFixed(3));
+      pin.style.setProperty('--c33-seam-scale', (.08 + .92 * seam).toFixed(3));
+      lastHandoff = entry;
+      lastSeam = seamOpacity;
+      lastMotionOff = motionOff;
     }
   }
   function paint() {
@@ -117,6 +156,7 @@
       active=bounds.bottom>0 && bounds.top<window.innerHeight;
     }
     setFilmChrome(isFilmInForeground());
+    updateHandoff();
     if (active && !reduce.matches && !document.documentElement.classList.contains('motion-paused')) {
       draw();
     }
@@ -224,6 +264,7 @@
   window.addEventListener('resize',()=>{
     updateSize();
     lastProgress=-1; // geometry changed even if normalized scroll has not
+    lastHandoff=-1;
     syncHelpOffset();
     requestPaint();
   },{passive:true});
@@ -263,5 +304,9 @@
   setFilmChrome(isFilmInForeground());
   // Handled by one scroll-driven controller; never request a frame continuously.
   document.documentElement.classList.add('c33-film-ready');
+  if (hero) {
+    updateHandoff(true);
+    document.body.classList.add('c33-handoff-ready');
+  }
   requestPaint();
 })();

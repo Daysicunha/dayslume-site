@@ -9,12 +9,41 @@
   --slate-mineral: #66758F;
   --peach: #D8B6A5;
 
+  /* Tokens de tipografia e contraste registrados na auditoria da PR #27. */
+  --ds-font-display: "Manrope", sans-serif;
+  --ds-font-ui: "Manrope", sans-serif;
+  --ds-font-body: "DM Sans", "Manrope", sans-serif;
+  --ds-type-display: clamp(2.875rem,4.7vw,4.5rem);
+  --ds-type-section: clamp(2.125rem,3.7vw,3.7rem);
+  --ds-type-card: clamp(1.25rem,1.9vw,1.875rem);
+  --ds-type-body: clamp(.9375rem,1.05vw,1.0625rem);
+  --ds-type-label: .75rem;
+  --ds-type-control: .8125rem;
+  --ds-leading-heading: 1.1;
+  --ds-leading-body: 1.68;
+  --ds-tracking-heading: -.052em;
+  --ds-tracking-label: .115em;
+  --ds-text-muted-on-light: #536076;
+  --ds-control-min-height: 44px;
+  --ds-control-radius: 999px;
+  --ds-focus-on-light: var(--plum-mineral);
+  --ds-focus-on-dark: var(--mist-blue);
+
   --ink-deep-rgb: 32, 37, 50;
   --plum-mineral-rgb: 107, 83, 109;
   --mist-blue-rgb: 169, 197, 216;
   --warm-ivory-rgb: 243, 239, 232;
   --slate-mineral-rgb: 102, 117, 143;
   --peach-rgb: 216, 182, 165;
+
+  /* Refinamento cromático: tons minerais derivados EXCLUSIVAMENTE da paleta registrada.
+     Acentos violetas fluorescentes não constituem novos tokens de marca. */
+  --ds-depth-1: color-mix(in srgb, var(--ink-deep) 92%, var(--slate-mineral));
+  --ds-depth-2: color-mix(in srgb, var(--ink-deep) 78%, var(--slate-mineral));
+  --ds-depth-3: color-mix(in srgb, var(--ink-deep) 55%, var(--slate-mineral));
+  --ds-cool-accent: color-mix(in srgb, var(--slate-mineral) 68%, var(--mist-blue));
+  --ds-ice-tint: color-mix(in srgb, var(--warm-ivory) 38%, var(--mist-blue));
+  --ds-sand-tint: color-mix(in srgb, var(--warm-ivory) 38%, var(--peach));
   --text-secondary: rgba(var(--ink-deep-rgb), .68);
 
   /* Compatibilidade com os tokens históricos. */
@@ -1349,7 +1378,7 @@ body:not(.home-page) main > .section h2 + .intro { margin-top: 16px; }
 
 /* Solid, palette-led section surfaces; remove translucent floral/background art. */
 body.home-page main > .section-atmosphere:not(.section-atmosphere--about)::before,
-body.home-page main > .section-atmosphere:not(.section-atmosphere--about)::after,
+body.home-page main > .section-atmosphere:not(.section-atmosphere--about):not(#problemas)::after,
 body.home-page main .intro-section::after,
 body.home-page main .solutions-section::before,
 body.home-page main .work-section::before,
@@ -1591,7 +1620,6 @@ body.home-page main > .contact-section { background: rgba(var(--peach-rgb), .2);
 }
 
 /* Shared card depth — deliberately restrained to retain the editorial look. */
-.manifest-item,
 .launch-pillars .service-card,
 .launch-products .solution-card,
 .content-featured,
@@ -1610,7 +1638,6 @@ body.home-page main > .contact-section { background: rgba(var(--peach-rgb), .2);
 .project-card .project-image {
   box-shadow: 0 18px 42px rgba(var(--ink-deep-rgb), .15), 0 4px 12px rgba(var(--ink-deep-rgb), .07) !important;
 }
-.manifest-item:hover,
 .launch-pillars .service-card:hover,
 .launch-products .solution-card:hover,
 .content-featured:has(a:hover),
@@ -2096,7 +2123,7 @@ body:not(.home-page) > a.floating-whatsapp {
   border:1px solid rgba(169,197,216,.55);
   border-right:0;
   border-radius:15px 0 0 15px;
-  background-image:linear-gradient(180deg,#6B536D 0%,#59475E 100%);
+  background-image:linear-gradient(180deg,var(--ink-deep) 0%,var(--slate-mineral) 100%);
   background-position:center;
   background-size:100% 100%;
   font-family:Manrope,'DM Sans',sans-serif;
@@ -3050,8 +3077,8 @@ body.home-page > .skip:focus-visible {
   body.home-page > header.site-header .brand-logo-img { width: clamp(130px,22vw,174px); }
   body.home-page > header.site-header .menu-toggle {
     display: flex;
-    width: 43px;
-    height: 43px;
+    width: 44px;
+    height: 44px;
   }
   body.home-page > header.site-header .menu.open {
     position: absolute;
@@ -3112,18 +3139,18 @@ body.home-page[data-c33-editorial] {
   --ds-home-plum: var(--plum-mineral);
   --ds-home-blue: var(--mist-blue);
   --ds-home-peach: var(--peach);
-  --ds-home-lilac: #C597D2;
-  --ds-home-copy-light: #EDE5EE;
-  --ds-home-copy-dark: #4D4659;
+  --ds-home-lilac: var(--mist-blue);
+  --ds-home-copy-light: var(--warm-ivory);
+  --ds-home-copy-dark: var(--ink-deep);
   --ds-home-font-display: "Manrope", sans-serif;
   --ds-home-font-body: "DM Sans", sans-serif;
   --ds-home-font-editorial: Georgia, "Iowan Old Style", "Baskerville", serif;
   --ds-home-card-radius: 24px;
-  --ds-home-focus: #9955AC;
+  --ds-home-focus: var(--plum-mineral);
   --ds-home-shadow: 0 16px 38px rgba(30,23,43,.17);
 }
 /* O scroll ancorado precisa respeitar o cabeçalho fixo. */
-body.home-page[data-c33-editorial] main > section:is(#apresentacao,#problemas,#modelo,#produtos,#projetos,#sobre,#conteudos,#contato) {
+body.home-page[data-c33-editorial] main > section:is(#problemas,#modelo,#produtos,#projetos,#sobre,#conteudos,#contato) {
   scroll-margin-top: 94px;
 }
 /* Manrope nos títulos de seção, DM Sans no texto de apoio.
@@ -3175,180 +3202,4 @@ body.home-page[data-c33-editorial] main > section#projetos .projects-grid--launc
 body.home-page[data-c33-editorial] main > section:is(#modelo,#produtos,#projetos,#sobre,#conteudos,#contato) :is(a,button):focus-visible {
   outline: 2px solid var(--ds-home-focus);
   outline-offset: 4px;
-}
-/* ATO II — O notebook inteiro deve caber no espaço da ilustração, sem 
-   a base ou a borda circular cortadas. O SVG ganhou viewBox com margem. */
-body.home-page[data-c33-editorial] main > section#problemas.section .manifest-item:first-child .manifest-art {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 12px 12px;
-}
-body.home-page[data-c33-editorial] main > section#problemas.section .manifest-item:first-child .manifest-art-svg {
-  display: block;
-  width: min(95%,260px);
-  max-width: 260px;
-  max-height: 94%;
-  height: auto;
-  margin: 0 auto;
-  object-fit: contain;
-  transform: translateX(0);
-  transform-origin: center;
-}
-/* ATO III — Redimensionar a composição do notebook/clipboard sem truncar. */
-body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--bespoke .modelo-path-visual {
-  overflow: hidden;
-}
-body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--bespoke .modelo-project-art {
-  width: min(113%, 440px);
-  max-width: none;
-  max-height: 89%;
-  height: auto;
-  right: -1.5%;
-  bottom: 5%;
-  object-fit: contain;
-}
-/* ATO IV — Mockups como um par: mesma escala, alinhamento e ângulo discreto.
-   Os painéis pertencem à área visual, não extrapolam a borda externa. */
-body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic.product-interface {
-  box-sizing: border-box;
-  display: grid;
-  place-items: center;
-  min-width: 0;
-  overflow: hidden;
-  padding: 68px clamp(10px,1.2vw,19px) 22px 4px;
-}
-body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic > :is(.vitrini-ui,.engreni-ui) {
-  box-sizing: border-box;
-  display: block;
-  width: 96%;
-  max-width: 100%;
-  margin: 0 auto;
-  transform: perspective(920px) rotateY(-3deg) rotateZ(-.7deg);
-  transform-origin: center;
-}
-body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic > .engreni-ui {
-  width: 96%;
-  max-width: 100%;
-  height: 180px;
-}
-body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic::after {
-  left: 2%;
-  width: 96%;
-  max-width: 96%;
-  top: calc(50% + 75px);
-}
-/* Flutuação com amplitude contida para nunca recortar as telas. */
-@keyframes ds-final-vitrini-float {
-  0%,100% {transform:perspective(920px) rotateY(-3deg) rotateZ(-.7deg) translateY(0)}
-  50% {transform:perspective(920px) rotateY(-2deg) rotateZ(-.3deg) translateY(-4px)}
-}
-@keyframes ds-final-engreni-float {
-  0%,100% {transform:perspective(920px) rotateY(-3deg) rotateZ(-.7deg) translateY(0)}
-  50% {transform:perspective(920px) rotateY(-2deg) rotateZ(0deg) translateY(-4px)}
-}
-body.home-page[data-c33-editorial] main > section#produtos.products-motion-ready.products-is-visible .solution-vitrini .vitrini-ui {
-  animation: ds-final-vitrini-float 8.2s ease-in-out infinite;
-}
-body.home-page[data-c33-editorial] main > section#produtos.products-motion-ready.products-is-visible .solution-engreni .engreni-ui {
-  animation: ds-final-engreni-float 8.8s ease-in-out infinite;
-}
-/* ATO V — Mockup Dayane sem texto aplicado sobre ele.
-   É uma única mídia centralizada, íntegra e com fundo de apoio. */
-body.home-page[data-c33-editorial] main > section#projetos.section .case-preview--dayane,
-body.home-page[data-c33-editorial] main > section#projetos.section .case-dayane-snapshot {
-  background: linear-gradient(126deg,#3B243C,#271C2F 72%,#4D2B4A);
-}
-body.home-page[data-c33-editorial] main > section#projetos.section .case-dayane-snapshot {
-  display: grid;
-  grid-template-columns: minmax(0,1fr);
-  place-items: center;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-body.home-page[data-c33-editorial] main > section#projetos.section .case-dayane-mockup {
-  position: static;
-  display: block;
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  max-height: 100%;
-  margin: 0;
-  padding: 0;
-  object-fit: contain !important;
-  object-position: center center !important;
-  transform: none;
-}
-/* ATO VI — A fotografia e a assinatura permanecem; a flor foi removida do HTML. */
-body.home-page[data-c33-editorial] main > section#sobre.section .founder-photo-signature {
-  justify-content: flex-start;
-}
-body.home-page[data-c33-editorial] main > section#sobre.section .founder-photo-signature a {
-  min-width: 0;
-}
-/* Telas intermediárias: o espaço do produto não deve crescer além do card. */
-@media (min-width: 850px) and (max-width: 1100px) {
-  body.home-page[data-c33-editorial] main > section#produtos.section .solutions-grid > .solution-card {
-    grid-template-columns: minmax(0,55%) minmax(0,45%);
-  }
-  body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic.product-interface {
-    padding: 65px 7px 22px 0;
-  }
-  body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic > :is(.vitrini-ui,.engreni-ui) {
-    width: 94%;
-  }
-}
-@media (max-width: 800px) {
-  body.home-page[data-c33-editorial] main > section#problemas.section .manifest-item:first-child .manifest-art-svg {
-    width: min(86%,235px);
-  }
-  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--bespoke .modelo-project-art {
-    width: min(108%, 400px);
-    max-height: 90%;
-    right: 0;
-    bottom: 5%;
-  }
-}
-@media (max-width: 700px) {
-  body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic.product-interface {
-    padding: 6px 17px 22px;
-    min-height: 212px;
-  }
-  body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic > :is(.vitrini-ui,.engreni-ui) {
-    width: min(90%,360px);
-    max-width: 100%;
-  }
-  body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic::after {
-    left: 10%;
-    width: 80%;
-    max-width: 80%;
-    top: calc(50% + 68px);
-  }
-}
-@media (max-width: 540px) {
-  body.home-page[data-c33-editorial] main > section#problemas.section .manifest-item:first-child .manifest-art-svg {
-    width: min(83%,205px);
-  }
-  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--bespoke .modelo-project-art {
-    width: min(94%,320px);
-    max-height: 90%;
-    right: 3%;
-    bottom: 2%;
-  }
-  body.home-page[data-c33-editorial] main > section#projetos.section .case-dayane-mockup {
-    object-fit: contain !important;
-  }
-  body.home-page[data-c33-editorial] main > section:is(#apresentacao,#problemas,#modelo,#produtos,#projetos,#sobre,#conteudos,#contato) {
-    scroll-margin-top: 79px;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic > :is(.vitrini-ui,.engreni-ui) {
-    animation: none !important;
-    transform: none !important;
-  }
-  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--bespoke .modelo-project-art {
-    animation: none !important;
-  }
 }

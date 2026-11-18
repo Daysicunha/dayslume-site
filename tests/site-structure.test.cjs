@@ -157,24 +157,15 @@ test('official brand tokens and primary text pairs keep accessible contrast', ()
   }
 });
 
-test('home hero showcases product screens and keeps the official flower secondary', () => {
-  const home = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-  const heroCss = fs.readFileSync(path.join(root, 'assets', 'css', 'hero-cinematic.css'), 'utf8');
-  const heroJs = fs.readFileSync(path.join(root, 'assets', 'js', 'hero-cinematic.js'), 'utf8');
-  const petals = [...home.matchAll(/data-flower-petal\b/gi)];
-  assert.equal(petals.length, 0);
-  assert.match(home, /hero--cinematic/);
-  assert.match(home, /cinema-browser/);
-  assert.match(home, /cinema-phone/);
-  assert.match(home, /cinema-service/);
-  // Product composition stays clean; the official identity lives in the header.
-  assert.doesNotMatch(home, /class="cinema-signature"/);
-  assert.match(home, /logohorizontalbranca\.png/);
-  assert.doesNotMatch(home, /class=["']hero-background-image["']/i);
-  assert.match(heroJs, /requestAnimationFrame/);
-  assert.match(heroJs, /prefers-reduced-motion:\s*reduce/);
-  assert.match(heroCss, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
-  assert.match(heroCss, /@media\s*\(max-width:\s*560px\)/);
+test('home hero showcases three glass product previews with brand in header', () => {
+  const home = fs.readFileSync(path.join(root,'index.html'),'utf8');
+  const css = fs.readFileSync(path.join(root,'assets','css','hero-project-simulators-20261118.css'),'utf8');
+  const motion = fs.readFileSync(path.join(root,'assets','js','hero-master-motion.js'),'utf8');
+  assert.equal((home.match(/data-flower-petal\b/gi)||[]).length,0);
+  for(const value of ['hero--project-simulators','hero-projects__card--agenda','hero-projects__card--vitrini','hero-projects__card--caderneta','logohorizontalbranca.png'])assert.ok(home.includes(value),value);
+  assert.doesNotMatch(home,/class="cinema-signature"|class=["']hero-background-image["']/i);
+  for(const value of ['IntersectionObserver','prefers-reduced-motion: reduce'])assert.ok(motion.includes(value),value);
+  for(const value of ['@media (prefers-reduced-motion:reduce)','@media (max-width:600px)'])assert.ok(css.includes(value),value);
 });
 
 test('home static content is not exposed as a fake control or viewport-height section', () => {

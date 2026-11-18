@@ -87,3 +87,27 @@ test('Ato VII: animação de scroll existente mais efeitos contextuais sem loops
     'contents-wave-shine'
   ]) assert.ok(css.includes('@keyframes ' + key), key);
 });
+
+
+test('Ato VII: versão clara aprovada usa ameixa mineral, pêssego e vidro editorial', () => {
+  const head = home.slice(0,home.indexOf('id="conteudos"'));
+  assert.ok(head.includes('contents-cinematic-33.css'));
+  assert.match(section,/class="contents-editorial-ribbon"/);
+  assert.match(section,/contents-editorial-ribbon-glow/);
+  const light = css.split('Conteúdos Editorial Light • 18\/11\/2026')[1];
+  assert.ok(light,'a camada editorial clara deve existir');
+  for (const token of ['#F3EFE8','#6B536D','#D8B6A5']) {
+    assert.ok(light.includes(token),'cor oficial ausente: '+token);
+  }
+  for (const part of ['.content-featured','.content-secondary','.channel-device--site','.channel-device--instagram',
+    '.channel-device--whatsapp','.content-compare-stage','.content-archive','.content-read',
+    '.contents-editorial-ribbon']) {
+    assert.ok(light.includes(part),'componente não refinado: '+part);
+  }
+  assert.match(light,/backdrop-filter:blur\(16px\)/);
+  assert.match(light,/grid-template-columns:minmax\(0,42%\) minmax\(0,58%\)/);
+  assert.match(light,/@media \(max-width:800px\)/);
+  assert.match(light,/@media \(max-width:540px\)/);
+  assert.match(light,/@media \(prefers-reduced-motion:reduce\)/);
+  assert.doesNotMatch(light,/#apresentacao|#cinema33-film|#modelo|#produtos|#projetos|#sobre|#contato/);
+});
