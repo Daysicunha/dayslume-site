@@ -70,16 +70,16 @@ test('hero layers three product stories, preserving the mineral palette and mobi
 test('manifest uses the approved three-line headline and luminous wave instead of the old semicircle',()=>{
  const html=read('index.html');
  const css=read('assets/css/cinematic-editorial-33.css');
- const layout=css.split('17/11/2026 — ATO II / implementação fiel ao layout ilustrado aprovado')[1];
+ const layout=css.split('18/11/2026 — ATO II / refino compacto editorial')[1];
  assert.ok(layout);
  for (const title of ['Ser visto.','Ser escolhido.','Funcionar melhor.']) {
   assert.ok(html.includes('manifest-title-line">' + title),title);
  }
  assert.match(html,/class="manifest-waves"/);
- assert.match(layout,/\.manifest-concept::after\s*\{\s*display: none;/);
- assert.match(layout,/\.manifest-title \.manifest-title-line[\s\S]*?white-space: nowrap;/);
- assert.match(layout,/@media \(max-width: 600px\)/);
- assert.match(layout,/\.manifest-title \.manifest-title-line\s*\{\s*white-space: normal;/);
+ assert.match(layout,/\.manifest-concept::after\s*\{\s*display:none;/);
+ assert.match(layout,/\.manifest-title \.manifest-title-line[\s\S]*?white-space:nowrap;/);
+ assert.match(layout,/@media \(max-width:600px\)/);
+ assert.match(layout,/\.manifest-title \.manifest-title-line\s*\{\s*white-space:normal;/);
 });
 test('founder presentation condenses the old five-step process into three readable stages',()=>{
  const html=read('index.html');
