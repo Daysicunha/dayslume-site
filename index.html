@@ -270,39 +270,64 @@
           <div class="modelo-path-visual modelo-path-visual--bespoke" aria-hidden="true">
             <svg class="modelo-project-art" viewBox="58 -6 400 365" role="presentation" focusable="false">
               <defs>
-                <linearGradient id="modelo-laptop-frame" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#202532"/><stop offset=".55" stop-color="#66758F"/><stop offset="1" stop-color="#202532"/></linearGradient>
-                <linearGradient id="modelo-laptop-page" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#FFF0E6"/><stop offset="1" stop-color="#D8B6A5"/></linearGradient>
-                <linearGradient id="modelo-laptop-body" x1="0" x2=".5" y1="0" y2="1"><stop stop-color="#FFE3DF"/><stop offset=".5" stop-color="#DDB6B9"/><stop offset="1" stop-color="#66758F"/></linearGradient>
-                <linearGradient id="modelo-code-face" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#F7D4C5"/><stop offset="1" stop-color="#D99C9D"/></linearGradient>
-                <linearGradient id="modelo-paper" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#FFF0E6"/><stop offset="1" stop-color="#EED0CE"/></linearGradient>
-                <filter id="modelo-soft-shadow" x="-35%" y="-50%" width="170%" height="220%"><feGaussianBlur stdDeviation="8"/></filter>
+                <linearGradient id="modelo-premium-frame" x1="0" y1="0" x2="1" y2="1">
+                  <stop stop-color="var(--warm-ivory)"/><stop offset=".32" stop-color="var(--peach)"/><stop offset=".72" stop-color="var(--slate-mineral)"/><stop offset="1" stop-color="var(--peach)"/>
+                </linearGradient>
+                <linearGradient id="modelo-premium-glass" x1="0" y1="0" x2="1" y2="1">
+                  <stop stop-color="var(--slate-mineral)" stop-opacity=".89"/><stop offset=".52" stop-color="var(--ink-deep)" stop-opacity=".99"/><stop offset="1" stop-color="var(--plum-mineral)" stop-opacity=".94"/>
+                </linearGradient>
+                <linearGradient id="modelo-premium-paper" x1="0" y1="0" x2="1" y2="1">
+                  <stop stop-color="var(--warm-ivory)" stop-opacity=".38"/><stop offset="1" stop-color="var(--peach)" stop-opacity=".15"/>
+                </linearGradient>
+                <linearGradient id="modelo-premium-badge" x1="0" y1="0" x2="1" y2="1">
+                  <stop stop-color="var(--peach)" stop-opacity=".6"/><stop offset="1" stop-color="var(--plum-mineral)" stop-opacity=".92"/>
+                </linearGradient>
+                <filter id="modelo-premium-outline-glow" x="-45%" y="-55%" width="190%" height="210%">
+                  <feGaussianBlur stdDeviation="4"/>
+                </filter>
+                <filter id="modelo-premium-ground-shadow" x="-35%" y="-80%" width="170%" height="260%">
+                  <feGaussianBlur stdDeviation="10"/>
+                </filter>
               </defs>
-              <ellipse cx="251" cy="322" rx="163" ry="18" fill="#876A86" opacity=".25" filter="url(#modelo-soft-shadow)"/>
-              <g class="modelo-art-clipboard">
-                <rect x="126" y="33" width="142" height="202" rx="15" fill="#D8B6A5" transform="rotate(12 126 33)" opacity=".37"/>
-                <rect x="125" y="25" width="138" height="198" rx="11" fill="url(#modelo-paper)" stroke="#E2B1B1" stroke-width="2" transform="rotate(12 125 25)"/>
-                <g fill="none" stroke="#D8B6A5" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" transform="rotate(12 125 25)">
-                  <rect x="182" y="12" width="30" height="18" rx="7" fill="#66758F" stroke="#66758F"/>
-                  <path d="M186 20v-7a11 11 0 0 1 22 0v7" stroke="#D8B6A5" stroke-width="6"/>
-                  <rect x="172" y="62" width="34" height="23" rx="3"/><rect x="140" y="107" width="28" height="19" rx="3"/><rect x="198" y="106" width="27" height="20" rx="3"/><rect x="172" y="148" width="34" height="24" rx="3"/>
-                  <path d="M189 85v13M154 98h58M154 98v9M212 98v8M154 126v10h35v12M212 126v10h-23"/>
+              <ellipse cx="267" cy="324" rx="157" ry="17" fill="var(--ink-deep)" opacity=".20" filter="url(#modelo-premium-ground-shadow)"/>
+              <g class="modelo-art-clipboard" transform="rotate(-11 197 137)">
+                <rect x="122" y="38" width="154" height="202" rx="17" fill="var(--peach)" fill-opacity=".18" stroke="var(--peach)" stroke-opacity=".58" stroke-width="3" filter="url(#modelo-premium-outline-glow)"/>
+                <rect x="122" y="38" width="154" height="202" rx="17" fill="url(#modelo-premium-paper)" stroke="var(--warm-ivory)" stroke-opacity=".65" stroke-width="1.25"/>
+                <rect x="137" y="55" width="124" height="10" rx="5" fill="var(--warm-ivory)" fill-opacity=".20"/>
+                <circle cx="144" cy="60" r="2.1" fill="var(--peach)"/>
+                <path d="M147 83h98M147 95h70" stroke="var(--warm-ivory)" stroke-opacity=".51" stroke-width="2" stroke-linecap="round"/>
+                <g fill="none" stroke="var(--peach)" stroke-opacity=".83" stroke-width="1.5" stroke-linejoin="round">
+                  <rect x="156" y="117" width="33" height="25" rx="5"/><rect x="211" y="117" width="33" height="25" rx="5"/>
+                  <rect x="184" y="164" width="33" height="25" rx="5"/>
+                  <path d="M189 130h22M173 142v13h28v9M228 142v13h-27"/>
                 </g>
+                <path d="M147 209h97M147 218h67" stroke="var(--warm-ivory)" stroke-opacity=".36" stroke-width="1.7" stroke-linecap="round"/>
               </g>
               <g class="modelo-art-laptop">
-                <path d="M155 134 Q155 125 164 123 L388 107 Q399 106 399 118 L402 276 L158 291 Z" fill="url(#modelo-laptop-frame)" stroke="#202532" stroke-width="3"/>
-                <path d="M168 143 387 126 389 262 170 278Z" fill="url(#modelo-laptop-page)"/>
-                <path d="M168 143 387 126 387 147 168 165Z" fill="#202532"/><circle cx="181" cy="151" r="3" fill="#F3D0DC"/><circle cx="191" cy="150" r="3" fill="#F3D0DC"/>
-                <rect x="183" y="179" width="101" height="57" rx="7" fill="#A9C5D8"/><circle cx="224" cy="192" r="8" fill="#E7B9D2"/><path d="m194 222 20-18 13 13 18-19 25 25" fill="#DDAFCB"/>
-                <g fill="#A9C5D8"><rect x="295" y="180" width="72" height="9" rx="4"/><rect x="295" y="195" width="58" height="8" rx="4"/><rect x="295" y="208" width="68" height="8" rx="4"/><rect x="184" y="246" width="184" height="8" rx="4"/></g>
-                <path d="m155 292 246-16 32 31-268 22-73-25Z" fill="url(#modelo-laptop-body)" stroke="#D8B6A5" stroke-width="2"/>
-                <path d="m92 304 73 25 268-22-9 10-255 22-77-26Z" fill="#D8B6A5"/>
-                <path d="m191 302 151-11 31 10-154 13Z" fill="#D8B6A5" opacity=".6"/>
-                <path d="M162 325 430 306" fill="none" stroke="#F7DDDD" stroke-width="3" opacity=".8"/>
+                <path d="M160 123 Q160 116 168 115 L389 102 Q403 101 403 114 L406 280 L160 292 Z" fill="none" stroke="var(--peach)" stroke-opacity=".82" stroke-width="5" filter="url(#modelo-premium-outline-glow)"/>
+                <path d="M160 123 Q160 116 168 115 L389 102 Q403 101 403 114 L406 280 L160 292 Z" fill="url(#modelo-premium-glass)" stroke="url(#modelo-premium-frame)" stroke-width="2.2" stroke-linejoin="round"/>
+                <path d="M172 132 393 119 396 269 172 279Z" fill="var(--ink-deep)" fill-opacity=".80" stroke="var(--warm-ivory)" stroke-opacity=".32" stroke-width="1.1"/>
+                <path d="M172 132 393 119 393 143 172 156Z" fill="var(--warm-ivory)" fill-opacity=".085"/>
+                <circle cx="184" cy="141" r="2.2" fill="var(--peach)"/><circle cx="194" cy="140" r="2.2" fill="var(--warm-ivory)" fill-opacity=".58"/>
+                <path d="M205 139 253 136" stroke="var(--warm-ivory)" stroke-opacity=".33" stroke-width="1.4" stroke-linecap="round"/>
+                <rect x="187" y="176" width="91" height="69" rx="7" fill="var(--plum-mineral)" fill-opacity=".63" stroke="var(--peach)" stroke-opacity=".67" stroke-width="1.35"/>
+                <circle cx="210" cy="196" r="5.5" fill="var(--peach)" fill-opacity=".78"/>
+                <path d="m194 229 18-16 13 12 14-17 30 23" fill="none" stroke="var(--warm-ivory)" stroke-opacity=".76" stroke-width="1.8" stroke-linejoin="round"/>
+                <g fill="none" stroke="var(--peach)" stroke-opacity=".75" stroke-width="2" stroke-linecap="round">
+                  <path d="M296 185h65M296 198h50M296 211h61"/>
+                  <path d="M296 229h38" stroke-opacity=".52"/>
+                  <path d="M296 239h59" stroke-opacity=".52"/>
+                </g>
+                <path d="m160 292 246-12 29 27-268 19-72-19Z" fill="url(#modelo-premium-paper)" stroke="var(--peach)" stroke-opacity=".65" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="m95 307 72 19 268-19-7 9-258 20-75-20Z" fill="var(--plum-mineral)" stroke="var(--warm-ivory)" stroke-opacity=".42" stroke-width="1.1"/>
+                <path d="m191 304 146-8 28 8-151 12Z" fill="var(--warm-ivory)" fill-opacity=".14" stroke="var(--warm-ivory)" stroke-opacity=".25" stroke-width=".8"/>
+                <path d="M167 326 435 307" stroke="var(--warm-ivory)" stroke-opacity=".7" stroke-width="1.5" stroke-linecap="round"/>
               </g>
               <g class="modelo-art-code">
-                <rect x="295" y="259" width="100" height="85" rx="18" fill="#D8B6A5" opacity=".27"/>
-                <rect x="288" y="251" width="98" height="81" rx="17" fill="url(#modelo-code-face)" stroke="#E6B2A5" stroke-width="2"/>
-                <path d="m319 279-15 13 15 13m36-26 15 13-15 13m-15-35-16 45" fill="none" stroke="#66758F" stroke-width="3.3" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="299" y="254" width="87" height="77" rx="17" fill="none" stroke="var(--peach)" stroke-width="4" stroke-opacity=".9" filter="url(#modelo-premium-outline-glow)"/>
+                <rect x="299" y="254" width="87" height="77" rx="17" fill="url(#modelo-premium-badge)" stroke="var(--warm-ivory)" stroke-opacity=".85" stroke-width="1.35"/>
+                <path d="m328 276-14 15 14 15m29-30 14 15-14 15m-14-37-11 44" fill="none" stroke="var(--warm-ivory)" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M309 265h44" stroke="var(--warm-ivory)" stroke-opacity=".42" stroke-width=".8"/>
               </g>
             </svg>
           </div>
