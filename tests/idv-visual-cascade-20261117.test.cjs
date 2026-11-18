@@ -75,7 +75,8 @@ test('Ato 01 uses mineral-plum atmosphere, a one-pixel chapter divider and compa
 });
 
 test('Ato 02 has mineral plum glass, peach link accents and keeps visual assets',()=>{
- assert.match(editorial,/color-mix\(in srgb,var\(--plum-mineral\) 94%,var\(--warm-ivory\)\)/);
+ assert.match(editorial,/linear-gradient\(112deg,/);
+ assert.match(editorial,/var\(--plum-mineral\) 67%,/);
  assert.match(editorial,/border-bottom: 1px solid rgba\(var\(--peach-rgb\),\.66\)/);
  assert.match(html,/modelo-project-art/);
  assert.match(html,/modelo-product-tile--engreni/);
@@ -109,7 +110,7 @@ test('thin iconography and mineral-plum signature remain coherent across acts',(
  const section=(name,following)=>editorial.slice(editorial.indexOf('/* '+name),editorial.indexOf('/* '+following));
  assert.match(editorial,/section#problemas\.section \.manifest-benefit-icon \{[^}]*width:30px;/s);
  assert.match(editorial,/\.manifest-benefit-icon svg \{[^}]*stroke-width:1\.35;/s);
- assert.match(editorial,/\.modelo-product-tile svg \{[^}]*width: 23px;[^}]*stroke-width: 1\.2;/s);
+ assert.match(editorial,/\.modelo-product-tile svg \{[^}]*width: 24px;[^}]*stroke-width: 1\.2;/s);
  assert.match(editorial,/\.products-heading-tile svg \{[^}]*stroke-width:1\.4;/s);
  assert.match(editorial,/\.about-process-icon svg \{[^}]*stroke-width:1\.4;/s);
  assert.match(html,/class="case-step-icon"[^>]+stroke-width="1\.4"/);
