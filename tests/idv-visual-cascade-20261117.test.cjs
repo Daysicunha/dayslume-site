@@ -85,8 +85,8 @@ test('premium cards own their glass and shadow without global important override
  assert.doesNotMatch(paletteRules,/\.manifest-item:hover,\n\.launch-pillars/);
  assert.match(editorial,/backdrop-filter:blur\(13px\) saturate\(1\.07\)/);
  assert.match(editorial,/backdrop-filter:blur\(14px\) saturate\(1\.07\)/);
- assert.match(editorial,/stroke-width:1\.6/);
- assert.match(editorial,/stroke-width:1\.7/);
+ assert.match(editorial,/stroke-width:1\.35/);
+ assert.match(editorial,/stroke-width:1\.4/);
 });
 test('chapter rules illuminate borders and preserve reduced-motion preferences',()=>{
  assert.match(editorial,/\/\* Divisórias editoriais de um pixel/);
@@ -101,4 +101,21 @@ test('modelo floating Engreni and 3D base preserve desktop and mobile framing',(
  assert.match(editorial,/\.modelo-product-platform\s*\{[^}]*width: 50%;[^}]*height: 34%;[^}]*right: 20%;[^}]*bottom: 18%;/s);
  assert.match(editorial,/\.modelo-product-tile--engreni\s*\{\s*right: 17%;\s*top: 35%;/);
  assert.doesNotMatch(editorial,/#A37B9F|#CAA0B7/);
+});
+
+test('thin iconography and mineral-plum signature remain coherent across acts',()=>{
+ const section=(name,following)=>editorial.slice(editorial.indexOf('/* '+name),editorial.indexOf('/* '+following));
+ assert.match(editorial,/width: clamp\(32px, 2\.65vw, 40px\)/);
+ assert.match(editorial,/\.manifest-benefit-icon svg \{[^}]*stroke-width:1\.35;/s);
+ assert.match(editorial,/\.modelo-product-tile svg \{[^}]*width:32px;[^}]*stroke-width:1\.4;/s);
+ assert.match(editorial,/\.products-heading-tile svg \{[^}]*stroke-width:1\.4;/s);
+ assert.match(editorial,/\.about-process-icon svg \{[^}]*stroke-width:1\.4;/s);
+ assert.match(html,/class="case-step-icon"[^>]+stroke-width="1\.4"/);
+ assert.match(html,/class="manifest-benefit-icon"[^>]*><svg[^>]+stroke-width="1\.35"/);
+ assert.match(html,/class="about-process-icon"[^>]*><svg[^>]+stroke-width="1\.4"/);
+ assert.match(editorial,/ellipse 56% 63% at 58% 32%,rgba\(var\(--plum-mineral-rgb\),\.46\)/);
+ assert.match(editorial,/var\(--ink-deep\) 66%,var\(--plum-mineral\)/);
+ assert.doesNotMatch(editorial,/#E5ACE2/);
+ assert.match(editorial,/\.container\.launch-manifest-grid::after\s*\{[^}]*width:1px/s);
+ assert.match(editorial,/@media \(prefers-reduced-motion:reduce\)/);
 });

@@ -101,3 +101,13 @@ Implementado na mesma branch de correção, **sem publicar em produção**.
 
 ### Ajuste final de enquadramento do card Produtos Próprios
 A comparação real em 1440 px encontrou o bloco ENGRENI parcialmente cortado à direita, apesar do enquadramento mobile correto. Ajustados os valores no bloco proprietário de geometria: cartão flutuante ENGRENI `right:9%` e plataforma 3D `width:72%; right:8%` em desktop. Mantidos os overrides nativos abaixo de 800 px. Imagens e animações permanecem inalteradas.
+
+
+## Refinamento v7 — ícones delicados e presença ameixa (18/11/2026)
+
+- Redução dos ícones SVG decorativos (benefícios, caminhos, produtos, cases e processos da fundadora), traços visuais de 1,35 a 1,4, com SVGs de origem corrigidos (incluindo linha interna de 3,5 px).
+- Botões e áreas clicáveis preservam seus alvos e estados de foco. Geometrias e animações dos mockups permanecem intactas.
+- Ato IV Produtos usa assinatura ameixa mineral `#6B536D` mais perceptível em cenário escuro, com concentração luminosa localizada e continuidade azul profundo.
+- Ato II Problemas mantém a costura de 1 px e separação escuro/marfim; ameixa sutilmente reforçada no plano escuro.
+- Atos III, V e VI recebem reflexos minerais e sombras com ameixa controlada. Sem novo lilás/neon ou nova folha CSS corretiva.
+- A presença ameixa em Fundadora continua atrás da moldura, não sobre a fotografia. Tudo permanece em branch Draft, sem merge/publicação.
