@@ -39,17 +39,9 @@ test('Tech Editorial: official light/dark text pairs meet WCAG AA contrast', () 
   }
 });
 
-test('Tech Editorial: approved 13/11 3D panels and newer conversion CTAs coexist', () => {
-  assert.match(home, /class="hero hero--cinematic hero--floating-panels"/);
-  for (const name of ['vitrini','engreni','service']) {
-    assert.ok(home.includes('class="cinema-float cinema-float--' + name + '"'));
-  }
-  assert.match(home, /class="cinema-phone cinema-agenda-panel"/);
-  assert.doesNotMatch(home, /class="cinema-phone-notch"/);
-  assert.match(home, /href="#contato">Conversar sobre meu projeto/);
-  assert.match(home, /href="#projetos">Ver projetos realizados/);
-  assert.match(home, /class="hero-rotator"/);
-  assert.match(home, /id="cinema33-film"/);
+test('Tech Editorial: new glass 3D project simulators and conversion actions coexist', () => {
+ for(const value of ['hero--floating-panels hero--project-simulators','hero-projects__card--vitrini','hero-projects__card--agenda','hero-projects__card--caderneta','href="#produtos">Conheça nossas soluções','href="#projetos">Ver projetos em ação','Prévia ilustrativa de três projetos DAYSLUME','id="cinema33-film"'])assert.ok(home.includes(value),value);
+ assert.doesNotMatch(home,/class="cinema-phone-notch"/);
 });
 
 test('Tech Editorial: CSS order keeps official palette canonical and both 3D layers active', () => {
@@ -126,7 +118,7 @@ test('Hero polish: desktop coordinates are isolated from mobile and reduce-motio
   assert.match(polish, /\.cinema-float--service\s*\{[\s\S]*?left:\s*9%/);
   assert.match(polish, /@media \(max-width:\s*600px\)/);
   assert.match(floating, /prefers-reduced-motion:\s*reduce/);
-  assert.match(home, /href="#contato">Conversar sobre meu projeto/);
+  assert.match(home, /href="#produtos">Conheça nossas soluções/);
 });
 
 
