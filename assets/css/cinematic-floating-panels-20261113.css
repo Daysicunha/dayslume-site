@@ -680,17 +680,17 @@ body.home-page #apresentacao[data-hero-master].hero.hero--cinematic {
   position:relative;
   display:block;
   isolation:isolate;
-  min-height:clamp(620px,76svh,825px);
+  min-height:clamp(650px,79svh,855px);
   min-block-size:0;
   padding:clamp(64px,5.5vw,90px) 0 clamp(32px,3.3vw,55px);
   overflow:hidden;
   background:
-    radial-gradient(ellipse 46% 59% at 68% 45%,rgba(var(--plum-mineral-rgb),.38),transparent 76%),
-    radial-gradient(ellipse 18% 24% at 86% 68%,rgba(var(--plum-mineral-rgb),.19),transparent 75%),
+    radial-gradient(ellipse 50% 61% at 67% 47%,rgba(var(--plum-mineral-rgb),.52),transparent 76%),
+    radial-gradient(ellipse 27% 31% at 87% 65%,rgba(var(--plum-mineral-rgb),.26),transparent 75%),
     radial-gradient(ellipse 22% 29% at 73% 84%,rgba(var(--peach-rgb),.17),transparent 77%),
     radial-gradient(ellipse 39% 35% at 78% 91%,rgba(var(--peach-rgb),.12),transparent 78%),
     radial-gradient(ellipse 54% 49% at 7% 8%,rgba(var(--slate-mineral-rgb),.10),transparent 73%),
-    linear-gradient(118deg,color-mix(in srgb,var(--ink-deep) 95%,black) 0%,var(--ink-deep) 56%,color-mix(in srgb,var(--ink-deep) 88%,var(--plum-mineral)) 100%);
+    linear-gradient(118deg,color-mix(in srgb,var(--ink-deep) 58%,black) 0%,color-mix(in srgb,var(--ink-deep) 69%,black) 51%,color-mix(in srgb,var(--ink-deep) 77%,var(--plum-mineral)) 100%);
   color:var(--warm-ivory);
 }
 body.home-page #apresentacao[data-hero-master]::before {
@@ -707,7 +707,7 @@ body.home-page #apresentacao[data-hero-master]::before {
     linear-gradient(rgba(var(--mist-blue-rgb),.06) 1px,transparent 1px),
     linear-gradient(90deg,rgba(var(--mist-blue-rgb),.06) 1px,transparent 1px);
   background-size:86px 86px;
-  opacity:.68;
+  opacity:.25;
   -webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.07),#000 57%,rgba(0,0,0,.68));
   mask-image:linear-gradient(90deg,rgba(0,0,0,.07),#000 57%,rgba(0,0,0,.68));
   pointer-events:none;
@@ -911,12 +911,12 @@ body.home-page #apresentacao[data-hero-master] .hero-visual-composition.cinema-s
   isolation:isolate;
   align-self:center;
   justify-self:stretch;
-  width:calc(100% + 34px);
-  max-width:900px;
+  width:calc(100% + 112px);
+  max-width:1010px;
   min-width:0;
   min-height:0;
   height:auto;
-  margin:0 0 0 -20px;
+  margin:0 0 0 -76px;
   padding:0;
   aspect-ratio:auto;
   filter:none;
@@ -933,8 +933,8 @@ body.home-page #apresentacao[data-hero-master] .cinema-stage::before {
   border-radius:50%;
   opacity:1;
   background:
-    radial-gradient(ellipse 53% 40% at 48% 86%,rgba(var(--mist-blue-rgb),.34),transparent 77%),
-    radial-gradient(ellipse 58% 58% at 65% 42%,rgba(var(--mist-blue-rgb),.26),transparent 80%);
+    radial-gradient(ellipse 53% 40% at 48% 86%,rgba(var(--peach-rgb),.24),transparent 77%),
+    radial-gradient(ellipse 58% 58% at 65% 42%,rgba(var(--plum-mineral-rgb),.36),transparent 80%);
   filter:blur(29px);
   pointer-events:none;
 }
@@ -1001,7 +1001,7 @@ body.home-page #apresentacao[data-hero-master] .cinema-cluster {
   z-index:2;
   display:block;
   width:100%;
-  height:clamp(510px,39vw,650px);
+  height:clamp(535px,39vw,650px);
   min-height:0;
   margin:0;
   padding:0;
@@ -1024,24 +1024,24 @@ body.home-page #apresentacao[data-hero-master] .cinema-float {
 }
 body.home-page #apresentacao[data-hero-master] .cinema-float--vitrini {
   z-index:5;
-  width:79%;
+  width:74%;
   height:clamp(332px,24.9vw,405px);
   left:-2%;
-  top:18%;
+  top:17%;
 }
 body.home-page #apresentacao[data-hero-master] .cinema-float--engreni {
   z-index:4;
-  width:31%;
-  height:clamp(325px,23.8vw,387px);
+  width:38%;
+  height:clamp(345px,24.3vw,410px);
   right:0;
-  top:9%;
+  top:5%;
 }
 body.home-page #apresentacao[data-hero-master] .cinema-float--service {
   z-index:6;
   left:11%;
-  bottom:7%;
-  width:67%;
-  height:clamp(73px,5.3vw,86px);
+  bottom:14%;
+  width:60%;
+  height:clamp(76px,5.45vw,92px);
 }
 body.home-page #apresentacao[data-hero-master] .cinema-browser,
 body.home-page #apresentacao[data-hero-master] .cinema-agenda-panel,
@@ -1108,7 +1108,7 @@ body.home-page #apresentacao[data-hero-master] .cinema-agenda-panel {
   transform:perspective(1350px) rotateY(7deg) rotateX(2deg) rotateZ(3.2deg);
 }
 body.home-page #apresentacao[data-hero-master] .cinema-agenda-panel .cinema-phone-head {
-  background:linear-gradient(135deg,#51476F,var(--ds-depth-3) 62%,#9B7FA6);
+  background:linear-gradient(135deg,color-mix(in srgb,var(--ink-deep) 58%,var(--plum-mineral)),color-mix(in srgb,var(--ink-deep) 72%,black) 62%,var(--plum-mineral));
 }
 body.home-page #apresentacao[data-hero-master] .cinema-agenda-panel .cinema-phone-head strong {
   font-size:clamp(17px,1.45vw,23px);
@@ -1120,7 +1120,7 @@ body.home-page #apresentacao[data-hero-master] .cinema-service {
   padding:clamp(12px,1.1vw,18px) clamp(17px,1.6vw,27px);
   border:1px solid rgba(241,185,248,.69);
   border-radius:18px;
-  background:linear-gradient(110deg,rgba(var(--slate-mineral-rgb),.92),rgba(49,40,76,.93) 72%,rgba(46,37,80,.95));
+  background:linear-gradient(110deg,color-mix(in srgb,var(--plum-mineral) 77%,var(--ink-deep)),color-mix(in srgb,var(--plum-mineral) 68%,var(--ink-deep)) 72%,rgba(var(--ink-deep-rgb),.95));
   box-shadow:
     0 23px 48px rgba(6,5,21,.44),
     0 0 23px rgba(var(--mist-blue-rgb),.32),
@@ -1165,7 +1165,7 @@ body.home-page #apresentacao[data-hero-master] .cinema-stage-caption {
   pointer-events:none;
 }
 body.home-page #apresentacao[data-hero-master] .cinema-stage-caption--vitrini {
-  top:10%;
+  top:8%;
   left:5%;
   right:auto;
   bottom:auto;
@@ -1180,7 +1180,7 @@ body.home-page #apresentacao[data-hero-master] .cinema-stage-caption--vitrini::a
 }
 body.home-page #apresentacao[data-hero-master] .cinema-stage-caption--engreni {
   top:auto;
-  bottom:11%;
+  bottom:17%;
   right:-2%;
   left:auto;
   text-align:right;
@@ -1200,17 +1200,21 @@ body.home-page #apresentacao[data-hero-master] .cinema33-ledger {
   max-width:1550px;
   margin:clamp(8px,1.2vw,17px) auto 0;
   padding:clamp(14px,1.4vw,23px) 0 0;
-  border-top:1px solid rgba(245,198,241,.47);
+  border-top:1px solid rgba(var(--peach-rgb),.48);
+  box-shadow:0 -10px 25px -22px rgba(var(--plum-mineral-rgb),.65);
+}
+body.home-page #apresentacao[data-hero-master] .cinema33-ledger::before {
+ content:"";position:absolute;top:-1px;left:40%;width:22%;height:1px;
+ background:linear-gradient(90deg,transparent,rgba(var(--warm-ivory-rgb),.94),transparent);
+ box-shadow:0 0 12px 2px rgba(var(--peach-rgb),.25);pointer-events:none;
 }
 body.home-page #apresentacao[data-hero-master] .cinema33-ledger__link {
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  gap:15px;
-  color:#F9EAF8;
-  font-size:clamp(11px,.82vw,13px);
-  font-weight:780;
-  letter-spacing:.12em;
+ position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+ overflow:hidden;clip-path:inset(50%);white-space:nowrap;color:#F9EAF8;
+}
+body.home-page #apresentacao[data-hero-master] .cinema33-ledger__link:focus-visible {
+ right:0;top:12px;width:auto;height:auto;margin:0;padding:12px 16px;
+ overflow:visible;clip-path:none;white-space:normal;background:var(--ink-deep);border-radius:8px;
 }
 body.home-page #apresentacao[data-hero-master] .cinema33-ledger__line {
   height:1px;
@@ -1266,6 +1270,9 @@ body.home-page #apresentacao[data-hero-master] .cinema-float--engreni:hover .cin
   }
   body.home-page #apresentacao[data-hero-master] .hero-content h1 {
     font-size:clamp(48px,4.15vw,58px);
+  }
+  body.home-page #apresentacao[data-hero-master] .hero-visual-composition.cinema-stage {
+    width:calc(100% + 28px);margin-left:-10px;
   }
   body.home-page #apresentacao[data-hero-master] .hero-visual-composition.cinema-stage {
     margin-left:-10px;
@@ -1519,4 +1526,13 @@ body.home-page #apresentacao[data-hero-master] .cinema-float--engreni:hover .cin
     transform:none!important;
     transition:none!important;
   }
+}
+
+@supports selector(body:has(#apresentacao.hero-master-visible)) {
+ body.home-page:has(#apresentacao.hero-master-visible) > header.site-header {
+   background:linear-gradient(90deg,color-mix(in srgb,var(--ink-deep) 55%,black),color-mix(in srgb,var(--ink-deep) 80%,var(--plum-mineral))) !important;
+ }
+ body.home-page:has(#apresentacao.hero-master-visible) a.floating-whatsapp:not(:focus-visible) {
+   opacity:0!important;visibility:hidden!important;pointer-events:none!important;
+ }
 }
