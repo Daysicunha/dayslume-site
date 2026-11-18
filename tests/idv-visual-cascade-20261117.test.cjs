@@ -118,7 +118,7 @@ test('thin iconography and mineral-plum signature remain coherent across acts',(
  assert.match(editorial,/ellipse 56% 63% at 58% 32%,rgba\(var\(--plum-mineral-rgb\),\.46\)/);
  assert.match(editorial,/var\(--ink-deep\) 66%,var\(--plum-mineral\)/);
  assert.doesNotMatch(editorial,/#E5ACE2/);
- assert.match(editorial,/\.container\.launch-manifest-grid::after\s*\{[^}]*width:1px/s);
+ assert.match(editorial,/section#problemas\.section::after \{[^}]*height:1px;/s);
  assert.match(editorial,/@media \(prefers-reduced-motion:reduce\)/);
 });
 
