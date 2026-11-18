@@ -178,23 +178,23 @@ test('Act II: section uses technical/editorial contrast, with restrained selecti
 test('Act II: diagnostic switches to one column on tablets and phones', () => {
   const act = editorial.split('DAYSLUME 3.3 — ATO II / Diagnóstico editorial')[1];
   assert.ok(act);
-  assert.match(act, /@media \(max-width: 1180px\)/);
-  assert.match(act, /@media \(max-width: 600px\)/);
-  assert.match(act, /grid-template-columns: minmax\(0, 1fr\)/);
+  assert.match(act, /@media \(max-width:1180px\)/);
+  assert.match(act, /@media \(max-width:600px\)/);
+  assert.match(act, /grid-template-columns:minmax\(0,1fr\)/);
   assert.match(act, /@media \(prefers-reduced-motion: reduce\)/);
   assert.match(act, /\.manifest-item \.problem-link/);
 });
 
 
-test('Act II: brand hierarchy uses deep ink and ivory instead of an all-pastel wall', () => {
+test('Act II: dark mineral-plum composition follows the updated image direction', () => {
   const act = editorial.split('DAYSLUME 3.3 — ATO II / Diagnóstico editorial')[1];
   assert.ok(act);
-  assert.match(act, /linear-gradient\(90deg,\s*#202532 0 46\.5%,\s*var\(--warm-ivory\)/);
+  assert.match(act, /radial-gradient\(ellipse 47% 70% at 79% 38%,rgba\(var\(--plum-mineral-rgb\),\.32\)/);
   assert.match(act, /\.manifest-title \.manifest-title-line:nth-child\(2\)\s*\{[\s\S]*?var\(--peach\)/);
   assert.match(act, /\.manifest-intro\s*\{[\s\S]*?var\(--warm-ivory-rgb\)/);
-  assert.match(act, /\.manifest-concept::after\s*\{[\s\S]*?border-radius:\s*50%/);
+  assert.match(act, /\.manifest-art-svg\s*\{[^}]*max-width:124px;/s);
   assert.match(act, /\.manifest-topic\s*\{/);
-  assert.match(act, /@media \(max-width: 1180px\)[\s\S]*?background:\s*var\(--warm-ivory\)/);
+  assert.match(act, /@media \(max-width:1180px\)[\s\S]*?color-mix\(in srgb,var\(--ink-deep\) 74%,var\(--plum-mineral\)\)/);
   for(const label of ['PRESENÇA DIGITAL','JORNADA DO CLIENTE','OPERAÇÃO DIGITAL']) {
     assert.ok(home.includes('>' + label + '</span>'), label);
   }
@@ -216,13 +216,13 @@ test('Act II: existing service links and every headline remain unchanged', () =>
 });
 
 test('Act II: illustration layout is section-scoped, responsive and excludes removed laptop mockup', () => {
-  const source = editorial.split('17/11/2026 — ATO II / implementação fiel ao layout ilustrado aprovado')[1];
+  const source = editorial.split('18/11/2026 — ATO II / refino compacto editorial')[1];
   assert.ok(source);
-  assert.match(source, /grid-template-columns: minmax\(0, 42\.2fr\) minmax\(0, 57\.8fr\)/);
+  assert.match(source, /grid-template-columns:minmax\(0,42\.2fr\) minmax\(0,57\.8fr\)/);
   assert.match(source, /\.manifest-waves/);
   assert.match(source, /\.manifest-art-svg/);
-  assert.match(source, /@media \(max-width: 1180px\)/);
-  assert.match(source, /@media \(max-width: 600px\)/);
+  assert.match(source, /@media \(max-width:1180px\)/);
+  assert.match(source, /@media \(max-width:600px\)/);
   assert.match(source, /@media \(prefers-reduced-motion: reduce\)/);
   assert.doesNotMatch(source, /#apresentacao|\.cinema-stage|\.cinema-browser/);
   const act = home.split('id="problemas"')[1].split('id="modelo"')[0];
