@@ -82,3 +82,15 @@ test('Hero Master: existing later acts and styles remain included, brand remains
  assert.match(html, /src="assets\/js\/cinematic-film-intro-33\.js" defer/);
  assert.match(html, /href="#contato"/);
 });
+
+test('approved screenshot master preserves live 3D layers, plum lighting and thin lower seam',()=>{
+ assert.match(patch,/width:calc\(100% \+ 112px\);/);
+ assert.match(patch,/margin:0 0 0 -76px;/);
+ assert.match(patch,/\.cinema-float--engreni\s*\{[^}]*width:38%;/s);
+ assert.match(patch,/\.cinema-float--service\s*\{[^}]*bottom:14%;/s);
+ assert.match(patch,/radial-gradient\(ellipse 50% 61% at 67% 47%,rgba\(var\(--plum-mineral-rgb\),\.52\)/);
+ for(const label of ['Eventos do dia','Atendimento','Livre','Agendamento'])assert.ok(hero.includes(label),label);
+ assert.match(patch,/\.cinema33-ledger::before/);
+ assert.match(patch,/\.cinema33-ledger__link:focus-visible/);
+ assert.match(patch,/@media \(max-width:600px\)/);
+});
