@@ -9,7 +9,7 @@ const home = read('index.html');
 const css = read('assets/css/cinematic-editorial-33.css');
 const script = read('assets/js/modelo-motion.js');
 const section = home.split('id="modelo"')[1]?.split('id="produtos"')[0] || '';
-const cssPatch = css.split('DAYSLUME ATO III — referência editorial ilustrada / 17.11.2026')[1] || '';
+const cssPatch = css.split('DAYSLUME ATO III — ameixa mineral #6B536D, glass editorial compacto e ícones delicados / 18.11.2026')[1] || '';
 
 test('Ato III keeps approved commercial copy, both CTAs and destinations',()=>{
   assert.match(home,/id="modelo"/);
@@ -44,6 +44,11 @@ test('Ato III uses scoped CSS, native scroll cards, responsive layout and reduce
   assert.ok(cssPatch,'section styles must exist');
   assert.match(cssPatch,/section#modelo\.section/);
   assert.match(cssPatch,/\.modelo-paths\s*\{/);
+  assert.match(cssPatch,/padding-block: clamp\(53px, 5vw, 77px\)/);
+  assert.match(cssPatch,/min-height: clamp\(314px, 23vw, 366px\)/);
+  assert.match(cssPatch,/backdrop-filter: blur\(15px\) saturate\(1\.04\)/);
+  assert.match(cssPatch,/\.modelo-product-tile svg \{[^}]*width: 23px;[^}]*stroke-width: 1\.2;/s);
+  assert.match(cssPatch,/background:\s*radial-gradient\(ellipse 55% 74% at 14% 3%,/);
   assert.match(cssPatch,/\.modelo-product-tile--engreni/);
   assert.match(cssPatch,/modelo-art-laptop-float/);
   assert.match(cssPatch,/modelo-tile-vitrini-float/);
