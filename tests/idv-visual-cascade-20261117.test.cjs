@@ -92,7 +92,7 @@ test('premium cards own their glass and shadow without global important override
 });
 test('chapter rules illuminate borders and preserve reduced-motion preferences',()=>{
  assert.match(editorial,/\/\* Divisórias editoriais de um pixel/);
- assert.match(editorial,/inset 0 1px 0 rgba\(var\(--peach-rgb\),\.46\)/);
+ assert.match(editorial,/inset 0 1px 0 rgba\(var\(--peach-rgb\),\.58\)/);
  assert.match(editorial,/translate:none !important/);
 });
 
