@@ -94,9 +94,11 @@ test('chapter rules illuminate borders and preserve reduced-motion preferences',
  assert.match(editorial,/translate:none !important/);
 });
 
-test('modelo floating Engreni has desktop breathing room and preserves mobile layout',()=>{
- assert.match(editorial,/\.modelo-product-tile--engreni\s*\{\s*right:9%;/);
- assert.match(editorial,/\.modelo-product-platform\s*\{[^}]*width:72%;/s);
- assert.match(editorial,/@media \(max-width: 800px\)/);
- assert.match(editorial,/\.modelo-product-tile--engreni\s*\{\s*right: 13%;/);
+test('modelo floating Engreni and 3D base preserve desktop and mobile framing',()=>{
+ assert.match(editorial,/\.modelo-product-tile--engreni\s*\{\s*right:15%;\s*top:42%;/);
+ assert.match(editorial,/\.modelo-product-platform\s*\{[^}]*width:68%;[^}]*height:28%;[^}]*right:13%;[^}]*bottom:15%;/s);
+ assert.match(editorial,/@media \(max-width: 540px\)/);
+ assert.match(editorial,/\.modelo-product-platform\s*\{[^}]*width: 50%;[^}]*height: 34%;[^}]*right: 20%;[^}]*bottom: 18%;/s);
+ assert.match(editorial,/\.modelo-product-tile--engreni\s*\{\s*right: 17%;\s*top: 35%;/);
+ assert.doesNotMatch(editorial,/#A37B9F|#CAA0B7/);
 });
