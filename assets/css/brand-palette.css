@@ -1378,7 +1378,7 @@ body:not(.home-page) main > .section h2 + .intro { margin-top: 16px; }
 
 /* Solid, palette-led section surfaces; remove translucent floral/background art. */
 body.home-page main > .section-atmosphere:not(.section-atmosphere--about)::before,
-body.home-page main > .section-atmosphere:not(.section-atmosphere--about)::after,
+body.home-page main > .section-atmosphere:not(.section-atmosphere--about):not(#problemas)::after,
 body.home-page main .intro-section::after,
 body.home-page main .solutions-section::before,
 body.home-page main .work-section::before,
