@@ -74,9 +74,9 @@ test('Ato 01 uses mineral-plum atmosphere, a one-pixel chapter divider and compa
   assert.match(editorial,/@media \(max-width:600px\)/);
 });
 
-test('Ato 02 cards use plum accents and preserve their visual assets',()=>{
- assert.match(editorial,/rgba\(var\(--plum-mineral-rgb\),\.21\)/);
- assert.match(editorial,/border-bottom:1\.5px solid rgba\(var\(--plum-mineral-rgb\),\.74\)/);
+test('Ato 02 has mineral plum glass, peach link accents and keeps visual assets',()=>{
+ assert.match(editorial,/color-mix\(in srgb,var\(--plum-mineral\) 94%,var\(--warm-ivory\)\)/);
+ assert.match(editorial,/border-bottom: 1px solid rgba\(var\(--peach-rgb\),\.66\)/);
  assert.match(html,/modelo-project-art/);
  assert.match(html,/modelo-product-tile--engreni/);
 });
@@ -86,7 +86,7 @@ test('premium cards own their glass and shadow without global important override
  assert.doesNotMatch(paletteRules,/\.manifest-item,\n\.launch-pillars/);
  assert.doesNotMatch(paletteRules,/\.manifest-item:hover,\n\.launch-pillars/);
  assert.match(editorial,/backdrop-filter:blur\(13px\) saturate\(1\.07\)/);
- assert.match(editorial,/backdrop-filter:blur\(14px\) saturate\(1\.07\)/);
+ assert.match(editorial,/backdrop-filter: blur\(15px\) saturate\(1\.04\)/);
  assert.match(editorial,/stroke-width:1\.35/);
  assert.match(editorial,/stroke-width:1\.4/);
 });
@@ -97,10 +97,10 @@ test('chapter rules illuminate borders and preserve reduced-motion preferences',
 });
 
 test('modelo floating Engreni and 3D base preserve desktop and mobile framing',()=>{
- assert.match(editorial,/\.modelo-product-tile--engreni\s*\{\s*right:15%;\s*top:42%;/);
- assert.match(editorial,/\.modelo-product-platform\s*\{[^}]*width:68%;[^}]*height:28%;[^}]*right:13%;[^}]*bottom:15%;/s);
+ assert.match(editorial,/\.modelo-product-tile--engreni\s*\{\s*right: 17%;\s*top: 43%;/);
+ assert.match(editorial,/\.modelo-product-platform\s*\{[^}]*width: 57%;[^}]*height: 24%;[^}]*right: 16%;[^}]*bottom: 17%;/s);
  assert.match(editorial,/@media \(max-width: 540px\)/);
- assert.match(editorial,/\.modelo-product-platform\s*\{[^}]*width: 50%;[^}]*height: 34%;[^}]*right: 20%;[^}]*bottom: 18%;/s);
+ assert.match(editorial,/\.modelo-product-platform\s*\{[^}]*width: 47%;[^}]*height: 27%;[^}]*right: 21%;[^}]*bottom: 18%;/s);
  assert.match(editorial,/\.modelo-product-tile--engreni\s*\{\s*right: 17%;\s*top: 35%;/);
  assert.doesNotMatch(editorial,/#A37B9F|#CAA0B7/);
 });
@@ -109,7 +109,7 @@ test('thin iconography and mineral-plum signature remain coherent across acts',(
  const section=(name,following)=>editorial.slice(editorial.indexOf('/* '+name),editorial.indexOf('/* '+following));
  assert.match(editorial,/section#problemas\.section \.manifest-benefit-icon \{[^}]*width:30px;/s);
  assert.match(editorial,/\.manifest-benefit-icon svg \{[^}]*stroke-width:1\.35;/s);
- assert.match(editorial,/\.modelo-product-tile svg \{[^}]*width:28px;[^}]*stroke-width:1\.4;/s);
+ assert.match(editorial,/\.modelo-product-tile svg \{[^}]*width: 23px;[^}]*stroke-width: 1\.2;/s);
  assert.match(editorial,/\.products-heading-tile svg \{[^}]*stroke-width:1\.4;/s);
  assert.match(editorial,/\.about-process-icon svg \{[^}]*stroke-width:1\.4;/s);
  assert.match(html,/class="case-step-icon"[^>]+stroke-width="1\.4"/);
