@@ -1038,7 +1038,7 @@ body.home-page[data-c33-editorial] main > section#problemas.section .manifest-wa
   position:absolute;
   z-index:0;
   inset:auto -18% 0 -4%;
-  width:122%;
+  width:120%;
   height:clamp(128px,12.5vw,194px);
   max-width:none;
   pointer-events:none;
