@@ -5,19 +5,21 @@ const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const read = name => fs.readFileSync(path.join(root, name), 'utf8');
 
-test('3.3 retains approved hero composition and direct business CTAs', () => {
-  const html = read('index.html');
-  assert.match(html, /class="hero hero--cinematic hero--floating-panels" data-cinema33-home/);
-  assert.match(html, /class="cinema-float cinema-float--vitrini"/);
-  assert.match(html, /class="cinema-float cinema-float--engreni"/);
-  assert.match(html, /class="cinema-phone cinema-agenda-panel"/);
-  assert.doesNotMatch(html, /cinema-phone-notch/);
-  for (const name of ['cinema-browser', 'cinema-phone', 'cinema-service']) {
-    assert.match(html, new RegExp(name));
-  }
-  assert.match(html, /href="#contato">Conversar sobre meu projeto/);
-  assert.match(html, /href="#projetos"/);
+test('3.3 hero uses genuine glass project screens and direct commercial links', () => {
+  const html = read('index.html'), css = read('assets/css/hero-project-simulators-20261118.css');
+  assert.match(html, /class="hero hero--cinematic hero--floating-panels hero--project-simulators"/);
+  assert.match(html, /<h1 id="hero-title">Soluções digitais/);
+  assert.match(html, /hero-projects__card--vitrini/);
+  assert.match(html, /hero-projects__card--agenda/);
+  assert.match(html, /hero-projects__card--caderneta/);
+  assert.match(html, /EXPERIÊNCIA ILUSTRATIVA/);
+  assert.doesNotMatch(html, /class="cinema-phone cinema-agenda-panel"/);
+  assert.match(html, /href="#produtos">Conheça nossas soluções/);
+  assert.match(html, /href="#projetos">Ver projetos em ação/);
   assert.match(html, /cinema33-ledger__link" href="#produtos"/);
+  assert.match(css, /backdrop-filter:blur\(20px\)/);
+  assert.match(css, /@media \(max-width:600px\)/);
+  assert.match(css, /@media \(prefers-reduced-motion:reduce\)/);
   assert.doesNotMatch(html, /class="film" id="film"/);
 });
 
@@ -79,5 +81,5 @@ test('3.3 Home balances the dark technological showroom with human editorial sec
   for (const anchor of ['problemas', 'modelo', 'produtos', 'projetos', 'sobre', 'conteudos', 'contato']) {
     assert.match(html, new RegExp('id="' + anchor + '"'));
   }
-  assert.match(html, /href="#contato">Conversar sobre meu projeto/);
+  assert.match(html, /href="#produtos">Conheça nossas soluções/);
 });
