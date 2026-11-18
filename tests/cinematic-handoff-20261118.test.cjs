@@ -12,7 +12,7 @@ test('the five approved film scenes and the original 3D Hero remain in place', (
   assert.match(html, /id="cinema33-film"/);
   assert.equal((html.match(/data-c33-caption/g) || []).length, 5);
   assert.match(html, /id="apresentacao"[^>]*data-hero-master="true"|data-hero-master="true"[^>]*id="apresentacao"/);
-  assert.match(html, /class="hero hero--cinematic hero--floating-panels"/);
+  assert.match(html, /class="hero hero--cinematic hero--floating-panels hero--project-simulators"/);
 });
 
 test('handoff shares the existing passive scroll frame and no perpetual animation loop', () => {
