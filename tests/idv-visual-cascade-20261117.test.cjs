@@ -56,7 +56,7 @@ test('hero anchor does not reserve the previous film scene under fixed navigatio
 
 test('plum signature v7 increases section atmosphere while retaining color tokens',()=>{
   const hero=read('assets/css/cinematic-floating-panels-20261113.css');
-  assert.match(hero,/rgba\(var\(--plum-mineral-rgb\),\.38\)/);
+  assert.match(hero,/rgba\(var\(--plum-mineral-rgb\),\.52\)/);
   assert.match(editorial,/rgba\(var\(--plum-mineral-rgb\),\.46\)/);
   assert.match(editorial,/rgba\(var\(--plum-mineral-rgb\),\.30\)/);
   assert.match(editorial,/outline:2px solid var\(--plum-mineral\)/);
