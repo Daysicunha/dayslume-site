@@ -93,6 +93,45 @@ try {
        titleOpacity:Number(getComputedStyle(document.querySelector('#sobre #about-title')).opacity)}));
    }
 
+   // Final visual QA: the secondary Contents card must use the editorial-light surface.
+   await page.evaluate(()=>document.querySelector('#conteudos .content-secondary')?.scrollIntoView({block:'center',behavior:'instant'}));
+   await sleep(650);
+   row.readability=await page.evaluate(()=>{
+     const card=document.querySelector('#conteudos .content-secondary');
+     const title=card?.querySelector('h3');
+     const description=card?.querySelector('.content-secondary__copy > p');
+     if(!card||!title||!description)return {missing:true};
+     const rgb=e=>(getComputedStyle(e).color.match(/\d+/g)||[]).slice(0,3).map(Number);
+     const lum=a=>a.map(x=>x/255).map(x=>x<=.04045?x/12.92:((x+.055)/1.055)**2.4)
+       .reduce((s,x,i)=>s+x*[.2126,.7152,.0722][i],0);
+     const ratio=a=>{const x=lum(a),y=lum([243,239,232]);return +((Math.max(x,y)+.05)/(Math.min(x,y)+.05)).toFixed(2);};
+     return {headingRatio:ratio(rgb(title)),paragraphRatio:ratio(rgb(description)),
+       background:getComputedStyle(card).backgroundImage};
+   });
+   if(row.readability.missing||row.readability.headingRatio<4.5||row.readability.paragraphRatio<4.5||
+      !row.readability.background.includes('255'))
+     row.issues.push('Contents secondary card illegible: '+JSON.stringify(row.readability));
+   await page.screenshot({path:join(out,'contents-legible-'+width+'.png')});
+
+   // Existing WhatsApp collision manager must protect product showroom controls too.
+   await page.evaluate(()=>{
+     const el=document.querySelector('#produtos .cinema33-showroom__choices button:last-child');
+     if(el)scrollTo({top:scrollY+el.getBoundingClientRect().top-(innerHeight-135),behavior:'instant'});
+   });
+   await sleep(260);
+   row.productFloating=await page.evaluate(()=>{
+     const el=document.querySelector('#produtos .cinema33-showroom__choices button:last-child');
+     const action=document.querySelector('.floating-whatsapp');
+     if(!el||!action)return {missing:true};
+     const a=el.getBoundingClientRect(),b=action.getBoundingClientRect();
+     const overlap=a.bottom>b.top+6&&a.top<b.bottom-6&&a.right>b.left+6&&a.left<b.right-6;
+     const style=getComputedStyle(action);
+     return {overlap,hidden:style.visibility==='hidden'||Number(style.opacity)<.05};
+   });
+   if(row.productFloating.overlap&&!row.productFloating.hidden)
+     row.issues.push('Floating WhatsApp covers ENGRENI showroom selector');
+   await page.screenshot({path:join(out,'products-controls-'+width+'.png')});
+
    // Contact: never follow generated WhatsApp link. Check real validation and reset.
    await page.evaluate(()=>document.querySelector('#contato')?.scrollIntoView({block:'start',behavior:'instant'}));
    await sleep(200);

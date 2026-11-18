@@ -48,3 +48,12 @@ Os workflows GitHub `QA` e `Visual QA — DAYSLUME` precisam executar na PR de h
 - Corrigidos checks de navegador desatualizados que ainda procuravam seletores da Hero antiga e uma costura ::after removida na PR #29. Ajustada tolerância do pedestal apoiado no limite do card em até 1,5px.
 - Capturas após estabilização mais longa (680ms por seção, 1.100ms extra para Hero/Fundadora e 1.350ms para cena final); alertas reais do QA visual agora falham o job.
 - Esta intervenção requer **nova prévia** correspondente ao novo head e reexecução do QA, sem afetar a main/produção.
+
+## 18/11 — Refinamento final de legibilidade (gravação da proprietária)
+
+- Evidência observada no navegador: no segundo card de **Conteúdos** a escrita escura estava sobre a superfície escura, apesar da versão editorial clara já estar implementada no primeiro. A causa foi a **especificidade menor de nove seletores abreviados** no bloco `Conteúdos Editorial Light`, o que impedia a substituição do fundo e dos efeitos antigos.
+- Correção na **origem do CSS** em `assets/css/contents-cinematic-33.css`: os nove seletores da seção 06 passaram a ser completamente escopados, preservando marfim, ameixa, pêssego, composição, textos, imagens 3D e links; sem novos arquivos de override.
+- Sobreposição de CTA: a aba vertical do WhatsApp podia encobrir o último botão do showroom. Em `assets/js/dayslume-motion.js`, **reutilizado** o detector de colisão existente para os seletores de Produtos e ações de Cases. Nenhum novo scroll listener ou observer.
+- QA de navegador ampliado com contraste nominal (texto contra `#F3EFE8`, mínimo 4,5:1), inspeção de botão coberto, capturas da seção Conteúdos e seletor Produtos em 320, 390, 768 e 1440px, além de testes estáticos dedicados.
+- Não foi redesenhada nenhuma seção, nem substituídos ícones, Hero, foto da Fundadora, transições, rotas ou componentes aprovados.
+- **A PR #31 permanece em draft. `main` e produção sem alterações. Homologação visual da fundadora obrigatória.**

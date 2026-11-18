@@ -36,7 +36,9 @@
       '#contato, #solicitar, .contact-form, main > .band:last-child, .site-footer, .footer'
     )];
     const overlapTargets = [...document.querySelectorAll(
-      'main a.btn, main button.btn, .contact-note a, .projects-portfolio-cta, .content-archive'
+      'main a.btn, main button.btn, .contact-note a, .projects-portfolio-cta, .content-archive, ' +
+      '#produtos .cinema33-showroom__choices button, #produtos .cinema33-view-ritmo, ' +
+      '#produtos .solutions-grid .solution-arrow, #projetos .case-actions a'
     )];
     const initialTabindex = action.getAttribute('tabindex');
     const mobileFooter = matchMedia('(max-width: 800px)');
