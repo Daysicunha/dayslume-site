@@ -24,6 +24,49 @@ try {
    await page.evaluate(()=>document.fonts.ready);
    const row={width,route:'index.html',errors,checks:[],issues:[]};
 
+   // Film -> Hero: captures the last frame, transition and direct anchor.
+   await page.evaluate(() => {
+     const film=document.querySelector('#cinema33-film');
+     const pin=film.querySelector('.c33-pin');
+     window.scrollTo({top:film.offsetTop+(film.offsetHeight-pin.offsetHeight)*.99,behavior:'instant'});
+   });
+   await sleep(140);
+   const ending=await page.evaluate(()=>{
+     const film=document.querySelector('#cinema33-film');
+     const pin=film.querySelector('.c33-pin');
+     const css=getComputedStyle(pin);
+     return {scene:film.dataset.currentScene, seam:Number(css.getPropertyValue('--c33-seam-opacity')),
+       glow:Number(css.getPropertyValue('--c33-exit-progress'))};
+   });
+   await page.screenshot({path:join(out,'film-final-'+width+'.png')});
+   await page.evaluate(() => {
+     const film=document.querySelector('#cinema33-film');
+     window.scrollTo({top:film.offsetTop+film.offsetHeight-innerHeight*.55,behavior:'instant'});
+   });
+   await sleep(140);
+   const passage=await page.evaluate(()=>{
+     const hero=document.querySelector('#apresentacao');
+     const css=getComputedStyle(hero);
+     return {ready:document.body.classList.contains('c33-handoff-ready'),
+       copy:Number(css.getPropertyValue('--c33-handoff-copy')),
+       panels:Number(css.getPropertyValue('--c33-handoff-panels'))};
+   });
+   await page.screenshot({path:join(out,'film-hero-passage-'+width+'.png')});
+   await page.evaluate(()=>document.querySelector('#apresentacao').scrollIntoView({block:'start',behavior:'instant'}));
+   await sleep(140);
+   const anchored=await page.evaluate(()=>{
+     const hero=document.querySelector('#apresentacao');
+     return {copy:Number(getComputedStyle(hero.querySelector('.hero-content')).opacity),
+       panels:Number(getComputedStyle(hero.querySelector('.hero-visual-composition')).opacity)};
+   });
+   row.handoff={ending,passage,anchored};
+   if(ending.scene!=='contato'||ending.seam<.1||ending.glow<.1)
+     row.issues.push('film last scene or luminous seam not activated');
+   if(!passage.ready||passage.copy<=.15||passage.panels<=.15)
+     row.issues.push('hero panels/copy do not appear during handoff');
+   if(anchored.copy<.95||anchored.panels<.95)
+     row.issues.push('hero remains transparent on direct anchor navigation');
+
    // Founder: two moments: entry and after staggered text reveal.
    await page.evaluate(()=>document.querySelector('#sobre')?.scrollIntoView({block:'start',behavior:'instant'}));
    await sleep(1600);
