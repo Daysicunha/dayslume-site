@@ -2620,7 +2620,7 @@ body.home-page[data-c33-editorial] main > section#produtos.section .solution-car
 }
 body.home-page[data-c33-editorial] main > section#produtos.section .solution-card :is(a,button):focus-visible,
 body.home-page[data-c33-editorial] main > section#produtos.section .products-editorial-side a:focus-visible {
-  outline: 2px solid #EDB9F0;
+  outline: 2px solid var(--peach);
   outline-offset:4px;
 }
 /* Only animate illustration layers while visible and motion allowed.
@@ -3712,7 +3712,7 @@ body.home-page[data-c33-editorial] main > section#sobre.section .about-copy > .e
   align-items:center;
   gap:11px;
   margin:0 0 clamp(20px,2.1vw,30px);
-  color:#E8B8ED;
+  color:var(--peach);
   font-size:clamp(10px,.78vw,12px);
   font-weight:760;
   line-height:1.4;
