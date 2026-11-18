@@ -1396,8 +1396,10 @@ body.home-page[data-c33-editorial] main > section#conteudos.contents-cinematic .
   body.home-page[data-c33-editorial] main > section#conteudos.contents-cinematic .content-masthead__top h2#conteudos-title {font-size:clamp(37px,9.4vw,51px);}
   body.home-page[data-c33-editorial] main > section#conteudos.contents-cinematic .content-edition {font-size:10px;}
   body.home-page[data-c33-editorial] main > section#conteudos.contents-cinematic .content-deck {font-size:14px;line-height:1.5;}
-  body.home-page[data-c33-editorial] main > section#conteudos.contents-cinematic .content-featured,.content-secondary {border-radius:21px;}
-  body.home-page[data-c33-editorial] main > section#conteudos.contents-cinematic .content-featured__copy,.content-secondary__copy {padding:25px 20px;}
+  body.home-page[data-c33-editorial] main > section#conteudos.contents-cinematic .content-featured,
+  body.home-page[data-c33-editorial] main > section#conteudos.contents-cinematic .content-secondary {border-radius:21px;}
+  body.home-page[data-c33-editorial] main > section#conteudos.contents-cinematic .content-featured__copy,
+  body.home-page[data-c33-editorial] main > section#conteudos.contents-cinematic .content-secondary__copy {padding:25px 20px;}
   body.home-page[data-c33-editorial] main > section#conteudos.contents-cinematic .content-featured h3 {font-size:clamp(25px,7vw,32px);}
   body.home-page[data-c33-editorial] main > section#conteudos.contents-cinematic .content-secondary h3 {font-size:clamp(24px,6.7vw,30px);}
   body.home-page[data-c33-editorial] main > section#conteudos.contents-cinematic .content-meta {font-size:10px;}
