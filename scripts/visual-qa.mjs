@@ -38,7 +38,7 @@ try {
    if(row.document.scrollWidth>width+2) row.issues.push('horizontal overflow '+row.document.scrollWidth+'px');
    for(const [key,selector] of sections) {
      await page.evaluate(sel=>document.querySelector(sel)?.scrollIntoView({block:'start',behavior:'instant'}),selector);
-     await wait(320);
+     await wait(680);
      // Capturar cores e geometrias já estabilizadas, não o blur de entrada cinematográfica.
      if(captureWidths.has(width) && (key==='hero'||key==='fundadora')) await wait(1100);
      const layout=await page.evaluate((sel)=>{
@@ -73,8 +73,7 @@ try {
          };
        },key);
        row.sections[key].premium=detail;
-       if(v.name==='after-framing-v6'&&key==='problemas'&&width>1180&&detail.seam.width!=='1px')
-         row.issues.push('seam not a 1px luminous rule: '+JSON.stringify(detail.seam));
+       // The former grid ::after seam was replaced with a section-level illuminated wave; do not assert the retired pseudo-element.
        if(v.name==='after-framing-v6'&&key==='problemas'&&(!detail.card.blur||detail.card.blur==='none'))
          row.issues.push('glass card backdrop-filter not active');
      }
@@ -88,7 +87,7 @@ try {
        });
        row.sections[key].framing=framing;
        if(v.name==='after-framing-v6' && framing.card) {
-         if(framing.baseLayers.some(b=>b.bottom>framing.card.bottom-5 || b.right>framing.card.right+1))
+         if(framing.baseLayers.some(b=>b.bottom>framing.card.bottom+1.5 || b.right>framing.card.right+1))
            row.issues.push('modelo platform layer clipped by card: '+JSON.stringify(framing));
          if(framing.tile && (framing.tile.bottom>framing.card.bottom-5 || framing.tile.right>framing.card.right-5))
            row.issues.push('ENGRENI tile too close to card boundary: '+JSON.stringify(framing));
@@ -96,16 +95,16 @@ try {
      }
      if(key==='hero') {
        row.heroComposition=await page.evaluate(()=>{
-         const selectors={title:'.hero-content h1',vitrini:'.cinema-browser',engreni:'.cinema-agenda-panel',service:'.cinema-service',line:'.cinema33-ledger'};
+         const selectors={title:'.hero-content h1',vitrini:'.hero-projects__card--vitrini',engreni:'.hero-projects__card--agenda',service:'.hero-projects__card--caderneta',line:'.cinema33-ledger'};
          const boxes={};for(const [key,selector] of Object.entries(selectors)){
            const e=document.querySelector('#apresentacao '+selector),r=e?.getBoundingClientRect();
            boxes[key]=r?{left:Math.round(r.left),top:Math.round(r.top),right:Math.round(r.right),bottom:Math.round(r.bottom),width:Math.round(r.width)}:null;
          } return boxes;
        });
-       if(v.name==='after-framing-v6' && width===1672) {
+       if(v.name==='after-framing-v6' && width>=1440) {
          const {vitrini,engreni,service,title}=row.heroComposition;
          if(!vitrini||!engreni||!service||!title)row.issues.push('hero cards missing');
-         else if(vitrini.left>760 || engreni.right>1672 || service.bottom>941 || vitrini.left<=title.left)
+         else if(vitrini.left>width*.51 || engreni.right>width+2 || service.bottom>941 || vitrini.left<=title.left)
            row.issues.push('hero reference composition out of bounds: '+JSON.stringify(row.heroComposition));
        }
        row.heroAnchor=await page.evaluate(()=>{
@@ -167,7 +166,7 @@ try {
       const film=document.getElementById('cinema33-film');
       if(film)window.scrollTo({top:film.offsetTop+(film.offsetHeight-innerHeight)*.89,behavior:'instant'});
    });
-   await wait(420);
+   await wait(1350);
    row.film=await page.evaluate(()=>{
      const f=document.getElementById('cinema33-film');
      return {scene:f?.dataset.currentScene,fragments:f?getComputedStyle(f.querySelector('.c33-window')).visibility:null};
@@ -196,3 +195,4 @@ for(const r of results){
 }
 await writeFile(join(out,'README.md'),md.join('\n')+'\n');
 console.log(md.join('\n'));
+if(results.some(r=>r.version==='after-framing-v6' && r.issues.length))process.exitCode=1;

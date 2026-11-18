@@ -41,3 +41,10 @@
 Os workflows GitHub `QA` e `Visual QA — DAYSLUME` precisam executar na PR de homologação. A pipeline visual gera `dayslume-visual-qa-before-after` e `dayslume-functional-qa`, com screenshots e medições em navegador; baseline atualmente configurado em `7a20572f58503bc6264298646c7c81023025cd95`, portanto não deve ser apresentado como comparação com a produção atual. Capturas só comprovam a versão do SHA identificado na execução. Revisão manual em dispositivo real, foco por teclado, comportamento da abertura, links externos e contraste ainda são obrigatórios.
 
 **Proibição:** não fazer merge na `main`, não promover nem atribuir domínio de produção, nem anunciar aprovação visual sem autorização expressa.
+
+## Ajuste pontual de enquadramento após primeira rodada de capturas
+
+- Inspeção das imagens da primeira execução revelou o painel lateral VITRINI recobrindo texto da agenda em desktop. Corrigida **somente** a distribuição dos três cartões dentro da Hero existente: VITRINI esquerda, Agenda frontal ao centro e Caderneta atrás no alto à direita, preservando ângulos 3D, telas e parallax.
+- Corrigidos checks de navegador desatualizados que ainda procuravam seletores da Hero antiga e uma costura ::after removida na PR #29. Ajustada tolerância do pedestal apoiado no limite do card em até 1,5px.
+- Capturas após estabilização mais longa (680ms por seção, 1.100ms extra para Hero/Fundadora e 1.350ms para cena final); alertas reais do QA visual agora falham o job.
+- Esta intervenção requer **nova prévia** correspondente ao novo head e reexecução do QA, sem afetar a main/produção.

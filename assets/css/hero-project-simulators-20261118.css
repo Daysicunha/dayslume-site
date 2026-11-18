@@ -65,7 +65,7 @@
 .home-page #apresentacao.hero--project-simulators .hero-master-lightfloor {z-index:0;opacity:.45;}
 .home-page #apresentacao .hero-projects {
   position:relative;width:100%;height:clamp(480px,41vw,576px);
-  perspective:1500px;transform-style:preserve-3d;
+  perspective:1500px;transform-style:flat; /* Preserve each card's 3D tilt; use explicit z-order to protect text. */
 }
 .home-page #apresentacao .hero-projects__halo {
   position:absolute;z-index:0;inset:8% 4% 6%;
@@ -100,15 +100,15 @@
   background:linear-gradient(140deg,rgba(255,255,255,.08),transparent 23%,transparent 84%,rgba(216,182,165,.06));
 }
 .home-page #apresentacao .hero-projects__card--vitrini {
-  z-index:2;left:0;top:24%;width:45%;height:60%;
+  z-index:2;left:-1%;top:29%;width:41%;height:58%;
   transform:perspective(1300px) rotateY(12deg) rotateX(2deg) rotateZ(-3deg);
 }
 .home-page #apresentacao .hero-projects__card--caderneta {
-  z-index:3;right:-1%;top:22%;width:34%;height:61%;
+  z-index:3;right:-1%;top:6%;width:32%;height:61%;
   transform:perspective(1300px) rotateY(-12deg) rotateX(3deg) rotateZ(3deg);
 }
 .home-page #apresentacao .hero-projects__card--agenda {
-  z-index:4;left:31%;top:10%;width:55%;height:75%;
+  z-index:4;left:33%;top:20%;width:53%;height:67%;
   background:linear-gradient(145deg,rgba(255,255,255,.13),transparent 28%),linear-gradient(145deg,rgba(80,48,71,.95),rgba(53,34,53,.96) 54%,rgba(107,83,109,.92));
   border-color:rgba(255,220,202,.79);
   transform:perspective(1400px) rotateY(-7deg) rotateX(3deg) rotateZ(-1.4deg) translateZ(19px);
@@ -209,9 +209,9 @@
   .home-page #apresentacao.hero--project-simulators .hero-grid {width:calc(100% - 38px);}
   .home-page #apresentacao.hero--project-simulators .hero-content h1 {font-size:clamp(38px,7.1vw,58px);}
   .home-page #apresentacao .hero-projects {height:485px;}
-  .home-page #apresentacao .hero-projects__card--vitrini {width:47%;height:62%;}
-  .home-page #apresentacao .hero-projects__card--agenda {width:59%;left:28%;height:77%;}
-  .home-page #apresentacao .hero-projects__card--caderneta {width:33%;}
+  .home-page #apresentacao .hero-projects__card--vitrini {left:0;top:29%;width:42%;height:59%;}
+  .home-page #apresentacao .hero-projects__card--agenda {left:33%;top:19%;width:53%;height:68%;}
+  .home-page #apresentacao .hero-projects__card--caderneta {right:-1%;top:6%;width:31%;height:60%;}
   .home-page #apresentacao .hero-projects__landscape {height:32px;}
   .home-page #apresentacao .hero-projects__bar {margin-bottom:15px;}
   .home-page #apresentacao .hero-projects__agenda-header {margin:18px 0;}
