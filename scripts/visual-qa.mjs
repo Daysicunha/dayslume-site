@@ -14,18 +14,18 @@ const browser=await puppeteer.launch({
 });
 const versions=[{name:'before-seams-v4',url:'http://127.0.0.1:8765/'},
                 {name:'after-framing-v6',url:'http://127.0.0.1:8766/'}];
-const viewports=[320,360,390,768,1024,1440];
+const viewports=[320,360,390,768,1024,1440,1672];
 const sections=[['hero','#apresentacao'],['problemas','#problemas'],
                 ['modelo','#modelo'],['produtos','#produtos'],['dayane','#projetos'],
                 ['fundadora','#sobre'],['conteudos','#conteudos'],['contato','#contato']];
-const captureWidths=new Set([320,390,1440]);
+const captureWidths=new Set([320,390,1440,1672]);
 const wait=ms=>new Promise(r=>setTimeout(r,ms));
 const results=[];
 try {
  for(const v of versions) {
   for(const width of viewports) {
    const page=await browser.newPage();
-   await page.setViewport({width,height:width<=390?780:900,deviceScaleFactor:1});
+   await page.setViewport({width,height:width<=390?780:(width===1672?941:900),deviceScaleFactor:1});
    await page.goto(v.url,{waitUntil:'domcontentloaded',timeout:30000});
    await page.evaluate(()=>Promise.race([document.fonts.ready,new Promise(r=>setTimeout(r,2200))]));
    await wait(250);
@@ -95,6 +95,19 @@ try {
        }
      }
      if(key==='hero') {
+       row.heroComposition=await page.evaluate(()=>{
+         const selectors={title:'.hero-content h1',vitrini:'.cinema-browser',engreni:'.cinema-agenda-panel',service:'.cinema-service',line:'.cinema33-ledger'};
+         const boxes={};for(const [key,selector] of Object.entries(selectors)){
+           const e=document.querySelector('#apresentacao '+selector),r=e?.getBoundingClientRect();
+           boxes[key]=r?{left:Math.round(r.left),top:Math.round(r.top),right:Math.round(r.right),bottom:Math.round(r.bottom),width:Math.round(r.width)}:null;
+         } return boxes;
+       });
+       if(v.name==='after-framing-v6' && width===1672) {
+         const {vitrini,engreni,service,title}=row.heroComposition;
+         if(!vitrini||!engreni||!service||!title)row.issues.push('hero cards missing');
+         else if(vitrini.left>760 || engreni.right>1672 || service.bottom>941 || vitrini.left<=title.left)
+           row.issues.push('hero reference composition out of bounds: '+JSON.stringify(row.heroComposition));
+       }
        row.heroAnchor=await page.evaluate(()=>{
          const h=document.querySelector('.site-header')?.getBoundingClientRect();
          const el=document.querySelector('#apresentacao');
