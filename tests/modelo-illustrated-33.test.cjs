@@ -62,6 +62,19 @@ test('Ato III uses scoped CSS, native scroll cards, responsive layout and reduce
   assert.equal((css.match(/\{/g)||[]).length,(css.match(/\}/g)||[]).length);
 });
 
+test('Ato III has an elegant luminous bespoke icon and outlined 3D product tiles',()=>{
+  assert.match(section,/id="modelo-premium-outline-glow"/);
+  assert.match(section,/id="modelo-premium-frame"/);
+  assert.match(section,/class="modelo-art-laptop"/);
+  assert.match(section,/stroke="url\(#modelo-premium-frame\)"/);
+  assert.match(section,/class="modelo-art-code"/);
+  assert.match(cssPatch,/\.modelo-product-tile::before\s*\{/);
+  assert.match(cssPatch,/\.modelo-product-tile::after\s*\{/);
+  assert.match(cssPatch,/mask-composite: exclude/);
+  assert.match(cssPatch,/border: 1px solid rgba\(var\(--peach-rgb\), \.86\)/);
+  assert.match(cssPatch,/\.modelo-path-card--products:is\(:hover,:focus-within\) \.modelo-product-tile/);
+});
+
 test('Ato III illustration motion runs only in view and degrades without JS',()=>{
   assert.match(home,/src="assets\/js\/modelo-motion\.js" defer/);
   assert.match(script,/IntersectionObserver/);
