@@ -12,15 +12,15 @@ test('Approved editorial journey has a clear logical order with no lifestyle det
  assert.match(html,/id="processo-home"/);
 });
 test('Approved hero and proof move visitors toward a real action',()=>{
- assert.match(html,/href="#contato">Conversar sobre meu projeto/);
- assert.match(html,/href="#projetos">Ver projetos realizados/);
+ assert.match(html,/href="#produtos">Conheça nossas soluções/);
+ assert.match(html,/href="#projetos">Ver projetos em ação/);
  assert.match(html,/Quero algo assim para meu negócio/);
  assert.match(html,/href="https:\/\/wa\.me\/5531994492474/);
  assert.match(html,/Conversar no WhatsApp/);
 });
 test('Preserves film, three cases, two working ecosystems, and founders image',()=>{
  assert.equal((html.match(/data-c33-caption/g)||[]).length,5);
- assert.match(html,/class="cinema-cluster"/);
+ assert.match(html,/class="hero-projects"/);
  assert.equal((html.match(/class="project-card flagship-case/g)||[]).length,3);
  assert.match(html,/data-cinema33-showroom/);
  assert.match(html,/src="assets\/images\/daysi-cunha-editorial\.jpg"/);
