@@ -71,6 +71,8 @@
   position:absolute;z-index:0;inset:8% 4% 6%;
   background:radial-gradient(ellipse at 58% 55%,rgba(216,182,165,.22),rgba(107,83,109,.18) 45%,transparent 70%);
   filter:blur(32px);pointer-events:none;
+  transform:translate3d(var(--cinema-shift-x,0px),var(--cinema-shift-y,0px),0);
+  transition:transform .45s ease-out;
 }
 .home-page #apresentacao .hero-projects__plinth {
   position:absolute;z-index:1;left:3%;right:0;bottom:8%;height:15%;
