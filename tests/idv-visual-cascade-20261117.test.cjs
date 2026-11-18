@@ -109,7 +109,7 @@ test('thin iconography and mineral-plum signature remain coherent across acts',(
  const section=(name,following)=>editorial.slice(editorial.indexOf('/* '+name),editorial.indexOf('/* '+following));
  assert.match(editorial,/section#problemas\.section \.manifest-benefit-icon \{[^}]*width:30px;/s);
  assert.match(editorial,/\.manifest-benefit-icon svg \{[^}]*stroke-width:1\.35;/s);
- assert.match(editorial,/\.modelo-product-tile svg \{[^}]*width:32px;[^}]*stroke-width:1\.4;/s);
+ assert.match(editorial,/\.modelo-product-tile svg \{[^}]*width:28px;[^}]*stroke-width:1\.4;/s);
  assert.match(editorial,/\.products-heading-tile svg \{[^}]*stroke-width:1\.4;/s);
  assert.match(editorial,/\.about-process-icon svg \{[^}]*stroke-width:1\.4;/s);
  assert.match(html,/class="case-step-icon"[^>]+stroke-width="1\.4"/);
@@ -126,4 +126,31 @@ test('selected showroom control uses mineral plum, not historical lilac',()=>{
  assert.match(editorial,/\.cinema33-showroom__choices button\[aria-pressed="true"\] \{[^}]*background: var\(--plum-mineral\);[^}]*color: var\(--warm-ivory\);/s);
  assert.doesNotMatch(editorial,/#D9A3DD|#E6B8E9|#E1A9DF|#E7B3E6/);
  assert.match(palette,/--plum-mineral: #6B536D/);
+});
+
+
+test('Act II wave is outside the copy column and fades at the section floor',()=>{
+  const problem=html.split('id="problemas"')[1].split('id="modelo"')[0];
+  const listPos=problem.indexOf('class="manifest-list"');
+  const wavePos=problem.indexOf('class="manifest-waves"');
+  assert.ok(listPos>=0 && wavePos>listPos,'wave remains a section-level decorative sibling');
+  assert.equal((problem.match(/class="manifest-waves"/g)||[]).length,1);
+  assert.match(editorial,/section#problemas\.section > \.manifest-waves \{[^}]*width:42\.2%;[^}]*mask-image:radial-gradient/s);
+  assert.match(palette,/:not\(#problemas\)::after/);
+});
+
+test('Six editorial acts inherit mineral-plum depth without legacy lilac accents',()=>{
+  const contents=read('assets/css/contents-cinematic-33.css');
+  for(const section of ['modelo','produtos','projetos','sobre','contato']){
+    assert.match(editorial,new RegExp('section#'+section+'[.]section'));
+  }
+  assert.match(contents,/section#conteudos\.contents-cinematic \{[^}]*--plum-mineral-rgb/s);
+  assert.match(contents,/backdrop-filter:blur\(11px\) saturate\(1\.06\)/);
+  assert.match(editorial,/Costuras luminosas unificadas/);
+  for(const hex of ['#EDB9F0','#E8B8ED','#E5AEEB','#F0B8F6','#EEB7EA']){
+    assert.ok(!editorial.includes(hex) && !contents.includes(hex),hex);
+  }
+  for(const label of ['cases-neon-waves','founder-neon-waves','contents-neon-waves','contact-neon-waves']){
+    assert.match(html,new RegExp('class="'+label+'"'));
+  }
 });
