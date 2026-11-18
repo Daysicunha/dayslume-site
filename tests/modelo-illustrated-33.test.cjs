@@ -44,11 +44,14 @@ test('Ato III uses scoped CSS, native scroll cards, responsive layout and reduce
   assert.ok(cssPatch,'section styles must exist');
   assert.match(cssPatch,/section#modelo\.section/);
   assert.match(cssPatch,/\.modelo-paths\s*\{/);
-  assert.match(cssPatch,/padding-block: clamp\(53px, 5vw, 77px\)/);
-  assert.match(cssPatch,/min-height: clamp\(314px, 23vw, 366px\)/);
+  assert.match(cssPatch,/padding-block: clamp\(72px, 6vw, 95px\)/);
+  assert.match(cssPatch,/min-height: clamp\(330px, 24\.2vw, 385px\)/);
   assert.match(cssPatch,/backdrop-filter: blur\(15px\) saturate\(1\.04\)/);
-  assert.match(cssPatch,/\.modelo-product-tile svg \{[^}]*width: 23px;[^}]*stroke-width: 1\.2;/s);
-  assert.match(cssPatch,/background:\s*radial-gradient\(ellipse 55% 74% at 14% 3%,/);
+  assert.match(cssPatch,/\.modelo-product-tile svg \{[^}]*width: 24px;[^}]*stroke-width: 1\.2;/s);
+  assert.match(cssPatch,/linear-gradient\(112deg,/);
+  assert.match(cssPatch,/max-width: 1480px/);
+  assert.match(cssPatch,/gap: clamp\(20px, 2\.75vw, 44px\)/);
+  assert.match(cssPatch,/height: 235px/);
   assert.match(cssPatch,/\.modelo-product-tile--engreni/);
   assert.match(cssPatch,/modelo-art-laptop-float/);
   assert.match(cssPatch,/modelo-tile-vitrini-float/);
