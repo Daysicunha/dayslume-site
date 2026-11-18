@@ -331,7 +331,31 @@ body.home-page main > section[data-c33-seamed] {
   letter-spacing: .18em;
   opacity: .72;
 }
-/* Exit light wash blends the final film frame into the hero's slate backdrop. */
+/* 18/11 — passagem cinematografica: um filete na borda do filme
+   encontra a linha de abertura da Hero. Usa somente tokens da IDV.
+   Sem canvas, overlay opaco, novas cenas ou alteracoes nos painéis 3D. */
+#cinema33-film .c33-pin::before {
+  content: '';
+  position: absolute;
+  z-index: 8;
+  bottom: 0;
+  left: clamp(18px, 4vw, 72px);
+  right: clamp(18px, 4vw, 72px);
+  height: 1px;
+  opacity: var(--c33-seam-opacity, 0);
+  transform: scaleX(var(--c33-seam-scale, .08));
+  transform-origin: 50% 50%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(var(--plum-mineral-rgb), .62) 27%,
+    rgba(var(--warm-ivory-rgb), .9) 50%,
+    rgba(var(--peach-rgb), .62) 74%,
+    transparent);
+  box-shadow: 0 0 14px rgba(var(--plum-mineral-rgb), .42),
+              0 0 32px rgba(var(--plum-mineral-rgb), .16);
+  pointer-events: none;
+}
+/* Dissolve tonal limitado: a legenda e o CTA final seguem legiveis. */
 #cinema33-film .c33-pin::after {
   content: '';
   position: absolute;
@@ -339,8 +363,47 @@ body.home-page main > section[data-c33-seamed] {
   z-index: 7;
   opacity: var(--c33-exit-progress, 0);
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(27,33,50,.12), #1b2132);
+  background:
+    radial-gradient(ellipse 68% 38% at 50% 100%,
+      rgba(var(--plum-mineral-rgb), .30), transparent 79%),
+    linear-gradient(180deg, rgba(27,33,50,.10), #1b2132);
   will-change: opacity;
+}
+/* Handoff sincronizado com o scroll; desativa somente a animacao antiga
+   de entrada da copy, nao os movimentos e transformacoes do palco 3D. */
+body.home-page.c33-handoff-ready #apresentacao.hero--cinematic .hero-content {
+  animation: none;
+  opacity: var(--c33-handoff-copy, 1);
+  translate: 0 var(--c33-handoff-copy-offset, 0px);
+}
+body.home-page.c33-handoff-ready #apresentacao.hero--cinematic .hero-visual-composition.cinema-stage {
+  opacity: var(--c33-handoff-panels, 1);
+  translate: 0 var(--c33-handoff-panel-offset, 0px);
+}
+body.home-page.c33-handoff-ready #apresentacao .cinema33-atmosphere {
+  background:
+    radial-gradient(ellipse 70% 25% at 50% 0%,
+      rgba(var(--plum-mineral-rgb), .19), transparent 80%),
+    radial-gradient(ellipse 33% 15% at 58% 0%,
+      rgba(var(--peach-rgb), .08), transparent 78%);
+}
+body.home-page.c33-handoff-ready #apresentacao > .c33-section-line {
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(var(--plum-mineral-rgb), .58) 27%,
+    rgba(var(--warm-ivory-rgb), .86) 50%,
+    rgba(var(--peach-rgb), .60) 74%,
+    transparent);
+  box-shadow: 0 0 12px rgba(var(--plum-mineral-rgb), .40),
+              0 0 28px rgba(var(--plum-mineral-rgb), .13);
+}
+@media (prefers-reduced-motion: reduce) {
+  #cinema33-film .c33-pin::before { display: none; }
+  body.home-page.c33-handoff-ready #apresentacao.hero--cinematic .hero-content,
+  body.home-page.c33-handoff-ready #apresentacao.hero--cinematic .hero-visual-composition.cinema-stage {
+    opacity: 1;
+    translate: none;
+  }
 }
 @media (max-width: 820px) {
   #cinema33-film .c33-window { top: 35%; }
