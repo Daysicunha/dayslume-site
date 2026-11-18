@@ -43,7 +43,7 @@ test('Dayane original 1600x900 media fits a 16:9 frame without text overlay',()=
 test('last cinema scene hides only its decorative UI fragments',()=>{
  assert.match(film,/#cinema33-film\[data-current-scene="contato"\] \.c33-window/);
  assert.match(html,/A próxima evolução começa com/);
- assert.match(html,/class="hero hero--cinematic hero--floating-panels"/);
+ assert.match(html,/class="hero hero--cinematic hero--floating-panels hero--project-simulators"/);
 });
 
 test('hero anchor does not reserve the previous film scene under fixed navigation',()=>{
