@@ -1821,10 +1821,10 @@ body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product
 body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-platform {
   position: absolute;
   z-index: 0;
-  width:72%;
-  height:30%;
-  right:8%;
-  bottom:7%;
+  width:68%;
+  height:28%;
+  right:13%;
+  bottom:15%;
   transform:perspective(600px) rotateX(56deg) rotateZ(-1deg);
   transform-style: preserve-3d;
 }
@@ -1837,8 +1837,8 @@ body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product
   background:linear-gradient(130deg,color-mix(in srgb,var(--warm-ivory) 81%,var(--peach)),color-mix(in srgb,var(--peach) 64%,var(--plum-mineral)) 80%);
   box-shadow:0 18px 34px rgba(var(--ink-deep-rgb),.18),0 0 22px rgba(var(--plum-mineral-rgb),.13),inset 0 3px 0 rgba(255,255,255,.72);
 }
-body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-platform span:nth-child(1) { transform: translateZ(-25px) translateY(30px); background:#A37B9F; }
-body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-platform span:nth-child(2) { transform: translateZ(-12px) translateY(13px); background:#CAA0B7; }
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-platform span:nth-child(1) { transform: translateZ(-25px) translateY(30px); background:color-mix(in srgb,var(--plum-mineral) 76%,var(--peach)); }
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-platform span:nth-child(2) { transform: translateZ(-12px) translateY(13px); background:color-mix(in srgb,var(--plum-mineral) 35%,var(--peach)); }
 body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-platform span:nth-child(3) { transform: translateZ(0); }
 body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-tile {
   position: absolute;
@@ -1880,8 +1880,8 @@ body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product
   transform: translate3d(-13%, 0, 45px) rotateY(-20deg) rotateZ(-5deg);
 }
 body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-tile--engreni {
-  right:9%;
-  top:45%;
+  right:15%;
+  top:42%;
   color: #FFF5EC;
   background:linear-gradient(145deg,color-mix(in srgb,var(--plum-mineral) 88%,var(--peach)),color-mix(in srgb,var(--ink-deep) 40%,var(--plum-mineral)) 83%);
   transform: translate3d(4%, 0, 85px) rotateY(-17deg) rotateZ(7deg);
@@ -2062,10 +2062,10 @@ body.home-page[data-c33-editorial] main > section#modelo.modelo-motion-ready.is-
     top: -15%;
   }
   body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-platform {
-    width: 52%;
-    height: 38%;
-    right: 19%;
-    bottom: 10%;
+    width: 50%;
+    height: 34%;
+    right: 20%;
+    bottom: 18%;
   }
   body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-tile {
     width: 40%;
@@ -2080,8 +2080,8 @@ body.home-page[data-c33-editorial] main > section#modelo.modelo-motion-ready.is-
     top: -1%;
   }
   body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-tile--engreni {
-    right: 13%;
-    top: 37%;
+    right: 17%;
+    top: 35%;
   }
   body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card::after { bottom: -9%; }
 }
