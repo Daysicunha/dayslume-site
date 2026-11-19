@@ -143,6 +143,26 @@ try {
          else if(vitrini.left>width*.51 || engreni.right>width+2 || service.bottom>941 || vitrini.left<=title.left)
            row.issues.push('hero reference composition out of bounds: '+JSON.stringify(row.heroComposition));
        }
+       row.heroSpatial=await page.evaluate(()=>{
+         const stage=document.querySelector('#apresentacao .hero-projects');
+         const rect=k=>stage?.querySelector('.hero-projects__card--'+k)?.getBoundingClientRect()||null;
+         const [left,center,right]=['vitrini','agenda','caderneta'].map(rect);
+         const overlap=(a,b)=>a&&b?Math.max(0,Math.min(a.right,b.right)-Math.max(a.left,b.left)):null;
+         const gaps=[left&&center?center.left-left.right:null,center&&right?right.left-center.right:null];
+         const bases=[left,center,right].map(r=>r?Math.round(r.bottom):null);
+         const mesh=getComputedStyle(document.querySelector('#apresentacao'),'::before').backgroundImage;
+         const atmospheres=[...document.querySelectorAll('main > section.section-atmosphere')].map(e=>({
+           id:e.id,mesh:getComputedStyle(e,'::before').backgroundImage
+         }));
+         return {gaps,bases,overlap:[overlap(left,center),overlap(center,right)],mesh,atmospheres};
+       });
+       if(v.name==='after-framing-v6'){
+         const a=row.heroSpatial;
+         if(width>=761 && (a.gaps.some(g=>g===null||g<0) || Math.max(...a.bases)-Math.min(...a.bases)>16))
+           row.issues.push('3D stage gap or baseline invalid: '+JSON.stringify(a));
+         if(/1px|repeating-linear-gradient/.test(a.mesh)||a.atmospheres.some(x=>/repeating-linear-gradient|1px, transparent 1px/.test(x.mesh)))
+           row.issues.push('decorative background mesh persists: '+JSON.stringify(a.atmospheres));
+       }
        row.heroAnchor=await page.evaluate(()=>{
          const h=document.querySelector('.site-header')?.getBoundingClientRect();
          const el=document.querySelector('#apresentacao');
@@ -160,9 +180,9 @@ try {
      if(captureWidths.has(width)) {
        await page.screenshot({path:join(out,v.name+'-'+width+'-'+key+'.png')});
        // Export the full actual Hero element too: a phone viewport captures only its first card.
-       if(key==='hero' && v.name==='after-framing-v6') {
+       if(key==='hero' && (v.name==='after-framing-v6'||v.name==='before-seams-v4')) {
          const fullHero=await page.$('#apresentacao');
-         if(fullHero)await fullHero.screenshot({path:join(out,'hero-complete-'+width+'.png'),captureBeyondViewport:true});
+         if(fullHero)await fullHero.screenshot({path:join(out,'hero-complete-'+v.name+'-'+width+'.png'),captureBeyondViewport:true});
        }
        // Screenshots de viewport no centro do card, sem artefatos da captura de elemento.
        const details={
@@ -221,6 +241,11 @@ try {
        return {filmHeight:Math.round(f?.getBoundingClientRect().height??0),shapesHidden:!shape||getComputedStyle(shape).display==='none',pinHeight:Math.round(pin?.getBoundingClientRect().height??0)};
      });
      if(!row.reducedMotion.shapesHidden)row.issues.push('reduced motion leaves film shapes active');
+   }
+   if(width===390||width===1440) {
+     await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));
+     await wait(400);
+     await page.screenshot({path:join(out,v.name+'-'+width+'-home-full.png'),fullPage:true});
    }
    results.push(row);
    await page.close();

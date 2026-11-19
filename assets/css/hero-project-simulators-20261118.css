@@ -8,10 +8,10 @@
   padding: clamp(57px,6.2vw,94px) 0 25px;
   background:
     radial-gradient(ellipse 46% 60% at 71% 46%, rgba(107,83,109,.57) 0%, transparent 78%),
-    radial-gradient(ellipse 32% 41% at 73% 44%, rgba(var(--ds-neon-pink-rgb), .19), transparent 78%),
+    radial-gradient(ellipse 32% 41% at 73% 44%, rgba(var(--ds-neon-pink-rgb), .07), transparent 78%),
     radial-gradient(ellipse 34% 35% at 80% 83%, rgba(216,182,165,.17), transparent 79%),
     radial-gradient(ellipse 48% 70% at 14% 4%, rgba(107,83,109,.22), transparent 76%),
-    linear-gradient(110deg,#17131c 3%,#291e2a 52%,#261e2b 100%);
+    linear-gradient(115deg,#202532 0%,#313044 48%,#473448 74%,#202532 100%);
 }
 .home-page #apresentacao.hero--project-simulators .hero-grid {
   width: min(calc(100% - 104px),1420px);max-width:1420px;
@@ -333,4 +333,137 @@ body.home-page #apresentacao[data-hero-master].hero--project-simulators .hero-co
   }
   .home-page #apresentacao .hero-projects__card--caderneta .hero-projects__bar {margin-bottom:11px;}
   .home-page #apresentacao .hero-projects__card--agenda {box-shadow:0 22px 46px rgba(12,7,20,.47),inset 0 1px 0 rgba(255,255,255,.32);}
+}
+
+/* DAYSLUME 3.4 — palco único, sem oclusão e sem grade cenográfica.
+   As âncoras e interfaces DOM dos três produtos continuam funcionais. */
+body.home-page[data-home34-story] #apresentacao.hero--project-simulators::before {
+  background:
+    radial-gradient(ellipse 46% 57% at 79% 44%,rgba(107,83,109,.21),transparent 82%),
+    radial-gradient(ellipse 38% 35% at 17% 83%,rgba(169,197,216,.07),transparent 82%);
+  background-size:auto;
+  -webkit-mask-image:none;
+  mask-image:none;
+  opacity:.72;
+}
+body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__halo {
+  inset:13% 2% 7%;
+  background:radial-gradient(ellipse 53% 44% at 51% 54%,rgba(216,182,165,.16),rgba(107,83,109,.13) 51%,transparent 83%);
+  filter:blur(32px);
+}
+body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__plinth {
+  left:4%;right:4%;bottom:4%;height:20%;
+  border:1px solid rgba(216,182,165,.23);
+  border-radius:50%;
+  background:radial-gradient(ellipse at 50% 32%,rgba(216,182,165,.20),rgba(107,83,109,.12) 53%,transparent 79%);
+  box-shadow:0 16px 50px rgba(6,9,19,.38),0 0 34px rgba(216,182,165,.13),inset 0 1px 0 rgba(243,239,232,.25);
+  transform:perspective(850px) rotateX(69deg);
+}
+body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__token {
+  display:none; /* no floating ornaments competing with the three products */
+}
+body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card {
+  border:1px solid rgba(243,239,232,.32);
+  border-bottom:3px solid rgba(11,13,27,.48); /* physically thick lower bezel */
+  background:linear-gradient(138deg,rgba(255,255,255,.14),transparent 28%),
+    linear-gradient(153deg,rgba(78,59,79,.95),rgba(39,38,56,.97) 59%,rgba(86,65,89,.95));
+  box-shadow:0 29px 48px rgba(8,9,21,.48),0 7px 12px rgba(5,8,20,.27),
+    1px 0 0 rgba(255,255,255,.17),inset 0 1px 0 rgba(255,255,255,.36);
+  backdrop-filter:blur(16px) saturate(1.08);
+  -webkit-backdrop-filter:blur(16px) saturate(1.08);
+  transform-style:preserve-3d;
+}
+body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card::after {
+  box-shadow:inset 2px 1px 0 rgba(255,255,255,.24),inset -2px 0 0 rgba(8,9,22,.34),inset 0 -3px 0 rgba(10,11,24,.26);
+  background:linear-gradient(130deg,rgba(255,255,255,.12),transparent 25%,transparent 84%,rgba(216,182,165,.08));
+}
+body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card--agenda {
+  background:linear-gradient(138deg,rgba(255,255,255,.17),transparent 27%),
+    linear-gradient(145deg,rgba(87,62,91,.96),rgba(46,41,62,.97) 57%,rgba(107,83,109,.95));
+  border-color:rgba(243,220,208,.7);
+  box-shadow:0 32px 58px rgba(7,8,20,.56),0 0 29px rgba(216,182,165,.14),
+    inset 0 1px 0 rgba(255,255,255,.37);
+}
+body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__bar {margin-bottom:clamp(12px,1.45vw,19px);}
+body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__brand {font-family:var(--ds-font-body,"DM Sans",sans-serif);}
+body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__agenda-header h2,
+body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__v-title {font-family:var(--ds-font-display,"Manrope",sans-serif);}
+@media (min-width:761px) {
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects {
+    position:relative;
+    width:100%;
+    height:clamp(490px,40vw,588px);
+    perspective:1700px;
+    perspective-origin:50% 50%;
+    transform-style:preserve-3d;
+  }
+  /* Exactly three non-overlapping horizontal slots; the lower bezel shares
+     the same 12% baseline, while Agenda is taller, not displaced forward. */
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card--vitrini {
+    z-index:2;left:2%;right:auto;top:auto;bottom:12%;width:28%;height:68%;
+    transform-origin:center bottom;
+    transform:perspective(1500px) rotateY(5deg) rotateX(1deg) rotateZ(-.35deg);
+  }
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card--agenda {
+    z-index:4;left:33%;right:auto;top:auto;bottom:12%;width:34%;height:76%;
+    transform-origin:center bottom;
+    transform:perspective(1600px) rotateY(0deg) rotateX(1.1deg) rotateZ(0deg);
+  }
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card--caderneta {
+    z-index:3;left:auto;right:2%;top:auto;bottom:12%;width:28%;height:68%;
+    transform-origin:center bottom;
+    transform:perspective(1500px) rotateY(-5deg) rotateX(1deg) rotateZ(.35deg);
+  }
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card--vitrini,
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card--caderneta {padding:clamp(10px,1.1vw,16px);}
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card--caderneta .hero-projects__brand strong {font-size:clamp(12px,1.13vw,17px);}
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card--caderneta .hero-projects__c-list >div {padding-block:9px;}
+}
+@media (min-width:761px) and (hover:hover) and (pointer:fine) {
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card--vitrini:hover {
+    z-index:2;transform:perspective(1500px) rotateY(3deg) rotateX(1deg) translateY(-7px);
+  }
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card--agenda:hover {
+    z-index:4;transform:perspective(1600px) rotateX(1.1deg) translateY(-7px);
+  }
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card--caderneta:hover {
+    z-index:3;transform:perspective(1500px) rotateY(-3deg) rotateX(1deg) translateY(-7px);
+  }
+}
+/* Tablet portrait and phone: trade forced miniatures for readable linked surfaces. */
+@media (max-width:760px) {
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects {
+    height:auto;min-height:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:14px;padding:19px 0 15px;perspective:none;transform-style:flat;
+  }
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__plinth {display:none;}
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card--vitrini,
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card--agenda,
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card--caderneta {
+    position:relative;left:auto;right:auto;top:auto;bottom:auto;
+    width:100%;height:auto;min-width:0;transform:none;
+    margin:0;
+  }
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card--agenda {
+    grid-column:1/-1;grid-row:1;min-height:344px;
+  }
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card--vitrini {
+    grid-column:1;grid-row:2;min-height:285px;
+  }
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card--caderneta {
+    grid-column:2;grid-row:2;min-height:320px;
+  }
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card--caderneta .hero-projects__c-list >div:nth-child(n+4) {display:flex;}
+}
+@media (max-width:440px) {
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects {grid-template-columns:minmax(0,1fr);}
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card--agenda {grid-column:1;grid-row:1;min-height:332px;}
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card--vitrini {grid-column:1;grid-row:2;min-height:265px;}
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card--caderneta {grid-column:1;grid-row:3;min-height:310px;}
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__category-list {display:grid;}
+}
+@media (prefers-reduced-motion:reduce) {
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card {
+    animation:none!important;transition:none!important;transform:none!important;
+  }
 }

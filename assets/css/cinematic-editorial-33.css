@@ -482,19 +482,19 @@ body.home-page[data-c33-editorial] main > section#problemas.section {
 }
 /* Fine technical coordinate grid, not a decorative illustration. */
 body.home-page[data-c33-editorial] main > section#problemas.section::before {
-  content: "";
-  position: absolute;
-  inset: 0 53.5% 0 0;
-  display: block;
-  z-index: 0;
-  opacity: .21;
-  pointer-events: none;
+  content:"";
+  position:absolute;
+  inset:0;
+  display:block;
+  z-index:0;
+  opacity:.45;
+  pointer-events:none;
   background:
-    linear-gradient(rgba(var(--mist-blue-rgb), .13) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(var(--mist-blue-rgb), .13) 1px, transparent 1px);
-  background-size: 82px 82px;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 37%, rgba(0,0,0,.18));
-  mask-image: linear-gradient(90deg, transparent, #000 37%, rgba(0,0,0,.18));
+    radial-gradient(ellipse 48% 65% at 9% 35%,rgba(169,197,216,.095),transparent 83%),
+    radial-gradient(ellipse 32% 48% at 88% 76%,rgba(107,83,109,.15),transparent 80%);
+  background-size:auto;
+  -webkit-mask-image:none;
+  mask-image:none;
 }
 body.home-page[data-c33-editorial] main > section#problemas.section::after {
   content: none;

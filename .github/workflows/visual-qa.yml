@@ -28,7 +28,7 @@ jobs:
         run: npm install --no-save --no-package-lock puppeteer-core@24.19.0
       - name: Render baseline and correction locally
         env:
-          BASE_SHA: 7a20572f58503bc6264298646c7c81023025cd95
+          BASE_SHA: 69896abee9ff81c1ff2d2d883d1becbbd18adce4
         run: |
           set -euo pipefail
           CHROME_BIN="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
