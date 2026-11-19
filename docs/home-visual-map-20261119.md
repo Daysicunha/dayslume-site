@@ -1,7 +1,7 @@
 # DAYSLUME 3.3 — mapa visual da Home, 19/11/2026
 
 ## Escopo
-Versão de homologação, derivada da PR #31, sem merge na main. A mudança aplica o mapa cromático aprovado em **uma única folha temática**, importada após o legado para conter o escopo de teste. Na homologação final, reconciliar as regras com a origem e remover a folha de transição.
+Versão de homologação, derivada da PR #31, sem merge na main. A mudança aplica o mapa cromático aprovado em **um bloco Home escopado ao final de `assets/css/brand-palette.css`**, preservando a paleta canônica como última folha da página. Na homologação final, reconciliar regras históricas redundantes dentro do mesmo arquivo.
 
 ## Sequência de superfícies
 0. Introdução cinematográfica: dark ink, rosa neon apenas nas luzes e palavras de destaque (preservada).
