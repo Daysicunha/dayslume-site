@@ -3156,8 +3156,8 @@ body.home-page[data-c33-editorial] {
 body.home-page[data-c33-editorial] main > section:is(#problemas,#modelo,#produtos,#projetos,#sobre,#conteudos,#contato) {
   scroll-margin-top: 94px;
 }
-/* Manrope nos títulos de seção, DM Sans no texto de apoio.
-   Manter o serif editorial APROVADO na Hero e no encerramento. */
+/* Manrope nos títulos de seção e na Hero, DM Sans no texto de apoio.
+   Serif editorial é reservado ao encerramento, sem sobrescrever o display da Hero. */
 body.home-page[data-c33-editorial] main > section#problemas .manifest-title,
 body.home-page[data-c33-editorial] main > section#modelo .modelo-heading h2,
 body.home-page[data-c33-editorial] main > section#produtos .products-editorial-heading h2,
@@ -3168,7 +3168,10 @@ body.home-page[data-c33-editorial] main > section#conteudos h2#conteudos-title {
   font-optical-sizing: auto;
   text-wrap: balance;
 }
-body.home-page[data-c33-editorial] main > section#apresentacao .hero-content h1,
+body.home-page[data-c33-editorial] main > section#apresentacao .hero-content h1 {
+  font-family: var(--ds-home-font-display);
+  font-optical-sizing: auto;
+}
 body.home-page[data-c33-editorial] main > section#contato h2#contact-title {
   font-family: var(--ds-home-font-editorial);
   font-optical-sizing: auto;
