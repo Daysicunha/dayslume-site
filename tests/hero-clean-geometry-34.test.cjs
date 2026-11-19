@@ -9,6 +9,9 @@ const cinematic=read('assets/css/hero-cinematic.css');
 const editorial=read('assets/css/cinematic-editorial-33.css');
 const palette=read('assets/css/brand-palette.css');
 const html=read('index.html');
+const founder=read('assets/css/about-reference.css');
+const floating=read('assets/css/cinematic-floating-panels-20261113.css');
+const atmosphere=read('assets/css/cinematic-experience-33.css');
 const workflow=read('.github/workflows/visual-qa.yml');
 const final=hero.slice(hero.indexOf('/* DAYSLUME 3.4 — palco único'));
 test('3.4 preserves the original 5-scene opening and 3 linked live-DOM product previews',()=>{
@@ -42,6 +45,14 @@ test('3.4 removes decorative grid backgrounds but retains functional interface l
   const rule=palette.slice(start,palette.indexOf('}',start));
   assert.doesNotMatch(rule,/repeating-linear-gradient|1px, transparent 1px|background-size:[ ]*clamp/);
  }
+ for(const [src,from,to] of [
+    [founder,'body.home-page main > .section.about-section::before {','body.home-page main > .section.about-section::after {'],
+    [floating,'body.home-page #apresentacao[data-hero-master]::before {','body.home-page #apresentacao[data-hero-master]::after {'],
+    [atmosphere,'.home-page .cinema33-atmosphere__grain {','.home-page .hero--cinematic[data-cinema33-home] .hero-grid {']
+  ]) {
+    const fragment=src.slice(src.indexOf(from),src.indexOf(to));
+    assert.doesNotMatch(fragment,/repeating-linear-gradient|1px,transparent 1px|1px, transparent 1px|background-size:[ ]*86px/);
+  }
  assert.match(hero,/hero-projects__timeline-track/);
  assert.match(hero,/hero-projects__c-list/);
  assert.match(final,/rgba\(169,197,216,.07\)/);

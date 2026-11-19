@@ -38,11 +38,12 @@
   background: radial-gradient(circle 310px at var(--cinema33-pointer-x, 72%) var(--cinema33-pointer-y, 45%), rgba(155,184,206,.11), transparent 74%);
 }
 .home-page .cinema33-atmosphere__grain {
-  position: absolute;
-  inset: 0;
-  opacity: .11;
-  background-image: repeating-linear-gradient(0deg, rgba(235,236,238,.055) 0 1px, transparent 1px 5px);
-  mask-image: linear-gradient(90deg, transparent, #000 55%, transparent);
+  position:absolute;
+  inset:0;
+  opacity:.12;
+  background-image:radial-gradient(ellipse 54% 61% at 72% 51%,rgba(235,236,238,.05),transparent 81%);
+  -webkit-mask-image:none;
+  mask-image:none;
 }
 .home-page .hero--cinematic[data-cinema33-home] .hero-grid {
   z-index: 2;
