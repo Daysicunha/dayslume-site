@@ -286,14 +286,24 @@ body.home-page #apresentacao[data-hero-master].hero--project-simulators .hero-co
   .home-page #apresentacao .hero-pillar-band strong {font-size:10px;}
   .home-page #apresentacao .hero-master-orbit {opacity:.2;}
 }
-@media (max-width:365px) {
-  .home-page #apresentacao.hero--project-simulators .hero-content h1 {font-size:34px;}
-  .home-page #apresentacao .hero-projects__card--vitrini,.home-page #apresentacao .hero-projects__card--caderneta {grid-column:1/-1;min-height:200px;}
+/* On narrow phones, two 170px miniatures hide real product information.
+   Present all three interactive previews at readable full width instead. */
+@media (max-width:440px) {
+  .home-page #apresentacao .hero-projects__card--vitrini,
+  .home-page #apresentacao .hero-projects__card--caderneta {
+    grid-column:1/-1;min-height:250px;padding:15px 15px 25px;
+  }
   .home-page #apresentacao .hero-projects__card--vitrini {grid-row:2;}
   .home-page #apresentacao .hero-projects__card--caderneta {grid-row:3;}
   .home-page #apresentacao .hero-projects__category-list {display:grid;}
-  .home-page #apresentacao .hero-projects__v-title {font-size:18px;}
+  .home-page #apresentacao .hero-projects__brand strong {font-size:clamp(13px,3.5vw,16px);}
+  .home-page #apresentacao .hero-projects__v-title {font-size:20px;}
+  .home-page #apresentacao .hero-projects__search {font-size:10px;}
+  .home-page #apresentacao .hero-projects__c-list >div {font-size:11px;padding:8px 10px;}
   .home-page #apresentacao .hero-projects__c-list >div:nth-child(n+4){display:flex;}
+}
+@media (max-width:365px) {
+  .home-page #apresentacao.hero--project-simulators .hero-content h1 {font-size:34px;}
 }
 @media (prefers-reduced-motion:reduce) {
   .home-page #apresentacao .hero-projects__card {transition:none!important;animation:none!important;transform:none!important;translate:none!important;filter:none!important;}
