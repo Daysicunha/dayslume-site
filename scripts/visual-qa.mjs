@@ -243,6 +243,13 @@ try {
      if(!row.reducedMotion.shapesHidden)row.issues.push('reduced motion leaves film shapes active');
    }
    if(width===390||width===1440) {
+     /* Restore the same normal-motion state used for baseline full-page captures.
+        The explicit reduced-motion accessibility check above must not silently
+        shorten the Hero film before the after screenshot. */
+     if(v.name==='after-framing-v6' && width===1440) {
+       await page.emulateMediaFeatures([{name:'prefers-reduced-motion',value:'no-preference'}]);
+       await wait(450);
+     }
      await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));
      await wait(400);
      await page.screenshot({path:join(out,v.name+'-'+width+'-home-full.png'),fullPage:true});

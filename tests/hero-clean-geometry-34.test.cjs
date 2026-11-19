@@ -66,4 +66,5 @@ test('3.4 screen-size fallback and before-after browser evidence are explicitly 
  assert.match(visual,/home-full.png/);
  assert.match(visual,/hero-complete-/);
  assert.match(visual,/heroSpatial/);
+ assert.match(visual,/prefers-reduced-motion',value:'no-preference'/);
 });
