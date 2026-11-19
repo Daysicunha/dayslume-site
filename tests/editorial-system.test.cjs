@@ -60,17 +60,14 @@ test('floating contact control retracts near contact and footer content on every
   assert.match(palette, /@media\s*\(max-width:\s*620px\)[\s\S]*\.floating-whatsapp::after\s*\{\s*display:\s*none/);
 });
 
-test('hero foregrounds digital products with cinematic, accessible motion', () => {
-  assert.match(home, /class="hero hero--cinematic hero--floating-panels"/);
-  for (const element of ['cinema-browser','cinema-phone','cinema-service']) {
-    assert.match(home, new RegExp(element));
-  }
-  // The redundant flower signature was removed from the product mockup in Lote E.
-  assert.match(home, /logohorizontalbranca\.png/);
+test('hero foregrounds three accessible glass project simulations', () => {
+  assert.ok(home.includes('hero--project-simulators'));
+  for (const name of ['vitrini','agenda','caderneta']) assert.ok(home.includes('hero-projects__card--' + name));
+  assert.ok(home.includes('logohorizontalbranca.png'));
   assert.doesNotMatch(home, /class="cinema-signature"/);
-  assert.doesNotMatch(home, /data-flower-petal|data-scroll-hero|data-hero-video|<video\b[^>]*autoplay/i);
-  assert.match(cinematicCss, /@media \(prefers-reduced-motion: reduce\)/);
-  assert.match(cinematicCss, /\.hero--cinematic \.hero-visual-composition/);
-  assert.match(cinematicMotion, /prefers-reduced-motion: reduce/);
-  assert.match(cinematicMotion, /pointer\.matches/);
+  assert.doesNotMatch(home, /data-flower-petal|data-scroll-hero|data-hero-video/i);
+  const css=fs.readFileSync(path.join(root,'assets','css','hero-project-simulators-20261118.css'),'utf8');
+  assert.ok(css.includes('@media (prefers-reduced-motion:reduce)'));
+  assert.ok(css.includes('@media (max-width:600px)'));
+  assert.ok(cinematicMotion.includes('prefers-reduced-motion: reduce'));
 });

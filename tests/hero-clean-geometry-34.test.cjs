@@ -1,0 +1,88 @@
+const {test}=require('node:test');
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+const root=path.resolve(__dirname,'..');
+const read=f=>fs.readFileSync(path.join(root,f),'utf8');
+const hero=read('assets/css/hero-project-simulators-20261118.css');
+const cinematic=read('assets/css/hero-cinematic.css');
+const editorial=read('assets/css/cinematic-editorial-33.css');
+const palette=read('assets/css/brand-palette.css');
+const html=read('index.html');
+const founder=read('assets/css/about-reference.css');
+const floating=read('assets/css/cinematic-floating-panels-20261113.css');
+const atmosphere=read('assets/css/cinematic-experience-33.css');
+const workflow=read('.github/workflows/visual-qa.yml');
+const final=hero.slice(hero.indexOf('/* DAYSLUME 3.4 — palco único'));
+test('3.4 preserves the original 5-scene opening and 3 linked live-DOM product previews',()=>{
+ assert.match(html,/id="cinema33-film"/);
+ for(const k of ['vitrini','agenda','caderneta']){
+  assert.match(html,new RegExp('hero-projects__card--'+k));
+ }
+ assert.match(html,/href="solucoes.html#vitrini"/);
+ assert.match(html,/href="solucoes.html#engreni-agenda"/);
+ assert.ok(html.indexOf('hero-projects__card--vitrini')<html.indexOf('hero-projects__card--agenda'));
+ assert.ok(html.indexOf('hero-projects__card--agenda')<html.indexOf('hero-projects__card--caderneta'));
+ assert.match(html,/href="solucoes.html#engreni"/);
+ assert.doesNotMatch(html.slice(html.indexOf('id="apresentacao"'),html.indexOf('id="problemas"')),/hero-flower/);
+});
+test('3.4 desktop transforms share a baseline with no overlapping horizontal slots',()=>{
+ const wide=final.split('@media (min-width:761px) {')[1]?.split('@media (min-width:761px) and')[0]||'';
+ assert.match(wide,/perspective:1700px/);
+ for(const name of ['vitrini','agenda','caderneta'])assert.match(wide,new RegExp('hero-projects__card--'+name+' \\{[^}]*bottom:12%;'));
+ const boxes=[{l:2,w:28,h:68},{l:33,w:34,h:76},{l:70,w:28,h:68}];
+ assert.ok(boxes[0].l+boxes[0].w<boxes[1].l);
+ assert.ok(boxes[1].l+boxes[1].w<boxes[2].l);
+ assert.ok(boxes[1].h>boxes[0].h && boxes[1].h>boxes[2].h);
+ assert.match(wide,/rotateY\(5deg\)/);
+ assert.match(wide,/rotateY\(-5deg\)/);
+});
+test('3.4 removes decorative grid backgrounds but retains functional interface layouts',()=>{
+ const h=cinematic.slice(cinematic.indexOf('.hero--cinematic::before {'),cinematic.indexOf('.hero--cinematic::after {'));
+ assert.doesNotMatch(h,/background-size:[ ]*80px|linear-gradient[(]90deg.*1px/);
+ const beginning=editorial.slice(editorial.indexOf('section#problemas.section::before {'),editorial.indexOf('section#problemas.section::after {'));
+ assert.doesNotMatch(beginning,/background-size:[ ]*82px|1px, transparent 1px/);
+ for(const k of ['manifest','structure','network','editorial']){
+  const start=palette.indexOf('.section-atmosphere--'+k+'::before {');
+  assert.ok(start>=0,k);
+  const rule=palette.slice(start,palette.indexOf('}',start));
+  assert.doesNotMatch(rule,/repeating-linear-gradient|1px, transparent 1px|background-size:[ ]*clamp/);
+ }
+ for(const [src,from,to] of [
+    [founder,'body.home-page main > .section.about-section::before {','body.home-page main > .section.about-section::after {'],
+    [floating,'body.home-page #apresentacao[data-hero-master]::before {','body.home-page #apresentacao[data-hero-master]::after {'],
+    [atmosphere,'.home-page .cinema33-atmosphere__grain {','.home-page .hero--cinematic[data-cinema33-home] .hero-grid {']
+  ]) {
+    const fragment=src.slice(src.indexOf(from),src.indexOf(to));
+    assert.doesNotMatch(fragment,/repeating-linear-gradient|1px,transparent 1px|1px, transparent 1px|background-size:[ ]*86px/);
+  }
+ assert.match(hero,/hero-projects__timeline-track/);
+ assert.match(hero,/hero-projects__c-list/);
+ assert.match(final,/rgba\(169,197,216,.07\)/);
+});
+test('3.4 screen-size fallback and before-after browser evidence are explicitly configured',()=>{
+ assert.match(final,/@media \(max-width:760px\)/);
+ assert.match(final,/@media \(max-width:440px\)/);
+ assert.match(final,/prefers-reduced-motion:reduce/);
+ assert.match(workflow,/BASE_SHA: 69896abee9ff81c1ff2d2d883d1becbbd18adce4/);
+ const visual=read('scripts/visual-qa.mjs');
+ assert.match(visual,/home-full.png/);
+ assert.match(visual,/hero-complete-/);
+ assert.match(visual,/heroSpatial/);
+ assert.match(visual,/prefers-reduced-motion',value:'no-preference'/);
+});
+
+test('3.4.1 guards desktop title clearance and model illustration containment',()=>{
+ assert.match(hero,/revisão na tela real: separar tipografia e palco no desktop/);
+ assert.match(hero,/margin-left:0;/);
+ assert.match(hero,/border-bottom:5px solid/);
+ assert.match(palette,/DAYSLUME 3.4.1 — breathing room/);
+ const qa=read('scripts/visual-qa.mjs');
+ assert.match(qa,/heroTitleClearance/);
+ assert.match(qa,/hero heading and VITRINI clearance insufficient/);
+});
+
+test('3.4.1 Agenda final schedule row cannot overlap its illustrative footer',()=>{
+ assert.match(final,/width:34%;height:81%/);
+ assert.match(read('scripts/visual-qa.mjs'),/heroAgendaFooter/);
+});

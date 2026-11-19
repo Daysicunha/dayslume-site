@@ -8,6 +8,29 @@
   --warm-ivory: #F3EFE8;
   --slate-mineral: #66758F;
   --peach: #D8B6A5;
+  /* Acento experimental: somente brilho/interação; jamais texto corrido ou fundo principal. */
+  --ds-neon-pink: #FF3D9A;
+  --ds-neon-pink-rgb: 255, 61, 154;
+
+  /* Tokens de tipografia e contraste registrados na auditoria da PR #27. */
+  --ds-font-display: "Manrope", sans-serif;
+  --ds-font-ui: "Manrope", sans-serif;
+  --ds-font-body: "DM Sans", "Manrope", sans-serif;
+  --ds-type-display: clamp(2.875rem,4.7vw,4.5rem);
+  --ds-type-section: clamp(2.125rem,3.7vw,3.7rem);
+  --ds-type-card: clamp(1.25rem,1.9vw,1.875rem);
+  --ds-type-body: clamp(.9375rem,1.05vw,1.0625rem);
+  --ds-type-label: .75rem;
+  --ds-type-control: .8125rem;
+  --ds-leading-heading: 1.1;
+  --ds-leading-body: 1.68;
+  --ds-tracking-heading: -.052em;
+  --ds-tracking-label: .115em;
+  --ds-text-muted-on-light: #536076;
+  --ds-control-min-height: 44px;
+  --ds-control-radius: 999px;
+  --ds-focus-on-light: var(--plum-mineral);
+  --ds-focus-on-dark: var(--mist-blue);
 
   --ink-deep-rgb: 32, 37, 50;
   --plum-mineral-rgb: 107, 83, 109;
@@ -15,6 +38,15 @@
   --warm-ivory-rgb: 243, 239, 232;
   --slate-mineral-rgb: 102, 117, 143;
   --peach-rgb: 216, 182, 165;
+
+  /* Refinamento cromático: tons minerais derivados EXCLUSIVAMENTE da paleta registrada.
+     Acentos violetas fluorescentes não constituem novos tokens de marca. */
+  --ds-depth-1: color-mix(in srgb, var(--ink-deep) 92%, var(--slate-mineral));
+  --ds-depth-2: color-mix(in srgb, var(--ink-deep) 78%, var(--slate-mineral));
+  --ds-depth-3: color-mix(in srgb, var(--ink-deep) 55%, var(--slate-mineral));
+  --ds-cool-accent: color-mix(in srgb, var(--slate-mineral) 68%, var(--mist-blue));
+  --ds-ice-tint: color-mix(in srgb, var(--warm-ivory) 38%, var(--mist-blue));
+  --ds-sand-tint: color-mix(in srgb, var(--warm-ivory) 38%, var(--peach));
   --text-secondary: rgba(var(--ink-deep-rgb), .68);
 
   /* Compatibilidade com os tokens históricos. */
@@ -716,11 +748,13 @@ body.home-page main > .section-atmosphere::after { z-index: -1; }
 
 /* 01 — plano editorial e arco amplo. */
 body.home-page main > .section-atmosphere--manifest::before {
-  inset: 0 46% 0 0;
-  opacity: .58;
-  background: repeating-linear-gradient(90deg, transparent 0, transparent calc(25% - 1px), var(--section-rule-soft) calc(25% - 1px), var(--section-rule-soft) 25%);
-  -webkit-mask-image: linear-gradient(90deg, #000, transparent 92%);
-  mask-image: linear-gradient(90deg, #000, transparent 92%);
+  inset:0;
+  opacity:.52;
+  background:
+    radial-gradient(ellipse 38% 55% at 12% 40%,rgba(var(--mist-blue-rgb),.11),transparent 80%),
+    radial-gradient(ellipse 38% 47% at 82% 83%,rgba(var(--plum-mineral-rgb),.12),transparent 86%);
+  -webkit-mask-image:none;
+  mask-image:none;
 }
 
 body.home-page main > .section-atmosphere--manifest::after {
@@ -736,11 +770,13 @@ body.home-page main > .section-atmosphere--manifest::after {
 
 /* 02 — estrutura vertical e elipse que nasce fora do viewport. */
 body.home-page main > .section-atmosphere--structure::before {
-  inset: 0 0 0 44%;
-  opacity: .7;
-  background: repeating-linear-gradient(90deg, transparent 0, transparent calc(20% - 1px), var(--section-rule-soft) calc(20% - 1px), var(--section-rule-soft) 20%);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 28%, #000);
-  mask-image: linear-gradient(90deg, transparent, #000 28%, #000);
+  inset:0;
+  opacity:.55;
+  background:
+    radial-gradient(ellipse 35% 55% at 87% 40%,rgba(var(--peach-rgb),.12),transparent 83%),
+    radial-gradient(ellipse 38% 48% at 11% 88%,rgba(var(--plum-mineral-rgb),.065),transparent 85%);
+  -webkit-mask-image:none;
+  mask-image:none;
 }
 
 body.home-page main > .section-atmosphere--structure::after {
@@ -756,23 +792,26 @@ body.home-page main > .section-atmosphere--structure::after {
 
 /* 03 — malha modular e contorno deslocado, sem aparência de dashboard. */
 body.home-page main > .section-atmosphere--network::before {
-  inset: 0;
-  opacity: .44;
-  background-image:
-    linear-gradient(90deg, var(--section-rule-soft) 1px, transparent 1px),
-    linear-gradient(180deg, var(--section-rule-soft) 1px, transparent 1px);
-  background-size: clamp(150px, 16vw, 240px) clamp(112px, 12vw, 176px);
-  -webkit-mask-image: linear-gradient(135deg, transparent 8%, #000 48%, transparent 92%);
-  mask-image: linear-gradient(135deg, transparent 8%, #000 48%, transparent 92%);
+  inset:0;
+  opacity:.58;
+  background:
+    radial-gradient(ellipse 49% 62% at 83% 48%,rgba(var(--plum-mineral-rgb),.23),transparent 82%),
+    radial-gradient(ellipse 34% 44% at 15% 80%,rgba(var(--peach-rgb),.085),transparent 82%);
+  background-size:auto;
+  -webkit-mask-image:none;
+  mask-image:none;
 }
 
 body.home-page main > .section-atmosphere--network::after {
-  top: 8%;
-  right: -8%;
-  width: min(37vw, 540px);
-  aspect-ratio: 1.35;
-  border: 1px solid rgba(var(--plum-mineral-rgb), .09);
-  transform: rotate(7deg);
+  top:7%;
+  right:-12%;
+  width:min(40vw,560px);
+  aspect-ratio:1.3;
+  border:0;
+  border-radius:50%;
+  background:radial-gradient(ellipse,rgba(var(--peach-rgb),.10),transparent 74%);
+  filter:blur(18px);
+  transform:rotate(7deg);
 }
 
 /* 04 — linhas de enquadramento; a imagem continua sendo o foco. */
@@ -811,9 +850,12 @@ body.home-page main > .section-atmosphere--path::after {
 
 /* 06 — grade de revista em quatro colunas e uma única moldura longa. */
 body.home-page main > .section-atmosphere--editorial::before {
-  inset: 0;
-  opacity: .62;
-  background: repeating-linear-gradient(90deg, transparent 0, transparent calc(25% - 1px), var(--section-rule-soft) calc(25% - 1px), var(--section-rule-soft) 25%);
+  inset:0;
+  opacity:.55;
+  background:
+    radial-gradient(ellipse 40% 53% at 92% 15%,rgba(var(--mist-blue-rgb),.11),transparent 83%),
+    radial-gradient(ellipse 30% 44% at 8% 86%,rgba(var(--plum-mineral-rgb),.075),transparent 85%);
+  background-size:auto;
 }
 
 body.home-page main > .section-atmosphere--editorial::after {
@@ -1349,7 +1391,7 @@ body:not(.home-page) main > .section h2 + .intro { margin-top: 16px; }
 
 /* Solid, palette-led section surfaces; remove translucent floral/background art. */
 body.home-page main > .section-atmosphere:not(.section-atmosphere--about)::before,
-body.home-page main > .section-atmosphere:not(.section-atmosphere--about)::after,
+body.home-page main > .section-atmosphere:not(.section-atmosphere--about):not(#problemas)::after,
 body.home-page main .intro-section::after,
 body.home-page main .solutions-section::before,
 body.home-page main .work-section::before,
@@ -1591,7 +1633,6 @@ body.home-page main > .contact-section { background: rgba(var(--peach-rgb), .2);
 }
 
 /* Shared card depth — deliberately restrained to retain the editorial look. */
-.manifest-item,
 .launch-pillars .service-card,
 .launch-products .solution-card,
 .content-featured,
@@ -1610,7 +1651,6 @@ body.home-page main > .contact-section { background: rgba(var(--peach-rgb), .2);
 .project-card .project-image {
   box-shadow: 0 18px 42px rgba(var(--ink-deep-rgb), .15), 0 4px 12px rgba(var(--ink-deep-rgb), .07) !important;
 }
-.manifest-item:hover,
 .launch-pillars .service-card:hover,
 .launch-products .solution-card:hover,
 .content-featured:has(a:hover),
@@ -2096,7 +2136,7 @@ body:not(.home-page) > a.floating-whatsapp {
   border:1px solid rgba(169,197,216,.55);
   border-right:0;
   border-radius:15px 0 0 15px;
-  background-image:linear-gradient(180deg,#6B536D 0%,#59475E 100%);
+  background-image:linear-gradient(180deg,var(--ink-deep) 0%,var(--slate-mineral) 100%);
   background-position:center;
   background-size:100% 100%;
   font-family:Manrope,'DM Sans',sans-serif;
@@ -3050,8 +3090,8 @@ body.home-page > .skip:focus-visible {
   body.home-page > header.site-header .brand-logo-img { width: clamp(130px,22vw,174px); }
   body.home-page > header.site-header .menu-toggle {
     display: flex;
-    width: 43px;
-    height: 43px;
+    width: 44px;
+    height: 44px;
   }
   body.home-page > header.site-header .menu.open {
     position: absolute;
@@ -3112,22 +3152,22 @@ body.home-page[data-c33-editorial] {
   --ds-home-plum: var(--plum-mineral);
   --ds-home-blue: var(--mist-blue);
   --ds-home-peach: var(--peach);
-  --ds-home-lilac: #C597D2;
-  --ds-home-copy-light: #EDE5EE;
-  --ds-home-copy-dark: #4D4659;
+  --ds-home-lilac: var(--mist-blue);
+  --ds-home-copy-light: var(--warm-ivory);
+  --ds-home-copy-dark: var(--ink-deep);
   --ds-home-font-display: "Manrope", sans-serif;
   --ds-home-font-body: "DM Sans", sans-serif;
   --ds-home-font-editorial: Georgia, "Iowan Old Style", "Baskerville", serif;
   --ds-home-card-radius: 24px;
-  --ds-home-focus: #9955AC;
+  --ds-home-focus: var(--plum-mineral);
   --ds-home-shadow: 0 16px 38px rgba(30,23,43,.17);
 }
 /* O scroll ancorado precisa respeitar o cabeçalho fixo. */
-body.home-page[data-c33-editorial] main > section:is(#apresentacao,#problemas,#modelo,#produtos,#projetos,#sobre,#conteudos,#contato) {
+body.home-page[data-c33-editorial] main > section:is(#problemas,#modelo,#produtos,#projetos,#sobre,#conteudos,#contato) {
   scroll-margin-top: 94px;
 }
-/* Manrope nos títulos de seção, DM Sans no texto de apoio.
-   Manter o serif editorial APROVADO na Hero e no encerramento. */
+/* Manrope nos títulos de seção e na Hero, DM Sans no texto de apoio.
+   Serif editorial é reservado ao encerramento, sem sobrescrever o display da Hero. */
 body.home-page[data-c33-editorial] main > section#problemas .manifest-title,
 body.home-page[data-c33-editorial] main > section#modelo .modelo-heading h2,
 body.home-page[data-c33-editorial] main > section#produtos .products-editorial-heading h2,
@@ -3138,7 +3178,10 @@ body.home-page[data-c33-editorial] main > section#conteudos h2#conteudos-title {
   font-optical-sizing: auto;
   text-wrap: balance;
 }
-body.home-page[data-c33-editorial] main > section#apresentacao .hero-content h1,
+body.home-page[data-c33-editorial] main > section#apresentacao .hero-content h1 {
+  font-family: var(--ds-home-font-display);
+  font-optical-sizing: auto;
+}
 body.home-page[data-c33-editorial] main > section#contato h2#contact-title {
   font-family: var(--ds-home-font-editorial);
   font-optical-sizing: auto;
@@ -3176,179 +3219,328 @@ body.home-page[data-c33-editorial] main > section:is(#modelo,#produtos,#projetos
   outline: 2px solid var(--ds-home-focus);
   outline-offset: 4px;
 }
-/* ATO II — O notebook inteiro deve caber no espaço da ilustração, sem 
-   a base ou a borda circular cortadas. O SVG ganhou viewBox com margem. */
-body.home-page[data-c33-editorial] main > section#problemas.section .manifest-item:first-child .manifest-art {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 12px 12px;
+
+
+/* DAYSLUME 3.3 — Mapa cromático final da Home | 19/11/2026
+   Bloco consolidado na folha canônica brand-palette.css, carregada por último.
+   Escopo: SOMENTE .home-page; não altera geometria 3D, conteúdo ou páginas internas.
+   Após QA visual: limpar regras históricas redundantes na própria paleta sem alterar layouts. */
+body.home-page[data-c33-editorial] {
+  --home-pink: var(--ds-neon-pink, #FF3D9A);
+  --home-ink: #202532;
+  --home-plum: #6B536D;
+  --home-ivory: #F3EFE8;
+  --home-night: #17131C;
 }
-body.home-page[data-c33-editorial] main > section#problemas.section .manifest-item:first-child .manifest-art-svg {
-  display: block;
-  width: min(95%,260px);
-  max-width: 260px;
-  max-height: 94%;
-  height: auto;
-  margin: 0 auto;
-  object-fit: contain;
-  transform: translateX(0);
-  transform-origin: center;
+body.home-page[data-c33-editorial] main > section {
+  --home-seam:linear-gradient(90deg, transparent, rgba(var(--plum-mineral-rgb),.32) 25%, rgba(var(--ds-neon-pink-rgb),.42) 49%, rgba(var(--peach-rgb),.53) 76%, transparent);
 }
-/* ATO III — Redimensionar a composição do notebook/clipboard sem truncar. */
-body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--bespoke .modelo-path-visual {
-  overflow: hidden;
+/* Costura autoral: o flare é luminoso, mas não cria uma faixa opaca. */
+body.home-page main > section .c33-section-line {
+  height:1px;
+  background:var(--home-seam);
+  box-shadow:0 0 11px rgba(var(--plum-mineral-rgb),.19),0 0 19px rgba(var(--ds-neon-pink-rgb),.11);
 }
-body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--bespoke .modelo-project-art {
-  width: min(113%, 440px);
-  max-width: none;
-  max-height: 89%;
-  height: auto;
-  right: -1.5%;
-  bottom: 5%;
-  object-fit: contain;
+body.home-page main > section .c33-section-line::after {
+  background:linear-gradient(90deg,transparent,rgba(var(--ds-neon-pink-rgb),.65),rgba(var(--warm-ivory-rgb),.9),transparent);
 }
-/* ATO IV — Mockups como um par: mesma escala, alinhamento e ângulo discreto.
-   Os painéis pertencem à área visual, não extrapolam a borda externa. */
-body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic.product-interface {
-  box-sizing: border-box;
-  display: grid;
-  place-items: center;
-  min-width: 0;
-  overflow: hidden;
-  padding: 68px clamp(10px,1.2vw,19px) 22px 4px;
+
+/* Ato 01 — Hero: preservar a abertura e os simuladores; reforçar a órbita. */
+body.home-page #apresentacao.hero--project-simulators .hero-master-orbit {
+  filter:drop-shadow(0 0 9px rgba(var(--ds-neon-pink-rgb),.22));
 }
-body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic > :is(.vitrini-ui,.engreni-ui) {
-  box-sizing: border-box;
-  display: block;
-  width: 96%;
-  max-width: 100%;
-  margin: 0 auto;
-  transform: perspective(920px) rotateY(-3deg) rotateZ(-.7deg);
-  transform-origin: center;
+body.home-page #apresentacao.hero--project-simulators .hero-projects__halo {
+  background:radial-gradient(ellipse 45% 55% at 59% 49%,rgba(var(--ds-neon-pink-rgb),.18),transparent 77%),
+             radial-gradient(ellipse at 58% 55%,rgba(var(--peach-rgb),.17),rgba(var(--plum-mineral-rgb),.19) 47%,transparent 76%);
 }
-body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic > .engreni-ui {
-  width: 96%;
-  max-width: 100%;
-  height: 180px;
+
+/* Ato 02 — Problemas: continua dark/ink, sem um novo fundo roxo. */
+body.home-page[data-c33-editorial] main > section#problemas.section {
+  background:radial-gradient(ellipse 44% 66% at 81% 38%,rgba(var(--plum-mineral-rgb),.29),transparent 81%),
+             linear-gradient(119deg,#202532 0%,color-mix(in srgb,#202532 83%,#6B536D) 55%,#202532 100%);
 }
-body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic::after {
-  left: 2%;
-  width: 96%;
-  max-width: 96%;
-  top: calc(50% + 75px);
+body.home-page[data-c33-editorial] main > section#problemas.section .manifest-item.is-active .manifest-number {
+  border-color:rgba(var(--ds-neon-pink-rgb),.48);
+  box-shadow:0 0 12px rgba(var(--ds-neon-pink-rgb),.10);
 }
-/* Flutuação com amplitude contida para nunca recortar as telas. */
-@keyframes ds-final-vitrini-float {
-  0%,100% {transform:perspective(920px) rotateY(-3deg) rotateZ(-.7deg) translateY(0)}
-  50% {transform:perspective(920px) rotateY(-2deg) rotateZ(-.3deg) translateY(-4px)}
+
+/* Ato 03 — Modelo: trocar o malva sem contraste por marfim editorial. */
+body.home-page[data-c33-editorial] main > section#modelo.section {
+  background:radial-gradient(ellipse 50% 53% at 95% 11%,rgba(var(--plum-mineral-rgb),.075),transparent 78%),
+             radial-gradient(ellipse 38% 48% at 2% 91%,rgba(var(--peach-rgb),.12),transparent 81%),
+             linear-gradient(122deg,var(--warm-ivory),color-mix(in srgb,var(--warm-ivory) 96%,white) 54%,color-mix(in srgb,var(--warm-ivory) 95%,var(--peach)));
+  color:var(--ink-deep);
+  border-top-color:rgba(var(--plum-mineral-rgb),.29);
 }
-@keyframes ds-final-engreni-float {
-  0%,100% {transform:perspective(920px) rotateY(-3deg) rotateZ(-.7deg) translateY(0)}
-  50% {transform:perspective(920px) rotateY(-2deg) rotateZ(0deg) translateY(-4px)}
+body.home-page[data-c33-editorial] main > section#modelo.section::before {
+  border-color:rgba(var(--plum-mineral-rgb),.25);
 }
-body.home-page[data-c33-editorial] main > section#produtos.products-motion-ready.products-is-visible .solution-vitrini .vitrini-ui {
-  animation: ds-final-vitrini-float 8.2s ease-in-out infinite;
+body.home-page[data-c33-editorial] main > section#modelo.section::after {
+  border-color:rgba(var(--plum-mineral-rgb),.25);
+  box-shadow:0 0 18px rgba(var(--ds-neon-pink-rgb),.08);
 }
-body.home-page[data-c33-editorial] main > section#produtos.products-motion-ready.products-is-visible .solution-engreni .engreni-ui {
-  animation: ds-final-engreni-float 8.8s ease-in-out infinite;
+body.home-page[data-c33-editorial] main > section#modelo.section .section-eyebrow {
+  color:var(--plum-mineral);
 }
-/* ATO V — Mockup Dayane sem texto aplicado sobre ele.
-   É uma única mídia centralizada, íntegra e com fundo de apoio. */
-body.home-page[data-c33-editorial] main > section#projetos.section .case-preview--dayane,
-body.home-page[data-c33-editorial] main > section#projetos.section .case-dayane-snapshot {
-  background: linear-gradient(126deg,#3B243C,#271C2F 72%,#4D2B4A);
+body.home-page[data-c33-editorial] main > section#modelo.section .section-eyebrow::before {
+  background:linear-gradient(90deg,var(--plum-mineral),rgba(var(--ds-neon-pink-rgb),.46));
 }
-body.home-page[data-c33-editorial] main > section#projetos.section .case-dayane-snapshot {
-  display: grid;
-  grid-template-columns: minmax(0,1fr);
-  place-items: center;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-heading h2 {
+  color:var(--ink-deep);
 }
-body.home-page[data-c33-editorial] main > section#projetos.section .case-dayane-mockup {
-  position: static;
-  display: block;
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  max-height: 100%;
-  margin: 0;
-  padding: 0;
-  object-fit: contain !important;
-  object-position: center center !important;
-  transform: none;
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-heading-aside {
+  border-left-color:rgba(var(--plum-mineral-rgb),.34);
 }
-/* ATO VI — A fotografia e a assinatura permanecem; a flor foi removida do HTML. */
-body.home-page[data-c33-editorial] main > section#sobre.section .founder-photo-signature {
-  justify-content: flex-start;
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-heading-aside p {
+  color:color-mix(in srgb,var(--ink-deep) 84%,var(--plum-mineral));
 }
-body.home-page[data-c33-editorial] main > section#sobre.section .founder-photo-signature a {
-  min-width: 0;
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-main-cta {
+  border-color:rgba(var(--plum-mineral-rgb),.40);
+  box-shadow:0 10px 24px rgba(var(--ink-deep-rgb),.16),inset 0 1px 0 rgba(var(--warm-ivory-rgb),.14);
 }
-/* Telas intermediárias: o espaço do produto não deve crescer além do card. */
-@media (min-width: 850px) and (max-width: 1100px) {
-  body.home-page[data-c33-editorial] main > section#produtos.section .solutions-grid > .solution-card {
-    grid-template-columns: minmax(0,55%) minmax(0,45%);
+/* Caminho sob medida: ameixa escuro; mantém todo o conteúdo em marfim. */
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--bespoke,
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--bespoke:first-child {
+  background:radial-gradient(ellipse 54% 68% at 84% 52%,rgba(var(--plum-mineral-rgb),.39),transparent 77%),
+             linear-gradient(139deg,color-mix(in srgb,var(--ink-deep) 82%,var(--plum-mineral)),
+                              color-mix(in srgb,var(--plum-mineral) 57%,var(--ink-deep)) 68%,var(--ink-deep));
+  color:var(--warm-ivory);
+  border-color:rgba(var(--peach-rgb),.59);
+  box-shadow:0 23px 45px -19px rgba(var(--ink-deep-rgb),.30),inset 0 1px 0 rgba(var(--warm-ivory-rgb),.20);
+}
+/* Caminho produtos próprios: marfim-pêssego com texto em ink; sem branco sobre branco. */
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--products,
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--products:last-child {
+  background:radial-gradient(ellipse 62% 77% at 86% 53%,rgba(var(--peach-rgb),.24),transparent 79%),
+             linear-gradient(142deg,color-mix(in srgb,var(--warm-ivory) 92%,white),
+                              color-mix(in srgb,var(--warm-ivory) 82%,var(--peach)));
+  border-color:rgba(var(--plum-mineral-rgb),.38);
+  box-shadow:0 18px 40px -19px rgba(var(--ink-deep-rgb),.16),inset 0 1px 0 rgba(255,255,255,.83);
+  color:var(--ink-deep);
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--products :is(.service-number,.path-kicker,h3,.modelo-description,.path-cta) {
+  color:var(--ink-deep);
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--products .path-kicker {
+  color:var(--plum-mineral);
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--products .modelo-description {
+  color:color-mix(in srgb,var(--ink-deep) 83%,var(--plum-mineral));
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--products .service-number {
+  border-color:rgba(var(--plum-mineral-rgb),.40);
+  background:rgba(var(--plum-mineral-rgb),.10);
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--products .path-cta {
+  border-bottom-color:rgba(var(--plum-mineral-rgb),.55);
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card::before {
+  border-color:rgba(var(--ds-neon-pink-rgb),.27);
+}
+body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card:is(:hover,:focus-within) {
+  border-color:rgba(var(--ds-neon-pink-rgb),.55);
+  box-shadow:0 25px 48px -20px rgba(var(--ink-deep-rgb),.32),0 0 15px rgba(var(--ds-neon-pink-rgb),.12);
+}
+
+/* Ato 04 — Produtos: ameixa profundo com microbrilho e vidro legível. */
+body.home-page[data-c33-editorial] main > section#produtos.section {
+  background:radial-gradient(ellipse 55% 62% at 61% 31%,rgba(var(--plum-mineral-rgb),.48),transparent 77%),
+             radial-gradient(ellipse 24% 34% at 91% 48%,rgba(var(--ds-neon-pink-rgb),.085),transparent 80%),
+             linear-gradient(126deg,#202532 0%,color-mix(in srgb,var(--ink-deep) 76%,var(--plum-mineral)) 57%,color-mix(in srgb,var(--ink-deep) 64%,var(--plum-mineral)));
+}
+body.home-page[data-c33-editorial] main > section#produtos.section .solutions-grid > .solution-card:is(:hover,:focus-within) {
+  border-color:rgba(var(--ds-neon-pink-rgb),.56);
+  box-shadow:0 18px 42px rgba(var(--ink-deep-rgb),.24),0 0 18px rgba(var(--ds-neon-pink-rgb),.12);
+}
+
+/* Ato 05 — Projetos: editorial claro, preservando cards, cases e suas fotos originais. */
+body.home-page[data-c33-editorial] main > section#projetos.section {
+  background:radial-gradient(ellipse 43% 53% at 95% 13%,rgba(var(--plum-mineral-rgb),.085),transparent 77%),
+             radial-gradient(ellipse 35% 44% at 4% 89%,rgba(var(--peach-rgb),.10),transparent 82%),
+             linear-gradient(132deg,var(--warm-ivory),color-mix(in srgb,var(--warm-ivory) 96%,white) 55%,color-mix(in srgb,var(--warm-ivory) 94%,var(--peach)));
+  color:var(--ink-deep);
+}
+body.home-page[data-c33-editorial] main > section#projetos.section::before {
+  inset:12% -17% auto auto;
+  width:min(48vw,580px);
+  height:auto;
+  aspect-ratio:1;
+  border:1px solid rgba(var(--plum-mineral-rgb),.28);
+  background:radial-gradient(ellipse at center,rgba(var(--ds-neon-pink-rgb),.05),transparent 72%);
+  opacity:.70;
+}
+body.home-page[data-c33-editorial] main > section#projetos.section .projects-heading .section-eyebrow {
+  color:var(--plum-mineral);
+}
+body.home-page[data-c33-editorial] main > section#projetos.section .projects-heading h2 {
+  color:var(--ink-deep);
+}
+body.home-page[data-c33-editorial] main > section#projetos.section .projects-heading h2 em {
+  color:var(--plum-mineral);
+  -webkit-text-fill-color:var(--plum-mineral);
+}
+body.home-page[data-c33-editorial] main > section#projetos.section .projects-heading-side p {
+  color:color-mix(in srgb,var(--ink-deep) 82%,var(--plum-mineral));
+}
+body.home-page[data-c33-editorial] main > section#projetos.section .projects-heading-side .projects-portfolio-cta {
+  color:var(--warm-ivory);
+  background:var(--ink-deep);
+  border-color:rgba(var(--plum-mineral-rgb),.42);
+}
+body.home-page[data-c33-editorial] main > section#projetos.section .projects-heading-side .projects-portfolio-cta:is(:hover,:focus-visible) {
+  color:var(--warm-ivory);
+  background:var(--plum-mineral);
+  border-color:rgba(var(--ds-neon-pink-rgb),.60);
+}
+/* A seção de provas permanece escura como componente, não como fundo da seção. */
+body.home-page[data-c33-editorial] main > section#projetos.section .execution-proof {
+  background:color-mix(in srgb,var(--ink-deep) 89%,var(--plum-mineral));
+  border-color:rgba(var(--peach-rgb),.40);
+}
+
+/* Ato 06 — Fundadora: foto livre de sobreposições, brilho na moldura. */
+body.home-page[data-c33-editorial] main > section#sobre.section .about-visual-card {
+  box-shadow:0 25px 50px rgba(var(--ink-deep-rgb),.31),0 0 20px rgba(var(--ds-neon-pink-rgb),.075);
+}
+
+/* Ato 07 — Conteúdos: deixar o light editorial aprovado e limitar neon à interação. */
+body.home-page[data-c33-editorial] main > section#conteudos.contents-cinematic {
+  background:radial-gradient(ellipse 43% 51% at 88% 9%,rgba(var(--peach-rgb),.11),transparent 80%),
+             linear-gradient(120deg,var(--warm-ivory),color-mix(in srgb,var(--warm-ivory) 96%,white));
+  color:var(--ink-deep);
+}
+body.home-page[data-c33-editorial] main > section#conteudos.contents-cinematic :is(.content-read,.content-archive):hover {
+  border-color:rgba(var(--ds-neon-pink-rgb),.55);
+  box-shadow:0 11px 24px rgba(var(--ink-deep-rgb),.17),0 0 12px rgba(var(--ds-neon-pink-rgb),.10);
+}
+
+/* Ato 08 — Contato: fechamento cinematográfico, formulário continua claro. */
+body.home-page[data-c33-editorial] main > section#contato.section {
+  background:radial-gradient(ellipse 33% 43% at 84% 24%,rgba(var(--plum-mineral-rgb),.44),transparent 75%),
+             radial-gradient(ellipse 18% 26% at 92% 57%,rgba(var(--ds-neon-pink-rgb),.095),transparent 78%),
+             linear-gradient(116deg,#17131C 0%,color-mix(in srgb,var(--ink-deep) 76%,var(--plum-mineral)) 56%,#17131C 100%);
+  color:var(--warm-ivory);
+}
+body.home-page[data-c33-editorial] main > section#contato.section::before {
+  background:radial-gradient(ellipse at center,rgba(var(--ds-neon-pink-rgb),.11),transparent 72%);
+}
+body.home-page[data-c33-editorial] main > section#contato.section::after {
+  border-left-color:rgba(var(--ds-neon-pink-rgb),.54);
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-editorial-copy :is(.section-eyebrow,.section-eyebrow__number,.section-eyebrow__label) {
+  color:var(--peach);
+}
+body.home-page[data-c33-editorial] main > section#contato.section :is(h2#contact-title,h2#contact-title > span) {
+  color:var(--warm-ivory);
+}
+body.home-page[data-c33-editorial] main > section#contato.section h2#contact-title em {
+  color:var(--ds-neon-pink);
+  -webkit-text-fill-color:var(--ds-neon-pink);
+  text-shadow:0 0 18px rgba(var(--ds-neon-pink-rgb),.20);
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-editorial-copy > p:not(.eyebrow) {
+  color:rgba(var(--warm-ivory-rgb),.84);
+}
+body.home-page[data-c33-editorial] main > section#contato.section .contact-note a.migration-link {
+  border-color:rgba(var(--ds-neon-pink-rgb),.58);
+  box-shadow:0 17px 36px rgba(var(--ink-deep-rgb),.35),0 0 20px rgba(var(--ds-neon-pink-rgb),.14);
+}
+body.home-page[data-c33-editorial] main > section#contato.section form.contact-form {
+  border-color:rgba(var(--plum-mineral-rgb),.43);
+  box-shadow:0 22px 48px rgba(var(--ink-deep-rgb),.26),0 0 18px rgba(var(--ds-neon-pink-rgb),.09),inset 0 1px 0 rgba(255,255,255,.85)!important;
+  color:var(--ink-deep);
+}
+body.home-page[data-c33-editorial] main > section#contato.section form.contact-form label {
+  color:#26233F;
+}
+/* A navegação móvel e a mídia de cada card continuam no layout nativo. */
+@media (max-width:600px) {
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-copy {
+    min-height:192px;
+    padding:21px 22px 10px;
   }
-  body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic.product-interface {
-    padding: 65px 7px 22px 0;
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-visual {
+    height:164px;
+    min-height:164px;
   }
-  body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic > :is(.vitrini-ui,.engreni-ui) {
-    width: 94%;
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-project-art {
+    width:min(80%,242px);
+    right:10%;
+    bottom:-5%;
   }
-}
-@media (max-width: 800px) {
-  body.home-page[data-c33-editorial] main > section#problemas.section .manifest-item:first-child .manifest-art-svg {
-    width: min(86%,235px);
+  body.home-page[data-c33-editorial] main > section#projetos.section::before {
+    width:76vw;
+    right:-42vw;
+    top:8%;
   }
-  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--bespoke .modelo-project-art {
-    width: min(108%, 400px);
-    max-height: 90%;
-    right: 0;
-    bottom: 5%;
-  }
-}
-@media (max-width: 700px) {
-  body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic.product-interface {
-    padding: 6px 17px 22px;
-    min-height: 212px;
-  }
-  body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic > :is(.vitrini-ui,.engreni-ui) {
-    width: min(90%,360px);
-    max-width: 100%;
-  }
-  body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic::after {
-    left: 10%;
-    width: 80%;
-    max-width: 80%;
-    top: calc(50% + 68px);
+  body.home-page[data-c33-editorial] main > section#contato.section::after {
+    right:-24%;
+    width:58%;
   }
 }
-@media (max-width: 540px) {
-  body.home-page[data-c33-editorial] main > section#problemas.section .manifest-item:first-child .manifest-art-svg {
-    width: min(83%,205px);
+@media (prefers-reduced-motion:reduce) {
+  body.home-page main > section .c33-section-line::after {
+    display:none;
   }
-  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--bespoke .modelo-project-art {
-    width: min(94%,320px);
-    max-height: 90%;
-    right: 3%;
-    bottom: 2%;
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card:is(:hover,:focus-within) {
+    translate:none;
   }
-  body.home-page[data-c33-editorial] main > section#projetos.section .case-dayane-mockup {
-    object-fit: contain !important;
-  }
-  body.home-page[data-c33-editorial] main > section:is(#apresentacao,#problemas,#modelo,#produtos,#projetos,#sobre,#conteudos,#contato) {
-    scroll-margin-top: 79px;
+  body.home-page[data-c33-editorial] main > section#produtos.section .solutions-grid > .solution-card:is(:hover,:focus-within) {
+    transform:none!important;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  body.home-page[data-c33-editorial] main > section#produtos.section .solution-card .solution-graphic > :is(.vitrini-ui,.engreni-ui) {
-    animation: none !important;
-    transform: none !important;
+
+/* 19/11 — model illustration containment verified by browser QA: lifted only on phone.
+   Avoid cut edges without resizing, replacing or reorganizing the original artwork. */
+@media (max-width:540px) {
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-platform {
+    bottom:calc(18% + 8px);
   }
-  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card--bespoke .modelo-project-art {
-    animation: none !important;
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-tile--engreni {
+    top:calc(35% - 14px);
+  }
+}
+
+
+/* DAYSLUME 3.4.1 — breathing room and intentional illustration framing.
+   Desktop-only; preserve the previously homologated mobile composition. */
+@media (min-width:1025px) {
+  body.home-page[data-c33-editorial] main > section#modelo.section > .modelo-container {
+    width:min(calc(100% - clamp(72px,9vw,160px)),1380px);
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-paths {
+    gap:clamp(22px,2.65vw,38px);
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card,
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card:first-child,
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card:last-child {
+    grid-template-columns:minmax(0,54%) minmax(0,46%);
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-project-art {
+    width:min(86%,310px);
+    max-height:75%;
+    right:6%;
+    bottom:12%;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-orbit {
+    width:102%;
+    right:0;
+    top:14%;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-platform {
+    width:51%;
+    right:21%;
+    bottom:19%;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-tile {
+    width:55%;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-tile--vitrini {
+    right:18%;
+    top:19%;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-tile--engreni {
+    right:17%;
+    top:43%;
   }
 }

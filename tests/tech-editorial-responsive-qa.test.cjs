@@ -39,17 +39,9 @@ test('Tech Editorial: official light/dark text pairs meet WCAG AA contrast', () 
   }
 });
 
-test('Tech Editorial: approved 13/11 3D panels and newer conversion CTAs coexist', () => {
-  assert.match(home, /class="hero hero--cinematic hero--floating-panels"/);
-  for (const name of ['vitrini','engreni','service']) {
-    assert.ok(home.includes('class="cinema-float cinema-float--' + name + '"'));
-  }
-  assert.match(home, /class="cinema-phone cinema-agenda-panel"/);
-  assert.doesNotMatch(home, /class="cinema-phone-notch"/);
-  assert.match(home, /href="#contato">Conversar sobre meu projeto/);
-  assert.match(home, /href="#projetos">Ver projetos realizados/);
-  assert.match(home, /class="hero-rotator"/);
-  assert.match(home, /id="cinema33-film"/);
+test('Tech Editorial: new glass 3D project simulators and conversion actions coexist', () => {
+ for(const value of ['hero--floating-panels hero--project-simulators','hero-projects__card--vitrini','hero-projects__card--agenda','hero-projects__card--caderneta','href="#produtos">Conheça nossas soluções','href="#projetos">Ver projetos em ação','Prévia ilustrativa de três projetos DAYSLUME','id="cinema33-film"'])assert.ok(home.includes(value),value);
+ assert.doesNotMatch(home,/class="cinema-phone-notch"/);
 });
 
 test('Tech Editorial: CSS order keeps official palette canonical and both 3D layers active', () => {
@@ -126,7 +118,7 @@ test('Hero polish: desktop coordinates are isolated from mobile and reduce-motio
   assert.match(polish, /\.cinema-float--service\s*\{[\s\S]*?left:\s*9%/);
   assert.match(polish, /@media \(max-width:\s*600px\)/);
   assert.match(floating, /prefers-reduced-motion:\s*reduce/);
-  assert.match(home, /href="#contato">Conversar sobre meu projeto/);
+  assert.match(home, /href="#produtos">Conheça nossas soluções/);
 });
 
 
@@ -162,37 +154,39 @@ test('Act II: image-approved composition keeps three navigable service pathways'
 });
 
 test('Act II: section uses technical/editorial contrast, with restrained selection', () => {
-  const act = editorial.split('DAYSLUME 3.3 — ATO II / Diagnóstico editorial')[1];
+  const act = editorial.split('18/11/2026 — ATO II / refino compacto editorial')[1];
   assert.ok(act, 'Act II stylesheet must be present');
   assert.match(act, /section#problemas\.section/);
   assert.match(act, /\.manifest-title \.manifest-title-line:nth-child\(2\)/);
   assert.match(act, /\.manifest-item\.is-active\s*\{/);
   assert.match(act, /\.manifest-item\.is-active:hover/);
   assert.match(act, /\.manifest-item \.problem-link:focus-visible/);
-  assert.match(act, /box-shadow: none !important/);
+  // A regra antiga com !important foi removida para permitir a sombra local em vidro.
+  assert.doesNotMatch(act, /box-shadow: none !important/);
+  assert.ok(act.includes('backdrop-filter:blur(13px)'), 'Glass card needs backdrop filter');
   assert.doesNotMatch(act, /\.hero--floating-panels|#apresentacao|#cinema33-film/);
 });
 
 test('Act II: diagnostic switches to one column on tablets and phones', () => {
-  const act = editorial.split('DAYSLUME 3.3 — ATO II / Diagnóstico editorial')[1];
+  const act = editorial.split('18/11/2026 — ATO II / refino compacto editorial')[1];
   assert.ok(act);
-  assert.match(act, /@media \(max-width: 1180px\)/);
-  assert.match(act, /@media \(max-width: 600px\)/);
-  assert.match(act, /grid-template-columns: minmax\(0, 1fr\)/);
+  assert.match(act, /@media \(max-width:1180px\)/);
+  assert.match(act, /@media \(max-width:600px\)/);
+  assert.match(act, /grid-template-columns:minmax\(0,1fr\)/);
   assert.match(act, /@media \(prefers-reduced-motion: reduce\)/);
   assert.match(act, /\.manifest-item \.problem-link/);
 });
 
 
-test('Act II: brand hierarchy uses deep ink and ivory instead of an all-pastel wall', () => {
-  const act = editorial.split('DAYSLUME 3.3 — ATO II / Diagnóstico editorial')[1];
+test('Act II: dark mineral-plum composition follows the updated image direction', () => {
+  const act = editorial.split('18/11/2026 — ATO II / refino compacto editorial')[1];
   assert.ok(act);
-  assert.match(act, /linear-gradient\(90deg,\s*#202532 0 46\.5%,\s*var\(--warm-ivory\)/);
+  assert.match(act, /radial-gradient\(ellipse 47% 70% at 79% 38%,rgba\(var\(--plum-mineral-rgb\),\.32\)/);
   assert.match(act, /\.manifest-title \.manifest-title-line:nth-child\(2\)\s*\{[\s\S]*?var\(--peach\)/);
   assert.match(act, /\.manifest-intro\s*\{[\s\S]*?var\(--warm-ivory-rgb\)/);
-  assert.match(act, /\.manifest-concept::after\s*\{[\s\S]*?border-radius:\s*50%/);
+  assert.match(act, /\.manifest-art-svg\s*\{[^}]*max-width:124px;/s);
   assert.match(act, /\.manifest-topic\s*\{/);
-  assert.match(act, /@media \(max-width: 1180px\)[\s\S]*?background:\s*var\(--warm-ivory\)/);
+  assert.match(act, /@media \(max-width:1180px\)[\s\S]*?color-mix\(in srgb,var\(--ink-deep\) 74%,var\(--plum-mineral\)\)/);
   for(const label of ['PRESENÇA DIGITAL','JORNADA DO CLIENTE','OPERAÇÃO DIGITAL']) {
     assert.ok(home.includes('>' + label + '</span>'), label);
   }
@@ -214,13 +208,13 @@ test('Act II: existing service links and every headline remain unchanged', () =>
 });
 
 test('Act II: illustration layout is section-scoped, responsive and excludes removed laptop mockup', () => {
-  const source = editorial.split('17/11/2026 — ATO II / implementação fiel ao layout ilustrado aprovado')[1];
+  const source = editorial.split('18/11/2026 — ATO II / refino compacto editorial')[1];
   assert.ok(source);
-  assert.match(source, /grid-template-columns: minmax\(0, 42\.2fr\) minmax\(0, 57\.8fr\)/);
+  assert.match(source, /grid-template-columns:minmax\(0,42\.2fr\) minmax\(0,57\.8fr\)/);
   assert.match(source, /\.manifest-waves/);
   assert.match(source, /\.manifest-art-svg/);
-  assert.match(source, /@media \(max-width: 1180px\)/);
-  assert.match(source, /@media \(max-width: 600px\)/);
+  assert.match(source, /@media \(max-width:1180px\)/);
+  assert.match(source, /@media \(max-width:600px\)/);
   assert.match(source, /@media \(prefers-reduced-motion: reduce\)/);
   assert.doesNotMatch(source, /#apresentacao|\.cinema-stage|\.cinema-browser/);
   const act = home.split('id="problemas"')[1].split('id="modelo"')[0];

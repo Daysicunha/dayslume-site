@@ -1,0 +1,549 @@
+/*
+ * DAYSLUME 3.4 — Home cinematográfica contínua
+ * Storyboard aprovado 19/11/2026.
+ * Escopo: apenas body.home-page[data-home34-story]. Nunca afeta o filme,
+ * a geometria dos simuladores, páginas internas ou comportamento dos formulários.
+ * Esta camada é carregada ANTES de brand-palette.css; seletores mais específicos
+ * mantêm o ritmo novo sem remover a paleta como última fonte de tokens.
+ */
+body.home-page[data-home34-story] {
+  --home34-ink:#202532;
+  --home34-plum:#6B536D;
+  --home34-ivory:#F3EFE8;
+  --home34-peach:#D8B6A5;
+  --home34-rose:#FF3D9A;
+  --home34-card-radius:clamp(17px,1.8vw,25px);
+  --home34-ambient-shadow:0 22px 55px -25px rgba(32,37,50,.29);
+}
+body.home-page[data-home34-story] main {isolation:isolate;}
+/* Não desenhar nem colocar uma flor atrás dos simuladores da Hero.
+ * O filme original é preservado; esta regra é exclusiva da Hero. */
+body.home-page[data-home34-story] #apresentacao
+ :is(.hero-flower,.hero-floral,.hero-bloom,.hero-petals,.hero-flower-decoration) {display:none!important;}
+
+/* A linha autoral atravessa todos os atos, sem criar blocos opacos. */
+body.home-page[data-home34-story] main > section.section {
+  border-top:0;
+  scroll-margin-top:clamp(72px,7vw,98px);
+}
+body.home-page[data-home34-story] main > section.section > .home34-boundary {
+  position:absolute;
+  z-index:3;
+  display:block;
+  top:0;
+  left:0;
+  width:100%;
+  height:clamp(90px,12vw,155px);
+  pointer-events:none;
+  overflow:hidden;
+}
+body.home-page[data-home34-story] .home34-boundary::before {
+  content:"";
+  position:absolute;
+  top:0;
+  left:8%;
+  right:8%;
+  height:1px;
+  background:linear-gradient(90deg,transparent 0%,rgba(216,182,165,.12) 12%,
+    rgba(216,182,165,.82) 36%,rgba(255,61,154,.35) 53%,rgba(243,239,232,.67) 68%,transparent 100%);
+  box-shadow:0 0 11px rgba(216,182,165,.38),0 0 23px rgba(255,61,154,.12);
+}
+body.home-page[data-home34-story] .home34-boundary::after {
+  content:none;
+  display:none;
+  position:absolute;
+  top:-93px;
+  left:-8%;
+  width:56%;
+  height:clamp(130px,15vw,230px);
+  border:1px solid rgba(216,182,165,.29);
+  border-bottom:0;
+  border-right:0;
+  border-radius:52% 48% 0 0;
+  transform:rotate(-8deg);
+  filter:drop-shadow(0 0 12px rgba(216,182,165,.16));
+  opacity:.72;
+}
+body.home-page[data-home34-story] main > section:is(#modelo,#projetos,#conteudos) > .home34-boundary::after {
+  left:auto;right:-9%;transform:rotate(8deg) scaleX(-1);
+  border-color:rgba(107,83,109,.26);
+}
+body.home-page[data-home34-story] main > section:is(#sobre,#conteudos) > .home34-boundary::before {
+  background:linear-gradient(90deg,transparent,rgba(107,83,109,.10) 18%,
+    rgba(107,83,109,.34) 49%,rgba(216,182,165,.45) 74%,transparent);
+  box-shadow:0 0 12px rgba(107,83,109,.09);
+}
+
+/* Ritmo unificado: transições longas de cena, não cortes de cor. */
+body.home-page[data-home34-story][data-c33-editorial] main > section#problemas.section {
+  background:
+    radial-gradient(ellipse 63% 58% at 88% 51%,rgba(107,83,109,.43),transparent 78%),
+    linear-gradient(180deg,#202532 0%,#292636 29%,#403447 74%,#514054 100%);
+  color:var(--home34-ivory);
+  padding-block:clamp(80px,7vw,114px) clamp(98px,9vw,140px);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#modelo.section {
+  background:
+    radial-gradient(ellipse 44% 34% at 89% 79%,rgba(216,182,165,.16),transparent 78%),
+    linear-gradient(180deg,#514054 0%,#7c6378 38px,#D8B6A5 100px,
+      #EEE3DC 155px,#F3EFE8 215px,#F3EFE8 100%);
+  color:var(--home34-ink);
+  padding-top:clamp(156px,13vw,210px);
+  padding-bottom:clamp(76px,7vw,110px);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#produtos.section {
+  background:
+    radial-gradient(ellipse 55% 52% at 76% 56%,rgba(107,83,109,.34),transparent 82%),
+    radial-gradient(ellipse 28% 35% at 17% 82%,rgba(255,61,154,.055),transparent 78%),
+    linear-gradient(180deg,#F3EFE8 0%,#D8B6A5 54px,#775F75 126px,
+      #322C3F 194px,#202532 290px,#202532 100%);
+  padding-top:clamp(197px,16vw,260px);
+  padding-bottom:clamp(105px,10vw,154px);
+  color:var(--home34-ivory);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section {
+  background:
+    radial-gradient(ellipse 39% 40% at 94% 70%,rgba(216,182,165,.16),transparent 80%),
+    linear-gradient(180deg,#202532 0%,#514054 55px,#D8B6A5 123px,
+      #F3EFE8 208px,#F3EFE8 100%);
+  padding-top:clamp(196px,15vw,255px);
+  padding-bottom:clamp(78px,7vw,111px);
+  color:var(--home34-ink);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre.section {
+  background:
+    radial-gradient(ellipse 33% 55% at 8% 43%,rgba(216,182,165,.14),transparent 84%),
+    radial-gradient(ellipse 43% 62% at 100% 88%,rgba(107,83,109,.07),transparent 85%),
+    linear-gradient(180deg,#F3EFE8 0%,#F2EBE5 62%,#F3EFE8 100%);
+  padding-block:clamp(72px,7vw,109px);
+  color:var(--home34-ink);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#conteudos.section {
+  background:
+    radial-gradient(ellipse 54% 35% at 81% 7%,rgba(216,182,165,.13),transparent 78%),
+    linear-gradient(180deg,#F3EFE8 0%,#F1EAE6 53%,#F3EFE8 100%);
+  padding-block:clamp(75px,7vw,108px);
+  color:var(--home34-ink);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#contato.section {
+  background:
+    radial-gradient(ellipse 50% 45% at 87% 69%,rgba(107,83,109,.39),transparent 80%),
+    linear-gradient(180deg,#F3EFE8 0%,#D8B6A5 51px,#715D74 124px,
+      #302A3C 200px,#202532 292px,#202532 100%);
+  padding-top:clamp(200px,16vw,270px);
+  padding-bottom:clamp(83px,8vw,120px);
+  color:var(--home34-ivory);
+}
+
+/* Sem cortes internos ou faixas decorativas de diferentes escolas. */
+body.home-page[data-home34-story] main > section.section:is(#modelo,#produtos,#projetos,#sobre,#conteudos,#contato) {
+  border-block:0;
+}
+body.home-page[data-home34-story] main > section.section
+ :is(.cases-neon-waves,.founder-neon-waves,.contents-neon-waves,
+     .contents-editorial-ribbon,.contact-neon-waves) {
+  opacity:.36;
+  pointer-events:none;
+}
+/* O conteúdo sempre fica acima das costuras, inclusive em telas estreitas. */
+body.home-page[data-home34-story] main > section.section > .container {
+  position:relative;
+  z-index:4;
+}
+
+/* Uma mesma hierarquia tipográfica, com Manrope nos títulos e DM Sans no texto. */
+body.home-page[data-home34-story][data-c33-editorial] main > section.section
+ :is(h2.section-title,h2#about-title,h2#contact-title,h2#conteudos-title,.manifest-title) {
+  font-family:var(--ds-font-display,"Manrope",sans-serif);
+  font-weight:580;
+  letter-spacing:-.052em;
+  line-height:1.095;
+  font-size:clamp(36px,3.65vw,56px);
+}
+body.home-page[data-home34-story] main > section.section
+ :is(.manifest-intro,.modelo-heading-aside p,.products-editorial-side p,
+  .projects-heading-side p,.about-intro p,.content-deck,.contact-editorial-copy > p:not(.eyebrow)) {
+  font-family:var(--ds-font-body,"DM Sans",sans-serif);
+  line-height:1.58;
+}
+body.home-page[data-home34-story] main > section.section .section-eyebrow {
+  font-family:var(--ds-font-display,"Manrope",sans-serif);
+  letter-spacing:.125em;
+  font-weight:690;
+}
+body.home-page[data-home34-story] main > section:is(#modelo,#produtos,#projetos) .section-heading {
+  margin-bottom:clamp(32px,3.7vw,55px);
+}
+
+/* Um único vocabulário de vidro: borda delicada, elevação suave e radius comum. */
+body.home-page[data-home34-story][data-c33-editorial] main > section#problemas .manifest-item,
+body.home-page[data-home34-story][data-c33-editorial] main > section#modelo .modelo-path-card,
+body.home-page[data-home34-story][data-c33-editorial] main > section#produtos .solutions-grid > .solution-card,
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos .projects-grid--launch > .flagship-case,
+body.home-page[data-home34-story][data-c33-editorial] main > section#conteudos :is(.content-featured,.content-secondary) {
+  border-radius:var(--home34-card-radius);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#modelo .modelo-path-card,
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos .projects-grid--launch > .flagship-case,
+body.home-page[data-home34-story][data-c33-editorial] main > section#conteudos :is(.content-featured,.content-secondary) {
+  box-shadow:var(--home34-ambient-shadow),inset 0 1px 0 rgba(255,255,255,.22);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#produtos .solutions-grid > .solution-card,
+body.home-page[data-home34-story][data-c33-editorial] main > section#problemas .manifest-item {
+  box-shadow:0 20px 46px -24px rgba(0,0,0,.46),inset 0 1px 0 rgba(243,239,232,.12);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#modelo .modelo-path-card,
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos .projects-grid--launch > .flagship-case {
+  transition:transform .38s cubic-bezier(.22,1,.36,1),
+    box-shadow .38s ease,border-color .38s ease;
+}
+
+/* Fundadora e conteúdo pertencem à mesma cena editorial clara. */
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre .about-copy > .eyebrow,
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre .about-copy
+ :is(.section-eyebrow__label,.section-eyebrow__number),
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre .about-process-label {
+  color:var(--home34-plum);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre
+ :is(h2#about-title,h2#about-title > span) {
+  color:var(--home34-ink);
+  -webkit-text-fill-color:var(--home34-ink);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre h2#about-title > span.founder-title-accent {
+  color:var(--home34-plum);
+  -webkit-text-fill-color:var(--home34-plum);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre .about-intro :is(p,strong) {
+  color:var(--home34-ink);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre .about-process-compact li {
+  color:var(--home34-ink);
+  border-color:rgba(107,83,109,.22);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre .about-process-compact li :is(strong,b) {
+  color:var(--home34-ink);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre .about-process-compact li > span:last-child {
+  color:#536076;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre .about-process-compact .about-cta {
+  color:var(--home34-ivory);
+  background:var(--home34-plum);
+  border-color:rgba(107,83,109,.62);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre .about-process-compact .about-cta :is(span,svg) {
+  color:var(--home34-ivory);
+}
+
+/* O encerramento recupera a profundidade da abertura; formulário preservado. */
+body.home-page[data-home34-story][data-c33-editorial] main > section#contato
+ .contact-editorial-copy :is(h2#contact-title,h2#contact-title > span) {
+  color:var(--home34-ivory);
+  -webkit-text-fill-color:var(--home34-ivory);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#contato .contact-editorial-copy > p:not(.eyebrow) {
+  color:rgba(243,239,232,.87);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#contato .contact-editorial-copy .section-eyebrow,
+body.home-page[data-home34-story][data-c33-editorial] main > section#contato .contact-editorial-copy .section-eyebrow span {
+  color:var(--home34-peach);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#contato form.contact-form {
+  box-shadow:0 25px 56px -17px rgba(0,0,0,.38),0 0 26px rgba(216,182,165,.09);
+}
+
+/* Continuidade no celular: a transição cabe na tela sem roubar legibilidade. */
+@media (max-width:760px) {
+  body.home-page[data-home34-story] .home34-boundary::after {
+    width:68%;height:112px;top:-56px;opacity:.4;
+  }
+  body.home-page[data-home34-story][data-c33-editorial] main > section#problemas.section {
+    padding-block:70px 88px;
+  }
+  body.home-page[data-home34-story][data-c33-editorial] main > section#modelo.section,
+  body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section,
+  body.home-page[data-home34-story][data-c33-editorial] main > section#contato.section {
+    padding-top:132px;
+  }
+  body.home-page[data-home34-story][data-c33-editorial] main > section#produtos.section {
+    padding-top:155px;
+  }
+  body.home-page[data-home34-story][data-c33-editorial] main > section#sobre.section,
+  body.home-page[data-home34-story][data-c33-editorial] main > section#conteudos.section {
+    padding-block:65px;
+  }
+  body.home-page[data-home34-story][data-c33-editorial] main > section.section
+   :is(h2.section-title,h2#about-title,h2#contact-title,h2#conteudos-title,.manifest-title) {
+    font-size:clamp(32px,8.4vw,43px);
+    letter-spacing:-.045em;
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  body.home-page[data-home34-story] .home34-boundary::before,
+  body.home-page[data-home34-story] .home34-boundary::after {
+    animation:none!important;
+    transition:none!important;
+  }
+}
+/* DAYSLUME 3.4.2 — ritmo editorial depurado, sem marcadores de ato.
+   A costura luminosa permanece; os sete rótulos visíveis foram retirados do HTML.
+   Nenhum ajuste atinge a abertura, a Hero 3D, páginas internas ou os links. */
+
+/* Problemas: a versão anterior somava padding da seção (até 140px),
+   padding do grid (até 80px), min-height:530px e 118px dentro do conceito. */
+body.home-page[data-home34-story][data-c33-editorial] main > section#problemas.section {
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  min-height:0;
+  min-block-size:0;
+  padding-block:0;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#problemas.section .container.launch-manifest-grid {
+  padding:clamp(37px,3.4vw,54px) clamp(25px,5.5vw,93px) clamp(42px,4vw,64px);
+  gap:clamp(26px,4.1vw,65px);
+  align-items:center;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#problemas.section .manifest-concept {
+  min-height:0;
+  height:auto;
+  padding:8px 0 20px;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#problemas.section > .manifest-waves {
+  position:absolute;
+  inset:auto auto 0 0;
+  width:min(68%,950px);
+  height:clamp(80px,8.7vw,124px);
+  max-width:none;
+  overflow:hidden;
+  opacity:.54;
+  pointer-events:none;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 9%,#000 64%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0%,#000 9%,#000 64%,transparent 100%);
+}
+/* Gradientes de passagem comprimidos junto com o espaço superior: o texto
+   continua surgindo sobre os mesmos fundos claros/escuros de origem. */
+body.home-page[data-home34-story][data-c33-editorial] main > section#modelo.section {
+  background:
+    radial-gradient(ellipse 44% 34% at 89% 79%,rgba(216,182,165,.16),transparent 78%),
+    linear-gradient(180deg,#514054 0%,#7c6378 25px,#D8B6A5 52px,
+      #EEE3DC 78px,#F3EFE8 108px,#F3EFE8 100%);
+  padding-top:clamp(108px,8.4vw,138px);
+  padding-bottom:clamp(58px,5.2vw,76px);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#produtos.section {
+  background:
+    radial-gradient(ellipse 55% 52% at 76% 56%,rgba(107,83,109,.34),transparent 82%),
+    radial-gradient(ellipse 28% 35% at 17% 82%,rgba(255,61,154,.055),transparent 78%),
+    linear-gradient(180deg,#F3EFE8 0%,#D8B6A5 32px,#775F75 62px,
+      #322C3F 94px,#202532 128px,#202532 100%);
+  padding-top:clamp(126px,9.6vw,151px);
+  padding-bottom:clamp(69px,6.5vw,92px);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section {
+  background:
+    radial-gradient(ellipse 39% 40% at 94% 70%,rgba(216,182,165,.16),transparent 80%),
+    linear-gradient(180deg,#202532 0%,#514054 28px,#D8B6A5 60px,
+      #F3EFE8 103px,#F3EFE8 100%);
+  padding-top:clamp(110px,8.5vw,137px);
+  padding-bottom:clamp(54px,5vw,72px);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre.section,
+body.home-page[data-home34-story][data-c33-editorial] main > section#conteudos.section {
+  min-height:0;
+  min-block-size:0;
+  padding-block:clamp(49px,5vw,70px);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#contato.section {
+  background:
+    radial-gradient(ellipse 50% 45% at 87% 69%,rgba(107,83,109,.39),transparent 80%),
+    linear-gradient(180deg,#F3EFE8 0%,#D8B6A5 31px,#715D74 63px,
+      #302A3C 95px,#202532 128px,#202532 100%);
+  padding-top:clamp(128px,9.7vw,154px);
+  padding-bottom:clamp(62px,5.8vw,84px);
+}
+@media (max-width:1180px) {
+  body.home-page[data-home34-story][data-c33-editorial] main > section#problemas.section .container.launch-manifest-grid {
+    gap:25px;
+    padding:clamp(34px,4vw,47px) clamp(22px,5vw,62px) clamp(39px,4.3vw,50px);
+  }
+  body.home-page[data-home34-story][data-c33-editorial] main > section#problemas.section .manifest-concept {
+    min-height:0;
+    padding:4px 0 12px;
+  }
+  body.home-page[data-home34-story][data-c33-editorial] main > section#problemas.section > .manifest-waves {
+    width:min(88%,850px);
+    height:90px;
+    opacity:.42;
+  }
+}
+@media (max-width:760px) {
+  body.home-page[data-home34-story][data-c33-editorial] main > section#problemas.section .container.launch-manifest-grid {
+    padding:35px 22px 40px;
+    gap:21px;
+  }
+  body.home-page[data-home34-story][data-c33-editorial] main > section#problemas.section .manifest-concept {
+    padding:2px 0 12px;
+  }
+  body.home-page[data-home34-story][data-c33-editorial] main > section#problemas.section > .manifest-waves {
+    width:100%;
+    height:64px;
+    opacity:.27;
+  }
+  body.home-page[data-home34-story][data-c33-editorial] main > section#modelo.section,
+  body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section {
+    padding-top:110px;
+  }
+  body.home-page[data-home34-story][data-c33-editorial] main > section#produtos.section {
+    padding-top:132px;
+  }
+  body.home-page[data-home34-story][data-c33-editorial] main > section#contato.section {
+    padding-top:138px;
+  }
+}
+@media (max-width:600px) {
+  body.home-page[data-home34-story][data-c33-editorial] main > section#problemas.section .container.launch-manifest-grid {
+    padding:29px 18px 35px;
+    gap:17px;
+  }
+  body.home-page[data-home34-story][data-c33-editorial] main > section#problemas.section .manifest-concept {
+    padding:0 4px 9px;
+  }
+  body.home-page[data-home34-story][data-c33-editorial] main > section#problemas.section > .manifest-waves {
+    height:52px;
+    opacity:.22;
+  }
+}
+
+/* DAYSLUME 3.4.3 — contraste e costura da home.
+   Escopo exclusivo da Home, sem acrescentar novas camadas de design. */
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section .cases-neon-waves {
+  height:clamp(64px,7.5vw,100px);
+  opacity:.13;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre.section .founder-neon-waves {
+  height:clamp(42px,5vw,71px);
+  opacity:.10;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#conteudos.section .contents-editorial-ribbon {
+  height:clamp(85px,10vw,145px);
+  opacity:.14;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#contato.section .contact-neon-waves {
+  height:clamp(60px,7vw,101px);
+  opacity:.16;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#modelo.section .modelo-path-card--products::before {
+  border-color:rgba(var(--peach-rgb),.12);
+  opacity:.52;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#modelo.section .modelo-path-card--bespoke .modelo-description,
+body.home-page[data-home34-story][data-c33-editorial] main > section#modelo.section .modelo-path-card--bespoke .path-cta {
+  color:#F3EFE8;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#modelo.section .modelo-path-card--bespoke .path-cta {
+  border-bottom-color:rgba(243,239,232,.78);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#produtos.section .section-eyebrow,
+body.home-page[data-home34-story][data-c33-editorial] main > section#produtos.section .cinema33-showroom__intro,
+body.home-page[data-home34-story][data-c33-editorial] main > section#produtos.section .products-editorial-side p {
+  color:#F3EFE8;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#produtos.section .cinema33-showroom__choices button {
+  color:#F3EFE8;
+  background:rgba(243,239,232,.095);
+  border:1px solid rgba(243,239,232,.47);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#produtos.section .cinema33-showroom__choices button[aria-pressed="true"] {
+  color:#F3EFE8;
+  background:#6B536D;
+  border-color:#D8B6A5;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#produtos.section .cinema33-showroom__choices button:hover {
+  border-color:#F3EFE8;
+  background:rgba(107,83,109,.70);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#produtos.section .cinema33-showroom__choices button:focus-visible {
+  outline:2px solid #D8B6A5;
+  outline-offset:3px;
+}
+/* Cases: solid ink rail replaces pale/translucent backing for ivory text. */
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section .execution-proof {
+  background:linear-gradient(120deg,#202532,#353044);
+  color:#F3EFE8;
+  opacity:1;
+  border:1px solid rgba(216,182,165,.49);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section .execution-proof__intro span {
+  color:#F0C9B5;
+  opacity:1;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section .execution-proof__intro strong {
+  color:#F3EFE8;
+  opacity:1;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section .execution-proof__items a {
+  color:#F3EFE8;
+  background:rgba(243,239,232,.10);
+  border-color:rgba(216,182,165,.56);
+  opacity:1;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section .execution-proof__items :is(.proof-label,.proof-wordmark,.proof-brand) {
+  color:#F3EFE8;
+  font-size:clamp(10px,.78vw,12px);
+  opacity:1;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section .execution-proof__items a:focus-visible {
+  outline:2px solid #D8B6A5;
+  outline-offset:2px;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section .case-conversion,
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section .case-conversion p {
+  color:#202532;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section .case-conversion p {
+  font-size:13px;
+  font-weight:650;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section .case-conversion a.btn {
+  min-height:44px;
+  padding:11px 19px;
+  color:#F3EFE8;
+  border:1px solid rgba(107,83,109,.82);
+  background:#6B536D;
+  box-shadow:0 9px 22px rgba(32,37,50,.19);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section .case-conversion a.btn:hover {
+  background:#202532;
+  border-color:#6B536D;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre.section :is(.section-eyebrow,.about-process-label) {
+  color:#574158;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre.section .about-process-compact li {
+  border-color:rgba(32,37,50,.27);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#conteudos.section :is(.section-eyebrow,.content-insights__label,.content-featured__meta,.content-secondary__meta) {
+  color:#604861;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#contato.section form.contact-form :is(input,textarea) {
+  border-color:rgba(78,88,111,.66);
+  background:#F3EFE8;
+  color:#202532;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#contato.section form.contact-form :is(input,textarea)::placeholder {
+  color:#4F586D;
+  opacity:1;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#contato.section form.contact-form :is(input,textarea):focus-visible {
+  border-color:#6B536D;
+  box-shadow:0 0 0 3px rgba(107,83,109,.20);
+}
+@media (max-width:760px) {
+  body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section .cases-neon-waves,
+  body.home-page[data-home34-story][data-c33-editorial] main > section#sobre.section .founder-neon-waves,
+  body.home-page[data-home34-story][data-c33-editorial] main > section#conteudos.section .contents-editorial-ribbon {
+    opacity:.08;
+  }
+}

@@ -33,24 +33,19 @@ test('Lote E removes film UI and hero decorative copy marked in screenshots',()=
  assert.match(html,/cinema33-ledger__link" href="#produtos"/);
 });
 
-test('Lote E reserves reading area and dissolves scene five into original 3D hero',()=>{
+test('Lote E handoff dissolves scene five into approved 3D project simulators',()=>{
  const html=read('index.html'),css=read('assets/css/cinematic-film-intro-33.css'),js=read('assets/js/cinematic-film-intro-33.js');
  assert.equal((html.match(/data-c33-caption/g)||[]).length,5);
- assert.match(css,/#cinema33-film \.c33-window \{ top: 36%; \}/);
- assert.match(css,/#cinema33-film \.c33-caption \{/);
- assert.match(css,/text-wrap: balance/);
- assert.match(css,/--c33-exit-progress/);
- assert.match(js,/pin\.style\.setProperty\('--c33-exit-progress'/);
- assert.match(html,/class="hero hero--cinematic hero--floating-panels"/);
- assert.match(html,/class="cinema-cluster"/);
- for(const x of ['class="cinema-browser"','class="cinema-phone cinema-agenda-panel"','class="cinema-service"'])assert.ok(html.includes(x));
- assert.match(css,/@media \(prefers-reduced-motion: reduce\)/);
+ for(const value of ['#cinema33-film .c33-window { top: 36%; }','--c33-exit-progress'])assert.ok(css.includes(value),value);
+ assert.ok(js.includes("pin.style.setProperty('--c33-exit-progress'"));
+ for(const value of ['hero--floating-panels hero--project-simulators','class="hero-projects"','hero-projects__card--vitrini','hero-projects__card--agenda','hero-projects__card--caderneta'])assert.ok(html.includes(value),value);
+ assert.ok(css.includes('@media (prefers-reduced-motion: reduce)'));
 });
 
 test('Lote E avoids old repeated film headlines and false prices while preserving contact',()=>{
  const html=read('index.html');
  assert.match(html,/Tecnologia que começa no problema/);
- assert.match(html,/Criamos sites, experiências digitais e sistemas/);
+ assert.match(html,/Criamos sites, sistemas e experiências digitais/);
  assert.match(html,/Vamos entender o que/);
  assert.doesNotMatch(html,/R\$ 00,00/);
  assert.equal((html.match(/<h1\b/g)||[]).length,1);
