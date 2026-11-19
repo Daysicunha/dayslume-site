@@ -8,6 +8,7 @@
   padding: clamp(57px,6.2vw,94px) 0 25px;
   background:
     radial-gradient(ellipse 46% 60% at 71% 46%, rgba(107,83,109,.57) 0%, transparent 78%),
+    radial-gradient(ellipse 27% 32% at 73% 44%, rgba(var(--ds-neon-pink-rgb), .075), transparent 78%),
     radial-gradient(ellipse 34% 35% at 80% 83%, rgba(216,182,165,.17), transparent 79%),
     radial-gradient(ellipse 48% 70% at 14% 4%, rgba(107,83,109,.22), transparent 76%),
     linear-gradient(110deg,#17131c 3%,#291e2a 52%,#261e2b 100%);
@@ -30,7 +31,7 @@
   font-style:italic;font-family:inherit;font-weight:400;
 }
 .home-page #apresentacao.hero--project-simulators .hero-title-last {white-space:nowrap;}
-.home-page #apresentacao.hero--project-simulators .accent-point {color:#e1b4a4;}
+.home-page #apresentacao.hero--project-simulators .accent-point {color:var(--ds-neon-pink);text-shadow:0 0 12px rgba(var(--ds-neon-pink-rgb),.30);}
 .home-page #apresentacao.hero--project-simulators .hero-lead {
   max-width:46ch;color:rgba(243,239,232,.83);font-size:clamp(14px,1.12vw,17px);
   line-height:1.72;margin-bottom:30px;
@@ -53,6 +54,10 @@
 .home-page #apresentacao.hero--project-simulators .hero-projects__card:focus-visible {
   outline:2px solid var(--hero-peach);outline-offset:5px;
 }
+.home-page #apresentacao.hero--project-simulators .hero-actions .text-link:hover {
+  border-color:rgba(var(--ds-neon-pink-rgb),.55);
+  box-shadow:0 0 14px rgba(var(--ds-neon-pink-rgb),.12);
+}
 .home-page #apresentacao.hero--project-simulators .hero-visual-composition.hero-projects-stage {
   width:100%;max-width:none;position:relative;min-height:0;isolation:isolate;
 }
@@ -61,7 +66,7 @@
   filter:blur(34px);
 }
 .home-page #apresentacao.hero--project-simulators .cinema-stage::after {opacity:.17;border-color:rgba(216,182,165,.6);}
-.home-page #apresentacao.hero--project-simulators .hero-master-orbit {z-index:0;opacity:.68;pointer-events:none;}
+.home-page #apresentacao.hero--project-simulators .hero-master-orbit {z-index:0;opacity:.68;pointer-events:none;filter:drop-shadow(0 0 8px rgba(var(--ds-neon-pink-rgb),.16));}
 .home-page #apresentacao.hero--project-simulators .hero-master-lightfloor {z-index:0;opacity:.45;}
 .home-page #apresentacao .hero-projects {
   position:relative;width:100%;height:clamp(480px,41vw,576px);
@@ -69,7 +74,8 @@
 }
 .home-page #apresentacao .hero-projects__halo {
   position:absolute;z-index:0;inset:8% 4% 6%;
-  background:radial-gradient(ellipse at 58% 55%,rgba(216,182,165,.22),rgba(107,83,109,.18) 45%,transparent 70%);
+  background:radial-gradient(ellipse 42% 55% at 58% 50%,rgba(var(--ds-neon-pink-rgb),.11),transparent 75%),
+             radial-gradient(ellipse at 58% 55%,rgba(216,182,165,.22),rgba(107,83,109,.18) 45%,transparent 70%);
   filter:blur(32px);pointer-events:none;
   transform:translate3d(var(--cinema-shift-x,0px),var(--cinema-shift-y,0px),0);
   transition:transform .45s ease-out;
@@ -78,7 +84,7 @@
   position:absolute;z-index:1;left:3%;right:0;bottom:8%;height:15%;
   border:1px solid rgba(247,202,178,.47);border-radius:50%;
   background:linear-gradient(180deg,rgba(191,139,130,.22),rgba(66,40,62,.51) 54%,rgba(23,15,27,.55));
-  box-shadow:0 10px 55px rgba(216,182,165,.27),inset 0 2px 0 rgba(255,216,199,.8),0 30px 50px rgba(13,7,19,.4);
+  box-shadow:0 10px 55px rgba(216,182,165,.27),0 0 26px rgba(var(--ds-neon-pink-rgb),.10),inset 0 2px 0 rgba(255,216,199,.8),0 30px 50px rgba(13,7,19,.4);
   transform:rotateX(51deg);pointer-events:none;
 }
 .home-page #apresentacao .hero-projects__card {
@@ -190,9 +196,9 @@
 .home-page #apresentacao .hero-pillar-band strong {font:550 clamp(10px,.85vw,13px)/1.4 "DM Sans",sans-serif;white-space:nowrap;}
 .home-page #apresentacao.hero--project-simulators .cinema33-ledger {margin-top:14px;}
 @media (hover:hover) and (pointer:fine) {
-  .home-page #apresentacao .hero-projects__card--vitrini:hover {z-index:6;transform:perspective(1300px) rotateY(6deg) rotateX(1deg) rotateZ(-2deg) translateZ(35px);box-shadow:0 40px 72px rgba(12,7,20,.7),0 0 36px rgba(216,182,165,.32);}
-  .home-page #apresentacao .hero-projects__card--caderneta:hover {z-index:6;transform:perspective(1300px) rotateY(-6deg) rotateX(1deg) rotateZ(2deg) translateZ(35px);box-shadow:0 40px 72px rgba(12,7,20,.7),0 0 36px rgba(216,182,165,.32);}
-  .home-page #apresentacao .hero-projects__card--agenda:hover {transform:perspective(1400px) rotateY(-4deg) rotateX(1deg) translateZ(40px);box-shadow:0 42px 74px rgba(12,7,20,.72),0 0 45px rgba(216,182,165,.32);}
+  .home-page #apresentacao .hero-projects__card--vitrini:hover {z-index:6;transform:perspective(1300px) rotateY(6deg) rotateX(1deg) rotateZ(-2deg) translateZ(35px);box-shadow:0 40px 72px rgba(12,7,20,.7),0 0 36px rgba(216,182,165,.32),0 0 22px rgba(var(--ds-neon-pink-rgb),.16);border-color:rgba(var(--ds-neon-pink-rgb),.50);}
+  .home-page #apresentacao .hero-projects__card--caderneta:hover {z-index:6;transform:perspective(1300px) rotateY(-6deg) rotateX(1deg) rotateZ(2deg) translateZ(35px);box-shadow:0 40px 72px rgba(12,7,20,.7),0 0 36px rgba(216,182,165,.32),0 0 22px rgba(var(--ds-neon-pink-rgb),.16);border-color:rgba(var(--ds-neon-pink-rgb),.50);}
+  .home-page #apresentacao .hero-projects__card--agenda:hover {transform:perspective(1400px) rotateY(-4deg) rotateX(1deg) translateZ(40px);box-shadow:0 42px 74px rgba(12,7,20,.72),0 0 45px rgba(216,182,165,.32),0 0 22px rgba(var(--ds-neon-pink-rgb),.16);border-color:rgba(var(--ds-neon-pink-rgb),.50);}
 }
 @keyframes dayslume-project-reveal {from {opacity:0;filter:blur(7px);translate:0 15px;}to{opacity:1;filter:blur(0);translate:0 0;}}
 .home-page #apresentacao.is-3d-visible .hero-projects__card--vitrini {animation:dayslume-project-reveal .85s cubic-bezier(.2,.8,.2,1) both;}
