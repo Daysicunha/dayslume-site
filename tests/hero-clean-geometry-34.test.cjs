@@ -20,6 +20,9 @@ test('3.4 preserves the original 5-scene opening and 3 linked live-DOM product p
   assert.match(html,new RegExp('hero-projects__card--'+k));
  }
  assert.match(html,/href="solucoes.html#vitrini"/);
+ assert.match(html,/href="solucoes.html#engreni-agenda"/);
+ assert.ok(html.indexOf('hero-projects__card--vitrini')<html.indexOf('hero-projects__card--agenda'));
+ assert.ok(html.indexOf('hero-projects__card--agenda')<html.indexOf('hero-projects__card--caderneta'));
  assert.match(html,/href="solucoes.html#engreni"/);
  assert.doesNotMatch(html.slice(html.indexOf('id="apresentacao"'),html.indexOf('id="problemas"')),/hero-flower/);
 });
@@ -67,4 +70,14 @@ test('3.4 screen-size fallback and before-after browser evidence are explicitly 
  assert.match(visual,/hero-complete-/);
  assert.match(visual,/heroSpatial/);
  assert.match(visual,/prefers-reduced-motion',value:'no-preference'/);
+});
+
+test('3.4.1 guards desktop title clearance and model illustration containment',()=>{
+ assert.match(hero,/revisão na tela real: separar tipografia e palco no desktop/);
+ assert.match(hero,/margin-left:0;/);
+ assert.match(hero,/border-bottom:5px solid/);
+ assert.match(palette,/DAYSLUME 3.4.1 — breathing room/);
+ const qa=read('scripts/visual-qa.mjs');
+ assert.match(qa,/heroTitleClearance/);
+ assert.match(qa,/hero heading and VITRINI clearance insufficient/);
 });

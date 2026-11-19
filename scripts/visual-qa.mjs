@@ -143,6 +143,21 @@ try {
          else if(vitrini.left>width*.51 || engreni.right>width+2 || service.bottom>941 || vitrini.left<=title.left)
            row.issues.push('hero reference composition out of bounds: '+JSON.stringify(row.heroComposition));
        }
+       // Cross-element check from actual browser geometry: unlike the three cards,
+       // the title can still be obscured by the leftmost card if the stage is offset.
+       row.heroTitleClearance=await page.evaluate(()=>{
+         const h=document.querySelector('#apresentacao .hero-content h1')?.getBoundingClientRect();
+         const v=document.querySelector('#apresentacao .hero-projects__card--vitrini')?.getBoundingClientRect();
+         if(!h||!v)return {gap:null,verticalOverlap:null};
+         return {
+           gap:Math.round(v.left-h.right),
+           verticalOverlap:Math.round(Math.max(0,Math.min(h.bottom,v.bottom)-Math.max(h.top,v.top)))
+         };
+       });
+       if(v.name==='after-framing-v6' && width>=1251 &&
+         (row.heroTitleClearance.gap===null ||
+          (row.heroTitleClearance.verticalOverlap>0 && row.heroTitleClearance.gap<20)))
+         row.issues.push('hero heading and VITRINI clearance insufficient: '+JSON.stringify(row.heroTitleClearance));
        row.heroSpatial=await page.evaluate(()=>{
          const stage=document.querySelector('#apresentacao .hero-projects');
          const rect=k=>stage?.querySelector('.hero-projects__card--'+k)?.getBoundingClientRect()||null;

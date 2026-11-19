@@ -467,3 +467,35 @@ body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-p
     animation:none!important;transition:none!important;transform:none!important;
   }
 }
+
+
+/* DAYSLUME 3.4.1 — revisão na tela real: separar tipografia e palco no desktop.
+   O deslocamento -54px da camada anterior fazia VITRINI cobrir "digitais".
+   Manter o palco na sua própria coluna, três bases niveladas e mobile intacto. */
+@media (min-width:1251px) {
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-grid {
+    gap:clamp(27px,2.6vw,42px);
+  }
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-content h1 {
+    font-size:clamp(48px,3.94vw,65px);
+    letter-spacing:-.054em;
+  }
+  body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-visual-composition.hero-projects-stage {
+    margin-left:0;
+    width:100%;
+    min-width:0;
+  }
+}
+/* Physical glass edges, intentionally more subtle than the illuminated orbit. */
+body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card {
+  border-right:2px solid rgba(240,211,198,.28);
+  border-bottom:5px solid rgba(14,14,27,.73);
+}
+body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card::after {
+  box-shadow:inset 2px 1px 0 rgba(255,255,255,.27),
+    inset -3px 0 0 rgba(11,10,25,.29),
+    inset 0 -4px 0 rgba(11,10,25,.27);
+}
+body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__preview-label {
+  letter-spacing:.085em;
+}

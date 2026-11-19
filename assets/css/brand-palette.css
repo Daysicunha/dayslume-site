@@ -3500,3 +3500,47 @@ body.home-page[data-c33-editorial] main > section#contato.section form.contact-f
     top:calc(35% - 14px);
   }
 }
+
+
+/* DAYSLUME 3.4.1 — breathing room and intentional illustration framing.
+   Desktop-only; preserve the previously homologated mobile composition. */
+@media (min-width:1025px) {
+  body.home-page[data-c33-editorial] main > section#modelo.section > .modelo-container {
+    width:min(calc(100% - clamp(72px,9vw,160px)),1380px);
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-paths {
+    gap:clamp(22px,2.65vw,38px);
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card,
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card:first-child,
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-path-card:last-child {
+    grid-template-columns:minmax(0,54%) minmax(0,46%);
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-project-art {
+    width:min(86%,310px);
+    max-height:75%;
+    right:6%;
+    bottom:12%;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-orbit {
+    width:102%;
+    right:0;
+    top:14%;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-platform {
+    width:51%;
+    right:21%;
+    bottom:19%;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-tile {
+    width:55%;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-tile--vitrini {
+    right:18%;
+    top:19%;
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-tile--engreni {
+    right:17%;
+    top:43%;
+  }
+}
