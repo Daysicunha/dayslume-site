@@ -134,7 +134,7 @@ try {
          if(!h.font.includes('Manrope'))row.issues.push('hero title not using official Manrope display token: '+h.font);
          if(!h.titleVisible||!h.cardsPresent||!h.cardsInsideViewport||h.horizontalOverflow)
            row.issues.push('hero clipping or missing screen: '+JSON.stringify(h));
-         if(width>600&&(h.vitriniVisibleRatio<.62||h.cadernetaVisibleRatio<.74||h.cadernetaBrandCovered))
+         if(width>600&&(h.vitriniVisibleRatio<.84||h.cadernetaVisibleRatio<.88||h.cadernetaBrandCovered))
            row.issues.push('hero simulator occlusion/brand unreadable: '+JSON.stringify(h));
        }
        if(v.name==='after-framing-v6' && width>=1440) {
