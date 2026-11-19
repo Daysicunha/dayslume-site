@@ -3476,3 +3476,14 @@ body.home-page[data-c33-editorial] main > section#contato.section form.contact-f
     transform:none!important;
   }
 }
+
+/* 19/11 — model illustration containment verified by browser QA: lifted only on phone.
+   Avoid cut edges without resizing, replacing or reorganizing the original artwork. */
+@media (max-width:540px) {
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-platform {
+    bottom:calc(18% + 8px);
+  }
+  body.home-page[data-c33-editorial] main > section#modelo.section .modelo-product-tile--engreni {
+    top:calc(35% - 14px);
+  }
+}
