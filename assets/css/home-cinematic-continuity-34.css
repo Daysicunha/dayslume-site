@@ -3,7 +3,8 @@
  * Storyboard aprovado 19/11/2026.
  * Escopo: apenas body.home-page[data-home34-story]. Nunca afeta o filme,
  * a geometria dos simuladores, páginas internas ou comportamento dos formulários.
- * Esta camada deve ser carregada APÓS brand-palette.css.
+ * Esta camada é carregada ANTES de brand-palette.css; seletores mais específicos
+ * mantêm o ritmo novo sem remover a paleta como última fonte de tokens.
  */
 body.home-page[data-home34-story] {
   --home34-ink:#202532;
@@ -70,6 +71,34 @@ body.home-page[data-home34-story] main > section:is(#sobre,#conteudos) > .home34
   background:linear-gradient(90deg,transparent,rgba(107,83,109,.10) 18%,
     rgba(107,83,109,.34) 49%,rgba(216,182,165,.45) 74%,transparent);
   box-shadow:0 0 12px rgba(107,83,109,.09);
+}
+
+/* A legenda de cada ato existe no HTML, sem substituir os títulos originais. */
+body.home-page[data-home34-story] main > section.section .home34-chapter {
+  position:absolute;
+  top:clamp(25px,3.8vw,48px);
+  left:clamp(23px,8vw,140px);
+  max-width:calc(100vw - 48px);
+  font:700 clamp(10px,.72vw,12px)/1.4 var(--ds-font-display,"Manrope",sans-serif);
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--home34-peach);
+  text-shadow:0 1px 8px rgba(32,37,50,.20);
+  white-space:nowrap;
+}
+body.home-page[data-home34-story] main > section:is(#sobre,#conteudos) .home34-chapter,
+body.home-page[data-home34-story] main > section#modelo .home34-chapter,
+body.home-page[data-home34-story] main > section#contato .home34-chapter {
+  color:var(--home34-plum);
+  text-shadow:none;
+}
+body.home-page[data-home34-story] main > section#projetos .home34-chapter {
+  color:var(--home34-ivory);
+}
+@media (max-width:760px) {
+  body.home-page[data-home34-story] main > section.section .home34-chapter {
+    top:21px;left:22px;font-size:10px;letter-spacing:.105em;
+  }
 }
 
 /* Ritmo unificado: transições longas de cena, não cortes de cor. */
