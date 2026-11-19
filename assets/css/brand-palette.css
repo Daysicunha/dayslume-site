@@ -8,6 +8,9 @@
   --warm-ivory: #F3EFE8;
   --slate-mineral: #66758F;
   --peach: #D8B6A5;
+  /* Acento experimental: somente brilho/interação; jamais texto corrido ou fundo principal. */
+  --ds-neon-pink: #FF3D9A;
+  --ds-neon-pink-rgb: 255, 61, 154;
 
   /* Tokens de tipografia e contraste registrados na auditoria da PR #27. */
   --ds-font-display: "Manrope", sans-serif;
