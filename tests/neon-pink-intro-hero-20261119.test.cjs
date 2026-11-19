@@ -12,15 +12,15 @@ test('pink neon token exists without replacing plum as the primary identity',()=
   assert.match(palette,/--plum-mineral: #6B536D;/);
 });
 test('the scroll film has visible neon details in every caption and on its opening rule',()=>{
-  assert.match(film,/#cinema33-film \\.c33-caption em \\{[^}]*color: var\\(--ds-neon-pink\\)/);
-  assert.match(film,/#cinema33-film \\.c33-title-rule \\{[^}]*var\\(--ds-neon-pink\\)/s);
-  assert.match(film,/#cinema33-film \\.c33-hint \\{[^}]*color: var\\(--ds-neon-pink\\)/s);
+  assert.match(film,/#cinema33-film \.c33-caption em \{[^}]*color: var\(--ds-neon-pink\)/);
+  assert.match(film,/#cinema33-film \.c33-title-rule \{[^}]*var\(--ds-neon-pink\)/s);
+  assert.match(film,/#cinema33-film \.c33-hint \{[^}]*color: var\(--ds-neon-pink\)/s);
   assert.equal((html.match(/data-c33-caption/g)||[]).length,5);
 });
 test('the actual hero high-specificity text rule overrides the legacy peach color',()=>{
-  assert.match(hero,/body\\.home-page #apresentacao\\[data-hero-master\\]\\.hero--project-simulators \\.hero-content h1 em/);
-  assert.match(hero,/-webkit-text-fill-color:var\\(--ds-neon-pink\\)/);
-  assert.match(hero,/hero-projects__card \\{[^}]*--ds-neon-pink-rgb/s);
-  assert.match(hero,/@media \\(max-width:600px\\)/);
-  assert.match(hero,/@media \\(prefers-reduced-motion:reduce\\)/);
+  assert.match(hero,/body\.home-page #apresentacao\[data-hero-master\]\.hero--project-simulators \.hero-content h1 em/);
+  assert.match(hero,/-webkit-text-fill-color:var\(--ds-neon-pink\)/);
+  assert.match(hero,/hero-projects__card \{[^}]*--ds-neon-pink-rgb/s);
+  assert.match(hero,/@media \(max-width:600px\)/);
+  assert.match(hero,/@media \(prefers-reduced-motion:reduce\)/);
 });
