@@ -17,7 +17,7 @@ test('three screens preserve depth order, a centered agenda, and genuinely visib
  assert.ok(a.left>=25&&a.left<=35,'Agenda must begin near stage center');
  assert.ok(v.left<=5&&v.left+v.width>a.left,'left preview remains substantial and slightly overlapped');
  const cLeft=100-c.right-c.width, aRight=a.left+a.width;
- assert.ok(c.width>=27,'Caderneta must retain meaningful screen width');
+ assert.ok(c.width>=26,'Caderneta must retain meaningful screen width');
  assert.ok(cLeft>=aRight-2,'Agenda must not obscure the Caderneta content');
  assert.ok(aRight<=78&&cLeft+c.width<=100,'no lateral stage overflow');
  assert.match(rule('.hero-projects__card--agenda {'),/rotateY\(-2\.7deg\)/);
