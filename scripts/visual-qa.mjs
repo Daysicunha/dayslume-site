@@ -250,8 +250,18 @@ try {
        await page.emulateMediaFeatures([{name:'prefers-reduced-motion',value:'no-preference'}]);
        await wait(450);
      }
+     /* Progressive reading pass for one-shot IntersectionObserver reveals.
+        Full-page browser screenshots are not a real scroll and otherwise leave
+        below-fold editorial cards at opacity:0 despite the site working normally. */
+     const pageHeight=await page.evaluate(()=>document.documentElement.scrollHeight);
+     const sweepStep=Math.floor((width<=390?780:900)*.60);
+     for(let offset=0;offset<pageHeight;offset+=sweepStep){
+       await page.evaluate(y=>window.scrollTo({top:y,behavior:'instant'}),offset);
+       await wait(105);
+     }
+     await wait(950); /* settle the last batch of narrative cards */
      await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));
-     await wait(400);
+     await wait(450);
      await page.screenshot({path:join(out,v.name+'-'+width+'-home-full.png'),fullPage:true});
    }
    results.push(row);
