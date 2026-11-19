@@ -194,6 +194,16 @@ try {
          (row.heroTitleClearance.gap===null ||
           (row.heroTitleClearance.verticalOverlap>0 && row.heroTitleClearance.gap<20)))
          row.issues.push('hero heading and VITRINI clearance insufficient: '+JSON.stringify(row.heroTitleClearance));
+       row.heroCleanBackdrop=await page.evaluate(()=>{
+         const hero=document.querySelector('#apresentacao');
+         const orbit=hero?.querySelector('.hero-master-orbit');
+         const stage=hero?.querySelector('.hero-projects-stage');
+         return {orbitDisplay:orbit?getComputedStyle(orbit).display:null,
+                 arcDisplay:stage?getComputedStyle(stage,'::after').display:null};
+       });
+       if(v.name==='after-framing-v6' &&
+          (row.heroCleanBackdrop.orbitDisplay!=='none'||row.heroCleanBackdrop.arcDisplay!=='none'))
+         row.issues.push('decorative Hero orbit still visible: '+JSON.stringify(row.heroCleanBackdrop));
        row.heroSpatial=await page.evaluate(()=>{
          const stage=document.querySelector('#apresentacao .hero-projects');
          const rect=k=>stage?.querySelector('.hero-projects__card--'+k)?.getBoundingClientRect()||null;
@@ -227,6 +237,25 @@ try {
        });
        if(v.name==='after-framing-v6' && row.heroAnchor.heroTop>row.heroAnchor.headerBottom+6)
          row.issues.push('hero anchor exposes preceding film: '+JSON.stringify(row.heroAnchor));
+     }
+     if(key==='dayane'){
+       row.caseProof=await page.evaluate(()=>{
+         const rail=document.querySelector('#projetos .execution-proof');
+         const caption=rail?.querySelector('.execution-proof__intro span');
+         const cta=document.querySelector('#projetos .case-conversion a.btn');
+         const copy=document.querySelector('#projetos .case-conversion p');
+         const computed=e=>e?getComputedStyle(e):null;
+         return {railBackground:computed(rail)?.backgroundImage,
+           railOpacity:computed(rail)?.opacity,
+           captionColor:computed(caption)?.color,
+           ctaBackground:computed(cta)?.backgroundColor,
+           copyColor:computed(copy)?.color};
+       });
+       if(v.name==='after-framing-v6' &&
+          (row.caseProof.railOpacity!=='1' ||
+           !row.caseProof.railBackground?.includes('linear-gradient') ||
+           row.caseProof.copyColor!=='rgb(32, 37, 50)'))
+         row.issues.push('cases proof / conversion contrast: '+JSON.stringify(row.caseProof));
      }
      if(captureWidths.has(width)) {
        await page.screenshot({path:join(out,v.name+'-'+width+'-'+key+'.png')});

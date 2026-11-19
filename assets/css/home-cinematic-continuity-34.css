@@ -415,3 +415,135 @@ body.home-page[data-home34-story][data-c33-editorial] main > section#contato.sec
     opacity:.22;
   }
 }
+
+/* DAYSLUME 3.4.3 — contraste e costura da home.
+   Escopo exclusivo da Home, sem acrescentar novas camadas de design. */
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section .cases-neon-waves {
+  height:clamp(64px,7.5vw,100px);
+  opacity:.13;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre.section .founder-neon-waves {
+  height:clamp(42px,5vw,71px);
+  opacity:.10;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#conteudos.section .contents-editorial-ribbon {
+  height:clamp(85px,10vw,145px);
+  opacity:.14;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#contato.section .contact-neon-waves {
+  height:clamp(60px,7vw,101px);
+  opacity:.16;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#modelo.section .modelo-path-card--products::before {
+  border-color:rgba(var(--peach-rgb),.12);
+  opacity:.52;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#modelo.section .modelo-path-card--bespoke .modelo-description,
+body.home-page[data-home34-story][data-c33-editorial] main > section#modelo.section .modelo-path-card--bespoke .path-cta {
+  color:#F3EFE8;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#modelo.section .modelo-path-card--bespoke .path-cta {
+  border-bottom-color:rgba(243,239,232,.78);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#produtos.section .section-eyebrow,
+body.home-page[data-home34-story][data-c33-editorial] main > section#produtos.section .cinema33-showroom__intro,
+body.home-page[data-home34-story][data-c33-editorial] main > section#produtos.section .products-editorial-side p {
+  color:#F3EFE8;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#produtos.section .cinema33-showroom__choices button {
+  color:#F3EFE8;
+  background:rgba(243,239,232,.095);
+  border:1px solid rgba(243,239,232,.47);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#produtos.section .cinema33-showroom__choices button[aria-pressed="true"] {
+  color:#F3EFE8;
+  background:#6B536D;
+  border-color:#D8B6A5;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#produtos.section .cinema33-showroom__choices button:hover {
+  border-color:#F3EFE8;
+  background:rgba(107,83,109,.70);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#produtos.section .cinema33-showroom__choices button:focus-visible {
+  outline:2px solid #D8B6A5;
+  outline-offset:3px;
+}
+/* Cases: solid ink rail replaces pale/translucent backing for ivory text. */
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section .execution-proof {
+  background:linear-gradient(120deg,#202532,#353044);
+  color:#F3EFE8;
+  opacity:1;
+  border:1px solid rgba(216,182,165,.49);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section .execution-proof__intro span {
+  color:#F0C9B5;
+  opacity:1;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section .execution-proof__intro strong {
+  color:#F3EFE8;
+  opacity:1;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section .execution-proof__items a {
+  color:#F3EFE8;
+  background:rgba(243,239,232,.10);
+  border-color:rgba(216,182,165,.56);
+  opacity:1;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section .execution-proof__items :is(.proof-label,.proof-wordmark,.proof-brand) {
+  color:#F3EFE8;
+  font-size:clamp(10px,.78vw,12px);
+  opacity:1;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section .execution-proof__items a:focus-visible {
+  outline:2px solid #D8B6A5;
+  outline-offset:2px;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section .case-conversion,
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section .case-conversion p {
+  color:#202532;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section .case-conversion p {
+  font-size:13px;
+  font-weight:650;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section .case-conversion a.btn {
+  min-height:44px;
+  padding:11px 19px;
+  color:#F3EFE8;
+  border:1px solid rgba(107,83,109,.82);
+  background:#6B536D;
+  box-shadow:0 9px 22px rgba(32,37,50,.19);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section .case-conversion a.btn:hover {
+  background:#202532;
+  border-color:#6B536D;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre.section :is(.section-eyebrow,.about-process-label) {
+  color:#574158;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre.section .about-process-compact li {
+  border-color:rgba(32,37,50,.27);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#conteudos.section :is(.section-eyebrow,.content-insights__label,.content-featured__meta,.content-secondary__meta) {
+  color:#604861;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#contato.section form.contact-form :is(input,textarea) {
+  border-color:rgba(78,88,111,.66);
+  background:#F3EFE8;
+  color:#202532;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#contato.section form.contact-form :is(input,textarea)::placeholder {
+  color:#4F586D;
+  opacity:1;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#contato.section form.contact-form :is(input,textarea):focus-visible {
+  border-color:#6B536D;
+  box-shadow:0 0 0 3px rgba(107,83,109,.20);
+}
+@media (max-width:760px) {
+  body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section .cases-neon-waves,
+  body.home-page[data-home34-story][data-c33-editorial] main > section#sobre.section .founder-neon-waves,
+  body.home-page[data-home34-story][data-c33-editorial] main > section#conteudos.section .contents-editorial-ribbon {
+    opacity:.08;
+  }
+}

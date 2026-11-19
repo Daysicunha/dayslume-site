@@ -63,3 +63,28 @@ test('3.4.2: compact content rhythm and soft bottom-anchored wave are scoped to 
   assert.doesNotMatch(html,/L700 290 L0 290Z/);
   assert.match(css,/@media \(max-width:600px\)/);
 });
+
+test('3.4 final: Hero orbit is removed and transitions remain inside Home',()=>{
+  const hero=read('assets/css/hero-project-simulators-20261118.css');
+  assert.match(hero,/\.hero-master-orbit \{display:none;pointer-events:none;\}/);
+  assert.match(hero,/\.cinema-stage::after \{content:none;display:none;\}/);
+  assert.match(css,/#202532 128px/);
+  assert.match(css,/\.execution-proof \{[\s\S]*?background:linear-gradient\(120deg,#202532,#353044\)/);
+  assert.match(css,/\.case-conversion p \{\s*font-size:13px/);
+  assert.match(css,/::placeholder \{\s*color:#4F586D/);
+  assert.match(css,/\.contents-editorial-ribbon \{\s*height:clamp\(85px/);
+});
+test('3.4 final: WCAG AA solid color pairs for critical components',()=>{
+  const lum=h=>{
+    const channels=h.replace('#','').match(/../g).map(x=>parseInt(x,16)/255)
+      .map(x=>x<=.04045?x/12.92:((x+.055)/1.055)**2.4);
+    return channels[0]*.2126+channels[1]*.7152+channels[2]*.0722;
+  };
+  const ratio=(a,b)=>{const l=[lum(a),lum(b)].sort((x,y)=>y-x);return (l[0]+.05)/(l[1]+.05);};
+  for(const [fg,bg] of [
+    ['#F3EFE8','#202532'],['#F3EFE8','#353044'],
+    ['#F3EFE8','#6B536D'],['#202532','#F3EFE8'],
+    ['#4F586D','#F3EFE8'],['#604861','#F3EFE8'],
+    ['#574158','#F3EFE8'],['#F0C9B5','#202532']
+  ]) assert.ok(ratio(fg,bg)>=4.5,fg+' on '+bg+' contrast '+ratio(fg,bg).toFixed(2));
+});
