@@ -81,3 +81,8 @@ test('3.4.1 guards desktop title clearance and model illustration containment',(
  assert.match(qa,/heroTitleClearance/);
  assert.match(qa,/hero heading and VITRINI clearance insufficient/);
 });
+
+test('3.4.1 Agenda final schedule row cannot overlap its illustrative footer',()=>{
+ assert.match(final,/width:34%;height:81%/);
+ assert.match(read('scripts/visual-qa.mjs'),/heroAgendaFooter/);
+});

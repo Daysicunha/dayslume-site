@@ -145,6 +145,17 @@ try {
        }
        // Cross-element check from actual browser geometry: unlike the three cards,
        // the title can still be obscured by the leftmost card if the stage is offset.
+       // Agenda's third schedule row must remain above its illustrative footer
+       // (previously the 1440px crop hid the final bar under the label).
+       row.heroAgendaFooter=await page.evaluate(()=>{
+         const hero=document.querySelector('#apresentacao');
+         const last=hero?.querySelector('.hero-projects__card--agenda .hero-projects__timeline >div:last-child')?.getBoundingClientRect();
+         const footer=hero?.querySelector('.hero-projects__card--agenda .hero-projects__preview-label')?.getBoundingClientRect();
+         return {gap:last&&footer?Math.round(footer.top-last.bottom):null};
+       });
+       if(v.name==='after-framing-v6' && width>=1251 &&
+         (row.heroAgendaFooter.gap===null||row.heroAgendaFooter.gap<4))
+         row.issues.push('ENGRENI Agenda final schedule row meets the footer: '+JSON.stringify(row.heroAgendaFooter));
        row.heroTitleClearance=await page.evaluate(()=>{
          const h=document.querySelector('#apresentacao .hero-content h1')?.getBoundingClientRect();
          const v=document.querySelector('#apresentacao .hero-projects__card--vitrini')?.getBoundingClientRect();

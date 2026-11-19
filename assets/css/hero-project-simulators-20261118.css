@@ -405,7 +405,7 @@ body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-p
     transform:perspective(1500px) rotateY(5deg) rotateX(1deg) rotateZ(-.35deg);
   }
   body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card--agenda {
-    z-index:4;left:33%;right:auto;top:auto;bottom:12%;width:34%;height:76%;
+    z-index:4;left:33%;right:auto;top:auto;bottom:12%;width:34%;height:81%;
     transform-origin:center bottom;
     transform:perspective(1600px) rotateY(0deg) rotateX(1.1deg) rotateZ(0deg);
   }
