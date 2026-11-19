@@ -27,7 +27,7 @@ test('3.4.2: seven Home sections keep seamless boundaries without chapter captio
     assert.match(css, new RegExp('section#' + id + '(?:\\.section)?'));
   }
   assert.doesNotMatch(html,/01 \/ DESCOBERTA|02 \/ TRANSFORMAÇÃO|03 \/ MATERIALIZAÇÃO|04 \/ AUTORIA|05 \/ CONEXÃO/);
-  assert.deepEqual([...html.matchAll(/section-eyebrow__number">(\\d\\d)</g)].map(m=>m[1]),
+  assert.deepEqual([...html.matchAll(/section-eyebrow__number">(\d\d)</g)].map(m=>m[1]),
     ['01','02','03','04','05','06','07']);
 });
 
