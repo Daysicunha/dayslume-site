@@ -33,14 +33,14 @@ test('3.4 desktop transforms share a baseline with no overlapping horizontal slo
 });
 test('3.4 removes decorative grid backgrounds but retains functional interface layouts',()=>{
  const h=cinematic.slice(cinematic.indexOf('.hero--cinematic::before {'),cinematic.indexOf('.hero--cinematic::after {'));
- assert.doesNotMatch(h,/background-size:\\s*80px|linear-gradient\\(90deg.*1px/);
+ assert.doesNotMatch(h,/background-size:[ ]*80px|linear-gradient[(]90deg.*1px/);
  const beginning=editorial.slice(editorial.indexOf('section#problemas.section::before {'),editorial.indexOf('section#problemas.section::after {'));
- assert.doesNotMatch(beginning,/background-size:\\s*82px|1px, transparent 1px/);
+ assert.doesNotMatch(beginning,/background-size:[ ]*82px|1px, transparent 1px/);
  for(const k of ['manifest','structure','network','editorial']){
   const start=palette.indexOf('.section-atmosphere--'+k+'::before {');
   assert.ok(start>=0,k);
   const rule=palette.slice(start,palette.indexOf('}',start));
-  assert.doesNotMatch(rule,/repeating-linear-gradient|1px, transparent 1px|background-size:\\s*clamp/);
+  assert.doesNotMatch(rule,/repeating-linear-gradient|1px, transparent 1px|background-size:[ ]*clamp/);
  }
  assert.match(hero,/hero-projects__timeline-track/);
  assert.match(hero,/hero-projects__c-list/);
