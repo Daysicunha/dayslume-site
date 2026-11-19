@@ -49,7 +49,8 @@ body.home-page[data-home34-story] .home34-boundary::before {
   box-shadow:0 0 11px rgba(216,182,165,.38),0 0 23px rgba(255,61,154,.12);
 }
 body.home-page[data-home34-story] .home34-boundary::after {
-  content:"";
+  content:none;
+  display:none;
   position:absolute;
   top:-93px;
   left:-8%;
@@ -263,7 +264,7 @@ body.home-page[data-home34-story][data-c33-editorial] main > section#contato for
   body.home-page[data-home34-story][data-c33-editorial] main > section#modelo.section,
   body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section,
   body.home-page[data-home34-story][data-c33-editorial] main > section#contato.section {
-    padding-top:148px;
+    padding-top:132px;
   }
   body.home-page[data-home34-story][data-c33-editorial] main > section#produtos.section {
     padding-top:155px;
@@ -326,41 +327,41 @@ body.home-page[data-home34-story][data-c33-editorial] main > section#problemas.s
 body.home-page[data-home34-story][data-c33-editorial] main > section#modelo.section {
   background:
     radial-gradient(ellipse 44% 34% at 89% 79%,rgba(216,182,165,.16),transparent 78%),
-    linear-gradient(180deg,#514054 0%,#7c6378 30px,#D8B6A5 78px,
-      #EEE3DC 120px,#F3EFE8 160px,#F3EFE8 100%);
-  padding-top:clamp(130px,10vw,168px);
-  padding-bottom:clamp(62px,5.8vw,86px);
+    linear-gradient(180deg,#514054 0%,#7c6378 25px,#D8B6A5 52px,
+      #EEE3DC 78px,#F3EFE8 108px,#F3EFE8 100%);
+  padding-top:clamp(108px,8.4vw,138px);
+  padding-bottom:clamp(58px,5.2vw,76px);
 }
 body.home-page[data-home34-story][data-c33-editorial] main > section#produtos.section {
   background:
     radial-gradient(ellipse 55% 52% at 76% 56%,rgba(107,83,109,.34),transparent 82%),
     radial-gradient(ellipse 28% 35% at 17% 82%,rgba(255,61,154,.055),transparent 78%),
-    linear-gradient(180deg,#F3EFE8 0%,#D8B6A5 42px,#775F75 96px,
-      #322C3F 148px,#202532 210px,#202532 100%);
-  padding-top:clamp(168px,12.6vw,210px);
-  padding-bottom:clamp(78px,7.5vw,112px);
+    linear-gradient(180deg,#F3EFE8 0%,#D8B6A5 32px,#775F75 62px,
+      #322C3F 94px,#202532 128px,#202532 100%);
+  padding-top:clamp(126px,9.6vw,151px);
+  padding-bottom:clamp(69px,6.5vw,92px);
 }
 body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section {
   background:
     radial-gradient(ellipse 39% 40% at 94% 70%,rgba(216,182,165,.16),transparent 80%),
-    linear-gradient(180deg,#202532 0%,#514054 42px,#D8B6A5 94px,
-      #F3EFE8 166px,#F3EFE8 100%);
-  padding-top:clamp(150px,11.2vw,188px);
-  padding-bottom:clamp(64px,5.9vw,86px);
+    linear-gradient(180deg,#202532 0%,#514054 28px,#D8B6A5 60px,
+      #F3EFE8 103px,#F3EFE8 100%);
+  padding-top:clamp(110px,8.5vw,137px);
+  padding-bottom:clamp(54px,5vw,72px);
 }
 body.home-page[data-home34-story][data-c33-editorial] main > section#sobre.section,
 body.home-page[data-home34-story][data-c33-editorial] main > section#conteudos.section {
   min-height:0;
   min-block-size:0;
-  padding-block:clamp(54px,5.6vw,78px);
+  padding-block:clamp(49px,5vw,70px);
 }
 body.home-page[data-home34-story][data-c33-editorial] main > section#contato.section {
   background:
     radial-gradient(ellipse 50% 45% at 87% 69%,rgba(107,83,109,.39),transparent 80%),
-    linear-gradient(180deg,#F3EFE8 0%,#D8B6A5 43px,#715D74 92px,
-      #302A3C 154px,#202532 210px,#202532 100%);
-  padding-top:clamp(169px,12.7vw,210px);
-  padding-bottom:clamp(66px,6.3vw,94px);
+    linear-gradient(180deg,#F3EFE8 0%,#D8B6A5 31px,#715D74 63px,
+      #302A3C 95px,#202532 128px,#202532 100%);
+  padding-top:clamp(128px,9.7vw,154px);
+  padding-bottom:clamp(62px,5.8vw,84px);
 }
 @media (max-width:1180px) {
   body.home-page[data-home34-story][data-c33-editorial] main > section#problemas.section .container.launch-manifest-grid {
@@ -392,13 +393,13 @@ body.home-page[data-home34-story][data-c33-editorial] main > section#contato.sec
   }
   body.home-page[data-home34-story][data-c33-editorial] main > section#modelo.section,
   body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section {
-    padding-top:135px;
+    padding-top:110px;
   }
   body.home-page[data-home34-story][data-c33-editorial] main > section#produtos.section {
-    padding-top:148px;
+    padding-top:132px;
   }
   body.home-page[data-home34-story][data-c33-editorial] main > section#contato.section {
-    padding-top:165px;
+    padding-top:138px;
   }
 }
 @media (max-width:600px) {
