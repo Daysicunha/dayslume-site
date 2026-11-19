@@ -101,6 +101,42 @@ try {
            boxes[key]=r?{left:Math.round(r.left),top:Math.round(r.top),right:Math.round(r.right),bottom:Math.round(r.bottom),width:Math.round(r.width)}:null;
          } return boxes;
        });
+       // Runtime geometry: the original coordinate snapshots were not sufficient.
+       // Validate actual rendered bounds, obscured area, title font and Caderneta's readable header.
+       row.heroVisibility=await page.evaluate(()=>{
+         const hero=document.querySelector('#apresentacao');
+         const selectors={vitrini:'.hero-projects__card--vitrini',agenda:'.hero-projects__card--agenda',caderneta:'.hero-projects__card--caderneta'};
+         const box=e=>e?.getBoundingClientRect()??null;
+         const cards=Object.fromEntries(Object.entries(selectors).map(([k,s])=>[k,box(hero?.querySelector(s))]));
+         const a=cards.agenda;
+         const intersection=(x,y)=>{
+           if(!x||!y)return 0;
+           const w=Math.max(0,Math.min(x.right,y.right)-Math.max(x.left,y.left));
+           const h=Math.max(0,Math.min(x.bottom,y.bottom)-Math.max(x.top,y.top));
+           return w*h;
+         };
+         const ratio=(x)=>x?.width*x?.height?Number((1-intersection(x,a)/(x.width*x.height)).toFixed(3)):0;
+         const title=hero?.querySelector('.hero-content h1');
+         const cBrand=box(hero?.querySelector('.hero-projects__card--caderneta .hero-projects__brand'));
+         return {
+           font:title?getComputedStyle(title).fontFamily:'',
+           titleVisible:Boolean(title&&title.getBoundingClientRect().width>0),
+           vitriniVisibleRatio:ratio(cards.vitrini),
+           cadernetaVisibleRatio:ratio(cards.caderneta),
+           cadernetaBrandCovered:intersection(cBrand,a)>1,
+           cardsInsideViewport:Object.values(cards).every(x=>x&&x.left>=-3&&x.right<=innerWidth+3),
+           cardsPresent:Object.values(cards).every(x=>x&&x.width>0&&x.height>0),
+           horizontalOverflow:document.documentElement.scrollWidth>innerWidth+2
+         };
+       });
+       if(v.name==='after-framing-v6'){
+         const h=row.heroVisibility;
+         if(!h.font.includes('Manrope'))row.issues.push('hero title not using official Manrope display token: '+h.font);
+         if(!h.titleVisible||!h.cardsPresent||!h.cardsInsideViewport||h.horizontalOverflow)
+           row.issues.push('hero clipping or missing screen: '+JSON.stringify(h));
+         if(width>600&&(h.vitriniVisibleRatio<.62||h.cadernetaVisibleRatio<.74||h.cadernetaBrandCovered))
+           row.issues.push('hero simulator occlusion/brand unreadable: '+JSON.stringify(h));
+       }
        if(v.name==='after-framing-v6' && width>=1440) {
          const {vitrini,engreni,service,title}=row.heroComposition;
          if(!vitrini||!engreni||!service||!title)row.issues.push('hero cards missing');
