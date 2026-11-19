@@ -88,3 +88,9 @@ test('3.4 final: WCAG AA solid color pairs for critical components',()=>{
     ['#574158','#F3EFE8'],['#F0C9B5','#202532']
   ]) assert.ok(ratio(fg,bg)>=4.5,fg+' on '+bg+' contrast '+ratio(fg,bg).toFixed(2));
 });
+
+test('3.4 final: orbit hide rules outrank the older hero-master attribute selectors',()=>{
+  const hero=read('assets/css/hero-project-simulators-20261118.css');
+  assert.match(hero,/body\.home-page #apresentacao\[data-hero-master\]\.hero--project-simulators \.hero-master-orbit/);
+  assert.match(hero,/body\.home-page #apresentacao\[data-hero-master\]\.hero--project-simulators \.cinema-stage::after/);
+});

@@ -77,8 +77,8 @@ body.home-page #apresentacao[data-hero-master].hero--project-simulators .hero-co
   inset:8% -5% 0;background:radial-gradient(ellipse 40% 50% at 65% 45%,rgba(var(--ds-neon-pink-rgb),.20),transparent 73%),radial-gradient(ellipse at 55% 54%,rgba(107,83,109,.44),transparent 70%);
   filter:blur(34px);
 }
-.home-page #apresentacao.hero--project-simulators .cinema-stage::after {content:none;display:none;}
-.home-page #apresentacao.hero--project-simulators .hero-master-orbit {display:none;pointer-events:none;}
+body.home-page #apresentacao[data-hero-master].hero--project-simulators .cinema-stage::after {content:none;display:none;}
+body.home-page #apresentacao[data-hero-master].hero--project-simulators .hero-master-orbit {display:none;pointer-events:none;}
 .home-page #apresentacao.hero--project-simulators .hero-master-lightfloor {z-index:0;opacity:.45;}
 .home-page #apresentacao .hero-projects {
   position:relative;width:100%;height:clamp(480px,41vw,576px);
