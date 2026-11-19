@@ -1,0 +1,286 @@
+/*
+ * DAYSLUME 3.4 — Home cinematográfica contínua
+ * Storyboard aprovado 19/11/2026.
+ * Escopo: apenas body.home-page[data-home34-story]. Nunca afeta o filme,
+ * a geometria dos simuladores, páginas internas ou comportamento dos formulários.
+ * Esta camada deve ser carregada APÓS brand-palette.css.
+ */
+body.home-page[data-home34-story] {
+  --home34-ink:#202532;
+  --home34-plum:#6B536D;
+  --home34-ivory:#F3EFE8;
+  --home34-peach:#D8B6A5;
+  --home34-rose:#FF3D9A;
+  --home34-card-radius:clamp(17px,1.8vw,25px);
+  --home34-ambient-shadow:0 22px 55px -25px rgba(32,37,50,.29);
+}
+body.home-page[data-home34-story] main {isolation:isolate;}
+/* Não desenhar nem colocar uma flor atrás dos simuladores da Hero.
+ * O filme original é preservado; esta regra é exclusiva da Hero. */
+body.home-page[data-home34-story] #apresentacao
+ :is(.hero-flower,.hero-floral,.hero-bloom,.hero-petals,.hero-flower-decoration) {display:none!important;}
+
+/* A linha autoral atravessa todos os atos, sem criar blocos opacos. */
+body.home-page[data-home34-story] main > section.section {
+  border-top:0;
+  scroll-margin-top:clamp(72px,7vw,98px);
+}
+body.home-page[data-home34-story] main > section.section > .home34-boundary {
+  position:absolute;
+  z-index:3;
+  display:block;
+  top:0;
+  left:0;
+  width:100%;
+  height:clamp(90px,12vw,155px);
+  pointer-events:none;
+  overflow:hidden;
+}
+body.home-page[data-home34-story] .home34-boundary::before {
+  content:"";
+  position:absolute;
+  top:0;
+  left:8%;
+  right:8%;
+  height:1px;
+  background:linear-gradient(90deg,transparent 0%,rgba(216,182,165,.12) 12%,
+    rgba(216,182,165,.82) 36%,rgba(255,61,154,.35) 53%,rgba(243,239,232,.67) 68%,transparent 100%);
+  box-shadow:0 0 11px rgba(216,182,165,.38),0 0 23px rgba(255,61,154,.12);
+}
+body.home-page[data-home34-story] .home34-boundary::after {
+  content:"";
+  position:absolute;
+  top:-93px;
+  left:-8%;
+  width:56%;
+  height:clamp(130px,15vw,230px);
+  border:1px solid rgba(216,182,165,.29);
+  border-bottom:0;
+  border-right:0;
+  border-radius:52% 48% 0 0;
+  transform:rotate(-8deg);
+  filter:drop-shadow(0 0 12px rgba(216,182,165,.16));
+  opacity:.72;
+}
+body.home-page[data-home34-story] main > section:is(#modelo,#projetos,#conteudos) > .home34-boundary::after {
+  left:auto;right:-9%;transform:rotate(8deg) scaleX(-1);
+  border-color:rgba(107,83,109,.26);
+}
+body.home-page[data-home34-story] main > section:is(#sobre,#conteudos) > .home34-boundary::before {
+  background:linear-gradient(90deg,transparent,rgba(107,83,109,.10) 18%,
+    rgba(107,83,109,.34) 49%,rgba(216,182,165,.45) 74%,transparent);
+  box-shadow:0 0 12px rgba(107,83,109,.09);
+}
+
+/* Ritmo unificado: transições longas de cena, não cortes de cor. */
+body.home-page[data-home34-story][data-c33-editorial] main > section#problemas.section {
+  background:
+    radial-gradient(ellipse 63% 58% at 88% 51%,rgba(107,83,109,.43),transparent 78%),
+    linear-gradient(180deg,#202532 0%,#292636 29%,#403447 74%,#514054 100%);
+  color:var(--home34-ivory);
+  padding-block:clamp(80px,7vw,114px) clamp(98px,9vw,140px);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#modelo.section {
+  background:
+    radial-gradient(ellipse 44% 34% at 89% 79%,rgba(216,182,165,.16),transparent 78%),
+    linear-gradient(180deg,#514054 0%,#7c6378 38px,#D8B6A5 100px,
+      #EEE3DC 155px,#F3EFE8 215px,#F3EFE8 100%);
+  color:var(--home34-ink);
+  padding-top:clamp(156px,13vw,210px);
+  padding-bottom:clamp(76px,7vw,110px);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#produtos.section {
+  background:
+    radial-gradient(ellipse 55% 52% at 76% 56%,rgba(107,83,109,.34),transparent 82%),
+    radial-gradient(ellipse 28% 35% at 17% 82%,rgba(255,61,154,.055),transparent 78%),
+    linear-gradient(180deg,#F3EFE8 0%,#D8B6A5 54px,#775F75 126px,
+      #322C3F 194px,#202532 290px,#202532 100%);
+  padding-top:clamp(197px,16vw,260px);
+  padding-bottom:clamp(105px,10vw,154px);
+  color:var(--home34-ivory);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section {
+  background:
+    radial-gradient(ellipse 39% 40% at 94% 70%,rgba(216,182,165,.16),transparent 80%),
+    linear-gradient(180deg,#202532 0%,#514054 55px,#D8B6A5 123px,
+      #F3EFE8 208px,#F3EFE8 100%);
+  padding-top:clamp(196px,15vw,255px);
+  padding-bottom:clamp(78px,7vw,111px);
+  color:var(--home34-ink);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre.section {
+  background:
+    radial-gradient(ellipse 33% 55% at 8% 43%,rgba(216,182,165,.14),transparent 84%),
+    radial-gradient(ellipse 43% 62% at 100% 88%,rgba(107,83,109,.07),transparent 85%),
+    linear-gradient(180deg,#F3EFE8 0%,#F2EBE5 62%,#F3EFE8 100%);
+  padding-block:clamp(72px,7vw,109px);
+  color:var(--home34-ink);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#conteudos.section {
+  background:
+    radial-gradient(ellipse 54% 35% at 81% 7%,rgba(216,182,165,.13),transparent 78%),
+    linear-gradient(180deg,#F3EFE8 0%,#F1EAE6 53%,#F3EFE8 100%);
+  padding-block:clamp(75px,7vw,108px);
+  color:var(--home34-ink);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#contato.section {
+  background:
+    radial-gradient(ellipse 50% 45% at 87% 69%,rgba(107,83,109,.39),transparent 80%),
+    linear-gradient(180deg,#F3EFE8 0%,#D8B6A5 51px,#715D74 124px,
+      #302A3C 200px,#202532 292px,#202532 100%);
+  padding-top:clamp(200px,16vw,270px);
+  padding-bottom:clamp(83px,8vw,120px);
+  color:var(--home34-ivory);
+}
+
+/* Sem cortes internos ou faixas decorativas de diferentes escolas. */
+body.home-page[data-home34-story] main > section.section:is(#modelo,#produtos,#projetos,#sobre,#conteudos,#contato) {
+  border-block:0;
+}
+body.home-page[data-home34-story] main > section.section
+ :is(.cases-neon-waves,.founder-neon-waves,.contents-neon-waves,
+     .contents-editorial-ribbon,.contact-neon-waves) {
+  opacity:.36;
+  pointer-events:none;
+}
+/* O conteúdo sempre fica acima das costuras, inclusive em telas estreitas. */
+body.home-page[data-home34-story] main > section.section > .container {
+  position:relative;
+  z-index:4;
+}
+
+/* Uma mesma hierarquia tipográfica, com Manrope nos títulos e DM Sans no texto. */
+body.home-page[data-home34-story][data-c33-editorial] main > section.section
+ :is(h2.section-title,h2#about-title,h2#contact-title,h2#conteudos-title,.manifest-title) {
+  font-family:var(--ds-font-display,"Manrope",sans-serif);
+  font-weight:580;
+  letter-spacing:-.052em;
+  line-height:1.095;
+  font-size:clamp(36px,3.65vw,56px);
+}
+body.home-page[data-home34-story] main > section.section
+ :is(.manifest-intro,.modelo-heading-aside p,.products-editorial-side p,
+  .projects-heading-side p,.about-intro p,.content-deck,.contact-editorial-copy > p:not(.eyebrow)) {
+  font-family:var(--ds-font-body,"DM Sans",sans-serif);
+  line-height:1.58;
+}
+body.home-page[data-home34-story] main > section.section .section-eyebrow {
+  font-family:var(--ds-font-display,"Manrope",sans-serif);
+  letter-spacing:.125em;
+  font-weight:690;
+}
+body.home-page[data-home34-story] main > section:is(#modelo,#produtos,#projetos) .section-heading {
+  margin-bottom:clamp(32px,3.7vw,55px);
+}
+
+/* Um único vocabulário de vidro: borda delicada, elevação suave e radius comum. */
+body.home-page[data-home34-story][data-c33-editorial] main > section#problemas .manifest-item,
+body.home-page[data-home34-story][data-c33-editorial] main > section#modelo .modelo-path-card,
+body.home-page[data-home34-story][data-c33-editorial] main > section#produtos .solutions-grid > .solution-card,
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos .projects-grid--launch > .flagship-case,
+body.home-page[data-home34-story][data-c33-editorial] main > section#conteudos :is(.content-featured,.content-secondary) {
+  border-radius:var(--home34-card-radius);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#modelo .modelo-path-card,
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos .projects-grid--launch > .flagship-case,
+body.home-page[data-home34-story][data-c33-editorial] main > section#conteudos :is(.content-featured,.content-secondary) {
+  box-shadow:var(--home34-ambient-shadow),inset 0 1px 0 rgba(255,255,255,.22);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#produtos .solutions-grid > .solution-card,
+body.home-page[data-home34-story][data-c33-editorial] main > section#problemas .manifest-item {
+  box-shadow:0 20px 46px -24px rgba(0,0,0,.46),inset 0 1px 0 rgba(243,239,232,.12);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#modelo .modelo-path-card,
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos .projects-grid--launch > .flagship-case {
+  transition:transform .38s cubic-bezier(.22,1,.36,1),
+    box-shadow .38s ease,border-color .38s ease;
+}
+
+/* Fundadora e conteúdo pertencem à mesma cena editorial clara. */
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre .about-copy > .eyebrow,
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre .about-copy
+ :is(.section-eyebrow__label,.section-eyebrow__number),
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre .about-process-label {
+  color:var(--home34-plum);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre
+ :is(h2#about-title,h2#about-title > span) {
+  color:var(--home34-ink);
+  -webkit-text-fill-color:var(--home34-ink);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre h2#about-title > span.founder-title-accent {
+  color:var(--home34-plum);
+  -webkit-text-fill-color:var(--home34-plum);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre .about-intro :is(p,strong) {
+  color:var(--home34-ink);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre .about-process-compact li {
+  color:var(--home34-ink);
+  border-color:rgba(107,83,109,.22);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre .about-process-compact li :is(strong,b) {
+  color:var(--home34-ink);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre .about-process-compact li > span:last-child {
+  color:#536076;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre .about-process-compact .about-cta {
+  color:var(--home34-ivory);
+  background:var(--home34-plum);
+  border-color:rgba(107,83,109,.62);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#sobre .about-process-compact .about-cta :is(span,svg) {
+  color:var(--home34-ivory);
+}
+
+/* O encerramento recupera a profundidade da abertura; formulário preservado. */
+body.home-page[data-home34-story][data-c33-editorial] main > section#contato
+ .contact-editorial-copy :is(h2#contact-title,h2#contact-title > span) {
+  color:var(--home34-ivory);
+  -webkit-text-fill-color:var(--home34-ivory);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#contato .contact-editorial-copy > p:not(.eyebrow) {
+  color:rgba(243,239,232,.87);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#contato .contact-editorial-copy .section-eyebrow,
+body.home-page[data-home34-story][data-c33-editorial] main > section#contato .contact-editorial-copy .section-eyebrow span {
+  color:var(--home34-peach);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#contato form.contact-form {
+  box-shadow:0 25px 56px -17px rgba(0,0,0,.38),0 0 26px rgba(216,182,165,.09);
+}
+
+/* Continuidade no celular: a transição cabe na tela sem roubar legibilidade. */
+@media (max-width:760px) {
+  body.home-page[data-home34-story] .home34-boundary::after {
+    width:68%;height:112px;top:-56px;opacity:.4;
+  }
+  body.home-page[data-home34-story][data-c33-editorial] main > section#problemas.section {
+    padding-block:70px 88px;
+  }
+  body.home-page[data-home34-story][data-c33-editorial] main > section#modelo.section,
+  body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section,
+  body.home-page[data-home34-story][data-c33-editorial] main > section#contato.section {
+    padding-top:148px;
+  }
+  body.home-page[data-home34-story][data-c33-editorial] main > section#produtos.section {
+    padding-top:155px;
+  }
+  body.home-page[data-home34-story][data-c33-editorial] main > section#sobre.section,
+  body.home-page[data-home34-story][data-c33-editorial] main > section#conteudos.section {
+    padding-block:65px;
+  }
+  body.home-page[data-home34-story][data-c33-editorial] main > section.section
+   :is(h2.section-title,h2#about-title,h2#contact-title,h2#conteudos-title,.manifest-title) {
+    font-size:clamp(32px,8.4vw,43px);
+    letter-spacing:-.045em;
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  body.home-page[data-home34-story] .home34-boundary::before,
+  body.home-page[data-home34-story] .home34-boundary::after {
+    animation:none!important;
+    transition:none!important;
+  }
+}
