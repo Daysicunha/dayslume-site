@@ -77,6 +77,31 @@ try {
        if(v.name==='after-framing-v6'&&key==='problemas'&&(!detail.card.blur||detail.card.blur==='none'))
          row.issues.push('glass card backdrop-filter not active');
      }
+     if(key==='problemas') {
+       row.sections[key].compactRhythm=await page.evaluate(()=>{
+         const section=document.querySelector('#problemas');
+         const content=section?.querySelector('.launch-manifest-grid');
+         const concept=section?.querySelector('.manifest-concept');
+         const wave=section?.querySelector('.manifest-waves');
+         if(!section||!content||!concept||!wave)return {missing:true};
+         const s=section.getBoundingClientRect(),c=content.getBoundingClientRect();
+         return {
+           topGap:Math.round(c.top-s.top),
+           bottomGap:Math.round(s.bottom-c.bottom),
+           minConceptHeight:getComputedStyle(concept).minHeight,
+           chapterCount:document.querySelectorAll('.home34-chapter').length,
+           waveBottomGap:Math.round(s.bottom-wave.getBoundingClientRect().bottom),
+           waveMask:getComputedStyle(wave).maskImage
+         };
+       });
+       if(v.name==='after-framing-v6'){
+         const x=row.sections[key].compactRhythm;
+         if(x.missing||x.chapterCount!==0||x.topGap>80||x.bottomGap>86||
+            x.waveBottomGap>3||x.waveBottomGap< -3||
+            !x.waveMask.includes('linear-gradient'))
+           row.issues.push('problem section rhythm/wave/labels: '+JSON.stringify(x));
+       }
+     }
      if(key==='modelo') {
        const framing=await page.evaluate(()=>{
          const card=document.querySelector('#modelo .modelo-path-card--products');
