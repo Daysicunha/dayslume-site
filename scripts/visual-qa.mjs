@@ -159,6 +159,11 @@ try {
      }
      if(captureWidths.has(width)) {
        await page.screenshot({path:join(out,v.name+'-'+width+'-'+key+'.png')});
+       // Export the full actual Hero element too: a phone viewport captures only its first card.
+       if(key==='hero' && v.name==='after-framing-v6') {
+         const fullHero=await page.$('#apresentacao');
+         if(fullHero)await fullHero.screenshot({path:join(out,'hero-complete-'+width+'.png'),captureBeyondViewport:true});
+       }
        // Screenshots de viewport no centro do card, sem artefatos da captura de elemento.
        const details={
          problemas:[['primeiro','#problemas .manifest-item:first-child'],['segundo','#problemas .manifest-item:nth-child(2)'],['terceiro','#problemas .manifest-item:nth-child(3)']],
