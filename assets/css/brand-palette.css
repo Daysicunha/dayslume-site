@@ -3544,3 +3544,249 @@ body.home-page[data-c33-editorial] main > section#contato.section form.contact-f
     top:43%;
   }
 }
+
+
+/* ========================================================================== 
+   DAYSLUME 3.4 / NEON GLASS LANGUAGE · 23/11/2026
+   Aprovado: neon #FF3D9A somente em bordas, reflexos, órbitas e microdetalhes.
+   Padrão da Home aplicado às demais 20 páginas. Não recriar a abertura,
+   não alterar transformações 3D, simulações internas, identidade dos produtos,
+   grids, padding, imagens, font-size ou fundos principais.
+   Esta é a camada cromática canônica, carregada por último em todas as páginas.
+   ========================================================================== */
+:root {
+  --ds-neon-line:linear-gradient(90deg,transparent 0%,rgba(var(--ds-neon-pink-rgb),.59) 38%,rgba(var(--peach-rgb),.59) 75%,transparent 100%);
+  --ds-glass-light-edge:rgba(var(--plum-mineral-rgb),.25);
+  --ds-glass-neon-hover:rgba(var(--ds-neon-pink-rgb),.43);
+  --ds-glass-pink-halo:0 0 23px rgba(var(--ds-neon-pink-rgb),.10);
+}
+/* A assinatura do menu deve ser a mesma, inclusive nas páginas sem data-c33. */
+body:not(.home-page) .header #menu-principal > a:not(.days-mobile-contact)[aria-current="page"]::after,
+body.home-page .header #menu-principal > a[aria-current="page"]::after {
+  background:var(--ds-neon-line);
+  box-shadow:0 0 12px rgba(var(--ds-neon-pink-rgb),.17);
+}
+body:not(.home-page) .header #menu-principal > a:not(.days-mobile-contact):is(:hover,:focus-visible)::after {
+  background:var(--ds-neon-line);
+  box-shadow:0 0 10px rgba(var(--ds-neon-pink-rgb),.18);
+}
+body :is(a,button,input,textarea,select,summary):focus-visible {
+  outline-color:var(--ds-neon-pink);
+  outline-offset:3px;
+}
+/* Card editorial: vidro, borda física e luz contida. Nada de fundos neon. */
+body:not(.home-page) :is(
+ .studio-service-card,
+ .projects-case-card,
+ .products-choice,
+ .lp-anatomy-card,
+ .contact-process-card,
+ .about-model,
+ .sites-real-case,
+ .days-card
+) {
+  border-color:var(--ds-glass-light-edge);
+  box-shadow:0 22px 48px -31px rgba(var(--ink-deep-rgb),.28),
+             inset 0 1px 0 rgba(255,255,255,.62),
+             0 0 20px rgba(var(--ds-neon-pink-rgb),.035);
+}
+body:not(.home-page) :is(
+ .studio-service-card,
+ .projects-case-card,
+ .products-choice,
+ .lp-anatomy-card,
+ .contact-process-card,
+ .about-model,
+ .sites-real-case,
+ .days-card
+):is(:hover,:focus-within) {
+  border-color:var(--ds-glass-neon-hover);
+  box-shadow:0 25px 52px -27px rgba(var(--ink-deep-rgb),.29),
+             inset 0 1px 0 rgba(255,255,255,.66),
+             var(--ds-glass-pink-halo);
+}
+/* O terceiro card do Studio é ameixa escuro: acabamento de vidro específico. */
+body.studio-page .studio-service-card:nth-child(3) {
+  border-color:rgba(var(--warm-ivory-rgb),.23);
+  box-shadow:0 25px 55px -29px rgba(19,13,29,.53),
+             inset 0 1px 0 rgba(255,255,255,.16),
+             0 0 22px rgba(var(--ds-neon-pink-rgb),.075);
+}
+body.studio-page .studio-service-card:nth-child(3):is(:hover,:focus-within) {
+  border-color:rgba(var(--ds-neon-pink-rgb),.51);
+  box-shadow:0 27px 58px -25px rgba(19,13,29,.58),
+             inset 0 1px 0 rgba(255,255,255,.19),
+             0 0 27px rgba(var(--ds-neon-pink-rgb),.14);
+}
+body.studio-page .studio-service-card .studio-card-icon {
+  border-color:rgba(var(--plum-mineral-rgb),.34);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),
+             0 0 15px rgba(var(--ds-neon-pink-rgb),.065);
+}
+body.studio-page .studio-service-card:nth-child(3) .studio-card-icon {
+  border-color:rgba(var(--ds-neon-pink-rgb),.31);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),
+             0 0 15px rgba(var(--ds-neon-pink-rgb),.12);
+}
+/* Studio: o mesmo palco 3D em vidro espesso da Hero, sem mexer em posições. */
+body.studio-page .studio-scene-orbit {
+  border-color:rgba(var(--peach-rgb),.43);
+  box-shadow:0 0 15px rgba(var(--ds-neon-pink-rgb),.15);
+}
+body.studio-page .studio-scene-card {
+  border-color:rgba(var(--warm-ivory-rgb),.44);
+  box-shadow:0 36px 65px -31px rgba(8,11,18,.54),
+             inset 1px 1px 0 rgba(255,255,255,.23),
+             inset -2px -3px 0 rgba(14,11,23,.16),
+             0 0 25px rgba(var(--ds-neon-pink-rgb),.085);
+}
+body.studio-page .studio-scene-card--front {
+  border-color:rgba(var(--plum-mineral-rgb),.35);
+  box-shadow:0 40px 67px -30px rgba(8,11,18,.56),
+             inset 1px 1px 0 rgba(255,255,255,.54),
+             inset -2px -3px 0 rgba(30,24,44,.16),
+             0 0 26px rgba(var(--ds-neon-pink-rgb),.105);
+}
+body.studio-page .studio-scene-card--side {
+  border-color:rgba(var(--ds-neon-pink-rgb),.33);
+}
+body.studio-page .studio-scene-emblem span {
+  color:#B23D78;
+  text-shadow:0 0 15px rgba(var(--ds-neon-pink-rgb),.20);
+}
+body.studio-page .studio-scene-rule {
+  background:var(--ds-neon-line);
+  box-shadow:0 0 10px rgba(var(--ds-neon-pink-rgb),.13);
+}
+body.studio-page .studio-hero::before {
+  background:var(--ds-neon-line);
+  box-shadow:0 0 17px rgba(var(--ds-neon-pink-rgb),.10);
+}
+body.studio-page .studio-hero__halo {
+  background:radial-gradient(ellipse at 51% 44%,rgba(var(--ds-neon-pink-rgb),.09),rgba(var(--peach-rgb),.08) 39%,transparent 70%);
+}
+body.studio-page .studio-kicker > span {
+  background:linear-gradient(90deg,var(--plum-mineral),rgba(var(--ds-neon-pink-rgb),.55));
+  box-shadow:0 0 9px rgba(var(--ds-neon-pink-rgb),.10);
+}
+body.studio-page .studio-kicker--light > span {
+  background:linear-gradient(90deg,var(--peach),rgba(var(--ds-neon-pink-rgb),.75));
+}
+body.studio-page .studio-bridge__pane {
+  border-color:rgba(var(--ds-neon-pink-rgb),.24);
+  box-shadow:0 18px 36px rgba(10,12,21,.24),
+             inset 1px 1px 0 rgba(255,255,255,.18),
+             0 0 18px rgba(var(--ds-neon-pink-rgb),.085);
+}
+body.studio-page .studio-bridge__visual {
+  border-color:rgba(var(--warm-ivory-rgb),.24);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.10),
+             0 0 24px rgba(var(--ds-neon-pink-rgb),.055);
+}
+body.studio-page .studio-service-tags,
+body.studio-page .studio-services__cta a {
+  text-decoration-color:rgba(var(--ds-neon-pink-rgb),.28);
+}
+body.studio-page .studio-services__cta a:is(:hover,:focus-visible) {
+  border-bottom-color:rgba(var(--ds-neon-pink-rgb),.50);
+}
+body.studio-page .studio-faq__items details[open] {
+  border-bottom-color:rgba(var(--ds-neon-pink-rgb),.37);
+}
+/* Molduras ilustrativas e simulações — herdam a espessura física da Hero. */
+body:not(.home-page) :is(
+ .products-browser,
+ .products-showroom,
+ .products-engreni-showroom,
+ .projects-hero-figure,
+ .sites-hero-preview,
+ .sites-browser,
+ .lp-hero-browser,
+ .lp-lab-browser,
+ .vl-demo-device,
+ .days-product-preview
+) {
+  border-color:rgba(var(--warm-ivory-rgb),.30);
+  box-shadow:0 26px 50px -28px rgba(11,11,25,.45),
+             inset 1px 1px 0 rgba(255,255,255,.22),
+             inset -2px -3px 0 rgba(11,11,25,.14),
+             0 0 24px rgba(var(--ds-neon-pink-rgb),.085);
+}
+body:not(.home-page) :is(
+ .products-browser,
+ .products-showroom,
+ .products-engreni-showroom,
+ .projects-hero-figure,
+ .sites-hero-preview,
+ .sites-browser,
+ .lp-hero-browser,
+ .lp-lab-browser,
+ .vl-demo-device,
+ .days-product-preview
+):is(:hover,:focus-within) {
+  border-color:rgba(var(--ds-neon-pink-rgb),.37);
+  box-shadow:0 29px 55px -26px rgba(11,11,25,.48),
+             inset 1px 1px 0 rgba(255,255,255,.27),
+             inset -2px -3px 0 rgba(11,11,25,.16),
+             0 0 29px rgba(var(--ds-neon-pink-rgb),.13);
+}
+/* O acento nos pontos de browser é só uma marca de luz, não altera a UI demo. */
+body:not(.home-page) :is(
+ .products-browser-dots,
+ .projects-hero-dots,
+ .sites-hero-preview-dots,
+ .sites-browser-dots,
+ .lp-browser-dots
+) > i:first-child {
+  background:var(--ds-neon-pink);
+  box-shadow:0 0 10px rgba(var(--ds-neon-pink-rgb),.28);
+}
+/* Detalhe de seção, nunca faixa clara de transição. */
+body.home-page #studio-criativo::before {
+  background:var(--ds-neon-line);
+  box-shadow:0 0 13px rgba(var(--ds-neon-pink-rgb),.10);
+}
+body.home-page #studio-criativo .positioning-path {
+  box-shadow:0 25px 58px -32px rgba(32,37,50,.24),
+             inset 0 1px 0 rgba(255,255,255,.60),
+             0 0 16px rgba(var(--ds-neon-pink-rgb),.04);
+}
+body.home-page #studio-criativo .positioning-path:is(:hover,:focus-within) {
+  border-color:rgba(var(--ds-neon-pink-rgb),.45);
+  box-shadow:0 28px 61px -30px rgba(32,37,50,.34),
+             inset 0 1px 0 rgba(255,255,255,.32),
+             0 0 20px rgba(var(--ds-neon-pink-rgb),.12);
+}
+body.home-page #modelo .modelo-studio-eyebrow {
+  border-color:rgba(var(--ds-neon-pink-rgb),.24);
+  box-shadow:0 0 13px rgba(var(--ds-neon-pink-rgb),.055);
+}
+body.home-page #modelo .modelo-studio-direct:is(:hover,:focus-visible) {
+  border-bottom-color:rgba(var(--ds-neon-pink-rgb),.60);
+}
+/* Botões: acento no reflexo/borda, não em fundo rosa ou texto corrido. */
+body:not(.home-page) :is(.btn,.studio-button,.nav-cta,.products-choice .btn):is(:hover,:focus-visible) {
+  box-shadow:0 11px 28px rgba(21,18,34,.22),
+             0 0 16px rgba(var(--ds-neon-pink-rgb),.15);
+}
+body.studio-page .studio-button--outline:is(:hover,:focus-visible) {
+  border-color:rgba(var(--ds-neon-pink-rgb),.48);
+}
+/* Movimento restrito a interações; nenhum shimmer/autoplay nos cartões. */
+@media (hover:none) {
+  body:not(.home-page) :is(
+   .studio-service-card,.projects-case-card,.products-choice,.lp-anatomy-card,
+   .contact-process-card,.about-model,.sites-real-case,.days-card
+  ):hover {
+    border-color:var(--ds-glass-light-edge);
+    box-shadow:0 22px 48px -31px rgba(var(--ink-deep-rgb),.28),
+               inset 0 1px 0 rgba(255,255,255,.62),
+               0 0 20px rgba(var(--ds-neon-pink-rgb),.035);
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  body.studio-page .studio-scene-card,
+  body:not(.home-page) :is(.products-browser,.sites-browser,.lp-lab-browser,.vl-demo-device) {
+    animation:none!important;
+  }
+}
