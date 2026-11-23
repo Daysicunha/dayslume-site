@@ -547,3 +547,89 @@ body.home-page[data-home34-story][data-c33-editorial] main > section#contato.sec
     opacity:.08;
   }
 }
+
+
+/*
+ * 23/11 — transições de seção: remover o efeito de névoa clara/pêssego.
+ * Microtransições minerais de no máximo 34px; sem flare, glow ou barramento.
+ * Escopo exclusivo da home 3.4, preservando a abertura e a Hero original.
+ */
+body.home-page[data-home34-story][data-c33-editorial] main > section#modelo.section {
+  background:linear-gradient(180deg,#514054 0px,#9C8D9E 12px,#F3EFE8 32px,#F3EFE8 100%);
+  padding-top:clamp(76px,6.3vw,94px);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#produtos.section {
+  background:radial-gradient(ellipse 55% 49% at 76% 64%,rgba(107,83,109,.24),transparent 80%),
+    linear-gradient(180deg,#554259 0px,#202532 30px,#202532 100%);
+  padding-top:clamp(78px,6.4vw,99px);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section {
+  background:linear-gradient(180deg,#202532 0px,#98899A 13px,#F3EFE8 34px,#F3EFE8 100%);
+  padding-top:clamp(78px,6.4vw,98px);
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#contato.section {
+  background:radial-gradient(ellipse 44% 52% at 80% 78%,rgba(107,83,109,.26),transparent 80%),
+    linear-gradient(180deg,#56435B 0px,#202532 29px,#202532 100%);
+  padding-top:clamp(82px,6.8vw,102px);
+}
+/* O arco original permanece no encerramento do manifesto, sem clarear o fundo. */
+body.home-page[data-home34-story][data-c33-editorial] main > section#problemas.section > .manifest-waves {
+  opacity:.28;
+}
+/* O conteúdo de marca e marketing precisa ser legível ainda no primeiro enquadramento de serviços. */
+body.home-page[data-home34-story][data-c33-editorial] main > section#modelo.section .modelo-studio-eyebrow {
+  display:inline-flex;
+  flex-wrap:wrap;
+  align-items:center;
+  max-width:100%;
+  gap:9px;
+  margin:clamp(15px,1.7vw,24px) 0 0;
+  padding:9px 13px;
+  border:1px solid rgba(107,83,109,.27);
+  border-radius:999px;
+  background:rgba(107,83,109,.065);
+  color:#574158;
+  font:700 clamp(10px,.73vw,11px)/1.55 var(--ds-font-display,"Manrope",sans-serif);
+  letter-spacing:.075em;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#modelo.section .modelo-studio-eyebrow span {
+  color:#6B536D;
+  font-size:14px;
+  line-height:1;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#modelo.section .modelo-studio-direct {
+  display:inline-flex;
+  align-items:center;
+  gap:11px;
+  min-height:44px;
+  margin-top:8px;
+  border-bottom:1px solid rgba(107,83,109,.39);
+  font:700 12px/1.4 var(--ds-font-display,"Manrope",sans-serif);
+  text-decoration:none;
+  color:#574158;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#modelo.section .modelo-studio-direct:hover {
+  color:#202532;
+}
+body.home-page[data-home34-story][data-c33-editorial] main > section#modelo.section .modelo-studio-direct:focus-visible {
+  outline:3px solid #6B536D;
+  outline-offset:4px;
+}
+@media (max-width:760px) {
+  body.home-page[data-home34-story][data-c33-editorial] main > section#modelo.section,
+  body.home-page[data-home34-story][data-c33-editorial] main > section#projetos.section,
+  body.home-page[data-home34-story][data-c33-editorial] main > section#contato.section {
+    padding-top:clamp(68px,13vw,84px);
+  }
+  body.home-page[data-home34-story][data-c33-editorial] main > section#produtos.section {
+    padding-top:clamp(76px,14vw,91px);
+  }
+  body.home-page[data-home34-story][data-c33-editorial] main > section#problemas.section > .manifest-waves {
+    opacity:.16;
+  }
+  body.home-page[data-home34-story][data-c33-editorial] main > section#modelo.section .modelo-studio-eyebrow {
+    border-radius:16px;
+    font-size:10px;
+    letter-spacing:.035em;
+  }
+}
