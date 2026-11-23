@@ -59,7 +59,7 @@ test('studio 2026: URL relativa funciona em artigos e projeto detalhado',()=>{
 });
 test('studio 2026: página possui conteúdo original, SEO, serviços e ações acessíveis',()=>{
   const html=read('studio-criativo.html');
-  const expected=['id="studio-title"','id="servicos-criativos"','id="studio-services-title"','id="como-trabalhamos"','id="studio-faq-title"','Identidade Visual','Branding','Direção de Arte','Marketing de Conteúdo','Social Media','contato.html','https://wa.me/','aria-current="page"'];
+  const expected=['id="studio-title"','id="servicos-criativos"','id="studio-services-title"','id="como-trabalhamos"','id="studio-faq-title"','Identidade Visual','Branding','Artes Digitais','Pacotes de Imagens','Design de Painéis','Assessoria Criativa','contato.html','https://wa.me/','aria-current="page"'];
   for(const name of expected)assert.ok(html.includes(name),'Missing '+name);
   assert.equal((html.match(/class="studio-service-card"/g)||[]).length,4);
   assert.equal((html.match(/<details>/g)||[]).length,4);
@@ -75,7 +75,7 @@ test('studio 2026: home e serviços direcionam para a página completa',()=>{
   const home=read('index.html'),services=read('servicos.html'),about=read('sobre.html');
   assert.ok(home.includes('href="studio-criativo.html"'));
   assert.ok(services.includes('Conhecer o Studio Criativo por completo'));
-  assert.ok(about.includes('Conhecer nossa frente de identidade visual e marketing'));
+  assert.ok(about.includes('Conhecer identidade visual, artes e interfaces'));
   const map=read('sitemap.xml');
   assert.ok(map.includes('https://dayslume.daysicunha.com.br/studio-criativo.html'));
   assert.equal((map.match(/<url>/g)||[]).length,21);
@@ -89,4 +89,16 @@ test('studio 2026: folhas de estilo isoladas e balanceadas',()=>{
   const studio=read('assets/css/studio-page-20261123.css');
   assert.ok(studio.includes('body.studio-page'));
   assert.ok(studio.includes('@media(max-width:760px)'));
+});
+
+test('Studio Criativo publica escopos finitos e não promete gestão de campanhas',()=>{
+  const studio=read('studio-criativo.html');
+  const services=read('servicos.html');
+  for(const term of ['Pacotes de Imagens','Painéis','Apps','Assessoria Criativa','Sem gestão diária']){
+    assert.ok(studio.includes(term),term);
+  }
+  assert.ok(studio.includes('Não assumimos publicação diária'));
+  assert.ok(services.includes('sem assumir a operação diária'));
+  assert.ok(!services.includes('DIREÇÃO DE ARTE E CAMPANHAS'));
+  assert.ok(!services.includes('MARKETING DE CONTEÚDO E SOCIAL MEDIA'));
 });
