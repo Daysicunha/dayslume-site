@@ -28,7 +28,7 @@ test('CSS fase 2 retains balanced blocks and canonical stylesheet precedence',()
 });
 
 test('CSS fase 2 includes the 13/11 floating hero and preserves the canonical palette',()=>{
- assert.equal(fs.readdirSync(path.join(root,'assets','css')).filter(x=>x.endsWith('.css')).length,40);
+ assert.equal(fs.readdirSync(path.join(root,'assets','css')).filter(x=>x.endsWith('.css')).length,44);
  const index=fs.readFileSync(path.join(root,'index.html'),'utf8');
  assert.ok(index.includes('assets/css/home-cinematic-continuity-34.css'),'3.4 cinematic home layer must be loaded');
  assert.match(index,/assets\/css\/contents-cinematic-33\.css/);
