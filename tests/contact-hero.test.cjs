@@ -12,8 +12,8 @@ test('Hero is a single responsive project briefing, with one accessible form',()
   const nextStart=html.indexOf('<section class="section contact-process"');
   assert.ok(heroStart>0 && nextStart>heroStart);
   const hero=html.slice(heroStart,nextStart);
-  assert.match(hero,/Conte o problema/);
-  assert.match(hero,/A tecnologia vem depois/);
+  assert.match(hero,/Conte sua ideia/);
+  assert.match(hero,/A direção vem primeiro/);
   assert.match(hero,/contact-hero-grid/);
   assert.match(hero,/href="#solicitar"/);
   assert.match(hero,/id="solicitar"/);
@@ -60,8 +60,10 @@ test('Below the hero the steps are Understand, Propose, Develop; shared visual r
   assert.match(css, /:focus-visible/);
   const sheets=[...html.matchAll(/<link\b[^>]*rel="stylesheet"[^>]*href="([^"]+)"/g)].map(m=>m[1]);
   assert.equal(sheets.at(-1),'assets/css/brand-palette.css');
-  assert.equal(sheets.at(-2),'assets/css/cinematic-editorial-33.css');
-  assert.equal(sheets.at(-3),'assets/css/contact-flagship.css');
+  assert.ok(sheets.includes('assets/css/studio-sitewide-20261123.css'));
+  assert.ok(sheets.indexOf('assets/css/contact-flagship.css') < sheets.indexOf('assets/css/cinematic-editorial-33.css'));
+  assert.ok(sheets.indexOf('assets/css/cinematic-editorial-33.css') < sheets.indexOf('assets/css/studio-sitewide-20261123.css'));
+  assert.equal(sheets.at(-1),'assets/css/brand-palette.css');
 });
 
 test('Desktop contact hero centers form and copy without shrinking touch targets',()=>{
