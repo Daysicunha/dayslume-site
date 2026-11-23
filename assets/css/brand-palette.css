@@ -3831,3 +3831,172 @@ body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-p
                0 0 19px rgba(var(--ds-neon-pink-rgb),.055);
   }
 }
+
+
+/* ==========================================================================
+   STUDIO 3.4 · physical-glass refinement from Home hero · 23/11/2026
+   Chromatic layer ONLY; grid geometry remains in studio-page-20261123.css.
+   Applied after global home-parity tokens, preserving all product mockups.
+   ========================================================================== */
+body.studio-page #conteudo .studio-services {
+  background:
+    radial-gradient(ellipse 36% 40% at 95% 35%,rgba(var(--ds-neon-pink-rgb),.025),transparent 85%),
+    linear-gradient(180deg,#ECE5E1 0%,#F0E8E4 100%);
+}
+body.studio-page #conteudo .studio-services .studio-service-card {
+  border-top-color:rgba(98,73,102,.36);
+  border-right-color:rgba(86,64,89,.31);
+  border-left-color:rgba(86,64,89,.31);
+  border-bottom-color:rgba(64,48,73,.43);
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.78) 0%,rgba(255,255,255,.30) 26%,transparent 53%),
+    linear-gradient(154deg,#FFFCF9 0%,#F7F2EF 49%,#E6DCE1 100%);
+  color:#202532;
+  box-shadow:
+    0 27px 50px -26px rgba(35,25,44,.30),
+    0 12px 20px -14px rgba(42,30,54,.18),
+    1px 0 0 rgba(255,255,255,.83),
+    inset 1px 1px 0 rgba(255,255,255,.92),
+    inset -2px -2px 0 rgba(80,57,85,.07),
+    0 0 19px rgba(var(--ds-neon-pink-rgb),.055);
+}
+body.studio-page #conteudo .studio-services .studio-service-card:nth-child(2) {
+  background:
+    linear-gradient(143deg,rgba(255,255,255,.79),rgba(255,255,255,.24) 30%,transparent 59%),
+    linear-gradient(150deg,#F9F6F4,#E9DFE7 100%);
+}
+body.studio-page #conteudo .studio-services .studio-service-card:nth-child(4) {
+  background:
+    linear-gradient(148deg,rgba(255,255,255,.79),rgba(255,255,255,.25) 30%,transparent 59%),
+    linear-gradient(157deg,#FFFCF9,#EDE5E3 100%);
+}
+body.studio-page #conteudo .studio-services .studio-service-card:nth-child(3) {
+  border-top-color:rgba(247,218,218,.51);
+  border-left-color:rgba(243,207,216,.39);
+  border-right-color:rgba(254,219,230,.35);
+  border-bottom-color:rgba(20,15,33,.74);
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.16) 0%,transparent 35%),
+    radial-gradient(ellipse 58% 58% at 92% 9%,rgba(var(--ds-neon-pink-rgb),.075),transparent 83%),
+    linear-gradient(147deg,#735E79 0%,#513F5B 45%,#2B283C 100%);
+  color:#FCF6F5;
+  box-shadow:
+    0 31px 59px -25px rgba(29,18,39,.54),
+    0 13px 24px -13px rgba(23,18,35,.26),
+    inset 1px 1px 0 rgba(255,255,255,.25),
+    inset -2px -2px 0 rgba(11,9,19,.16),
+    0 0 23px rgba(var(--ds-neon-pink-rgb),.09);
+}
+body.studio-page #conteudo .studio-services .studio-service-card::before {
+  background:linear-gradient(90deg,
+    rgba(var(--ds-neon-pink-rgb),.75),
+    rgba(var(--peach-rgb),.57),
+    transparent);
+  box-shadow:0 0 13px rgba(var(--ds-neon-pink-rgb),.18);
+}
+body.studio-page #conteudo .studio-services .studio-service-card:nth-child(3)::before {
+  background:linear-gradient(90deg,#F6D4CF,rgba(var(--ds-neon-pink-rgb),.84),transparent);
+}
+body.studio-page #conteudo .studio-services .studio-service-card__number {
+  color:#574158;
+  -webkit-text-fill-color:#574158;
+  letter-spacing:.15em;
+}
+body.studio-page #conteudo .studio-services .studio-service-card:nth-child(3) .studio-service-card__number {
+  color:#F9DACE;
+  -webkit-text-fill-color:#F9DACE;
+}
+body.studio-page #conteudo .studio-services .studio-service-card h3 {
+  color:#202532;
+  -webkit-text-fill-color:#202532;
+  font-weight:630;
+  text-shadow:none;
+}
+body.studio-page #conteudo .studio-services .studio-service-card h3 em {
+  color:#644D68;
+  -webkit-text-fill-color:#644D68;
+  font-weight:620;
+  text-shadow:none;
+}
+body.studio-page #conteudo .studio-services .studio-service-card:nth-child(3) h3,
+body.studio-page #conteudo .studio-services .studio-service-card:nth-child(3) h3 em {
+  color:#FCF5F3;
+  -webkit-text-fill-color:#FCF5F3;
+}
+body.studio-page #conteudo .studio-services .studio-service-card:nth-child(3) h3 em {
+  color:#FFE1D4;
+  -webkit-text-fill-color:#FFE1D4;
+  text-shadow:0 0 15px rgba(var(--ds-neon-pink-rgb),.12);
+}
+body.studio-page #conteudo .studio-services .studio-service-card p {
+  color:#3D4350;
+  -webkit-text-fill-color:#3D4350;
+}
+body.studio-page #conteudo .studio-services .studio-service-card:nth-child(3) p {
+  color:#F1E6EA;
+  -webkit-text-fill-color:#F1E6EA;
+}
+body.studio-page #conteudo .studio-services .studio-service-card .studio-service-tags {
+  color:#574158;
+  -webkit-text-fill-color:#574158;
+  border-top-color:rgba(var(--plum-mineral-rgb),.20);
+}
+body.studio-page #conteudo .studio-services .studio-service-card:nth-child(3) .studio-service-tags {
+  color:#FFE5D8;
+  -webkit-text-fill-color:#FFE5D8;
+  border-top-color:rgba(var(--warm-ivory-rgb),.25);
+}
+/* Thin etched metal-frame icon, matching hero simulator details. */
+body.studio-page #conteudo .studio-services .studio-service-card .studio-card-icon {
+  background:linear-gradient(138deg,rgba(255,255,255,.67),rgba(107,83,109,.075));
+  border-color:rgba(var(--plum-mineral-rgb),.36);
+  color:#58435F;
+  box-shadow:inset 1px 1px 0 rgba(255,255,255,.75),
+             inset -1px -1px 0 rgba(66,47,74,.08),
+             0 0 16px rgba(var(--ds-neon-pink-rgb),.075);
+}
+body.studio-page #conteudo .studio-services .studio-service-card:nth-child(3) .studio-card-icon {
+  color:#FFE3D7;
+  background:linear-gradient(145deg,rgba(252,240,244,.13),rgba(255,61,154,.055));
+  border-color:rgba(255,219,223,.36);
+  box-shadow:inset 1px 1px 0 rgba(255,255,255,.17),
+             0 0 17px rgba(var(--ds-neon-pink-rgb),.14);
+}
+body.studio-page #conteudo .studio-services .studio-service-card:is(:hover,:focus-within) {
+  border-top-color:rgba(var(--ds-neon-pink-rgb),.48);
+  border-right-color:rgba(var(--ds-neon-pink-rgb),.45);
+  border-left-color:rgba(var(--ds-neon-pink-rgb),.45);
+  box-shadow:0 31px 56px -25px rgba(35,25,44,.38),
+             inset 1px 1px 0 rgba(255,255,255,.83),
+             inset -2px -2px 0 rgba(80,57,85,.09),
+             0 0 26px rgba(var(--ds-neon-pink-rgb),.13);
+}
+body.studio-page #conteudo .studio-services .studio-service-card:nth-child(3):is(:hover,:focus-within) {
+  box-shadow:0 33px 61px -25px rgba(29,18,39,.59),
+             inset 1px 1px 0 rgba(255,255,255,.27),
+             0 0 28px rgba(var(--ds-neon-pink-rgb),.17);
+}
+/* Light on dark headings: correct the previous low-contrast plum over plum. */
+body.studio-page #conteudo .studio-hero h1 em,
+body.studio-page #conteudo .studio-bridge h2 em,
+body.studio-page #conteudo .studio-finale h2 em {
+  color:#F6D6CC;
+  -webkit-text-fill-color:#F6D6CC;
+  text-shadow:0 0 16px rgba(var(--ds-neon-pink-rgb),.12);
+}
+body.studio-page #conteudo .studio-hero .studio-hero__lead,
+body.studio-page #conteudo .studio-bridge__grid > div:first-child > p:not(.studio-kicker) {
+  color:#F0E8EF;
+}
+@media (hover:none) {
+  body.studio-page #conteudo .studio-services .studio-service-card:hover {
+    border-top-color:rgba(98,73,102,.36);
+    border-right-color:rgba(86,64,89,.31);
+    border-left-color:rgba(86,64,89,.31);
+  }
+  body.studio-page #conteudo .studio-services .studio-service-card:nth-child(3):hover {
+    border-top-color:rgba(247,218,218,.51);
+    border-right-color:rgba(254,219,230,.35);
+    border-left-color:rgba(243,207,216,.39);
+  }
+}
