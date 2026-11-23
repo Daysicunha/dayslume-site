@@ -70,7 +70,7 @@ test('novo posicionamento é encontrável antes dos cards e no menu da home', ()
   assert.match(intro,/href="#studio-criativo"/);
   const nav=html.slice(html.indexOf('<nav id="menu-principal"'),html.indexOf('</nav>',html.indexOf('<nav id="menu-principal"')));
   assert.match(nav,/Studio Criativo/);
-  assert.match(nav,/href="#studio-criativo"/);
+  assert.match(nav,/href="studio-criativo.html"/);
 });
 
 test('transição sem faixa pêssego, palco de cada seção preservado', () => {
