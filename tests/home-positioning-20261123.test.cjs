@@ -20,7 +20,7 @@ test('novo posicionamento entre modelo e produtos, sem refazer o roteiro 3.4', (
 
 test('branding + presença digital no mesmo estúdio e CTAs reais de contato', () => {
   const seg = html.slice(html.indexOf('id="studio-criativo"'),html.indexOf('id="produtos"'));
-  for (const s of ['STUDIO CRIATIVO','EXPERIÊNCIAS DIGITAIS','Identidade visual e branding','Design para redes sociais','Sites, landing pages e catálogos','Sistemas e automações sob medida']) {
+  for (const s of ['IDENTIDADE VISUAL E MARKETING','EXPERIÊNCIAS DIGITAIS','Identidade visual e branding','Design para redes sociais','Sites, landing pages e catálogos','Sistemas e automações sob medida']) {
     assert.ok(seg.includes(s),s);
   }
   assert.equal((seg.match(/href="#contato"/g) || []).length,3);
@@ -49,7 +49,7 @@ test('JSON-LD publicamente consistente com o posicionamento', () => {
 
 test('serviços apresentam a mesma frente criativa com CTAs e dados estruturados', () => {
   assert.ok(services.indexOf('id="identidade-visual"') < services.indexOf('id="presenca-digital"'));
-  for (const term of ['IDENTIDADE VISUAL E BRANDING', 'DIREÇÃO DE ARTE E CAMPANHAS', 'DESIGN PARA REDES SOCIAIS']) {
+  for (const term of ['IDENTIDADE VISUAL E BRANDING', 'DIREÇÃO DE ARTE E CAMPANHAS', 'MARKETING DE CONTEÚDO E SOCIAL MEDIA']) {
     assert.ok(services.includes(term),term);
   }
   assert.equal((services.match(/id="identidade-visual"/g) || []).length,1);
@@ -61,4 +61,26 @@ test('serviços apresentam a mesma frente criativa com CTAs e dados estruturados
   const offers=data['@graph'].find(x=>x['@type']==='ItemList').itemListElement;
   assert.deepEqual(offers.map(x=>x.position),[1,2,3,4]);
   assert.equal(offers[0].item.name,'Identidade visual e direção criativa');
+});
+
+test('novo posicionamento é encontrável antes dos cards e no menu da home', () => {
+  const intro = html.slice(html.indexOf('id="modelo"'),html.indexOf('id="studio-criativo"'));
+  assert.match(intro,/IDENTIDADE VISUAL · BRANDING · MARKETING · SOCIAL MEDIA/);
+  assert.match(intro,/Explorar IDV, marketing e Studio Criativo/);
+  assert.match(intro,/href="#studio-criativo"/);
+  const nav=html.slice(html.indexOf('<nav id="menu-principal"'),html.indexOf('</nav>',html.indexOf('<nav id="menu-principal"')));
+  assert.match(nav,/Studio Criativo/);
+  assert.match(nav,/href="#studio-criativo"/);
+});
+
+test('transição sem faixa pêssego, palco de cada seção preservado', () => {
+  const continuity=read('assets/css/home-cinematic-continuity-34.css');
+  const refinement=continuity.split('23/11 — transições de seção')[1];
+  assert.ok(refinement,'microtransições ausentes');
+  for(const id of ['modelo','produtos','projetos','contato']) {
+    assert.ok(refinement.includes('section#'+id+'.section'),id);
+  }
+  assert.doesNotMatch(refinement,/#D8B6A5 (?:\d+px|\d+%)/);
+  assert.ok(refinement.includes('padding-top:clamp(76px'));
+  assert.equal((continuity.match(/\{/g)||[]).length,(continuity.match(/\}/g)||[]).length);
 });
