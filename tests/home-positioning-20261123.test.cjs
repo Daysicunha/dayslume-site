@@ -18,7 +18,7 @@ test('novo posicionamento entre modelo e produtos, sem refazer o roteiro 3.4', (
 
 test('branding + presença digital no mesmo estúdio e CTAs reais de contato', () => {
   const seg = html.slice(html.indexOf('id="studio-criativo"'),html.indexOf('id="produtos"'));
-  for (const s of ['Studio Criativo','Experiências Digitais','Identidade visual e branding','Design para redes sociais','Sites, landing pages e catálogos','Sistemas e automações sob medida']) {
+  for (const s of ['STUDIO CRIATIVO','EXPERIÊNCIAS DIGITAIS','Identidade visual e branding','Design para redes sociais','Sites, landing pages e catálogos','Sistemas e automações sob medida']) {
     assert.ok(seg.includes(s),s);
   }
   assert.equal((seg.match(/href="#contato"/g) || []).length,3);
