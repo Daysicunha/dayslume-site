@@ -20,7 +20,7 @@ test('novo posicionamento entre modelo e produtos, sem refazer o roteiro 3.4', (
 
 test('branding + presença digital no mesmo estúdio e CTAs reais de contato', () => {
   const seg = html.slice(html.indexOf('id="studio-criativo"'),html.indexOf('id="produtos"'));
-  for (const s of ['IDENTIDADE VISUAL E MARKETING','EXPERIÊNCIAS DIGITAIS','Identidade visual e branding','Design para redes sociais','Sites, landing pages e catálogos','Sistemas e automações sob medida']) {
+  for (const s of ['IDENTIDADE VISUAL E DESIGN','EXPERIÊNCIAS DIGITAIS','Identidade visual e branding','Artes digitais e pacotes de imagens','Design de painéis e apps','Sites, landing pages e catálogos','Sistemas e automações sob medida']) {
     assert.ok(seg.includes(s),s);
   }
   assert.equal((seg.match(/href="#contato"/g) || []).length,3);
@@ -49,7 +49,7 @@ test('JSON-LD publicamente consistente com o posicionamento', () => {
 
 test('serviços apresentam a mesma frente criativa com CTAs e dados estruturados', () => {
   assert.ok(services.indexOf('id="identidade-visual"') < services.indexOf('id="presenca-digital"'));
-  for (const term of ['IDENTIDADE VISUAL E BRANDING', 'DIREÇÃO DE ARTE E CAMPANHAS', 'MARKETING DE CONTEÚDO E SOCIAL MEDIA']) {
+  for (const term of ['IDENTIDADE VISUAL E BRANDING', 'ARTES E PACOTES DE IMAGENS', 'DESIGN DE PAINÉIS E APPS', 'ASSESSORIA CRIATIVA PARA REDES']) {
     assert.ok(services.includes(term),term);
   }
   assert.equal((services.match(/id="identidade-visual"/g) || []).length,1);
@@ -65,8 +65,8 @@ test('serviços apresentam a mesma frente criativa com CTAs e dados estruturados
 
 test('novo posicionamento é encontrável antes dos cards e no menu da home', () => {
   const intro = html.slice(html.indexOf('id="modelo"'),html.indexOf('id="studio-criativo"'));
-  assert.match(intro,/IDENTIDADE VISUAL · BRANDING · MARKETING · SOCIAL MEDIA/);
-  assert.match(intro,/Explorar IDV, marketing e Studio Criativo/);
+  assert.match(intro,/IDENTIDADE VISUAL · ARTES · INTERFACES · ASSESSORIA/);
+  assert.match(intro,/Explorar serviços do Studio Criativo/);
   assert.match(intro,/href="#studio-criativo"/);
   const nav=html.slice(html.indexOf('<nav id="menu-principal"'),html.indexOf('</nav>',html.indexOf('<nav id="menu-principal"')));
   assert.match(nav,/Studio Criativo/);
