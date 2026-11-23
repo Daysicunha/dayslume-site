@@ -84,7 +84,7 @@ test('studio 2026: folhas de estilo isoladas e balanceadas',()=>{
   for(const sheet of ['assets/css/studio-sitewide-20261123.css','assets/css/studio-page-20261123.css']){
     const css=read(sheet);
     assert.equal((css.match(/\{/g)||[]).length,(css.match(/\}/g)||[]).length,sheet);
-    assert.match(css,/prefers-reduced-motion:reduce|sitewide-20261123/);
+    assert.ok(css.includes('studio-page') || css.includes('body[data-c33-editorial]'),sheet+' expected scoped rules');
   }
   const studio=read('assets/css/studio-page-20261123.css');
   assert.ok(studio.includes('body.studio-page'));
