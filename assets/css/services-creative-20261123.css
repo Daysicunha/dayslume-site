@@ -1,0 +1,76 @@
+/* DAYSLUME — serviços criativos (23/11), apenas a nova seção interna. */
+body[data-c33-editorial] #identidade-visual.creative-services-section {
+  position:relative;
+  overflow:hidden;
+  color:#202532;
+  background:radial-gradient(ellipse 37% 50% at 100% 5%,rgba(107,83,109,.085),transparent 78%),linear-gradient(180deg,#F3EFE8,#F0E8E3);
+}
+body[data-c33-editorial] #identidade-visual .container {
+  position:relative;
+  z-index:1;
+}
+body[data-c33-editorial] #identidade-visual .eyebrow {
+  color:#574158;
+  letter-spacing:.15em;
+  font-family:var(--ds-font-display,"Manrope",sans-serif);
+}
+body[data-c33-editorial] #identidade-visual h2 {
+  max-width:830px;
+  color:#202532;
+  font-family:var(--ds-font-display,"Manrope",sans-serif);
+  font-weight:600;
+  letter-spacing:-.042em;
+}
+body[data-c33-editorial] #identidade-visual .intro {
+  max-width:840px;
+  color:#4F586D;
+  font-family:var(--ds-font-body,"DM Sans",sans-serif);
+}
+body[data-c33-editorial] #identidade-visual .creative-services-grid {
+  margin-top:clamp(28px,4vw,52px);
+  align-items:stretch;
+}
+body[data-c33-editorial] #identidade-visual .days-card {
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  border:1px solid rgba(107,83,109,.22);
+  border-radius:clamp(17px,1.8vw,24px);
+  background:rgba(255,255,255,.64);
+  box-shadow:0 18px 40px -27px rgba(32,37,50,.25);
+}
+body[data-c33-editorial] #identidade-visual .days-card small {
+  color:#574158;
+}
+body[data-c33-editorial] #identidade-visual .days-card h3 {
+  font-family:var(--ds-font-display,"Manrope",sans-serif);
+  color:#202532;
+  line-height:1.2;
+}
+body[data-c33-editorial] #identidade-visual .days-card p {
+  color:#4F586D;
+  font-family:var(--ds-font-body,"DM Sans",sans-serif);
+}
+body[data-c33-editorial] #identidade-visual .days-card .btn {
+  align-self:flex-start;
+  min-height:44px;
+  margin-top:auto;
+  background:#6B536D;
+  border-color:#6B536D;
+  color:#F3EFE8;
+}
+body[data-c33-editorial] #identidade-visual .days-card .btn:hover {
+  background:#202532;
+  border-color:#202532;
+}
+body[data-c33-editorial] #identidade-visual a:focus-visible {
+  outline:3px solid #FF3D9A;
+  outline-offset:4px;
+}
+@media (max-width:720px) {
+  body[data-c33-editorial] #identidade-visual .creative-services-grid {
+    display:grid;
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+}
