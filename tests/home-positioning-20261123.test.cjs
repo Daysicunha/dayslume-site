@@ -6,6 +6,8 @@ const root = path.resolve(__dirname, '..');
 const read = p => fs.readFileSync(path.join(root, p), 'utf8');
 const html = read('index.html');
 const css = read('assets/css/home-positioning-20261123.css');
+const services = read('servicos.html');
+const servicesCss = read('assets/css/services-creative-20261123.css');
 
 test('novo posicionamento entre modelo e produtos, sem refazer o roteiro 3.4', () => {
   assert.ok(html.indexOf('id="modelo"') < html.indexOf('id="studio-criativo"'));
@@ -43,4 +45,20 @@ test('JSON-LD publicamente consistente com o posicionamento', () => {
   const org=data['@graph'].find(x=>x['@type']==='Organization');
   assert.match(org.description,/criativo e de tecnologia/);
   assert.ok(org.hasOfferCatalog.itemListElement.some(x=>x.itemOffered.name.includes('Identidade visual')));
+});
+
+test('serviços apresentam a mesma frente criativa com CTAs e dados estruturados', () => {
+  assert.ok(services.indexOf('id="identidade-visual"') < services.indexOf('id="presenca-digital"'));
+  for (const term of ['IDENTIDADE VISUAL E BRANDING', 'DIREÇÃO DE ARTE E CAMPANHAS', 'DESIGN PARA REDES SOCIAIS']) {
+    assert.ok(services.includes(term),term);
+  }
+  assert.equal((services.match(/id="identidade-visual"/g) || []).length,1);
+  assert.ok(services.includes('assets/css/services-creative-20261123.css'));
+  assert.ok(servicesCss.includes('#identidade-visual'));
+  const structured = services.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  assert.ok(structured);
+  const data=JSON.parse(structured[1]);
+  const offers=data['@graph'].find(x=>x['@type']==='ItemList').itemListElement;
+  assert.deepEqual(offers.map(x=>x.position),[1,2,3,4]);
+  assert.equal(offers[0].item.name,'Identidade visual e direção criativa');
 });
