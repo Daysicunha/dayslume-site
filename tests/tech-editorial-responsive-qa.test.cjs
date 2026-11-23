@@ -129,8 +129,8 @@ test('Act II: image-approved composition keeps three navigable service pathways'
     assert.ok(home.includes(line),line);
   }
   for (const text of [
-    'Unimos estratégia, design e tecnologia',
-    'Presença<br>Digital',
+    'Unimos identidade visual, artes digitais e tecnologia',
+    'Marcas e<br>Comunicação',
     'Sistemas<br>e Gestão',
     'Resultados<br>e Crescimento',
     'Seu negócio é melhor do que parece na internet.',
