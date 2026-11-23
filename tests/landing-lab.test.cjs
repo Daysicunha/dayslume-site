@@ -51,7 +51,9 @@ test('landing hero has a single commercial H1, CTA to laboratory and local asset
   assert.match(html,/<script src="assets\/js\/landing-lab\.js" defer>/);
   const sheets=[...html.matchAll(/<link\b[^>]*rel="stylesheet"[^>]*href="([^"]+)"/g)].map(x=>x[1]);
   assert.equal(sheets.at(-1),'assets/css/brand-palette.css');
-  assert.equal(sheets.at(-2),'assets/css/landing-lab.css');
+  assert.ok(sheets.includes('assets/css/landing-lab.css'));
+  assert.ok(sheets.indexOf('assets/css/landing-lab.css') < sheets.indexOf('assets/css/studio-sitewide-20261123.css'));
+  assert.equal(sheets.at(-2),'assets/css/studio-sitewide-20261123.css');
 });
 test('laboratory has three interactive goals and updates copy, funnel and pressed states',()=>{
   const f=setup();

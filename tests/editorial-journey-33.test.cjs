@@ -7,7 +7,7 @@ const html=read('index.html');
 const products=read('solucoes.html');
 const allSections=[...html.matchAll(/<section\b[^>]*id="([^"]+)"/g)].map(m=>m[1]);
 test('Approved editorial journey has a clear logical order with no lifestyle detour',()=>{
- assert.deepEqual(allSections.slice(0,9),['cinema33-film','apresentacao','problemas','modelo','produtos','projetos','sobre','conteudos','contato']);
+ assert.deepEqual(allSections.slice(0,10),['cinema33-film','apresentacao','problemas','modelo','studio-criativo','produtos','projetos','sobre','conteudos','contato']);
  assert.doesNotMatch(html,/id="ritmo"|class="section home-process-section"/);
  assert.match(html,/id="processo-home"/);
 });

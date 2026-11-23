@@ -45,7 +45,7 @@ test('Lote E handoff dissolves scene five into approved 3D project simulators',(
 test('Lote E avoids old repeated film headlines and false prices while preserving contact',()=>{
  const html=read('index.html');
  assert.match(html,/Tecnologia que começa no problema/);
- assert.match(html,/Criamos sites, sistemas e experiências digitais/);
+ assert.match(html,/Criamos identidades visuais, sites e soluções digitais/);
  assert.match(html,/Vamos entender o que/);
  assert.doesNotMatch(html,/R\$ 00,00/);
  assert.equal((html.match(/<h1\b/g)||[]).length,1);

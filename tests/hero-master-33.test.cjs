@@ -16,7 +16,7 @@ const patch=css.split('DAYSLUME — HERO MASTER / referência aprovada 17.11.202
 test('Hero Master: commercial promise uses three coded product simulations',()=>{
  assert.ok(begin>0 && end>begin);
  assert.ok(hero.includes('data-cinema33-home data-hero-master="true" id="apresentacao"'));
- for(const value of ['<h1 id="hero-title">Soluções digitais','que <em>conectam</em>','ideias, negócios','e pessoas','ESTÚDIO DE DESENVOLVIMENTO DIGITAL','Criamos sites, sistemas e experiências digitais','VITRINI','Minha agenda','Caderneta']) assert.ok(hero.includes(value),value);
+ for(const value of ['<h1 id="hero-title">Soluções digitais','que <em>conectam</em>','ideias, negócios','e pessoas','ESTÚDIO CRIATIVO E DE TECNOLOGIA','Criamos identidades visuais, sites e soluções digitais','VITRINI','Minha agenda','Caderneta']) assert.ok(hero.includes(value),value);
  for(const href of ['href="#produtos"','href="#projetos"','href="solucoes.html#vitrini"','href="solucoes.html#engreni"']) assert.ok(hero.includes(href),href);
  for(const name of ['vitrini','agenda','caderneta']) assert.ok(hero.includes('hero-projects__card--'+name),name);
  assert.ok(hero.includes('Prévia ilustrativa de três projetos DAYSLUME'));
