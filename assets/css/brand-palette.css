@@ -3790,3 +3790,44 @@ body.studio-page .studio-button--outline:is(:hover,:focus-visible) {
     animation:none!important;
   }
 }
+
+
+/* 23/11 · refinement pass: neutral paper frames need a visible plum edge;
+   their chrome/content remains untouched. */
+body:not(.home-page) :is(.products-browser,.sites-browser,.sites-hero-preview,.lp-hero-browser,.lp-lab-browser,.vl-demo-device,.days-product-preview) {
+  border-color:rgba(var(--plum-mineral-rgb),.30);
+}
+body:not(.home-page) :is(.products-browser,.sites-browser,.sites-hero-preview,.lp-hero-browser,.lp-lab-browser,.vl-demo-device,.days-product-preview):is(:hover,:focus-within) {
+  border-color:rgba(var(--ds-neon-pink-rgb),.39);
+}
+/* Editorial contents, briefings and decision tools now use the same physical glass finish. */
+body.blog-index .blog-directory--flagship .blog-list>.blog-story,
+body:not(.home-page) :is(.contact-briefing,.solutions-diagnostic,.about-decision) {
+  border-color:rgba(var(--plum-mineral-rgb),.25);
+  box-shadow:0 22px 48px -30px rgba(var(--ink-deep-rgb),.28),
+             inset 0 1px 0 rgba(255,255,255,.46),
+             0 0 19px rgba(var(--ds-neon-pink-rgb),.055);
+}
+body.blog-index .blog-directory--flagship .blog-list>.blog-story:is(:hover,:focus-within),
+body:not(.home-page) :is(.contact-briefing,.solutions-diagnostic,.about-decision):focus-within {
+  border-color:rgba(var(--ds-neon-pink-rgb),.39);
+  box-shadow:0 23px 52px -29px rgba(var(--ink-deep-rgb),.32),
+             inset 0 1px 0 rgba(255,255,255,.49),
+             0 0 21px rgba(var(--ds-neon-pink-rgb),.11);
+}
+/* Hero simulators already approved. Preserve composition; illuminate only the
+   middle screen's physical bezel with a small matching edge reflection. */
+body.home-page[data-home34-story] #apresentacao.hero--project-simulators .hero-projects__card--agenda {
+  box-shadow:0 32px 58px rgba(7,8,20,.56),
+             0 0 26px rgba(var(--ds-neon-pink-rgb),.095),
+             inset 0 1px 0 rgba(255,255,255,.37);
+}
+/* Keep touch interactions static; only desktop hover can heighten the accent. */
+@media(hover:none) {
+  body.blog-index .blog-directory--flagship .blog-list>.blog-story:hover {
+    border-color:rgba(var(--plum-mineral-rgb),.25);
+    box-shadow:0 22px 48px -30px rgba(var(--ink-deep-rgb),.28),
+               inset 0 1px 0 rgba(255,255,255,.46),
+               0 0 19px rgba(var(--ds-neon-pink-rgb),.055);
+  }
+}
