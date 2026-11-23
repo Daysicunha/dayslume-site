@@ -47,8 +47,9 @@
         observer.observe(el);
       });
     };
-    reveal('.manifest-eyebrow, .manifest-title, .manifest-intro', 85);
-    reveal('.manifest-item', 70, 255);
+    // Editorial pacing: let the introduction settle, then reveal each glass card.
+    reveal('.manifest-eyebrow, .manifest-title, .manifest-intro', 90);
+    reveal('.manifest-item', 90, 240);
     reveal('.intro-section .section-heading > div', 90);
     reveal('.launch-pillars .service-card', 85);
     // Hero motion module owns section 03's editorial choreography.

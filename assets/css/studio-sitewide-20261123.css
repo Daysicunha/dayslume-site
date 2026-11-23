@@ -1,0 +1,42 @@
+/* DAYSLUME 23/11 — sistema editorial consistente entre páginas.
+   Paleta mineral autoral mantida em brand-palette.css (sempre última).
+   Não redesenha as campanhas, simuladores nem conteúdo dos artigos. */
+body[data-c33-editorial]:not(.home-page) .header #menu-principal {
+ gap:clamp(9px,1vw,16px);
+}
+body[data-c33-editorial]:not(.home-page) .header #menu-principal>a:not(.days-mobile-contact) {
+ font:600 clamp(12px,.82vw,13px)/1.4 "DM Sans",sans-serif;
+ white-space:nowrap;
+}
+body[data-c33-editorial]:not(.home-page) .header #menu-principal>a[aria-current="page"] {
+ color:#F3EFE8;
+}
+body[data-c33-editorial]:not(.home-page) .header #menu-principal>a[href$="studio-criativo.html"] {
+ text-decoration-thickness:1px;
+}
+body[data-c33-editorial]:not(.home-page) .header #menu-principal>a:focus-visible,
+body[data-c33-editorial]:not(.home-page) .footer-links a:focus-visible {
+ outline:2px solid #D8B6A5;outline-offset:4px;
+}
+/* Remover halos de corte entre fundos internos sem anular suas composições. */
+body[data-c33-editorial]:not(.home-page):not(.studio-page) main > section.section,
+body[data-c33-editorial]:not(.home-page):not(.studio-page) main > section.band {
+ border-top-color:rgba(107,83,109,.12);
+}
+body[data-c33-editorial]:not(.home-page) .footer-identity small {
+ color:#DCD4DF;
+}
+@media(min-width:1181px) {
+ body[data-c33-editorial]:not(.home-page) .header #menu-principal {
+  gap:clamp(9px,1vw,16px);
+ }
+ body[data-c33-editorial]:not(.home-page) .header .brand-lockup {
+  width:clamp(148px,11vw,185px);
+ }
+}
+@media(max-width:1180px) {
+ body[data-c33-editorial]:not(.home-page) .header.days-nav-ready #menu-principal>a:not(.days-mobile-contact) {
+  font-size:17px;
+  min-height:44px;
+ }
+}

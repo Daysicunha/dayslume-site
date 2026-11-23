@@ -55,8 +55,11 @@ test('quiz integrates into Solutions hero and preserves the approved color palet
  assert.match(html,/<script src="assets\/js\/solutions-diagnostic\.js" defer>/);
  const sheets=[...html.matchAll(/href="(assets\/css\/[^"]+\.css)"/g)].map(m=>m[1]);
  assert.equal(sheets.at(-1),'assets/css/brand-palette.css');
- assert.equal(sheets.at(-2),'assets/css/cinematic-editorial-33.css');
- assert.equal(sheets.at(-3),'assets/css/solutions-diagnostic.css');
+ assert.ok(sheets.includes('assets/css/cinematic-editorial-33.css'));
+ assert.ok(sheets.includes('assets/css/solutions-diagnostic.css'));
+ assert.ok(sheets.indexOf('assets/css/solutions-diagnostic.css') < sheets.indexOf('assets/css/cinematic-editorial-33.css'));
+ assert.ok(sheets.indexOf('assets/css/cinematic-editorial-33.css') < sheets.indexOf('assets/css/studio-sitewide-20261123.css'));
+ assert.equal(sheets.at(-2),'assets/css/studio-sitewide-20261123.css');
  assert.equal((html.match(/<h1\b/g)||[]).length,1);
  assert.match(style,/max-width:800px/);
  assert.match(style,/max-width:560px/);

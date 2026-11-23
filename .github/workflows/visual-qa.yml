@@ -1,0 +1,78 @@
+name: Visual QA — DAYSLUME (before/after)
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'assets/css/**'
+      - 'assets/js/**'
+      - 'assets/images/**'
+      - 'scripts/visual-qa.mjs'
+      - 'scripts/functional-qa.mjs'
+      - '.github/workflows/visual-qa.yml'
+permissions:
+  contents: read
+jobs:
+  screenshots:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout correction (without touching main)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install lightweight browser driver
+        run: npm install --no-save --no-package-lock puppeteer-core@24.19.0
+      - name: Render baseline and correction locally
+        env:
+          BASE_SHA: 69896abee9ff81c1ff2d2d883d1becbbd18adce4
+        run: |
+          set -euo pipefail
+          CHROME_BIN="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
+          if [ -z "$CHROME_BIN" ]; then echo "Chrome unavailable on runner"; exit 1; fi
+          git worktree add --detach "$RUNNER_TEMP/dayslume-before" "$BASE_SHA"
+          python3 -m http.server 8765 --directory "$RUNNER_TEMP/dayslume-before" > "$RUNNER_TEMP/before.log" 2>&1 &
+          python3 -m http.server 8766 --directory "$GITHUB_WORKSPACE" > "$RUNNER_TEMP/after.log" 2>&1 &
+          sleep 2
+          CHROME_BIN="$CHROME_BIN" node scripts/visual-qa.mjs
+      - name: Archive before/after screenshots and measurements
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dayslume-visual-qa-before-after
+          path: visual-qa-results
+          if-no-files-found: warn
+          retention-days: 14
+
+  functional:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout proposed correction only
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium driver
+        run: npm install --no-save --no-package-lock puppeteer-core@24.19.0
+      - name: Functional browser checks (no external submission)
+        run: |
+          set -euo pipefail
+          CHROME_BIN="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
+          if [ -z "$CHROME_BIN" ]; then echo "Chrome unavailable"; exit 1; fi
+          python3 -m http.server 8766 --directory "$GITHUB_WORKSPACE" > "$RUNNER_TEMP/functional-qa.log" 2>&1 &
+          sleep 2
+          CHROME_BIN="$CHROME_BIN" node scripts/functional-qa.mjs
+      - name: Upload functional QA screenshots and results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dayslume-functional-qa
+          path: functional-qa-results
+          if-no-files-found: warn
+          retention-days: 14

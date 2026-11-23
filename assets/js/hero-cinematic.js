@@ -3,7 +3,7 @@
 (() => {
   'use strict';
   const hero=document.querySelector('.hero--cinematic');
-  const cluster=hero?.querySelector('.cinema-cluster');
+  const cluster=hero?.querySelector('.hero-projects, .cinema-cluster');
   if (!hero || !cluster) return;
   const atmosphere=hero.querySelector('.cinema33-atmosphere');
   const pointer=matchMedia('(hover: hover) and (pointer: fine) and (min-width: 901px)');

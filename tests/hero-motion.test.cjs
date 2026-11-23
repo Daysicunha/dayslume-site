@@ -4,19 +4,13 @@ const fs=require('node:fs');
 const path=require('node:path');
 const root=path.resolve(__dirname,'..');
 const read=(name)=>fs.readFileSync(path.join(root,name),'utf8');
-test('cinematic hero puts commercial message and product interfaces on the first fold',()=>{
-  const html=read('index.html');
-  assert.match(html,/class="hero hero--cinematic hero--floating-panels"/);
-  assert.match(html,/<div class="container hero-grid">[\s\S]*<div class="hero-content">[\s\S]*<h1 id="hero-title">Faça o digital/);
-  assert.match(html,/class="hero-visual-composition cinema-stage"/);
-  for(const element of ['cinema-browser','cinema-phone','cinema-service']) assert.match(html,new RegExp(element));
-  assert.match(html,/href="#contato">Conversar sobre meu projeto/);
-  assert.match(html,/href="#projetos"/);
-  assert.match(html,/aria-label="Painéis de interfaces digitais flutuantes/);
-  assert.doesNotMatch(html,/INTERFACES ILUSTRATIVAS · SEM DADOS REAIS/);
-  assert.match(html,/aria-label="Painéis de interfaces digitais flutuantes/);
-  assert.doesNotMatch(html,/data-flower-petal|data-scroll-hero|data-kiru-word|hero-kiru-keyword|data-hero-video/);
+test('cinematic Hero places live product simulators and conversion CTAs on first fold',()=>{
+ const html=read('index.html'),css=read('assets/css/hero-project-simulators-20261118.css');
+ for(const value of ['hero--project-simulators','<h1 id="hero-title">Soluções digitais','hero-visual-composition cinema-stage hero-projects-stage','hero-projects__card--agenda','hero-projects__card--vitrini','hero-projects__card--caderneta','href="#produtos">Conheça nossas soluções','href="#projetos">Ver projetos em ação','Prévia ilustrativa de três projetos DAYSLUME'])assert.ok(html.includes(value),value);
+ assert.ok(css.includes('--hero-plum: #6B536D'));
+ assert.doesNotMatch(html,/data-flower-petal|data-scroll-hero|data-kiru-word|hero-kiru-keyword|data-hero-video/);
 });
+
 test('Kiru rolling cards are limited to the two commercial paths',()=>{
   const html=read('index.html');
   const css=read('assets/css/hero-prism-scroll.css');
@@ -53,33 +47,26 @@ test('section 02 keeps the two real service cards without floating data graphics
 });
 
 
-test('hero layers three product stories, preserving the mineral palette and mobile readability',()=>{
-  const html=read('index.html'),css=read('assets/css/hero-cinematic.css');
-  assert.match(html,/cinema-stage-caption--vitrini/);
-  assert.match(html,/cinema-stage-caption--engreni/);
-  assert.doesNotMatch(html,/class="cinema-signature"/);
-  assert.match(html,/logohorizontalbranca\.png/);
-  assert.match(css,/background:\s*radial-gradient/);
-  assert.match(css,/var\(--peach\)/);
-  assert.match(css,/var\(--warm-ivory\)/);
-  assert.match(css,/@media \(max-width: 360px\)/);
-  assert.match(css,/\.cinema-phone-screen/);
-  assert.match(css,/\.cinema-browser-screen/);
-  assert.doesNotMatch(html,/hero__split-panel/);
+test('Hero keeps three mineral-plum product interfaces and accessible mobile layout',()=>{
+ const html=read('index.html'),css=read('assets/css/hero-project-simulators-20261118.css');
+ for(const value of ['hero-projects__card--vitrini','hero-projects__card--agenda','hero-projects__card--caderneta','logohorizontalbranca.png'])assert.ok(html.includes(value),value);
+ for(const token of ['#6B536D','#D8B6A5','#F3EFE8','@media (max-width:600px)','grid-column:1/-1','prefers-reduced-motion:reduce'])assert.ok(css.includes(token),token);
+ assert.doesNotMatch(html,/hero__split-panel/);
 });
+
 test('manifest uses the approved three-line headline and luminous wave instead of the old semicircle',()=>{
  const html=read('index.html');
  const css=read('assets/css/cinematic-editorial-33.css');
- const layout=css.split('17/11/2026 — ATO II / implementação fiel ao layout ilustrado aprovado')[1];
+ const layout=css.split('18/11/2026 — ATO II / refino compacto editorial')[1];
  assert.ok(layout);
  for (const title of ['Ser visto.','Ser escolhido.','Funcionar melhor.']) {
   assert.ok(html.includes('manifest-title-line">' + title),title);
  }
  assert.match(html,/class="manifest-waves"/);
- assert.match(layout,/\.manifest-concept::after\s*\{\s*display: none;/);
- assert.match(layout,/\.manifest-title \.manifest-title-line[\s\S]*?white-space: nowrap;/);
- assert.match(layout,/@media \(max-width: 600px\)/);
- assert.match(layout,/\.manifest-title \.manifest-title-line\s*\{\s*white-space: normal;/);
+ assert.match(layout,/\.manifest-concept::after\s*\{\s*display:none;/);
+ assert.match(layout,/\.manifest-title \.manifest-title-line[\s\S]*?white-space:nowrap;/);
+ assert.match(layout,/@media \(max-width:600px\)/);
+ assert.match(layout,/\.manifest-title \.manifest-title-line\s*\{\s*white-space:normal;/);
 });
 test('founder presentation condenses the old five-step process into three readable stages',()=>{
  const html=read('index.html');
@@ -161,7 +148,7 @@ test('mobile hero puts a compact flower above readable copy and CTAs',()=>{
  assert.match(palette,/body\.home-page \.hero--scroll-invasion \.hero-scroll-stage\s*\{[\s\S]*?height:auto/);
  assert.match(palette,/body\.home-page \.hero--scroll-invasion \.hero-actions\s*\{[\s\S]*?justify-content:center/);
  assert.match(palette,/body\.home-page \.hero--scroll-invasion \.hero-scroll-hint,/);
- assert.match(html,/href="#contato">Conversar sobre meu projeto/);
+ assert.match(html,/href="#produtos">Conheça nossas soluções/);
  assert.match(html,/href="#projetos"/);
 });
 

@@ -7,20 +7,20 @@ const html=read('index.html');
 const products=read('solucoes.html');
 const allSections=[...html.matchAll(/<section\b[^>]*id="([^"]+)"/g)].map(m=>m[1]);
 test('Approved editorial journey has a clear logical order with no lifestyle detour',()=>{
- assert.deepEqual(allSections.slice(0,9),['cinema33-film','apresentacao','problemas','modelo','produtos','projetos','sobre','conteudos','contato']);
+ assert.deepEqual(allSections.slice(0,10),['cinema33-film','apresentacao','problemas','modelo','studio-criativo','produtos','projetos','sobre','conteudos','contato']);
  assert.doesNotMatch(html,/id="ritmo"|class="section home-process-section"/);
  assert.match(html,/id="processo-home"/);
 });
 test('Approved hero and proof move visitors toward a real action',()=>{
- assert.match(html,/href="#contato">Conversar sobre meu projeto/);
- assert.match(html,/href="#projetos">Ver projetos realizados/);
+ assert.match(html,/href="#produtos">Conheça nossas soluções/);
+ assert.match(html,/href="#projetos">Ver projetos em ação/);
  assert.match(html,/Quero algo assim para meu negócio/);
  assert.match(html,/href="https:\/\/wa\.me\/5531994492474/);
  assert.match(html,/Conversar no WhatsApp/);
 });
 test('Preserves film, three cases, two working ecosystems, and founders image',()=>{
  assert.equal((html.match(/data-c33-caption/g)||[]).length,5);
- assert.match(html,/class="cinema-cluster"/);
+ assert.match(html,/class="hero-projects"/);
  assert.equal((html.match(/class="project-card flagship-case/g)||[]).length,3);
  assert.match(html,/data-cinema33-showroom/);
  assert.match(html,/src="assets\/images\/daysi-cunha-editorial\.jpg"/);

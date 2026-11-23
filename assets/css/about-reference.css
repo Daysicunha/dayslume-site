@@ -11,21 +11,17 @@ body.home-page main > .section.about-section {
     var(--warm-ivory, #f3efe8);
 }
 
-/* Linhas e pétalas abstratas, quase táteis, sem círculos decorativos genéricos. */
+/* Iluminação delicada e contínua na seção Sobre, sem malha de linhas. */
 body.home-page main > .section.about-section::before {
-  content: "";
-  position: absolute;
-  z-index: -2;
-  inset: 0;
-  pointer-events: none;
-  opacity: .42;
-  background: repeating-linear-gradient(
-    90deg,
-    transparent 0,
-    transparent calc(12.5% - 1px),
-    rgba(102, 117, 143, .075) calc(12.5% - 1px),
-    rgba(102, 117, 143, .075) 12.5%
-  );
+  content:"";
+  position:absolute;
+  z-index:-2;
+  inset:0;
+  pointer-events:none;
+  opacity:.52;
+  background:
+    radial-gradient(ellipse 41% 53% at 12% 47%,rgba(169,197,216,.13),transparent 82%),
+    radial-gradient(ellipse 40% 58% at 89% 79%,rgba(107,83,109,.085),transparent 86%);
 }
 
 body.home-page main > .section.about-section::after {

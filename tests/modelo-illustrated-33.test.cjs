@@ -9,7 +9,7 @@ const home = read('index.html');
 const css = read('assets/css/cinematic-editorial-33.css');
 const script = read('assets/js/modelo-motion.js');
 const section = home.split('id="modelo"')[1]?.split('id="produtos"')[0] || '';
-const cssPatch = css.split('DAYSLUME ATO III — referência editorial ilustrada / 17.11.2026')[1] || '';
+const cssPatch = css.split('DAYSLUME ATO III — ameixa mineral #6B536D, glass editorial compacto e ícones delicados / 18.11.2026')[1] || '';
 
 test('Ato III keeps approved commercial copy, both CTAs and destinations',()=>{
   assert.match(home,/id="modelo"/);
@@ -44,6 +44,14 @@ test('Ato III uses scoped CSS, native scroll cards, responsive layout and reduce
   assert.ok(cssPatch,'section styles must exist');
   assert.match(cssPatch,/section#modelo\.section/);
   assert.match(cssPatch,/\.modelo-paths\s*\{/);
+  assert.match(cssPatch,/padding-block: clamp\(72px, 6vw, 95px\)/);
+  assert.match(cssPatch,/min-height: clamp\(330px, 24\.2vw, 385px\)/);
+  assert.match(cssPatch,/backdrop-filter: blur\(15px\) saturate\(1\.04\)/);
+  assert.match(cssPatch,/\.modelo-product-tile svg \{[^}]*width: 24px;[^}]*stroke-width: 1\.2;/s);
+  assert.match(cssPatch,/linear-gradient\(112deg,/);
+  assert.match(cssPatch,/max-width: 1480px/);
+  assert.match(cssPatch,/gap: clamp\(20px, 2\.75vw, 44px\)/);
+  assert.match(cssPatch,/height: 235px/);
   assert.match(cssPatch,/\.modelo-product-tile--engreni/);
   assert.match(cssPatch,/modelo-art-laptop-float/);
   assert.match(cssPatch,/modelo-tile-vitrini-float/);
@@ -52,6 +60,19 @@ test('Ato III uses scoped CSS, native scroll cards, responsive layout and reduce
   assert.match(cssPatch,/@media \(prefers-reduced-motion: reduce\)/);
   assert.doesNotMatch(cssPatch,/#apresentacao|#cinema33-film|\.hero--floating-panels/);
   assert.equal((css.match(/\{/g)||[]).length,(css.match(/\}/g)||[]).length);
+});
+
+test('Ato III has an elegant luminous bespoke icon and outlined 3D product tiles',()=>{
+  assert.match(section,/id="modelo-premium-outline-glow"/);
+  assert.match(section,/id="modelo-premium-frame"/);
+  assert.match(section,/class="modelo-art-laptop"/);
+  assert.match(section,/stroke="url\(#modelo-premium-frame\)"/);
+  assert.match(section,/class="modelo-art-code"/);
+  assert.match(cssPatch,/\.modelo-product-tile::before\s*\{/);
+  assert.match(cssPatch,/\.modelo-product-tile::after\s*\{/);
+  assert.match(cssPatch,/mask-composite: exclude/);
+  assert.match(cssPatch,/border: 1px solid rgba\(var\(--peach-rgb\), \.86\)/);
+  assert.match(cssPatch,/\.modelo-path-card--products:is\(:hover,:focus-within\) \.modelo-product-tile/);
 });
 
 test('Ato III illustration motion runs only in view and degrades without JS',()=>{

@@ -14,7 +14,7 @@ const findHtml=(dir)=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(item=>{
 
 test('CSS cleanup removes only abandoned files while keeping all referenced stylesheets',()=>{
  const pages=findHtml(root);
- assert.equal(pages.length,20);
+ assert.equal(pages.length,21);
  const loaded=new Set();
  for(const p of pages){
   const source=fs.readFileSync(p,'utf8');
@@ -27,13 +27,14 @@ test('CSS cleanup removes only abandoned files while keeping all referenced styl
   }
  }
  for(const deadFile of dead)assert.equal(fs.existsSync(path.join(cssDir,deadFile)),false,deadFile);
- assert.equal(loaded.size,38);
+ assert.equal(loaded.size,44);
  assert.ok(loaded.has(path.join(cssDir,'contents-cinematic-33.css')));
+ assert.ok(loaded.has(path.join(cssDir,'home-cinematic-continuity-34.css')),'3.4 continuity stylesheet is a referenced asset');
 });
 
 test('CSS cleanup resolves every local @import and preserves the shared visual system',()=>{
  const css=fs.readdirSync(cssDir).filter(file=>file.endsWith('.css'));
- assert.equal(css.length,38);
+ assert.equal(css.length,44);
  for(const file of css){
   const s=fs.readFileSync(path.join(cssDir,file),'utf8');
   for(const m of s.matchAll(/@import\s+(?:url\()?["']?(\.\/?[^"'\s\)]+\.css)["']?/g)){
@@ -47,7 +48,7 @@ test('CSS cleanup does not disturb the approved cinematic hero or official palet
  const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
  assert.doesNotMatch(html,/href="assets\/css\/hero-flower-interactive\.css"/);
  assert.doesNotMatch(html,/hero--interactive-flower|class="flower-petal"/);
- for(const marker of ['id="cinema33-film"','data-cinema33-home','class="cinema-cluster"','class="cinema-browser"','class="cinema-phone cinema-agenda-panel"','class="cinema-service"'])assert.ok(html.includes(marker));
+ for(const marker of ['id="cinema33-film"','data-cinema33-home','class="hero-projects"','hero-projects__card--vitrini','hero-projects__card--agenda','hero-projects__card--caderneta'])assert.ok(html.includes(marker));
  const styles=[...html.matchAll(/<link\b[^>]*rel=["']stylesheet["'][^>]*href=["']([^"']+)["']/gi)].map(m=>m[1]);
  // Do not freeze a global count: the RITMO home layer was intentionally removed.
  assert.equal(new Set(styles).size,styles.length,'Home stylesheets must be unique');
