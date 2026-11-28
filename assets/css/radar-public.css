@@ -13,3 +13,20 @@
 .solutions-diagnostic [hidden]{display:none!important}
 .solutions-diagnostic button.diagnostic-primary,.solutions-diagnostic button.diagnostic-secondary{cursor:pointer}
 .solutions-diagnostic .radar-contact :focus-visible,.solutions-diagnostic .radar-link:focus-visible{outline:2px solid #ffb5dc;outline-offset:3px}
+
+/* Keep the introduction anchored when the result becomes taller than the hero. */
+@media(min-width:801px){
+ body:not(.home-page) .solutions-hero-layout.radar-result-active{align-items:start}
+}
+@media(max-width:800px){
+ body:not(.home-page) .solutions-hero-layout:has([data-days-diagnostic]){gap:22px}
+ body:not(.home-page) .solutions-hero-layout:has([data-days-diagnostic]) .solutions-hero-copy h1{font-size:clamp(30px,7.1vw,46px);margin:12px 0}
+ body:not(.home-page) .solutions-hero-layout:has([data-days-diagnostic]) .solutions-hero-copy .lead{font-size:14px;line-height:1.55}
+ body:not(.home-page) .solutions-hero-layout:has([data-days-diagnostic]) .solutions-hero-copy .actions{margin-top:16px;gap:8px}
+ body:not(.home-page) .solutions-hero-layout:has([data-days-diagnostic]) .solutions-hero-footnote{margin-top:12px;font-size:9px}
+ body:not(.home-page):not(.blog-index):not(.blog-article):not(.vl-page) .header~main>.hero.hero--solutions-quiz:has([data-days-diagnostic]){padding-top:clamp(112px,14vw,140px)}
+}
+.solutions-diagnostic .diagnostic-question{scroll-margin-top:120px;overflow-wrap:anywhere}
+.solutions-diagnostic .diagnostic-question:focus{outline:none}
+.solutions-diagnostic .radar-contact select{width:100%;min-width:0;padding:10px;border-radius:8px;background:#f8f4f8;color:#302534}
+.solutions-diagnostic .radar-contact input[type=checkbox]{width:18px;height:18px}
