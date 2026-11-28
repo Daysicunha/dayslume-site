@@ -8,6 +8,7 @@ const files=[
   "index.html",
   "studio-criativo.html",
   "servicos.html",
+  "presenca.html",
   "solucoes.html",
   "projetos.html",
   "sobre.html",
@@ -28,8 +29,8 @@ const files=[
   "blog/tecnologia-com-intencao.html"
 ];
 const link=(html,href)=>html.includes('href="'+href+'"');
-test('studio 2026: todas as 21 páginas possuem navegação e rodapé com Studio',()=>{
-  assert.equal(files.length,21);
+test('studio 2026: todas as 22 páginas possuem navegação e rodapé com Studio',()=>{
+  assert.equal(files.length,22);
   for(const file of files){
     const html=read(file);
     const prefix=file.includes('/')?'../':'';
@@ -78,7 +79,7 @@ test('studio 2026: home e serviços direcionam para a página completa',()=>{
   assert.ok(about.includes('Conhecer identidade visual, artes e interfaces'));
   const map=read('sitemap.xml');
   assert.ok(map.includes('https://dayslume.daysicunha.com.br/studio-criativo.html'));
-  assert.equal((map.match(/<url>/g)||[]).length,21);
+  assert.equal((map.match(/<url>/g)||[]).length,22);
 });
 test('studio 2026: folhas de estilo isoladas e balanceadas',()=>{
   for(const sheet of ['assets/css/studio-sitewide-20261123.css','assets/css/studio-page-20261123.css']){
