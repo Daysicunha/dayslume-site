@@ -232,11 +232,11 @@ try {
      return {returned,result,anchored,initiallyHidden,blocked,prepared,attribution,invalidated,noOverflow};
    });
    if(Object.values(row.radar).some(v=>!v))row.issues.push('Radar public flow failed '+JSON.stringify(row.radar));
-   await page.locator('[data-days-diagnostic]').screenshot({path:join(out,'radar-result-'+width+'.png')});
+   await (await page.$('[data-days-diagnostic]')).screenshot({path:join(out,'radar-result-'+width+'.png')});
    await page.evaluate(()=>document.querySelector('.diagnostic-reset').click());
    await page.waitForSelector('.diagnostic-option');
-   if(await page.locator('.radar-result-active').count())row.issues.push('Radar result state was not reset');
-   await page.locator('[data-days-diagnostic]').screenshot({path:join(out,'radar-question-'+width+'.png')});
+   if(await page.$('.radar-result-active'))row.issues.push('Radar result state was not reset');
+   await (await page.$('[data-days-diagnostic]')).screenshot({path:join(out,'radar-question-'+width+'.png')});
    row.errors=[...new Set(row.errors)];
    allErrors.push(...row.errors);
    cases.push(row);
