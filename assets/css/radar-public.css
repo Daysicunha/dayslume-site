@@ -1,0 +1,15 @@
+/* Scoped public Radar additions. */
+.solutions-diagnostic .radar-progress{display:block;width:100%;height:8px;margin:10px 0 20px;accent-color:#ff86c9}
+.solutions-diagnostic .radar-subtitle{color:#fff;margin:20px 0 10px;font-size:1rem}
+.solutions-diagnostic .radar-priority{border:1px solid #ffffff30;border-radius:12px;padding:12px;margin:9px 0;color:#fff;overflow-wrap:anywhere}
+.solutions-diagnostic .radar-priority p{font-size:.88rem;line-height:1.5;margin:7px 0}
+.solutions-diagnostic .radar-link{color:#ffd0e8;text-decoration:underline}
+.solutions-diagnostic .radar-contact{display:grid;gap:12px;margin:10px 0}
+.solutions-diagnostic .radar-contact label{display:grid;gap:5px;font-size:.83rem;line-height:1.5;color:#fff}
+.solutions-diagnostic .radar-contact input:not([type=checkbox]),.solutions-diagnostic .radar-preview{box-sizing:border-box;width:100%;min-width:0;padding:10px;border:1px solid #b7a6bd;border-radius:8px;background:#f8f4f8;color:#302534;font:inherit}
+.solutions-diagnostic .radar-preview{min-height:150px;resize:vertical}
+.solutions-diagnostic .radar-contact .radar-consent{grid-template-columns:20px minmax(0,1fr);align-items:start}
+.solutions-diagnostic .radar-consent input{margin:4px 0;accent-color:#ff86c9}
+.solutions-diagnostic [hidden]{display:none!important}
+.solutions-diagnostic button.diagnostic-primary,.solutions-diagnostic button.diagnostic-secondary{cursor:pointer}
+.solutions-diagnostic .radar-contact :focus-visible,.solutions-diagnostic .radar-link:focus-visible{outline:2px solid #ffb5dc;outline-offset:3px}
