@@ -1,6 +1,8 @@
 /* Radar Auto: seção piloto, exibida apenas quando o servidor habilitar. */
 (()=>{'use strict';
 const host=document.querySelector('[data-radar-auto]');if(!host)return;
+// Static local QA does not run serverless functions; the pilot remains hidden.
+if(['localhost','127.0.0.1','[::1]'].includes(location.hostname))return;
 const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text)n.textContent=text;if(cls)n.className=cls;return n;};
 async function start(){
  try{const cap=await fetch('/api/radar-auto',{cache:'no-store',credentials:'same-origin'});if(!cap.ok||!(await cap.json()).enabled)return;}catch{return;}
