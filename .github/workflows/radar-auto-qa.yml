@@ -1,0 +1,24 @@
+name: Radar Auto QA
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'lib/radar-auto-core.cjs'
+      - 'api/radar-auto.js'
+      - 'assets/js/radar-auto.js'
+      - 'assets/js/radar-public*.js'
+      - 'tests/radar-*.test.cjs'
+      - '.github/workflows/radar-auto-qa.yml'
+permissions:
+  contents: read
+jobs:
+  radar-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check api/radar-auto.js && node --check assets/js/radar-auto.js && node --check assets/js/radar-public.js
+      - run: node --test tests/radar-auto.test.cjs tests/radar-public.test.cjs
