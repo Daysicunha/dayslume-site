@@ -52,3 +52,6 @@ module.exports=async function handler(req,res){
  catch(e){return res.status(422).json({error:'Não foi possível concluir a consulta técnica. Nenhuma nota foi atribuída.'});}
  finally{active=false;}
 };
+
+// Export only for the controlled Node homologation script; HTTP handler remains gated.
+module.exports.downloadForQA=async input=>download(normalizeTarget(input),Date.now()+DEADLINE);
