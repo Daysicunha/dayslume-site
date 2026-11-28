@@ -7,6 +7,7 @@ const btn=(text,cls,fn)=>{const n=el('button',cls,text);n.type='button';n.addEve
 const link=(text,href,cls)=>{const n=el('a',cls,text);n.href=href;return n;};
 const options=[['yes','Sim, está bem estruturado'],['partial','Em parte / preciso melhorar'],['no','Ainda não'],['unknown','Não sei avaliar']];
 function render(focus=false){
+ stage.closest('.solutions-hero-layout')?.classList.toggle('radar-result-active',step===questions.length);
  const frame=el('div','diagnostic-frame'),heading=el('h3','diagnostic-question');heading.tabIndex=-1;
  if(step<questions.length){
  const q=questions[step],meta=el('div','diagnostic-meta','PERGUNTA '+(step+1)+' DE '+questions.length),bar=el('progress','radar-progress');bar.max=questions.length;bar.value=step;bar.setAttribute('aria-label','Perguntas respondidas');
@@ -31,7 +32,7 @@ function render(focus=false){
  form.addEventListener('submit',e=>{e.preventDefault();if(!check.checked)return;const profile=Object.fromEntries(Object.entries(fields).map(([k,v])=>[k,v.value.trim()]));try{if(profile.site){const u=new URL(profile.site);if(!['http:','https:'].includes(u.protocol)||u.username||u.password)throw Error('Informe um endereço público HTTP ou HTTPS.');profile.site=u.origin+u.pathname;}profile.source=api.campaignSource(window.location.search);const text=messageFor(r,profile);preview.value=text;preview.hidden=false;go.href='https://wa.me/5531994492474?text='+encodeURIComponent(text);go.hidden=false;msg.textContent='Revise antes de abrir o WhatsApp.';}catch(err){msg.textContent=err.message;}});
  frame.append(form,btn('Refazer diagnóstico','diagnostic-reset',()=>{answers.length=0;step=0;render(true)}));
  }
- stage.replaceChildren(frame);if(focus)heading.focus();
+ stage.replaceChildren(frame);if(focus){heading.focus({preventScroll:true});const bounds=heading.getBoundingClientRect();if(bounds.top<115||bounds.bottom>window.innerHeight-24)heading.scrollIntoView({block:'start',behavior:'instant'});}
 }
 render();
 })();
