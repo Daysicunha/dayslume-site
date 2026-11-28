@@ -80,11 +80,16 @@ function assess(answers,questions){
  const opportunities=questions.flatMap((q,i)=>answers[i]==="yes"?[]:[{...q,status:answers[i],priority:answers[i]==="no"?q.weight:answers[i]==="partial"?q.weight/2:0}]).sort((a,b)=>b.priority-a.priority);
  return {known,total:questions.length,met:answers.filter(a=>a==="yes").length,partial:answers.filter(a=>a==="partial").length,gaps:answers.filter(a=>a==="no").length,unknown:answers.filter(a=>a==="unknown").length,opportunities};
 }
+// Only campaign codes from the approved list. No arbitrary URL, referrer or user ID.
+const sourceNames=Object.freeze({instagram:'Instagram DAYSLUME',local:'VITRINI Local',whatsapp:'WhatsApp / divulgação',linkedin:'LinkedIn DAYSLUME',site:'Site DAYSLUME'});
+function campaignSource(search){
+ try{const values=new URLSearchParams(String(search||'')).getAll('origem');return values.length===1&&Object.prototype.hasOwnProperty.call(sourceNames,values[0])?values[0]:null;}catch{return null;}
+}
 function messageFor(result,profile){
  const clean=(s,max)=>String(s||"").replace(/[\r\n\t]+/g," ").trim().slice(0,max);
  const rows=result.opportunities.filter(x=>x.status!=="unknown").slice(0,3).map(x=>"- "+x.label+": "+x.action);
- return ["Olá! Gostaria de conversar sobre o Radar DAYSLUME.",clean(profile.business,120)&&"Negócio: "+clean(profile.business,120),clean(profile.region,100)&&"Região: "+clean(profile.region,100),clean(profile.site,180)&&"Site público: "+clean(profile.site,180),clean(profile.social,180)&&"Rede social pública: "+clean(profile.social,180),"Autoavaliação (não auditada): "+result.known+"/"+result.total+" critérios informados.",...rows,"Gostaria de uma avaliação profissional e orientação sobre os próximos passos."].filter(Boolean).join("\n");
+ return ["Olá! Gostaria de conversar sobre o Radar DAYSLUME.",Object.prototype.hasOwnProperty.call(sourceNames,profile.source)?("Origem da divulgação (declarada): "+sourceNames[profile.source]):"",clean(profile.business,120)&&"Negócio: "+clean(profile.business,120),clean(profile.region,100)&&"Região: "+clean(profile.region,100),clean(profile.site,180)&&"Site público: "+clean(profile.site,180),clean(profile.social,180)&&"Rede social pública: "+clean(profile.social,180),"Autoavaliação (não auditada): "+result.known+"/"+result.total+" critérios informados.",...rows,"Gostaria de uma avaliação profissional e orientação sobre os próximos passos."].filter(Boolean).join("\n");
 }
-const api={questions,assess:answers=>assess(answers,questions),messageFor};
+const api={questions,assess:answers=>assess(answers,questions),messageFor,campaignSource};
 if(typeof module==='object'&&module.exports)module.exports=api;else root.DayslumeRadar=api;
 })(typeof window!=='undefined'?window:globalThis);
