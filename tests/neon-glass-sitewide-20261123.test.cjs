@@ -14,7 +14,7 @@ test('neon glass: preservar token oficial e camada final compartilhada',()=>{
     const relative=new URL(m[1]).pathname.replace(/^\//,'');
     return relative||'index.html';
   });
-  assert.equal(paths.length,21);
+  assert.equal(paths.length,22);
   for(const file of paths){
     const html=read(file);
     const prefix=file.includes('/')?'../':'';
