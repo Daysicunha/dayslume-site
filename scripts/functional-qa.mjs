@@ -204,7 +204,7 @@ try {
      row.internal.push(item);
    }
    // Radar public: answer, back, result, explicit opt-in and invalidation; never follow WhatsApp.
-   await page.goto(after+'servicos.html#diagnostico-digital',{waitUntil:'domcontentloaded',timeout:30000});
+   await page.goto(after+'servicos.html?origem=instagram#diagnostico-digital',{waitUntil:'domcontentloaded',timeout:30000});
    await page.waitForSelector('.diagnostic-option');
    row.radar=await page.evaluate(()=>{
      const stage=document.querySelector('[data-diagnostic-stage]');
@@ -221,11 +221,12 @@ try {
      const blocked=go.hidden;
      check.click();form.requestSubmit();
      const prepared=!go.hidden&&go.href.startsWith('https://wa.me/5531994492474?text=');
+     const attribution=prepared&&new URL(go.href).searchParams.get('text').includes('Origem da divulgação (declarada): Instagram DAYSLUME');
      form.elements.business.value='QA atualizado';
      form.elements.business.dispatchEvent(new Event('input',{bubbles:true}));
      const invalidated=go.hidden&&!go.hasAttribute('href');
      const noOverflow=document.documentElement.scrollWidth<=innerWidth+2;
-     return {returned,result,initiallyHidden,blocked,prepared,invalidated,noOverflow};
+     return {returned,result,initiallyHidden,blocked,prepared,attribution,invalidated,noOverflow};
    });
    if(Object.values(row.radar).some(v=>!v))row.issues.push('Radar public flow failed '+JSON.stringify(row.radar));
    await page.screenshot({path:join(out,'radar-result-'+width+'.png')});
