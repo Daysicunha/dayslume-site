@@ -214,6 +214,9 @@ try {
      const returned=options().length===4;
      for(let i=0;i<8;i++)options()[i===0?2:3].click();
      const result=stage.textContent.includes('1 de 8')&&stage.textContent.includes('7 não avaliadas');
+     const layout=stage.closest('.solutions-hero-layout'),copy=layout.querySelector('.solutions-hero-copy'),aside=layout.querySelector('[data-days-diagnostic]');
+     const anchored=layout.classList.contains('radar-result-active')&&(innerWidth<=800||Math.abs(copy.getBoundingClientRect().top-aside.getBoundingClientRect().top)<8);
+
      const form=stage.querySelector('.radar-contact'),check=form.querySelector('input[type=checkbox]'),go=form.querySelector('a.diagnostic-primary');
      form.elements.business.value='QA fictício';
      const initiallyHidden=go.hidden;
@@ -226,10 +229,14 @@ try {
      form.elements.business.dispatchEvent(new Event('input',{bubbles:true}));
      const invalidated=go.hidden&&!go.hasAttribute('href');
      const noOverflow=document.documentElement.scrollWidth<=innerWidth+2;
-     return {returned,result,initiallyHidden,blocked,prepared,attribution,invalidated,noOverflow};
+     return {returned,result,anchored,initiallyHidden,blocked,prepared,attribution,invalidated,noOverflow};
    });
    if(Object.values(row.radar).some(v=>!v))row.issues.push('Radar public flow failed '+JSON.stringify(row.radar));
-   await page.screenshot({path:join(out,'radar-result-'+width+'.png')});
+   await page.locator('[data-days-diagnostic]').screenshot({path:join(out,'radar-result-'+width+'.png')});
+   await page.evaluate(()=>document.querySelector('.diagnostic-reset').click());
+   await page.waitForSelector('.diagnostic-option');
+   if(await page.locator('.radar-result-active').count())row.issues.push('Radar result state was not reset');
+   await page.locator('[data-days-diagnostic]').screenshot({path:join(out,'radar-question-'+width+'.png')});
    row.errors=[...new Set(row.errors)];
    allErrors.push(...row.errors);
    cases.push(row);
