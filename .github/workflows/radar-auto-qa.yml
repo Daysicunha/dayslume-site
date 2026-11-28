@@ -8,6 +8,7 @@ on:
       - 'assets/js/radar-auto.js'
       - 'assets/js/radar-public*.js'
       - 'tests/radar-*.test.cjs'
+      - 'scripts/radar-auto-live-qa.cjs'
       - '.github/workflows/radar-auto-qa.yml'
 permissions:
   contents: read
@@ -22,3 +23,15 @@ jobs:
           node-version: '22'
       - run: node --check api/radar-auto.js && node --check assets/js/radar-auto.js && node --check assets/js/radar-public.js
       - run: node --test tests/radar-auto.test.cjs tests/radar-public.test.cjs
+
+  live-pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/radar-auto-live-qa.cjs
