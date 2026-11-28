@@ -11,7 +11,7 @@ const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 const cases=[],allErrors=[];
 const after='http://127.0.0.1:8766/';
 const widths=[320,390,768,1440];
-const pages=['servicos.html','solucoes.html','projetos.html','sobre.html','contato.html','blog.html'];
+const pages=['servicos.html','presenca.html','solucoes.html','projetos.html','sobre.html','contato.html','blog.html'];
 const visible=e=>e&&e.getClientRects().length>0;
 try {
  for(const width of widths){
@@ -203,6 +203,40 @@ try {
      }
      row.internal.push(item);
    }
+   // Radar public: answer, back, result, explicit opt-in and invalidation; never follow WhatsApp.
+   await page.goto(after+'servicos.html?origem=instagram#diagnostico-digital',{waitUntil:'domcontentloaded',timeout:30000});
+   await page.waitForSelector('.diagnostic-option');
+   row.radar=await page.evaluate(()=>{
+     const stage=document.querySelector('[data-diagnostic-stage]');
+     const options=()=>[...stage.querySelectorAll('.diagnostic-option')];
+     options()[2].click();
+     stage.querySelector('.diagnostic-back').click();
+     const returned=options().length===4;
+     for(let i=0;i<8;i++)options()[i===0?2:3].click();
+     const result=stage.textContent.includes('1 de 8')&&stage.textContent.includes('7 não avaliadas');
+     const layout=stage.closest('.solutions-hero-layout'),copy=layout.querySelector('.solutions-hero-copy'),aside=layout.querySelector('[data-days-diagnostic]');
+     const anchored=layout.classList.contains('radar-result-active')&&(innerWidth<=800||Math.abs(copy.getBoundingClientRect().top-aside.getBoundingClientRect().top)<8);
+
+     const form=stage.querySelector('.radar-contact'),check=form.querySelector('input[type=checkbox]'),go=form.querySelector('a.diagnostic-primary');
+     form.elements.business.value='QA fictício';
+     const initiallyHidden=go.hidden;
+     form.requestSubmit();
+     const blocked=go.hidden;
+     check.click();form.requestSubmit();
+     const prepared=!go.hidden&&go.href.startsWith('https://wa.me/5531994492474?text=');
+     const attribution=prepared&&new URL(go.href).searchParams.get('text').includes('Origem da divulgação (declarada): Instagram DAYSLUME');
+     form.elements.business.value='QA atualizado';
+     form.elements.business.dispatchEvent(new Event('input',{bubbles:true}));
+     const invalidated=go.hidden&&!go.hasAttribute('href');
+     const noOverflow=document.documentElement.scrollWidth<=innerWidth+2;
+     return {returned,result,anchored,initiallyHidden,blocked,prepared,attribution,invalidated,noOverflow};
+   });
+   if(Object.values(row.radar).some(v=>!v))row.issues.push('Radar public flow failed '+JSON.stringify(row.radar));
+   await (await page.$('[data-days-diagnostic]')).screenshot({path:join(out,'radar-result-'+width+'.png')});
+   await page.evaluate(()=>document.querySelector('.diagnostic-reset').click());
+   await page.waitForSelector('.diagnostic-option');
+   if(await page.$('.radar-result-active'))row.issues.push('Radar result state was not reset');
+   await (await page.$('[data-days-diagnostic]')).screenshot({path:join(out,'radar-question-'+width+'.png')});
    row.errors=[...new Set(row.errors)];
    allErrors.push(...row.errors);
    cases.push(row);
@@ -211,7 +245,7 @@ try {
  }
 }finally{await browser.close();}
 await writeFile(join(out,'results.json'),JSON.stringify(cases,null,2));
-let summary=['# DAYSLUME PR #29 — Homologação funcional automatizada',
+let summary=['# DAYSLUME — Homologação funcional automatizada',
 '','Ambiente: snapshots locais; nenhum dado de teste foi enviado ao WhatsApp.',
 '','| Largura | Fundadora título | Formulário | Páginas internas | Alertas |',
 '|---|---:|---|---:|---|'];

@@ -14,7 +14,7 @@ const findHtml=(dir)=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(item=>{
 
 test('CSS cleanup removes only abandoned files while keeping all referenced stylesheets',()=>{
  const pages=findHtml(root);
- assert.equal(pages.length,21);
+ assert.equal(pages.length,22);
  const loaded=new Set();
  for(const p of pages){
   const source=fs.readFileSync(p,'utf8');
@@ -27,14 +27,15 @@ test('CSS cleanup removes only abandoned files while keeping all referenced styl
   }
  }
  for(const deadFile of dead)assert.equal(fs.existsSync(path.join(cssDir,deadFile)),false,deadFile);
- assert.equal(loaded.size,44);
+ assert.equal(loaded.size,45);
  assert.ok(loaded.has(path.join(cssDir,'contents-cinematic-33.css')));
+ assert.ok(loaded.has(path.join(cssDir,'radar-public.css')),'Radar stylesheet must be referenced');
  assert.ok(loaded.has(path.join(cssDir,'home-cinematic-continuity-34.css')),'3.4 continuity stylesheet is a referenced asset');
 });
 
 test('CSS cleanup resolves every local @import and preserves the shared visual system',()=>{
  const css=fs.readdirSync(cssDir).filter(file=>file.endsWith('.css'));
- assert.equal(css.length,44);
+ assert.equal(css.length,45);
  for(const file of css){
   const s=fs.readFileSync(path.join(cssDir,file),'utf8');
   for(const m of s.matchAll(/@import\s+(?:url\()?["']?(\.\/?[^"'\s\)]+\.css)["']?/g)){

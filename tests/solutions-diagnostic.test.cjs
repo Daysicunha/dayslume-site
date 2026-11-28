@@ -52,7 +52,9 @@ test('quiz integrates into Solutions hero and preserves the approved color palet
  assert.match(html,/id="diagnostico-digital"/);
  assert.match(html,/data-days-diagnostic/);
  assert.match(html,/href="#diagnostico-digital"/);
- assert.match(html,/<script src="assets\/js\/solutions-diagnostic\.js" defer>/);
+ assert.match(html,/<script src="assets\/js\/radar-public-core\.js" defer>/);
+ assert.match(html,/<script src="assets\/js\/radar-public\.js" defer>/);
+ assert.doesNotMatch(html,/<script src="assets\/js\/solutions-diagnostic\.js" defer>/);
  const sheets=[...html.matchAll(/href="(assets\/css\/[^"]+\.css)"/g)].map(m=>m[1]);
  assert.equal(sheets.at(-1),'assets/css/brand-palette.css');
  assert.ok(sheets.includes('assets/css/cinematic-editorial-33.css'));
@@ -66,7 +68,7 @@ test('quiz integrates into Solutions hero and preserves the approved color palet
  assert.match(style,/prefers-reduced-motion:reduce/);
  assert.match(style,/focus-visible/);
 });
-test('quiz has three questions, allows returning, restarting and gives relevant links',()=>{
+test('legacy diagnostic: three questions, returning, restarting and relevant links',()=>{
  const f=setup();
  assert.match(f.headings()[0].textContent,/maior desafio/);
  assert.equal(f.options().length,4);
@@ -90,7 +92,7 @@ test('quiz has three questions, allows returning, restarting and gives relevant 
  f.buttons().find(b=>b.className==='diagnostic-reset').click();
  assert.equal(f.options().length,4);
 });
-test('all four solution categories map to valid internal destinations',()=>{
+test('legacy diagnostic: four categories map to valid destinations',()=>{
  const choices=[
   ['presença','sites-completos.html'],
   ['Landing page','landing-pages.html'],
